@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="test()">测试</button>
+<script>
+function test() {
+    fetch("http://localhost:8000/link", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({text: "国家电网"})
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.error(err))
+}
+</script>
+</body>
+</html>
