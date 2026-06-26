@@ -1,0 +1,98 @@
+[
+    {
+        "entity_id": "ENT_00001",
+        "standard_name": "国家电网有限公司",
+        "aliases": ["国网", "国家电网", "国家电网公司"],
+        "type": "ORG",
+        "industry": "能源",
+        "description": "中国最大的电力企业，负责电网建设和运营"
+    },
+    {
+        "entity_id": "ENT_00002",
+        "standard_name": "中国石油天然气集团有限公司",
+        "aliases": ["中石油", "中国石油", "PetroChina"],
+        "type": "ORG",
+        "industry": "能源",
+        "description": "中国最大的石油和天然气生产商"
+    },
+    {
+        "entity_id": "ENT_00003",
+        "standard_name": "中国石油化工集团有限公司",
+        "aliases": ["中石化", "中国石化", "Sinopec"],
+        "type": "ORG",
+        "industry": "能源",
+        "description": "中国最大的石油化工企业"
+    },
+    {
+        "entity_id": "ENT_00004",
+        "standard_name": "中国海洋石油集团有限公司",
+        "aliases": ["中海油", "中国海油", "CNOOC"],
+        "type": "ORG",
+        "industry": "能源",
+        "description": "中国最大的海上油气生产商"
+    },
+    {
+        "entity_id": "ENT_00005",
+        "standard_name": "华能国际电力股份有限公司",
+        "aliases": ["华能国际", "华能"],
+        "type": "ORG",
+        "industry": "能源",
+        "description": "中国最大的上市发电公司之一"
+    },
+    {
+        "entity_id": "ENT_00006",
+        "standard_name": "华北地区",
+        "aliases": ["华北"],
+        "type": "GPE",
+        "industry": "地理",
+        "description": "中国北方地区，包括北京、天津、河北、山西、内蒙古"
+    },
+    {
+        "entity_id": "ENT_00007",
+        "standard_name": "华东地区",
+        "aliases": ["华东"],
+        "type": "GPE",
+        "industry": "地理",
+        "description": "中国东部地区，包括上海、江苏、浙江、安徽、福建、江西、山东"
+    },
+    {
+        "entity_id": "ENT_00008",
+        "standard_name": "中国南方电网有限责任公司",
+        "aliases": ["南方电网", "南方电网公司"],
+        "type": "ORG",
+        "industry": "能源",
+        "description": "中国第二大电网企业，覆盖广东、广西、云南、贵州、海南"
+    },
+    {
+        "entity_id": "ENT_00009",
+        "standard_name": "中国核工业集团有限公司",
+        "aliases": ["中核集团", "中核"],
+        "type": "ORG",
+        "industry": "能源",
+        "description": "中国核工业的龙头企业"
+    },
+    {
+        "entity_id": "ENT_00010",
+        "standard_name": "中国华电集团有限公司",
+        "aliases": ["华电集团", "华电"],
+        "type": "ORG",
+        "industry": "能源",
+        "description": "中国五大发电集团之一"
+    },
+    {
+        "entity_id": "ENT_00011",
+        "standard_name": "中国大唐集团有限公司",
+        "aliases": ["大唐集团", "大唐"],
+        "type": "ORG",
+        "industry": "能源",
+        "description": "中国五大发电集团之一"
+    },
+    {
+        "entity_id": "ENT_00012",
+        "standard_name": "中国华能集团有限公司",
+        "aliases": ["华能集团", "华能"],
+        "type": "ORG",
+        "industry": "能源",
+        "description": "中国五大发电集团之一"
+    }
+]

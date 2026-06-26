@@ -1,0 +1,31 @@
+# config.yaml
+ner:
+  backend: "hanlp"
+  hanlp_model: "CLOSE_TOK_POS_NER_SRL_DEP_SDP_CON_ELECTRA_SMALL_ZH"
+  linkable_types: ["ORG", "PERSON", "GPE", "LOC"]
+
+knowledge_base:
+  type: "json"
+  path: "./data/knowledge_base.json"
+
+# BGE 模型在项目内
+bge_model_path: "./models_cache/bge-small-zh"
+
+disambiguator:
+  nil_threshold: 0.65
+  bge_llm_trigger_threshold: 0.65
+
+llm_fallback:
+  enabled: false
+  provider: "openai"
+  api_key: null
+  model: "gpt-4o-mini"
+
+# 共指消解 (FastCoref + XLM-RoBERTa)
+coreference:
+  enabled: false  # 默认关闭
+  mode: "fastcoref"  # 或 "heuristic"
+  model: "xlm-roberta-base"  # 或 "xlm-roberta-large"
+  device: "cpu"  # 或 "cuda"
+
+tracer_db: "./data/link_records.db"
