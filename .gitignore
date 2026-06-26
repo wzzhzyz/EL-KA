@@ -1,8 +1,8 @@
 __pycache__/
 *.pyc
-.env
-data/
+*.pkl
 *.db
+.env
 .vscode/
 .idea/
 .DS_Store
