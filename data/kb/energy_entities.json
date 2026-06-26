@@ -1,0 +1,4538 @@
+{
+  "schema_version": "2.0",
+  "kb_version": "2.0.0",
+  "kb_name": "entity_linking_kb",
+  "kb_description": "多行业实体链接知识库——覆盖能源、科技、金融、汽车、教育等领域的实体，面向课题10实体链接与知识对齐智能体，支持热插拔和行业切换",
+  "entity_type_enum": {
+    "GRID_COMPANY": "电网企业",
+    "POWER_GENERATOR": "发电企业",
+    "NEW_ENERGY_ENTERPRISE": "新能源企业",
+    "POWER_FACILITY": "电力设施",
+    "REGION": "地区",
+    "TECHNICAL_TERM": "专业术语",
+    "RESEARCH_INSTITUTION": "研究机构",
+    "TECH_COMPANY": "科技企业",
+    "FINANCIAL_INSTITUTION": "金融机构",
+    "AUTO_MANUFACTURER": "汽车制造商",
+    "GOVERNMENT_AGENCY": "政府机构",
+    "EDUCATIONAL_INSTITUTION": "教育机构",
+    "CONSUMER_PRODUCT": "消费品",
+    "SOFTWARE_PLATFORM": "软件平台"
+  },
+  "tag_taxonomy": {
+    "ownership": [
+      "央企",
+      "地方国企",
+      "民营企业",
+      "上市公司",
+      "外资企业",
+      "混合所有制",
+      "金融科技",
+      "政府机构"
+    ],
+    "energy_chain": [
+      "输电",
+      "配电",
+      "发电",
+      "储能",
+      "售电",
+      "电力服务"
+    ],
+    "energy_source": [
+      "火电",
+      "水电",
+      "核电",
+      "风电",
+      "光伏",
+      "天然气发电",
+      "抽水蓄能",
+      "生物质能",
+      "氢能",
+      "煤炭",
+      "海上风电",
+      "锂电池"
+    ],
+    "energy_application": [
+      "新能源汽车",
+      "新能源",
+      "电网互联"
+    ],
+    "technology": [
+      "特高压",
+      "智能电网",
+      "分布式能源",
+      "能源互联网",
+      "清洁能源",
+      "直流输电",
+      "交流输电",
+      "柔性直流",
+      "自主技术",
+      "AI",
+      "大模型",
+      "自动驾驶",
+      "云计算",
+      "5G",
+      "物联网",
+      "区块链"
+    ],
+    "policy_tag": [
+      "3060目标",
+      "碳交易",
+      "电力体制改革",
+      "西电东送",
+      "一带一路"
+    ],
+    "scale_tag": [
+      "世界500强",
+      "行业龙头",
+      "专精特新",
+      "独角兽",
+      "世界品牌500强",
+      "瞪羚企业"
+    ],
+    "entity_role": [
+      "智库"
+    ],
+    "region_tag": [
+      "华北",
+      "华东",
+      "华南",
+      "华中",
+      "西南",
+      "西北",
+      "东北",
+      "大湾区",
+      "长三角",
+      "西部",
+      "经济特区",
+      "首都"
+    ],
+    "certification": [
+      "ISO50001",
+      "绿色工厂",
+      "零碳认证",
+      "985",
+      "211"
+    ],
+    "industry_domain": [
+      "能源",
+      "科技",
+      "金融",
+      "汽车",
+      "教育",
+      "制造",
+      "互联网",
+      "半导体",
+      "人工智能",
+      "消费电子",
+      "教育"
+    ]
+  },
+  "entities": [
+    {
+      "entity_id": "ENT_ENERGY_0001",
+      "entity_name": "国家电网有限公司",
+      "aliases": [
+        {
+          "name": "国家电网",
+          "alias_type": "简称",
+          "priority": 0.92,
+          "confidence": 1.0
+        },
+        {
+          "name": "国网",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "State Grid Corporation of China",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        },
+        {
+          "name": "电网公司",
+          "alias_type": "俗称",
+          "priority": 0.3,
+          "confidence": 0.7
+        },
+        {
+          "name": "国家电网公司",
+          "alias_type": "曾用名",
+          "priority": 0.65,
+          "confidence": 0.9
+        },
+        {
+          "name": "SGCC",
+          "alias_type": "英文",
+          "priority": 0.7,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "国网",
+      "entity_type": "GRID_COMPANY",
+      "entity_type_display": "电网企业",
+      "industry": "电力输配",
+      "summary": "全球最大的公用事业企业，负责中国26个省区的电网建设、运营和电力供应。",
+      "business": "电网投资建设与运营管理、电力购销与调度、特高压与智能电网技术研发、抽水蓄能与新能源并网服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "西城区西长安街86号"
+      },
+      "keywords": [
+        "电力",
+        "输配电",
+        "特高压",
+        "智能电网",
+        "电网建设",
+        "售电",
+        "新能源并网"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0002",
+          "relation": "竞争对手",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "南北电网分区经营，业务无重叠"
+        },
+        {
+          "target": "ENT_ENERGY_0009",
+          "relation": "母公司",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "国网能源研究院为全资子公司"
+        },
+        {
+          "target": "ENT_ENERGY_0010",
+          "relation": "母公司",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "国网新源控股为抽水蓄能专业化子公司"
+        }
+      ],
+      "tags": [
+        "央企",
+        "世界500强",
+        "输电",
+        "配电",
+        "特高压"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0002",
+      "entity_name": "中国南方电网有限责任公司",
+      "aliases": [
+        {
+          "name": "南方电网",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "南网",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "China Southern Power Grid",
+          "alias_type": "英文",
+          "priority": 0.7,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "南网",
+      "entity_type": "GRID_COMPANY",
+      "entity_type_display": "电网企业",
+      "industry": "电力输配",
+      "summary": "负责广东、广西、云南、贵州、海南五省区的电网投资、建设和运营管理。",
+      "business": "电网建设运营、电力调度交易、西电东送南部通道运营、农网改造、智能电网建设。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "广州市",
+        "address": "天河区"
+      },
+      "keywords": [
+        "电力",
+        "输配电",
+        "电网建设",
+        "新能源",
+        "智能电网"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0001",
+          "relation": "竞争对手",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "南北电网分区经营"
+        }
+      ],
+      "tags": [
+        "央企",
+        "输电",
+        "配电",
+        "西电东送"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0003",
+      "entity_name": "中国华能集团有限公司",
+      "aliases": [
+        {
+          "name": "华能集团",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "中国华能",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "华能",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        },
+        {
+          "name": "Huaneng Group",
+          "alias_type": "英文",
+          "priority": 0.65,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "华能",
+      "entity_type": "POWER_GENERATOR",
+      "entity_type_display": "发电企业",
+      "industry": "火力发电",
+      "summary": "国有重要骨干企业，中国最大的发电集团之一，装机容量超过2亿千瓦。",
+      "business": "电源开发投资建设与经营管理、电力生产销售、煤炭开采、金融与科技服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "海淀区"
+      },
+      "keywords": [
+        "火力发电",
+        "清洁能源",
+        "风电",
+        "光伏",
+        "水电"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0005",
+          "relation": "兄弟公司",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "同属五大发电集团"
+        }
+      ],
+      "tags": [
+        "央企",
+        "火电",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0004",
+      "entity_name": "中国大唐集团有限公司",
+      "aliases": [
+        {
+          "name": "大唐集团",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "中国大唐",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "大唐",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "Datang Group",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "大唐",
+      "entity_type": "POWER_GENERATOR",
+      "entity_type_display": "发电企业",
+      "industry": "火力发电",
+      "summary": "主营电力、煤炭、金融等产业，装机容量超过1.6亿千瓦，清洁能源占比超过45%。",
+      "business": "火力发电、水电、风电、光伏发电、煤炭生产、金融投资。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "西城区"
+      },
+      "keywords": [
+        "火力发电",
+        "风电",
+        "水电",
+        "煤炭"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0003",
+          "relation": "兄弟公司",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "同属五大发电集团"
+        }
+      ],
+      "tags": [
+        "央企",
+        "火电",
+        "风电"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0005",
+      "entity_name": "国家能源投资集团有限责任公司",
+      "aliases": [
+        {
+          "name": "国家能源集团",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "国能集团",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "国能",
+          "alias_type": "简称",
+          "priority": 0.75,
+          "confidence": 1.0
+        },
+        {
+          "name": "CHN Energy",
+          "alias_type": "英文",
+          "priority": 0.65,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "国能",
+      "entity_type": "POWER_GENERATOR",
+      "entity_type_display": "发电企业",
+      "industry": "综合能源",
+      "summary": "由原国电集团和神华集团合并重组而成，全球最大的煤炭生产企业和火力发电企业。",
+      "business": "煤炭开采与销售、火力发电、风力发电、煤制油煤化工、港口航运物流。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "东城区"
+      },
+      "keywords": [
+        "煤炭",
+        "火电",
+        "风电",
+        "煤化工",
+        "新能源"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0003",
+          "relation": "兄弟公司",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "同属五大发电集团"
+        }
+      ],
+      "tags": [
+        "央企",
+        "世界500强",
+        "火电",
+        "风电",
+        "煤炭"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0006",
+      "entity_name": "国家电力投资集团有限公司",
+      "aliases": [
+        {
+          "name": "国家电投",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "国电投",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "SPIC",
+          "alias_type": "英文",
+          "priority": 0.65,
+          "confidence": 1.0
+        },
+        {
+          "name": "State Power Investment Corporation",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "国电投",
+      "entity_type": "POWER_GENERATOR",
+      "entity_type_display": "发电企业",
+      "industry": "清洁能源发电",
+      "summary": "拥有核电、水电、风电、光伏等全部发电类型，全球最大的光伏发电企业，清洁能源装机占比超过60%。",
+      "business": "核电投资运营、水电开发、风电与光伏电站建设运营、综合智慧能源服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "西城区"
+      },
+      "keywords": [
+        "核电",
+        "光伏",
+        "风电",
+        "水电",
+        "清洁能源",
+        "综合智慧能源"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0014",
+          "relation": "投资方",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "青海塔拉滩光伏基地主要投资建设方"
+        }
+      ],
+      "tags": [
+        "央企",
+        "光伏",
+        "核电",
+        "风电",
+        "水电",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0007",
+      "entity_name": "中国华电集团有限公司",
+      "aliases": [
+        {
+          "name": "华电集团",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "中国华电",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "华电",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "Huadian Group",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "华电",
+      "entity_type": "POWER_GENERATOR",
+      "entity_type_display": "发电企业",
+      "industry": "综合能源",
+      "summary": "主营发电、煤炭、金融、科工四大产业板块，装机容量超过1.8亿千瓦，天然气发电装机全国第一。",
+      "business": "天然气发电、水力发电、风力发电、光伏发电、分布式能源、煤炭生产。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "西城区"
+      },
+      "keywords": [
+        "天然气发电",
+        "分布式能源",
+        "水电",
+        "风电",
+        "光伏"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0003",
+          "relation": "兄弟公司",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "同属五大发电集团"
+        }
+      ],
+      "tags": [
+        "央企",
+        "天然气发电",
+        "分布式能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0008",
+      "entity_name": "中国长江三峡集团有限公司",
+      "aliases": [
+        {
+          "name": "三峡集团",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "中国三峡",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "三峡",
+          "alias_type": "简称",
+          "priority": 0.55,
+          "confidence": 0.8
+        },
+        {
+          "name": "CTG",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        },
+        {
+          "name": "China Three Gorges",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "三峡",
+      "entity_type": "POWER_GENERATOR",
+      "entity_type_display": "发电企业",
+      "industry": "水力发电",
+      "summary": "全球最大的水电开发运营企业，总装机容量超过1.2亿千瓦。",
+      "business": "大型水电站开发建设运营、海上风电投资开发、生态环保与长江大保护、国际水电工程承包。",
+      "location": {
+        "country": "中国",
+        "province": "湖北省",
+        "city": "武汉市",
+        "address": "江岸区"
+      },
+      "keywords": [
+        "水电",
+        "海上风电",
+        "三峡工程",
+        "清洁能源",
+        "生态环保"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0012",
+          "relation": "运营方",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "三峡水电站的运营管理主体"
+        },
+        {
+          "target": "ENT_ENERGY_0013",
+          "relation": "运营方",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "溪洛渡水电站的运营管理主体"
+        }
+      ],
+      "tags": [
+        "央企",
+        "世界500强",
+        "水电",
+        "海上风电",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0009",
+      "entity_name": "国网能源研究院有限公司",
+      "aliases": [
+        {
+          "name": "国网能源院",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "国网能源研究院",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "SGCC Energy Research Institute",
+          "alias_type": "英文",
+          "priority": 0.5,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "国网能源院",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "entity_type_display": "研究机构",
+      "industry": "能源研究",
+      "summary": "国家电网公司的全资子公司和直属科研机构，从事能源电力发展战略、政策、经济、技术研究咨询。",
+      "business": "能源电力战略研究、电力市场与电价研究、能源经济与供需分析、企业战略与改革发展咨询。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "昌平区"
+      },
+      "keywords": [
+        "能源政策",
+        "电力市场",
+        "碳中和研究",
+        "能源战略",
+        "智库"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0001",
+          "relation": "母公司",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "国家电网全资子公司"
+        }
+      ],
+      "tags": [
+        "央企",
+        "智库",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0010",
+      "entity_name": "国网新源控股有限公司",
+      "aliases": [
+        {
+          "name": "国网新源",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "国网新源控股",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "State Grid Xinyuan",
+          "alias_type": "英文",
+          "priority": 0.5,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "国网新源",
+      "entity_type": "POWER_GENERATOR",
+      "entity_type_display": "发电企业",
+      "industry": "抽水蓄能",
+      "summary": "国家电网公司的抽水蓄能专业化运营子公司。",
+      "business": "抽水蓄能电站开发建设和运营管理、调峰调频服务、储能技术研发。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "西城区"
+      },
+      "keywords": [
+        "抽水蓄能",
+        "调峰",
+        "储能",
+        "水电"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0001",
+          "relation": "母公司",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "国家电网全资子公司"
+        }
+      ],
+      "tags": [
+        "央企",
+        "抽水蓄能",
+        "储能"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0011",
+      "entity_name": "中国广核集团有限公司",
+      "aliases": [
+        {
+          "name": "中广核",
+          "alias_type": "简称",
+          "priority": 0.92,
+          "confidence": 1.0
+        },
+        {
+          "name": "中国广核",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "CGN",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        },
+        {
+          "name": "China General Nuclear Power Group",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "中广核",
+      "entity_type": "POWER_GENERATOR",
+      "entity_type_display": "发电企业",
+      "industry": "核力发电",
+      "summary": "中国最大的核电运营商，在运核电机组超过25台。",
+      "business": "核电站投资建设与运营、核燃料供应、新能源（风电/光伏/储能）投资开发、核技术应用。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": "福田区"
+      },
+      "keywords": [
+        "核电",
+        "新能源",
+        "核燃料",
+        "风电",
+        "光伏"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0017",
+          "relation": "运营方",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "大亚湾核电站运营管理主体"
+        }
+      ],
+      "tags": [
+        "央企",
+        "核电",
+        "风电",
+        "光伏",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0012",
+      "entity_name": "三峡水电站",
+      "aliases": [
+        {
+          "name": "三峡大坝",
+          "alias_type": "俗称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "三峡工程",
+          "alias_type": "曾用名",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "Three Gorges Dam",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "三峡大坝",
+      "entity_type": "POWER_FACILITY",
+      "entity_type_display": "电力设施",
+      "industry": "水力发电",
+      "summary": "世界上装机容量最大的水电站，总装机2250万千瓦，年发电量约1000亿千瓦时。",
+      "business": "水力发电、防洪调度、长江航运通道保障、生态调度与水资源综合利用。",
+      "location": {
+        "country": "中国",
+        "province": "湖北省",
+        "city": "宜昌市",
+        "address": "三峡坝区"
+      },
+      "keywords": [
+        "水电",
+        "世界最大",
+        "清洁能源",
+        "西电东送",
+        "防洪"
+      ],
+      "source": {
+        "source_name": "中国能源统计年鉴",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0008",
+          "relation": "归属",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "三峡集团运营管理"
+        },
+        {
+          "target": "ENT_ENERGY_0030",
+          "relation": "位于",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "位于湖北省宜昌市"
+        }
+      ],
+      "tags": [
+        "水电",
+        "清洁能源",
+        "西电东送",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0013",
+      "entity_name": "溪洛渡水电站",
+      "aliases": [
+        {
+          "name": "溪洛渡",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "Xiluodu Dam",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "溪洛渡",
+      "entity_type": "POWER_FACILITY",
+      "entity_type_display": "电力设施",
+      "industry": "水力发电",
+      "summary": "中国第三大水电站，总装机容量1386万千瓦，位于金沙江下游。",
+      "business": "水力发电、金沙江下游梯级联合调度。",
+      "location": {
+        "country": "中国",
+        "province": "四川省/云南省",
+        "city": "凉山州/昭通市",
+        "address": "金沙江下游"
+      },
+      "keywords": [
+        "水电",
+        "金沙江",
+        "西电东送",
+        "梯级调度"
+      ],
+      "source": {
+        "source_name": "中国能源统计年鉴",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0008",
+          "relation": "归属",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "三峡集团运营管理"
+        }
+      ],
+      "tags": [
+        "水电",
+        "西电东送",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0014",
+      "entity_name": "青海塔拉滩光伏电站",
+      "aliases": [
+        {
+          "name": "塔拉滩光伏",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        },
+        {
+          "name": "青海光伏基地",
+          "alias_type": "俗称",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "塔拉滩光伏基地",
+          "alias_type": "俗称",
+          "priority": 0.65,
+          "confidence": 0.8
+        },
+        {
+          "name": "Tala Beach Solar Farm",
+          "alias_type": "英文",
+          "priority": 0.5,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "塔拉滩光伏",
+      "entity_type": "POWER_FACILITY",
+      "entity_type_display": "电力设施",
+      "industry": "光伏发电",
+      "summary": "中国最大的光伏发电基地之一，总装机容量超过1万兆瓦，年发电量超过150亿千瓦时。",
+      "business": "光伏发电、光伏组件实证测试、光伏治沙与生态修复示范。",
+      "location": {
+        "country": "中国",
+        "province": "青海省",
+        "city": "海南藏族自治州共和县",
+        "address": "塔拉滩"
+      },
+      "keywords": [
+        "光伏",
+        "清洁能源",
+        "大型基地",
+        "光伏治沙"
+      ],
+      "source": {
+        "source_name": "中国能源统计年鉴",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0006",
+          "relation": "归属",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "国家电投为主要投资方和运营方"
+        },
+        {
+          "target": "ENT_ENERGY_0031",
+          "relation": "位于",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "位于青海省共和县塔拉滩"
+        }
+      ],
+      "tags": [
+        "光伏",
+        "清洁能源",
+        "西部"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0015",
+      "entity_name": "宁德时代新能源科技股份有限公司",
+      "aliases": [
+        {
+          "name": "宁德时代",
+          "alias_type": "简称",
+          "priority": 0.95,
+          "confidence": 1.0
+        },
+        {
+          "name": "CATL",
+          "alias_type": "英文",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "Contemporary Amperex Technology",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        },
+        {
+          "name": "宁德",
+          "alias_type": "简称",
+          "priority": 0.45,
+          "confidence": 0.6
+        }
+      ],
+      "abbreviation": "宁德时代",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "entity_type_display": "新能源企业",
+      "industry": "储能电池",
+      "summary": "全球领先的动力电池和储能电池供应商，动力电池装机量连续多年全球第一。",
+      "business": "动力电池系统研发制造销售、储能系统解决方案、钠离子电池产业化、电池回收与梯次利用。",
+      "location": {
+        "country": "中国",
+        "province": "福建省",
+        "city": "宁德市",
+        "address": "蕉城区"
+      },
+      "keywords": [
+        "锂电池",
+        "储能",
+        "动力电池",
+        "钠离子电池",
+        "新能源"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0016",
+          "relation": "竞争对手",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "动力电池双雄，全球市占率竞争"
+        }
+      ],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "世界500强",
+        "锂电池",
+        "储能",
+        "新能源",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0016",
+      "entity_name": "比亚迪股份有限公司",
+      "aliases": [
+        {
+          "name": "比亚迪",
+          "alias_type": "简称",
+          "priority": 0.95,
+          "confidence": 1.0
+        },
+        {
+          "name": "BYD",
+          "alias_type": "英文",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "Build Your Dreams",
+          "alias_type": "英文",
+          "priority": 0.4,
+          "confidence": 0.7
+        }
+      ],
+      "abbreviation": "比亚迪",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "entity_type_display": "新能源企业",
+      "industry": "新能源汽车+储能",
+      "summary": "全球领先的新能源汽车制造商和动力电池供应商，掌握电池、电机、电控、芯片全产业链核心技术。",
+      "business": "新能源汽车研发制造销售、动力电池（刀片电池）研发生产、光伏组件制造、储能系统、轨道交通（云轨云巴）。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": "坪山区"
+      },
+      "keywords": [
+        "新能源汽车",
+        "刀片电池",
+        "储能",
+        "光伏",
+        "电动车",
+        "IGBT"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0015",
+          "relation": "竞争对手",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "动力电池双雄"
+        }
+      ],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "世界500强",
+        "新能源汽车",
+        "储能",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0017",
+      "entity_name": "大亚湾核电站",
+      "aliases": [
+        {
+          "name": "大亚湾",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "大亚湾核电基地",
+          "alias_type": "俗称",
+          "priority": 0.78,
+          "confidence": 1.0
+        },
+        {
+          "name": "Daya Bay Nuclear Power Plant",
+          "alias_type": "英文",
+          "priority": 0.7,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "大亚湾",
+      "entity_type": "POWER_FACILITY",
+      "entity_type_display": "电力设施",
+      "industry": "核力发电",
+      "summary": "中国大陆第一座大型商用核电站，总装机196.8万千瓦，年发电量约150亿千瓦时。",
+      "business": "核能发电、核电运营管理经验输出。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": "大鹏新区"
+      },
+      "keywords": [
+        "核电",
+        "商用",
+        "清洁能源",
+        "大湾区",
+        "国产化"
+      ],
+      "source": {
+        "source_name": "中国能源统计年鉴",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0011",
+          "relation": "归属",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "中广核运营管理"
+        },
+        {
+          "target": "ENT_ENERGY_0027",
+          "relation": "位于",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "位于深圳市大鹏新区"
+        }
+      ],
+      "tags": [
+        "核电",
+        "清洁能源",
+        "华南",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0018",
+      "entity_name": "特高压直流输电",
+      "aliases": [
+        {
+          "name": "UHVDC",
+          "alias_type": "英文",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "特高压直流",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "±800kV直流",
+          "alias_type": "俗称",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "Ultra-High Voltage DC",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "UHVDC",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "输电技术",
+      "summary": "±800kV及以上电压等级的直流输电技术，具有远距离、大容量、低损耗的优势，是西电东送战略的核心技术。",
+      "business": "大规模远距离输电、跨区电网互联、清洁能源外送。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "输电",
+        "直流",
+        "西电东送",
+        "±800kV",
+        "换流站"
+      ],
+      "source": {
+        "source_name": "电力行业术语标准",
+        "publisher": "中国电力企业联合会",
+        "url": "https://www.cec.org.cn",
+        "crawl_time": "2025-06-01",
+        "license": "行业标准",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0019",
+          "relation": "互补技术",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "直流输电、交流组网互补配合"
+        }
+      ],
+      "tags": [
+        "特高压",
+        "直流输电",
+        "西电东送",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0019",
+      "entity_name": "特高压交流输电",
+      "aliases": [
+        {
+          "name": "UHVAC",
+          "alias_type": "英文",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "特高压交流",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "1000kV交流",
+          "alias_type": "俗称",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "Ultra-High Voltage AC",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "UHVAC",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "输电技术",
+      "summary": "1000kV及以上电压等级的交流输电技术，适用于大容量、中距离输电和区域电网互联。",
+      "business": "区域电网互联、大容量电力输送、电网安全稳定支撑。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "输电",
+        "交流",
+        "电网互联",
+        "1000kV",
+        "变电站"
+      ],
+      "source": {
+        "source_name": "电力行业术语标准",
+        "publisher": "中国电力企业联合会",
+        "url": "https://www.cec.org.cn",
+        "crawl_time": "2025-06-01",
+        "license": "行业标准",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0018",
+          "relation": "互补技术",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "交流组网、直流输电互补"
+        }
+      ],
+      "tags": [
+        "特高压",
+        "交流输电",
+        "电网互联"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0020",
+      "entity_name": "碳中和",
+      "aliases": [
+        {
+          "name": "碳达峰碳中和",
+          "alias_type": "曾用名",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "双碳",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "净零排放",
+          "alias_type": "俗称",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "Carbon Neutrality",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "双碳",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "能源政策",
+      "summary": "通过碳排放与碳吸收达到平衡实现净零排放。中国承诺2030年前碳达峰、2060年前碳中和。",
+      "business": "碳减排路径规划、碳交易市场建设、能源结构转型、碳捕集利用与封存（CCUS）技术推广。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "气候政策",
+        "能源转型",
+        "3060目标",
+        "碳交易",
+        "CCUS"
+      ],
+      "source": {
+        "source_name": "国家气候战略",
+        "publisher": "生态环境部",
+        "url": "https://www.mee.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "3060目标",
+        "碳交易",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0021",
+      "entity_name": "新型电力系统",
+      "aliases": [
+        {
+          "name": "以新能源为主体的新型电力系统",
+          "alias_type": "曾用名",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "新型电力体系",
+          "alias_type": "俗称",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "New Power System",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        },
+        {
+          "name": "新型电力系统",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "新型电力系统",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "电力系统",
+      "summary": "以新能源为供给主体、以坚强智能电网为枢纽平台、源网荷储互动和多能互补为支撑的电力系统。",
+      "business": "新能源高比例消纳、电力系统灵活调节、分布式能源接入、需求侧响应。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "电力系统",
+        "新能源",
+        "源网荷储",
+        "智能电网",
+        "双碳"
+      ],
+      "source": {
+        "source_name": "国家能源局政策文件",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0020",
+          "relation": "支撑目标",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "是实现双碳目标的核心路径"
+        }
+      ],
+      "tags": [
+        "新能源",
+        "智能电网",
+        "3060目标",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0022",
+      "entity_name": "抽水蓄能",
+      "aliases": [
+        {
+          "name": "抽蓄",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "Pumped Storage",
+          "alias_type": "英文",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "Pumped Hydro Storage",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "抽蓄",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "储能技术",
+      "summary": "目前技术最成熟、经济性最优的大规模储能方式，低谷抽水、高峰发电，起调峰填谷作用。",
+      "business": "电力系统调峰填谷、频率调节、黑启动备用、新能源消纳支撑。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "储能",
+        "调峰",
+        "水电",
+        "大规模储能",
+        "调频"
+      ],
+      "source": {
+        "source_name": "电力行业术语标准",
+        "publisher": "中国电力企业联合会",
+        "url": "https://www.cec.org.cn",
+        "crawl_time": "2025-06-01",
+        "license": "行业标准",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0010",
+          "relation": "应用",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "国网新源主营抽水蓄能电站建设运营"
+        }
+      ],
+      "tags": [
+        "抽水蓄能",
+        "储能",
+        "水电",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0023",
+      "entity_name": "综合能源服务",
+      "aliases": [
+        {
+          "name": "综合能源",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        },
+        {
+          "name": "智慧能源服务",
+          "alias_type": "俗称",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "Integrated Energy Services",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "综合能源",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "能源服务",
+      "summary": "提供电、热、冷、气、水等多种能源一体化解决方案的新型能源服务模式。",
+      "business": "能源托管与节能改造、分布式能源站建设运营、需求响应与虚拟电厂、用能诊断与碳资产管理。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "能源服务",
+        "节能",
+        "分布式",
+        "智慧能源",
+        "能源互联网"
+      ],
+      "source": {
+        "source_name": "国家电网企业标准",
+        "publisher": "国家电网有限公司",
+        "url": "https://www.sgcc.com.cn",
+        "crawl_time": "2025-06-01",
+        "license": "企业标准",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "分布式能源",
+        "能源互联网",
+        "储能"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0024",
+      "entity_name": "源网荷储一体化",
+      "aliases": [
+        {
+          "name": "源网荷储",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "源-网-荷-储",
+          "alias_type": "俗称",
+          "priority": 0.75,
+          "confidence": 1.0
+        },
+        {
+          "name": "Source-Grid-Load-Storage",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "源网荷储",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "电力系统",
+      "summary": "将电源、电网、负荷、储能四个环节统筹规划和协调运行，提升电力系统整体效率和可靠性。",
+      "business": "电源侧灵活调节、电网侧智能调度、负荷侧需求响应、储能侧调峰填谷。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "电力系统",
+        "储能",
+        "智能电网",
+        "需求响应",
+        "灵活调节"
+      ],
+      "source": {
+        "source_name": "国家能源局政策文件",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0021",
+          "relation": "组成部分",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "源网荷储是新型电力系统的核心架构"
+        }
+      ],
+      "tags": [
+        "智能电网",
+        "储能",
+        "新能源",
+        "分布式能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0025",
+      "entity_name": "西电东送",
+      "aliases": [
+        {
+          "name": "西电东送工程",
+          "alias_type": "曾用名",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "West-to-East Power Transmission",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        },
+        {
+          "name": "西电东送",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "西电东送",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "输电工程",
+      "summary": "中国能源资源优化配置的重大战略工程，将西部清洁能源通过特高压输送到东部负荷中心。",
+      "business": "远距离跨区输电通道建设、清洁能源消纳、区域电力供需平衡。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "输电",
+        "清洁能源",
+        "国家战略",
+        "跨区域",
+        "特高压"
+      ],
+      "source": {
+        "source_name": "国家能源局政策文件",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0018",
+          "relation": "依赖技术",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "依赖特高压直流输电技术实现远距离输送"
+        }
+      ],
+      "tags": [
+        "西电东送",
+        "特高压",
+        "清洁能源",
+        "直流输电"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0026",
+      "entity_name": "隆基绿能科技股份有限公司",
+      "aliases": [
+        {
+          "name": "隆基绿能",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "隆基",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "LONGi Green Energy",
+          "alias_type": "英文",
+          "priority": 0.7,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "隆基",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "entity_type_display": "新能源企业",
+      "industry": "光伏制造",
+      "summary": "全球最大的太阳能单晶硅片和组件制造商，在光伏产业链核心环节具有全球领先的技术和规模优势。",
+      "business": "单晶硅片研发生产、高效光伏电池与组件制造、光伏电站开发与EPC服务、氢能装备研发。",
+      "location": {
+        "country": "中国",
+        "province": "陕西省",
+        "city": "西安市",
+        "address": "未央区"
+      },
+      "keywords": [
+        "光伏",
+        "硅片",
+        "单晶",
+        "BC电池",
+        "氢能"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0029",
+          "relation": "竞争对手",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "光伏组件出货全球前三竞争"
+        }
+      ],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "光伏",
+        "清洁能源",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0027",
+      "entity_name": "深圳市",
+      "aliases": [
+        {
+          "name": "深圳",
+          "alias_type": "简称",
+          "priority": 0.95,
+          "confidence": 1.0
+        },
+        {
+          "name": "Shenzhen",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "鹏城",
+          "alias_type": "俗称",
+          "priority": 0.5,
+          "confidence": 0.8
+        },
+        {
+          "name": "深",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "深",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "-",
+      "summary": "中国广东省辖地级市、经济特区，南方电网总部、比亚迪总部、中广核总部所在地，大湾区核心城市。",
+      "business": "区域经济与能源消费中心。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": ""
+      },
+      "keywords": [
+        "经济特区",
+        "大湾区",
+        "能源总部",
+        "华南",
+        "创新之都"
+      ],
+      "source": {
+        "source_name": "行政区划",
+        "publisher": "中华人民共和国民政部",
+        "url": "https://www.mca.gov.cn",
+        "crawl_time": "2025-01-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0002",
+          "relation": "辖区内",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "南方电网总部所在地"
+        },
+        {
+          "target": "ENT_ENERGY_0016",
+          "relation": "辖区内",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "比亚迪总部所在地"
+        }
+      ],
+      "tags": [
+        "华南",
+        "大湾区",
+        "经济特区"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0028",
+      "entity_name": "北京市",
+      "aliases": [
+        {
+          "name": "北京",
+          "alias_type": "简称",
+          "priority": 0.95,
+          "confidence": 1.0
+        },
+        {
+          "name": "Beijing",
+          "alias_type": "英文",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "帝都",
+          "alias_type": "俗称",
+          "priority": 0.55,
+          "confidence": 0.6
+        },
+        {
+          "name": "京城",
+          "alias_type": "俗称",
+          "priority": 0.5,
+          "confidence": 0.6
+        },
+        {
+          "name": "京",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "京",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "-",
+      "summary": "中华人民共和国首都，国家电网及五大发电集团等多家能源央企总部所在地，全国能源决策中心。",
+      "business": "全国能源政策制定与决策中心、能源央企总部集聚区。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "首都",
+        "央企总部",
+        "能源决策中心",
+        "华北"
+      ],
+      "source": {
+        "source_name": "行政区划",
+        "publisher": "中华人民共和国民政部",
+        "url": "https://www.mca.gov.cn",
+        "crawl_time": "2025-01-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0001",
+          "relation": "辖区内",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "国家电网总部所在地"
+        }
+      ],
+      "tags": [
+        "华北",
+        "首都"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0029",
+      "entity_name": "天合光能股份有限公司",
+      "aliases": [
+        {
+          "name": "天合光能",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "天合",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "Trina Solar",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "天合",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "entity_type_display": "新能源企业",
+      "industry": "光伏制造",
+      "summary": "全球领先的光伏组件制造商和光伏智慧能源整体解决方案提供商，组件出货量多年位居全球前三。",
+      "business": "光伏组件研发制造、光伏电站投资开发、储能系统集成、智慧能源解决方案。",
+      "location": {
+        "country": "中国",
+        "province": "江苏省",
+        "city": "常州市",
+        "address": "新北区"
+      },
+      "keywords": [
+        "光伏",
+        "组件",
+        "储能",
+        "智慧能源",
+        "TOPCon"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0026",
+          "relation": "竞争对手",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "光伏组件双龙头"
+        }
+      ],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "光伏",
+        "清洁能源",
+        "储能",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0030",
+      "entity_name": "宜昌市",
+      "aliases": [
+        {
+          "name": "宜昌",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Yichang",
+          "alias_type": "英文",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "三峡门户",
+          "alias_type": "俗称",
+          "priority": 0.55,
+          "confidence": 0.8
+        },
+        {
+          "name": "宜",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "宜",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "-",
+      "summary": "湖北省西部、长江中上游交界处，三峡工程和葛洲坝水利枢纽所在地，世界水电之都。",
+      "business": "水力发电基地、长江航运枢纽、清洁能源示范基地。",
+      "location": {
+        "country": "中国",
+        "province": "湖北省",
+        "city": "宜昌市",
+        "address": ""
+      },
+      "keywords": [
+        "水电之都",
+        "长江",
+        "三峡",
+        "湖北",
+        "清洁能源"
+      ],
+      "source": {
+        "source_name": "行政区划",
+        "publisher": "中华人民共和国民政部",
+        "url": "https://www.mca.gov.cn",
+        "crawl_time": "2025-01-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0012",
+          "relation": "辖区内",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "三峡水电站所在地"
+        }
+      ],
+      "tags": [
+        "华中",
+        "水电"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0031",
+      "entity_name": "青海省共和县",
+      "aliases": [
+        {
+          "name": "共和县",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        },
+        {
+          "name": "Gonghe County",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        },
+        {
+          "name": "共和",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "共和",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "-",
+      "summary": "青海省海南藏族自治州辖县，青海湖南岸，拥有丰富光照资源，中国最大光伏基地——塔拉滩光伏基地所在地。",
+      "business": "光伏发电基地、清洁能源示范区、光伏治沙实验区。",
+      "location": {
+        "country": "中国",
+        "province": "青海省",
+        "city": "海南藏族自治州共和县",
+        "address": ""
+      },
+      "keywords": [
+        "光伏",
+        "青海",
+        "清洁能源基地",
+        "西部",
+        "高原"
+      ],
+      "source": {
+        "source_name": "行政区划",
+        "publisher": "中华人民共和国民政部",
+        "url": "https://www.mca.gov.cn",
+        "crawl_time": "2025-01-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0014",
+          "relation": "辖区内",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "塔拉滩光伏电站所在地"
+        }
+      ],
+      "tags": [
+        "西部",
+        "光伏",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0032",
+      "entity_name": "金风科技股份有限公司",
+      "aliases": [
+        {
+          "name": "金风科技",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "金风",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        },
+        {
+          "name": "Goldwind",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "金风",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "entity_type_display": "新能源企业",
+      "industry": "风电制造",
+      "summary": "中国最大的风力发电机组制造商之一，覆盖风电整机研发制造、风电场开发运营、风电服务全产业链。",
+      "business": "风电机组研发制造、风电场投资建设运营、风电运维服务、智慧风场解决方案。",
+      "location": {
+        "country": "中国",
+        "province": "新疆维吾尔自治区",
+        "city": "乌鲁木齐市",
+        "address": ""
+      },
+      "keywords": [
+        "风电",
+        "风机",
+        "新能源",
+        "智慧风场",
+        "清洁能源"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0033",
+          "relation": "竞争对手",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "风电整机市场竞争"
+        }
+      ],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "风电",
+        "清洁能源",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0033",
+      "entity_name": "远景能源有限公司",
+      "aliases": [
+        {
+          "name": "远景能源",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "远景",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        },
+        {
+          "name": "Envision Energy",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "远景",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "entity_type_display": "新能源企业",
+      "industry": "风电+储能",
+      "summary": "全球领先的智能风机和智慧储能系统供应商，业务延伸至能源物联网和碳管理领域。",
+      "business": "智能风电机组研发制造、智慧储能系统集成、能源物联网平台运营、碳管理与绿色电力认证。",
+      "location": {
+        "country": "中国",
+        "province": "江苏省",
+        "city": "无锡市",
+        "address": "江阴市"
+      },
+      "keywords": [
+        "风电",
+        "储能",
+        "智能风机",
+        "能源物联网",
+        "碳管理"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0032",
+          "relation": "竞争对手",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "风电整机市场竞争"
+        }
+      ],
+      "tags": [
+        "民营企业",
+        "独角兽",
+        "风电",
+        "储能",
+        "能源互联网",
+        "碳交易",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-20"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0034",
+      "entity_name": "中国核工业集团有限公司",
+      "aliases": [
+        {
+          "name": "中核集团",
+          "alias_type": "简称",
+          "priority": 0.92,
+          "confidence": 1.0
+        },
+        {
+          "name": "中国核工业",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "中核",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        },
+        {
+          "name": "CNNC",
+          "alias_type": "英文",
+          "priority": 0.7,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "中核",
+      "entity_type": "POWER_GENERATOR",
+      "entity_type_display": "发电企业",
+      "industry": "核力发电",
+      "summary": "中国最大的核电运营商之一，覆盖核工业全产业链。",
+      "business": "核电站投资建设运营、铀矿开采核燃料加工、核技术应用、新能源开发。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "西城区"
+      },
+      "keywords": [
+        "核电",
+        "核燃料",
+        "核技术",
+        "铀矿",
+        "新能源"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0011",
+          "relation": "竞争对手",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "中国两大核电运营商"
+        }
+      ],
+      "tags": [
+        "央企",
+        "核电",
+        "清洁能源",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0035",
+      "entity_name": "华润电力控股有限公司",
+      "aliases": [
+        {
+          "name": "华润电力",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "华润",
+          "alias_type": "简称",
+          "priority": 0.55,
+          "confidence": 0.7
+        },
+        {
+          "name": "CR Power",
+          "alias_type": "英文",
+          "priority": 0.65,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "华润电力",
+      "entity_type": "POWER_GENERATOR",
+      "entity_type_display": "发电企业",
+      "industry": "综合能源",
+      "summary": "华润集团旗下综合能源公司，装机超过6000万千瓦。",
+      "business": "火力发电、风力发电、光伏发电、水力发电、分布式能源服务。",
+      "location": {
+        "country": "中国",
+        "province": "香港特别行政区",
+        "city": "香港",
+        "address": "湾仔"
+      },
+      "keywords": [
+        "火电",
+        "风电",
+        "光伏",
+        "水电",
+        "分布式能源"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "香港公司注册处",
+        "url": "https://www.cr.gov.hk",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "地方国企",
+        "上市公司",
+        "火电",
+        "风电",
+        "光伏",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0036",
+      "entity_name": "通威股份有限公司",
+      "aliases": [
+        {
+          "name": "通威股份",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "通威",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        },
+        {
+          "name": "Tongwei Co.",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "通威",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "entity_type_display": "新能源企业",
+      "industry": "光伏制造",
+      "summary": "全球最大的太阳能电池片生产企业，农业+新能源双主业。",
+      "business": "太阳能电池片组件制造、水产饲料养殖、渔光一体光伏电站。",
+      "location": {
+        "country": "中国",
+        "province": "四川省",
+        "city": "成都市",
+        "address": "高新区"
+      },
+      "keywords": [
+        "光伏",
+        "电池片",
+        "硅料",
+        "渔光一体"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0026",
+          "relation": "竞争对手",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "光伏硅料和电池片竞争"
+        }
+      ],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "光伏",
+        "清洁能源",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0037",
+      "entity_name": "阳光电源股份有限公司",
+      "aliases": [
+        {
+          "name": "阳光电源",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "阳光",
+          "alias_type": "简称",
+          "priority": 0.6,
+          "confidence": 0.7
+        },
+        {
+          "name": "Sungrow Power",
+          "alias_type": "英文",
+          "priority": 0.65,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "阳光电源",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "entity_type_display": "新能源企业",
+      "industry": "光伏逆变器+储能",
+      "summary": "全球领先的光伏逆变器和储能系统供应商，逆变器出货量全球第一。",
+      "business": "光伏逆变器研发制造、储能系统集成、电站投资开发、电驱动系统。",
+      "location": {
+        "country": "中国",
+        "province": "安徽省",
+        "city": "合肥市",
+        "address": "高新区"
+      },
+      "keywords": [
+        "光伏逆变器",
+        "储能",
+        "电站",
+        "电力电子"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "光伏",
+        "储能",
+        "清洁能源",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0038",
+      "entity_name": "惠州亿纬锂能股份有限公司",
+      "aliases": [
+        {
+          "name": "亿纬锂能",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "亿纬",
+          "alias_type": "简称",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "EVE Energy",
+          "alias_type": "英文",
+          "priority": 0.65,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "亿纬锂能",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "entity_type_display": "新能源企业",
+      "industry": "储能电池",
+      "summary": "中国领先的锂电池制造商，覆盖消费电子、动力和储能电池。",
+      "business": "锂原电池、消费电子电池、动力电池、储能电池系统。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "惠州市",
+        "address": "仲恺高新区"
+      },
+      "keywords": [
+        "锂电池",
+        "动力电池",
+        "储能",
+        "消费电子"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0015",
+          "relation": "竞争对手",
+          "direction": "bidirectional",
+          "confidence": 1.0,
+          "note": "动力储能电池市场竞争"
+        }
+      ],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "锂电池",
+        "储能",
+        "新能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0039",
+      "entity_name": "白鹤滩水电站",
+      "aliases": [
+        {
+          "name": "白鹤滩",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "白鹤滩电站",
+          "alias_type": "俗称",
+          "priority": 0.78,
+          "confidence": 1.0
+        },
+        {
+          "name": "Baihetan Hydropower Station",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "白鹤滩",
+      "entity_type": "POWER_FACILITY",
+      "entity_type_display": "电力设施",
+      "industry": "水力发电",
+      "summary": "世界第二大水电站，总装机1600万千瓦，金沙江下游梯级核心工程。",
+      "business": "水力发电、防洪调度、拦沙生态保护、梯级联合调度。",
+      "location": {
+        "country": "中国",
+        "province": "四川省/云南省",
+        "city": "凉山州/昭通市",
+        "address": "金沙江下游"
+      },
+      "keywords": [
+        "水电",
+        "金沙江",
+        "西电东送",
+        "清洁能源"
+      ],
+      "source": {
+        "source_name": "中国能源统计年鉴",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0008",
+          "relation": "归属",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "三峡集团开发运营"
+        }
+      ],
+      "tags": [
+        "水电",
+        "清洁能源",
+        "西电东送",
+        "行业龙头",
+        "西南"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0040",
+      "entity_name": "华龙一号核电机组",
+      "aliases": [
+        {
+          "name": "华龙一号",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Hualong One",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        },
+        {
+          "name": "HPR1000",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "华龙一号",
+      "entity_type": "POWER_FACILITY",
+      "entity_type_display": "电力设施",
+      "industry": "核力发电",
+      "summary": "中国自主研发第三代先进压水堆核电技术，单机超百万千瓦。",
+      "business": "核能发电、核电技术出口、核安全示范。",
+      "location": {
+        "country": "中国",
+        "province": "福建省",
+        "city": "福清市",
+        "address": ""
+      },
+      "keywords": [
+        "核电",
+        "三代核电",
+        "自主技术",
+        "出口"
+      ],
+      "source": {
+        "source_name": "中国能源统计年鉴",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0011",
+          "relation": "归属",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "中广核为主要技术持有方"
+        },
+        {
+          "target": "ENT_ENERGY_0034",
+          "relation": "归属",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "中核集团为联合研发方"
+        }
+      ],
+      "tags": [
+        "核电",
+        "清洁能源",
+        "自主技术",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0041",
+      "entity_name": "张北柔性直流电网工程",
+      "aliases": [
+        {
+          "name": "张北柔直",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "张北柔性直流",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "Zhangbei VSC-HVDC",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "张北柔直",
+      "entity_type": "POWER_FACILITY",
+      "entity_type_display": "电力设施",
+      "industry": "直流输电",
+      "summary": "世界首个±500kV四端柔性直流电网，为冬奥提供100%绿电。",
+      "business": "可再生能源汇集输送、直流电网技术示范、奥运绿电保障。",
+      "location": {
+        "country": "中国",
+        "province": "河北省",
+        "city": "张家口市",
+        "address": "张北县"
+      },
+      "keywords": [
+        "柔性直流",
+        "可再生能源",
+        "冬奥",
+        "绿电"
+      ],
+      "source": {
+        "source_name": "中国能源统计年鉴",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0001",
+          "relation": "归属",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "国家电网投资建设运营"
+        }
+      ],
+      "tags": [
+        "特高压",
+        "直流输电",
+        "清洁能源",
+        "华北"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0042",
+      "entity_name": "虚拟电厂",
+      "aliases": [
+        {
+          "name": "VPP",
+          "alias_type": "英文",
+          "priority": 0.82,
+          "confidence": 1.0
+        },
+        {
+          "name": "Virtual Power Plant",
+          "alias_type": "英文",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "虚拟电厂",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "虚拟电厂",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "电力系统",
+      "summary": "将分布式电源、储能、可控负荷聚合协调的电源管理系统。",
+      "business": "分布式资源聚合、需求响应、辅助服务交易、配电网优化。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "分布式能源",
+        "需求响应",
+        "聚合",
+        "辅助服务"
+      ],
+      "source": {
+        "source_name": "电力行业术语标准",
+        "publisher": "中国电力企业联合会",
+        "url": "https://www.cec.org.cn",
+        "crawl_time": "2025-06-01",
+        "license": "行业标准",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0021",
+          "relation": "组成部分",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "虚拟电厂是新型电力系统的重要组成"
+        }
+      ],
+      "tags": [
+        "分布式能源",
+        "智能电网",
+        "储能",
+        "新能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0043",
+      "entity_name": "绿色电力证书",
+      "aliases": [
+        {
+          "name": "绿证",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "绿电证书",
+          "alias_type": "俗称",
+          "priority": 0.78,
+          "confidence": 1.0
+        },
+        {
+          "name": "Green Electricity Certificate",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "绿证",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "能源政策",
+      "summary": "国家颁发的可再生能源电力证明，是碳减排市场化工具。",
+      "business": "可再生能源消纳证明、碳减排核算、绿电消费认证。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "可再生能源",
+        "碳交易",
+        "绿电",
+        "消纳"
+      ],
+      "source": {
+        "source_name": "国家能源局政策文件",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0020",
+          "relation": "支撑目标",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "绿证交易是实现碳中和的市场化手段"
+        }
+      ],
+      "tags": [
+        "3060目标",
+        "碳交易",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0044",
+      "entity_name": "分布式光伏发电",
+      "aliases": [
+        {
+          "name": "分布式光伏",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "屋顶光伏",
+          "alias_type": "俗称",
+          "priority": 0.75,
+          "confidence": 1.0
+        },
+        {
+          "name": "Distributed PV",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "分布式光伏",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "光伏发电",
+      "summary": "在用户场地附近建设、以自发自用为主的光伏发电系统。",
+      "business": "工商业屋顶光伏、户用光伏、BIPV、分布式储能配套。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "光伏",
+        "分布式",
+        "BIPV",
+        "自发自用"
+      ],
+      "source": {
+        "source_name": "电力行业术语标准",
+        "publisher": "中国电力企业联合会",
+        "url": "https://www.cec.org.cn",
+        "crawl_time": "2025-06-01",
+        "license": "行业标准",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0020",
+          "relation": "支撑目标",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "分布式光伏是实现碳中和的路径之一"
+        }
+      ],
+      "tags": [
+        "光伏",
+        "分布式能源",
+        "清洁能源",
+        "新能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0045",
+      "entity_name": "智慧电网",
+      "aliases": [
+        {
+          "name": "智能电网",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Smart Grid",
+          "alias_type": "英文",
+          "priority": 0.78,
+          "confidence": 1.0
+        },
+        {
+          "name": "数字电网",
+          "alias_type": "俗称",
+          "priority": 0.7,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "智能电网",
+      "entity_type": "TECHNICAL_TERM",
+      "entity_type_display": "专业术语",
+      "industry": "电力系统",
+      "summary": "融合先进传感通信控制技术的现代化电力网络。",
+      "business": "设备在线监测、配电自动化、用电采集、调度智能化。",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "address": ""
+      },
+      "keywords": [
+        "电网",
+        "智能化",
+        "自动化",
+        "数字化"
+      ],
+      "source": {
+        "source_name": "电力行业术语标准",
+        "publisher": "中国电力企业联合会",
+        "url": "https://www.cec.org.cn",
+        "crawl_time": "2025-06-01",
+        "license": "行业标准",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0021",
+          "relation": "支撑目标",
+          "direction": "outgoing",
+          "confidence": 1.0,
+          "note": "智慧电网是新型电力系统的枢纽平台"
+        }
+      ],
+      "tags": [
+        "智能电网",
+        "能源互联网",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0046",
+      "entity_name": "雄安新区",
+      "aliases": [
+        {
+          "name": "雄安",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "Xiongan New Area",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "雄安",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "-",
+      "summary": "国家级新区，绿色智慧新城示范区，新型电力系统先行区。",
+      "business": "绿色低碳城市示范区、智慧能源综合示范。",
+      "location": {
+        "country": "中国",
+        "province": "河北省",
+        "city": "保定市",
+        "address": "雄安新区"
+      },
+      "keywords": [
+        "国家级新区",
+        "绿色城市",
+        "智慧能源",
+        "碳中和"
+      ],
+      "source": {
+        "source_name": "行政区划",
+        "publisher": "中华人民共和国民政部",
+        "url": "https://www.mca.gov.cn",
+        "crawl_time": "2025-01-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "华北",
+        "经济特区",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0047",
+      "entity_name": "甘肃省酒泉市",
+      "aliases": [
+        {
+          "name": "酒泉",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "Jiuquan",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "酒泉",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "-",
+      "summary": "中国首个千万千瓦级风电基地，风能和太阳能资源极为丰富。",
+      "business": "风电基地、光伏基地、新能源装备制造、电力外送枢纽。",
+      "location": {
+        "country": "中国",
+        "province": "甘肃省",
+        "city": "酒泉市",
+        "address": ""
+      },
+      "keywords": [
+        "风电",
+        "光伏",
+        "新能源基地",
+        "河西走廊"
+      ],
+      "source": {
+        "source_name": "行政区划",
+        "publisher": "中华人民共和国民政部",
+        "url": "https://www.mca.gov.cn",
+        "crawl_time": "2025-01-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "西北",
+        "风电",
+        "光伏",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0048",
+      "entity_name": "内蒙古自治区鄂尔多斯市",
+      "aliases": [
+        {
+          "name": "鄂尔多斯",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "Ordos",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "鄂尔多斯",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "-",
+      "summary": "中国最大煤炭基地之一，建设国家重要能源和战略资源基地。",
+      "business": "煤炭煤化工、光伏基地、风电基地、氢能产业示范。",
+      "location": {
+        "country": "中国",
+        "province": "内蒙古自治区",
+        "city": "鄂尔多斯市",
+        "address": ""
+      },
+      "keywords": [
+        "煤炭",
+        "光伏",
+        "风电",
+        "氢能",
+        "能源基地"
+      ],
+      "source": {
+        "source_name": "行政区划",
+        "publisher": "中华人民共和国民政部",
+        "url": "https://www.mca.gov.cn",
+        "crawl_time": "2025-01-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "华北",
+        "煤炭",
+        "光伏",
+        "风电",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0049",
+      "entity_name": "电力规划设计总院",
+      "aliases": [
+        {
+          "name": "电规总院",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "电力规划院",
+          "alias_type": "俗称",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "EPPEI",
+          "alias_type": "英文",
+          "priority": 0.5,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "电规总院",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "entity_type_display": "研究机构",
+      "industry": "能源研究",
+      "summary": "国家能源局直属的国家级电力规划设计咨询机构。",
+      "business": "电力规划编制、电源电网工程咨询评审、政策市场研究。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "西城区"
+      },
+      "keywords": [
+        "电力规划",
+        "咨询评审",
+        "电源",
+        "电网"
+      ],
+      "source": {
+        "source_name": "机构信息",
+        "publisher": "国家能源局",
+        "url": "https://www.nea.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "央企",
+        "智库",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_ENERGY_0050",
+      "entity_name": "中国电力科学研究院有限公司",
+      "aliases": [
+        {
+          "name": "中国电科院",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "电科院",
+          "alias_type": "简称",
+          "priority": 0.75,
+          "confidence": 0.8
+        },
+        {
+          "name": "CEPRI",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "中国电科院",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "entity_type_display": "研究机构",
+      "industry": "能源研究",
+      "summary": "国家电网直属的综合性科研机构，中国电力行业规模最大的科研机构。",
+      "business": "特高压研发、智能电网技术、新能源并网、仿真分析、试验检测。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "海淀区"
+      },
+      "keywords": [
+        "特高压",
+        "智能电网",
+        "新能源",
+        "仿真"
+      ],
+      "source": {
+        "source_name": "机构信息",
+        "publisher": "国家电网有限公司",
+        "url": "https://www.sgcc.com.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [
+        {
+          "target": "ENT_ENERGY_0001",
+          "relation": "母公司",
+          "direction": "incoming",
+          "confidence": 1.0,
+          "note": "国家电网直属科研机构"
+        }
+      ],
+      "tags": [
+        "央企",
+        "智库",
+        "特高压",
+        "智能电网",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0051",
+      "entity_name": "华为技术有限公司",
+      "aliases": [
+        {
+          "name": "华为",
+          "alias_type": "简称",
+          "priority": 0.95,
+          "confidence": 1.0
+        },
+        {
+          "name": "Huawei",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "华为公司",
+          "alias_type": "简称",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "HW",
+          "alias_type": "英文",
+          "priority": 0.5,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "华为",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "信息与通信技术",
+      "summary": "全球领先的ICT基础设施和智能终端提供商，业务覆盖通信设备、智能手机、云计算、AI芯片等领域。",
+      "business": "通信设备研发制造、智能手机与终端、云计算服务、人工智能芯片（昇腾/鲲鹏）、智能汽车解决方案。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": "龙岗区坂田华为基地"
+      },
+      "keywords": [
+        "通信设备",
+        "5G",
+        "智能手机",
+        "云计算",
+        "芯片",
+        "鸿蒙"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "民营企业",
+        "世界500强",
+        "科技",
+        "5G",
+        "人工智能"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0052",
+      "entity_name": "腾讯控股有限公司",
+      "aliases": [
+        {
+          "name": "腾讯",
+          "alias_type": "简称",
+          "priority": 0.95,
+          "confidence": 1.0
+        },
+        {
+          "name": "Tencent",
+          "alias_type": "英文",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "腾讯公司",
+          "alias_type": "简称",
+          "priority": 0.7,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "腾讯",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "互联网",
+      "summary": "中国最大的互联网综合服务提供商之一，旗下拥有微信、QQ、游戏、金融科技、云计算等业务。",
+      "business": "社交平台（微信/QQ）、网络游戏、金融科技、云计算与企业服务、数字内容。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": "南山区"
+      },
+      "keywords": [
+        "社交",
+        "游戏",
+        "微信",
+        "QQ",
+        "云计算",
+        "金融科技"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "世界500强",
+        "互联网",
+        "云计算",
+        "人工智能"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0053",
+      "entity_name": "阿里巴巴集团控股有限公司",
+      "aliases": [
+        {
+          "name": "阿里巴巴",
+          "alias_type": "简称",
+          "priority": 0.95,
+          "confidence": 1.0
+        },
+        {
+          "name": "阿里",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Alibaba",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "阿里",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "互联网",
+      "summary": "全球最大的零售商业体之一，业务涵盖电商、云计算、本地生活、物流、数字娱乐等。",
+      "business": "电商零售（淘宝/天猫）、云计算（阿里云）、本地生活、物流（菜鸟）、数字娱乐。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": "余杭区"
+      },
+      "keywords": [
+        "电商",
+        "云计算",
+        "阿里云",
+        "淘宝",
+        "物流",
+        "新零售"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "世界500强",
+        "互联网",
+        "云计算",
+        "人工智能"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0054",
+      "entity_name": "中芯国际集成电路制造有限公司",
+      "aliases": [
+        {
+          "name": "中芯国际",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "SMIC",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "中芯",
+          "alias_type": "简称",
+          "priority": 0.55,
+          "confidence": 0.8
+        }
+      ],
+      "abbreviation": "中芯国际",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "半导体",
+      "summary": "中国大陆规模最大、技术最先进的晶圆代工厂，提供成熟制程到先进制程的晶圆制造服务。",
+      "business": "集成电路晶圆代工、半导体制造技术研发、IP设计与服务。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": "浦东新区"
+      },
+      "keywords": [
+        "半导体",
+        "晶圆代工",
+        "芯片",
+        "集成电路",
+        "成熟制程"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "上市公司",
+        "半导体",
+        "制造",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0055",
+      "entity_name": "中国工商银行股份有限公司",
+      "aliases": [
+        {
+          "name": "工商银行",
+          "alias_type": "简称",
+          "priority": 0.92,
+          "confidence": 1.0
+        },
+        {
+          "name": "工行",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "ICBC",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "工行",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "银行业",
+      "summary": "中国最大的商业银行，全球市值最大的银行之一，提供公司银行、个人银行等全方位金融服务。",
+      "business": "公司金融、个人金融、资金业务、资产管理、国际结算与跨境金融。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "西城区"
+      },
+      "keywords": [
+        "银行",
+        "金融",
+        "贷款",
+        "存款",
+        "理财",
+        "信用卡"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "央企",
+        "上市公司",
+        "世界500强",
+        "金融",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0056",
+      "entity_name": "中国平安保险集团股份有限公司",
+      "aliases": [
+        {
+          "name": "中国平安",
+          "alias_type": "简称",
+          "priority": 0.92,
+          "confidence": 1.0
+        },
+        {
+          "name": "平安",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "Ping An",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "平安",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "综合金融",
+      "summary": "中国最大的综合金融服务集团，业务覆盖保险、银行、资产管理、金融科技、医疗健康等。",
+      "business": "人寿与财产保险、银行业务、资产管理、金融科技、医疗健康服务。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": "福田区"
+      },
+      "keywords": [
+        "保险",
+        "银行",
+        "金融科技",
+        "医疗健康",
+        "资产管理"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "世界500强",
+        "金融",
+        "金融科技"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0057",
+      "entity_name": "招商银行股份有限公司",
+      "aliases": [
+        {
+          "name": "招商银行",
+          "alias_type": "简称",
+          "priority": 0.92,
+          "confidence": 1.0
+        },
+        {
+          "name": "招行",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "CMB",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "招行",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "银行业",
+      "summary": "中国领先的零售银行，以优质服务和金融科技创新著称，信用卡和财富管理业务领先。",
+      "business": "零售银行、信用卡、财富管理、私人银行、金融科技服务。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": "福田区"
+      },
+      "keywords": [
+        "零售银行",
+        "信用卡",
+        "财富管理",
+        "金融科技"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "上市公司",
+        "金融",
+        "金融科技",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0058",
+      "entity_name": "比亚迪股份有限公司",
+      "aliases": [
+        {
+          "name": "比亚迪",
+          "alias_type": "简称",
+          "priority": 0.95,
+          "confidence": 1.0
+        },
+        {
+          "name": "BYD",
+          "alias_type": "英文",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "比亚迪汽车",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "比亚迪汽车",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "新能源汽车",
+      "summary": "全球领先的新能源汽车制造商，掌握电池、电机、电控全产业链核心技术。",
+      "business": "新能源汽车研发制造、动力电池（刀片电池）、光伏储能、轨道交通。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": "坪山区"
+      },
+      "keywords": [
+        "新能源汽车",
+        "动力电池",
+        "电动车",
+        "刀片电池",
+        "储能"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "世界500强",
+        "新能源汽车",
+        "汽车",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0059",
+      "entity_name": "蔚来汽车有限公司",
+      "aliases": [
+        {
+          "name": "蔚来",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "NIO",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "蔚来汽车",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "蔚来",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "新能源汽车",
+      "summary": "中国高端智能电动汽车品牌，以换电模式、用户服务和自动驾驶技术见长。",
+      "business": "智能电动汽车研发制造、换电服务网络运营、自动驾驶技术研发。",
+      "location": {
+        "country": "中国",
+        "province": "安徽省",
+        "city": "合肥市",
+        "address": ""
+      },
+      "keywords": [
+        "电动汽车",
+        "换电",
+        "自动驾驶",
+        "智能座舱",
+        "高端"
+      ],
+      "source": {
+        "source_name": "工商注册信息",
+        "publisher": "国家市场监督管理总局",
+        "url": "https://www.samr.gov.cn",
+        "crawl_time": "2025-03-15",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "民营企业",
+        "上市公司",
+        "新能源汽车",
+        "汽车",
+        "自动驾驶"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0060",
+      "entity_name": "国家能源局",
+      "aliases": [
+        {
+          "name": "能源局",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "NEA",
+          "alias_type": "英文",
+          "priority": 0.65,
+          "confidence": 1.0
+        },
+        {
+          "name": "National Energy Administration",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        },
+        {
+          "name": "国家能源局",
+          "alias_type": "简称",
+          "priority": 0.88,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "国家能源局",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "entity_type_display": "政府机构",
+      "industry": "能源管理",
+      "summary": "中华人民共和国国家发展和改革委员会管理的国家局，负责全国能源行业监督管理。",
+      "business": "能源政策制定、能源发展规划、电力市场监管、新能源推广、能源国际合作。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "西城区"
+      },
+      "keywords": [
+        "能源政策",
+        "电力市场",
+        "监管",
+        "新能源",
+        "规划"
+      ],
+      "source": {
+        "source_name": "机构信息",
+        "publisher": "中国政府网",
+        "url": "https://www.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "政府机构",
+        "能源",
+        "清洁能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0061",
+      "entity_name": "清华大学",
+      "aliases": [
+        {
+          "name": "清华",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Tsinghua University",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "THU",
+          "alias_type": "英文",
+          "priority": 0.55,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "清华",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "entity_type_display": "教育机构",
+      "industry": "高等教育",
+      "summary": "中国顶尖的综合性研究型大学，C9联盟成员，在工程、计算机、管理等学科具有世界级声誉。",
+      "business": "高等教育人才培养、科学研究、社会服务、国际合作交流。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "海淀区"
+      },
+      "keywords": [
+        "大学",
+        "C9",
+        "工程",
+        "计算机",
+        "985",
+        "211"
+      ],
+      "source": {
+        "source_name": "教育机构信息",
+        "publisher": "中华人民共和国教育部",
+        "url": "https://www.moe.gov.cn",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "教育",
+        "985",
+        "211",
+        "行业龙头"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0062",
+      "entity_name": "微信",
+      "aliases": [
+        {
+          "name": "WeChat",
+          "alias_type": "英文",
+          "priority": 0.88,
+          "confidence": 1.0
+        },
+        {
+          "name": "Weixin",
+          "alias_type": "英文",
+          "priority": 0.6,
+          "confidence": 1.0
+        },
+        {
+          "name": "微信APP",
+          "alias_type": "俗称",
+          "priority": 0.55,
+          "confidence": 0.8
+        },
+        {
+          "name": "微信",
+          "alias_type": "简称",
+          "priority": 0.95,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "微信",
+      "entity_type": "CONSUMER_PRODUCT",
+      "entity_type_display": "消费品",
+      "industry": "移动互联网",
+      "summary": "腾讯公司推出的即时通讯社交应用，月活用户超过13亿，集支付、小程序、公众号等功能于一体。",
+      "business": "即时通讯、社交网络、移动支付、小程序生态、视频号内容平台。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": ""
+      },
+      "keywords": [
+        "社交",
+        "即时通讯",
+        "支付",
+        "小程序",
+        "公众号"
+      ],
+      "source": {
+        "source_name": "产品信息",
+        "publisher": "腾讯控股有限公司",
+        "url": "https://www.tencent.com",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "互联网",
+        "消费电子",
+        "行业龙头",
+        "人工智能"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0063",
+      "entity_name": "抖音",
+      "aliases": [
+        {
+          "name": "Douyin",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "抖音短视频",
+          "alias_type": "俗称",
+          "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "抖音",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "抖音",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "短视频社交",
+      "summary": "字节跳动旗下的短视频社交平台，国内月活超过7亿，以AI推荐算法著称。",
+      "business": "短视频内容分发、直播电商、本地生活服务、广告营销。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "海淀区"
+      },
+      "keywords": [
+        "短视频",
+        "直播",
+        "电商",
+        "AI推荐",
+        "算法"
+      ],
+      "source": {
+        "source_name": "产品信息",
+        "publisher": "字节跳动有限公司",
+        "url": "https://www.bytedance.com",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "互联网",
+        "人工智能",
+        "消费电子"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    },
+    {
+      "entity_id": "ENT_GEN_0064",
+      "entity_name": "Windows 11",
+      "aliases": [
+        {
+          "name": "Win11",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "Win 11",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "Windows11",
+          "alias_type": "俗称",
+          "priority": 0.75,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "Win11",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "操作系统",
+      "summary": "微软公司发布的操作系统，引入全新UI设计和AI助手Copilot，是Windows 10的继任者。",
+      "business": "桌面操作系统、AI集成助手、企业级管理与安全。",
+      "location": {
+        "country": "美国",
+        "province": "华盛顿州",
+        "city": "雷德蒙德",
+        "address": ""
+      },
+      "keywords": [
+        "操作系统",
+        "微软",
+        "AI",
+        "Copilot",
+        "桌面"
+      ],
+      "source": {
+        "source_name": "产品信息",
+        "publisher": "Microsoft",
+        "url": "https://www.microsoft.com",
+        "crawl_time": "2025-06-01",
+        "license": "公开数据",
+        "confidence": 1.0
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "人工智能",
+        "消费电子"
+      ],
+      "evidence": {},
+      "update_time": "2026-06-26"
+    }
+  ],
+  "ner_type_mapping": {
+    "ORG": [
+      "GRID_COMPANY",
+      "POWER_GENERATOR",
+      "NEW_ENERGY_ENTERPRISE",
+      "RESEARCH_INSTITUTION",
+      "TECH_COMPANY",
+      "FINANCIAL_INSTITUTION",
+      "AUTO_MANUFACTURER",
+      "GOVERNMENT_AGENCY",
+      "EDUCATIONAL_INSTITUTION"
+    ],
+    "PERSON": [
+      "PERSON_BUSINESS",
+      "PERSON_POLITICAL",
+      "PERSON_ACADEMIC"
+    ],
+    "GPE": [
+      "REGION"
+    ],
+    "LOC": [
+      "REGION",
+      "POWER_FACILITY"
+    ]
+  },
+  "config_alignment": {
+    "nil_threshold_default": 0.65,
+    "bge_llm_trigger_threshold": 0.65,
+    "default_kb_type": "json",
+    "compatible_config_keys": [
+      "knowledge_base.path",
+      "nil_threshold",
+      "bge_llm_trigger_threshold",
+      "linkable_types"
+    ]
+  },
+  "industry_domains": [
+    "能源",
+    "科技与互联网",
+    "金融",
+    "汽车与制造",
+    "教育科研",
+    "通用"
+  ]
+}
