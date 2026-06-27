@@ -1,0 +1,315 @@
+{
+  "timestamp": "2026-06-27T14:45:30.031573",
+  "summary": {
+    "total": 14,
+    "passed": 13,
+    "failed": 1,
+    "pass_rate": 0.9285714285714286
+  },
+  "details": [
+    {
+      "text": "国家电网有限公司2025年营收增长5%。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华能国际电力股份有限公司在华东地区有多个项目。",
+      "expected": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 6
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 7,
+          "end": 9
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国石油天然气集团有限公司2024年净利润增长10%。",
+      "expected": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华北地区新建了输电线路。",
+      "expected": [
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华东地区有多个项目正在建设中。",
+      "expected": [
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网有限公司在华北地区新建了输电线路。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 4,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华能国际在华东地区有多个项目，公司2025年营收增长5%。",
+      "expected": [
+        {
+          "mention": "华能国际",
+          "type": "ORG"
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华能国际",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "mention": "华东",
+          "type": "GPE",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "mention": "地区",
+          "type": "GPE",
+          "start": 4,
+          "end": 5
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['华东地区']"
+      ],
+      "warnings": [
+        "额外识别: ['地区', '华东']"
+      ]
+    },
+    {
+      "text": "国网在华北新建了线路。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "华北",
+          "type": "GPE",
+          "start": 2,
+          "end": 3
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "中石油2025年净利润增长5%。",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "中石化在华东地区有多个项目。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 2,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "这是一个没有实体的测试文本。",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "2025年，公司营收达到100亿元。",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "国家电网有限公司2025年营收增长5%，净利润增长8%。公司在华北地区新建了输电线路，华东地区也有多个项目正在推进。同时，华能国际电力股份有限公司也公布了2025年财报。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 14,
+          "end": 16
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 21,
+          "end": 23
+        },
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "start": 33,
+          "end": 38
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}

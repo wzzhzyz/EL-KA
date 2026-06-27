@@ -1,0 +1,3550 @@
+{
+  "timestamp": "2026-06-27T14:48:53.430932",
+  "summary": {
+    "total": 125,
+    "passed": 107,
+    "failed": 18,
+    "pass_rate": 0.856
+  },
+  "details": [
+    {
+      "text": "国家电网有限公司2025年营收增长5%。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国南方电网有限责任公司2024年财报发布。",
+      "expected": [
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华能国际电力股份有限公司在华东地区有多个项目。",
+      "expected": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 6
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 7,
+          "end": 9
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国石油天然气集团有限公司2024年净利润增长10%。",
+      "expected": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国石油化工集团有限公司发布了2025年新能源战略。",
+      "expected": [
+        {
+          "mention": "中国石油化工集团有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国石油化工集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家能源投资集团有限责任公司在宁夏新建光伏电站。",
+      "expected": [
+        {
+          "mention": "国家能源投资集团有限责任公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家能源投资集团有限责任公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 7
+        },
+        {
+          "mention": "宁夏",
+          "type": "GPE",
+          "start": 8,
+          "end": 9
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: ['宁夏']"
+      ]
+    },
+    {
+      "text": "中国大唐集团有限公司2025年风电装机容量创新高。",
+      "expected": [
+        {
+          "mention": "中国大唐集团有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国大唐集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国华电集团有限公司2025年一季度业绩发布。",
+      "expected": [
+        {
+          "mention": "中国华电集团有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国华电集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电力投资集团有限公司2025年清洁能源占比提升。",
+      "expected": [
+        {
+          "mention": "国家电力投资集团有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电力投资集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国长江三峡集团有限公司2025年营收稳步增长。",
+      "expected": [
+        {
+          "mention": "中国长江三峡集团有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国长江三峡集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中广核集团有限公司2025年核电装机容量突破。",
+      "expected": [
+        {
+          "mention": "中广核集团有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中广核集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国核工业集团有限公司2025年科技创新成果显著。",
+      "expected": [
+        {
+          "mention": "中国核工业集团有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国核工业集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网公司华东分部2025年工作会议召开。",
+      "expected": [
+        {
+          "mention": "国家电网公司华东分部",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网公司华东分部",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网北京市电力公司2025年供电保障方案发布。",
+      "expected": [
+        {
+          "mention": "国网北京市电力公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网北京市电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网上海市电力公司2025年迎峰度夏保供电。",
+      "expected": [
+        {
+          "mention": "国网上海市电力公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网上海市电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网江苏省电力有限公司2025年电网投资计划。",
+      "expected": [
+        {
+          "mention": "国网江苏省电力有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网江苏省电力有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网浙江省电力有限公司2025年数字化转型。",
+      "expected": [
+        {
+          "mention": "国网浙江省电力有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网浙江省电力有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网山东省电力公司2025年新能源并网服务。",
+      "expected": [
+        {
+          "mention": "国网山东省电力公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网山东省电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网河南省电力公司2025年电网建设规划。",
+      "expected": [
+        {
+          "mention": "国网河南省电力公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网河南省电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "南方电网公司2025年西电东送电量创新高。",
+      "expected": [
+        {
+          "mention": "南方电网公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "南方电网公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华北地区新建了输电线路。",
+      "expected": [
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华东地区有多个项目正在建设中。",
+      "expected": [
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华中地区电网负荷创历史新高。",
+      "expected": [
+        {
+          "mention": "华中地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华中地区",
+          "type": "GPE",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华南地区电力需求快速增长。",
+      "expected": [
+        {
+          "mention": "华南地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "西南地区水电资源丰富。",
+      "expected": [
+        {
+          "mention": "西南地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['西南地区']"
+      ],
+      "warnings": []
+    },
+    {
+      "text": "西北地区光伏发电装机容量快速增长。",
+      "expected": [
+        {
+          "mention": "西北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['西北地区']"
+      ],
+      "warnings": []
+    },
+    {
+      "text": "东北地区电网2025年改造升级。",
+      "expected": [
+        {
+          "mention": "东北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['东北地区']"
+      ],
+      "warnings": []
+    },
+    {
+      "text": "北京市2025年电动汽车充电桩突破10万个。",
+      "expected": [
+        {
+          "mention": "北京市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "北京市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "上海市浦东新区建成大型光储充一体化电站。",
+      "expected": [
+        {
+          "mention": "上海市浦东新区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "上海市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "浦东",
+          "type": "GPE",
+          "start": 1,
+          "end": 2
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['上海市浦东新区']"
+      ],
+      "warnings": [
+        "额外识别: ['浦东', '上海市']"
+      ]
+    },
+    {
+      "text": "广州市2025年电力负荷创新高。",
+      "expected": [
+        {
+          "mention": "广州市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "广州市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "深圳市2025年虚拟电厂平台上线运营。",
+      "expected": [
+        {
+          "mention": "深圳市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "深圳市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "杭州市2025年建成智慧能源管理平台。",
+      "expected": [
+        {
+          "mention": "杭州市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "杭州市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "成都市2025年电网投资超过100亿元。",
+      "expected": [
+        {
+          "mention": "成都市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "成都市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "武汉市2025年建成智能电网示范项目。",
+      "expected": [
+        {
+          "mention": "武汉市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "武汉市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "南京市2025年新能源发电量占比大幅提升。",
+      "expected": [
+        {
+          "mention": "南京市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "南京市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "西安市2025年建成综合能源服务示范中心。",
+      "expected": [
+        {
+          "mention": "西安市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "西安市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "郑州市2025年电网建设投资计划发布。",
+      "expected": [
+        {
+          "mention": "郑州市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "郑州市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "长沙市2025年电力负荷预测分析报告发布。",
+      "expected": [
+        {
+          "mention": "长沙市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "长沙市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "昆明市2025年绿色电力交易量快速增长。",
+      "expected": [
+        {
+          "mention": "昆明市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "昆明市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "贵阳市2025年数据中心用电量大幅增长。",
+      "expected": [
+        {
+          "mention": "贵阳市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "贵阳市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "新疆维吾尔自治区2025年新能源装机突破1亿千瓦。",
+      "expected": [
+        {
+          "mention": "新疆维吾尔自治区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "新疆维吾尔自治区",
+          "type": "GPE",
+          "start": 0,
+          "end": 3
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "西藏自治区2025年光伏发电项目加快推进。",
+      "expected": [
+        {
+          "mention": "西藏自治区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "西藏自治区",
+          "type": "GPE",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "内蒙古自治区2025年风电项目并网运营。",
+      "expected": [
+        {
+          "mention": "内蒙古自治区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "内蒙古自治区",
+          "type": "GPE",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "青海省2025年清洁能源基地建成投运。",
+      "expected": [
+        {
+          "mention": "青海省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "青海省",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "甘肃省2025年光伏发电装机容量突破5000万千瓦。",
+      "expected": [
+        {
+          "mention": "甘肃省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "甘肃省",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网有限公司在华北地区新建了输电线路。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 4,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国南方电网有限责任公司在华南地区建设智能电网。",
+      "expected": [
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 6
+        },
+        {
+          "mention": "华南",
+          "type": "GPE",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['华南地区']"
+      ],
+      "warnings": [
+        "额外识别: ['华南']"
+      ]
+    },
+    {
+      "text": "华能国际电力股份有限公司在华东地区有多个风电项目。",
+      "expected": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 6
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 7,
+          "end": 9
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国大唐集团公司在西北地区新建光伏电站。",
+      "expected": [
+        {
+          "mention": "中国大唐集团公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "西北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国大唐集团公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['西北地区']"
+      ],
+      "warnings": []
+    },
+    {
+      "text": "国家能源集团在西南地区建设水电基地。",
+      "expected": [
+        {
+          "mention": "国家能源集团",
+          "type": "ORG"
+        },
+        {
+          "mention": "西南地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家能源集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['西南地区']"
+      ],
+      "warnings": []
+    },
+    {
+      "text": "中国华电集团在华中地区发展清洁能源。",
+      "expected": [
+        {
+          "mention": "中国华电集团",
+          "type": "ORG"
+        },
+        {
+          "mention": "华中地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国华电集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "华中地区",
+          "type": "GPE",
+          "start": 4,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网北京市电力公司2025年供电保障方案通过评审。",
+      "expected": [
+        {
+          "mention": "国网北京市电力公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网北京市电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网上海市电力公司在浦东新区建设智慧电网。",
+      "expected": [
+        {
+          "mention": "国网上海市电力公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "浦东新区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网上海市电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "浦东",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['浦东新区']"
+      ],
+      "warnings": [
+        "额外识别: ['浦东']"
+      ]
+    },
+    {
+      "text": "国网江苏省电力有限公司在南京市建成综合能源站。",
+      "expected": [
+        {
+          "mention": "国网江苏省电力有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "南京市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网江苏省电力有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "南京市",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国石油天然气集团有限公司在新疆建设油气田。",
+      "expected": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "新疆",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        },
+        {
+          "mention": "新疆",
+          "type": "GPE",
+          "start": 6,
+          "end": 7
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国石油化工集团有限公司在青岛市建设炼化基地。",
+      "expected": [
+        {
+          "mention": "中国石油化工集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "青岛市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国石油化工集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        },
+        {
+          "mention": "青岛市",
+          "type": "GPE",
+          "start": 6,
+          "end": 7
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中广核集团在广东省建设核电项目。",
+      "expected": [
+        {
+          "mention": "中广核集团",
+          "type": "ORG"
+        },
+        {
+          "mention": "广东省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中广核集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "广东省",
+          "type": "GPE",
+          "start": 4,
+          "end": 5
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国核工业集团在浙江省建设核电站。",
+      "expected": [
+        {
+          "mention": "中国核工业集团",
+          "type": "ORG"
+        },
+        {
+          "mention": "浙江省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国核工业集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "浙江省",
+          "type": "GPE",
+          "start": 4,
+          "end": 5
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电力投资集团在山东省建设海上风电项目。",
+      "expected": [
+        {
+          "mention": "国家电力投资集团",
+          "type": "ORG"
+        },
+        {
+          "mention": "山东省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电力投资集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "山东省",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国长江三峡集团在湖北省建设抽水蓄能电站。",
+      "expected": [
+        {
+          "mention": "中国长江三峡集团",
+          "type": "ORG"
+        },
+        {
+          "mention": "湖北省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国长江三峡集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "湖北省",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "南方电网公司在贵州省建设电力调度中心。",
+      "expected": [
+        {
+          "mention": "南方电网公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "贵州省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "南方电网公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "贵州省",
+          "type": "GPE",
+          "start": 4,
+          "end": 5
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网浙江省电力公司在杭州市建设智慧供电示范区。",
+      "expected": [
+        {
+          "mention": "国网浙江省电力公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "杭州市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网浙江省电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "杭州市",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网山东省电力公司在青岛市建设充电桩网络。",
+      "expected": [
+        {
+          "mention": "国网山东省电力公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "青岛市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网山东省电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "青岛市",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网河南省电力公司在郑州市建设智能变电站。",
+      "expected": [
+        {
+          "mention": "国网河南省电力公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "郑州市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网河南省电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "郑州市",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "大唐集团在四川省建设水光互补项目。",
+      "expected": [
+        {
+          "mention": "大唐集团",
+          "type": "ORG"
+        },
+        {
+          "mention": "四川省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "大唐集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "mention": "四川省",
+          "type": "GPE",
+          "start": 3,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网在华北新建了输电线路。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "华北",
+          "type": "GPE",
+          "start": 2,
+          "end": 3
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "南网在华南地区建设智能电网。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "start": 2,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "中石油2025年净利润增长8%。",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "中石化在华东地区有多个炼化项目。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 2,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "中海油在南海开发油气资源。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "南海",
+          "type": "GPE",
+          "start": 2,
+          "end": 3
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "华能集团2025年新能源装机突破。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "大唐集团2025年风电装机容量创新高。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "大唐集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "华电集团2025年清洁能源占比提升。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "华电集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "国家电投2025年光伏发电量增长。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "国家电投",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "三峡集团2025年水电发电量创纪录。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "中广核2025年核电安全运营。",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "中核集团2025年核电技术突破。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "中核集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "国能集团2025年煤炭清洁利用。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "国能集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "国网北京电力2025年供电保障。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "国网北京电力",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "国网上海电力2025年智能电网建设。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "上海电力",
+          "type": "ORG",
+          "start": 1,
+          "end": 3
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "这是一个没有任何实体的纯文本测试。",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "2025年，公司营收达到100亿元。",
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "国家电网公司国家电网公司重复实体测试。",
+      "expected": [
+        {
+          "mention": "国家电网公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "国家电网公司",
+          "type": "ORG",
+          "start": 3,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网公司在华北、华东、华南均有布局。",
+      "expected": [],
+      "actual": [
+        {
+          "mention": "国网公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "mention": "华北",
+          "type": "GPE",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "mention": "华东",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "mention": "华南",
+          "type": "GPE",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ]
+    },
+    {
+      "text": "国家电网有限公司2025年营收增长5%。华北地区贡献最大。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 8,
+          "end": 10
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网有限公司，中国南方电网有限责任公司，华能国际电力股份有限公司。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG",
+          "start": 4,
+          "end": 10
+        },
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "start": 11,
+          "end": 16
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网有限公司成立于2002年，总部位于北京市。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "北京市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "北京市",
+          "type": "GPE",
+          "start": 10,
+          "end": 11
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网公司在华北地区的项目已全部完工。",
+      "expected": [
+        {
+          "mention": "国家电网公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 4,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网有限公司与华能国际电力股份有限公司签署合作协议。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "start": 5,
+          "end": 11
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网有限公司在华北、华东、华中和华南地区均有业务布局。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华中地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "华北",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "mention": "华东",
+          "type": "GPE",
+          "start": 7,
+          "end": 8
+        },
+        {
+          "mention": "华中",
+          "type": "GPE",
+          "start": 9,
+          "end": 10
+        },
+        {
+          "mention": "华南",
+          "type": "GPE",
+          "start": 11,
+          "end": 12
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['华北地区', '华南地区', '华东地区', '华中地区']"
+      ],
+      "warnings": [
+        "额外识别: ['华南', '华东', '华北', '华中']"
+      ]
+    },
+    {
+      "text": "（国家电网有限公司）2025年财报显示营收增长。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 1,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网有限公司——中国最大的电力企业。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "中国",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: ['中国']"
+      ]
+    },
+    {
+      "text": "公司名称：国家电网有限公司；地址：北京市西城区。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "北京市西城区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "mention": "北京市",
+          "type": "GPE",
+          "start": 9,
+          "end": 10
+        },
+        {
+          "mention": "西城区",
+          "type": "GPE",
+          "start": 10,
+          "end": 11
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['北京市西城区']"
+      ],
+      "warnings": [
+        "额外识别: ['北京市', '西城区']"
+      ]
+    },
+    {
+      "text": "国家电网有限公司2025年重点工作：确保华北地区供电安全。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 9,
+          "end": 11
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网有限公司2025年营收增长5%，净利润增长8%。公司在华北地区新建了输电线路，华东地区也有多个项目正在推进。同时，华能国际电力股份有限公司也公布了2025年财报，新能源装机容量大幅增长。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 14,
+          "end": 16
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 21,
+          "end": 23
+        },
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "start": 33,
+          "end": 38
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国南方电网有限责任公司2025年工作会议在广州召开。会议总结了2024年工作，部署了2025年重点任务。公司将在华南地区加大电网投资力度，推动数字电网建设。同时，公司还计划在云南省建设新的水电项目。",
+      "expected": [
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "广州",
+          "type": "GPE"
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "云南省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 6
+        },
+        {
+          "mention": "广州",
+          "type": "GPE",
+          "start": 10,
+          "end": 11
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "start": 29,
+          "end": 31
+        },
+        {
+          "mention": "云南省",
+          "type": "GPE",
+          "start": 47,
+          "end": 48
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家能源投资集团有限责任公司2025年新能源发展规划显示，公司将在西北地区建设大型光伏基地，在西南地区开发水电资源，在东部沿海地区发展海上风电。预计到2025年底，公司清洁能源装机占比将达到40%。",
+      "expected": [
+        {
+          "mention": "国家能源投资集团有限责任公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "西北地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "西南地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家能源投资集团有限责任公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 7
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['西南地区', '西北地区']"
+      ],
+      "warnings": []
+    },
+    {
+      "text": "中国石油天然气集团有限公司2025年一季度业绩发布会透露，公司在新疆地区的油气产量稳步增长，同时在华东地区布局新能源业务。公司将继续推进油气与新能源融合发展，助力实现碳达峰碳中和目标。",
+      "expected": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "新疆",
+          "type": "GPE"
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        },
+        {
+          "mention": "新疆地区",
+          "type": "GPE",
+          "start": 13,
+          "end": 15
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 23,
+          "end": 25
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['新疆']"
+      ],
+      "warnings": [
+        "额外识别: ['新疆地区']"
+      ]
+    },
+    {
+      "text": "中国大唐集团有限公司2025年风电项目在内蒙古、河北、甘肃等地全面开工。公司表示，将积极响应国家新能源发展战略，加大清洁能源投资力度。大唐集团2025年计划新增风电装机500万千瓦。",
+      "expected": [
+        {
+          "mention": "中国大唐集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "内蒙古",
+          "type": "GPE"
+        },
+        {
+          "mention": "河北",
+          "type": "GPE"
+        },
+        {
+          "mention": "甘肃",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国大唐集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "内蒙古",
+          "type": "GPE",
+          "start": 8,
+          "end": 9
+        },
+        {
+          "mention": "河北",
+          "type": "GPE",
+          "start": 10,
+          "end": 11
+        },
+        {
+          "mention": "甘肃",
+          "type": "GPE",
+          "start": 12,
+          "end": 13
+        },
+        {
+          "mention": "大唐集团",
+          "type": "ORG",
+          "start": 36,
+          "end": 38
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: ['大唐集团']"
+      ]
+    },
+    {
+      "text": "中国华电集团有限公司2025年工作会议提出，公司将在四川、云南、西藏等地区建设大型水风光互补基地。同时，华电集团将加快数字化转型，建设智慧能源管理平台，提升运营效率。",
+      "expected": [
+        {
+          "mention": "中国华电集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "四川",
+          "type": "GPE"
+        },
+        {
+          "mention": "云南",
+          "type": "GPE"
+        },
+        {
+          "mention": "西藏",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国华电集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "四川",
+          "type": "GPE",
+          "start": 12,
+          "end": 13
+        },
+        {
+          "mention": "云南",
+          "type": "GPE",
+          "start": 14,
+          "end": 15
+        },
+        {
+          "mention": "西藏",
+          "type": "GPE",
+          "start": 16,
+          "end": 17
+        },
+        {
+          "mention": "华电集团",
+          "type": "ORG",
+          "start": 28,
+          "end": 30
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: ['华电集团']"
+      ]
+    },
+    {
+      "text": "国家电力投资集团有限公司2025年清洁能源装机占比突破60%。公司在青海省建设的光伏基地已并网发电，在山东省建设的海上风电项目进展顺利。国家电投表示，将继续加大清洁能源投资。",
+      "expected": [
+        {
+          "mention": "国家电力投资集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "青海省",
+          "type": "GPE"
+        },
+        {
+          "mention": "山东省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电力投资集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        },
+        {
+          "mention": "青海省",
+          "type": "GPE",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "mention": "山东省",
+          "type": "GPE",
+          "start": 24,
+          "end": 25
+        },
+        {
+          "mention": "国家电投",
+          "type": "ORG",
+          "start": 33,
+          "end": 35
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: ['国家电投']"
+      ]
+    },
+    {
+      "text": "中国长江三峡集团有限公司2025年水电发电量创历史新高。公司运营管理的三峡电站、葛洲坝电站等水电站运行平稳。三峡集团还在湖北省建设抽水蓄能电站，提升电网调节能力。",
+      "expected": [
+        {
+          "mention": "中国长江三峡集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "湖北省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国长江三峡集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        },
+        {
+          "mention": "三峡电站",
+          "type": "ORG",
+          "start": 16,
+          "end": 18
+        },
+        {
+          "mention": "葛洲坝电站",
+          "type": "ORG",
+          "start": 19,
+          "end": 21
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "start": 26,
+          "end": 28
+        },
+        {
+          "mention": "湖北省",
+          "type": "GPE",
+          "start": 30,
+          "end": 31
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: ['葛洲坝电站', '三峡电站', '三峡集团']"
+      ]
+    },
+    {
+      "text": "中广核集团有限公司2025年核电装机容量达到3500万千瓦。公司在广东省、福建省、辽宁省等地运营多个核电站。中广核表示，将继续坚持安全第一、质量至上的发展理念。",
+      "expected": [
+        {
+          "mention": "中广核集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "广东省",
+          "type": "GPE"
+        },
+        {
+          "mention": "福建省",
+          "type": "GPE"
+        },
+        {
+          "mention": "辽宁省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中广核集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "广东省",
+          "type": "GPE",
+          "start": 13,
+          "end": 14
+        },
+        {
+          "mention": "福建省",
+          "type": "GPE",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "mention": "辽宁省",
+          "type": "GPE",
+          "start": 17,
+          "end": 18
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国核工业集团有限公司2025年科技创新取得重大突破。公司在四川省建设的核电设备制造基地已投产，在甘肃省建设的核燃料循环设施运行良好。中核集团将加快核能技术研发应用。",
+      "expected": [
+        {
+          "mention": "中国核工业集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "四川省",
+          "type": "GPE"
+        },
+        {
+          "mention": "甘肃省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国核工业集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "四川省",
+          "type": "GPE",
+          "start": 13,
+          "end": 14
+        },
+        {
+          "mention": "甘肃省",
+          "type": "GPE",
+          "start": 24,
+          "end": 25
+        },
+        {
+          "mention": "中核集团",
+          "type": "ORG",
+          "start": 33,
+          "end": 35
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: ['中核集团']"
+      ]
+    },
+    {
+      "text": "国家电网有限公司2025年特高压输电工程建成投运。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华能国际电力股份有限公司2025年煤电机组改造升级完成。",
+      "expected": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国大唐集团有限公司2025年储能电站项目在华北地区并网。",
+      "expected": [
+        {
+          "mention": "中国大唐集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国大唐集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "华北",
+          "type": "GPE",
+          "start": 10,
+          "end": 11
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['华北地区']"
+      ],
+      "warnings": [
+        "额外识别: ['华北']"
+      ]
+    },
+    {
+      "text": "国家能源投资集团有限责任公司在西北地区建设氢能示范项目。",
+      "expected": [
+        {
+          "mention": "国家能源投资集团有限责任公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "西北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家能源投资集团有限责任公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 7
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['西北地区']"
+      ],
+      "warnings": []
+    },
+    {
+      "text": "国网北京市电力公司2025年虚拟电厂平台上线运营。",
+      "expected": [
+        {
+          "mention": "国网北京市电力公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网北京市电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国网上海市电力公司在上海市建设综合能源服务示范区。",
+      "expected": [
+        {
+          "mention": "国网上海市电力公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "上海市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网上海市电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "上海市",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国南方电网有限责任公司在广东省建设数字电网。",
+      "expected": [
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "广东省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 6
+        },
+        {
+          "mention": "广东省",
+          "type": "GPE",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国石油天然气集团有限公司在四川省建设天然气发电项目。",
+      "expected": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "四川省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        },
+        {
+          "mention": "四川省",
+          "type": "GPE",
+          "start": 6,
+          "end": 7
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中国石油化工集团有限公司在山东省建设氢能生产基地。",
+      "expected": [
+        {
+          "mention": "中国石油化工集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "山东省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国石油化工集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        },
+        {
+          "mention": "山东省",
+          "type": "GPE",
+          "start": 6,
+          "end": 7
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网有限公司在华东地区建设源网荷储一体化项目。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 5,
+          "end": 7
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华能国际在华北地区建设风光储一体化基地。",
+      "expected": [
+        {
+          "mention": "华能国际",
+          "type": "ORG"
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华能国际",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 3,
+          "end": 5
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电投在青海省建设光伏治沙示范项目。",
+      "expected": [
+        {
+          "mention": "国家电投",
+          "type": "ORG"
+        },
+        {
+          "mention": "青海省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "青海省",
+          "type": "GPE",
+          "start": 3,
+          "end": 4
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['国家电投']"
+      ],
+      "warnings": []
+    },
+    {
+      "text": "三峡集团在浙江省建设海上风电与海洋牧场融合项目。",
+      "expected": [
+        {
+          "mention": "三峡集团",
+          "type": "ORG"
+        },
+        {
+          "mention": "浙江省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "mention": "浙江省",
+          "type": "GPE",
+          "start": 3,
+          "end": 4
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "中广核在福建省建设核能供热示范工程。",
+      "expected": [
+        {
+          "mention": "中广核",
+          "type": "ORG"
+        },
+        {
+          "mention": "福建省",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "福建省",
+          "type": "GPE",
+          "start": 2,
+          "end": 3
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['中广核']"
+      ],
+      "warnings": []
+    },
+    {
+      "text": "国网山东省电力公司在济南市建设智慧配电网示范区。",
+      "expected": [
+        {
+          "mention": "国网山东省电力公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "济南市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国网山东省电力公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "mention": "济南市",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网有限公司、中国南方电网有限责任公司、华能国际电力股份有限公司、中国大唐集团有限公司、中国华电集团有限公司、国家电力投资集团有限公司、中国长江三峡集团有限公司、中广核集团有限公司、中国核工业集团有限公司。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "中国大唐集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "中国华电集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "国家电力投资集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "中国长江三峡集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "中广核集团有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "中国核工业集团有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG",
+          "start": 4,
+          "end": 10
+        },
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "start": 11,
+          "end": 16
+        },
+        {
+          "mention": "中国大唐集团有限公司",
+          "type": "ORG",
+          "start": 17,
+          "end": 21
+        },
+        {
+          "mention": "中国华电集团有限公司",
+          "type": "ORG",
+          "start": 22,
+          "end": 26
+        },
+        {
+          "mention": "国家电力投资集团有限公司",
+          "type": "ORG",
+          "start": 27,
+          "end": 32
+        },
+        {
+          "mention": "中国长江三峡集团有限公司",
+          "type": "ORG",
+          "start": 33,
+          "end": 38
+        },
+        {
+          "mention": "中广核集团有限公司",
+          "type": "ORG",
+          "start": 39,
+          "end": 43
+        },
+        {
+          "mention": "中国核工业集团有限公司",
+          "type": "ORG",
+          "start": 44,
+          "end": 48
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "华北地区、华东地区、华中地区、华南地区、西南地区、西北地区、东北地区均有电力项目布局。",
+      "expected": [
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华中地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "西南地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "西北地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "东北地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "mention": "华中地区",
+          "type": "GPE",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "start": 9,
+          "end": 11
+        },
+        {
+          "mention": "西南",
+          "type": "GPE",
+          "start": 12,
+          "end": 13
+        },
+        {
+          "mention": "西北",
+          "type": "GPE",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "mention": "东北",
+          "type": "GPE",
+          "start": 18,
+          "end": 19
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['西南地区', '西北地区', '东北地区']"
+      ],
+      "warnings": [
+        "额外识别: ['西北', '西南', '东北']"
+      ]
+    },
+    {
+      "text": "国家电网有限公司在华北地区、华东地区、华中地区建设特高压输电工程。中国南方电网有限责任公司在华南地区、西南地区建设智能电网。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "华中地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG"
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE"
+        },
+        {
+          "mention": "西南地区",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 7,
+          "end": 9
+        },
+        {
+          "mention": "华中地区",
+          "type": "GPE",
+          "start": 10,
+          "end": 12
+        },
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG",
+          "start": 17,
+          "end": 23
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "start": 24,
+          "end": 26
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['西南地区']"
+      ],
+      "warnings": []
+    },
+    {
+      "text": "北京市、上海市、广州市、深圳市、杭州市、成都市、武汉市、南京市、西安市、郑州市、长沙市、昆明市、贵阳市均开展了智慧电网建设。",
+      "expected": [
+        {
+          "mention": "北京市",
+          "type": "GPE"
+        },
+        {
+          "mention": "上海市",
+          "type": "GPE"
+        },
+        {
+          "mention": "广州市",
+          "type": "GPE"
+        },
+        {
+          "mention": "深圳市",
+          "type": "GPE"
+        },
+        {
+          "mention": "杭州市",
+          "type": "GPE"
+        },
+        {
+          "mention": "成都市",
+          "type": "GPE"
+        },
+        {
+          "mention": "武汉市",
+          "type": "GPE"
+        },
+        {
+          "mention": "南京市",
+          "type": "GPE"
+        },
+        {
+          "mention": "西安市",
+          "type": "GPE"
+        },
+        {
+          "mention": "郑州市",
+          "type": "GPE"
+        },
+        {
+          "mention": "长沙市",
+          "type": "GPE"
+        },
+        {
+          "mention": "昆明市",
+          "type": "GPE"
+        },
+        {
+          "mention": "贵阳市",
+          "type": "GPE"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "北京市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "上海市",
+          "type": "GPE",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "mention": "广州市",
+          "type": "GPE",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "mention": "深圳市",
+          "type": "GPE",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "mention": "杭州市",
+          "type": "GPE",
+          "start": 8,
+          "end": 9
+        },
+        {
+          "mention": "成都市",
+          "type": "GPE",
+          "start": 10,
+          "end": 11
+        },
+        {
+          "mention": "武汉市",
+          "type": "GPE",
+          "start": 12,
+          "end": 13
+        },
+        {
+          "mention": "南京市",
+          "type": "GPE",
+          "start": 14,
+          "end": 15
+        },
+        {
+          "mention": "西安市",
+          "type": "GPE",
+          "start": 16,
+          "end": 17
+        },
+        {
+          "mention": "郑州市",
+          "type": "GPE",
+          "start": 18,
+          "end": 19
+        },
+        {
+          "mention": "长沙市",
+          "type": "GPE",
+          "start": 20,
+          "end": 21
+        },
+        {
+          "mention": "昆明市",
+          "type": "GPE",
+          "start": 22,
+          "end": 23
+        },
+        {
+          "mention": "贵阳市",
+          "type": "GPE",
+          "start": 24,
+          "end": 25
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text": "国家电网有限公司、华能国际、大唐集团、华电集团、国家电投、三峡集团、中广核、中核集团等央企2025年新能源投资大幅增长。",
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG"
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "华能国际",
+          "type": "ORG",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "mention": "大唐集团",
+          "type": "ORG",
+          "start": 7,
+          "end": 9
+        },
+        {
+          "mention": "华电集团",
+          "type": "ORG",
+          "start": 10,
+          "end": 12
+        },
+        {
+          "mention": "国家电投",
+          "type": "ORG",
+          "start": 13,
+          "end": 15
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "start": 16,
+          "end": 18
+        },
+        {
+          "mention": "中广核",
+          "type": "ORG",
+          "start": 19,
+          "end": 21
+        },
+        {
+          "mention": "中核集团",
+          "type": "ORG",
+          "start": 22,
+          "end": 24
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: ['大唐集团', '中广核', '中核集团', '华能国际', '华电集团', '三峡集团', '国家电投']"
+      ]
+    }
+  ]
+}
