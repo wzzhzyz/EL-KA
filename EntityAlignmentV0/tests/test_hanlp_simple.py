@@ -475,7 +475,7 @@ def main():
 
     # 创建测试器
     tester = HanLPRawTester()
-    text="国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。"
+    text="字节跳动旗下的抖音和TikTok在全球市场均取得了巨大成功。。。"
     print(f"{text}")
     print(tester._get_raw_output(text).get("raw_result"))
 
