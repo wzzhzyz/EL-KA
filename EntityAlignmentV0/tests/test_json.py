@@ -4,7 +4,7 @@ import json
 print("验证 knowledge_base.json 文件...")
 
 try:
-    with open("data/knowledge_base.json", "r", encoding="utf-8") as f:
+    with open("../data/knowledge_base.json", "r", encoding="utf-8") as f:
         content = f.read()
         print(f"文件大小: {len(content)} 字节")
 

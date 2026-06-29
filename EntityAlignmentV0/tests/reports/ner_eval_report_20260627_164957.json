@@ -1,0 +1,2372 @@
+{
+  "timestamp": "2026-06-27T16:49:57.317176",
+  "dataset": {
+    "path": "E:\\Code\\Python\\PycharmProjects\\EntityAlignmentV0\\data\\eval_dataset.json",
+    "metadata": {
+      "name": "entity_linking_eval_dataset",
+      "version": "2.2",
+      "kb_version": "1.0.0",
+      "kb_name": "energy_industry_kb",
+      "created_date": "2026-06-26",
+      "total_samples": 70,
+      "description": "课题10 实体链接评测数据集——覆盖简称、别名、英文、同名异义、上下文消歧、NIL、OCR错误、拼写错误、中英混写、长文本多mention、共指消解等11类场景",
+      "usage": "用于 Candidate Generation 召回率、Disambiguation 准确率、NIL Detection F1、Coreference Resolution 精度的自动化评测",
+      "coref_method": "rule_priority",
+      "coref_rule_types": [
+        "pronoun_backward",
+        "noun_backward",
+        "abbreviation_fullname",
+        "repeated_mention",
+        "english_chinese_coref"
+      ]
+    }
+  },
+  "stats": {
+    "total_mentions": 70,
+    "success": 24,
+    "partial": 1,
+    "missed": 45,
+    "type_error": 0,
+    "error": 0,
+    "success_rate": 0.34285714285714286,
+    "recall": 0.35714285714285715,
+    "by_scenario": {
+      "简称匹配": {
+        "total": 16,
+        "success": 8,
+        "partial": 0,
+        "missed": 8,
+        "type_error": 0
+      },
+      "完整名称匹配": {
+        "total": 1,
+        "success": 1,
+        "partial": 0,
+        "missed": 0,
+        "type_error": 0
+      },
+      "英文别名匹配": {
+        "total": 2,
+        "success": 1,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "别名消歧（设施 vs 企业）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "同名异义消歧": {
+        "total": 1,
+        "success": 1,
+        "partial": 0,
+        "missed": 0,
+        "type_error": 0
+      },
+      "上下文消歧（母子公司区分）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "子公司精确匹配": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "同名异义消歧（华能 vs 华电）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "简称匹配 + 语义验证": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "简称 + 多业务匹配": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "设施 vs 运营企业消歧": {
+        "total": 1,
+        "success": 1,
+        "partial": 0,
+        "missed": 0,
+        "type_error": 0
+      },
+      "标准名直接匹配": {
+        "total": 6,
+        "success": 3,
+        "partial": 0,
+        "missed": 3,
+        "type_error": 0
+      },
+      "简称匹配 + 跨业务验证": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "专业术语别名匹配": {
+        "total": 2,
+        "success": 0,
+        "partial": 0,
+        "missed": 2,
+        "type_error": 0
+      },
+      "英文缩写消歧（UHVDC vs UHVAC）": {
+        "total": 1,
+        "success": 1,
+        "partial": 0,
+        "missed": 0,
+        "type_error": 0
+      },
+      "标准名匹配 + 上下文验证": {
+        "total": 1,
+        "success": 1,
+        "partial": 0,
+        "missed": 0,
+        "type_error": 0
+      },
+      "NIL检测——实体不在知识库中": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "多候选消歧 + 实体关系辅助": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "非标准别名匹配（召回边界测试）": {
+        "total": 1,
+        "success": 1,
+        "partial": 0,
+        "missed": 0,
+        "type_error": 0
+      },
+      "OCR错误——形近字（囯 vs 国）": {
+        "total": 1,
+        "success": 1,
+        "partial": 0,
+        "missed": 0,
+        "type_error": 0
+      },
+      "拼写错误——缺字（电网→电网）": {
+        "total": 1,
+        "success": 1,
+        "partial": 0,
+        "missed": 0,
+        "type_error": 0
+      },
+      "OCR错误——形近字（徳 vs 德）": {
+        "total": 1,
+        "success": 1,
+        "partial": 0,
+        "missed": 0,
+        "type_error": 0
+      },
+      "中英混写 + 同一实体重复出现": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "长文本多mention + 共指消解": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——代词回指": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "中英混写——同一实体多形态": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——代词回指（中英混写上下文）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "长文本多实体共现消歧": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "长文本嵌套实体消歧": {
+        "total": 1,
+        "success": 1,
+        "partial": 0,
+        "missed": 0,
+        "type_error": 0
+      },
+      "长文本多mention共指验证": {
+        "total": 2,
+        "success": 2,
+        "partial": 0,
+        "missed": 0,
+        "type_error": 0
+      },
+      "英文全称→缩写共指 + 跨形态链接": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "同名异义消歧（中核 vs 中广核）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "上下文消歧（非句首mention）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "跨行业多角色消歧": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——代词回指（其）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——代词回指（它）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——代词回指（人称代词）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——名词回指（这家+类别词）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——名词回指（该+类别词）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——简称-全称共指（显式定义）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——简称-全称共指（隐式）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——重复mention一致性": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——中英文共指（显式定义）": {
+        "total": 1,
+        "success": 0,
+        "partial": 1,
+        "missed": 0,
+        "type_error": 0
+      },
+      "共指消解——中英文共指（隐式alias匹配）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——集合回指→NIL": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——链式共指（多跳指代）": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      },
+      "共指消解——多实体场景代词消歧": {
+        "total": 1,
+        "success": 0,
+        "partial": 0,
+        "missed": 1,
+        "type_error": 0
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "total": 35,
+        "success": 15,
+        "partial": 0,
+        "missed": 20,
+        "type_error": 0
+      },
+      "medium": {
+        "total": 29,
+        "success": 6,
+        "partial": 1,
+        "missed": 22,
+        "type_error": 0
+      },
+      "hard": {
+        "total": 6,
+        "success": 3,
+        "partial": 0,
+        "missed": 3,
+        "type_error": 0
+      }
+    }
+  },
+  "details": [
+    {
+      "sample_id": "EVAL_001",
+      "text": "国网2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。",
+      "mention": "国网",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0001",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '国网'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_002",
+      "text": "南网近期在广东启动了新一轮农网改造工程，预计覆盖2000个行政村。",
+      "mention": "南网",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0002",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "广东",
+          "type": "GPE",
+          "start": 3,
+          "end": 4
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '南网'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_003",
+      "text": "宁德时代2025年发布了第三代钠离子电池，能量密度达到200Wh/kg，引起储能行业广泛关注。",
+      "mention": "宁德时代",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0015",
+      "scenario": "完整名称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "宁德",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "宁德",
+        "type": "GPE",
+        "start": 0,
+        "end": 1
+      },
+      "type_match": true,
+      "type_match_detail": "type_mapped",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_004",
+      "text": "CATL近期与特斯拉签订了新的供货协议，将为上海超级工厂提供下一代动力电池。",
+      "mention": "CATL",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0015",
+      "scenario": "英文别名匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "特斯拉",
+          "type": "PERSON",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "mention": "上海超级工厂",
+          "type": "ORG",
+          "start": 13,
+          "end": 16
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "特斯拉",
+        "type": "PERSON",
+        "start": 3,
+        "end": 4
+      },
+      "type_match": true,
+      "type_match_detail": "type_mapped",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_005",
+      "text": "三峡大坝今年汛期累计拦蓄洪水超过200亿立方米，充分发挥了防洪骨干作用。",
+      "mention": "三峡大坝",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0012",
+      "scenario": "别名消歧（设施 vs 企业）",
+      "difficulty": "medium",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '三峡大坝'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_006",
+      "text": "三峡集团正加速推进金沙江下游水风光一体化基地建设，首批项目预计2027年投产。",
+      "mention": "三峡集团",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0008",
+      "scenario": "同名异义消歧",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "mention": "金沙江",
+          "type": "GPE",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "三峡集团",
+        "type": "ORG",
+        "start": 0,
+        "end": 2
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_007",
+      "text": "国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+      "mention": "国网",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0001",
+      "scenario": "上下文消歧（母子公司区分）",
+      "difficulty": "medium",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '国网'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_008",
+      "text": "国网新源今年新投产了两座抽水蓄能电站，总装机容量达到320万千瓦，有效缓解了华东地区调峰压力。",
+      "mention": "国网新源",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0010",
+      "scenario": "子公司精确匹配",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "start": 22,
+          "end": 24
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '国网新源'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_009",
+      "text": "华能2024年清洁能源装机占比首次突破50%，其中风电和光伏新增装机超过1500万千瓦。",
+      "mention": "华能",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0003",
+      "scenario": "同名异义消歧（华能 vs 华电）",
+      "difficulty": "medium",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '华能'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_010",
+      "text": "隆基在BC电池技术上取得了重大突破，量产效率突破26.5%，进一步巩固了在光伏组件领域的领先地位。",
+      "mention": "隆基",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0026",
+      "scenario": "简称匹配 + 语义验证",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '隆基'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_011",
+      "text": "远景不仅在风电领域深耕，近年来在储能和能源物联网领域也取得了显著进展。",
+      "mention": "远景",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0033",
+      "scenario": "简称 + 多业务匹配",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '远景'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_012",
+      "text": "大亚湾核电站自1994年投入商业运行以来，已累计发电超过8000亿千瓦时，减排二氧化碳约6.6亿吨。",
+      "mention": "大亚湾核电站",
+      "mention_start": 0,
+      "mention_end": 6,
+      "gold_entity": "ENT_ENERGY_0017",
+      "scenario": "设施 vs 运营企业消歧",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "大亚湾核电站",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "大亚湾核电站",
+        "type": "ORG",
+        "start": 0,
+        "end": 2
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_013",
+      "text": "天合光能近日在青海投建了新的N型TOPCon电池生产基地，规划产能20GW。",
+      "mention": "天合光能",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0029",
+      "scenario": "标准名直接匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "天合光能",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "mention": "青海",
+          "type": "GPE",
+          "start": 4,
+          "end": 5
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "天合光能",
+        "type": "ORG",
+        "start": 0,
+        "end": 2
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_014",
+      "text": "中广核正在积极布局海上风电，计划在广东阳江建设百万千瓦级海上风电基地。",
+      "mention": "中广核",
+      "mention_start": 0,
+      "mention_end": 3,
+      "gold_entity": "ENT_ENERGY_0011",
+      "scenario": "简称匹配 + 跨业务验证",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "广东",
+          "type": "GPE",
+          "start": 10,
+          "end": 11
+        },
+        {
+          "mention": "阳江",
+          "type": "GPE",
+          "start": 11,
+          "end": 12
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '中广核'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_015",
+      "text": "双碳目标的提出加速了新型电力系统的建设进程，源网荷储一体化和多能互补成为行业共识。",
+      "mention": "双碳",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0020",
+      "scenario": "专业术语别名匹配",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '双碳'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_016",
+      "text": "UHVDC输电技术是中国西电东送战略的核心支撑，±800kV直流线路的输电距离可达2000公里以上。",
+      "mention": "UHVDC",
+      "mention_start": 0,
+      "mention_end": 5,
+      "gold_entity": "ENT_ENERGY_0018",
+      "scenario": "英文缩写消歧（UHVDC vs UHVAC）",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "中国",
+          "type": "GPE",
+          "start": 4,
+          "end": 5
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "中国",
+        "type": "GPE",
+        "start": 4,
+        "end": 5
+      },
+      "type_match": true,
+      "type_match_detail": "type_mapped",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_017",
+      "text": "金风科技近日发布了全新一代16MW海上风电机组，叶轮直径达到252米，是全球单机容量最大的海上风机。",
+      "mention": "金风科技",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0032",
+      "scenario": "标准名匹配 + 上下文验证",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "金风科技",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "金风科技",
+        "type": "ORG",
+        "start": 0,
+        "end": 2
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_018",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业，近年来在户用光伏市场增长迅速。",
+      "mention": "阳光新能源",
+      "mention_start": 0,
+      "mention_end": 5,
+      "gold_entity": null,
+      "scenario": "NIL检测——实体不在知识库中",
+      "difficulty": "hard",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '阳光新能源'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_019",
+      "text": "国网近期与国家电投签署了战略合作协议，双方将在抽水蓄能和综合能源服务领域展开深度合作。",
+      "mention": "国网",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0001",
+      "scenario": "多候选消歧 + 实体关系辅助",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "国家电投",
+          "type": "ORG",
+          "start": 3,
+          "end": 5
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '国网'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_020",
+      "text": "青海共和县塔拉滩光伏基地的发电量已占到青海省新能源发电量的三分之一以上。",
+      "mention": "塔拉滩光伏基地",
+      "mention_start": 5,
+      "mention_end": 12,
+      "gold_entity": "ENT_ENERGY_0014",
+      "scenario": "非标准别名匹配（召回边界测试）",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "青海",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "共和县",
+          "type": "GPE",
+          "start": 1,
+          "end": 2
+        },
+        {
+          "mention": "塔拉滩",
+          "type": "GPE",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "mention": "青海省",
+          "type": "GPE",
+          "start": 8,
+          "end": 9
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "青海省",
+        "type": "GPE",
+        "start": 8,
+        "end": 9
+      },
+      "type_match": true,
+      "type_match_detail": "type_mapped",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_021",
+      "text": "囯网公司近日宣布将在西北地区新建三条特高压输电线路，总投资超过800亿元。",
+      "mention": "囯网",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0001",
+      "scenario": "OCR错误——形近字（囯 vs 国）",
+      "difficulty": "hard",
+      "ner_entities": [
+        {
+          "mention": "囯网公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "囯网公司",
+        "type": "ORG",
+        "start": 0,
+        "end": 2
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_022",
+      "text": "国家电网有限公司日前发布了2025年社会责任报告，显示清洁能源消纳比例再创新高。",
+      "mention": "国家电网",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0001",
+      "scenario": "拼写错误——缺字（电网→电网）",
+      "difficulty": "hard",
+      "ner_entities": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 4
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "国家电网有限公司",
+        "type": "ORG",
+        "start": 0,
+        "end": 4
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_023",
+      "text": "宁徳时代新能源科技股份有限公司近日宣布与宝马集团达成战略合作。",
+      "mention": "宁徳时代",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0015",
+      "scenario": "OCR错误——形近字（徳 vs 德）",
+      "difficulty": "hard",
+      "ner_entities": [
+        {
+          "mention": "宁徳时代新能源科技股份有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 8
+        },
+        {
+          "mention": "宝马集团",
+          "type": "ORG",
+          "start": 11,
+          "end": 13
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "宁徳时代新能源科技股份有限公司",
+        "type": "ORG",
+        "start": 0,
+        "end": 8
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_024",
+      "text": "CATL的麒麟电池采用了第三代CTP技术，系统集成效率达到72%，续航里程突破1000公里。CATL方面表示，该产品已获得多家国际车企的定点订单。",
+      "mention": "CATL",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0015",
+      "scenario": "中英混写 + 同一实体重复出现",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 'CATL'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_025",
+      "text": "国网2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。该公司同时加大了在抽水蓄能方面的投资力度，计划到2030年抽蓄装机达到1亿千瓦。国网方面表示，将全力服务双碳目标的实现。",
+      "mention": "国网",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0001",
+      "scenario": "长文本多mention + 共指消解",
+      "difficulty": "medium",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '国网'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_026",
+      "text": "国网2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。该公司同时加大了在抽水蓄能方面的投资力度，计划到2030年抽蓄装机达到1亿千瓦。国网方面表示，将全力服务双碳目标的实现。",
+      "mention": "该公司",
+      "mention_start": 39,
+      "mention_end": 42,
+      "gold_entity": "ENT_ENERGY_0001",
+      "scenario": "共指消解——代词回指",
+      "difficulty": "medium",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '该公司'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_027",
+      "text": "比亚迪近日发布了全新一代刀片电池，能量密度提升30%。BYD表示新电池将首先搭载于汉EV和唐EV两款旗舰车型。该公司同时宣布将在巴西建设第三座海外工厂。",
+      "mention": "BYD",
+      "mention_start": 27,
+      "mention_end": 30,
+      "gold_entity": "ENT_ENERGY_0016",
+      "scenario": "中英混写——同一实体多形态",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "比亚迪",
+          "type": "PERSON",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "巴西",
+          "type": "GPE",
+          "start": 37,
+          "end": 38
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 'BYD'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_028",
+      "text": "比亚迪近日发布了全新一代刀片电池，能量密度提升30%。BYD表示新电池将首先搭载于汉EV和唐EV两款旗舰车型。该公司同时宣布将在巴西建设第三座海外工厂。",
+      "mention": "该公司",
+      "mention_start": 55,
+      "mention_end": 58,
+      "gold_entity": "ENT_ENERGY_0016",
+      "scenario": "共指消解——代词回指（中英混写上下文）",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "比亚迪",
+          "type": "PERSON",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "巴西",
+          "type": "GPE",
+          "start": 37,
+          "end": 38
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '该公司'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_029",
+      "text": "华能、大唐、华电三家发电央企近日联合发布了《煤电低碳化改造行动方案》。华能方面表示将在2026年前完成首批机组改造。",
+      "mention": "华能",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0003",
+      "scenario": "长文本多实体共现消歧",
+      "difficulty": "medium",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '华能'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_030",
+      "text": "中广核大亚湾核电运营管理有限责任公司近日完成了大亚湾核电站年度大修工作，2号机组已并网发电。",
+      "mention": "中广核",
+      "mention_start": 0,
+      "mention_end": 3,
+      "gold_entity": "ENT_ENERGY_0011",
+      "scenario": "长文本嵌套实体消歧",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "中广核大亚湾核电运营管理有限责任公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 9
+        },
+        {
+          "mention": "大亚湾核电站",
+          "type": "ORG",
+          "start": 12,
+          "end": 14
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "中广核大亚湾核电运营管理有限责任公司",
+        "type": "ORG",
+        "start": 0,
+        "end": 9
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_031",
+      "text": "国能集团旗下国电电力发展股份有限公司2025年计划新增风光装机500万千瓦。国能集团董事长表示，将坚定不移推进绿色低碳转型。",
+      "mention": "国能集团",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0005",
+      "scenario": "长文本多mention共指验证",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "国能集团",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "mention": "国电电力发展股份有限公司",
+          "type": "ORG",
+          "start": 3,
+          "end": 8
+        },
+        {
+          "mention": "国能集团",
+          "type": "ORG",
+          "start": 16,
+          "end": 18
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "国能集团",
+        "type": "ORG",
+        "start": 0,
+        "end": 2
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_032",
+      "text": "State Grid Corporation of China近日在国际能源署会议上展示了±1100kV特高压直流输电技术的最新成果。SGCC方面表示，将积极推动全球能源互联网建设。",
+      "mention": "SGCC",
+      "mention_start": 67,
+      "mention_end": 71,
+      "gold_entity": "ENT_ENERGY_0001",
+      "scenario": "英文全称→缩写共指 + 跨形态链接",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "国际能源署",
+          "type": "ORG",
+          "start": 7,
+          "end": 9
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 'SGCC'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_033",
+      "text": "中核集团近日宣布华龙一号海外首堆——巴基斯坦卡拉奇3号机组正式投入商业运行。",
+      "mention": "中核集团",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0034",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "中核",
+          "type": "ORG",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "巴基斯坦",
+          "type": "GPE",
+          "start": 11,
+          "end": 12
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "中核",
+        "type": "ORG",
+        "start": 0,
+        "end": 1
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_034",
+      "text": "中核与中广核联合研发的华龙一号已成为中国核电走出去的名片，已在多个国家落地。",
+      "mention": "中核",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0034",
+      "scenario": "同名异义消歧（中核 vs 中广核）",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "中国",
+          "type": "GPE",
+          "start": 12,
+          "end": 13
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '中核'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_035",
+      "text": "通威在乐山和包头的硅料产能已位居全球第一，为下游电池片生产提供了充足的原料保障。",
+      "mention": "通威",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0036",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "通威",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "乐山",
+          "type": "GPE",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "mention": "包头",
+          "type": "GPE",
+          "start": 4,
+          "end": 5
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "通威",
+        "type": "GPE",
+        "start": 0,
+        "end": 1
+      },
+      "type_match": true,
+      "type_match_detail": "type_mapped",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_036",
+      "text": "阳光电源在2025年SNEC展会上发布了全新一代320kW组串式逆变器，转换效率达到99.1%。",
+      "mention": "阳光电源",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0037",
+      "scenario": "标准名直接匹配",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '阳光电源'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_037",
+      "text": "亿纬锂能近日公告将在匈牙利建设首个欧洲电池工厂，总投资额约10亿欧元。",
+      "mention": "亿纬锂能",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0038",
+      "scenario": "标准名直接匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "匈牙利",
+          "type": "GPE",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "mention": "欧洲",
+          "type": "GPE",
+          "start": 10,
+          "end": 11
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '亿纬锂能'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_038",
+      "text": "白鹤滩水电站最后一台机组正式投产发电，标志着世界第二大水电站全面投产。白鹤滩电站的投产使金沙江下游清洁能源基地总装机超过6000万千瓦。",
+      "mention": "白鹤滩",
+      "mention_start": 0,
+      "mention_end": 3,
+      "gold_entity": "ENT_ENERGY_0039",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "白鹤滩水电站",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "mention": "白鹤滩电站",
+          "type": "ORG",
+          "start": 19,
+          "end": 21
+        },
+        {
+          "mention": "金沙江",
+          "type": "GPE",
+          "start": 24,
+          "end": 25
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "白鹤滩水电站",
+        "type": "ORG",
+        "start": 0,
+        "end": 2
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_039",
+      "text": "张北柔直工程自投运以来已累计向北京输送绿电超过300亿千瓦时，相当于减少标准煤消耗约900万吨。",
+      "mention": "张北柔直",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0041",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "北京",
+          "type": "GPE",
+          "start": 9,
+          "end": 10
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '张北柔直'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_040",
+      "text": "绿证交易量在2025年上半年同比增长超过200%，越来越多的企业通过购买绿证来实现碳中和目标。",
+      "mention": "绿证",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0043",
+      "scenario": "专业术语别名匹配",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '绿证'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_041",
+      "text": "雄安新区正在建设全国首个全绿色能源供电示范区，所有新建建筑全部采用分布式光伏和地源热泵。",
+      "mention": "雄安",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0046",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "雄安",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "新区",
+          "type": "GPE",
+          "start": 1,
+          "end": 2
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "雄安",
+        "type": "GPE",
+        "start": 0,
+        "end": 1
+      },
+      "type_match": true,
+      "type_match_detail": "type_mapped",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_042",
+      "text": "中国电科院在特高压变压器故障诊断方面取得突破性进展，基于人工智能的预警准确率超过95%。",
+      "mention": "中国电科院",
+      "mention_start": 0,
+      "mention_end": 5,
+      "gold_entity": "ENT_ENERGY_0050",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "中国电科院",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "中国电科院",
+        "type": "ORG",
+        "start": 0,
+        "end": 2
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_043",
+      "text": "酒泉千万千瓦级风电基地年发电量已超过400亿千瓦时，通过特高压直流线路送至华中地区。",
+      "mention": "酒泉",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_ENERGY_0047",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "酒泉",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "华中地区",
+          "type": "GPE",
+          "start": 19,
+          "end": 21
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "酒泉",
+        "type": "GPE",
+        "start": 0,
+        "end": 1
+      },
+      "type_match": true,
+      "type_match_detail": "type_mapped",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_044",
+      "text": "鄂尔多斯正在从煤炭之城向氢能之都转型，已建成西部地区首个万吨级绿氢制备基地。鄂尔多斯方面表示将力争2030年氢能产值突破千亿元。",
+      "mention": "鄂尔多斯",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0048",
+      "scenario": "长文本多mention共指验证",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "鄂尔多斯",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "鄂尔多斯",
+          "type": "GPE",
+          "start": 24,
+          "end": 25
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "鄂尔多斯",
+        "type": "GPE",
+        "start": 0,
+        "end": 1
+      },
+      "type_match": true,
+      "type_match_detail": "type_mapped",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_045",
+      "text": "中国电科院和电规总院近日联合发布了新型电力系统技术路线图2.0版，涵盖了虚拟电厂、分布式光伏、智慧电网等多个关键技术方向。",
+      "mention": "电规总院",
+      "mention_start": 6,
+      "mention_end": 10,
+      "gold_entity": "ENT_ENERGY_0049",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "中国电科院",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "mention": "电规总院",
+          "type": "ORG",
+          "start": 3,
+          "end": 5
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '电规总院'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_046",
+      "text": "华润电力2025年新增新能源装机容量达到800万千瓦，其中风电400万千瓦、光伏400万千瓦，清洁能源占比首次突破60%。",
+      "mention": "华润电力",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_ENERGY_0035",
+      "scenario": "标准名直接匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "华润电力",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "华润电力",
+        "type": "ORG",
+        "start": 0,
+        "end": 2
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_047",
+      "text": "酒泉市近年来大力发展新能源装备制造业，金风科技、远景能源等风电龙头均在酒泉设立了生产基地。",
+      "mention": "酒泉",
+      "mention_start": 35,
+      "mention_end": 37,
+      "gold_entity": "ENT_ENERGY_0047",
+      "scenario": "上下文消歧（非句首mention）",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "酒泉市",
+          "type": "GPE",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "酒泉",
+          "type": "GPE",
+          "start": 20,
+          "end": 21
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '酒泉'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_048",
+      "text": "华为在2025年华为全联接大会上发布了昇腾910C AI芯片，算力较上一代提升3倍。",
+      "mention": "华为",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0051",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '华为'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_049",
+      "text": "腾讯2025年第三季度财报显示，微信月活用户突破14亿，视频号广告收入同比增长80%。腾讯云业务也实现了盈利。",
+      "mention": "腾讯",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0052",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '腾讯'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_050",
+      "text": "SMIC近日宣布其14nm工艺良率达到业界主流水平，28nm产能利用率持续满载。",
+      "mention": "SMIC",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0054",
+      "scenario": "英文别名匹配",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 'SMIC'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_051",
+      "text": "工行2025年半年报显示，普惠金融贷款余额突破3万亿元，服务小微企业超过200万户。",
+      "mention": "工行",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0055",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '工行'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_052",
+      "text": "平安不仅是一家保险公司，平安好医生和陆金所等平台也体现了其在金融科技和医疗健康领域的深度布局。",
+      "mention": "平安",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0056",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "平安好医生",
+          "type": "ORG",
+          "start": 8,
+          "end": 10
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '平安'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_053",
+      "text": "蔚来2025年交付量突破50万辆，换电站数量超过5000座，覆盖全国所有地级市。",
+      "mention": "蔚来",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0059",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "蔚来",
+          "type": "PERSON",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "蔚来",
+        "type": "PERSON",
+        "start": 0,
+        "end": 1
+      },
+      "type_match": true,
+      "type_match_detail": "type_mapped",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_054",
+      "text": "国家能源局近日发布了新型储能项目管理规范，明确独立储能的市场主体地位和并网调度规则。",
+      "mention": "国家能源局",
+      "mention_start": 0,
+      "mention_end": 5,
+      "gold_entity": "ENT_GEN_0060",
+      "scenario": "标准名直接匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "国家能源局",
+        "type": "ORG",
+        "start": 0,
+        "end": 2
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_055",
+      "text": "清华大学能源互联网研究院在虚拟电厂和分布式能源优化调度方面取得了重要研究进展。",
+      "mention": "清华",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0061",
+      "scenario": "简称匹配",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "清华大学能源互联网研究院",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        }
+      ],
+      "mention_found": true,
+      "matched_entity": {
+        "mention": "清华大学能源互联网研究院",
+        "type": "ORG",
+        "start": 0,
+        "end": 5
+      },
+      "type_match": true,
+      "type_match_detail": "type_match",
+      "errors": [],
+      "warnings": [],
+      "status": "success"
+    },
+    {
+      "sample_id": "EVAL_056",
+      "text": "BYD不仅在新能源汽车领域领先，其储能业务也快速增长，比亚迪电池已应用于多个国家的电网级储能项目。",
+      "mention": "BYD",
+      "mention_start": 0,
+      "mention_end": 3,
+      "gold_entity": "ENT_GEN_0058",
+      "scenario": "跨行业多角色消歧",
+      "difficulty": "medium",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 'BYD'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_057",
+      "text": "微信支付已经覆盖了超过5000万商户，微信小程序日活用户突破6亿。",
+      "mention": "微信",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0062",
+      "scenario": "标准名直接匹配",
+      "difficulty": "easy",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '微信'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_058",
+      "text": "国家电网2024年实现营收3.8万亿元，其净利润首次突破1000亿元。该公司计划在2025年将研发投入提升至500亿元。",
+      "mention": "其",
+      "mention_start": 22,
+      "mention_end": 23,
+      "gold_entity": "ENT_ENERGY_0001",
+      "scenario": "共指消解——代词回指（其）",
+      "difficulty": "medium",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '其'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_059",
+      "text": "腾讯发布了混元大模型新版本，它支持万亿参数规模的训练和推理，在多个基准测试中达到国际领先水平。",
+      "mention": "它",
+      "mention_start": 11,
+      "mention_end": 12,
+      "gold_entity": "ENT_GEN_0052",
+      "scenario": "共指消解——代词回指（它）",
+      "difficulty": "medium",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '它'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_060",
+      "text": "任正非在华为内部会议上强调，他相信华为能够在AI时代继续保持技术领先地位。",
+      "mention": "他",
+      "mention_start": 15,
+      "mention_end": 16,
+      "gold_entity": "ENT_PER_BIZ_0001",
+      "scenario": "共指消解——代词回指（人称代词）",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "任正非",
+          "type": "PERSON",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '他'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_061",
+      "text": "中国南方电网有限责任公司发布2025年投资计划。这家电力央企将在未来三年投入超过2000亿元用于新型电力系统建设。",
+      "mention": "这家电力央企",
+      "mention_start": 18,
+      "mention_end": 24,
+      "gold_entity": "ENT_ENERGY_0002",
+      "scenario": "共指消解——名词回指（这家+类别词）",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 6
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '这家电力央企'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_062",
+      "text": "隆基绿能在BC电池技术上取得突破。该企业表示，新技术将使光伏组件量产效率突破27%。",
+      "mention": "该企业",
+      "mention_start": 16,
+      "mention_end": 19,
+      "gold_entity": "ENT_ENERGY_0026",
+      "scenario": "共指消解——名词回指（该+类别词）",
+      "difficulty": "medium",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '该企业'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_063",
+      "text": "中国石油天然气集团有限公司（以下简称中石油）2025年油气产量创历史新高。中石油方面表示将加大新能源投资力度。",
+      "mention": "中石油",
+      "mention_start": 14,
+      "mention_end": 17,
+      "gold_entity": "ENT_ORG_SOE_0003",
+      "scenario": "共指消解——简称-全称共指（显式定义）",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG",
+          "start": 0,
+          "end": 5
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '中石油'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_064",
+      "text": "工业与信息化部日前发布了5G发展规划。工信部相关负责人表示，2026年将实现全国地级市5G网络全覆盖。",
+      "mention": "工信部",
+      "mention_start": 16,
+      "mention_end": 19,
+      "gold_entity": null,
+      "scenario": "共指消解——简称-全称共指（隐式）",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "工业与信息化部",
+          "type": "ORG",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "mention": "工信部",
+          "type": "ORG",
+          "start": 10,
+          "end": 11
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '工信部'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_065",
+      "text": "华为在深圳总部发布了最新AI战略。华为轮值董事长表示，华为将持续加大在AI芯片领域的投入。华为计划到2028年实现AI算力全球领先。",
+      "mention": "华为",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0051",
+      "scenario": "共指消解——重复mention一致性",
+      "difficulty": "easy",
+      "ner_entities": [
+        {
+          "mention": "深圳",
+          "type": "GPE",
+          "start": 2,
+          "end": 3
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '华为'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_066",
+      "text": "CATL（宁德时代新能源科技股份有限公司）2025年全球动力电池市占率达到38%。宁德时代董事长表示将继续扩大海外产能。",
+      "mention": "宁德时代",
+      "mention_start": 7,
+      "mention_end": 11,
+      "gold_entity": "ENT_ENERGY_0015",
+      "scenario": "共指消解——中英文共指（显式定义）",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "CATL",
+          "type": "PERSON",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "宁德时代新能源科技股份有限公司",
+          "type": "ORG",
+          "start": 2,
+          "end": 9
+        },
+        {
+          "mention": "宁德",
+          "type": "GPE",
+          "start": 18,
+          "end": 19
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "未完全匹配 '宁德时代'"
+      ],
+      "warnings": [
+        "部分匹配: 找到 1 个重叠实体"
+      ],
+      "status": "partial"
+    },
+    {
+      "sample_id": "EVAL_067",
+      "text": "比亚迪近日发布了2025年ESG报告。BYD在报告中承诺2035年实现全产业链碳中和。比亚迪董事长王传福表示将加速海外市场布局。",
+      "mention": "BYD",
+      "mention_start": 15,
+      "mention_end": 18,
+      "gold_entity": "ENT_ENERGY_0016",
+      "scenario": "共指消解——中英文共指（隐式alias匹配）",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "比亚迪",
+          "type": "PERSON",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "比亚迪",
+          "type": "PERSON",
+          "start": 20,
+          "end": 21
+        },
+        {
+          "mention": "王传福",
+          "type": "PERSON",
+          "start": 22,
+          "end": 23
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 'BYD'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_068",
+      "text": "国家电网和南方电网分别发布年度报告。前者营收3.8万亿元，后者营收1.2万亿元。两家央企均加大了新能源投资力度。",
+      "mention": "两家央企",
+      "mention_start": 32,
+      "mention_end": 36,
+      "gold_entity": null,
+      "scenario": "共指消解——集合回指→NIL",
+      "difficulty": "hard",
+      "ner_entities": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "start": 0,
+          "end": 2
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '两家央企'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_069",
+      "text": "华为在5G领域持续领先，其研发投入占营收比例超过20%。未来它将继续深化在AI和云计算领域的布局。",
+      "mention": "它",
+      "mention_start": 24,
+      "mention_end": 25,
+      "gold_entity": "ENT_GEN_0051",
+      "scenario": "共指消解——链式共指（多跳指代）",
+      "difficulty": "hard",
+      "ner_entities": [],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '它'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    },
+    {
+      "sample_id": "EVAL_070",
+      "text": "张三担任华为技术有限公司首席科学家。他曾在清华大学获得博士学位，目前他领导华为的AI研究院。",
+      "mention": "他",
+      "mention_start": 15,
+      "mention_end": 16,
+      "gold_entity": "ENT_PER_BIZ_0001",
+      "scenario": "共指消解——多实体场景代词消歧",
+      "difficulty": "medium",
+      "ner_entities": [
+        {
+          "mention": "张三",
+          "type": "PERSON",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "mention": "华为技术有限公司",
+          "type": "ORG",
+          "start": 2,
+          "end": 5
+        },
+        {
+          "mention": "清华大学",
+          "type": "ORG",
+          "start": 11,
+          "end": 12
+        }
+      ],
+      "mention_found": false,
+      "matched_entity": null,
+      "type_match": false,
+      "type_match_detail": "",
+      "errors": [
+        "完全未识别 '他'"
+      ],
+      "warnings": [],
+      "status": "missed"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ try:
     from sentence_transformers import SentenceTransformer
     import os
 
-    model_path = "./models_cache/bge-small-zh"
+    model_path = "../models_cache/bge-small-zh"
 
     # 检查模型文件是否存在
     if os.path.exists(model_path):
