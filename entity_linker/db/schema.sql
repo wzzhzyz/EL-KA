@@ -55,3 +55,31 @@ CREATE TABLE IF NOT EXISTS audit_log (
 CREATE INDEX IF NOT EXISTS idx_mention_doc ON mention(doc_id);
 CREATE INDEX IF NOT EXISTS idx_candidate_mention ON candidate(mention_id);
 CREATE INDEX IF NOT EXISTS idx_link_mention ON link_result(mention_id);
+
+-- 管道运行跟踪（记录每次 pipeline 执行的元数据，便于审计与回放）
+CREATE TABLE IF NOT EXISTS pipeline_run (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    run_id TEXT UNIQUE NOT NULL,        -- 外部可传的 trace/run id
+    task_name TEXT,                     -- 例如: entity_linking_batch
+    status TEXT,                        -- running|success|failed
+    start_ts TEXT DEFAULT (datetime('now')),
+    end_ts TEXT,
+    actor TEXT,                         -- 哪个服务/节点触发
+    metadata TEXT                       -- JSON 文本，记录参数、环境、模型版本等
+);
+
+CREATE INDEX IF NOT EXISTS idx_pipeline_run_runid ON pipeline_run(run_id);
+
+-- 模型/组件注册表（用于记录模型版本与元信息，便于结果可追溯）
+CREATE TABLE IF NOT EXISTS model_registry (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    model_name TEXT NOT NULL,
+    model_version TEXT NOT NULL,
+    provider TEXT,
+    description TEXT,
+    created_at TEXT DEFAULT (datetime('now')),
+    metadata TEXT
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_model_name_version ON model_registry(model_name, model_version);
+
