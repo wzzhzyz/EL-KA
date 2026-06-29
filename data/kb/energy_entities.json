@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "kb_version": "2.0.0",
+  "kb_version": "2.1.0",
   "kb_name": "entity_linking_kb",
   "kb_description": "多行业实体链接知识库——覆盖能源、科技、金融、汽车、教育等领域的实体，面向课题10实体链接与知识对齐智能体，支持热插拔和行业切换",
   "entity_type_enum": {
@@ -168,6 +168,30 @@
           "alias_type": "英文",
           "priority": 0.7,
           "confidence": 1.0
+        },
+        {
+          "name": "国家电力公司",
+          "alias_type": "曾用名",
+          "priority": 0.55,
+          "confidence": 0.8
+        },
+        {
+          "name": "囯网",
+          "alias_type": "俗称",
+          "priority": 0.5,
+          "confidence": 0.6
+        },
+        {
+          "name": "国家电网有 限公司",
+          "alias_type": "俗称",
+          "priority": 0.3,
+          "confidence": 0.4
+        },
+        {
+          "name": "国网公司",
+          "alias_type": "简称",
+          "priority": 0.7,
+          "confidence": 1.0
         }
       ],
       "abbreviation": "国网",
@@ -252,6 +276,12 @@
           "name": "China Southern Power Grid",
           "alias_type": "英文",
           "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "南网公司",
+          "alias_type": "简称",
+          "priority": 0.65,
           "confidence": 1.0
         }
       ],
@@ -400,6 +430,12 @@
           "alias_type": "英文",
           "priority": 0.6,
           "confidence": 1.0
+        },
+        {
+          "name": "中国大唐集团公司",
+          "alias_type": "曾用名",
+          "priority": 0.75,
+          "confidence": 0.9
         }
       ],
       "abbreviation": "大唐",
@@ -472,6 +508,18 @@
           "alias_type": "英文",
           "priority": 0.65,
           "confidence": 1.0
+        },
+        {
+          "name": "神华集团有限责任公司",
+          "alias_type": "曾用名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "中国国电集团公司",
+          "alias_type": "曾用名",
+          "priority": 0.7,
+          "confidence": 0.9
         }
       ],
       "abbreviation": "国能",
@@ -546,6 +594,12 @@
           "name": "State Power Investment Corporation",
           "alias_type": "英文",
           "priority": 0.55,
+          "confidence": 1.0
+        },
+        {
+          "name": "国家电投集团",
+          "alias_type": "简称",
+          "priority": 0.75,
           "confidence": 1.0
         }
       ],
@@ -624,6 +678,12 @@
           "alias_type": "英文",
           "priority": 0.6,
           "confidence": 1.0
+        },
+        {
+          "name": "中国华电集团公司",
+          "alias_type": "曾用名",
+          "priority": 0.7,
+          "confidence": 0.9
         }
       ],
       "abbreviation": "华电",
@@ -918,6 +978,12 @@
           "alias_type": "英文",
           "priority": 0.55,
           "confidence": 1.0
+        },
+        {
+          "name": "中广核集团",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 1.0
         }
       ],
       "abbreviation": "中广核",
@@ -1206,6 +1272,18 @@
           "name": "宁德",
           "alias_type": "简称",
           "priority": 0.45,
+          "confidence": 0.6
+        },
+        {
+          "name": "宁德新能源科技有限公司",
+          "alias_type": "曾用名",
+          "priority": 0.55,
+          "confidence": 0.7
+        },
+        {
+          "name": "宁徳时代",
+          "alias_type": "俗称",
+          "priority": 0.5,
           "confidence": 0.6
         }
       ],
@@ -2048,6 +2126,12 @@
           "alias_type": "简称",
           "priority": 0.85,
           "confidence": 1.0
+        },
+        {
+          "name": "宝安县",
+          "alias_type": "曾用名",
+          "priority": 0.3,
+          "confidence": 0.7
         }
       ],
       "abbreviation": "深",
@@ -2134,6 +2218,12 @@
           "alias_type": "简称",
           "priority": 0.85,
           "confidence": 1.0
+        },
+        {
+          "name": "北平",
+          "alias_type": "曾用名",
+          "priority": 0.35,
+          "confidence": 0.7
         }
       ],
       "abbreviation": "京",
@@ -2553,6 +2643,12 @@
           "name": "CNNC",
           "alias_type": "英文",
           "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "中核工业",
+          "alias_type": "简称",
+          "priority": 0.8,
           "confidence": 1.0
         }
       ],
@@ -3648,6 +3744,18 @@
           "alias_type": "英文",
           "priority": 0.5,
           "confidence": 1.0
+        },
+        {
+          "name": "华为技术有限公司",
+          "alias_type": "曾用名",
+          "priority": 0.6,
+          "confidence": 0.8
+        },
+        {
+          "name": "华カ",
+          "alias_type": "俗称",
+          "priority": 0.5,
+          "confidence": 0.5
         }
       ],
       "abbreviation": "华为",
@@ -3710,6 +3818,12 @@
           "alias_type": "简称",
           "priority": 0.7,
           "confidence": 1.0
+        },
+        {
+          "name": "騰訊",
+          "alias_type": "俗称",
+          "priority": 0.7,
+          "confidence": 0.9
         }
       ],
       "abbreviation": "腾讯",
@@ -3772,6 +3886,12 @@
           "name": "Alibaba",
           "alias_type": "英文",
           "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "阿里集团",
+          "alias_type": "简称",
+          "priority": 0.72,
           "confidence": 1.0
         }
       ],
@@ -3896,6 +4016,12 @@
           "alias_type": "英文",
           "priority": 0.85,
           "confidence": 1.0
+        },
+        {
+          "name": "中国工商银行",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
         }
       ],
       "abbreviation": "工行",
@@ -3957,6 +4083,12 @@
           "name": "Ping An",
           "alias_type": "英文",
           "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "平安集团",
+          "alias_type": "简称",
+          "priority": 0.78,
           "confidence": 1.0
         }
       ],
@@ -4139,6 +4271,12 @@
           "name": "蔚来汽车",
           "alias_type": "简称",
           "priority": 0.82,
+          "confidence": 1.0
+        },
+        {
+          "name": "蔚来公司",
+          "alias_type": "简称",
+          "priority": 0.7,
           "confidence": 1.0
         }
       ],
