@@ -1,0 +1,223 @@
+{
+  "dataset_name": "candidate_retrieval_validation",
+  "version": "1.0",
+  "purpose": "候选生成召回率校验——同名异指、模糊匹配、BGE语义召回",
+  "candidate_methods": ["alias_exact", "alias_fuzzy", "bm25", "dense_vector"],
+  "samples": [
+    {
+      "id": "CR_001",
+      "text": "国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+      "mention": "国网",
+      "expected_candidates": ["ENT_ENERGY_0001", "ENT_ENERGY_0009", "ENT_ENERGY_0010"],
+      "gold_entity": "ENT_ENERGY_0001",
+      "gold_reason": "全网战略部署→母公司",
+      "scenario": "同名异指-三候选",
+      "note": "mention='国网'在KB中为三个实体的alias，候选生成应返回全部三个"
+    },
+    {
+      "id": "CR_002",
+      "text": "国网新源今年新投产了两座抽水蓄能电站。",
+      "mention": "国网新源",
+      "expected_candidates": ["ENT_ENERGY_0010"],
+      "gold_entity": "ENT_ENERGY_0010",
+      "gold_reason": "精确命中子公司全称",
+      "scenario": "精确匹配-单候选",
+      "note": "mention='国网新源'精确命中，候选应仅返回ENT_ENERGY_0010"
+    },
+    {
+      "id": "CR_003",
+      "text": "三峡大坝今年汛期累计拦蓄洪水超过200亿立方米。",
+      "mention": "三峡大坝",
+      "expected_candidates": ["ENT_ENERGY_0012"],
+      "gold_entity": "ENT_ENERGY_0012",
+      "gold_reason": "精确命中设施别名",
+      "scenario": "精确匹配-单候选",
+      "note": "mention='三峡大坝'精确命中三峡水电站的alias"
+    },
+    {
+      "id": "CR_004",
+      "text": "三峡集团正加速推进金沙江下游水风光一体化基地建设。",
+      "mention": "三峡集团",
+      "expected_candidates": ["ENT_ENERGY_0008"],
+      "gold_entity": "ENT_ENERGY_0008",
+      "gold_reason": "精确命中企业简称",
+      "scenario": "精确匹配-单候选",
+      "note": "验证'三峡大坝'和'三峡集团'分别返回不同实体"
+    },
+    {
+      "id": "CR_005",
+      "text": "华能2024年清洁能源装机占比首次突破50%。",
+      "mention": "华能",
+      "expected_candidates": ["ENT_ENERGY_0003"],
+      "gold_entity": "ENT_ENERGY_0003",
+      "gold_reason": "简称精确命中华能集团",
+      "scenario": "精确匹配-单候选",
+      "note": "mention='华能'精确命中华能集团的abbreviation"
+    },
+    {
+      "id": "CR_006",
+      "text": "华电集团天然气发电装机容量位居全国第一。",
+      "mention": "华电",
+      "expected_candidates": ["ENT_ENERGY_0007"],
+      "gold_entity": "ENT_ENERGY_0007",
+      "gold_reason": "简称精确命中华电集团",
+      "scenario": "精确匹配-应区分华能华电",
+      "note": "验证'华能'和'华电'作为不同实体被正确召回(一字之差)"
+    },
+    {
+      "id": "CR_007",
+      "text": "宁德时代近日发布了第三代钠离子电池。",
+      "mention": "宁德时代",
+      "expected_candidates": ["ENT_ENERGY_0015"],
+      "gold_entity": "ENT_ENERGY_0015",
+      "gold_reason": "标准名精确命中",
+      "scenario": "标准名匹配",
+      "note": "mention使用完整标准名称"
+    },
+    {
+      "id": "CR_008",
+      "text": "CATL与特斯拉签订了新的供货协议。",
+      "mention": "CATL",
+      "expected_candidates": ["ENT_ENERGY_0015"],
+      "gold_entity": "ENT_ENERGY_0015",
+      "gold_reason": "英文别名精确命中",
+      "scenario": "英文别名匹配",
+      "note": "英文缩写精确命中中文实体的英文alias"
+    },
+    {
+      "id": "CR_009",
+      "text": "中核集团华龙一号海外首堆在巴基斯坦投入商业运行。",
+      "mention": "中核",
+      "expected_candidates": ["ENT_ENERGY_0034"],
+      "gold_entity": "ENT_ENERGY_0034",
+      "gold_reason": "简称精确命中中核集团",
+      "scenario": "两字简称",
+      "note": "两字简称'中核'精确命中"
+    },
+    {
+      "id": "CR_010",
+      "text": "中广核正在广东阳江建设百万千瓦级海上风电基地。",
+      "mention": "中广核",
+      "expected_candidates": ["ENT_ENERGY_0011"],
+      "gold_entity": "ENT_ENERGY_0011",
+      "gold_reason": "简称精确命中",
+      "scenario": "三字简称-应区分中核中广核",
+      "note": "验证'中核'和'中广核'一字之差召回不同实体"
+    },
+    {
+      "id": "CR_011",
+      "text": "塔拉滩光伏基地年发电量占青海新能源发电三分之一。",
+      "mention": "塔拉滩光伏基地",
+      "expected_candidates": ["ENT_ENERGY_0014"],
+      "gold_entity": "ENT_ENERGY_0014",
+      "gold_reason": "非标别名召回",
+      "scenario": "非标别名-考验召回",
+      "note": "mention='塔拉滩光伏基地'，KB中alias为'塔拉滩光伏基地'(type=俗称,conf=0.8)，应能召回"
+    },
+    {
+      "id": "CR_012",
+      "text": "囯网公司近日宣布在西北地区新建三条特高压输电线路。",
+      "mention": "囯网",
+      "expected_candidates": ["ENT_ENERGY_0001"],
+      "gold_entity": "ENT_ENERGY_0001",
+      "gold_reason": "OCR容错-模糊匹配召回",
+      "scenario": "模糊匹配-编辑距离1",
+      "note": "mention='囯网'(OCR错误)，精确匹配失败→编辑距离1模糊匹配应召回ENT_0001"
+    },
+    {
+      "id": "CR_013",
+      "text": "宁徳时代新能源科技股份有限公司发布新产品。",
+      "mention": "宁徳时代",
+      "expected_candidates": ["ENT_ENERGY_0015"],
+      "gold_entity": "ENT_ENERGY_0015",
+      "gold_reason": "异体字-模糊匹配召回",
+      "scenario": "模糊匹配-异体字",
+      "note": "徳(日本汉字)→德(简体)，编辑距离1"
+    },
+    {
+      "id": "CR_014",
+      "text": "清华能源互联网研究院发布了最新研究成果。",
+      "mention": "清华",
+      "expected_candidates": ["ENT_GEN_0061"],
+      "gold_entity": "ENT_GEN_0061",
+      "gold_reason": "两字简称精确命中",
+      "scenario": "教育机构简称",
+      "note": "两字简称'清华'精确命中清华大学"
+    },
+    {
+      "id": "CR_015",
+      "text": "招商银行近日发布了年度报告，招行零售业务增长迅速。",
+      "mention": "招行",
+      "expected_candidates": ["ENT_GEN_0057"],
+      "gold_entity": "ENT_GEN_0057",
+      "gold_reason": "两字简称精确命中",
+      "scenario": "金融机构简称",
+      "note": "两字简称'招行'精确命中"
+    },
+    {
+      "id": "CR_016",
+      "text": "工信部发布了5G发展规划。",
+      "mention": "工信部",
+      "expected_candidates": [],
+      "gold_entity": null,
+      "gold_reason": "NIL-不在KB中",
+      "scenario": "NIL-候选为空",
+      "note": "mention='工信部'不在KB中，候选生成应为空列表"
+    },
+    {
+      "id": "CR_017",
+      "text": "阳光新能源是一家专注于光伏逆变器的创新企业。",
+      "mention": "阳光新能源",
+      "expected_candidates": [],
+      "gold_entity": null,
+      "gold_reason": "NIL-不在KB中",
+      "scenario": "NIL-候选为空",
+      "note": "注意：KB中有'阳光电源'(ENT_ENERGY_0037)，但'阳光新能源'是不同实体→不应召回阳光电源"
+    },
+    {
+      "id": "CR_018",
+      "text": "比亚迪近日发布了刀片电池新一代产品。BYD表示新电池将首先搭载于旗舰车型。",
+      "mention": "比亚迪",
+      "expected_candidates": ["ENT_ENERGY_0016", "ENT_GEN_0058"],
+      "gold_entity": "ENT_GEN_0058",
+      "gold_reason": "汽车语境→汽车制造商",
+      "scenario": "同名异指-双角色实体",
+      "note": "比亚迪在KB中有两个entity_id(能源角色+汽车角色)，候选生成应返回两者"
+    },
+    {
+      "id": "CR_019",
+      "text": "国家电网在2024年《财富》世界500强中排名第三。",
+      "mention": "国家电网",
+      "expected_candidates": ["ENT_ENERGY_0001"],
+      "gold_entity": "ENT_ENERGY_0001",
+      "gold_reason": "别名精确命中",
+      "scenario": "精确匹配-四字简称",
+      "note": "mention='国家电网'是'国家电网有限公司'的alias(type=简称)"
+    },
+    {
+      "id": "CR_020",
+      "text": "双碳目标提出后，各行业加快了绿色转型步伐。",
+      "mention": "双碳",
+      "expected_candidates": ["ENT_ENERGY_0020"],
+      "gold_entity": "ENT_ENERGY_0020",
+      "gold_reason": "专业术语简称精确命中",
+      "scenario": "专业术语匹配",
+      "note": "mention='双碳'是'碳中和'的abbreviation"
+    }
+  ],
+  "statistics": {
+    "total_samples": 20,
+    "scenario_distribution": {
+      "精确匹配-单候选": 12,
+      "同名异指-多候选": 3,
+      "模糊匹配-容错": 2,
+      "NIL-候选为空": 2,
+      "非标别名": 1
+    },
+    "expected_recall_targets": {
+      "alias_exact": "16/18 = 88.9% (精确匹配应召回的非NIL样本)",
+      "alias_fuzzy": "18/18 = 100% (含模糊匹配后)",
+      "overall_recall_at_5": "18/18 = 100%"
+    }
+  }
+}
