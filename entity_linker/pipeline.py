@@ -7,13 +7,14 @@
 
 当前实现为最小可运行骨架，后续可替换具体模块实现（NER、候选召回、消歧等）。
 """
+
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any, Callable, Dict, List, Optional
 
-from .utils.trace import new_trace_id, get_current_trace_id, trace_context
-
+from .exceptions import PipelineError
+from .utils.trace import new_trace_id, trace_context
 
 StageCallable = Callable[[Dict[str, Any]], Dict[str, Any]]
 
@@ -33,7 +34,9 @@ class Pipeline:
         """注册一个阶段函数。阶段函数接受并返回 context(dict)。"""
         self.stages.append(PipelineStage(name=name, fn=fn))
 
-    def run(self, context: Optional[Dict[str, Any]] = None, trace_id: Optional[str] = None) -> Dict[str, Any]:
+    def run(
+        self, context: Optional[Dict[str, Any]] = None, trace_id: Optional[str] = None
+    ) -> Dict[str, Any]:
         ctx = context.copy() if context else {}
         ctx.setdefault("trace_id", trace_id or new_trace_id())
         ctx.setdefault("pipeline_name", self.name)
@@ -45,9 +48,12 @@ class Pipeline:
                     ctx = stage.fn(ctx) or ctx
                     ctx["stage_log"].append({"stage": stage.name, "status": "ok"})
                 except Exception as e:
-                    ctx["stage_log"].append({"stage": stage.name, "status": "error", "error": str(e)})
-                    # propagate after logging
-                    raise
+                    ctx["stage_log"].append(
+                        {"stage": stage.name, "status": "error", "error": str(e)}
+                    )
+                    raise PipelineError(
+                        f"Pipeline stage '{stage.name}' failed: {e}"
+                    ) from e
 
         return ctx
 

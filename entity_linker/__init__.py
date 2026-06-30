@@ -6,6 +6,7 @@ from .models import (
     LINKABLE_TYPES,
     PRONOUN_TYPES,
     TYPE_MAPPING,
+    Candidate,
     StandardEntity,
     StandardMention,
 )
@@ -35,6 +36,7 @@ __all__ = [
     "validate_schema",
     "StandardMention",
     "StandardEntity",
+    "Candidate",
     "LINKABLE_TYPES",
     "PRONOUN_TYPES",
     "ALL_TYPES",
