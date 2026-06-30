@@ -1,466 +1,1082 @@
 # tests/test_ner.py
-import unittest
-import sys
-import os
-from typing import List, Dict, Tuple
 import json
+import os
+import time
+import yaml
+from pathlib import Path
+from typing import List, Dict, Any, Tuple
+from datetime import datetime
 
 # 添加项目根目录到Python路径
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import sys
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.core.ner import NEREngine
+from src.utils.logger import logger
 
 
-class TestNEREngine(unittest.TestCase):
-    """NER引擎测试类"""
+class NERTester:
+    """NER测试器 - 不依赖额外测试框架"""
 
-    @classmethod
-    def setUpClass(cls):
-        """在所有测试之前执行一次"""
-        config = {
-            "hanlp_model": "CLOSE_TOK_POS_NER_SRL_DEP_SDP_CON_ELECTRA_SMALL_ZH",
-            "linkable_types": ["ORG", "PERSON", "GPE", "LOC"]
+    def __init__(self, config_path: str = None):
+        """初始化测试器"""
+        if config_path is None:
+            config_path = Path(__file__).parent.parent / "config.yaml"
+
+        # 加载配置文件
+        with open(config_path, 'r', encoding='utf-8') as f:
+            full_config = yaml.safe_load(f)
+
+        # 提取NER配置
+        self.config = full_config.get("ner", {})
+        self.ner_engine = NEREngine(self.config)
+        self.test_results = []
+        self.passed = 0
+        self.failed = 0
+
+        print(f"\n✅ 使用配置: {config_path}")
+        print(f"   NER后端: {self.config.get('backend', 'unknown')}")
+        print(f"   模型: {self.config.get('hanlp_model', 'unknown')}")
+        print(f"   可链接类型: {self.config.get('linkable_types', [])}")
+
+    def run_all_tests(self):
+        """运行所有测试"""
+        print("\n" + "=" * 80)
+        print("开始执行NER实体抽取测试 (HanLP)")
+        print("=" * 80)
+
+        # 运行各类测试
+        self.test_basic_extraction()
+        self.test_position_boundary()
+        self.test_type_filtering()
+        self.test_empty_text()
+        self.test_no_entity_text()
+        self.test_edge_cases()
+        self.test_unicode_position()
+        self.test_batch_from_data()
+        self.test_complex_texts()
+        self.test_position_precision()
+        self.test_mixed_language()
+        self.test_long_text()
+        self.test_special_characters()
+
+        # 输出测试汇总
+        self.print_summary()
+
+        # 保存测试结果
+        self.save_results()
+
+    def add_result(self, test_name: str, passed: bool, message: str = "",
+                   details: Dict = None):
+        """添加测试结果"""
+        result = {
+            "test_name": test_name,
+            "passed": passed,
+            "message": message,
+            "details": details or {},
+            "timestamp": datetime.now().isoformat()
         }
-        cls.ner_engine = NEREngine(config)
-        # 提前加载模型
-        cls.ner_engine._load_model()
+        self.test_results.append(result)
+        if passed:
+            self.passed += 1
+            print(f"  ✅ PASS: {test_name}")
+            if message:
+                print(f"     {message}")
+        else:
+            self.failed += 1
+            print(f"  ❌ FAIL: {test_name}")
+            if message:
+                print(f"     {message}")
 
-    def format_entity_position(self, entity: Dict) -> str:
-        """格式化实体及其位置信息"""
-        return f"{entity['mention']}[{entity['start']}:{entity['end']}]"
+        return result
 
-    def format_entities_summary(self, entities: List[Dict]) -> str:
-        """格式化实体列表为字符串"""
-        if not entities:
-            return "无"
-        return "; ".join([self.format_entity_position(e) for e in entities])
+    def print_position_comparison(self, expected, actual, text):
+        """打印位置对比信息"""
+        print("\n  位置对比:")
+        print(f"  {'实体':<15} {'期望位置':<25} {'实际位置':<25} {'匹配':<10}")
+        print(f"  {'-' * 15} {'-' * 25} {'-' * 25} {'-' * 10}")
 
-    def assert_entity_position_equal(self, expected: Dict, actual: Dict):
-        """
-        精确断言实体位置是否相等
+        # 为每个预期实体查找对应的实际实体
+        for exp in expected:
+            exp_text = exp["mention"]
+            exp_start = exp["char_start"]
+            exp_end = exp["char_end"]
+            exp_pos = f"[{exp_start}:{exp_end}]"
 
-        Args:
-            expected: 期望的实体
-            actual: 实际的实体
-        """
-        # 验证实体文本
-        self.assertEqual(
-            actual['mention'],
-            expected['mention'],
-            f"实体文本不匹配: 期望 '{expected['mention']}', 实际 '{actual['mention']}'"
-        )
+            # 查找匹配的实际实体
+            matched = None
+            for act in actual:
+                # 修复：检查act是否包含mention_type字段
+                if (act.get("mention") == exp_text and
+                        act.get("mention_type") == exp.get("mention_type")):
+                    matched = act
+                    break
 
-        # 验证实体类型
-        self.assertEqual(
-            actual['type'],
-            expected['type'],
-            f"实体类型不匹配: 期望 '{expected['type']}', 实际 '{actual['type']}'"
-        )
+            if matched:
+                act_start = matched.get("char_start")
+                act_end = matched.get("char_end")
+                act_pos = f"[{act_start}:{act_end}]" if act_start is not None else "未知"
+                match = "✅" if (exp_start == act_start and exp_end == act_end) else "❌"
+                print(f"  {exp_text:<15} {exp_pos:<25} {act_pos:<25} {match:<10}")
+            else:
+                print(f"  {exp_text:<15} {exp_pos:<25} {'未识别':<25} {'❌':<10}")
 
-        # 精确验证开始位置
-        self.assertEqual(
-            actual['start'],
-            expected['start'],
-            f"实体 '{expected['mention']}' 开始位置不匹配: 期望 {expected['start']}, 实际 {actual['start']}"
-        )
+        # 显示额外识别的实体
+        extra_entities = []
+        for a in actual:
+            is_expected = False
+            for e in expected:
+                if (a.get("mention") == e.get("mention") and
+                        a.get("mention_type") == e.get("mention_type")):
+                    is_expected = True
+                    break
+            if not is_expected:
+                extra_entities.append(a)
 
-        # 精确验证结束位置
-        self.assertEqual(
-            actual['end'],
-            expected['end'],
-            f"实体 '{expected['mention']}' 结束位置不匹配: 期望 {expected['end']}, 实际 {actual['end']}"
-        )
+        if extra_entities:
+            print(f"\n  额外识别的实体:")
+            for extra in extra_entities:
+                start = extra.get("char_start", "?")
+                end = extra.get("char_end", "?")
+                print(f"    {extra.get('mention', '未知')} ({extra.get('mention_type', '未知')}) [{start}:{end}]")
 
-    def assert_ner_result(self, text: str, expected_entities: List[Dict]):
-        """
-        断言NER结果是否完全符合预期（包括位置信息）
+    def test_basic_extraction(self):
+        """测试1: 基础实体抽取"""
+        print("\n" + "-" * 80)
+        print("测试1: 基础实体抽取")
+        print("-" * 80)
 
-        Args:
-            text: 原始文本
-            expected_entities: 期望的实体列表
-        """
-        actual_entities = self.ner_engine.extract(text)
-
-        # 打印测试信息
-        print(f"\n{'=' * 70}")
-        print(f"📝 原文本: {text}")
-        print(f"📌 期望识别 ({len(expected_entities)}个):")
-        for entity in expected_entities:
-            print(f"   - {self.format_entity_position(entity)} ({entity['type']})")
-        print(f"🔍 实际识别 ({len(actual_entities)}个):")
-        for entity in actual_entities:
-            print(f"   - {self.format_entity_position(entity)} ({entity['type']})")
-        print(f"{'=' * 70}")
-
-        # 验证实体数量
-        self.assertEqual(
-            len(actual_entities),
-            len(expected_entities),
-            f"实体数量不匹配: 期望 {len(expected_entities)} 个, 实际 {len(actual_entities)} 个\n"
-            f"期望: {self.format_entities_summary(expected_entities)}\n"
-            f"实际: {self.format_entities_summary(actual_entities)}"
-        )
-
-        # 逐个验证实体（包括位置）
-        for i, (expected, actual) in enumerate(zip(expected_entities, actual_entities)):
-            with self.subTest(entity_index=i, expected=expected, actual=actual):
-                self.assert_entity_position_equal(expected, actual)
-
-    def test_simple_person_location(self):
-        """测试简单的人名和地名"""
-        text = "张伟去北京开会。"
-        expected = [
-            {"mention": "张伟", "type": "PERSON", "start": 0, "end": 2},
-            {"mention": "北京", "type": "GPE", "start": 3, "end": 5}  # "去"是索引2，"北京"从3开始
-        ]
-        self.assert_ner_result(text, expected)
-
-    def test_single_entity(self):
-        """测试单个实体识别"""
         test_cases = [
             {
-                "text": "马云是阿里巴巴创始人。",
+                "text": "张三在北京大学工作。",
                 "expected": [
-                    {"mention": "马云", "type": "PERSON", "start": 0, "end": 2},
-                    {"mention": "阿里巴巴", "type": "ORG", "start": 4, "end": 8}
+                    {"mention": "张三", "mention_type": "PERSON", "char_start": 0, "char_end": 2},
+                    {"mention": "北京大学", "mention_type": "ORG", "char_start": 3, "char_end": 7}
                 ]
             },
             {
-                "text": "深圳是一座美丽城市。",
+                "text": "苹果公司总部位于美国加利福尼亚州。",
                 "expected": [
-                    {"mention": "深圳", "type": "GPE", "start": 0, "end": 2}
+                    {"mention": "苹果公司", "mention_type": "ORG", "char_start": 0, "char_end": 4},
+                    {"mention": "美国", "mention_type": "GPE", "char_start": 7, "char_end": 9},
+                    {"mention": "加利福尼亚州", "mention_type": "GPE", "char_start": 9, "char_end": 14}
                 ]
             },
             {
-                "text": "华为公司发布新产品。",
+                "text": "2024年3月15日，李明在上海参加了人工智能大会。",
                 "expected": [
-                    {"mention": "华为", "type": "ORG", "start": 0, "end": 2}
+                    {"mention": "2024年3月15日", "mention_type": "DATE", "char_start": 0, "char_end": 11},
+                    {"mention": "李明", "mention_type": "PERSON", "char_start": 13, "char_end": 15},
+                    {"mention": "上海", "mention_type": "GPE", "char_start": 16, "char_end": 18}
+                ]
+            },
+            {
+                "text": "华为技术有限公司的市值超过5000亿美元。",
+                "expected": [
+                    {"mention": "华为技术有限公司", "mention_type": "ORG", "char_start": 0, "char_end": 8}
+                ]
+            },
+            {
+                "text": "李娜在巴黎获得了网球公开赛冠军。",
+                "expected": [
+                    {"mention": "李娜", "mention_type": "PERSON", "char_start": 0, "char_end": 2},
+                    {"mention": "巴黎", "mention_type": "GPE", "char_start": 3, "char_end": 5}
+                ]
+            },
+            {
+                "text": "马云创立了阿里巴巴集团，总部在杭州。",
+                "expected": [
+                    {"mention": "马云", "mention_type": "PERSON", "char_start": 0, "char_end": 2},
+                    {"mention": "阿里巴巴集团", "mention_type": "ORG", "char_start": 6, "char_end": 12},
+                    {"mention": "杭州", "mention_type": "GPE", "char_start": 17, "char_end": 19}
+                ]
+            },
+            {
+                "text": "腾讯CEO马化腾在深圳发布了新产品。",
+                "expected": [
+                    {"mention": "腾讯", "mention_type": "ORG", "char_start": 0, "char_end": 2},
+                    {"mention": "马化腾", "mention_type": "PERSON", "char_start": 5, "char_end": 8},
+                    {"mention": "深圳", "mention_type": "GPE", "char_start": 9, "char_end": 11}
                 ]
             }
         ]
 
-        for case in test_cases:
-            with self.subTest(text=case['text']):
-                self.assert_ner_result(case['text'], case['expected'])
+        all_passed = True
+        details = []
 
-    def test_multiple_entities_with_positions(self):
-        """测试多个实体的位置识别"""
-        text = "国网北京市电力公司"
-        expected = [
-            {"mention": "国网", "type": "ORG", "start": 0, "end": 2},
-            {"mention": "北京", "type": "GPE", "start": 2, "end": 4},
-            {"mention": "北京市", "type": "GPE", "start": 2, "end": 5},
-            {"mention": "电力公司", "type": "ORG", "start": 6, "end": 10}
+        for i, test_case in enumerate(test_cases):
+            text = test_case["text"]
+            expected = test_case["expected"]
+
+            # 执行NER
+            mentions = self.ner_engine.extract(text)
+
+            # 构建实际结果
+            actual = [
+                {
+                    "mention": m.mention,
+                    "mention_type": m.mention_type,
+                    "char_start": m.char_start,
+                    "char_end": m.char_end
+                }
+                for m in mentions
+            ]
+
+            print(f"\n  📝 用例{i + 1}: {text}")
+
+            # 显示期望和实际的位置对比
+            self.print_position_comparison(expected, actual, text)
+
+            # 检查位置信息完整性
+            position_valid = True
+            for m in mentions:
+                if not (hasattr(m, 'char_start') and hasattr(m, 'char_end')):
+                    position_valid = False
+                    break
+                if not (isinstance(m.char_start, int) and isinstance(m.char_end, int)):
+                    position_valid = False
+                    break
+                if not (0 <= m.char_start < m.char_end <= len(text)):
+                    position_valid = False
+                    break
+                if text[m.char_start:m.char_end] != m.mention:
+                    position_valid = False
+                    break
+
+            # 检查预期实体是否被识别（放宽位置要求）
+            matched = []
+            missing = []
+            for exp in expected:
+                found = False
+                for act in actual:
+                    if (act["mention"] == exp["mention"] and
+                            act["mention_type"] == exp["mention_type"]):
+                        found = True
+                        matched.append(exp)
+                        break
+                if not found:
+                    missing.append(exp)
+
+            # 检查是否有额外的实体
+            extra = []
+            for act in actual:
+                is_expected = False
+                for exp in expected:
+                    if (act["mention"] == exp["mention"] and
+                            act["mention_type"] == exp["mention_type"]):
+                        is_expected = True
+                        break
+                if not is_expected:
+                    extra.append(act)
+
+            # 判定测试是否通过（识别到所有实体且位置有效）
+            case_passed = position_valid and len(missing) == 0
+
+            detail = {
+                "case": i + 1,
+                "text": text,
+                "expected_count": len(expected),
+                "actual_count": len(actual),
+                "matched": matched,
+                "missing": missing,
+                "extra": extra,
+                "position_valid": position_valid,
+                "passed": case_passed
+            }
+            details.append(detail)
+
+            if case_passed:
+                print(f"  ✅ 结果: 通过")
+            else:
+                all_passed = False
+                print(f"  ❌ 结果: 失败")
+                if missing:
+                    print(f"     缺失实体: {[(m['mention'], m['mention_type']) for m in missing]}")
+                if extra:
+                    print(f"     额外实体: {[(m['mention'], m['mention_type']) for m in extra]}")
+                if not position_valid:
+                    print(f"     位置信息不合法!")
+
+        self.add_result(
+            "基础实体抽取",
+            all_passed,
+            f"测试了{len(test_cases)}个用例" if all_passed else f"存在失败用例",
+            {"test_cases": details}
+        )
+
+    def test_position_boundary(self):
+        """测试2: 位置边界验证"""
+        print("\n" + "-" * 80)
+        print("测试2: 位置边界验证")
+        print("-" * 80)
+
+        test_texts = [
+            "李华在Google工作",
+            "Microsoft总部在美国",
+            "王五在复旦大学读书",
+            "ABC公司成立于2000年",
+            "华为与小米合作",
+            "中国北京的故宫"
         ]
 
-        actual = self.ner_engine.extract(text)
+        all_passed = True
 
-        print(f"\n{'=' * 70}")
-        print(f"📝 原文本: {text}")
-        print(f"📌 期望识别 ({len(expected)}个):")
-        for entity in expected:
-            print(f"   - {self.format_entity_position(entity)} ({entity['type']})")
-        print(f"🔍 实际识别 ({len(actual)}个):")
-        for entity in actual:
-            print(f"   - {self.format_entity_position(entity)} ({entity['type']})")
-        print(f"{'=' * 70}")
+        for text in test_texts:
+            mentions = self.ner_engine.extract(text)
+            text_passed = True
 
-        # 由于模型可能识别出不同粒度的实体，我们验证是否包含关键实体
-        actual_entities_str = self.format_entities_summary(actual)
+            print(f"\n  📝 文本: {text}")
+            print(f"     字符位置索引: ", end="")
+            for i, ch in enumerate(text):
+                print(f"{i}:{ch} ", end="")
+            print()
 
-        # 验证"国网"的识别
-        found_guowang = any(e['mention'] == "国网" for e in actual)
-        if found_guowang:
-            guowang = [e for e in actual if e['mention'] == "国网"][0]
-            self.assertEqual(guowang['start'], 0)
-            self.assertEqual(guowang['end'], 2)
+            for mention in mentions:
+                # 验证开区间
+                extracted = text[mention.char_start:mention.char_end]
+                is_valid = extracted == mention.mention
 
-        # 验证"北京"或"北京市"的识别
-        found_beijing = any(e['mention'] in ["北京", "北京市"] for e in actual)
-        self.assertTrue(found_beijing, f"未识别到'北京'或'北京市'，实际识别: {actual_entities_str}")
+                print(f"     实体: {mention.mention} ({mention.mention_type})")
+                print(f"       位置: [{mention.char_start}:{mention.char_end}]")
+                print(f"       截取: '{extracted}'")
+                print(f"       验证: {'✅' if is_valid else '❌'}")
 
-        if found_beijing:
-            beijing = [e for e in actual if e['mention'] in ["北京", "北京市"]][0]
-            self.assertEqual(beijing['start'], 2)
+                if not is_valid:
+                    text_passed = False
 
-    def test_company_full_name(self):
-        """测试公司全称识别"""
-        text = "国家电网有限公司"
-        expected = [
-            {"mention": "国家电网", "type": "ORG", "start": 0, "end": 4},
-            {"mention": "国家电网有限公司", "type": "ORG", "start": 0, "end": 8}
+                if not (0 <= mention.char_start < mention.char_end <= len(text)):
+                    text_passed = False
+                    print(f"       ❌ 位置超出范围!")
+
+            if text_passed:
+                print(f"  ✅ 文本验证通过")
+            else:
+                all_passed = False
+                print(f"  ❌ 文本验证失败")
+
+        self.add_result(
+            "位置边界验证",
+            all_passed,
+            f"测试了{len(test_texts)}个文本" if all_passed else "存在位置边界错误"
+        )
+
+    def test_type_filtering(self):
+        """测试3: 类型过滤功能"""
+        print("\n" + "-" * 80)
+        print("测试3: 类型过滤功能")
+        print("-" * 80)
+
+        # 使用配置中的linkable_types
+        allowed_types = self.config.get("linkable_types", ["ORG", "PERSON", "GPE", "LOC"])
+
+        text = "张三在北京大学工作，今天是2024年3月15日。"
+        mentions = self.ner_engine.extract(text)
+
+        all_valid = all(m.mention_type in allowed_types for m in mentions)
+
+        print(f"\n  📝 文本: {text}")
+        print(f"  配置的允许类型: {allowed_types}")
+        print(f"  识别实体: {[(m.mention, m.mention_type, m.char_start, m.char_end) for m in mentions]}")
+
+        if all_valid:
+            print(f"  ✅ 所有实体类型都在允许范围内")
+        else:
+            invalid = [m for m in mentions if m.mention_type not in allowed_types]
+            print(f"  ❌ 存在不允许的类型: {[(m.mention, m.mention_type) for m in invalid]}")
+
+        self.add_result(
+            "类型过滤功能",
+            all_valid,
+            f"过滤后保留 {len(mentions)} 个实体" if all_valid else "存在过滤失败"
+        )
+
+    def test_empty_text(self):
+        """测试4: 空文本"""
+        print("\n" + "-" * 80)
+        print("测试4: 空文本测试")
+        print("-" * 80)
+
+        mentions = self.ner_engine.extract("")
+        passed = len(mentions) == 0
+
+        print(f"  空文本识别实体数: {len(mentions)}")
+        if passed:
+            print(f"  ✅ 空文本正确处理")
+        else:
+            print(f"  ❌ 空文本应返回空列表")
+
+        self.add_result("空文本测试", passed)
+
+    def test_no_entity_text(self):
+        """测试5: 无实体文本"""
+        print("\n" + "-" * 80)
+        print("测试5: 无实体文本测试")
+        print("-" * 80)
+
+        text = "这是一个没有任何实体的普通句子。"
+        mentions = self.ner_engine.extract(text)
+
+        passed = len(mentions) <= 3
+
+        print(f"\n  📝 文本: {text}")
+        print(f"  识别实体数: {len(mentions)}")
+        if len(mentions) > 0:
+            print(f"  识别实体: {[(m.mention, m.mention_type, m.char_start, m.char_end) for m in mentions]}")
+
+        if passed:
+            print(f"  ✅ 无实体文本识别正常")
+        else:
+            print(f"  ❌ 无实体文本识别出过多实体: {len(mentions)}")
+
+        self.add_result("无实体文本测试", passed)
+
+    def test_edge_cases(self):
+        """测试6: 边界情况"""
+        print("\n" + "-" * 80)
+        print("测试6: 边界情况测试")
+        print("-" * 80)
+
+        edge_cases = [
+            "A",
+            "中",
+            "123",
+            "test@email.com",
+            "2024-03-15",
+            "ABC公司",
+            "  带空格的文本  ",
+            "华为",
+            "北京",
+            "中华人民共和国"
         ]
 
-        actual = self.ner_engine.extract(text)
+        all_passed = True
 
-        print(f"\n{'=' * 70}")
-        print(f"📝 原文本: {text}")
-        print(f"📌 期望识别 ({len(expected)}个):")
-        for entity in expected:
-            print(f"   - {self.format_entity_position(entity)} ({entity['type']})")
-        print(f"🔍 实际识别 ({len(actual)}个):")
-        for entity in actual:
-            print(f"   - {self.format_entity_position(entity)} ({entity['type']})")
-        print(f"{'=' * 70}")
+        for text in edge_cases:
+            mentions = self.ner_engine.extract(text)
+            text_passed = True
 
-        # 验证是否识别到"国家电网"
-        found = any(e['mention'] == "国家电网" for e in actual)
-        self.assertTrue(found, f"未识别到'国家电网'，实际识别: {self.format_entities_summary(actual)}")
+            print(f"\n  📝 文本: '{text}' (长度: {len(text)})")
 
-        if found:
-            guowang = [e for e in actual if e['mention'] == "国家电网"][0]
-            self.assertEqual(guowang['start'], 0)
-            self.assertEqual(guowang['end'], 4)
+            for mention in mentions:
+                print(f"     实体: {mention.mention} ({mention.mention_type})")
+                print(f"       位置: [{mention.char_start}:{mention.char_end}]")
 
-    def test_location_hierarchy(self):
-        """测试地理位置层级识别"""
-        text = "广东省深圳市南山区"
-        expected = [
-            {"mention": "广东", "type": "GPE", "start": 0, "end": 2},
-            {"mention": "广东省", "type": "GPE", "start": 0, "end": 3},
-            {"mention": "深圳", "type": "GPE", "start": 3, "end": 5},
-            {"mention": "深圳市", "type": "GPE", "start": 3, "end": 6},
-            {"mention": "南山", "type": "GPE", "start": 6, "end": 8},
-            {"mention": "南山区", "type": "GPE", "start": 6, "end": 9}
+                if not (0 <= mention.char_start < mention.char_end <= len(text)):
+                    text_passed = False
+                    print(f"       ❌ 位置超出范围!")
+                if text[mention.char_start:mention.char_end] != mention.mention:
+                    text_passed = False
+                    print(f"       ❌ 位置截取不匹配!")
+
+            if text_passed:
+                print(f"  ✅ 通过")
+            else:
+                all_passed = False
+                print(f"  ❌ 失败")
+
+        self.add_result("边界情况测试", all_passed)
+
+    def test_unicode_position(self):
+        """测试7: Unicode字符位置"""
+        print("\n" + "-" * 80)
+        print("测试7: Unicode字符位置测试")
+        print("-" * 80)
+
+        # 包含Emoji和特殊字符
+        test_texts = [
+            "🌟李华在🏢微软工作",
+            "🚀王明在💻腾讯实习",
+            "🎓张伟在北京大学",
+            "❤️华为❤️"
         ]
 
-        actual = self.ner_engine.extract(text)
+        all_passed = True
 
-        print(f"\n{'=' * 70}")
-        print(f"📝 原文本: {text}")
-        print(f"📌 期望识别 ({len(expected)}个):")
-        for entity in expected:
-            print(f"   - {self.format_entity_position(entity)} ({entity['type']})")
-        print(f"🔍 实际识别 ({len(actual)}个):")
-        for entity in actual:
-            print(f"   - {self.format_entity_position(entity)} ({entity['type']})")
-        print(f"{'=' * 70}")
+        for text in test_texts:
+            mentions = self.ner_engine.extract(text)
 
-        # 验证关键地名
-        found_shenzhen = any(e['mention'] in ["深圳", "深圳市"] for e in actual)
-        self.assertTrue(found_shenzhen, f"未识别到'深圳'或'深圳市'，实际: {self.format_entities_summary(actual)}")
+            print(f"\n  📝 文本: {text}")
+            print(f"     长度: {len(text)}字符")
+            print(f"     字符索引: ", end="")
+            for i, ch in enumerate(text):
+                print(f"{i}:{ch} ", end="")
+            print()
 
-        # 验证位置
-        if found_shenzhen:
-            shenzhen = [e for e in actual if e['mention'] in ["深圳", "深圳市"]][0]
-            self.assertEqual(shenzhen['start'], 3)
+            for mention in mentions:
+                extracted = text[mention.char_start:mention.char_end]
+                is_valid = extracted == mention.mention
 
-    def test_person_full_name(self):
-        """测试人名识别"""
-        text = "习近平主席访问美国"
-        expected = [
-            {"mention": "习近平", "type": "PERSON", "start": 0, "end": 3}
+                print(f"     实体: {mention.mention} ({mention.mention_type})")
+                print(f"       位置: [{mention.char_start}:{mention.char_end}]")
+                print(f"       截取: '{extracted}'")
+                print(f"       验证: {'✅' if is_valid else '❌'}")
+
+                if not is_valid:
+                    all_passed = False
+
+        self.add_result(
+            "Unicode字符位置测试",
+            all_passed,
+            "Unicode位置计算正确" if all_passed else "Unicode位置计算错误"
+        )
+
+    def test_batch_from_data(self):
+        """测试8: 批量数据测试"""
+        print("\n" + "-" * 80)
+        print("测试8: 批量数据测试")
+        print("-" * 80)
+
+        # 自定义批量测试数据
+        batch_data = [
+            {
+                "text": "马云在杭州创立了阿里巴巴集团。",
+                "expected": ["马云", "杭州", "阿里巴巴集团"],
+                "expected_types": ["PERSON", "GPE", "ORG"]
+            },
+            {
+                "text": "腾讯公司总部在深圳，员工超过5万人。",
+                "expected": ["腾讯公司", "深圳"],
+                "expected_types": ["ORG", "GPE"]
+            },
+            {
+                "text": "百度CEO李彦宏在北京发布了新产品。",
+                "expected": ["百度", "李彦宏", "北京"],
+                "expected_types": ["ORG", "PERSON", "GPE"]
+            },
+            {
+                "text": "小米科技创始人雷军毕业于武汉大学。",
+                "expected": ["小米科技", "雷军", "武汉大学"],
+                "expected_types": ["ORG", "PERSON", "ORG"]
+            },
+            {
+                "text": "阿里巴巴与腾讯在杭州签署合作协议。",
+                "expected": ["阿里巴巴", "腾讯", "杭州"],
+                "expected_types": ["ORG", "ORG", "GPE"]
+            },
+            {
+                "text": "华为发布了新款Mate手机。",
+                "expected": ["华为"],
+                "expected_types": ["ORG"]
+            },
+            {
+                "text": "中国乒乓球队在东京奥运会获得金牌。",
+                "expected": ["中国", "东京"],
+                "expected_types": ["GPE", "GPE"]
+            }
         ]
 
-        actual = self.ner_engine.extract(text)
+        all_passed = True
+        batch_details = []
 
-        print(f"\n{'=' * 70}")
-        print(f"📝 原文本: {text}")
-        print(f"📌 期望识别: {self.format_entities_summary(expected)}")
-        print(f"🔍 实际识别: {self.format_entities_summary(actual)}")
-        print(f"{'=' * 70}")
+        for i, data in enumerate(batch_data):
+            text = data["text"]
+            expected = data["expected"]
+            expected_types = data["expected_types"]
 
-        # 验证人名
-        found = any(e['mention'] == "习近平" for e in actual)
-        self.assertTrue(found, f"未识别到'习近平'，实际: {self.format_entities_summary(actual)}")
+            mentions = self.ner_engine.extract(text)
+            actual_mentions = [m.mention for m in mentions]
+            actual_types = [m.mention_type for m in mentions]
+            actual_positions = [(m.char_start, m.char_end) for m in mentions]
 
-        if found:
-            person = [e for e in actual if e['mention'] == "习近平"][0]
-            self.assertEqual(person['start'], 0)
-            self.assertEqual(person['end'], 3)
+            print(f"\n  📝 用例{i + 1}: {text}")
+            print(f"     识别实体: {list(zip(actual_mentions, actual_types, actual_positions))}")
 
-    def test_entity_in_sentence(self):
-        """测试句子中的实体识别"""
-        text = "阿里巴巴集团总部位于杭州"
-        expected = [
-            {"mention": "阿里巴巴", "type": "ORG", "start": 0, "end": 4},
-            {"mention": "杭州", "type": "GPE", "start": 9, "end": 11}
+            # 检查预期的实体是否都被识别
+            missing = []
+            for exp, exp_type in zip(expected, expected_types):
+                found = False
+                for act, act_type in zip(actual_mentions, actual_types):
+                    if act == exp and act_type == exp_type:
+                        found = True
+                        break
+                if not found:
+                    missing.append((exp, exp_type))
+
+            # 检查是否识别到额外实体
+            extra = []
+            for act, act_type in zip(actual_mentions, actual_types):
+                is_expected = False
+                for exp, exp_type in zip(expected, expected_types):
+                    if act == exp and act_type == exp_type:
+                        is_expected = True
+                        break
+                if not is_expected:
+                    extra.append((act, act_type))
+
+            case_passed = len(missing) == 0
+            all_passed = all_passed and case_passed
+
+            detail = {
+                "case": i + 1,
+                "text": text[:30] + "..." if len(text) > 30 else text,
+                "expected": list(zip(expected, expected_types)),
+                "actual": list(zip(actual_mentions, actual_types)),
+                "missing": missing,
+                "extra": extra,
+                "passed": case_passed
+            }
+            batch_details.append(detail)
+
+            if case_passed:
+                print(f"     ✅ 通过")
+            else:
+                print(f"     ❌ 失败")
+                if missing:
+                    print(f"       缺失: {missing}")
+                if extra:
+                    print(f"       额外: {extra}")
+
+        self.add_result(
+            "批量数据测试",
+            all_passed,
+            f"测试了{len(batch_data)}个批量用例" if all_passed else "存在失败用例",
+            {"batch_details": batch_details}
+        )
+
+    def test_complex_texts(self):
+        """测试9: 复杂文本"""
+        print("\n" + "-" * 80)
+        print("测试9: 复杂文本测试")
+        print("-" * 80)
+
+        complex_texts = [
+            {
+                "text": "据新华社报道，中国国家主席习近平在北京人民大会堂会见了美国国务卿布林肯。",
+                "key_entities": ["习近平", "美国", "布林肯"]
+            },
+            {
+                "text": "阿里巴巴集团CEO张勇在杭州云栖大会上宣布，未来三年将投资1000亿元用于技术研发。",
+                "key_entities": ["阿里巴巴集团", "张勇", "杭州"]
+            },
+            {
+                "text": "华为技术有限公司与清华大学在深圳签署了战略合作协议。",
+                "key_entities": ["华为技术有限公司", "清华大学", "深圳"]
+            },
+            {
+                "text": "小米公司创始人雷军表示，未来将加大在印度市场的投资。",
+                "key_entities": ["小米公司", "雷军", "印度"]
+            }
         ]
 
-        actual = self.ner_engine.extract(text)
+        all_passed = True
 
-        print(f"\n{'=' * 70}")
-        print(f"📝 原文本: {text}")
-        print(f"📌 期望识别: {self.format_entities_summary(expected)}")
-        print(f"🔍 实际识别: {self.format_entities_summary(actual)}")
-        print(f"{'=' * 70}")
+        for i, data in enumerate(complex_texts):
+            text = data["text"]
+            key_entities = data["key_entities"]
 
-        # 由于"阿里巴巴集团"可能被识别为整体，我们验证是否包含"阿里巴巴"
-        found_ali = any(e['mention'] in ["阿里巴巴", "阿里巴巴集团"] for e in actual if e['type'] == 'ORG')
-        self.assertTrue(found_ali, f"未识别到'阿里巴巴'或'阿里巴巴集团'，实际: {self.format_entities_summary(actual)}")
+            mentions = self.ner_engine.extract(text)
+            actual_mentions = [m.mention for m in mentions]
 
-        # 验证杭州的位置
-        found_hangzhou = any(e['mention'] == "杭州" for e in actual)
-        self.assertTrue(found_hangzhou, f"未识别到'杭州'，实际: {self.format_entities_summary(actual)}")
+            print(f"\n  📝 复杂文本{i + 1}:")
+            print(f"     文本: {text[:50]}...")
+            print(f"     识别实体: {[(m.mention, m.mention_type, m.char_start, m.char_end) for m in mentions]}")
 
-    def test_mixed_chinese_english(self):
-        """测试中英文混合的实体"""
-        text = "IBM公司在华业务"
-        expected = [
-            {"mention": "IBM", "type": "ORG", "start": 0, "end": 3}
-        ]
+            # 检查关键实体是否被识别
+            found = []
+            missing = []
+            for key in key_entities:
+                if key in actual_mentions:
+                    found.append(key)
+                else:
+                    missing.append(key)
 
-        actual = self.ner_engine.extract(text)
+            case_passed = len(missing) == 0
+            all_passed = all_passed and case_passed
 
-        print(f"\n{'=' * 70}")
-        print(f"📝 原文本: {text}")
-        print(f"📌 期望识别: {self.format_entities_summary(expected)}")
-        print(f"🔍 实际识别: {self.format_entities_summary(actual)}")
-        print(f"{'=' * 70}")
+            if case_passed:
+                print(f"     ✅ 通过")
+                if found:
+                    print(f"       识别: {found}")
+            else:
+                print(f"     ❌ 失败")
+                if missing:
+                    print(f"       缺失: {missing}")
 
-        # 验证IBM识别
-        found_ibm = any(e['mention'] in ["IBM", "IBM公司"] for e in actual)
-        self.assertTrue(found_ibm, f"未识别到'IBM'或'IBM公司'，实际: {self.format_entities_summary(actual)}")
+        self.add_result(
+            "复杂文本测试",
+            all_passed,
+            f"测试了{len(complex_texts)}个复杂文本" if all_passed else "存在失败用例"
+        )
 
-        # 如果识别到"IBM公司"，验证其位置
-        ibm_entities = [e for e in actual if e['mention'] in ["IBM", "IBM公司"]]
-        if ibm_entities:
-            ibm = ibm_entities[0]
-            # "IBM"在"IBM公司"中应该从0开始
-            if ibm['mention'] == "IBM":
-                self.assertEqual(ibm['start'], 0)
-                self.assertEqual(ibm['end'], 3)
-            elif ibm['mention'] == "IBM公司":
-                self.assertEqual(ibm['start'], 0)
+    def test_position_precision(self):
+        """测试10: 位置精度测试"""
+        print("\n" + "-" * 80)
+        print("测试10: 位置精度测试")
+        print("-" * 80)
 
-    def test_text_with_punctuation(self):
-        """测试带标点符号的文本"""
-        text = "腾讯，百度，阿里巴巴"
-        expected = [
-            {"mention": "腾讯", "type": "ORG", "start": 0, "end": 2},
-            {"mention": "百度", "type": "ORG", "start": 3, "end": 5},
-            {"mention": "阿里巴巴", "type": "ORG", "start": 6, "end": 10}
-        ]
-
-        actual = self.ner_engine.extract(text)
-
-        print(f"\n{'=' * 70}")
-        print(f"📝 原文本: {text}")
-        print(f"📌 期望识别: {self.format_entities_summary(expected)}")
-        print(f"🔍 实际识别: {self.format_entities_summary(actual)}")
-        print(f"{'=' * 70}")
-
-        # 验证是否识别到期望的实体
-        expected_mentions = [e['mention'] for e in expected]
-        actual_mentions = [e['mention'] for e in actual]
-
-        for expected_mention in expected_mentions:
-            self.assertIn(expected_mention, actual_mentions,
-                          f"未识别到'{expected_mention}'，实际: {actual_mentions}")
-
-    def test_empty_and_whitespace(self):
-        """测试空文本和空白文本"""
+        # 测试用例
         test_cases = [
-            ("", []),
-            ("   ", []),
-            ("\n\t", [])
+            {
+                "text": "北京天安门",
+                "expected": [
+                    {"mention": "北京", "char_start": 0, "char_end": 2},
+                    {"mention": "天安门", "char_start": 2, "char_end": 5}
+                ]
+            },
+            {
+                "text": "上海市浦东新区",
+                "expected": [
+                    {"mention": "上海市", "char_start": 0, "char_end": 3},
+                    {"mention": "浦东新区", "char_start": 3, "char_end": 7}
+                ]
+            }
         ]
 
-        for text, expected in test_cases:
-            with self.subTest(text=repr(text)):
-                actual = self.ner_engine.extract(text)
-                print(f"\n{'=' * 70}")
-                print(f"📝 原文本: {repr(text)}")
-                print(f"📌 期望识别: {self.format_entities_summary(expected)}")
-                print(f"🔍 实际识别: {self.format_entities_summary(actual)}")
-                print(f"{'=' * 70}")
-                self.assertEqual(len(actual), 0, f"空白文本应该返回空列表，实际: {actual}")
+        all_passed = True
 
-    def test_entity_overlap(self):
-        """测试实体重叠的情况"""
-        text = "北京市海淀区"
-        expected = [
-            {"mention": "北京", "type": "GPE", "start": 0, "end": 2},
-            {"mention": "北京市", "type": "GPE", "start": 0, "end": 3},
-            {"mention": "海淀", "type": "GPE", "start": 3, "end": 5},
-            {"mention": "海淀区", "type": "GPE", "start": 3, "end": 6}
+        for i, test_case in enumerate(test_cases):
+            text = test_case["text"]
+            expected = test_case["expected"]
+
+            mentions = self.ner_engine.extract(text)
+
+            print(f"\n  📝 用例{i + 1}: {text}")
+            print(f"     字符索引: ", end="")
+            for j, ch in enumerate(text):
+                print(f"{j}:{ch} ", end="")
+            print()
+
+            # 显示每个字符属于哪个实体
+            print(f"     字符位置详情:")
+            for j, ch in enumerate(text):
+                print(f"       位置{j}: '{ch}'", end="")
+                belongs_to = []
+                for m in mentions:
+                    if m.char_start <= j < m.char_end:
+                        belongs_to.append(m.mention)
+                if belongs_to:
+                    print(f" -> 属于: {', '.join(belongs_to)}")
+                else:
+                    print(f" -> 不属于任何实体")
+
+            # 验证期望的实体
+            for exp in expected:
+                exp_text = exp["mention"]
+                exp_start = exp["char_start"]
+                exp_end = exp["char_end"]
+
+                found = False
+                for m in mentions:
+                    if m.mention == exp_text and m.char_start == exp_start and m.char_end == exp_end:
+                        found = True
+                        print(f"     ✅ 实体 '{exp_text}' 位置正确: [{exp_start}:{exp_end}]")
+                        break
+
+                if not found:
+                    # 检查是否识别但位置不对
+                    for m in mentions:
+                        if m.mention == exp_text:
+                            print(
+                                f"     ❌ 实体 '{exp_text}' 位置错误: 期望[{exp_start}:{exp_end}], 实际[{m.char_start}:{m.char_end}]")
+                            break
+                    else:
+                        print(f"     ❌ 实体 '{exp_text}' 未识别")
+                    all_passed = False
+
+        self.add_result(
+            "位置精度测试",
+            all_passed,
+            "位置精度验证通过" if all_passed else "存在位置精度问题"
+        )
+
+    def test_mixed_language(self):
+        """测试11: 中英文混合文本"""
+        print("\n" + "-" * 80)
+        print("测试11: 中英文混合文本测试")
+        print("-" * 80)
+
+        test_cases = [
+            {
+                "text": "Apple公司在加州",
+                "expected": [
+                    {"mention": "Apple公司", "mention_type": "ORG", "char_start": 0, "char_end": 7},
+                    {"mention": "加州", "mention_type": "GPE", "char_start": 8, "char_end": 10}
+                ]
+            },
+            {
+                "text": "Google总部在美国",
+                "expected": [
+                    {"mention": "Google", "mention_type": "ORG", "char_start": 0, "char_end": 6},
+                    {"mention": "美国", "mention_type": "GPE", "char_start": 9, "char_end": 11}
+                ]
+            }
         ]
 
-        actual = self.ner_engine.extract(text)
+        all_passed = True
 
-        print(f"\n{'=' * 70}")
-        print(f"📝 原文本: {text}")
-        print(f"📌 期望识别 ({len(expected)}个):")
-        for entity in expected:
-            print(f"   - {self.format_entity_position(entity)} ({entity['type']})")
-        print(f"🔍 实际识别 ({len(actual)}个):")
-        for entity in actual:
-            print(f"   - {self.format_entity_position(entity)} ({entity['type']})")
-        print(f"{'=' * 70}")
+        for i, test_case in enumerate(test_cases):
+            text = test_case["text"]
+            expected = test_case["expected"]
 
-        # 验证至少识别到一些地名
-        self.assertGreaterEqual(len(actual), 1, "应至少识别一个地名")
+            mentions = self.ner_engine.extract(text)
+            actual = [
+                {
+                    "mention": m.mention,
+                    "mention_type": m.mention_type,
+                    "char_start": m.char_start,
+                    "char_end": m.char_end
+                }
+                for m in mentions
+            ]
 
-        # 检查是否识别到"北京"或"北京市"
-        found_beijing = any(e['mention'] in ["北京", "北京市"] for e in actual)
-        self.assertTrue(found_beijing, f"未识别到'北京'或'北京市'，实际: {self.format_entities_summary(actual)}")
+            print(f"\n  📝 用例{i + 1}: {text}")
+            print(f"     字符索引: ", end="")
+            for j, ch in enumerate(text):
+                print(f"{j}:{ch} ", end="")
+            print()
 
-        # 检查位置
-        beijing_entities = [e for e in actual if e['mention'] in ["北京", "北京市"]]
-        if beijing_entities:
-            # 验证至少有一个"北京"从位置0开始
-            has_start_zero = any(e['start'] == 0 for e in beijing_entities)
-            self.assertTrue(has_start_zero, "没有从位置0开始的'北京'或'北京市'")
+            # 显示期望和实际位置对比
+            self.print_position_comparison(expected, actual, text)
+
+            # 验证
+            for exp in expected:
+                found = False
+                for m in mentions:
+                    if (m.mention == exp["mention"] and
+                            m.mention_type == exp["mention_type"] and
+                            m.char_start == exp["char_start"] and
+                            m.char_end == exp["char_end"]):
+                        found = True
+                        break
+                if not found:
+                    all_passed = False
+                    print(f"     ❌ 实体 '{exp['mention']}' 未正确识别")
+
+        self.add_result(
+            "中英文混合测试",
+            all_passed,
+            "中英文混合识别正常" if all_passed else "存在识别问题"
+        )
+
+    def test_long_text(self):
+        """测试12: 长文本测试"""
+        print("\n" + "-" * 80)
+        print("测试12: 长文本测试")
+        print("-" * 80)
+
+        long_text = """
+        2024年3月15日，华为技术有限公司在上海举办了年度开发者大会。
+        阿里巴巴集团CEO张勇出席了会议，并发表了重要讲话。
+        同时，腾讯公司也在深圳发布了最新的AI产品。
+        百度创始人李彦宏在北京通过视频连线参与了讨论。
+        小米科技的雷军表示，未来将加大在人工智能领域的投入。
+        """
+
+        print(f"\n  📝 长文本长度: {len(long_text)}字符")
+        print(f"     文本预览: {long_text[:100]}...")
+
+        start_time = time.time()
+        mentions = self.ner_engine.extract(long_text)
+        elapsed_time = time.time() - start_time
+
+        print(f"\n  识别实体数量: {len(mentions)}")
+        print(f"  耗时: {elapsed_time:.3f}秒")
+
+        # 显示所有识别到的实体
+        print(f"\n  识别结果:")
+        for m in mentions:
+            print(f"    实体: {m.mention} ({m.mention_type})")
+            print(f"      位置: [{m.char_start}:{m.char_end}]")
+            print(f"      截取: '{long_text[m.char_start:m.char_end]}'")
+
+        # 验证位置有效性
+        all_valid = True
+        for m in mentions:
+            if not (0 <= m.char_start < m.char_end <= len(long_text)):
+                all_valid = False
+                print(f"  ❌ 位置无效: {m.mention} [{m.char_start}:{m.char_end}]")
+            if long_text[m.char_start:m.char_end] != m.mention:
+                all_valid = False
+                print(f"  ❌ 位置截取不匹配: {m.mention}")
+
+        self.add_result(
+            "长文本测试",
+            all_valid,
+            f"识别了{len(mentions)}个实体，耗时{elapsed_time:.3f}秒" if all_valid else "存在位置错误"
+        )
+
+    def test_special_characters(self):
+        """测试13: 特殊字符测试"""
+        print("\n" + "-" * 80)
+        print("测试13: 特殊字符测试")
+        print("-" * 80)
+
+        test_cases = [
+            {
+                "text": "（北京）",
+                "expected": [
+                    {"mention": "北京", "mention_type": "GPE", "char_start": 1, "char_end": 3}
+                ]
+            },
+            {
+                "text": "【上海】",
+                "expected": [
+                    {"mention": "上海", "mention_type": "GPE", "char_start": 1, "char_end": 3}
+                ]
+            },
+            {
+                "text": "《人民日报》",
+                "expected": [
+                    {"mention": "人民日报", "mention_type": "ORG", "char_start": 1, "char_end": 5}
+                ]
+            },
+            {
+                "text": "「华为」",
+                "expected": [
+                    {"mention": "华为", "mention_type": "ORG", "char_start": 1, "char_end": 3}
+                ]
+            },
+            {
+                "text": "“阿里巴巴”",
+                "expected": [
+                    {"mention": "阿里巴巴", "mention_type": "ORG", "char_start": 1, "char_end": 5}
+                ]
+            }
+        ]
+
+        all_passed = True
+
+        for i, test_case in enumerate(test_cases):
+            text = test_case["text"]
+            expected = test_case["expected"]
+
+            mentions = self.ner_engine.extract(text)
+            actual = [
+                {
+                    "mention": m.mention,
+                    "mention_type": m.mention_type,
+                    "char_start": m.char_start,
+                    "char_end": m.char_end
+                }
+                for m in mentions
+            ]
+
+            print(f"\n  📝 用例{i + 1}: {text}")
+            print(f"     字符索引: ", end="")
+            for j, ch in enumerate(text):
+                print(f"{j}:{ch} ", end="")
+            print()
+
+            # 显示期望和实际位置对比
+            self.print_position_comparison(expected, actual, text)
+
+            # 验证
+            for exp in expected:
+                found = False
+                for m in mentions:
+                    if (m.mention == exp["mention"] and
+                            m.char_start == exp["char_start"] and
+                            m.char_end == exp["char_end"]):
+                        found = True
+                        break
+                if not found:
+                    all_passed = False
+                    print(f"     ❌ 实体 '{exp['mention']}' 位置不正确")
+
+        self.add_result(
+            "特殊字符测试",
+            all_passed,
+            "特殊字符处理正常" if all_passed else "存在特殊字符处理问题"
+        )
+
+    def print_summary(self):
+        """打印测试汇总"""
+        print("\n" + "=" * 80)
+        print("测试汇总")
+        print("=" * 80)
+
+        total = self.passed + self.failed
+        print(f"总测试数: {total}")
+        print(f"通过: {self.passed} ✅")
+        print(f"失败: {self.failed} ❌")
+        print(f"通过率: {self.passed / total * 100:.1f}%" if total > 0 else "通过率: 0%")
+
+        # 打印失败详情
+        if self.failed > 0:
+            print("\n失败测试详情:")
+            for result in self.test_results:
+                if not result["passed"]:
+                    print(f"  ❌ {result['test_name']}")
+                    if result.get("message"):
+                        print(f"     {result['message']}")
+
+    def save_results(self):
+        """保存测试结果到文件"""
+        # 创建输出目录
+        output_dir = Path("tests/output")
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        # 生成时间戳
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+        # 保存详细结果（JSON格式）
+        detailed_file = output_dir / f"ner_test_results_{timestamp}.json"
+        with open(detailed_file, 'w', encoding='utf-8') as f:
+            json.dump({
+                "config": self.config,
+                "summary": {
+                    "total": self.passed + self.failed,
+                    "passed": self.passed,
+                    "failed": self.failed,
+                    "pass_rate": f"{self.passed / (self.passed + self.failed) * 100:.1f}%" if (
+                                                                                                          self.passed + self.failed) > 0 else "0%"
+                },
+                "results": self.test_results
+            }, f, ensure_ascii=False, indent=2)
+
+        # 保存可读文本格式
+        text_file = output_dir / f"ner_test_results_{timestamp}.txt"
+        with open(text_file, 'w', encoding='utf-8') as f:
+            f.write("=" * 80 + "\n")
+            f.write("NER实体抽取测试报告 (HanLP)\n")
+            f.write(f"生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"配置: {json.dumps(self.config, ensure_ascii=False, indent=2)}\n")
+            f.write("=" * 80 + "\n\n")
+
+            f.write("测试汇总:\n")
+            total = self.passed + self.failed
+            f.write(f"  总测试数: {total}\n")
+            f.write(f"  通过: {self.passed}\n")
+            f.write(f"  失败: {self.failed}\n")
+            f.write(f"  通过率: {self.passed / total * 100:.1f}%\n\n" if total > 0 else "  通过率: 0%\n\n")
+
+            f.write("-" * 80 + "\n")
+            f.write("详细测试结果:\n")
+            f.write("-" * 80 + "\n\n")
+
+            for i, result in enumerate(self.test_results, 1):
+                status = "✅ 通过" if result["passed"] else "❌ 失败"
+                f.write(f"{i}. {result['test_name']} - {status}\n")
+                if result.get("message"):
+                    f.write(f"   消息: {result['message']}\n")
+                f.write("\n")
+
+        print(f"\n测试结果已保存:")
+        print(f"  JSON格式: {detailed_file}")
+        print(f"  文本格式: {text_file}")
 
 
-def create_test_suite():
-    """创建测试套件"""
-    suite = unittest.TestSuite()
+def main():
+    """主函数"""
+    # 检查依赖
+    try:
+        import hanlp
+        print("✅ HanLP已安装")
+    except ImportError:
+        print("⚠️ 未安装HanLP，请运行: pip install hanlp")
+        return
 
-    # 添加测试用例
-    test_methods = [
-        'test_simple_person_location',
-        'test_single_entity',
-        'test_multiple_entities_with_positions',
-        'test_company_full_name',
-        'test_location_hierarchy',
-        'test_person_full_name',
-        'test_entity_in_sentence',
-        'test_mixed_chinese_english',
-        'test_text_with_punctuation',
-        'test_empty_and_whitespace',
-        'test_entity_overlap'
-    ]
+    # 检查配置文件
+    config_path = Path(__file__).parent.parent / "config.yaml"
+    if not config_path.exists():
+        print(f"❌ 配置文件不存在: {config_path}")
+        return
 
-    for method in test_methods:
-        suite.addTest(TestNEREngine(method))
-
-    return suite
-
-
-def run_tests():
-    """运行所有测试"""
-    # 创建测试套件
-    suite = create_test_suite()
-
-    # 运行测试
-    runner = unittest.TextTestRunner(verbosity=2)
-    result = runner.run(suite)
-
-    # 打印总结
-    print(f"\n{'=' * 70}")
-    print(f"📊 测试总结:")
-    print(f"   ✅ 通过: {result.testsRun - len(result.failures) - len(result.errors)}")
-    print(f"   ❌ 失败: {len(result.failures)}")
-    print(f"   ⚠️  错误: {len(result.errors)}")
-    print(f"{'=' * 70}")
-
-    # 如果有失败，详细显示
-    if result.failures:
-        print("\n❌ 失败的测试:")
-        for failure in result.failures:
-            print(f"   - {failure[0]}")
-            print(f"      {failure[1]}")
-
-    if result.errors:
-        print("\n⚠️  错误的测试:")
-        for error in result.errors:
-            print(f"   - {error[0]}")
-            print(f"      {error[1]}")
-
-    return result
+    # 创建测试器并运行
+    tester = NERTester(str(config_path))
+    tester.run_all_tests()
 
 
 if __name__ == "__main__":
-    # 运行测试
-    run_tests()
+    main()

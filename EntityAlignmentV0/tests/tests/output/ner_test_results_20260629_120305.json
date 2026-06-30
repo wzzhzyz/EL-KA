@@ -1,0 +1,536 @@
+{
+  "config": {
+    "backend": "hanlp",
+    "hanlp_model": "CLOSE_TOK_POS_NER_SRL_DEP_SDP_CON_ELECTRA_SMALL_ZH",
+    "linkable_types": [
+      "ORG",
+      "PERSON",
+      "GPE",
+      "LOC"
+    ]
+  },
+  "summary": {
+    "total": 13,
+    "passed": 10,
+    "failed": 3,
+    "pass_rate": "76.9%"
+  },
+  "results": [
+    {
+      "test_name": "基础实体抽取",
+      "passed": false,
+      "message": "存在失败用例",
+      "details": {
+        "test_cases": [
+          {
+            "case": 1,
+            "text": "张三在北京大学工作。",
+            "expected_count": 2,
+            "actual_count": 2,
+            "matched": [
+              {
+                "mention": "张三",
+                "mention_type": "PERSON",
+                "char_start": 0,
+                "char_end": 2
+              },
+              {
+                "mention": "北京大学",
+                "mention_type": "ORG",
+                "char_start": 3,
+                "char_end": 7
+              }
+            ],
+            "missing": [],
+            "extra": [],
+            "position_valid": true,
+            "passed": true
+          },
+          {
+            "case": 2,
+            "text": "苹果公司总部位于美国加利福尼亚州。",
+            "expected_count": 3,
+            "actual_count": 3,
+            "matched": [
+              {
+                "mention": "美国",
+                "mention_type": "GPE",
+                "char_start": 7,
+                "char_end": 9
+              },
+              {
+                "mention": "加利福尼亚州",
+                "mention_type": "GPE",
+                "char_start": 9,
+                "char_end": 14
+              }
+            ],
+            "missing": [
+              {
+                "mention": "苹果公司",
+                "mention_type": "ORG",
+                "char_start": 0,
+                "char_end": 4
+              }
+            ],
+            "extra": [
+              {
+                "mention": "苹果公司总部",
+                "mention_type": "ORG",
+                "char_start": 0,
+                "char_end": 6
+              }
+            ],
+            "position_valid": true,
+            "passed": false
+          },
+          {
+            "case": 3,
+            "text": "2024年3月15日，李明在上海参加了人工智能大会。",
+            "expected_count": 3,
+            "actual_count": 2,
+            "matched": [
+              {
+                "mention": "李明",
+                "mention_type": "PERSON",
+                "char_start": 13,
+                "char_end": 15
+              },
+              {
+                "mention": "上海",
+                "mention_type": "GPE",
+                "char_start": 16,
+                "char_end": 18
+              }
+            ],
+            "missing": [
+              {
+                "mention": "2024年3月15日",
+                "mention_type": "DATE",
+                "char_start": 0,
+                "char_end": 11
+              }
+            ],
+            "extra": [],
+            "position_valid": true,
+            "passed": false
+          },
+          {
+            "case": 4,
+            "text": "华为技术有限公司的市值超过5000亿美元。",
+            "expected_count": 1,
+            "actual_count": 1,
+            "matched": [
+              {
+                "mention": "华为技术有限公司",
+                "mention_type": "ORG",
+                "char_start": 0,
+                "char_end": 8
+              }
+            ],
+            "missing": [],
+            "extra": [],
+            "position_valid": true,
+            "passed": true
+          },
+          {
+            "case": 5,
+            "text": "李娜在巴黎获得了网球公开赛冠军。",
+            "expected_count": 2,
+            "actual_count": 2,
+            "matched": [
+              {
+                "mention": "李娜",
+                "mention_type": "PERSON",
+                "char_start": 0,
+                "char_end": 2
+              },
+              {
+                "mention": "巴黎",
+                "mention_type": "GPE",
+                "char_start": 3,
+                "char_end": 5
+              }
+            ],
+            "missing": [],
+            "extra": [],
+            "position_valid": true,
+            "passed": true
+          },
+          {
+            "case": 6,
+            "text": "马云创立了阿里巴巴集团，总部在杭州。",
+            "expected_count": 3,
+            "actual_count": 3,
+            "matched": [
+              {
+                "mention": "马云",
+                "mention_type": "PERSON",
+                "char_start": 0,
+                "char_end": 2
+              },
+              {
+                "mention": "阿里巴巴集团",
+                "mention_type": "ORG",
+                "char_start": 6,
+                "char_end": 12
+              },
+              {
+                "mention": "杭州",
+                "mention_type": "GPE",
+                "char_start": 17,
+                "char_end": 19
+              }
+            ],
+            "missing": [],
+            "extra": [],
+            "position_valid": true,
+            "passed": true
+          },
+          {
+            "case": 7,
+            "text": "腾讯CEO马化腾在深圳发布了新产品。",
+            "expected_count": 3,
+            "actual_count": 3,
+            "matched": [
+              {
+                "mention": "腾讯",
+                "mention_type": "ORG",
+                "char_start": 0,
+                "char_end": 2
+              },
+              {
+                "mention": "马化腾",
+                "mention_type": "PERSON",
+                "char_start": 5,
+                "char_end": 8
+              },
+              {
+                "mention": "深圳",
+                "mention_type": "GPE",
+                "char_start": 9,
+                "char_end": 11
+              }
+            ],
+            "missing": [],
+            "extra": [],
+            "position_valid": true,
+            "passed": true
+          }
+        ]
+      },
+      "timestamp": "2026-06-29T12:03:04.177044"
+    },
+    {
+      "test_name": "位置边界验证",
+      "passed": true,
+      "message": "测试了6个文本",
+      "details": {},
+      "timestamp": "2026-06-29T12:03:04.305343"
+    },
+    {
+      "test_name": "类型过滤功能",
+      "passed": true,
+      "message": "过滤后保留 2 个实体",
+      "details": {},
+      "timestamp": "2026-06-29T12:03:04.340458"
+    },
+    {
+      "test_name": "空文本测试",
+      "passed": true,
+      "message": "",
+      "details": {},
+      "timestamp": "2026-06-29T12:03:04.350721"
+    },
+    {
+      "test_name": "无实体文本测试",
+      "passed": true,
+      "message": "",
+      "details": {},
+      "timestamp": "2026-06-29T12:03:04.378265"
+    },
+    {
+      "test_name": "边界情况测试",
+      "passed": true,
+      "message": "",
+      "details": {},
+      "timestamp": "2026-06-29T12:03:04.568836"
+    },
+    {
+      "test_name": "Unicode字符位置测试",
+      "passed": true,
+      "message": "Unicode位置计算正确",
+      "details": {},
+      "timestamp": "2026-06-29T12:03:04.656177"
+    },
+    {
+      "test_name": "批量数据测试",
+      "passed": false,
+      "message": "存在失败用例",
+      "details": {
+        "batch_details": [
+          {
+            "case": 1,
+            "text": "马云在杭州创立了阿里巴巴集团。",
+            "expected": [
+              [
+                "马云",
+                "PERSON"
+              ],
+              [
+                "杭州",
+                "GPE"
+              ],
+              [
+                "阿里巴巴集团",
+                "ORG"
+              ]
+            ],
+            "actual": [
+              [
+                "马云",
+                "PERSON"
+              ],
+              [
+                "杭州",
+                "GPE"
+              ],
+              [
+                "阿里巴巴集团",
+                "ORG"
+              ]
+            ],
+            "missing": [],
+            "extra": [],
+            "passed": true
+          },
+          {
+            "case": 2,
+            "text": "腾讯公司总部在深圳，员工超过5万人。",
+            "expected": [
+              [
+                "腾讯公司",
+                "ORG"
+              ],
+              [
+                "深圳",
+                "GPE"
+              ]
+            ],
+            "actual": [
+              [
+                "腾讯公司",
+                "ORG"
+              ],
+              [
+                "深圳",
+                "GPE"
+              ]
+            ],
+            "missing": [],
+            "extra": [],
+            "passed": true
+          },
+          {
+            "case": 3,
+            "text": "百度CEO李彦宏在北京发布了新产品。",
+            "expected": [
+              [
+                "百度",
+                "ORG"
+              ],
+              [
+                "李彦宏",
+                "PERSON"
+              ],
+              [
+                "北京",
+                "GPE"
+              ]
+            ],
+            "actual": [
+              [
+                "百度",
+                "ORG"
+              ],
+              [
+                "李彦宏",
+                "PERSON"
+              ],
+              [
+                "北京",
+                "GPE"
+              ]
+            ],
+            "missing": [],
+            "extra": [],
+            "passed": true
+          },
+          {
+            "case": 4,
+            "text": "小米科技创始人雷军毕业于武汉大学。",
+            "expected": [
+              [
+                "小米科技",
+                "ORG"
+              ],
+              [
+                "雷军",
+                "PERSON"
+              ],
+              [
+                "武汉大学",
+                "ORG"
+              ]
+            ],
+            "actual": [
+              [
+                "雷军",
+                "PERSON"
+              ],
+              [
+                "武汉大学",
+                "ORG"
+              ]
+            ],
+            "missing": [
+              [
+                "小米科技",
+                "ORG"
+              ]
+            ],
+            "extra": [],
+            "passed": false
+          },
+          {
+            "case": 5,
+            "text": "阿里巴巴与腾讯在杭州签署合作协议。",
+            "expected": [
+              [
+                "阿里巴巴",
+                "ORG"
+              ],
+              [
+                "腾讯",
+                "ORG"
+              ],
+              [
+                "杭州",
+                "GPE"
+              ]
+            ],
+            "actual": [
+              [
+                "阿里巴巴",
+                "ORG"
+              ],
+              [
+                "腾讯",
+                "ORG"
+              ],
+              [
+                "杭州",
+                "GPE"
+              ]
+            ],
+            "missing": [],
+            "extra": [],
+            "passed": true
+          },
+          {
+            "case": 6,
+            "text": "华为发布了新款Mate手机。",
+            "expected": [
+              [
+                "华为",
+                "ORG"
+              ]
+            ],
+            "actual": [
+              [
+                "华为",
+                "ORG"
+              ]
+            ],
+            "missing": [],
+            "extra": [],
+            "passed": true
+          },
+          {
+            "case": 7,
+            "text": "中国乒乓球队在东京奥运会获得金牌。",
+            "expected": [
+              [
+                "中国",
+                "GPE"
+              ],
+              [
+                "东京",
+                "GPE"
+              ]
+            ],
+            "actual": [
+              [
+                "中国乒乓球队",
+                "ORG"
+              ],
+              [
+                "东京",
+                "GPE"
+              ]
+            ],
+            "missing": [
+              [
+                "中国",
+                "GPE"
+              ]
+            ],
+            "extra": [
+              [
+                "中国乒乓球队",
+                "ORG"
+              ]
+            ],
+            "passed": false
+          }
+        ]
+      },
+      "timestamp": "2026-06-29T12:03:04.832304"
+    },
+    {
+      "test_name": "复杂文本测试",
+      "passed": true,
+      "message": "测试了4个复杂文本",
+      "details": {},
+      "timestamp": "2026-06-29T12:03:04.962297"
+    },
+    {
+      "test_name": "位置精度测试",
+      "passed": true,
+      "message": "位置精度验证通过",
+      "details": {},
+      "timestamp": "2026-06-29T12:03:05.003630"
+    },
+    {
+      "test_name": "中英文混合测试",
+      "passed": true,
+      "message": "中英文混合识别正常",
+      "details": {},
+      "timestamp": "2026-06-29T12:03:05.047057"
+    },
+    {
+      "test_name": "长文本测试",
+      "passed": true,
+      "message": "识别了10个实体，耗时0.122秒",
+      "details": {},
+      "timestamp": "2026-06-29T12:03:05.168964"
+    },
+    {
+      "test_name": "特殊字符测试",
+      "passed": false,
+      "message": "存在特殊字符处理问题",
+      "details": {},
+      "timestamp": "2026-06-29T12:03:05.279633"
+    }
+  ]
+}
