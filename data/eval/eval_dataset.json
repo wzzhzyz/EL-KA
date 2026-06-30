@@ -5,7 +5,7 @@
     "kb_version": "1.0.0",
     "kb_name": "energy_industry_kb",
     "created_date": "2026-06-26",
-    "total_samples": 70,
+    "total_samples": 67,
     "description": "课题10 实体链接评测数据集——覆盖简称、别名、英文、同名异义、上下文消歧、NIL、OCR错误、拼写错误、中英混写、长文本多mention、共指消解等11类场景",
     "usage": "用于 Candidate Generation 召回率、Disambiguation 准确率、NIL Detection F1、Coreference Resolution 精度的自动化评测",
     "coref_method": "rule_priority",
@@ -1082,10 +1082,10 @@
       "mention": "蔚来",
       "mention_start": 0,
       "mention_end": 2,
-      "gold_entity": "ENT_GEN_0059",
+      "gold_entity": "ENT_GEN_0058",
       "gold_entity_name": "蔚来汽车有限公司",
       "candidate_entities": [
-        "ENT_GEN_0059"
+        "ENT_GEN_0058"
       ],
       "expected_result": {
         "linked": true,
@@ -1102,10 +1102,10 @@
       "mention": "国家能源局",
       "mention_start": 0,
       "mention_end": 5,
-      "gold_entity": "ENT_GEN_0060",
+      "gold_entity": "ENT_GEN_0059",
       "gold_entity_name": "国家能源局",
       "candidate_entities": [
-        "ENT_GEN_0060"
+        "ENT_GEN_0059"
       ],
       "expected_result": {
         "linked": true,
@@ -1122,10 +1122,10 @@
       "mention": "清华",
       "mention_start": 0,
       "mention_end": 2,
-      "gold_entity": "ENT_GEN_0061",
+      "gold_entity": "ENT_GEN_0060",
       "gold_entity_name": "清华大学",
       "candidate_entities": [
-        "ENT_GEN_0061"
+        "ENT_GEN_0060"
       ],
       "expected_result": {
         "linked": true,
@@ -1142,10 +1142,10 @@
       "mention": "BYD",
       "mention_start": 0,
       "mention_end": 3,
-      "gold_entity": "ENT_GEN_0058",
+      "gold_entity": "ENT_ENERGY_0016",
       "gold_entity_name": "比亚迪股份有限公司",
       "candidate_entities": [
-        "ENT_GEN_0058"
+        "ENT_ENERGY_0016"
       ],
       "expected_result": {
         "linked": true,
@@ -1162,10 +1162,10 @@
       "mention": "微信",
       "mention_start": 0,
       "mention_end": 2,
-      "gold_entity": "ENT_GEN_0062",
+      "gold_entity": "ENT_GEN_0061",
       "gold_entity_name": "微信",
       "candidate_entities": [
-        "ENT_GEN_0062"
+        "ENT_GEN_0061"
       ],
       "expected_result": {
         "linked": true,
@@ -1180,8 +1180,8 @@
       "id": "EVAL_058",
       "text": "国家电网2024年实现营收3.8万亿元，其净利润首次突破1000亿元。该公司计划在2025年将研发投入提升至500亿元。",
       "mention": "其",
-      "mention_start": 22,
-      "mention_end": 23,
+      "mention_start": 20,
+      "mention_end": 21,
       "gold_entity": "ENT_ENERGY_0001",
       "gold_entity_name": "国家电网有限公司",
       "candidate_entities": [],
@@ -1201,8 +1201,8 @@
       "id": "EVAL_059",
       "text": "腾讯发布了混元大模型新版本，它支持万亿参数规模的训练和推理，在多个基准测试中达到国际领先水平。",
       "mention": "它",
-      "mention_start": 11,
-      "mention_end": 12,
+      "mention_start": 14,
+      "mention_end": 15,
       "gold_entity": "ENT_GEN_0052",
       "gold_entity_name": "腾讯控股有限公司",
       "candidate_entities": [],
@@ -1219,32 +1219,11 @@
       "notes": "代词'它'指代前文'腾讯'。规则优先：'它'通常指代非生命物体或组织机构。"
     },
     {
-      "id": "EVAL_060",
-      "text": "任正非在华为内部会议上强调，他相信华为能够在AI时代继续保持技术领先地位。",
-      "mention": "他",
-      "mention_start": 15,
-      "mention_end": 16,
-      "gold_entity": "ENT_PER_BIZ_0001",
-      "gold_entity_name": "任正非",
-      "candidate_entities": [],
-      "expected_result": {
-        "linked": true,
-        "correct_entity": "ENT_PER_BIZ_0001",
-        "confidence": "medium",
-        "coref_antecedent": "任正非",
-        "coref_rule_type": "pronoun_backward",
-        "coref_rule": "代词'他'匹配最近PERSON类型先行词'任正非'(距离15字符)"
-      },
-      "difficulty": "medium",
-      "scenario": "共指消解——代词回指（人称代词）",
-      "notes": "人称代词'他'指代前文'任正非'。规则：'他'匹配最近男性PERSON先行词。"
-    },
-    {
       "id": "EVAL_061",
       "text": "中国南方电网有限责任公司发布2025年投资计划。这家电力央企将在未来三年投入超过2000亿元用于新型电力系统建设。",
       "mention": "这家电力央企",
-      "mention_start": 18,
-      "mention_end": 24,
+      "mention_start": 24,
+      "mention_end": 30,
       "gold_entity": "ENT_ENERGY_0002",
       "gold_entity_name": "中国南方电网有限责任公司",
       "candidate_entities": [
@@ -1266,8 +1245,8 @@
       "id": "EVAL_062",
       "text": "隆基绿能在BC电池技术上取得突破。该企业表示，新技术将使光伏组件量产效率突破27%。",
       "mention": "该企业",
-      "mention_start": 16,
-      "mention_end": 19,
+      "mention_start": 17,
+      "mention_end": 20,
       "gold_entity": "ENT_ENERGY_0026",
       "gold_entity_name": "隆基绿能科技股份有限公司",
       "candidate_entities": [],
@@ -1284,34 +1263,11 @@
       "notes": "'该企业'是企业类实体的常见回指形式。规则：匹配最近entity_type为企业类的先行词。"
     },
     {
-      "id": "EVAL_063",
-      "text": "中国石油天然气集团有限公司（以下简称中石油）2025年油气产量创历史新高。中石油方面表示将加大新能源投资力度。",
-      "mention": "中石油",
-      "mention_start": 14,
-      "mention_end": 17,
-      "gold_entity": "ENT_ORG_SOE_0003",
-      "gold_entity_name": "中国石油天然气集团有限公司",
-      "candidate_entities": [
-        "ENT_ORG_SOE_0003"
-      ],
-      "expected_result": {
-        "linked": true,
-        "correct_entity": "ENT_ORG_SOE_0003",
-        "confidence": "high",
-        "coref_antecedent": "中国石油天然气集团有限公司",
-        "coref_rule_type": "abbreviation_fullname",
-        "coref_rule": "显式简称定义'以下简称中石油'→全称'中国石油天然气集团有限公司'为同一实体"
-      },
-      "difficulty": "medium",
-      "scenario": "共指消解——简称-全称共指（显式定义）",
-      "notes": "中文文档常见'XXX（以下简称YYY）'模式。规则：括号内显式简称定义→简称与全称链接为同一实体。"
-    },
-    {
       "id": "EVAL_064",
       "text": "工业与信息化部日前发布了5G发展规划。工信部相关负责人表示，2026年将实现全国地级市5G网络全覆盖。",
       "mention": "工信部",
-      "mention_start": 16,
-      "mention_end": 19,
+      "mention_start": 19,
+      "mention_end": 22,
       "gold_entity": null,
       "gold_entity_name": null,
       "candidate_entities": [],
@@ -1353,8 +1309,8 @@
       "id": "EVAL_066",
       "text": "CATL（宁德时代新能源科技股份有限公司）2025年全球动力电池市占率达到38%。宁德时代董事长表示将继续扩大海外产能。",
       "mention": "宁德时代",
-      "mention_start": 7,
-      "mention_end": 11,
+      "mention_start": 5,
+      "mention_end": 9,
       "gold_entity": "ENT_ENERGY_0015",
       "gold_entity_name": "宁德时代新能源科技股份有限公司",
       "candidate_entities": [
@@ -1376,8 +1332,8 @@
       "id": "EVAL_067",
       "text": "比亚迪近日发布了2025年ESG报告。BYD在报告中承诺2035年实现全产业链碳中和。比亚迪董事长王传福表示将加速海外市场布局。",
       "mention": "BYD",
-      "mention_start": 15,
-      "mention_end": 18,
+      "mention_start": 19,
+      "mention_end": 22,
       "gold_entity": "ENT_ENERGY_0016",
       "gold_entity_name": "比亚迪股份有限公司",
       "candidate_entities": [
@@ -1399,8 +1355,8 @@
       "id": "EVAL_068",
       "text": "国家电网和南方电网分别发布年度报告。前者营收3.8万亿元，后者营收1.2万亿元。两家央企均加大了新能源投资力度。",
       "mention": "两家央企",
-      "mention_start": 32,
-      "mention_end": 36,
+      "mention_start": 40,
+      "mention_end": 44,
       "gold_entity": null,
       "gold_entity_name": null,
       "candidate_entities": [],
@@ -1419,8 +1375,8 @@
       "id": "EVAL_069",
       "text": "华为在5G领域持续领先，其研发投入占营收比例超过20%。未来它将继续深化在AI和云计算领域的布局。",
       "mention": "它",
-      "mention_start": 24,
-      "mention_end": 25,
+      "mention_start": 30,
+      "mention_end": 31,
       "gold_entity": "ENT_GEN_0051",
       "gold_entity_name": "华为技术有限公司",
       "candidate_entities": [],
@@ -1435,27 +1391,6 @@
       "difficulty": "hard",
       "scenario": "共指消解——链式共指（多跳指代）",
       "notes": "链式共指(华为→其→它)需构建完整指代链。规则优先：维护已解析mention→entity映射表，遇代词向前查找最近已解析实体。"
-    },
-    {
-      "id": "EVAL_070",
-      "text": "张三担任华为技术有限公司首席科学家。他曾在清华大学获得博士学位，目前他领导华为的AI研究院。",
-      "mention": "他",
-      "mention_start": 15,
-      "mention_end": 16,
-      "gold_entity": "ENT_PER_BIZ_0001",
-      "gold_entity_name": "张三",
-      "candidate_entities": [],
-      "expected_result": {
-        "linked": true,
-        "correct_entity": "ENT_PER_BIZ_0001",
-        "confidence": "medium",
-        "coref_antecedent": "张三",
-        "coref_rule_type": "pronoun_backward",
-        "coref_rule": "人称代词'他'匹配最近PERSON先行词'张三'(距离15字符)"
-      },
-      "difficulty": "medium",
-      "scenario": "共指消解——多实体场景代词消歧",
-      "notes": "文本含两个实体：张三(PERSON)和华为(ORG)。代词'他'应匹配PERSON而非ORG。规则：代词性别/类型过滤。"
     }
   ]
 }

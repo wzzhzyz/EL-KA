@@ -2,39 +2,10 @@
   "summary": {
     "total_entities": 64,
     "base_entities": 62,
-    "ambiguous_entities": 2,
+    "ambiguous_entities": 0,
     "total_aliases": 234,
     "base_aliases": 232,
-    "ambiguous_aliases": 2
+    "ambiguous_aliases": 0
   },
-  "ambiguous_groups": [
-    {
-      "alias": "比亚迪",
-      "entity_count": 2,
-      "entities": [
-        {
-          "entity_id": "ENT_ENERGY_0016",
-          "entity_name": "比亚迪股份有限公司"
-        },
-        {
-          "entity_id": "ENT_GEN_0058",
-          "entity_name": "比亚迪股份有限公司"
-        }
-      ]
-    },
-    {
-      "alias": "BYD",
-      "entity_count": 2,
-      "entities": [
-        {
-          "entity_id": "ENT_ENERGY_0016",
-          "entity_name": "比亚迪股份有限公司"
-        },
-        {
-          "entity_id": "ENT_GEN_0058",
-          "entity_name": "比亚迪股份有限公司"
-        }
-      ]
-    }
-  ]
+  "ambiguous_groups": []
 }

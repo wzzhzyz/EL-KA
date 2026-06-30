@@ -1386,12 +1386,18 @@
           "alias_type": "英文",
           "priority": 0.4,
           "confidence": 0.7
+        },
+        {
+          "name": "比亚迪汽车",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
         }
       ],
       "abbreviation": "比亚迪",
       "entity_type": "NEW_ENERGY_ENTERPRISE",
-      "entity_type_display": "新能源企业",
-      "industry": "新能源汽车+储能",
+      "entity_type_display": "新能源企业/汽车制造商",
+      "industry": "新能源汽车+储能+制造",
       "summary": "全球领先的新能源汽车制造商和动力电池供应商，掌握电池、电机、电控、芯片全产业链核心技术。",
       "business": "新能源汽车研发制造销售、动力电池（刀片电池）研发生产、光伏组件制造、储能系统、轨道交通（云轨云巴）。",
       "location": {
@@ -1431,7 +1437,8 @@
         "世界500强",
         "新能源汽车",
         "储能",
-        "行业龙头"
+        "行业龙头",
+        "汽车"
       ],
       "evidence": {},
       "update_time": "2026-06-20",
@@ -4308,73 +4315,6 @@
     },
     {
       "entity_id": "ENT_GEN_0058",
-      "entity_name": "比亚迪股份有限公司",
-      "aliases": [
-        {
-          "name": "比亚迪",
-          "alias_type": "简称",
-          "priority": 0.95,
-          "confidence": 1.0
-        },
-        {
-          "name": "BYD",
-          "alias_type": "英文",
-          "priority": 0.88,
-          "confidence": 1.0
-        },
-        {
-          "name": "比亚迪汽车",
-          "alias_type": "简称",
-          "priority": 0.82,
-          "confidence": 1.0
-        }
-      ],
-      "abbreviation": "比亚迪汽车",
-      "entity_type": "AUTO_MANUFACTURER",
-      "entity_type_display": "汽车制造商",
-      "industry": "新能源汽车",
-      "summary": "全球领先的新能源汽车制造商，掌握电池、电机、电控全产业链核心技术。",
-      "business": "新能源汽车研发制造、动力电池（刀片电池）、光伏储能、轨道交通。",
-      "location": {
-        "country": "中国",
-        "province": "广东省",
-        "city": "深圳市",
-        "address": "坪山区"
-      },
-      "keywords": [
-        "新能源汽车",
-        "动力电池",
-        "电动车",
-        "刀片电池",
-        "储能"
-      ],
-      "source": {
-        "source_name": "工商注册信息",
-        "publisher": "国家市场监督管理总局",
-        "url": "https://www.samr.gov.cn",
-        "crawl_time": "2025-03-15",
-        "license": "公开数据",
-        "confidence": 1.0
-      },
-      "relations": [],
-      "tags": [
-        "民营企业",
-        "上市公司",
-        "世界500强",
-        "新能源汽车",
-        "汽车",
-        "行业龙头"
-      ],
-      "evidence": {},
-      "update_time": "2026-06-26",
-      "ambiguity_level": "ambiguous",
-      "shared_aliases": [
-        "比亚迪",
-        "BYD"
-      ]
-    },
-    {
-      "entity_id": "ENT_GEN_0059",
       "entity_name": "蔚来汽车有限公司",
       "aliases": [
         {
@@ -4443,7 +4383,7 @@
       "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0060",
+      "entity_id": "ENT_GEN_0059",
       "entity_name": "国家能源局",
       "aliases": [
         {
@@ -4510,7 +4450,7 @@
       "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0061",
+      "entity_id": "ENT_GEN_0060",
       "entity_name": "清华大学",
       "aliases": [
         {
@@ -4573,7 +4513,7 @@
       "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0062",
+      "entity_id": "ENT_GEN_0061",
       "entity_name": "微信",
       "aliases": [
         {
@@ -4641,7 +4581,7 @@
       "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0063",
+      "entity_id": "ENT_GEN_0062",
       "entity_name": "抖音",
       "aliases": [
         {
@@ -4702,7 +4642,7 @@
       "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0064",
+      "entity_id": "ENT_GEN_0063",
       "entity_name": "Windows 11",
       "aliases": [
         {
