@@ -45,6 +45,41 @@ class DBWriter:
         except sqlite3.Error as exc:
             raise DatabaseError(f"插入 pipeline_run 失败: {exc}") from exc
 
+    def update_pipeline_run(
+        self,
+        run_id: str,
+        status: str,
+        metadata: Optional[Dict[str, Any]] = None,
+    ) -> None:
+        try:
+            metadata_json = json.dumps(metadata or {}, ensure_ascii=False)
+            with self._get_connection() as conn:
+                conn.execute(
+                    "UPDATE pipeline_run SET status = ?, metadata = ? WHERE run_id = ?",
+                    (status, metadata_json, run_id),
+                )
+        except sqlite3.Error as exc:
+            raise DatabaseError(f"更新 pipeline_run 失败: {exc}") from exc
+
+    def insert_pipeline_step(
+        self,
+        run_id: str,
+        stage_name: str,
+        status: str,
+        message: str = "",
+        payload: Optional[Dict[str, Any]] = None,
+    ) -> int:
+        try:
+            payload_json = json.dumps(payload or {}, ensure_ascii=False)
+            with self._get_connection() as conn:
+                cursor = conn.execute(
+                    "INSERT INTO pipeline_step (run_id, stage_name, status, message, payload) VALUES (?, ?, ?, ?, ?)",
+                    (run_id, stage_name, status, message, payload_json),
+                )
+                return cursor.lastrowid
+        except sqlite3.Error as exc:
+            raise DatabaseError(f"插入 pipeline_step 失败: {exc}") from exc
+
     def insert_mention(
         self,
         task_id: str,

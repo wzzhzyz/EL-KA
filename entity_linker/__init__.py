@@ -10,7 +10,7 @@ from .models import (
     StandardEntity,
     StandardMention,
 )
-from .pipeline import Pipeline
+from .pipeline import EntityLinkingPipeline, Pipeline
 from .utils import (
     ValidationError,
     assert_in_choices,
@@ -25,6 +25,7 @@ from .utils import (
 __all__ = [
     "ConfigBase",
     "Pipeline",
+    "EntityLinkingPipeline",
     "get_logger",
     "new_trace_id",
     "get_current_trace_id",

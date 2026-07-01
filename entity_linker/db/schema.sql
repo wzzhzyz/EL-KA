@@ -56,6 +56,19 @@ CREATE INDEX IF NOT EXISTS idx_mention_doc ON mention(doc_id);
 CREATE INDEX IF NOT EXISTS idx_candidate_mention ON candidate(mention_id);
 CREATE INDEX IF NOT EXISTS idx_link_mention ON link_result(mention_id);
 
+CREATE TABLE IF NOT EXISTS pipeline_step (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    run_id TEXT NOT NULL,
+    stage_name TEXT NOT NULL,
+    status TEXT NOT NULL,
+    message TEXT,
+    payload TEXT,
+    created_at TEXT DEFAULT (datetime('now')),
+    FOREIGN KEY (run_id) REFERENCES pipeline_run(run_id) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS idx_pipeline_step_runid ON pipeline_step(run_id);
+
 -- 管道运行跟踪（记录每次 pipeline 执行的元数据，便于审计与回放）
 CREATE TABLE IF NOT EXISTS pipeline_run (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
