@@ -1,0 +1,203 @@
+{
+  "dataset_name": "disambiguation_confidence_test",
+  "version": "1.0",
+  "purpose": "消歧模块置信度分层测试——高/低置信样本, KB存在/NIL区分",
+  "nil_threshold": 0.65,
+  "bge_llm_trigger_threshold": 0.65,
+  "samples": [
+    {
+      "id": "DIS_001",
+      "text": "国网2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。",
+      "mention": "国网",
+      "gold_entity": "ENT_ENERGY_0001",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [0.85, 1.0],
+      "expected_nil": false,
+      "reason": "abbreviation精确命中 + 上下文特高压/营收强语义匹配",
+      "scenario": "高置信-精确匹配+语义确认"
+    },
+    {
+      "id": "DIS_002",
+      "text": "CATL与特斯拉签订了新的供货协议，将为上海超级工厂提供下一代动力电池。",
+      "mention": "CATL",
+      "gold_entity": "ENT_ENERGY_0015",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [0.80, 1.0],
+      "expected_nil": false,
+      "reason": "英文别名精确命中 + 特斯拉/动力电池语义高度吻合",
+      "scenario": "高置信-英文别名+语义"
+    },
+    {
+      "id": "DIS_003",
+      "text": "华能2024年清洁能源装机占比首次突破50%，其中风电和光伏新增装机超过1500万千瓦。",
+      "mention": "华能",
+      "gold_entity": "ENT_ENERGY_0003",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [0.75, 0.95],
+      "expected_nil": false,
+      "reason": "abbreviation精确命中 + 清洁能源装机语义匹配",
+      "scenario": "高置信-简称+语义"
+    },
+    {
+      "id": "DIS_004",
+      "text": "国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+      "mention": "国网",
+      "gold_entity": "ENT_ENERGY_0001",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [0.65, 0.85],
+      "expected_nil": false,
+      "reason": "多候选(3个)共享别名, 需上下文消歧确定母公司",
+      "scenario": "中置信-多候选需消歧"
+    },
+    {
+      "id": "DIS_005",
+      "text": "三峡大坝今年汛期累计拦蓄洪水超过200亿立方米，充分发挥了防洪骨干作用。",
+      "mention": "三峡大坝",
+      "gold_entity": "ENT_ENERGY_0012",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [0.70, 0.90],
+      "expected_nil": false,
+      "reason": "别名命中 + 防洪语义确认→设施非企业",
+      "scenario": "中置信-需区分设施vs企业"
+    },
+    {
+      "id": "DIS_006",
+      "text": "中核与中广核联合研发的华龙一号已成为中国核电走出去的名片。",
+      "mention": "中核",
+      "gold_entity": "ENT_ENERGY_0034",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [0.65, 0.85],
+      "expected_nil": false,
+      "reason": "两字简称 + 与中广核一字之差需语义区分",
+      "scenario": "中置信-一字之差消歧"
+    },
+    {
+      "id": "DIS_007",
+      "text": "塔拉滩光伏基地年发电量占青海新能源发电三分之一以上。",
+      "mention": "塔拉滩光伏基地",
+      "gold_entity": "ENT_ENERGY_0014",
+      "confidence_level": "low",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [0.55, 0.75],
+      "expected_nil": false,
+      "reason": "非标别名(confidence=0.8), 依赖BGE语义匹配补充",
+      "scenario": "低置信-非标别名依赖语义"
+    },
+    {
+      "id": "DIS_008",
+      "text": "囯网公司近日宣布在西北地区新建三条特高压输电线路，总投资超过800亿元。",
+      "mention": "囯网",
+      "gold_entity": "ENT_ENERGY_0001",
+      "confidence_level": "low",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [0.50, 0.70],
+      "expected_nil": false,
+      "reason": "OCR形近字→精确匹配失败→模糊匹配(ed=1)或BGE语义兜底",
+      "scenario": "低置信-OCR容错兜底"
+    },
+    {
+      "id": "DIS_009",
+      "text": "宁徳时代新能源科技股份有限公司发布第三代钠离子电池。",
+      "mention": "宁徳时代",
+      "gold_entity": "ENT_ENERGY_0015",
+      "confidence_level": "low",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [0.50, 0.70],
+      "expected_nil": false,
+      "reason": "异体字(徳→德)→模糊匹配或BGE语义兜底",
+      "scenario": "低置信-异体字容错"
+    },
+    {
+      "id": "DIS_010",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "mention": "阳光新能源",
+      "gold_entity": null,
+      "confidence_level": "high",
+      "kb_status": "nil",
+      "expected_bge_score_range": [0.0, 0.45],
+      "expected_nil": true,
+      "nil_reason": "entity_not_in_kb",
+      "reason": "KB中有阳光电源但mention=阳光新能源, alias未命中+BGE语义差异大→NIL",
+      "scenario": "NIL-实体不在KB(高置信NIL)"
+    },
+    {
+      "id": "DIS_011",
+      "text": "工信部发布了5G发展规划，相关负责人表示2026年将实现全国地级市全覆盖。",
+      "mention": "工信部",
+      "gold_entity": null,
+      "confidence_level": "high",
+      "kb_status": "nil",
+      "expected_bge_score_range": [0.0, 0.40],
+      "expected_nil": true,
+      "nil_reason": "entity_not_in_kb",
+      "reason": "mention不在KB中, alias未命中+无相似实体→NIL",
+      "scenario": "NIL-实体不在KB"
+    },
+    {
+      "id": "DIS_012",
+      "text": "华电集团天然气发电装机容量位居全国第一，分布式能源项目遍布各省。",
+      "mention": "华电",
+      "gold_entity": "ENT_ENERGY_0007",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [0.80, 1.0],
+      "expected_nil": false,
+      "reason": "abbreviation精确命中 + 天然气发电/分布式语义确认",
+      "scenario": "高置信-精确匹配(边界case: 华能vs华电)"
+    },
+    {
+      "id": "DIS_013",
+      "text": "两家央企均加大了新能源投资力度，预计2026年合计新增装机超过5000万千瓦。",
+      "mention": "两家央企",
+      "gold_entity": null,
+      "confidence_level": "medium",
+      "kb_status": "nil",
+      "expected_bge_score_range": [0.0, 0.40],
+      "expected_nil": true,
+      "nil_reason": "ambiguous_collective",
+      "reason": "集合指代无法对应单一实体→应标记NIL而非强行链接",
+      "scenario": "NIL-集合指代"
+    },
+    {
+      "id": "DIS_014",
+      "text": "该企业表示将在2026年前完成首批煤电机组低碳化改造，涉及装机超过3000万千瓦。",
+      "mention": "该企业",
+      "gold_entity": null,
+      "confidence_level": "medium",
+      "kb_status": "nil",
+      "expected_bge_score_range": [0.0, 0.30],
+      "expected_nil": true,
+      "nil_reason": "mention_is_coref",
+      "reason": "mention=该企业是名词回指, 应由共指模块处理, 实体链接层标记NIL",
+      "scenario": "NIL-共指代词(应由coref模块处理)"
+    },
+    {
+      "id": "DIS_015",
+      "text": "国网新源今年新投产了两座抽水蓄能电站，总装机容量达到320万千瓦。",
+      "mention": "国网新源",
+      "gold_entity": "ENT_ENERGY_0010",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [0.85, 1.0],
+      "expected_nil": false,
+      "reason": "精确命中子公司全称 + 抽水蓄能/装机语义高度匹配",
+      "scenario": "高置信-子公司精确匹配(验证popularity不覆盖)"
+    }
+  ],
+  "statistics": {
+    "total": 15,
+    "by_confidence": {"high": 7, "medium": 4, "low": 2, "nil_high": 2},
+    "by_kb_status": {"in_kb": 10, "nil": 5},
+    "nil_reasons": {
+      "entity_not_in_kb": 3,
+      "ambiguous_collective": 1,
+      "mention_is_coref": 1
+    }
+  }
+}
