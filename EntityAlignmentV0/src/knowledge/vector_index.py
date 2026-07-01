@@ -1,7 +1,7 @@
 # src/knowledge/vector_index.py
 import numpy as np
 import faiss
-from typing import List, Dict
+from typing import List, Dict, Optional
 from sentence_transformers import SentenceTransformer
 from src.models.entity import StandardEntity
 from src.utils.logger import logger
@@ -9,13 +9,16 @@ from src.utils.config import resolve_path
 
 
 class VectorIndex:
-    """FAISS 向量索引 - 使用 BGE 指令前缀优化"""
+    """
+    FAISS 向量索引 - 使用 BGE 指令前缀优化 + 结构化提示
+    """
 
-    def __init__(self, model_path: str):
+    def __init__(self, model_path: str, kb=None):
         self.model_path = resolve_path(model_path)
         self.model = None
         self.index = None
         self.entities: List[StandardEntity] = []
+        self.kb = kb
 
     def _load_model(self):
         if self.model is None:
@@ -23,50 +26,93 @@ class VectorIndex:
             self.model = SentenceTransformer(self.model_path)
             logger.info("✅ BGE 模型加载完成")
 
+    def _build_passage_text(self, entity: StandardEntity) -> str:
+        """
+        构建结构化的 passage 文本（与 CandidateGenerator 保持一致）
+        """
+        text = f"标准实体名：{entity.standard_name}"
+
+        if entity.aliases:
+            aliases_str = "、".join(entity.aliases[:5])
+            text += f"，别名：{aliases_str}"
+
+        if entity.entity_type and entity.entity_type != "UNKNOWN":
+            text += f"，类型：{entity.entity_type}"
+
+        if entity.description:
+            text += f"，描述：{entity.description}"
+
+        industry = entity.metadata.get("industry", "")
+        if industry:
+            text += f"，所属行业：{industry}"
+
+        tags = entity.metadata.get("tags", [])
+        if tags:
+            tags_str = "、".join(tags[:5])
+            text += f"，标签：{tags_str}"
+
+        return f"passage: {text}"
+
+    def _build_query_text(self, query: str) -> str:
+        """
+        构建结构化的 query 文本
+        """
+        return f"query: 实体指称 {query} 指的是什么？"
+
     def build(self, entities: List[StandardEntity]):
-        """构建向量索引（使用 passage 前缀）"""
+        """构建向量索引"""
         self._load_model()
         self.entities = entities
 
         if not entities:
+            logger.warning("⚠️ 实体列表为空，跳过索引构建")
             return
 
-        # ============================================================
-        # 关键：构建 passage 文本时加上 "passage: " 前缀
-        # ============================================================
+        # 策略1：如果 KB 有缓存，直接使用
+        if self.kb and self.kb.has_embeddings():
+            logger.info("📦 使用 KnowledgeBase 缓存的向量构建 FAISS 索引")
+            embeddings = self.kb.get_all_embeddings()
+
+            if embeddings is not None and len(embeddings) > 0:
+                if len(embeddings) == len(entities):
+                    dim = embeddings.shape[1]
+                    self.index = faiss.IndexFlatIP(dim)
+                    self.index.add(embeddings.astype(np.float32))
+                    logger.info(f"✅ 向量索引完成: {self.index.ntotal} 个向量 (使用KB缓存)")
+                    return
+                else:
+                    logger.warning(f"⚠️ KB缓存向量数量({len(embeddings)})与实体数量({len(entities)})不一致，重新计算")
+
+        # 策略2：自行计算向量（使用结构化提示）
+        logger.info("📦 自行构建实体向量 (使用结构化 passage 提示)")
+
         texts = []
-        for e in entities:
-            # 构建实体描述文本
-            text = e.standard_name
-            if e.aliases:
-                text += " " + " ".join(e.aliases[:3])
-            if e.description:
-                text += " " + e.description
+        for entity in entities:
+            text = self._build_passage_text(entity)
+            texts.append(text)
 
-            # 添加 passage 前缀（BGE 指令微调）
-            passage_text = f"passage: {text}"
-            texts.append(passage_text)
-
-        logger.info(f"📦 构建向量索引: {len(texts)} 个实体 (使用 'passage:' 前缀)")
+        logger.info(f"📦 构建向量索引: {len(texts)} 个实体")
         embeddings = self.model.encode(texts, normalize_embeddings=True)
 
-        self.index = faiss.IndexFlatIP(embeddings.shape[1])
+        if self.kb:
+            logger.info("📦 将向量缓存到 KnowledgeBase")
+            self.kb.set_embeddings(embeddings, entities)
+
+        dim = embeddings.shape[1]
+        self.index = faiss.IndexFlatIP(dim)
         self.index.add(embeddings.astype(np.float32))
         logger.info(f"✅ 向量索引完成: {self.index.ntotal} 个向量")
+        logger.info(f"   📝 使用结构化 passage 格式: 'passage: 标准实体名：xxx，别名：xxx，描述：xxx'")
 
     def search(self, query: str, top_k: int = 5) -> List[Dict]:
-        """
-        检索最相似的实体（使用 query 前缀）
-        """
+        """检索最相似的实体（使用结构化 query 提示）"""
         if self.index is None or self.index.ntotal == 0:
             return []
 
         self._load_model()
 
-        # ============================================================
-        # 关键：查询时加上 "query: " 前缀
-        # ============================================================
-        query_text = f"query: {query}"
+        # 使用结构化的 query
+        query_text = self._build_query_text(query)
         query_emb = self.model.encode([query_text], normalize_embeddings=True)
 
         scores, indices = self.index.search(query_emb.astype(np.float32), top_k)
@@ -79,3 +125,10 @@ class VectorIndex:
                     "score": float(score)
                 })
         return results
+
+    def reload(self, entities: List[StandardEntity]):
+        """重新构建索引"""
+        self.entities = []
+        self.index = None
+        self.build(entities)
+        logger.info("🔄 向量索引已重新构建")

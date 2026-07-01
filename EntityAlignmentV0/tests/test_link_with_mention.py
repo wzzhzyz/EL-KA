@@ -528,7 +528,8 @@ class EntityLinkerEvaluator:
 
 def main():
     parser = argparse.ArgumentParser(description="实体链接智能体评测工具")
-    parser.add_argument("--dataset", type=str, default="data/eval_dataset.json",
+    parser.add_argument("--dataset", type=str,
+                        default="E:/Code/Python/PycharmProjects/EntityAlignmentV0/data/eval_dataset.json",
                         help="评测数据集路径")
     parser.add_argument("--config", type=str, default="config.yaml",
                         help="配置文件路径")

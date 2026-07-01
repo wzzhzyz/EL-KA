@@ -22,8 +22,9 @@ class TestCase:
     id: str
     mention: str
     description: str
-    expected_min_candidates: int = 1  # 期望的最少候选数
-    expected_contains: List[str] = field(default_factory=list)  # 期望包含的实体名称
+    expected_min_candidates: int = 1
+    expected_contains: List[str] = field(default_factory=list)
+    expected_methods: List[str] = field(default_factory=list)  # 期望包含的匹配方法
 
 
 class CandidateGenerationTester:
@@ -64,6 +65,7 @@ class CandidateGenerationTester:
             "candidate_details": [],
             "expected_min": test_case.expected_min_candidates,
             "expected_contains": test_case.expected_contains,
+            "expected_methods": test_case.expected_methods,
             "passed": True,
             "errors": [],
             "warnings": []
@@ -83,12 +85,19 @@ class CandidateGenerationTester:
                 result["passed"] = False
                 result["errors"].append(f"缺少期望实体: '{expected_name}'")
 
+        # 检查是否包含期望的方法
+        candidate_methods = [c.method for c in candidates]
+        for expected_method in test_case.expected_methods:
+            if expected_method not in candidate_methods:
+                result["warnings"].append(f"缺少期望方法: '{expected_method}'")
+
         # 收集候选详情
         for i, cand in enumerate(candidates, 1):
             detail = {
                 "rank": i,
                 "entity_id": cand.entity.entity_id,
                 "standard_name": cand.entity.standard_name,
+                "entity_type": cand.entity.entity_type,
                 "score": cand.score,
                 "method": cand.method,
                 "metadata": cand.metadata
@@ -110,8 +119,16 @@ class CandidateGenerationTester:
             print("  ⚠️ 无候选")
             return
 
+        # 按方法分组统计
+        method_counts = {}
         for detail in result["candidate_details"]:
-            # 根据方法显示不同颜色/标记
+            method = detail["method"]
+            method_counts[method] = method_counts.get(method, 0) + 1
+
+        print(f"  方法分布: {method_counts}")
+        print()
+
+        for detail in result["candidate_details"]:
             method_mark = {
                 "alias_exact": "🎯",
                 "alias_fuzzy": "🔍",
@@ -120,10 +137,9 @@ class CandidateGenerationTester:
 
             print(f"  {method_mark} #{detail['rank']}: {detail['standard_name']}")
             print(f"      ID: {detail['entity_id']}")
+            print(f"      类型: {detail['entity_type']}")
             print(f"      分数: {detail['score']:.4f}")
             print(f"      方法: {detail['method']}")
-            if detail.get("metadata"):
-                print(f"      元数据: {detail['metadata']}")
             print()
 
     def run_batch(self, test_cases: List[TestCase]) -> Dict[str, Any]:
@@ -177,169 +193,518 @@ class CandidateGenerationTester:
 
 
 # ============================================================
-# 测试用例定义
+# 基于 energy_entities.json 的测试用例
 # ============================================================
 
 def get_test_cases() -> List[TestCase]:
-    """获取候选生成测试用例"""
+    """获取候选生成测试用例（基于 energy_entities.json）"""
     return [
-        # === 标准名称测试 ===
+        # === 电网企业测试 ===
         TestCase(
             id="CG_001",
             mention="国家电网有限公司",
-            description="标准全称 - 应精确匹配",
+            description="电网企业 - 标准全称",
             expected_min_candidates=1,
-            expected_contains=["国家电网有限公司"]
+            expected_contains=["国家电网有限公司"],
+            expected_methods=["alias_exact"]
         ),
         TestCase(
             id="CG_002",
-            mention="中国石油天然气集团有限公司",
-            description="标准全称 - 石油",
+            mention="国网",
+            description="电网企业 - 两字简称（可能有多个实体共享此别名）",
             expected_min_candidates=1,
-            expected_contains=["中国石油天然气集团有限公司"]
+            expected_contains=["国家电网有限公司"],
+            expected_methods=["alias_exact"]
         ),
-
-        # === 别名测试（含歧义） ===
         TestCase(
             id="CG_003",
-            mention="国网",
-            description="简称 - 可能有多个实体共享同一别名",
-            expected_min_candidates=2,
-            expected_contains=["国家电网有限公司"]
+            mention="南方电网",
+            description="电网企业 - 四字简称",
+            expected_min_candidates=1,
+            expected_contains=["中国南方电网有限责任公司"],
+            expected_methods=["alias_exact"]
         ),
         TestCase(
             id="CG_004",
-            mention="中石油",
-            description="三字简称 - 石油",
+            mention="南网",
+            description="电网企业 - 两字简称",
             expected_min_candidates=1,
-            expected_contains=["中国石油天然气集团有限公司"]
+            expected_contains=["中国南方电网有限责任公司"],
+            expected_methods=["alias_exact"]
         ),
+
+        # === 发电企业测试 ===
         TestCase(
             id="CG_005",
-            mention="中石化",
-            description="三字简称 - 石化",
+            mention="华能集团",
+            description="发电企业 - 三字简称（含'集团'）",
             expected_min_candidates=1,
-            expected_contains=["中国石油化工集团有限公司"]
+            expected_contains=["中国华能集团有限公司"],
+            expected_methods=["alias_exact"]
         ),
         TestCase(
             id="CG_006",
-            mention="南网",
-            description="两字简称 - 南方电网",
+            mention="华能",
+            description="发电企业 - 两字简称",
             expected_min_candidates=1,
-            expected_contains=["中国南方电网有限责任公司"]
+            expected_contains=["中国华能集团有限公司"],
+            expected_methods=["alias_exact"]
         ),
         TestCase(
             id="CG_007",
-            mention="华能",
-            description="两字简称 - 华能国际",
+            mention="国家能源集团",
+            description="发电企业 - 四字简称",
             expected_min_candidates=1,
-            expected_contains=["华能国际电力股份有限公司"]
+            expected_contains=["国家能源投资集团有限责任公司"],
+            expected_methods=["alias_exact"]
         ),
-
-        # === 歧义别名测试 ===
         TestCase(
             id="CG_008",
-            mention="宁德时代",
-            description="新能源企业 - 全称/简称",
+            mention="国能",
+            description="发电企业 - 两字简称（可能与'国网'混淆）",
             expected_min_candidates=1,
-            expected_contains=["宁德时代新能源科技股份有限公司"]
+            expected_contains=["国家能源投资集团有限责任公司"],
+            expected_methods=["alias_exact"]
         ),
         TestCase(
             id="CG_009",
-            mention="中核",
-            description="两字简称 - 中核集团",
+            mention="国家电投",
+            description="发电企业 - 三字简称",
             expected_min_candidates=1,
-            expected_contains=["中国核工业集团有限公司"]
+            expected_contains=["国家电力投资集团有限公司"],
+            expected_methods=["alias_exact"]
         ),
-
-        # === 向量检索测试（无别名匹配） ===
         TestCase(
             id="CG_010",
-            mention="电力巨头",
-            description="无别名匹配 - 应通过向量检索召回",
+            mention="华电",
+            description="发电企业 - 两字简称",
             expected_min_candidates=1,
-            expected_contains=[]
+            expected_contains=["中国华电集团有限公司"],
+            expected_methods=["alias_exact"]
         ),
         TestCase(
             id="CG_011",
-            mention="新能源公司",
-            description="无别名匹配 - 应通过向量检索召回",
+            mention="中核集团",
+            description="核电企业 - 三字简称（含'集团'）",
             expected_min_candidates=1,
-            expected_contains=[]
+            expected_contains=["中国核工业集团有限公司"],
+            expected_methods=["alias_exact"]
         ),
-
-        # === 边界测试 ===
         TestCase(
             id="CG_012",
-            mention="不存在的实体名称XYZ",
-            description="不存在的实体 - 应无候选或极少候选",
-            expected_min_candidates=0,
-            expected_contains=[]
+            mention="中核",
+            description="核电企业 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["中国核工业集团有限公司"],
+            expected_methods=["alias_exact"]
         ),
         TestCase(
             id="CG_013",
-            mention="",
-            description="空字符串 - 应无候选",
-            expected_min_candidates=0,
-            expected_contains=[]
+            mention="中广核",
+            description="核电企业 - 三字简称",
+            expected_min_candidates=1,
+            expected_contains=["中国广核集团有限公司"],
+            expected_methods=["alias_exact"]
         ),
-
-        # === 多别名歧义测试 ===
         TestCase(
             id="CG_014",
-            mention="国网公司",
-            description="含'国网'的别名 - 应匹配多个实体",
+            mention="三峡集团",
+            description="水电企业 - 三字简称（含'集团'）",
             expected_min_candidates=1,
-            expected_contains=[]
+            expected_contains=["中国长江三峡集团有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_015",
+            mention="三峡",
+            description="水电企业 - 两字简称（可能有歧义，也指三峡水电站）",
+            expected_min_candidates=1,
+            expected_contains=["中国长江三峡集团有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+
+        # === 新能源企业测试 ===
+        TestCase(
+            id="CG_016",
+            mention="宁德时代",
+            description="新能源企业 - 四字简称",
+            expected_min_candidates=1,
+            expected_contains=["宁德时代新能源科技股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_017",
+            mention="CATL",
+            description="新能源企业 - 英文缩写",
+            expected_min_candidates=1,
+            expected_contains=["宁德时代新能源科技股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_018",
+            mention="比亚迪",
+            description="新能源企业 - 三字简称",
+            expected_min_candidates=1,
+            expected_contains=["比亚迪股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_019",
+            mention="BYD",
+            description="新能源企业 - 英文缩写",
+            expected_min_candidates=1,
+            expected_contains=["比亚迪股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_020",
+            mention="隆基绿能",
+            description="新能源企业 - 四字简称",
+            expected_min_candidates=1,
+            expected_contains=["隆基绿能科技股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_021",
+            mention="隆基",
+            description="新能源企业 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["隆基绿能科技股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_022",
+            mention="天合光能",
+            description="新能源企业 - 四字简称",
+            expected_min_candidates=1,
+            expected_contains=["天合光能股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_023",
+            mention="金风科技",
+            description="新能源企业 - 四字简称",
+            expected_min_candidates=1,
+            expected_contains=["金风科技股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_024",
+            mention="金风",
+            description="新能源企业 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["金风科技股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_025",
+            mention="远景能源",
+            description="新能源企业 - 四字简称",
+            expected_min_candidates=1,
+            expected_contains=["远景能源有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_026",
+            mention="远景",
+            description="新能源企业 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["远景能源有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_027",
+            mention="阳光电源",
+            description="新能源企业 - 四字简称",
+            expected_min_candidates=1,
+            expected_contains=["阳光电源股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_028",
+            mention="亿纬锂能",
+            description="新能源企业 - 四字简称",
+            expected_min_candidates=1,
+            expected_contains=["惠州亿纬锂能股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+
+        # === 电力设施测试 ===
+        TestCase(
+            id="CG_029",
+            mention="三峡大坝",
+            description="电力设施 - 俗称",
+            expected_min_candidates=1,
+            expected_contains=["三峡水电站"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_030",
+            mention="白鹤滩",
+            description="电力设施 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["白鹤滩水电站"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_031",
+            mention="大亚湾核电站",
+            description="电力设施 - 完整名称",
+            expected_min_candidates=1,
+            expected_contains=["大亚湾核电站"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_032",
+            mention="大亚湾",
+            description="电力设施 - 三字简称",
+            expected_min_candidates=1,
+            expected_contains=["大亚湾核电站"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_033",
+            mention="张北柔性直流电网工程",
+            description="电力设施 - 完整名称（10字以上）",
+            expected_min_candidates=1,
+            expected_contains=["张北柔性直流电网工程"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_034",
+            mention="张北柔直",
+            description="电力设施 - 四字简称",
+            expected_min_candidates=1,
+            expected_contains=["张北柔性直流电网工程"],
+            expected_methods=["alias_exact"]
+        ),
+
+        # === 专业术语测试 ===
+        TestCase(
+            id="CG_035",
+            mention="特高压直流输电",
+            description="专业术语 - 完整名称",
+            expected_min_candidates=1,
+            expected_contains=["特高压直流输电"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_036",
+            mention="UHVDC",
+            description="专业术语 - 英文缩写",
+            expected_min_candidates=1,
+            expected_contains=["特高压直流输电"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_037",
+            mention="碳中和",
+            description="专业术语 - 中文名称",
+            expected_min_candidates=1,
+            expected_contains=["碳中和"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_038",
+            mention="双碳",
+            description="专业术语 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["碳中和"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_039",
+            mention="抽水蓄能",
+            description="专业术语 - 完整名称",
+            expected_min_candidates=1,
+            expected_contains=["抽水蓄能"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_040",
+            mention="抽蓄",
+            description="专业术语 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["抽水蓄能"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_041",
+            mention="虚拟电厂",
+            description="专业术语 - 中文名称",
+            expected_min_candidates=1,
+            expected_contains=["虚拟电厂"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_042",
+            mention="VPP",
+            description="专业术语 - 英文缩写",
+            expected_min_candidates=1,
+            expected_contains=["虚拟电厂"],
+            expected_methods=["alias_exact"]
+        ),
+
+        # === 地区测试 ===
+        TestCase(
+            id="CG_043",
+            mention="深圳市",
+            description="地区 - 带'市'的全称",
+            expected_min_candidates=1,
+            expected_contains=["深圳市"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_044",
+            mention="深圳",
+            description="地区 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["深圳市"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_045",
+            mention="北京市",
+            description="地区 - 带'市'的全称",
+            expected_min_candidates=1,
+            expected_contains=["北京市"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_046",
+            mention="北京",
+            description="地区 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["北京市"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_047",
+            mention="雄安新区",
+            description="地区 - 国家级新区",
+            expected_min_candidates=1,
+            expected_contains=["雄安新区"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_048",
+            mention="雄安",
+            description="地区 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["雄安新区"],
+            expected_methods=["alias_exact"]
+        ),
+
+        # === 科技企业测试 ===
+        TestCase(
+            id="CG_049",
+            mention="华为",
+            description="科技企业 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["华为技术有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_050",
+            mention="腾讯",
+            description="科技企业 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["腾讯控股有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_051",
+            mention="阿里巴巴",
+            description="科技企业 - 四字简称",
+            expected_min_candidates=1,
+            expected_contains=["阿里巴巴集团控股有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_052",
+            mention="阿里",
+            description="科技企业 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["阿里巴巴集团控股有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+
+        # === 金融机构测试 ===
+        TestCase(
+            id="CG_053",
+            mention="工商银行",
+            description="金融机构 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["中国工商银行股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_054",
+            mention="工行",
+            description="金融机构 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["中国工商银行股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_055",
+            mention="ICBC",
+            description="金融机构 - 英文缩写",
+            expected_min_candidates=1,
+            expected_contains=["中国工商银行股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_056",
+            mention="招商银行",
+            description="金融机构 - 四字简称",
+            expected_min_candidates=1,
+            expected_contains=["招商银行股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+        TestCase(
+            id="CG_057",
+            mention="招行",
+            description="金融机构 - 两字简称",
+            expected_min_candidates=1,
+            expected_contains=["招商银行股份有限公司"],
+            expected_methods=["alias_exact"]
+        ),
+
+        # === 歧义/边缘测试 ===
+        TestCase(
+            id="CG_058",
+            mention="国网公司",
+            description="歧义别名 - '国网公司'可能匹配多个实体（模糊匹配）",
+            expected_min_candidates=1,
+            expected_contains=["国家电网有限公司"],
+            expected_methods=["alias_fuzzy", "alias_exact"]
+        ),
+        TestCase(
+            id="CG_059",
+            mention="能源",
+            description="泛化查询 - 应通过向量检索返回多个能源类实体",
+            expected_min_candidates=3,
+            expected_contains=[],
+            expected_methods=["vector"]
+        ),
+        TestCase(
+            id="CG_060",
+            mention="电力",
+            description="泛化查询 - 应通过向量检索返回多个电力类实体",
+            expected_min_candidates=3,
+            expected_contains=[],
+            expected_methods=["vector"]
+        ),
+        TestCase(
+            id="CG_061",
+            mention="不存在的实体XYZ",
+            description="不存在的实体 - 应无候选",
+            expected_min_candidates=0,
+            expected_contains=[],
+            expected_methods=[]
         ),
     ]
-
-
-# ============================================================
-# 详细输出测试（用于调试）
-# ============================================================
-
-def test_single_mention(mention: str, top_k: int = 10):
-    """测试单个 mention 并打印详细信息"""
-    print("\n" + "=" * 70)
-    print(f"🔬 单条测试: '{mention}'")
-    print("=" * 70)
-
-    config = load_config()
-    kb = KnowledgeBase(config["knowledge_base"])
-    vector_index = VectorIndex(config["bge_model_path"])
-    vector_index.build(kb.get_all_entities())
-    candidate_gen = CandidateGenerator(kb, vector_index)
-
-    candidates = candidate_gen.generate(mention, top_k=top_k)
-
-    print(f"\n📋 候选列表 (共 {len(candidates)} 个):")
-    print("-" * 50)
-
-    if not candidates:
-        print("  ⚠️ 无候选")
-        return
-
-    for i, cand in enumerate(candidates, 1):
-        method_mark = {
-            "alias_exact": "🎯",
-            "alias_fuzzy": "🔍",
-            "vector": "📊"
-        }.get(cand.method, "  ")
-
-        print(f"\n  {method_mark} #{i}: {cand.entity.standard_name}")
-        print(f"      ID: {cand.entity.entity_id}")
-        print(f"      类型: {cand.entity.entity_type}")
-        print(f"      分数: {cand.score:.4f}")
-        print(f"      方法: {cand.method}")
-        if cand.metadata:
-            print(f"      元数据: {cand.metadata}")
-
-    # 打印所有候选的分数对比
-    print("\n" + "-" * 50)
-    print("📊 分数对比:")
-    for i, cand in enumerate(candidates, 1):
-        print(f"  #{i}: {cand.entity.standard_name[:20]:20s} → {cand.score:.4f} ({cand.method})")
 
 
 # ============================================================
@@ -348,41 +713,18 @@ def test_single_mention(mention: str, top_k: int = 10):
 
 def main():
     print("=" * 70)
-    print("🧪 候选生成模块测试")
+    print("🧪 候选生成模块测试 (基于 energy_entities.json)")
     print("=" * 70)
 
-    # 创建测试器
     tester = CandidateGenerationTester()
-
-    # 获取测试用例
     test_cases = get_test_cases()
     print(f"\n📋 加载测试用例: {len(test_cases)} 个")
 
-    # 运行测试
     summary = tester.run_batch(test_cases)
-
-    # 打印总结
     tester.print_summary(summary)
 
     return 0 if summary["failed"] == 0 else 1
 
 
-# ============================================================
-# 交互式测试
-# ============================================================
-
 if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser(description="候选生成模块测试")
-    parser.add_argument("--mention", "-m", type=str, help="测试单个 mention")
-    parser.add_argument("--top_k", "-k", type=int, default=10, help="返回候选数量")
-    parser.add_argument("--batch", "-b", action="store_true", help="运行批量测试")
-
-    args = parser.parse_args()
-
-    if args.mention:
-        test_single_mention(args.mention, args.top_k)
-    else:
-        sys.exit(main())
-    # test_single_mention("国网")
+    sys.exit(main())

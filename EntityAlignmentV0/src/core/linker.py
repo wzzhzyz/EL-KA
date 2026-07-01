@@ -25,24 +25,26 @@ class EntityLinker:
     4. 链接留痕 (SQLite)
     """
 
+    # src/core/linker.py - 修改初始化部分
+
     def __init__(self, config: dict = None):
         """
         初始化实体链接器
-
-        Args:
-            config: 配置字典，如果不传则自动加载
         """
         config = config or get_config()
         self.config = config
 
-        # 初始化知识库（传入整个 config，由适配器处理格式转换）
+        # 1. 初始化知识库
         self.kb = KnowledgeBase(config["knowledge_base"])
+        logger.info(f"📚 知识库加载完成: {len(self.kb.get_all_entities())} 个实体")
 
-        # 初始化向量索引 (BGE)
-        self.vector_index = VectorIndex(config["bge_model_path"])
+        # 2. 初始化向量索引（传入知识库引用，以便复用缓存）
+        self.vector_index = VectorIndex(config["bge_model_path"], kb=self.kb)
+
+        # 3. 构建向量索引（会优先使用KB的缓存）
         self.vector_index.build(self.kb.get_all_entities())
 
-        # 初始化各模块
+        # 4. 初始化各模块
         self.ner = NEREngine(config["ner"])
         self.candidate_gen = CandidateGenerator(self.kb, self.vector_index)
         self.disambiguator = Disambiguator(config)
@@ -52,6 +54,7 @@ class EntityLinker:
         logger.info("✅ EntityLinker 初始化完成")
         logger.info(f"   📚 知识库: {len(self.kb.get_all_entities())} 个实体")
         logger.info(f"   🔍 向量索引: {self.vector_index.index.ntotal if self.vector_index.index else 0} 个向量")
+        logger.info(f"   💾 KB缓存: {'有' if self.kb.has_embeddings() else '无'}")
         logger.info(f"   🔗 共指消解: {'启用' if self.coref.enabled else '禁用'}")
 
     def link(self, text: str, options: dict = None) -> dict:
@@ -124,7 +127,7 @@ class EntityLinker:
             mention_type = mention_obj.mention_type
 
             # 候选生成 → 返回 List[Candidate]
-            candidates: List[Candidate] = self.candidate_gen.generate(mention_text)
+            candidates: List[Candidate] = self.candidate_gen.generate(mention_text, top_k=50, context=text)
 
             if not candidates:
                 results.append(mention_obj.to_link_result(
@@ -349,7 +352,7 @@ class EntityLinker:
             mention_type = mention_obj.mention_type
 
             # 候选生成 → 返回 List[Candidate]
-            candidates: List[Candidate] = self.candidate_gen.generate(mention_text)
+            candidates: List[Candidate] = self.candidate_gen.generate(mention_text, top_k=50, context=text)
 
             if not candidates:
                 results.append(mention_obj.to_link_result(

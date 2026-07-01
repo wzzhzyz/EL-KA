@@ -6,20 +6,25 @@ ner:
 
 knowledge_base:
   type: "json"
-  path: "./data/knowledge_base.json"
+  path: "./data/energy_entities.json"
 
 # BGE 模型在项目内
 bge_model_path: "./models_cache/bge-small-zh"
 
 disambiguator:
-  nil_threshold: 0.65
+  nil_threshold: 0.75
   bge_llm_trigger_threshold: 0.65
 
 llm_fallback:
   enabled: false
   provider: "openai"
-  api_key: null
-  model: "gpt-4o-mini"
+  api_key: "sk-ws-H.RERDMME.mtnS.MEYCIQC52O9l9Bdvlaq-cxsuVO6isL-njt7bRLHTvo9r0jR5RQIhAMenFxknVyXygcQM3u9V_lkT4JuI6W1aDH_DqfQ3ogsH"  # 您的API Key
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"  # 使用标准网关
+  model: "qwen-max"  # 或 qwen-max, qwen-plus
+  timeout: 30
+  max_retries: 2
+  cache_enabled: true
+  cache_ttl: 86400
 
 # 共指消解 (FastCoref + XLM-RoBERTa)
 coreference:
