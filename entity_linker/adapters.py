@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Iterable, List
 
-from .models import TYPE_MAPPING, StandardEntity, StandardMention
+from .models import TYPE_MAPPING, Candidate, StandardEntity, StandardMention
 
 
 def normalize_mentions(mentions: Iterable[Dict[str, Any]]) -> List[StandardMention]:
@@ -47,3 +47,14 @@ def normalize_entity(data: Dict[str, Any]) -> StandardEntity:
 
 def normalize_entities(records: Iterable[Dict[str, Any]]) -> List[StandardEntity]:
     return [normalize_entity(record) for record in records]
+
+
+def normalize_candidates(candidates: Iterable[Dict[str, Any]]) -> List[Candidate]:
+    """把外部候选列表归一化为 Candidate 对象列表。"""
+    normalized: List[Candidate] = []
+    for candidate in candidates:
+        if isinstance(candidate, dict):
+            normalized.append(Candidate.from_dict(candidate))
+        elif isinstance(candidate, Candidate):
+            normalized.append(candidate)
+    return normalized

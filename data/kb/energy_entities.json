@@ -254,7 +254,9 @@
         "特高压"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0002",
@@ -328,7 +330,9 @@
         "西电东送"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0003",
@@ -401,7 +405,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0004",
@@ -479,7 +485,9 @@
         "风电"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0005",
@@ -566,7 +574,9 @@
         "煤炭"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0006",
@@ -649,7 +659,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0007",
@@ -728,7 +740,9 @@
         "分布式能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0008",
@@ -816,7 +830,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0009",
@@ -883,7 +899,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0010",
@@ -949,7 +967,9 @@
         "储能"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0011",
@@ -1030,7 +1050,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0012",
@@ -1105,7 +1127,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0013",
@@ -1165,7 +1189,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0014",
@@ -1244,7 +1270,9 @@
         "西部"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0015",
@@ -1333,7 +1361,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0016",
@@ -1356,12 +1386,18 @@
           "alias_type": "英文",
           "priority": 0.4,
           "confidence": 0.7
+        },
+        {
+          "name": "比亚迪汽车",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
         }
       ],
       "abbreviation": "比亚迪",
       "entity_type": "NEW_ENERGY_ENTERPRISE",
-      "entity_type_display": "新能源企业",
-      "industry": "新能源汽车+储能",
+      "entity_type_display": "新能源企业/汽车制造商",
+      "industry": "新能源汽车+储能+制造",
       "summary": "全球领先的新能源汽车制造商和动力电池供应商，掌握电池、电机、电控、芯片全产业链核心技术。",
       "business": "新能源汽车研发制造销售、动力电池（刀片电池）研发生产、光伏组件制造、储能系统、轨道交通（云轨云巴）。",
       "location": {
@@ -1401,10 +1437,16 @@
         "世界500强",
         "新能源汽车",
         "储能",
-        "行业龙头"
+        "行业龙头",
+        "汽车"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "ambiguous",
+      "shared_aliases": [
+        "比亚迪",
+        "BYD"
+      ]
     },
     {
       "entity_id": "ENT_ENERGY_0017",
@@ -1479,7 +1521,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0018",
@@ -1553,7 +1597,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0019",
@@ -1626,7 +1672,9 @@
         "电网互联"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0020",
@@ -1691,7 +1739,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0021",
@@ -1765,7 +1815,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0022",
@@ -1833,7 +1885,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0023",
@@ -1892,7 +1946,9 @@
         "储能"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0024",
@@ -1960,7 +2016,9 @@
         "分布式能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0025",
@@ -2028,7 +2086,9 @@
         "直流输电"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0026",
@@ -2097,7 +2157,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0027",
@@ -2183,7 +2245,9 @@
         "经济特区"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0028",
@@ -2266,7 +2330,9 @@
         "首都"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0029",
@@ -2336,7 +2402,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0030",
@@ -2408,7 +2476,9 @@
         "水电"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0031",
@@ -2475,7 +2545,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0032",
@@ -2544,7 +2616,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0033",
@@ -2615,7 +2689,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0034",
@@ -2695,7 +2771,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0035",
@@ -2757,7 +2835,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0036",
@@ -2825,7 +2905,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0037",
@@ -2886,7 +2968,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0038",
@@ -2954,7 +3038,9 @@
         "新能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0039",
@@ -3022,7 +3108,9 @@
         "西南"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0040",
@@ -3096,7 +3184,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0041",
@@ -3163,7 +3253,9 @@
         "华北"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0042",
@@ -3230,7 +3322,9 @@
         "新能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0043",
@@ -3296,7 +3390,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0044",
@@ -3363,7 +3459,9 @@
         "新能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0045",
@@ -3429,7 +3527,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0046",
@@ -3481,7 +3581,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0047",
@@ -3534,7 +3636,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0048",
@@ -3589,7 +3693,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0049",
@@ -3647,7 +3753,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0050",
@@ -3715,7 +3823,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0051",
@@ -3795,7 +3905,9 @@
         "人工智能"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0052",
@@ -3864,7 +3976,9 @@
         "人工智能"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0053",
@@ -3933,7 +4047,9 @@
         "人工智能"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0054",
@@ -3993,7 +4109,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0055",
@@ -4061,7 +4179,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0056",
@@ -4128,7 +4248,9 @@
         "金融科技"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0057",
@@ -4187,72 +4309,12 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0058",
-      "entity_name": "比亚迪股份有限公司",
-      "aliases": [
-        {
-          "name": "比亚迪",
-          "alias_type": "简称",
-          "priority": 0.95,
-          "confidence": 1.0
-        },
-        {
-          "name": "BYD",
-          "alias_type": "英文",
-          "priority": 0.88,
-          "confidence": 1.0
-        },
-        {
-          "name": "比亚迪汽车",
-          "alias_type": "简称",
-          "priority": 0.82,
-          "confidence": 1.0
-        }
-      ],
-      "abbreviation": "比亚迪汽车",
-      "entity_type": "AUTO_MANUFACTURER",
-      "entity_type_display": "汽车制造商",
-      "industry": "新能源汽车",
-      "summary": "全球领先的新能源汽车制造商，掌握电池、电机、电控全产业链核心技术。",
-      "business": "新能源汽车研发制造、动力电池（刀片电池）、光伏储能、轨道交通。",
-      "location": {
-        "country": "中国",
-        "province": "广东省",
-        "city": "深圳市",
-        "address": "坪山区"
-      },
-      "keywords": [
-        "新能源汽车",
-        "动力电池",
-        "电动车",
-        "刀片电池",
-        "储能"
-      ],
-      "source": {
-        "source_name": "工商注册信息",
-        "publisher": "国家市场监督管理总局",
-        "url": "https://www.samr.gov.cn",
-        "crawl_time": "2025-03-15",
-        "license": "公开数据",
-        "confidence": 1.0
-      },
-      "relations": [],
-      "tags": [
-        "民营企业",
-        "上市公司",
-        "世界500强",
-        "新能源汽车",
-        "汽车",
-        "行业龙头"
-      ],
-      "evidence": {},
-      "update_time": "2026-06-26"
-    },
-    {
-      "entity_id": "ENT_GEN_0059",
       "entity_name": "蔚来汽车有限公司",
       "aliases": [
         {
@@ -4316,10 +4378,12 @@
         "自动驾驶"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0060",
+      "entity_id": "ENT_GEN_0059",
       "entity_name": "国家能源局",
       "aliases": [
         {
@@ -4381,10 +4445,12 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0061",
+      "entity_id": "ENT_GEN_0060",
       "entity_name": "清华大学",
       "aliases": [
         {
@@ -4442,10 +4508,12 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0062",
+      "entity_id": "ENT_GEN_0061",
       "entity_name": "微信",
       "aliases": [
         {
@@ -4508,10 +4576,12 @@
         "人工智能"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0063",
+      "entity_id": "ENT_GEN_0062",
       "entity_name": "抖音",
       "aliases": [
         {
@@ -4567,10 +4637,12 @@
         "消费电子"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0064",
+      "entity_id": "ENT_GEN_0063",
       "entity_name": "Windows 11",
       "aliases": [
         {
@@ -4626,7 +4698,9 @@
         "消费电子"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     }
   ],
   "ner_type_mapping": {

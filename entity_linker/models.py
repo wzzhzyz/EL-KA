@@ -96,6 +96,36 @@ class StandardEntity:
         )
 
 
+@dataclass
+class Candidate:
+    """候选实体结构，统一各模块数据交互的实体对象。"""
+
+    entity: StandardEntity
+    score: float = 0.0
+    method: str = "unknown"
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self, entity_as_dict: bool = False) -> Dict[str, Any]:
+        return {
+            "entity": self.entity.to_dict() if entity_as_dict else self.entity,
+            "score": self.score,
+            "method": self.method,
+            "metadata": self.metadata,
+        }
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "Candidate":
+        entity = data.get("entity")
+        if isinstance(entity, dict):
+            entity = StandardEntity.from_dict(entity)
+        return cls(
+            entity=entity,
+            score=float(data.get("score", 0.0)),
+            method=data.get("method", "unknown"),
+            metadata=data.get("metadata", {}),
+        )
+
+
 LINKABLE_TYPES = {"ORG", "GPE", "PERSON", "LOC"}
 PRONOUN_TYPES = {"PRON", "NOUN"}
 ALL_TYPES = LINKABLE_TYPES | PRONOUN_TYPES

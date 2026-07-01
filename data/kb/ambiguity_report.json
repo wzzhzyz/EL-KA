@@ -1,0 +1,11 @@
+{
+  "summary": {
+    "total_entities": 64,
+    "base_entities": 62,
+    "ambiguous_entities": 0,
+    "total_aliases": 234,
+    "base_aliases": 232,
+    "ambiguous_aliases": 0
+  },
+  "ambiguous_groups": []
+}
