@@ -1,5 +1,5 @@
 # src/core/linker.py
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 from src.core.ner import NEREngine
 from src.core.candidate import CandidateGenerator
 from src.core.disambiguate import Disambiguator
@@ -9,6 +9,7 @@ from src.knowledge.kb_manager import KnowledgeBase
 from src.knowledge.vector_index import VectorIndex
 from src.models.mention import StandardMention
 from src.models.entity import StandardEntity
+from src.models.candidate import Candidate
 from src.utils.config import get_config
 from src.utils.logger import logger, generate_trace_id
 
@@ -122,8 +123,8 @@ class EntityLinker:
             mention_text = mention_obj.mention
             mention_type = mention_obj.mention_type
 
-            # 候选生成
-            candidates = self.candidate_gen.generate(mention_text)
+            # 候选生成 → 返回 List[Candidate]
+            candidates: List[Candidate] = self.candidate_gen.generate(mention_text)
 
             if not candidates:
                 results.append(mention_obj.to_link_result(
@@ -136,14 +137,14 @@ class EntityLinker:
                 logger.info(f"  ❌ 无候选: {mention_text}")
                 continue
 
-            # 消歧排序
+            # 消歧排序 → 接收 List[Candidate]，返回消歧结果
             disambig_result = self.disambiguator.disambiguate(
                 mention_text, candidates, text
             )
 
             entity: StandardEntity = disambig_result.get("entity")
             score = disambig_result.get("score", 0.0)
-            method = disambig_result.get("method", "bge")
+            method = disambig_result.get("method", "unknown")
             evidence = disambig_result.get("evidence", "")
 
             # NIL检测
@@ -347,8 +348,8 @@ class EntityLinker:
             mention_text = mention_obj.mention
             mention_type = mention_obj.mention_type
 
-            # 候选生成
-            candidates = self.candidate_gen.generate(mention_text)
+            # 候选生成 → 返回 List[Candidate]
+            candidates: List[Candidate] = self.candidate_gen.generate(mention_text)
 
             if not candidates:
                 results.append(mention_obj.to_link_result(
@@ -364,6 +365,7 @@ class EntityLinker:
             disambig_result = self.disambiguator.disambiguate(mention_text, candidates, text)
             entity: StandardEntity = disambig_result.get("entity")
             score = disambig_result.get("score", 0.0)
+            method = disambig_result.get("method", "unknown")
 
             if entity and score >= nil_threshold:
                 results.append(mention_obj.to_link_result(

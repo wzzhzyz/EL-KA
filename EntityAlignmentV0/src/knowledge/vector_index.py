@@ -9,7 +9,7 @@ from src.utils.config import resolve_path
 
 
 class VectorIndex:
-    """FAISS 向量索引 - 基于内部标准实体构建"""
+    """FAISS 向量索引 - 使用 BGE 指令前缀优化"""
 
     def __init__(self, model_path: str):
         self.model_path = resolve_path(model_path)
@@ -24,24 +24,30 @@ class VectorIndex:
             logger.info("✅ BGE 模型加载完成")
 
     def build(self, entities: List[StandardEntity]):
-        """构建向量索引"""
+        """构建向量索引（使用 passage 前缀）"""
         self._load_model()
         self.entities = entities
 
         if not entities:
             return
 
+        # ============================================================
+        # 关键：构建 passage 文本时加上 "passage: " 前缀
+        # ============================================================
         texts = []
         for e in entities:
-            # 构建文本：标准名称 + 别名 + 描述
+            # 构建实体描述文本
             text = e.standard_name
             if e.aliases:
                 text += " " + " ".join(e.aliases[:3])
             if e.description:
                 text += " " + e.description
-            texts.append(text)
 
-        logger.info(f"📦 构建向量索引: {len(texts)} 个实体")
+            # 添加 passage 前缀（BGE 指令微调）
+            passage_text = f"passage: {text}"
+            texts.append(passage_text)
+
+        logger.info(f"📦 构建向量索引: {len(texts)} 个实体 (使用 'passage:' 前缀)")
         embeddings = self.model.encode(texts, normalize_embeddings=True)
 
         self.index = faiss.IndexFlatIP(embeddings.shape[1])
@@ -50,16 +56,19 @@ class VectorIndex:
 
     def search(self, query: str, top_k: int = 5) -> List[Dict]:
         """
-        检索最相似的实体
-
-        Returns:
-            [{"entity": StandardEntity, "score": 0.85, "method": "vector"}, ...]
+        检索最相似的实体（使用 query 前缀）
         """
         if self.index is None or self.index.ntotal == 0:
             return []
 
         self._load_model()
-        query_emb = self.model.encode([query], normalize_embeddings=True)
+
+        # ============================================================
+        # 关键：查询时加上 "query: " 前缀
+        # ============================================================
+        query_text = f"query: {query}"
+        query_emb = self.model.encode([query_text], normalize_embeddings=True)
+
         scores, indices = self.index.search(query_emb.astype(np.float32), top_k)
 
         results = []

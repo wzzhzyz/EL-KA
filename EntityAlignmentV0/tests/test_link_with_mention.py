@@ -8,8 +8,7 @@ Usage:
     python test_entity_linker.py                    # 运行全部评测
     python test_entity_linker.py --category easy    # 只跑 easy 难度
     python test_entity_linker.py --verbose          # 详细输出
-    python test_entity_linker.py --show-failed      # 显示所有失败用例
-    python test_entity_linker.py --export report.json  # 导出报告
+    python test_entity_linker.py --trace-id xxx     # 指定 trace_id 查询留痕
 """
 
 import json
@@ -29,7 +28,7 @@ from src.utils.logger import logger, generate_trace_id
 from src.models.entity import StandardEntity
 from src.models.mention import StandardMention
 from src.knowledge.kb_manager import KnowledgeBase
-from src.utils.config import load_config, get_project_root
+from src.utils.config import load_config
 
 
 # ============================================================
@@ -77,7 +76,6 @@ class EvalResult:
     scenario: str
     difficulty: str
     mention: str
-    text: str  # 添加原始文本
     gold_entity_id: Optional[str]
     gold_entity_name: Optional[str]
     predicted_entity_id: Optional[str]
@@ -89,7 +87,6 @@ class EvalResult:
     evidence: str = ""
     correct: bool = False
     error_type: Optional[str] = None  # "wrong_entity", "false_nil", "false_positive", "coref_error"
-    notes: str = ""
     details: Dict[str, Any] = field(default_factory=dict)
 
 
@@ -136,19 +133,6 @@ class EntityLinkerEvaluator:
 
     def _load_dataset(self, path: str) -> List[EvalSample]:
         """加载评测数据集"""
-        # 如果是相对路径，尝试从项目根目录解析
-        if not os.path.isabs(path):
-            # 先尝试相对于项目根目录
-            project_root = get_project_root()
-            abs_path = os.path.join(project_root, path)
-            if not os.path.exists(abs_path):
-                # 再尝试相对于当前工作目录
-                abs_path = os.path.join(os.getcwd(), path)
-            path = abs_path
-
-        if not os.path.exists(path):
-            raise FileNotFoundError(f"评测数据集不存在: {path}")
-
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
@@ -156,7 +140,7 @@ class EntityLinkerEvaluator:
         for item in data.get("samples", []):
             samples.append(EvalSample.from_dict(item))
 
-        logger.info(f"📊 加载评测集: {len(samples)} 个样本 (from {path})")
+        logger.info(f"📊 加载评测集: {len(samples)} 个样本")
         return samples
 
     def _get_entity_id_from_result(self, result: Dict) -> Optional[str]:
@@ -195,23 +179,18 @@ class EntityLinkerEvaluator:
         coref_mentions = [r for r in results if r.get("is_coreference", False)]
         return ner_mentions, coref_mentions
 
-    def run(self, category: Optional[str] = None, scenario: Optional[str] = None) -> SummaryStats:
+    def run(self, category: Optional[str] = None) -> SummaryStats:
         """
         运行评测
 
         Args:
-            category: 过滤难度类别，如 "easy", "medium", "hard"
-            scenario: 过滤场景
+            category: 过滤场景类别，如 "easy", "medium", "hard"
         """
         # 过滤样本
         samples = self.dataset
         if category:
             samples = [s for s in samples if s.difficulty == category]
             logger.info(f"🔍 过滤后: {len(samples)} 个样本 (category={category})")
-
-        if scenario:
-            samples = [s for s in samples if s.scenario == scenario]
-            logger.info(f"🔍 过滤后: {len(samples)} 个样本 (scenario={scenario})")
 
         logger.info(f"🚀 开始评测 {len(samples)} 个样本...")
 
@@ -259,7 +238,6 @@ class EntityLinkerEvaluator:
                 scenario=sample.scenario,
                 difficulty=sample.difficulty,
                 mention=sample.mention,
-                text=sample.text,
                 gold_entity_id=sample.gold_entity_id,
                 gold_entity_name=sample.gold_entity_name,
                 predicted_entity_id=None,
@@ -269,8 +247,7 @@ class EntityLinkerEvaluator:
                 is_coreference=False,
                 evidence="无返回结果",
                 correct=False,
-                error_type="no_result",
-                notes=sample.notes
+                error_type="no_result"
             )
 
         # 找到对应的预测结果
@@ -346,7 +323,6 @@ class EntityLinkerEvaluator:
             scenario=sample.scenario,
             difficulty=sample.difficulty,
             mention=sample.mention,
-            text=sample.text,
             gold_entity_id=sample.gold_entity_id,
             gold_entity_name=sample.gold_entity_name,
             predicted_entity_id=predicted_entity_id,
@@ -358,11 +334,9 @@ class EntityLinkerEvaluator:
             evidence=evidence,
             correct=correct,
             error_type=error_type,
-            notes=sample.notes,
             details={
                 "predicted": predicted,
-                "all_results": results,
-                "expected": sample.expected_result
+                "all_results": results
             }
         )
 
@@ -486,102 +460,8 @@ class EntityLinkerEvaluator:
 
         print("\n" + "=" * 70)
 
-    def print_failed_cases(self, max_samples: int = None):
-        """打印所有失败用例的详细信息"""
-        failed = self.get_failed_samples()
-        if not failed:
-            print("\n🎉 所有用例全部通过！")
-            return
-
-        total_failed = len(failed)
-        print(f"\n{'=' * 70}")
-        print(f"❌ 失败用例详情 (共 {total_failed} 个)")
-        print(f"{'=' * 70}")
-
-        # 按错误类型分组
-        by_error = defaultdict(list)
-        for r in failed:
-            by_error[r.error_type or "unknown"].append(r)
-
-        print(f"\n📋 按错误类型分组:")
-        for error_type, cases in sorted(by_error.items(), key=lambda x: -len(x[1])):
-            print(f"\n   🔴 {error_type}: {len(cases)} 个")
-            print(f"   {'-' * 60}")
-
-            for i, r in enumerate(cases[:max_samples] if max_samples else cases, 1):
-                print(f"\n   [{i}] {r.sample_id} | {r.scenario} | {r.difficulty}")
-                print(f"       Text: {r.text[:80]}{'...' if len(r.text) > 80 else ''}")
-                print(f"       Mention: '{r.mention}' (位置: {r.details.get('predicted', {}).get('char_start', 'N/A')})")
-                print(f"       Gold: {r.gold_entity_name or 'NIL'} ({r.gold_entity_id or 'NIL'})")
-                print(f"       Pred: {r.predicted_entity_name or 'NIL'} ({r.predicted_entity_id or 'NIL'})")
-                print(f"       Confidence: {r.confidence:.4f}")
-                print(f"       Evidence: {r.evidence[:150]}{'...' if len(r.evidence) > 150 else ''}")
-                if r.notes:
-                    print(f"       Notes: {r.notes}")
-
-            if max_samples and len(cases) > max_samples:
-                print(f"\n       ... 还有 {len(cases) - max_samples} 个相同类型的失败用例")
-
-    def export_failed_cases(self, output_path: str):
-        """导出失败用例到 JSON 文件"""
-        failed = self.get_failed_samples()
-        if not failed:
-            print("\n🎉 没有失败用例需要导出")
-            return
-
-        data = {
-            "timestamp": datetime.now().isoformat(),
-            "total_failed": len(failed),
-            "summary": {
-                "by_error_type": dict(self.summary.error_types),
-                "by_scenario": {
-                    k: {"total": v["total"], "correct": v["correct"], "failed": v["total"] - v["correct"]}
-                    for k, v in self.summary.by_scenario.items()
-                }
-            },
-            "failed_cases": [
-                {
-                    "sample_id": r.sample_id,
-                    "scenario": r.scenario,
-                    "difficulty": r.difficulty,
-                    "mention": r.mention,
-                    "text": r.text,
-                    "gold_entity_id": r.gold_entity_id,
-                    "gold_entity_name": r.gold_entity_name,
-                    "predicted_entity_id": r.predicted_entity_id,
-                    "predicted_entity_name": r.predicted_entity_name,
-                    "confidence": r.confidence,
-                    "is_nil": r.is_nil,
-                    "is_coreference": r.is_coreference,
-                    "resolved_from": r.resolved_from,
-                    "error_type": r.error_type,
-                    "evidence": r.evidence,
-                    "notes": r.notes,
-                    "expected": r.details.get("expected", {})
-                }
-                for r in failed
-            ]
-        }
-
-        with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-
-        print(f"\n📄 失败用例已导出: {output_path}")
-
-    def get_failed_samples(self) -> List[EvalResult]:
-        """获取失败的样本"""
-        return [r for r in self.results if not r.correct]
-
-    def get_samples_by_scenario(self, scenario: str) -> List[EvalResult]:
-        """按场景获取样本"""
-        return [r for r in self.results if r.scenario == scenario]
-
     def export_report(self, output_path: str):
-        """导出完整评测报告为 JSON"""
-        output_dir = os.path.dirname(output_path)
-        if output_dir and not os.path.exists(output_dir):
-            os.makedirs(output_dir, exist_ok=True)
-
+        """导出评测报告为 JSON"""
         report = {
             "timestamp": datetime.now().isoformat(),
             "summary": {
@@ -598,13 +478,11 @@ class EntityLinkerEvaluator:
                 "coref_accuracy": self.summary.coref_accuracy,
                 "error_types": dict(self.summary.error_types),
                 "by_scenario": {
-                    k: {"total": v["total"], "correct": v["correct"],
-                        "accuracy": v["correct"] / v["total"] if v["total"] > 0 else 0}
+                    k: {"total": v["total"], "correct": v["correct"], "accuracy": v["correct"]/v["total"] if v["total"] > 0 else 0}
                     for k, v in self.summary.by_scenario.items()
                 },
                 "by_difficulty": {
-                    k: {"total": v["total"], "correct": v["correct"],
-                        "accuracy": v["correct"] / v["total"] if v["total"] > 0 else 0}
+                    k: {"total": v["total"], "correct": v["correct"], "accuracy": v["correct"]/v["total"] if v["total"] > 0 else 0}
                     for k, v in self.summary.by_difficulty.items()
                 }
             },
@@ -614,7 +492,6 @@ class EntityLinkerEvaluator:
                     "scenario": r.scenario,
                     "difficulty": r.difficulty,
                     "mention": r.mention,
-                    "text": r.text[:200] + ("..." if len(r.text) > 200 else ""),
                     "gold_entity_id": r.gold_entity_id,
                     "gold_entity_name": r.gold_entity_name,
                     "predicted_entity_id": r.predicted_entity_id,
@@ -625,8 +502,7 @@ class EntityLinkerEvaluator:
                     "resolved_from": r.resolved_from,
                     "correct": r.correct,
                     "error_type": r.error_type,
-                    "evidence": r.evidence,
-                    "notes": r.notes
+                    "evidence": r.evidence
                 }
                 for r in self.results
             ]
@@ -635,7 +511,16 @@ class EntityLinkerEvaluator:
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(report, f, ensure_ascii=False, indent=2)
 
-        print(f"\n📄 完整评测报告已导出: {output_path}")
+        print(f"\n📄 评测报告已导出: {output_path}")
+
+    def get_failed_samples(self) -> List[EvalResult]:
+        """获取失败的样本"""
+        return [r for r in self.results if not r.correct]
+
+    def get_samples_by_scenario(self, scenario: str) -> List[EvalResult]:
+        """按场景获取样本"""
+        return [r for r in self.results if r.scenario == scenario]
+
 
 # ============================================================
 # 命令行入口
@@ -644,7 +529,7 @@ class EntityLinkerEvaluator:
 def main():
     parser = argparse.ArgumentParser(description="实体链接智能体评测工具")
     parser.add_argument("--dataset", type=str, default="data/eval_dataset.json",
-                        help="评测数据集路径 (默认: data/eval_dataset.json)")
+                        help="评测数据集路径")
     parser.add_argument("--config", type=str, default="config.yaml",
                         help="配置文件路径")
     parser.add_argument("--category", type=str, choices=["easy", "medium", "hard"],
@@ -652,13 +537,9 @@ def main():
     parser.add_argument("--scenario", type=str,
                         help="按场景过滤 (如 '简称匹配', '同名异义消歧')")
     parser.add_argument("--verbose", action="store_true",
-                        help="详细输出（显示每个样本结果）")
-    parser.add_argument("--show-failed", action="store_true",
-                        help="显示所有失败用例详情")
-    parser.add_argument("--export-failed", type=str,
-                        help="导出失败用例到指定 JSON 文件")
+                        help="详细输出")
     parser.add_argument("--export", type=str,
-                        help="导出完整评测报告到指定路径")
+                        help="导出评测报告到指定路径")
     parser.add_argument("--trace-id", type=str,
                         help="查询指定 trace_id 的链接记录")
     parser.add_argument("--list-scenarios", action="store_true",
@@ -694,20 +575,28 @@ def main():
         return
 
     # 运行评测
-    summary = evaluator.run(category=args.category, scenario=args.scenario)
+    summary = evaluator.run(category=args.category)
 
-    # 打印汇总报告
+    # 打印结果
     evaluator.print_summary()
 
-    # 显示失败用例
-    if args.show_failed:
-        evaluator.print_failed_cases(max_samples=None)  # 显示所有
+    # 如果 verbose，打印失败样本详情
+    if args.verbose:
+        failed = evaluator.get_failed_samples()
+        if failed:
+            print(f"\n❌ 失败样本详情 ({len(failed)} 个):")
+            for r in failed[:10]:  # 只显示前10个
+                print(f"\n   [{r.sample_id}] {r.scenario}")
+                print(f"      Mention: '{r.mention}'")
+                print(f"      Gold: {r.gold_entity_name}")
+                print(f"      Pred: {r.predicted_entity_name}")
+                print(f"      Error: {r.error_type}")
+                print(f"      Evidence: {r.evidence}")
 
-    # 导出失败用例
-    if args.export_failed:
-        evaluator.export_failed_cases(args.export_failed)
+            if len(failed) > 10:
+                print(f"\n   ... 还有 {len(failed) - 10} 个失败样本")
 
-    # 导出完整报告
+    # 导出报告
     if args.export:
         evaluator.export_report(args.export)
 
