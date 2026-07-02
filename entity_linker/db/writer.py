@@ -296,7 +296,9 @@ class DBWriter:
     ) -> List[int]:
         rows = []
         for candidate in candidates:
-            metadata_json = json.dumps(candidate.get("metadata") or {}, ensure_ascii=False)
+            metadata_json = json.dumps(
+                candidate.get("metadata") or {}, ensure_ascii=False
+            )
             rows.append(
                 (
                     mention_id,
@@ -397,7 +399,9 @@ class DBWriter:
         except sqlite3.Error as exc:
             raise DatabaseError(f"查询 trace 失败: {exc}") from exc
 
-    def list_pipeline_runs(self, status: str | None = None, limit: int = 100) -> List[Dict[str, Any]]:
+    def list_pipeline_runs(
+        self, status: str | None = None, limit: int = 100
+    ) -> List[Dict[str, Any]]:
         try:
             with self._get_connection() as conn:
                 if status:
