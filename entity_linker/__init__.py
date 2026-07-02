@@ -1,4 +1,11 @@
 from .adapters import normalize_entities, normalize_entity, normalize_mentions
+from .bge_contract import (
+    BGERankingInput,
+    BGERankingOutput,
+    build_passage_text,
+    build_query_text,
+    normalize_bge_result,
+)
 from .config import ConfigBase
 from .logging_util import get_logger
 from .models import (
@@ -11,6 +18,7 @@ from .models import (
     StandardMention,
 )
 from .pipeline import EntityLinkingPipeline, Pipeline
+from .ports import CandidateGeneratorPort, DisambiguatorPort, KnowledgeBasePort, NERPort
 from .utils import (
     ValidationError,
     assert_in_choices,
@@ -45,4 +53,13 @@ __all__ = [
     "normalize_entity",
     "normalize_entities",
     "normalize_mentions",
+    "NERPort",
+    "KnowledgeBasePort",
+    "CandidateGeneratorPort",
+    "DisambiguatorPort",
+    "BGERankingInput",
+    "BGERankingOutput",
+    "build_query_text",
+    "build_passage_text",
+    "normalize_bge_result",
 ]
