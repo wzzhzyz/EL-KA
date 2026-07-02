@@ -1,11 +1,20 @@
 {
   "summary": {
-    "total_entities": 64,
+    "total_entities": 63,
     "base_entities": 62,
-    "ambiguous_entities": 0,
+    "ambiguous_entities": 1,
     "total_aliases": 234,
-    "base_aliases": 232,
-    "ambiguous_aliases": 0
+    "base_aliases": 230,
+    "ambiguous_aliases": 4
   },
-  "ambiguous_groups": []
+  "ambiguous_groups": [
+    {
+      "group_id": "AMB_ROLE_001",
+      "ambiguity_type": "single_entity_multi_role",
+      "mentions": ["比亚迪", "BYD"],
+      "entity_ids": ["ENT_ENERGY_0016"],
+      "roles": ["新能源企业", "汽车制造商"],
+      "resolution": "不同业务语境仍统一链接到同一法人实体，业务角色写入evidence，不拆分entity_id"
+    }
+  ]
 }

@@ -1,0 +1,218 @@
+{
+  "dataset_name": "llm_fallback_ambiguity_test",
+  "version": "1.0",
+  "purpose": "为低置信候选消歧和后续LLM兜底准备的高歧义上下文测试集",
+  "annotation_policy": {
+    "trigger_condition": "候选数量大于1，或最高候选与次高候选分差不足，或近似实体可能造成误链接",
+    "nil_policy": "知识库无对应实体时必须返回NIL，不允许由LLM强行选择近似实体",
+    "evidence_policy": "结果必须引用区分候选所需的上下文线索"
+  },
+  "samples": [
+    {
+      "id": "LLM_AMB_001",
+      "text": "国网发布新型电力系统行动方案，并将在多个省份推进跨区输电工程。",
+      "mention": "国网",
+      "candidate_entity_ids": ["ENT_ENERGY_0001", "ENT_ENERGY_0009", "ENT_ENERGY_0010"],
+      "gold_entity_id": "ENT_ENERGY_0001",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "parent_subsidiary",
+      "decisive_evidence": ["多个省份", "跨区输电", "行动方案"]
+    },
+    {
+      "id": "LLM_AMB_002",
+      "text": "国网能源院发布电力供需形势研究报告，为能源政策制定提供决策参考。",
+      "mention": "国网能源院",
+      "candidate_entity_ids": ["ENT_ENERGY_0009", "ENT_ENERGY_0001", "ENT_ENERGY_0050"],
+      "gold_entity_id": "ENT_ENERGY_0009",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "research_institution",
+      "decisive_evidence": ["研究报告", "决策参考"]
+    },
+    {
+      "id": "LLM_AMB_003",
+      "text": "国网新源加快建设抽水蓄能电站，计划年内新增多个投产项目。",
+      "mention": "国网新源",
+      "candidate_entity_ids": ["ENT_ENERGY_0010", "ENT_ENERGY_0001", "ENT_ENERGY_0009"],
+      "gold_entity_id": "ENT_ENERGY_0010",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "parent_subsidiary",
+      "decisive_evidence": ["抽水蓄能电站", "投产项目"]
+    },
+    {
+      "id": "LLM_AMB_004",
+      "text": "三峡大坝在本轮洪峰期间发挥拦洪削峰作用，保障了下游防洪安全。",
+      "mention": "三峡大坝",
+      "candidate_entity_ids": ["ENT_ENERGY_0012", "ENT_ENERGY_0008"],
+      "gold_entity_id": "ENT_ENERGY_0012",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "facility_vs_enterprise",
+      "decisive_evidence": ["洪峰", "拦洪削峰", "防洪"]
+    },
+    {
+      "id": "LLM_AMB_005",
+      "text": "三峡集团宣布投资建设新的风光水储一体化基地，并负责项目运营。",
+      "mention": "三峡集团",
+      "candidate_entity_ids": ["ENT_ENERGY_0008", "ENT_ENERGY_0012"],
+      "gold_entity_id": "ENT_ENERGY_0008",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "facility_vs_enterprise",
+      "decisive_evidence": ["投资建设", "负责运营"]
+    },
+    {
+      "id": "LLM_AMB_006",
+      "text": "华能持续提高新能源装机占比，全年风电和光伏新增装机超过一千万千瓦。",
+      "mention": "华能",
+      "candidate_entity_ids": ["ENT_ENERGY_0003", "ENT_ENERGY_0007"],
+      "gold_entity_id": "ENT_ENERGY_0003",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_short_name",
+      "decisive_evidence": ["华能", "新能源装机"]
+    },
+    {
+      "id": "LLM_AMB_007",
+      "text": "华电加快天然气发电和分布式能源项目布局，提升区域综合能源服务能力。",
+      "mention": "华电",
+      "candidate_entity_ids": ["ENT_ENERGY_0007", "ENT_ENERGY_0003"],
+      "gold_entity_id": "ENT_ENERGY_0007",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_short_name",
+      "decisive_evidence": ["华电", "天然气发电", "分布式能源"]
+    },
+    {
+      "id": "LLM_AMB_008",
+      "text": "中核集团推进核燃料循环产业建设，覆盖铀矿勘探、核燃料加工与后处理。",
+      "mention": "中核集团",
+      "candidate_entity_ids": ["ENT_ENERGY_0034", "ENT_ENERGY_0011"],
+      "gold_entity_id": "ENT_ENERGY_0034",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_short_name",
+      "decisive_evidence": ["核燃料循环", "铀矿勘探", "后处理"]
+    },
+    {
+      "id": "LLM_AMB_009",
+      "text": "中广核公布大亚湾核电基地年度运行数据，多台机组保持安全稳定运行。",
+      "mention": "中广核",
+      "candidate_entity_ids": ["ENT_ENERGY_0011", "ENT_ENERGY_0034"],
+      "gold_entity_id": "ENT_ENERGY_0011",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_short_name",
+      "decisive_evidence": ["大亚湾核电基地", "机组运行"]
+    },
+    {
+      "id": "LLM_AMB_010",
+      "text": "UHVDC适合超远距离大容量送电，可用于跨区域直流输电工程。",
+      "mention": "UHVDC",
+      "candidate_entity_ids": ["ENT_ENERGY_0018", "ENT_ENERGY_0019"],
+      "gold_entity_id": "ENT_ENERGY_0018",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "technical_term",
+      "decisive_evidence": ["直流输电", "超远距离"]
+    },
+    {
+      "id": "LLM_AMB_011",
+      "text": "UHVAC线路承担区域电网互联任务，重点提升交流主网架输送能力。",
+      "mention": "UHVAC",
+      "candidate_entity_ids": ["ENT_ENERGY_0019", "ENT_ENERGY_0018"],
+      "gold_entity_id": "ENT_ENERGY_0019",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "technical_term",
+      "decisive_evidence": ["交流主网架", "区域互联"]
+    },
+    {
+      "id": "LLM_AMB_012",
+      "text": "国家能源集团加快煤电清洁化改造，并扩大风电与光伏装机规模。",
+      "mention": "国家能源集团",
+      "candidate_entity_ids": ["ENT_ENERGY_0005", "ENT_GEN_0059"],
+      "gold_entity_id": "ENT_ENERGY_0005",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "enterprise_vs_government",
+      "decisive_evidence": ["煤电改造", "装机规模"]
+    },
+    {
+      "id": "LLM_AMB_013",
+      "text": "国家能源局发布电力市场监管政策，并就政策实施情况开展专项检查。",
+      "mention": "国家能源局",
+      "candidate_entity_ids": ["ENT_GEN_0059", "ENT_ENERGY_0005"],
+      "gold_entity_id": "ENT_GEN_0059",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "enterprise_vs_government",
+      "decisive_evidence": ["发布政策", "监管", "专项检查"]
+    },
+    {
+      "id": "LLM_AMB_014",
+      "text": "中国电科院完成新能源并网技术标准验证，并建设电力系统仿真实验平台。",
+      "mention": "中国电科院",
+      "candidate_entity_ids": ["ENT_ENERGY_0050", "ENT_ENERGY_0009"],
+      "gold_entity_id": "ENT_ENERGY_0050",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_institution",
+      "decisive_evidence": ["技术标准验证", "仿真实验平台"]
+    },
+    {
+      "id": "LLM_AMB_015",
+      "text": "国网能源院围绕电力供需和能源转型路径形成专题研究成果。",
+      "mention": "国网能源院",
+      "candidate_entity_ids": ["ENT_ENERGY_0009", "ENT_ENERGY_0050"],
+      "gold_entity_id": "ENT_ENERGY_0009",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_institution",
+      "decisive_evidence": ["电力供需", "转型路径", "专题研究"]
+    },
+    {
+      "id": "LLM_AMB_016",
+      "text": "阳光新能源宣布进入风电整机制造领域，并计划建设新的生产基地。",
+      "mention": "阳光新能源",
+      "candidate_entity_ids": ["ENT_ENERGY_0037"],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "nil_reason": "entity_not_in_kb",
+      "difficulty": "hard",
+      "ambiguity_type": "near_name_nil",
+      "decisive_evidence": ["新能源与电源名称不同", "知识库无对应法人实体"]
+    },
+    {
+      "id": "LLM_AMB_017",
+      "text": "比亚迪公布刀片电池储能系统方案，同时介绍新能源汽车海外销售进展。",
+      "mention": "比亚迪",
+      "candidate_entity_ids": ["ENT_ENERGY_0016"],
+      "gold_entity_id": "ENT_ENERGY_0016",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "single_entity_multi_role",
+      "decisive_evidence": ["储能", "新能源汽车", "同一法人多业务角色"]
+    }
+  ],
+  "statistics": {
+    "total": 17,
+    "non_nil": 16,
+    "nil": 1,
+    "hard": 12,
+    "medium": 5,
+    "ambiguity_types": {
+      "parent_subsidiary": 2,
+      "research_institution": 1,
+      "facility_vs_enterprise": 2,
+      "similar_short_name": 4,
+      "technical_term": 2,
+      "enterprise_vs_government": 2,
+      "similar_institution": 2,
+      "near_name_nil": 1,
+      "single_entity_multi_role": 1
+    }
+  }
+}
