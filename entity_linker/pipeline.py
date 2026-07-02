@@ -1,6 +1,7 @@
 """Pipeline 调度与实体链接主流程。
 
-- 仅串联 NER / 候选生成 / 存储，不接入 BGE 或消歧；
+- 运行时会尝试接入 `EntityAlignmentV0` 的候选生成与 BGE 消歧组件；
+- 如果 BGE 模型目录或 `EntityAlignmentV0` 初始化失败，会自动回退到本地 fallback 实现：NER → 候选生成 → 存储；
 - 中文共指目前只保留占位步骤，不强行接入英文 Coreferee；
 - 每个 run、每个 stage、每条 mention / candidate / result 都会写入 SQLite。
 """
@@ -9,6 +10,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Tuple
@@ -269,6 +271,17 @@ class EntityLinkingPipeline:
         logger.info("   db=%s", self.db.db_path)
 
     def _init_components(self) -> None:
+        enabled = self.config.get("entity_alignment", {}).get("enabled", True)
+        if enabled:
+            try:
+                self._init_entity_alignment_components()
+                return
+            except Exception as exc:
+                logger.warning(
+                    "EntityAlignmentV0 组件初始化失败，将回退到本地 fallback：%s",
+                    exc,
+                )
+
         kb_path = self._resolve_local_kb_path()
         self.kb = _LocalKnowledgeBase(kb_path)
         self.vector_index = _NullVectorIndex()
@@ -288,6 +301,59 @@ class EntityLinkingPipeline:
                 return path
         return candidate_paths[0]
 
+    def _resolve_entity_alignment_src_path(self) -> Optional[Path]:
+        repo_path = self.project_root / "EntityAlignmentV0"
+        if repo_path.exists() and repo_path.is_dir():
+            return repo_path
+        return None
+
+    def _build_entity_alignment_config(self) -> Dict[str, Any]:
+        bge_path = self.config.get(
+            "bge_model_path",
+            str(self.project_root / "data" / "bge-small-zh"),
+        )
+        return {
+            "knowledge_base": {
+                "type": "json",
+                "path": str(
+                    self.config.get("kb_path") or self._resolve_local_kb_path()
+                ),
+            },
+            "bge_model_path": bge_path,
+            "disambiguator": {
+                "nil_threshold": self.config.get("nil_threshold", 0.65),
+            },
+            "llm_fallback": {"enabled": False},
+        }
+
+    def _init_entity_alignment_components(self) -> None:
+        src_path = self._resolve_entity_alignment_src_path()
+        if src_path is None:
+            raise RuntimeError("未找到 EntityAlignmentV0/src，请确认仓库路径存在")
+
+        if str(src_path) not in sys.path:
+            sys.path.insert(0, str(src_path))
+            logger.info("已加入 EntityAlignmentV0 源码路径: %s", src_path)
+
+        from src.core.candidate import CandidateGenerator as EACandidateGenerator
+        from src.core.disambiguate import Disambiguator as EADisambiguator
+        from src.knowledge.kb_manager import KnowledgeBase as EAKnowledgeBase
+        from src.knowledge.vector_index import VectorIndex as EAVectorIndex
+
+        ea_config = self._build_entity_alignment_config()
+        bge_path = ea_config["bge_model_path"]
+        if not Path(bge_path).exists():
+            raise RuntimeError(f"BGE 模型路径不存在: {bge_path}")
+
+        self.kb = EAKnowledgeBase(ea_config["knowledge_base"])
+        self.vector_index = EAVectorIndex(ea_config["bge_model_path"], kb=self.kb)
+        self.vector_index.build(self.kb.get_all_entities())
+        self.ner = _FallbackNEREngine(self.kb)
+        self.candidate_gen = EACandidateGenerator(self.kb, self.vector_index)
+        self.disambiguator = EADisambiguator(ea_config)
+        self.backend = "entity_alignment"
+        logger.info("✅ 已接入 EntityAlignmentV0 候选生成与 BGE 消歧组件")
+
     def _record_stage(
         self,
         trace_id: str,
@@ -295,6 +361,7 @@ class EntityLinkingPipeline:
         status: str,
         message: str = "",
         payload: Optional[Dict[str, Any]] = None,
+        conn: sqlite3.Connection | None = None,
     ) -> None:
         self.db.insert_pipeline_step(
             run_id=trace_id,
@@ -302,6 +369,7 @@ class EntityLinkingPipeline:
             status=status,
             message=message,
             payload=payload or {},
+            conn=conn,
         )
 
     def run(
@@ -309,6 +377,7 @@ class EntityLinkingPipeline:
         text: str,
         options: Optional[Dict[str, Any]] = None,
         trace_id: Optional[str] = None,
+        conn: sqlite3.Connection | None = None,
     ) -> Dict[str, Any]:
         options = options or {}
         trace_id = trace_id or options.get("trace_id") or new_trace_id()
@@ -322,6 +391,7 @@ class EntityLinkingPipeline:
                     "options": options,
                     "mode": "single",
                 },
+                conn=conn,
             )
             self._record_stage(
                 trace_id,
@@ -329,10 +399,13 @@ class EntityLinkingPipeline:
                 "running",
                 "开始实体链接",
                 {"text_length": len(text)},
+                conn=conn,
             )
 
             try:
-                result = self._run_single(text=text, options=options, trace_id=trace_id)
+                result = self._run_single(
+                    text=text, options=options, trace_id=trace_id, conn=conn
+                )
                 self.db.update_pipeline_run(
                     run_id=trace_id,
                     status="success",
@@ -341,6 +414,7 @@ class EntityLinkingPipeline:
                         "stats": result.get("stats", {}),
                         "options": options,
                     },
+                    conn=conn,
                 )
                 self._record_stage(
                     trace_id,
@@ -348,6 +422,7 @@ class EntityLinkingPipeline:
                     "success",
                     "实体链接完成",
                     result.get("stats", {}),
+                    conn=conn,
                 )
                 return result
             except Exception as exc:
@@ -359,9 +434,15 @@ class EntityLinkingPipeline:
                         "error": str(exc),
                         "options": options,
                     },
+                    conn=conn,
                 )
                 self._record_stage(
-                    trace_id, "pipeline_finish", "failed", str(exc), {"error": str(exc)}
+                    trace_id,
+                    "pipeline_finish",
+                    "failed",
+                    str(exc),
+                    {"error": str(exc)},
+                    conn=conn,
                 )
                 raise PipelineError(str(exc)) from exc
 
@@ -372,13 +453,19 @@ class EntityLinkingPipeline:
         trace_id_prefix: Optional[str] = None,
     ) -> List[Dict[str, Any]]:
         results: List[Dict[str, Any]] = []
-        for index, text in enumerate(texts, start=1):
-            item_trace_id = (
-                new_trace_id(prefix=trace_id_prefix) if trace_id_prefix else None
-            )
-            item_result = self.run(text=text, options=options, trace_id=item_trace_id)
-            item_result["batch_index"] = index
-            results.append(item_result)
+        with self.db.transaction() as conn:
+            for index, text in enumerate(texts, start=1):
+                item_trace_id = (
+                    new_trace_id(prefix=trace_id_prefix) if trace_id_prefix else None
+                )
+                item_result = self.run(
+                    text=text,
+                    options=options,
+                    trace_id=item_trace_id,
+                    conn=conn,
+                )
+                item_result["batch_index"] = index
+                results.append(item_result)
         return results
 
     def run_with_mentions(
@@ -387,6 +474,7 @@ class EntityLinkingPipeline:
         mentions: Sequence[Dict[str, Any]],
         options: Optional[Dict[str, Any]] = None,
         trace_id: Optional[str] = None,
+        conn: sqlite3.Connection | None = None,
     ) -> Dict[str, Any]:
         options = options or {}
         trace_id = trace_id or options.get("trace_id") or new_trace_id()
@@ -400,6 +488,7 @@ class EntityLinkingPipeline:
                     "options": options,
                     "mode": "with_mentions",
                 },
+                conn=conn,
             )
             self._record_stage(
                 trace_id,
@@ -407,6 +496,7 @@ class EntityLinkingPipeline:
                 "running",
                 "开始实体链接(已有mention)",
                 {"mention_count": len(mentions)},
+                conn=conn,
             )
 
             try:
@@ -420,6 +510,7 @@ class EntityLinkingPipeline:
                     mention_objs=mention_objs,
                     options=options,
                     trace_id=trace_id,
+                    conn=conn,
                 )
                 self.db.update_pipeline_run(
                     run_id=trace_id,
@@ -429,6 +520,7 @@ class EntityLinkingPipeline:
                         "stats": result.get("stats", {}),
                         "options": options,
                     },
+                    conn=conn,
                 )
                 self._record_stage(
                     trace_id,
@@ -436,6 +528,7 @@ class EntityLinkingPipeline:
                     "success",
                     "实体链接完成",
                     result.get("stats", {}),
+                    conn=conn,
                 )
                 return result
             except Exception as exc:
@@ -447,14 +540,24 @@ class EntityLinkingPipeline:
                         "error": str(exc),
                         "options": options,
                     },
+                    conn=conn,
                 )
                 self._record_stage(
-                    trace_id, "pipeline_finish", "failed", str(exc), {"error": str(exc)}
+                    trace_id,
+                    "pipeline_finish",
+                    "failed",
+                    str(exc),
+                    {"error": str(exc)},
+                    conn=conn,
                 )
                 raise PipelineError(str(exc)) from exc
 
     def _run_single(
-        self, text: str, options: Dict[str, Any], trace_id: str
+        self,
+        text: str,
+        options: Dict[str, Any],
+        trace_id: str,
+        conn: sqlite3.Connection | None = None,
     ) -> Dict[str, Any]:
         mention_objs = self.ner.extract(text)
         self._record_stage(
@@ -466,9 +569,14 @@ class EntityLinkingPipeline:
                 "mention_count": len(mention_objs),
                 "mentions": [m.to_dict() for m in mention_objs[:20]],
             },
+            conn=conn,
         )
         return self._run_linking(
-            text=text, mention_objs=mention_objs, options=options, trace_id=trace_id
+            text=text,
+            mention_objs=mention_objs,
+            options=options,
+            trace_id=trace_id,
+            conn=conn,
         )
 
     def _run_linking(
@@ -477,10 +585,16 @@ class EntityLinkingPipeline:
         mention_objs: Sequence[StandardMention],
         options: Dict[str, Any],
         trace_id: str,
+        conn: sqlite3.Connection | None = None,
     ) -> Dict[str, Any]:
         if not mention_objs:
             self._record_stage(
-                trace_id, "candidate_generation", "skipped", "未识别到 mention", {}
+                trace_id,
+                "candidate_generation",
+                "skipped",
+                "未识别到 mention",
+                {},
+                conn=conn,
             )
             empty_stats = {
                 "total_mentions": 0,
@@ -510,6 +624,7 @@ class EntityLinkingPipeline:
                     "input_count": len(mention_objs),
                     "filtered_count": len(filtered_mentions),
                 },
+                conn=conn,
             )
 
         results: List[Dict[str, Any]] = []
@@ -525,6 +640,7 @@ class EntityLinkingPipeline:
                 context=self._extract_context(
                     text, mention_obj.char_start, mention_obj.char_end
                 ),
+                conn=conn,
             )
             self.db.insert_audit_log(
                 mention_id=mention_id,
@@ -534,6 +650,7 @@ class EntityLinkingPipeline:
                 new_value=mention_obj.mention,
                 reason="NER 抽取",
                 actor="ner",
+                conn=conn,
             )
 
             candidates = self.candidate_gen.generate(mention_obj.mention)
@@ -543,15 +660,23 @@ class EntityLinkingPipeline:
                 "success",
                 f"候选生成完成: {mention_obj.mention}",
                 {"mention": mention_obj.mention, "candidate_count": len(candidates)},
+                conn=conn,
             )
 
-            for candidate in candidates:
-                self.db.insert_candidate(
+            candidate_rows = [
+                {
+                    "candidate_entity_id": candidate.entity.entity_id,
+                    "candidate_name": candidate.entity.standard_name,
+                    "score": candidate.score,
+                    "metadata": candidate.metadata,
+                }
+                for candidate in candidates
+            ]
+            if candidate_rows:
+                self.db.batch_insert_candidates(
                     mention_id=mention_id,
-                    candidate_entity_id=candidate.entity.entity_id,
-                    candidate_name=candidate.entity.standard_name,
-                    score=candidate.score,
-                    metadata=candidate.metadata,
+                    candidates=candidate_rows,
+                    conn=conn,
                 )
 
             candidate_summary = [
@@ -584,6 +709,7 @@ class EntityLinkingPipeline:
                     evidence="无候选实体",
                     model_version="",
                     actor="candidate_generator",
+                    conn=conn,
                 )
                 self.db.insert_audit_log(
                     mention_id=mention_id,
@@ -593,40 +719,109 @@ class EntityLinkingPipeline:
                     new_value="NIL",
                     reason="候选为空",
                     actor="pipeline",
+                    conn=conn,
+                )
+                self._record_stage(
+                    trace_id,
+                    "disambiguation",
+                    "skipped",
+                    "无候选实体，跳过消歧",
+                    {"mention": mention_obj.mention},
+                    conn=conn,
+                )
+                self._record_stage(
+                    trace_id,
+                    "nil_decision",
+                    "success",
+                    "NIL 决策完成",
+                    {"mention": mention_obj.mention, "is_nil": True},
+                    conn=conn,
                 )
                 continue
 
+            disambiguation_result = self._disambiguate_mention(
+                mention_obj=mention_obj,
+                candidates=candidates,
+                text=text,
+                trace_id=trace_id,
+                conn=conn,
+            )
+
+            if disambiguation_result["is_nil"]:
+                result = mention_obj.to_link_result(
+                    entity_id="",
+                    standard_name="",
+                    confidence=0.0,
+                    evidence=disambiguation_result["evidence"],
+                    is_nil=True,
+                )
+                result["mention_id"] = mention_id
+                result["method"] = disambiguation_result.get("method", "disambiguation")
+                result["candidate_count"] = len(candidates)
+                result["candidates"] = candidate_summary
+                results.append(result)
+                link_result_id = self.db.insert_link_result(
+                    mention_id=mention_id,
+                    linked_entity_id="",
+                    linked_entity_name="",
+                    is_nil=True,
+                    score=disambiguation_result["score"],
+                    decision_reason=disambiguation_result.get(
+                        "decision_reason", "NIL 决策"
+                    ),
+                    evidence=disambiguation_result["evidence"],
+                    model_version="",
+                    actor=disambiguation_result.get("method", "disambiguation"),
+                    conn=conn,
+                )
+                self.db.insert_audit_log(
+                    mention_id=mention_id,
+                    link_result_id=link_result_id,
+                    field="link_result",
+                    old_value=mention_obj.mention,
+                    new_value="NIL",
+                    reason="消歧未命中或低于 NIL 阈值",
+                    actor="pipeline",
+                    conn=conn,
+                )
+                continue
+
+            entity = disambiguation_result["entity"]
             result = mention_obj.to_link_result(
-                entity_id="",
-                standard_name="",
-                confidence=0.0,
-                evidence="当前流程仅执行 NER、候选生成与存储，不做消歧",
-                is_nil=True,
+                entity_id=entity.entity_id,
+                standard_name=entity.standard_name,
+                confidence=disambiguation_result["score"],
+                evidence=disambiguation_result["evidence"],
+                is_nil=False,
             )
             result["mention_id"] = mention_id
-            result["method"] = "candidate_generation_only"
+            result["method"] = disambiguation_result.get("method", "disambiguation")
             result["candidate_count"] = len(candidates)
             result["candidates"] = candidate_summary
             results.append(result)
             link_result_id = self.db.insert_link_result(
                 mention_id=mention_id,
-                linked_entity_id="",
-                linked_entity_name="",
-                is_nil=True,
-                score=0.0,
-                decision_reason="当前流程不做消歧，仅保存候选结果",
-                evidence="当前流程仅执行 NER、候选生成与存储，不做消歧",
+                linked_entity_id=entity.entity_id,
+                linked_entity_name=entity.standard_name,
+                is_nil=False,
+                score=disambiguation_result["score"],
+                decision_reason=disambiguation_result.get(
+                    "decision_reason", "disambiguation 成功"
+                ),
+                evidence=disambiguation_result["evidence"],
                 model_version="",
-                actor="candidate_generation_only",
+                actor=disambiguation_result.get("method", "disambiguation"),
+                conn=conn,
             )
             self.db.insert_audit_log(
                 mention_id=mention_id,
                 link_result_id=link_result_id,
                 field="link_result",
                 old_value=mention_obj.mention,
-                new_value="CANDIDATES_SAVED",
-                reason="仅执行候选生成与存储",
+                new_value=entity.entity_id,
+                reason="实体链接成功",
                 actor="pipeline",
+                conn=conn,
             )
 
         self._record_stage(
@@ -634,7 +829,8 @@ class EntityLinkingPipeline:
             "coreference",
             "skipped",
             "共指消解不在当前串联范围内",
-            {"reason": "当前需求仅包含 NER、候选生成与存储"},
+            {"reason": "当前需求仅包含 NER、候选与消歧串联"},
+            conn=conn,
         )
 
         stats = {
@@ -654,6 +850,70 @@ class EntityLinkingPipeline:
             "backend": self.backend,
         }
 
+    def _disambiguate_mention(
+        self,
+        mention_obj: StandardMention,
+        candidates: List[Candidate],
+        text: str,
+        trace_id: str,
+        conn: sqlite3.Connection | None = None,
+    ) -> Dict[str, Any]:
+        context = self._extract_context(
+            text, mention_obj.char_start, mention_obj.char_end
+        )
+        disambiguation = self.disambiguator.disambiguate(
+            mention=mention_obj.mention,
+            candidates=candidates,
+            context=context,
+        )
+        entity = disambiguation.get("entity")
+        if isinstance(entity, dict):
+            entity = normalize_entity(entity)
+        elif entity is None:
+            entity = None
+
+        score = float(disambiguation.get("score", 0.0))
+        method = disambiguation.get("method", "disambiguation")
+        evidence = disambiguation.get("evidence", "")
+        decision_reason = disambiguation.get(
+            "decision_reason", evidence or "消歧返回结果"
+        )
+        self._record_stage(
+            trace_id,
+            "disambiguation",
+            "success",
+            f"消歧完成: {mention_obj.mention}",
+            {
+                "mention": mention_obj.mention,
+                "candidate_count": len(candidates),
+                "method": method,
+                "score": score,
+                "entity_id": entity.entity_id if entity else None,
+            },
+            conn=conn,
+        )
+
+        is_nil = entity is None or score < getattr(
+            self.disambiguator, "nil_threshold", 0.0
+        )
+        self._record_stage(
+            trace_id,
+            "nil_decision",
+            "success",
+            "NIL 判定完成",
+            {"mention": mention_obj.mention, "is_nil": is_nil},
+            conn=conn,
+        )
+
+        return {
+            "entity": entity,
+            "score": score,
+            "method": method,
+            "evidence": evidence,
+            "decision_reason": decision_reason,
+            "is_nil": is_nil,
+        }
+
     @staticmethod
     def _normalize_mention(mention: str) -> str:
         return "".join(mention.split()).lower()
@@ -668,56 +928,12 @@ class EntityLinkingPipeline:
         return self.kb.get_all_entities_dict()
 
     def get_trace(self, trace_id: str) -> Dict[str, Any]:
-        with sqlite3.connect(str(self.db.db_path)) as conn:
-            conn.row_factory = sqlite3.Row
-            run = conn.execute(
-                "SELECT * FROM pipeline_run WHERE run_id = ?", (trace_id,)
-            ).fetchone()
-            steps = conn.execute(
-                "SELECT * FROM pipeline_step WHERE run_id = ? ORDER BY id", (trace_id,)
-            ).fetchall()
-            mentions = conn.execute(
-                "SELECT * FROM mention WHERE task_id = ? ORDER BY id", (trace_id,)
-            ).fetchall()
-            candidates = conn.execute(
-                """
-                SELECT c.*, m.mention_text
-                FROM candidate c
-                JOIN mention m ON c.mention_id = m.id
-                WHERE m.task_id = ?
-                ORDER BY c.id
-                """,
-                (trace_id,),
-            ).fetchall()
-            results = conn.execute(
-                """
-                SELECT lr.*, m.mention_text, m.mention_norm, m.context
-                FROM link_result lr
-                JOIN mention m ON lr.mention_id = m.id
-                WHERE m.task_id = ?
-                ORDER BY lr.id
-                """,
-                (trace_id,),
-            ).fetchall()
-            audits = conn.execute(
-                """
-                SELECT al.*, m.mention_text
-                FROM audit_log al
-                LEFT JOIN mention m ON al.mention_id = m.id
-                WHERE m.task_id = ? OR al.mention_id IN (SELECT id FROM mention WHERE task_id = ?)
-                ORDER BY al.id
-                """,
-                (trace_id, trace_id),
-            ).fetchall()
+        return self.db.get_trace(trace_id)
 
-        return {
-            "run": dict(run) if run else None,
-            "steps": [dict(row) for row in steps],
-            "mentions": [dict(row) for row in mentions],
-            "candidates": [dict(row) for row in candidates],
-            "results": [dict(row) for row in results],
-            "audits": [dict(row) for row in audits],
-        }
+    def list_runs(
+        self, status: str | None = None, limit: int = 100
+    ) -> List[Dict[str, Any]]:
+        return self.db.list_pipeline_runs(status=status, limit=limit)
 
 
 if __name__ == "__main__":

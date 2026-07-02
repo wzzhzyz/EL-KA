@@ -2,6 +2,10 @@
 
 这个目录下的命令行入口是 `python -m entity_linker`。
 
+> 当前 `entity_linker` 实现的是本地串联流程：NER → 候选生成 → 存储。
+> 如果仓库内安装并准备好了 `EntityAlignmentV0` 的 BGE 模型目录，系统会尝试接入 `EntityAlignmentV0` 的候选生成和消歧组件；否则会自动回退到本地 fallback 实现。
+> `DisambiguatorPort` 已经留出接口位置，当前默认情况下仍可能使用 placeholder `_NullDisambiguator`，直到可用模型目录就绪。
+
 ## 1. 单文本输入
 
 适合一次只处理一条文本。
@@ -101,6 +105,12 @@ python -m entity_linker --batch-file .\data\batch_texts.jsonl
 python -m entity_linker --batch-file .\data\batch_texts.txt --output .\data\result.json
 ```
 
+如果你希望保留当前 pipeline 的共指占位步骤，可以加 `--enable-coreference`：
+
+```powershell
+python -m entity_linker --text "国家电网有限公司发布了公告。" --enable-coreference
+```
+
 ## 5. 结果说明
 
 输出结果里通常会包含：
@@ -109,9 +119,39 @@ python -m entity_linker --batch-file .\data\batch_texts.txt --output .\data\resu
 - `stats`：统计信息
 - `backend`：当前使用的后端，当前主文件夹默认是 `local`
 
-如果需要查看全链路数据库记录，可以在代码里调用 `EntityLinkingPipeline.get_trace(trace_id)`。
+如果需要查看全链路数据库记录，可以在代码里调用 `EntityLinkingPipeline.get_trace(trace_id)` 或 `EntityLinkingPipeline.list_runs()`。
 
-## 6. 命令行查询数据库
+## 6. 全流程测试指令
+
+### 6.1 先测试当前默认流程（如果 BGE 模型尚未下载）
+
+```powershell
+python -m entity_linker --text "国家电网有限公司发布了公告。"
+```
+
+这会运行当前 pipeline，并在没有可用 BGE 模型时自动回退到本地 fallback 实现。
+
+### 6.2 如果准备好 BGE 模型目录后，建议使用 Python 直接指定模型路径进行端到端测试
+
+```python
+from entity_linker.pipeline import EntityLinkingPipeline
+
+pipeline = EntityLinkingPipeline(config={
+    "bge_model_path": r"D:\path\to\bge-small-zh"
+})
+result = pipeline.run("国家电网有限公司发布了公告。")
+print(result)
+```
+
+如果模型路径正确且模型已下载，`pipeline.backend` 会切换为 `entity_alignment`。
+
+### 6.3 查询数据库中一条运行记录
+
+```powershell
+python -c "import sqlite3, json; db_path='data/trace.db'; trace_id='YOUR_TRACE_ID'; conn=sqlite3.connect(db_path); conn.row_factory=sqlite3.Row; cursor=conn.cursor(); run=cursor.execute('SELECT * FROM pipeline_run WHERE run_id=?', (trace_id,)).fetchone(); print(dict(run)); cursor.close(); conn.close()"
+```
+
+## 7. 数据库里有什么
 
 默认数据库文件是 `data/trace.db`。如果你想在命令行里直接查看某个 `trace_id` 的运行记录，可以用下面的 Python 命令。
 
@@ -142,7 +182,34 @@ python -c "import sqlite3; db_path='data/trace.db'; trace_id='20260701T015326Z_7
 
 如果你更习惯看表结构，也可以直接打开 `data/trace.db` 做可视化查看。
 
-## 7. 数据库里有什么
+## 7. Python API 调用示例
+
+你也可以直接在 Python 里调用 `entity_linker`：
+
+```python
+from entity_linker.pipeline import EntityLinkingPipeline
+
+pipeline = EntityLinkingPipeline()
+result = pipeline.run("国家电网有限公司发布了公告。")
+print(result)
+
+batch_results = pipeline.run_batch([
+    "国家电网有限公司发布了公告。",
+    "国网新源控股有限公司正在扩建。",
+])
+print(batch_results)
+
+trace = pipeline.get_trace(result["trace_id"])
+print(trace)
+
+runs = pipeline.list_runs(limit=10)
+print(runs)
+```
+
+> 注意：当前 `EntityLinkingPipeline` 默认使用本地 `fallback` 组件，`DisambiguatorPort` 仅保留接口位置，默认不执行实际 BGE 消歧。
+> 如果要接入 `EntityAlignmentV0` 中的真实消歧与候选生成模块，需要替换当前 pipeline 的 `self.candidate_gen` 与 `self.disambiguator`。
+
+## 8. 数据库里有什么
 
 这一部分是把“程序里每一步做了什么”和“数据库里每张表存了什么”对应起来说明，避免只看到表名却不知道具体内容。
 
