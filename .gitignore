@@ -6,3 +6,5 @@ __pycache__/
 .vscode/
 .idea/
 .DS_Store
+EntityAlignmentV0/models_cache/
+EntityAlignmentV0/models_cache.zip

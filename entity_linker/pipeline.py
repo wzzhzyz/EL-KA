@@ -176,7 +176,7 @@ class _FallbackNEREngine:
     def extract(self, text: str) -> List[StandardMention]:
         mentions: List[StandardMention] = []
         occupied: List[Tuple[int, int]] = []
-        aliases = sorted(self.kb._alias_index.keys(), key=len, reverse=True)
+        aliases = sorted(self.kb.alias_index.keys(), key=len, reverse=True)
 
         for alias in aliases:
             start = text.find(alias)
