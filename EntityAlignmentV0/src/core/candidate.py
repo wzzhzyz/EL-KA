@@ -40,9 +40,9 @@ class CandidateGenerator:
             结构化的 query 字符串
         """
         if context and context.strip():
-            return f"query: 上下文中的mention指的是什么？上下文：{context[:200]}，mention：{mention}"
+            return f"query: 上下文中的实体“{mention}”指的是什么？上下文：{context[:500]}。上下文中的实体“{mention}”是什么？"
         else:
-            return f"query: 实体指称 {mention} 指的是什么？"
+            return f"query: 实体指称 “{mention}” 指的是什么？"
 
     def _build_passage_text(self, entity: StandardEntity) -> str:
         """
@@ -96,7 +96,7 @@ class CandidateGenerator:
         entity_ids = [e.entity_id for e in entities]
         entity_embs = self.kb.get_embeddings(entity_ids)
 
-        if len(entity_embs) == 0:
+        if len(entity_embs) < len(entities):
             logger.warning("⚠️ 部分实体向量不在缓存中，回退到逐个计算")
             return [self._compute_bge_score_realtime(mention, e, context) for e in entities]
 
@@ -201,7 +201,9 @@ class CandidateGenerator:
         # 3. 向量检索
         # ============================================================
         remaining = max(1, top_k - len(candidates))
-        vector_results = self.vector_index.search(mention, top_k=remaining)
+        #构造结构化query
+        query=self._build_query_text(mention,context=context)
+        vector_results = self.vector_index.search(query, top_k=remaining)
 
         vector_added = 0
         for r in vector_results:

@@ -332,14 +332,14 @@ class EntityLinker:
                 }
             }
 
-        # 获取可链接类型
-        linkable_types = options.get(
-            "linkable_types",
-            self.config["ner"].get("linkable_types", ["ORG", "PERSON", "GPE", "LOC"])
-        )
-
-        # 过滤类型
-        filtered_mentions = [m for m in mention_objs if m.mention_type in linkable_types]
+        # # 获取可链接类型
+        # linkable_types = options.get(
+        #     "linkable_types",
+        #     self.config["ner"].get("linkable_types", ["ORG", "PERSON", "GPE", "LOC"])
+        # )
+        #
+        # # 过滤类型
+        # filtered_mentions = [m for m in mention_objs if m.mention_type in linkable_types]
 
         # ============================================================
         # 知识库链接
@@ -347,7 +347,7 @@ class EntityLinker:
         results = []
         nil_threshold = options.get("nil_threshold", self.disambiguator.nil_threshold)
 
-        for mention_obj in filtered_mentions:
+        for mention_obj in mention_objs:
             mention_text = mention_obj.mention
             mention_type = mention_obj.mention_type
 

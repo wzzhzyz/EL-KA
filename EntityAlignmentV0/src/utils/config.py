@@ -29,10 +29,34 @@ def load_config(config_path: str = "config.yaml") -> Dict[str, Any]:
     # 解析相对路径
     if "bge_model_path" in _config:
         _config["bge_model_path"] = resolve_path(_config["bge_model_path"])
+
+    # Reranker 模型路径
+    if "reranker_model_path" in _config:
+        _config["reranker_model_path"] = resolve_path(_config["reranker_model_path"])
+
     if "knowledge_base" in _config and "path" in _config["knowledge_base"]:
         _config["knowledge_base"]["path"] = resolve_path(_config["knowledge_base"]["path"])
+
     if "tracer_db" in _config:
         _config["tracer_db"] = resolve_path(_config["tracer_db"])
+
+    # 确保 disambiguator 配置存在
+    if "disambiguator" not in _config:
+        _config["disambiguator"] = {}
+    if "nil_threshold" not in _config["disambiguator"]:
+        _config["disambiguator"]["nil_threshold"] = 0.65
+    if "bge_llm_trigger_threshold" not in _config["disambiguator"]:
+        _config["disambiguator"]["bge_llm_trigger_threshold"] = 0.55
+
+    # 确保 reranker 配置存在
+    if "reranker_enabled" not in _config:
+        _config["reranker_enabled"] = False
+    if "reranker_top_k" not in _config:
+        _config["reranker_top_k"] = 10
+    if "reranker_weight" not in _config:
+        _config["reranker_weight"] = 0.7
+    if "bge_reranker_weight" not in _config:
+        _config["bge_reranker_weight"] = 0.3
 
     return _config
 

@@ -9,11 +9,18 @@ knowledge_base:
   path: "./data/energy_entities.json"
 
 # BGE 模型在项目内
-bge_model_path: "./models_cache/bge-small-zh"
+bge_model_path: "./models_cache/bge-large-zh-v1.5"
 
 disambiguator:
-  nil_threshold: 0.75
+  nil_threshold: 0.80
   bge_llm_trigger_threshold: 0.65
+
+
+reranker_enabled: true
+reranker_model_path: "./models_cache/bge-reranker-large"
+reranker_top_k: 6
+reranker_weight: 0.7
+bge_reranker_weight: 0.3
 
 llm_fallback:
   enabled: false

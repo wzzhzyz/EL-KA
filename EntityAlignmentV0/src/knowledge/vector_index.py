@@ -2,6 +2,8 @@
 import numpy as np
 import faiss
 from typing import List, Dict, Optional
+
+import torch.cuda
 from sentence_transformers import SentenceTransformer
 from src.models.entity import StandardEntity
 from src.utils.logger import logger
@@ -23,8 +25,13 @@ class VectorIndex:
     def _load_model(self):
         if self.model is None:
             logger.info(f"📦 加载 BGE 模型: {self.model_path}")
-            self.model = SentenceTransformer(self.model_path)
-            logger.info("✅ BGE 模型加载完成")
+            if(torch.cuda.is_available()):
+                self.model=SentenceTransformer(self.model_path,device='cuda')
+                logger.info(f"✅ BGE 模型加载完成，设备：CUDA")
+
+            else:
+                self.model=SentenceTransformer(self.model_path,device='cpu')
+                logger.info(f"✅ BGE 模型加载完成，设备：CPU")
 
     def _build_passage_text(self, entity: StandardEntity) -> str:
         """
@@ -53,11 +60,21 @@ class VectorIndex:
 
         return f"passage: {text}"
 
-    def _build_query_text(self, query: str) -> str:
+    def _build_query_text(self, mention: str, context: str = "") -> str:
         """
         构建结构化的 query 文本
+
+        Args:
+            mention: 实体指称
+            context: 上下文文本
+
+        Returns:
+            结构化的 query 字符串
         """
-        return f"query: 实体指称 {query} 指的是什么？"
+        if context and context.strip():
+            return f"query: 上下文中的实体“{mention}”指的是什么？上下文：{context[:500]}。上下文中的实体“{mention}”是什么？"
+        else:
+            return f"query: 实体指称 “{mention}” 指的是什么？"
 
     def build(self, entities: List[StandardEntity]):
         """构建向量索引"""
@@ -105,15 +122,14 @@ class VectorIndex:
         logger.info(f"   📝 使用结构化 passage 格式: 'passage: 标准实体名：xxx，别名：xxx，描述：xxx'")
 
     def search(self, query: str, top_k: int = 5) -> List[Dict]:
-        """检索最相似的实体（使用结构化 query 提示）"""
+        """检索最相似的实体"""
         if self.index is None or self.index.ntotal == 0:
             return []
 
         self._load_model()
 
-        # 使用结构化的 query
-        query_text = self._build_query_text(query)
-        query_emb = self.model.encode([query_text], normalize_embeddings=True)
+        # 注意，这里嵌入前没有对query进行任何加工
+        query_emb = self.model.encode([query], normalize_embeddings=True)
 
         scores, indices = self.index.search(query_emb.astype(np.float32), top_k)
 
