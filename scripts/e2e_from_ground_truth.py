@@ -1,20 +1,11 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-端到端测试脚本：
-- 读取 `data/batch_ground_truth.json` 和 `data/batch_texts.txt`
-- 使用 `entity_linker.EntityLinkingPipeline` 批量运行
-- 将 pipeline 输出与 ground truth 对齐并统计准确率 / NIL 检测
+"""Evaluate entity linking with mention-given input or raw-text input.
 
-用法示例：
-    python scripts/e2e_from_ground_truth.py \
-        --ground-truth data/batch_ground_truth.json \
-        --texts data/batch_texts.txt \
-        --trace-prefix test
+The task specification defines the primary input as:
+text + recognized mentions + knowledge base.
 
-可选：
-    --use-ea --bge-model-path D:\path\to\bge-small-zh
-
+Mention-given mode is therefore the default. Raw mode is retained as an
+auxiliary end-to-end NER + linking check.
 """
 
 from __future__ import annotations
@@ -23,147 +14,272 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
-# ensure repo root is on sys.path when running this script directly
+
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 
-def load_ground_truth(path: Path) -> Dict:
-    with path.open("r", encoding="utf-8") as f:
-        return json.load(f)
+def load_json(path: Path) -> Dict[str, Any]:
+    with path.open("r", encoding="utf-8") as file:
+        return json.load(file)
 
 
 def load_texts(path: Path) -> List[str]:
-    with path.open("r", encoding="utf-8") as f:
-        return [line.strip() for line in f.readlines() if line.strip()]
+    with path.open("r", encoding="utf-8") as file:
+        return [line.strip() for line in file if line.strip()]
 
 
-def normalize_entity_id(eid: Optional[str]) -> Optional[str]:
-    if eid is None:
+def normalize_entity_id(entity_id: Optional[str]) -> Optional[str]:
+    if entity_id is None:
         return None
-    if isinstance(eid, str):
-        v = eid.strip()
-        return v if v else None
-    return str(eid)
+    value = str(entity_id).strip()
+    return value or None
 
 
-def main():
+def load_mention_dataset(path: Path) -> tuple[List[Dict[str, Any]], Dict[str, Any]]:
+    payload = load_json(path)
+    samples = payload.get("samples", [])
+    knowledge_base = payload.get("knowledge_base", {})
+    kb_path = knowledge_base.get("path")
+    if not kb_path:
+        raise ValueError("dataset missing knowledge_base.path")
+    resolved_kb_path = ROOT / kb_path
+    if not resolved_kb_path.exists():
+        raise ValueError(f"knowledge base not found: {resolved_kb_path}")
+    kb_payload = load_json(resolved_kb_path)
+    valid_entity_ids = {
+        item.get("entity_id") for item in kb_payload.get("entities", [])
+    }
+
+    required = {"text", "mentions", "expected_entities"}
+    for index, sample in enumerate(samples):
+        missing = required - sample.keys()
+        if missing:
+            raise ValueError(f"sample[{index}] missing fields: {sorted(missing)}")
+        input_mentions = []
+        for mention in sample["mentions"]:
+            if "entity_id" in mention:
+                raise ValueError(
+                    f"sample[{index}] input mention must not contain gold entity_id"
+                )
+            text = mention.get("mention", "")
+            start = mention.get("char_start")
+            end = mention.get("char_end")
+            if not isinstance(start, int) or not isinstance(end, int):
+                raise ValueError(f"sample[{index}] mention offsets must be integers")
+            if sample["text"][start:end] != text:
+                raise ValueError(f"sample[{index}] mention span mismatch: {text}")
+            input_mentions.append(text)
+
+        expected_mentions = []
+        for expected in sample["expected_entities"]:
+            expected_mentions.append(expected.get("mention"))
+            entity_id = normalize_entity_id(expected.get("entity_id"))
+            if entity_id is not None and entity_id not in valid_entity_ids:
+                raise ValueError(
+                    f"sample[{index}] unknown gold entity_id: {entity_id}"
+                )
+        if input_mentions != expected_mentions:
+            raise ValueError(
+                f"sample[{index}] input mentions and gold mentions are not aligned"
+            )
+    return samples, knowledge_base
+
+
+def load_legacy_dataset(
+    ground_truth_path: Path, texts_path: Path
+) -> tuple[List[Dict[str, Any]], Dict[str, Any]]:
+    ground_truth = load_json(ground_truth_path)
+    texts = load_texts(texts_path)
+    samples: List[Dict[str, Any]] = []
+    for entry in ground_truth.get("entries", []):
+        text_index = int(entry.get("text_idx", -1))
+        if text_index < 0 or text_index >= len(texts):
+            print(f"[WARN] skip out-of-range text_idx={text_index}")
+            continue
+        text = texts[text_index]
+        mentions = []
+        for expected in entry.get("expected_entities", []):
+            mention = expected.get("mention", "")
+            start = text.find(mention)
+            mentions.append(
+                {
+                    "mention": mention,
+                    "type": "UNKNOWN",
+                    "char_start": max(start, 0),
+                    "char_end": max(start, 0) + len(mention),
+                    "confidence": 1.0,
+                }
+            )
+        samples.append(
+            {
+                "id": f"LEGACY_{text_index + 1:03d}",
+                "text": text,
+                "mentions": mentions,
+                "expected_entities": entry.get("expected_entities", []),
+                "scenario": entry.get("scenario", ""),
+            }
+        )
+    return samples, {"type": "json", "path": "data/kb/energy_entities.json"}
+
+
+def evaluate(samples: List[Dict[str, Any]], results: List[Dict[str, Any]]) -> Dict[str, Any]:
+    total_mentions = 0
+    correct = 0
+    non_nil_total = 0
+    non_nil_correct = 0
+    gold_nil_total = 0
+    nil_true_positive = 0
+    nil_false_positive = 0
+    missing_predictions = 0
+
+    for sample, prediction in zip(samples, results):
+        prediction_map = {
+            item.get("mention"): item for item in prediction.get("results", [])
+        }
+        for expected in sample.get("expected_entities", []):
+            total_mentions += 1
+            mention = expected.get("mention")
+            gold_id = normalize_entity_id(expected.get("entity_id"))
+            predicted = prediction_map.get(mention)
+
+            if gold_id is None:
+                gold_nil_total += 1
+            else:
+                non_nil_total += 1
+
+            if predicted is None:
+                missing_predictions += 1
+                continue
+
+            predicted_id = normalize_entity_id(predicted.get("entity_id"))
+            predicted_nil = bool(predicted.get("is_nil", False) or predicted_id is None)
+
+            if gold_id is None and predicted_nil:
+                nil_true_positive += 1
+                correct += 1
+            elif gold_id is not None and predicted_id == gold_id:
+                non_nil_correct += 1
+                correct += 1
+            elif gold_id is not None and predicted_nil:
+                nil_false_positive += 1
+
+    nil_false_negative = gold_nil_total - nil_true_positive
+    nil_precision = (
+        nil_true_positive / (nil_true_positive + nil_false_positive)
+        if nil_true_positive + nil_false_positive
+        else 0.0
+    )
+    nil_recall = nil_true_positive / gold_nil_total if gold_nil_total else 0.0
+    nil_f1 = (
+        2 * nil_precision * nil_recall / (nil_precision + nil_recall)
+        if nil_precision + nil_recall
+        else 0.0
+    )
+
+    return {
+        "samples": len(samples),
+        "total_mentions": total_mentions,
+        "correct": correct,
+        "overall_accuracy": correct / total_mentions if total_mentions else 0.0,
+        "non_nil_total": non_nil_total,
+        "non_nil_correct": non_nil_correct,
+        "linking_accuracy": (
+            non_nil_correct / non_nil_total if non_nil_total else 0.0
+        ),
+        "gold_nil_total": gold_nil_total,
+        "nil_true_positive": nil_true_positive,
+        "nil_false_positive": nil_false_positive,
+        "nil_false_negative": nil_false_negative,
+        "nil_precision": nil_precision,
+        "nil_recall": nil_recall,
+        "nil_f1": nil_f1,
+        "missing_predictions": missing_predictions,
+    }
+
+
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--dataset",
+        default="data/eval/mention_linking_test.json",
+        help="mention-given dataset containing text, mentions and gold links",
+    )
+    parser.add_argument(
+        "--input-mode",
+        choices=("mentions", "raw"),
+        default="mentions",
+        help="mentions: task-spec input; raw: auxiliary NER + linking input",
+    )
     parser.add_argument("--ground-truth", default="data/batch_ground_truth.json")
     parser.add_argument("--texts", default="data/batch_texts.txt")
     parser.add_argument("--trace-prefix", default="gt")
-    parser.add_argument(
-        "--use-ea", action="store_true", help="尝试使用 EntityAlignmentV0 (需模型目录)"
-    )
-    parser.add_argument(
-        "--bge-model-path", default=None, help="BGE 模型目录(如果使用 EA)"
-    )
+    parser.add_argument("--bge-model-path", default=None)
     parser.add_argument("--verbose", action="store_true")
-    args = parser.parse_args()
+    return parser
 
-    gt = load_ground_truth(Path(args.ground_truth))
-    texts = load_texts(Path(args.texts))
 
-    # build test samples list according to text_idx
-    entries = gt.get("entries", [])
-    samples = []
-    for e in entries:
-        idx = int(e.get("text_idx", -1))
-        if idx < 0 or idx >= len(texts):
-            print(
-                f"[WARN] text_idx {idx} out of range for texts file, skipping sample: {e.get('scenario', '')}"
-            )
-            continue
-        samples.append(
-            {
-                "text": texts[idx],
-                "expected_entities": e.get("expected_entities", []),
-                "meta": e,
-            }
+def main() -> int:
+    args = build_parser().parse_args()
+    dataset_path = Path(args.dataset)
+    if dataset_path.exists():
+        samples, knowledge_base = load_mention_dataset(dataset_path)
+    else:
+        samples, knowledge_base = load_legacy_dataset(
+            Path(args.ground_truth), Path(args.texts)
         )
 
-    # lazy import pipeline to avoid heavy imports if not running
     from entity_linker.pipeline import EntityLinkingPipeline
+    from entity_linker.utils.trace import new_trace_id
 
-    config = {}
-    if args.use_ea and args.bge_model_path:
+    config: Dict[str, Any] = {}
+    kb_path = knowledge_base.get("path")
+    if kb_path:
+        config["kb_path"] = kb_path
+    if args.bge_model_path:
         config["bge_model_path"] = args.bge_model_path
-    pipeline = (
-        EntityLinkingPipeline(config=config) if config else EntityLinkingPipeline()
-    )
 
-    print("Running pipeline, backend=", pipeline.backend)
+    pipeline = EntityLinkingPipeline(config=config)
+    results: List[Dict[str, Any]] = []
 
-    texts_to_run = [s["text"] for s in samples]
-    results = pipeline.run_batch(
-        texts_to_run, options={}, trace_id_prefix=args.trace_prefix
-    )
+    print(f"input_mode={args.input_mode}")
+    print(f"dataset={dataset_path if dataset_path.exists() else 'legacy'}")
+    print(f"knowledge_base={kb_path or 'pipeline default'}")
+    print(f"backend={pipeline.backend}")
 
-    # Evaluate
-    total_mentions = 0
-    correct_links = 0
-    nil_total = 0
-    nil_correct = 0
-    missing_predictions = 0
+    if args.input_mode == "mentions":
+        options = {"linkable_types": ["ORG", "GPE", "PERSON", "LOC", "UNKNOWN"]}
+        for sample in samples:
+            result = pipeline.run_with_mentions(
+                text=sample["text"],
+                mentions=sample["mentions"],
+                options=options,
+                trace_id=new_trace_id(prefix=args.trace_prefix),
+            )
+            results.append(result)
+    else:
+        results = pipeline.run_batch(
+            [sample["text"] for sample in samples],
+            options={},
+            trace_id_prefix=args.trace_prefix,
+        )
 
-    for i, sample in enumerate(samples):
-        expected = sample["expected_entities"]
-        pred = results[i]
-        pred_results = pred.get("results", [])
-        # map by mention text
-        pred_map = {r.get("mention"): r for r in pred_results}
+    metrics = evaluate(samples, results)
+    print("\nEntity Linking Evaluation Summary")
+    for key, value in metrics.items():
+        if isinstance(value, float):
+            print(f"  {key}: {value:.4f}")
+        else:
+            print(f"  {key}: {value}")
 
-        for exp in expected:
-            total_mentions += 1
-            gold_id = normalize_entity_id(exp.get("entity_id"))
-            mention = exp.get("mention")
-            if gold_id is None:
-                nil_total += 1
-            pr = pred_map.get(mention)
-            if pr is None:
-                missing_predictions += 1
-                if args.verbose:
-                    print(
-                        f"[MISSING] text_idx={i} mention={mention} expected={gold_id}"
-                    )
-                continue
-            predicted_id = normalize_entity_id(pr.get("entity_id"))
-            predicted_nil = bool(pr.get("is_nil", False) or predicted_id is None)
-
-            if gold_id is None:
-                if predicted_nil:
-                    nil_correct += 1
-                    correct_links += 1
-                else:
-                    # false positive link
-                    pass
-            else:
-                if predicted_id == gold_id:
-                    correct_links += 1
-                else:
-                    if args.verbose:
-                        print(
-                            f"[WRONG] text_idx={i} mention={mention} gold={gold_id} pred={predicted_id}"
-                        )
-
-    accuracy = correct_links / total_mentions if total_mentions else 0.0
-    nil_precision = nil_correct / (nil_total if nil_total else 1)
-
-    print("\nE2E Evaluation Summary")
-    print(f"  samples: {len(samples)}")
-    print(f"  total_mentions: {total_mentions}")
-    print(f"  correct_links: {correct_links}")
-    print(f"  accuracy: {accuracy:.4f}")
-    print(
-        f"  nil_total: {nil_total}, nil_correct: {nil_correct}, nil_precision: {nil_precision:.4f}"
-    )
-    print(f"  missing_predictions: {missing_predictions}")
-
-    # Optionally, save detailed results
+    if args.verbose:
+        print("\nInput contract sample")
+        print(json.dumps(samples[0], ensure_ascii=False, indent=2))
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

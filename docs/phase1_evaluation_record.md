@@ -56,3 +56,9 @@
 - 实体链接效果指标：暂不具备有效验收条件。
 
 本记录只归档客观运行结果。待真实后端可用后，应使用同一版本数据集复跑并保留前后指标对比。
+
+## 7. 任务书输入口径修订（2026-07-06）
+
+根据《智能体研究课题任务书（终稿）》“文本 + 已识别实体指称 + 知识库”的要求，新增`data/eval/mention_linking_test.json`，将`mentions`输入与`expected_entities`金标结果分离。评测脚本默认改为调用`EntityLinkingPipeline.run_with_mentions()`，原始文本NER模式通过`--input-mode raw`保留为辅助测试。
+
+mention-given模式复测结果：36条样本、42个给定mention全部进入实体链接阶段，`missing_predictions`由原始文本模式的5降为0。由于当前环境仍回退到不执行最终消歧的`local`后端，37个非NIL mention均被判为NIL，因此链接准确率仍为0，NIL F1为0.2128。该结果说明输入边界已按任务书对齐，但真实BGE后端阻断尚未解除。

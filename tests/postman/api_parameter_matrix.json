@@ -1,0 +1,138 @@
+{
+  "matrix_name": "api_parameter_combination_test",
+  "version": "1.0",
+  "base_url": "http://127.0.0.1:8000",
+  "cases": [
+    {
+      "id": "API_PARAM_001",
+      "endpoint": "/link_with_mentions",
+      "input_mode": "mentions_given",
+      "nil_threshold": 0.8,
+      "enable_coreference": false,
+      "enable_llm_fallback": false,
+      "scenario": "默认配置基准",
+      "expected_focus": [
+        "返回trace_id",
+        "结果字段完整",
+        "写入stats"
+      ]
+    },
+    {
+      "id": "API_PARAM_002",
+      "endpoint": "/link_with_mentions",
+      "input_mode": "mentions_given",
+      "nil_threshold": 0.65,
+      "enable_coreference": false,
+      "enable_llm_fallback": false,
+      "scenario": "降低NIL阈值",
+      "expected_focus": [
+        "与默认阈值对比is_nil",
+        "记录confidence和evidence"
+      ]
+    },
+    {
+      "id": "API_PARAM_003",
+      "endpoint": "/link_with_mentions",
+      "input_mode": "mentions_given",
+      "nil_threshold": 0.9,
+      "enable_coreference": false,
+      "enable_llm_fallback": false,
+      "scenario": "提高NIL阈值",
+      "expected_focus": [
+        "更严格的链接判定",
+        "低分候选应转NIL"
+      ]
+    },
+    {
+      "id": "API_PARAM_004",
+      "endpoint": "/link_with_mentions",
+      "input_mode": "mentions_given",
+      "nil_threshold": 0.8,
+      "enable_coreference": true,
+      "enable_llm_fallback": false,
+      "scenario": "开启共指",
+      "expected_focus": [
+        "coreference_resolved统计",
+        "is_coreference与resolved_from"
+      ],
+      "current_support": "依赖FastCoref配置和模型可用性"
+    },
+    {
+      "id": "API_PARAM_005",
+      "endpoint": "/link_with_mentions",
+      "input_mode": "mentions_given",
+      "nil_threshold": 0.8,
+      "enable_coreference": false,
+      "enable_llm_fallback": true,
+      "scenario": "开启LLM兜底",
+      "expected_focus": [
+        "低置信候选触发LLM",
+        "method/evidence体现兜底来源"
+      ],
+      "current_support": "请求字段已预留，但当前Disambiguator主要读取启动配置，需联调"
+    },
+    {
+      "id": "API_PARAM_006",
+      "endpoint": "/link_with_mentions",
+      "input_mode": "mentions_given",
+      "nil_threshold": 0.8,
+      "enable_coreference": false,
+      "enable_llm_fallback": false,
+      "scenario": "知识库外实体NIL",
+      "expected_focus": [
+        "is_nil=true",
+        "entity_id为空",
+        "evidence可追溯"
+      ]
+    },
+    {
+      "id": "API_PARAM_007",
+      "endpoint": "/link",
+      "input_mode": "raw_text",
+      "nil_threshold": 0.8,
+      "enable_coreference": false,
+      "enable_llm_fallback": false,
+      "scenario": "原始文本端到端辅助测试",
+      "expected_focus": [
+        "NER与链接完整链路",
+        "不替代mention-given专项指标"
+      ]
+    },
+    {
+      "id": "API_PARAM_008",
+      "endpoint": "/link_with_mentions",
+      "input_mode": "mentions_given",
+      "nil_threshold": 0.8,
+      "enable_coreference": false,
+      "enable_llm_fallback": false,
+      "linkable_types": [
+        "ORG"
+      ],
+      "scenario": "实体类型过滤",
+      "expected_focus": [
+        "只处理ORG mention",
+        "统计字段与结果数量一致"
+      ]
+    }
+  ],
+  "comparison_groups": {
+    "threshold": [
+      "API_PARAM_001",
+      "API_PARAM_002",
+      "API_PARAM_003"
+    ],
+    "feature_switches": [
+      "API_PARAM_001",
+      "API_PARAM_004",
+      "API_PARAM_005"
+    ],
+    "input_modes": [
+      "API_PARAM_001",
+      "API_PARAM_007"
+    ],
+    "nil_and_filter": [
+      "API_PARAM_006",
+      "API_PARAM_008"
+    ]
+  }
+}

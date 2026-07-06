@@ -1,0 +1,618 @@
+{
+  "info": {
+    "_postman_id": "fef14d7b-babb-4a72-929f-e9176e8f0706",
+    "name": "课题10-实体链接与知识对齐智能体-D7",
+    "description": "欧小红D7接口测试模板。覆盖健康检查、知识库、原始文本链接、已识别mention链接、功能开关、NIL阈值、Trace查询和错误请求。",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    },
+    {
+      "key": "trace_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 服务状态",
+      "item": [
+        {
+          "name": "健康检查",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "description": "服务启动后应返回healthy及知识库实体数量。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });",
+                  "const body = pm.response.json();",
+                  "pm.test('包含status', function () { pm.expect(body).to.have.property('status'); });"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "知识库摘要",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/knowledge",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "knowledge"
+              ]
+            },
+            "description": "核对知识库加载数量和实体列表结构。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });",
+                  "const body = pm.response.json();",
+                  "pm.test('知识库字段完整', function () {",
+                  "  pm.expect(body).to.have.property('total_entities').that.is.a('number');",
+                  "  pm.expect(body).to.have.property('entities').that.is.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02 已识别Mention输入（主验收）",
+      "item": [
+        {
+          "name": "基准-默认阈值-功能关闭",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"国家电网发布年度报告。\",\n  \"options\": {\n    \"mentions\": [\n      {\n        \"mention\": \"国家电网\",\n        \"type\": \"ORG\",\n        \"char_start\": 0,\n        \"char_end\": 4,\n        \"confidence\": 1\n      }\n    ],\n    \"nil_threshold\": 0.8,\n    \"enable_coreference\": false,\n    \"enable_llm_fallback\": false,\n    \"linkable_types\": [\n      \"ORG\",\n      \"PERSON\",\n      \"GPE\",\n      \"LOC\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/link_with_mentions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "link_with_mentions"
+              ]
+            },
+            "description": "任务书主输入：text + 已识别mentions + 配置化知识库。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });",
+                  "const body = pm.response.json();",
+                  "pm.test('响应包含trace_id、results和stats', function () {",
+                  "  pm.expect(body).to.have.property('trace_id').that.is.a('string');",
+                  "  pm.expect(body).to.have.property('results').that.is.an('array');",
+                  "  pm.expect(body).to.have.property('stats').that.is.an('object');",
+                  "});",
+                  "if (body.trace_id) { pm.collectionVariables.set('trace_id', body.trace_id); }",
+                  "pm.test('结果字段满足当前接口契约', function () {",
+                  "  body.results.forEach(function (item) {",
+                  "    pm.expect(item).to.have.property('mention');",
+                  "    pm.expect(item).to.have.property('entity_id');",
+                  "    pm.expect(item).to.have.property('standard_entity');",
+                  "    pm.expect(item).to.have.property('confidence');",
+                  "    pm.expect(item).to.have.property('is_nil');",
+                  "    pm.expect(item).to.have.property('evidence');",
+                  "  });",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "低NIL阈值-0.65",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"国家电网发布年度报告。\",\n  \"options\": {\n    \"mentions\": [\n      {\n        \"mention\": \"国家电网\",\n        \"type\": \"ORG\",\n        \"char_start\": 0,\n        \"char_end\": 4,\n        \"confidence\": 1\n      }\n    ],\n    \"nil_threshold\": 0.65,\n    \"enable_coreference\": false,\n    \"enable_llm_fallback\": false,\n    \"linkable_types\": [\n      \"ORG\",\n      \"PERSON\",\n      \"GPE\",\n      \"LOC\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/link_with_mentions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "link_with_mentions"
+              ]
+            },
+            "description": "验证低阈值下链接结果及置信度。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });",
+                  "const body = pm.response.json();",
+                  "pm.test('响应包含trace_id、results和stats', function () {",
+                  "  pm.expect(body).to.have.property('trace_id').that.is.a('string');",
+                  "  pm.expect(body).to.have.property('results').that.is.an('array');",
+                  "  pm.expect(body).to.have.property('stats').that.is.an('object');",
+                  "});",
+                  "if (body.trace_id) { pm.collectionVariables.set('trace_id', body.trace_id); }",
+                  "pm.test('结果字段满足当前接口契约', function () {",
+                  "  body.results.forEach(function (item) {",
+                  "    pm.expect(item).to.have.property('mention');",
+                  "    pm.expect(item).to.have.property('entity_id');",
+                  "    pm.expect(item).to.have.property('standard_entity');",
+                  "    pm.expect(item).to.have.property('confidence');",
+                  "    pm.expect(item).to.have.property('is_nil');",
+                  "    pm.expect(item).to.have.property('evidence');",
+                  "  });",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "高NIL阈值-0.90",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"国家电网发布年度报告。\",\n  \"options\": {\n    \"mentions\": [\n      {\n        \"mention\": \"国家电网\",\n        \"type\": \"ORG\",\n        \"char_start\": 0,\n        \"char_end\": 4,\n        \"confidence\": 1\n      }\n    ],\n    \"nil_threshold\": 0.9,\n    \"enable_coreference\": false,\n    \"enable_llm_fallback\": false,\n    \"linkable_types\": [\n      \"ORG\",\n      \"PERSON\",\n      \"GPE\",\n      \"LOC\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/link_with_mentions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "link_with_mentions"
+              ]
+            },
+            "description": "验证高阈值是否更容易产生NIL。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });",
+                  "const body = pm.response.json();",
+                  "pm.test('响应包含trace_id、results和stats', function () {",
+                  "  pm.expect(body).to.have.property('trace_id').that.is.a('string');",
+                  "  pm.expect(body).to.have.property('results').that.is.an('array');",
+                  "  pm.expect(body).to.have.property('stats').that.is.an('object');",
+                  "});",
+                  "if (body.trace_id) { pm.collectionVariables.set('trace_id', body.trace_id); }",
+                  "pm.test('结果字段满足当前接口契约', function () {",
+                  "  body.results.forEach(function (item) {",
+                  "    pm.expect(item).to.have.property('mention');",
+                  "    pm.expect(item).to.have.property('entity_id');",
+                  "    pm.expect(item).to.have.property('standard_entity');",
+                  "    pm.expect(item).to.have.property('confidence');",
+                  "    pm.expect(item).to.have.property('is_nil');",
+                  "    pm.expect(item).to.have.property('evidence');",
+                  "  });",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "启用共指开关",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"国家电网发布年度报告。该公司将继续投资特高压工程。\",\n  \"options\": {\n    \"mentions\": [\n      {\n        \"mention\": \"国家电网\",\n        \"type\": \"ORG\",\n        \"char_start\": 0,\n        \"char_end\": 4,\n        \"confidence\": 1\n      },\n      {\n        \"mention\": \"该公司\",\n        \"type\": \"PRON\",\n        \"char_start\": 11,\n        \"char_end\": 14,\n        \"confidence\": 1\n      }\n    ],\n    \"nil_threshold\": 0.8,\n    \"enable_coreference\": true,\n    \"enable_llm_fallback\": false,\n    \"linkable_types\": [\n      \"ORG\",\n      \"PERSON\",\n      \"GPE\",\n      \"LOC\",\n      \"PRON\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/link_with_mentions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "link_with_mentions"
+              ]
+            },
+            "description": "验证enable_coreference=true时指代mention和统计字段。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });",
+                  "const body = pm.response.json();",
+                  "pm.test('响应包含trace_id、results和stats', function () {",
+                  "  pm.expect(body).to.have.property('trace_id').that.is.a('string');",
+                  "  pm.expect(body).to.have.property('results').that.is.an('array');",
+                  "  pm.expect(body).to.have.property('stats').that.is.an('object');",
+                  "});",
+                  "if (body.trace_id) { pm.collectionVariables.set('trace_id', body.trace_id); }",
+                  "pm.test('结果字段满足当前接口契约', function () {",
+                  "  body.results.forEach(function (item) {",
+                  "    pm.expect(item).to.have.property('mention');",
+                  "    pm.expect(item).to.have.property('entity_id');",
+                  "    pm.expect(item).to.have.property('standard_entity');",
+                  "    pm.expect(item).to.have.property('confidence');",
+                  "    pm.expect(item).to.have.property('is_nil');",
+                  "    pm.expect(item).to.have.property('evidence');",
+                  "  });",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "启用LLM兜底开关-待联调",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"国网推进抽水蓄能项目建设。\",\n  \"options\": {\n    \"mentions\": [\n      {\n        \"mention\": \"国网\",\n        \"type\": \"ORG\",\n        \"char_start\": 0,\n        \"char_end\": 2,\n        \"confidence\": 1\n      }\n    ],\n    \"nil_threshold\": 0.8,\n    \"enable_coreference\": false,\n    \"enable_llm_fallback\": true,\n    \"linkable_types\": [\n      \"ORG\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/link_with_mentions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "link_with_mentions"
+              ]
+            },
+            "description": "请求覆盖enable_llm_fallback；当前实现主要读取启动配置，需联调确认请求级开关是否生效。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });",
+                  "const body = pm.response.json();",
+                  "pm.test('响应包含trace_id、results和stats', function () {",
+                  "  pm.expect(body).to.have.property('trace_id').that.is.a('string');",
+                  "  pm.expect(body).to.have.property('results').that.is.an('array');",
+                  "  pm.expect(body).to.have.property('stats').that.is.an('object');",
+                  "});",
+                  "if (body.trace_id) { pm.collectionVariables.set('trace_id', body.trace_id); }",
+                  "pm.test('结果字段满足当前接口契约', function () {",
+                  "  body.results.forEach(function (item) {",
+                  "    pm.expect(item).to.have.property('mention');",
+                  "    pm.expect(item).to.have.property('entity_id');",
+                  "    pm.expect(item).to.have.property('standard_entity');",
+                  "    pm.expect(item).to.have.property('confidence');",
+                  "    pm.expect(item).to.have.property('is_nil');",
+                  "    pm.expect(item).to.have.property('evidence');",
+                  "  });",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "NIL-知识库外实体",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"阳光新能源宣布建设新的生产基地。\",\n  \"options\": {\n    \"mentions\": [\n      {\n        \"mention\": \"阳光新能源\",\n        \"type\": \"ORG\",\n        \"char_start\": 0,\n        \"char_end\": 6,\n        \"confidence\": 1\n      }\n    ],\n    \"nil_threshold\": 0.8,\n    \"enable_coreference\": false,\n    \"enable_llm_fallback\": false,\n    \"linkable_types\": [\n      \"ORG\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/link_with_mentions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "link_with_mentions"
+              ]
+            },
+            "description": "期望is_nil=true且evidence说明无候选或低于阈值。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });",
+                  "const body = pm.response.json();",
+                  "pm.test('响应包含trace_id、results和stats', function () {",
+                  "  pm.expect(body).to.have.property('trace_id').that.is.a('string');",
+                  "  pm.expect(body).to.have.property('results').that.is.an('array');",
+                  "  pm.expect(body).to.have.property('stats').that.is.an('object');",
+                  "});",
+                  "if (body.trace_id) { pm.collectionVariables.set('trace_id', body.trace_id); }",
+                  "pm.test('结果字段满足当前接口契约', function () {",
+                  "  body.results.forEach(function (item) {",
+                  "    pm.expect(item).to.have.property('mention');",
+                  "    pm.expect(item).to.have.property('entity_id');",
+                  "    pm.expect(item).to.have.property('standard_entity');",
+                  "    pm.expect(item).to.have.property('confidence');",
+                  "    pm.expect(item).to.have.property('is_nil');",
+                  "    pm.expect(item).to.have.property('evidence');",
+                  "  });",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03 原始文本输入（辅助验收）",
+      "item": [
+        {
+          "name": "原始文本端到端链接",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"国家电网有限公司发布了年度社会责任报告。\",\n  \"options\": {\n    \"nil_threshold\": 0.8,\n    \"enable_coreference\": false,\n    \"enable_llm_fallback\": false,\n    \"linkable_types\": [\n      \"ORG\",\n      \"PERSON\",\n      \"GPE\",\n      \"LOC\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/link",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "link"
+              ]
+            },
+            "description": "辅助检查NER + 实体链接完整链路，不替代mention-given专项指标。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });",
+                  "const body = pm.response.json();",
+                  "pm.test('响应包含trace_id、results和stats', function () {",
+                  "  pm.expect(body).to.have.property('trace_id').that.is.a('string');",
+                  "  pm.expect(body).to.have.property('results').that.is.an('array');",
+                  "  pm.expect(body).to.have.property('stats').that.is.an('object');",
+                  "});",
+                  "if (body.trace_id) { pm.collectionVariables.set('trace_id', body.trace_id); }",
+                  "pm.test('结果字段满足当前接口契约', function () {",
+                  "  body.results.forEach(function (item) {",
+                  "    pm.expect(item).to.have.property('mention');",
+                  "    pm.expect(item).to.have.property('entity_id');",
+                  "    pm.expect(item).to.have.property('standard_entity');",
+                  "    pm.expect(item).to.have.property('confidence');",
+                  "    pm.expect(item).to.have.property('is_nil');",
+                  "    pm.expect(item).to.have.property('evidence');",
+                  "  });",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "04 Trace回放",
+      "item": [
+        {
+          "name": "查询上一请求Trace",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/trace/{{trace_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "trace",
+                "{{trace_id}}"
+              ]
+            },
+            "description": "先运行任一/link或/link_with_mentions请求以写入trace_id变量。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });",
+                  "const body = pm.response.json();",
+                  "pm.test('Trace字段完整', function () {",
+                  "  pm.expect(body.trace_id).to.eql(pm.collectionVariables.get('trace_id'));",
+                  "  pm.expect(body).to.have.property('records');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "05 异常请求",
+      "item": [
+        {
+          "name": "缺少text字段-期望422",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"options\": {}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/link",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "link"
+              ]
+            },
+            "description": "Pydantic请求校验测试。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 422', function () { pm.response.to.have.status(422); });",
+                  "pm.test('包含detail', function () { pm.expect(pm.response.json()).to.have.property('detail'); });"
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    }
+  ]
+}
