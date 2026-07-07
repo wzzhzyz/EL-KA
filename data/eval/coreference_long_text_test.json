@@ -1,0 +1,213 @@
+{
+  "schema_version": "1.0",
+  "dataset_name": "coreference_long_text_test",
+  "description": "7.7 共指模块长文本测试素材，覆盖代词、名词性指代、集合指代、无先行词和类型约束场景。",
+  "samples": [
+    {
+      "id": "COREF_LONG_001",
+      "text": "国家电网有限公司发布年度社会责任报告。该公司表示将继续推进特高压工程建设，其投资重点包括新能源并网和抽水蓄能。随后，南方电网也公布数字电网计划，它将在广东和海南推进智能配电改造。",
+      "mentions": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "standard_entity": "国家电网有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "其",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "standard_entity": "中国南方电网有限责任公司"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_ENERGY_0001",
+          "is_nil": false
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_ENERGY_0001",
+          "is_nil": false
+        },
+        {
+          "mention_index": 4,
+          "entity_id": "ENT_ENERGY_0002",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_002",
+      "text": "华为技术有限公司在深圳发布云计算解决方案。该企业称平台将服务制造、金融和能源行业。张伟作为项目负责人介绍了系统架构，他随后回答了媒体关于数据安全的问题。腾讯控股有限公司也展示了AI应用，它计划把相关能力开放给合作伙伴。",
+      "mentions": [
+        {
+          "mention": "华为技术有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051",
+          "standard_entity": "华为技术有限公司"
+        },
+        {
+          "mention": "该企业",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "张伟",
+          "type": "PERSON",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "PER_TEST_0001",
+          "standard_entity": "张伟"
+        },
+        {
+          "mention": "他",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        },
+        {
+          "mention": "腾讯控股有限公司",
+          "type": "ORG",
+          "sentence_index": 3,
+          "role": "name",
+          "entity_id": "ENT_GEN_0053",
+          "standard_entity": "腾讯控股有限公司"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0051",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "PER_TEST_0001",
+          "is_nil": false
+        },
+        {
+          "mention_index": 5,
+          "entity_id": "ENT_GEN_0053",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_003",
+      "text": "国家电网和南方电网分别披露新能源接入计划。两家央企均表示将提升跨省输电能力。随后，该公司又宣布新的海外投资方案。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "standard_entity": "国家电网有限公司"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "standard_entity": "中国南方电网有限责任公司"
+        },
+        {
+          "mention": "两家央企",
+          "type": "NOUN",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_ENERGY_0002",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_004",
+      "text": "该公司计划扩大海外市场，并将在下季度发布更多细节。随后，清华大学公布人工智能交叉研究计划，该校将建设开放实验平台。",
+      "mentions": [
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 0,
+          "role": "anaphor"
+        },
+        {
+          "mention": "清华大学",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0060",
+          "standard_entity": "清华大学"
+        },
+        {
+          "mention": "该校",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 0,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0060",
+          "is_nil": false
+        }
+      ]
+    }
+  ]
+}

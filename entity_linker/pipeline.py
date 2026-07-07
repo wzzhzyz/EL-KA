@@ -2,7 +2,7 @@
 
 - 运行时会尝试接入 `EntityAlignmentV0` 的候选生成与 BGE 消歧组件；
 - 如果 BGE 模型目录或 `EntityAlignmentV0` 初始化失败，会自动回退到本地 fallback 实现：NER → 候选生成 → 存储；
-- 中文共指目前只保留占位步骤，不强行接入英文 Coreferee；
+- 中文共指采用轻量规则模块，按 `enable_coreference` 开关启用；
 - 每个 run、每个 stage、每条 mention / candidate / result 都会写入 SQLite。
 """
 
@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Tuple
 
 from .adapters import normalize_entity
+from .coreference import RuleBasedCoreferenceResolver
 from .db import DBWriter
 from .db.init_db import init_db
 from .exceptions import PipelineError
@@ -656,6 +657,8 @@ class EntityLinkingPipeline:
             }
 
         linkable_types = set(options.get("linkable_types", list(LINKABLE_TYPES)))
+        if options.get("enable_coreference", False):
+            linkable_types.update({"PRON", "NOUN", "UNKNOWN"})
         filtered_mentions = [
             item for item in mention_objs if item.mention_type in linkable_types
         ]
@@ -870,14 +873,38 @@ class EntityLinkingPipeline:
                 conn=conn,
             )
 
-        self._record_stage(
-            trace_id,
-            "coreference",
-            "skipped",
-            "共指消解不在当前串联范围内",
-            {"reason": "当前需求仅包含 NER、候选与消歧串联"},
-            conn=conn,
-        )
+        if options.get("enable_coreference", False):
+            resolver = RuleBasedCoreferenceResolver(
+                nil_threshold=float(options.get("coreference_nil_threshold", 0.55))
+            )
+            before_resolved = sum(
+                1 for item in results if item.get("is_coreference", False)
+            )
+            results = resolver.resolve_link_results(results)
+            after_resolved = sum(
+                1 for item in results if item.get("is_coreference", False)
+            )
+            self._record_stage(
+                trace_id,
+                "coreference",
+                "success",
+                "规则共指消解完成",
+                {
+                    "input_count": len(results),
+                    "resolved_count": after_resolved - before_resolved,
+                    "nil_threshold": float(options.get("coreference_nil_threshold", 0.55)),
+                },
+                conn=conn,
+            )
+        else:
+            self._record_stage(
+                trace_id,
+                "coreference",
+                "skipped",
+                "共指消解未启用",
+                {"reason": "enable_coreference=false"},
+                conn=conn,
+            )
 
         stats = {
             "total_mentions": len(results),

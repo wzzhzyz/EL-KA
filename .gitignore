@@ -9,3 +9,4 @@ __pycache__/
 .DS_Store
 EntityAlignmentV0/models_cache/
 EntityAlignmentV0/models_cache.zip
+gcm-diagnose.log
