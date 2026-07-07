@@ -201,6 +201,67 @@ def evaluate(samples: List[Dict[str, Any]], results: List[Dict[str, Any]]) -> Di
     }
 
 
+def collect_badcases(
+    samples: List[Dict[str, Any]], results: List[Dict[str, Any]]
+) -> List[Dict[str, Any]]:
+    badcases: List[Dict[str, Any]] = []
+    for sample, prediction in zip(samples, results):
+        prediction_map = {
+            item.get("mention"): item for item in prediction.get("results", [])
+        }
+        for expected in sample.get("expected_entities", []):
+            mention = expected.get("mention")
+            gold_id = normalize_entity_id(expected.get("entity_id"))
+            predicted = prediction_map.get(mention)
+            if predicted is None:
+                badcases.append(
+                    {
+                        "sample_id": sample.get("id"),
+                        "scenario": sample.get("scenario", ""),
+                        "text": sample.get("text", ""),
+                        "mention": mention,
+                        "gold_entity_id": gold_id,
+                        "predicted_entity_id": None,
+                        "error_type": "missing_prediction",
+                        "evidence": "未返回该 mention 的预测结果",
+                    }
+                )
+                continue
+
+            predicted_id = normalize_entity_id(predicted.get("entity_id"))
+            predicted_nil = bool(predicted.get("is_nil", False) or predicted_id is None)
+            is_correct = (
+                (gold_id is None and predicted_nil)
+                or (gold_id is not None and predicted_id == gold_id)
+            )
+            if is_correct:
+                continue
+
+            if gold_id is None and not predicted_nil:
+                error_type = "nil_false_negative"
+            elif gold_id is not None and predicted_nil:
+                error_type = "nil_false_positive"
+            else:
+                error_type = "wrong_entity"
+
+            badcases.append(
+                {
+                    "sample_id": sample.get("id"),
+                    "scenario": sample.get("scenario", ""),
+                    "text": sample.get("text", ""),
+                    "mention": mention,
+                    "gold_entity_id": gold_id,
+                    "predicted_entity_id": predicted_id,
+                    "predicted_nil": predicted_nil,
+                    "confidence": predicted.get("confidence"),
+                    "error_type": error_type,
+                    "evidence": predicted.get("evidence", ""),
+                    "candidate_count": predicted.get("candidate_count", 0),
+                }
+            )
+    return badcases
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -218,6 +279,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--texts", default="data/batch_texts.txt")
     parser.add_argument("--trace-prefix", default="gt")
     parser.add_argument("--bge-model-path", default=None)
+    parser.add_argument("--nil-threshold", type=float, default=0.90)
+    parser.add_argument("--llm-trigger-threshold", type=float, default=0.65)
+    parser.add_argument("--badcase-output", default=None)
     parser.add_argument("--verbose", action="store_true")
     return parser
 
@@ -241,6 +305,8 @@ def main() -> int:
         config["kb_path"] = kb_path
     if args.bge_model_path:
         config["bge_model_path"] = args.bge_model_path
+    config["nil_threshold"] = args.nil_threshold
+    config["bge_llm_trigger_threshold"] = args.llm_trigger_threshold
 
     pipeline = EntityLinkingPipeline(config=config)
     results: List[Dict[str, Any]] = []
@@ -251,7 +317,11 @@ def main() -> int:
     print(f"backend={pipeline.backend}")
 
     if args.input_mode == "mentions":
-        options = {"linkable_types": ["ORG", "GPE", "PERSON", "LOC", "UNKNOWN"]}
+        options = {
+            "linkable_types": ["ORG", "GPE", "PERSON", "LOC", "UNKNOWN"],
+            "nil_threshold": args.nil_threshold,
+            "enable_llm_fallback": False,
+        }
         for sample in samples:
             result = pipeline.run_with_mentions(
                 text=sample["text"],
@@ -268,12 +338,35 @@ def main() -> int:
         )
 
     metrics = evaluate(samples, results)
+    badcases = collect_badcases(samples, results)
     print("\nEntity Linking Evaluation Summary")
     for key, value in metrics.items():
         if isinstance(value, float):
             print(f"  {key}: {value:.4f}")
         else:
             print(f"  {key}: {value}")
+    print(f"  badcases: {len(badcases)}")
+
+    if args.badcase_output:
+        output_path = ROOT / args.badcase_output
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(
+            json.dumps(
+                {
+                    "dataset": str(dataset_path),
+                    "input_mode": args.input_mode,
+                    "backend": pipeline.backend,
+                    "nil_threshold": args.nil_threshold,
+                    "llm_trigger_threshold": args.llm_trigger_threshold,
+                    "metrics": metrics,
+                    "badcases": badcases,
+                },
+                ensure_ascii=False,
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+        print(f"badcase_output={output_path}")
 
     if args.verbose:
         print("\nInput contract sample")

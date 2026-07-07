@@ -2,6 +2,7 @@ __pycache__/
 *.pyc
 *.pkl
 *.db
+*.db-journal
 .env
 .vscode/
 .idea/

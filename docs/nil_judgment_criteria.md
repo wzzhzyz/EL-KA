@@ -41,6 +41,7 @@ mention + context
 | 阈值 | 默认值 | 含义 |
 |------|:--:|------|
 | nil_threshold | 0.65 | BGE最高相似度低于此值→NIL |
+| fallback_nil_threshold | 0.90 | 本地fallback规则链路的7.7验收阈值，用于过滤0.85分的低置信模糊别名误链接 |
 | bge_llm_trigger | 0.65 | 低于此值触发LLM兜底(如开启) |
 | alias_fuzzy_ed | 1 | 模糊匹配最大编辑距离 |
 

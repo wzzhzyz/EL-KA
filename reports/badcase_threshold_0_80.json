@@ -1,0 +1,91 @@
+{
+  "dataset": "data\\eval\\mention_linking_test.json",
+  "input_mode": "mentions",
+  "backend": "local",
+  "nil_threshold": 0.8,
+  "llm_trigger_threshold": 0.65,
+  "metrics": {
+    "samples": 100,
+    "total_mentions": 106,
+    "correct": 101,
+    "overall_accuracy": 0.9528301886792453,
+    "non_nil_total": 79,
+    "non_nil_correct": 79,
+    "linking_accuracy": 1.0,
+    "gold_nil_total": 27,
+    "nil_true_positive": 22,
+    "nil_false_positive": 0,
+    "nil_false_negative": 5,
+    "nil_precision": 1.0,
+    "nil_recall": 0.8148148148148148,
+    "nil_f1": 0.8979591836734693,
+    "missing_predictions": 0
+  },
+  "badcases": [
+    {
+      "sample_id": "MENTION_LINK_028",
+      "scenario": "NIL(KB有阳光电源但此为不同实体)",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "mention": "阳光新能源",
+      "gold_entity_id": null,
+      "predicted_entity_id": "ENT_ENERGY_0037",
+      "predicted_nil": false,
+      "confidence": 0.85,
+      "error_type": "nil_false_negative",
+      "evidence": "fallback规则消歧选择最高分候选: 阳光电源股份有限公司；候选分数=0.85；命中方式=alias_fuzzy；NIL阈值=0.80；本次请求NIL阈值=0.80",
+      "candidate_count": 1
+    },
+    {
+      "sample_id": "MENTION_LINK_060",
+      "scenario": "近似机构名NIL",
+      "text": "中国能源研究会发布年度能源转型研究成果。",
+      "mention": "中国能源研究会",
+      "gold_entity_id": null,
+      "predicted_entity_id": "ENT_ENERGY_0005",
+      "predicted_nil": false,
+      "confidence": 0.85,
+      "error_type": "nil_false_negative",
+      "evidence": "fallback规则消歧选择最高分候选: 国家能源投资集团有限责任公司；候选分数=0.85；命中方式=alias_fuzzy；NIL阈值=0.80；本次请求NIL阈值=0.80",
+      "candidate_count": 1
+    },
+    {
+      "sample_id": "MENTION_LINK_081",
+      "scenario": "教育领域知识库外实体NIL",
+      "text": "北京大学成立交叉学科研究平台，支持医学与人工智能联合研究。",
+      "mention": "北京大学",
+      "gold_entity_id": null,
+      "predicted_entity_id": "ENT_ENERGY_0028",
+      "predicted_nil": false,
+      "confidence": 0.85,
+      "error_type": "nil_false_negative",
+      "evidence": "fallback规则消歧选择最高分候选: 北京市；候选分数=0.85；命中方式=alias_fuzzy；NIL阈值=0.80；本次请求NIL阈值=0.80",
+      "candidate_count": 1
+    },
+    {
+      "sample_id": "MENTION_LINK_083",
+      "scenario": "医疗领域知识库外实体NIL",
+      "text": "北京协和医院上线疑难病远程会诊平台，覆盖多个临床专科。",
+      "mention": "北京协和医院",
+      "gold_entity_id": null,
+      "predicted_entity_id": "ENT_ENERGY_0028",
+      "predicted_nil": false,
+      "confidence": 0.85,
+      "error_type": "nil_false_negative",
+      "evidence": "fallback规则消歧选择最高分候选: 北京市；候选分数=0.85；命中方式=alias_fuzzy；NIL阈值=0.80；本次请求NIL阈值=0.80",
+      "candidate_count": 1
+    },
+    {
+      "sample_id": "MENTION_LINK_088",
+      "scenario": "电商领域知识库外实体NIL",
+      "text": "京东升级智能物流系统，提升仓储机器人协同调度效率。",
+      "mention": "京东",
+      "gold_entity_id": null,
+      "predicted_entity_id": "ENT_ENERGY_0028",
+      "predicted_nil": false,
+      "confidence": 0.85,
+      "error_type": "nil_false_negative",
+      "evidence": "fallback规则消歧选择最高分候选: 北京市；候选分数=0.85；命中方式=alias_fuzzy；NIL阈值=0.80；本次请求NIL阈值=0.80",
+      "candidate_count": 1
+    }
+  ]
+}

@@ -145,8 +145,24 @@ class _NullVectorIndex:
         return []
 
 
-class _NullDisambiguator:
-    nil_threshold: float = 1.0
+class _FallbackRuleDisambiguator:
+    """本地 fallback 消歧器。
+
+    BGE/LLM 未就绪时，仍需要给 HTTP 服务提供可验收的初步链接能力：
+    - 候选分数来自 Candidate Generation（alias_exact / alias_fuzzy）；
+    - 选择最高分候选作为链接结果；
+    - 再交由 NIL 阈值判断是否低置信拒识。
+
+    该实现只作为 7.7 阶段的轻量规则兜底，不替代后续 BGE/LLM 消歧模块。
+    """
+
+    def __init__(
+        self,
+        nil_threshold: float = 0.90,
+        llm_trigger_threshold: float = 0.65,
+    ) -> None:
+        self.nil_threshold = nil_threshold
+        self.llm_trigger_threshold = llm_trigger_threshold
 
     def disambiguate(
         self, mention: str, candidates: List[Candidate], context: str = ""
@@ -158,11 +174,32 @@ class _NullDisambiguator:
                 "method": "none",
                 "evidence": "无候选实体",
             }
+        ranked = sorted(
+            candidates,
+            key=lambda item: (
+                float(item.score),
+                1 if item.method == "alias_exact" else 0,
+                len(item.entity.standard_name),
+            ),
+            reverse=True,
+        )
+        best = ranked[0]
+        evidence_parts = [
+            f"fallback规则消歧选择最高分候选: {best.entity.standard_name}",
+            f"候选分数={best.score:.2f}",
+            f"命中方式={best.method}",
+            f"NIL阈值={self.nil_threshold:.2f}",
+        ]
+        if best.score < self.llm_trigger_threshold:
+            evidence_parts.append(
+                f"低于LLM触发阈值={self.llm_trigger_threshold:.2f}，可进入后续LLM兜底"
+            )
         return {
-            "entity": None,
-            "score": 0.0,
-            "method": "none",
-            "evidence": "当前流程仅执行 NER、候选生成与存储，不做消歧",
+            "entity": best.entity,
+            "score": float(best.score),
+            "method": "fallback_rule",
+            "evidence": "；".join(evidence_parts),
+            "decision_reason": "fallback规则消歧完成",
         }
 
 
@@ -287,7 +324,15 @@ class EntityLinkingPipeline:
         self.vector_index = _NullVectorIndex()
         self.ner = _FallbackNEREngine(self.kb)
         self.candidate_gen = _FallbackCandidateGenerator(self.kb)
-        self.disambiguator = _NullDisambiguator()
+        self.disambiguator = _FallbackRuleDisambiguator(
+            nil_threshold=float(self.config.get("nil_threshold", 0.90)),
+            llm_trigger_threshold=float(
+                self.config.get(
+                    "bge_llm_trigger_threshold",
+                    self.config.get("llm_trigger_threshold", 0.65),
+                )
+            ),
+        )
         self.backend = "local"
 
     def _resolve_local_kb_path(self) -> Path:
@@ -743,6 +788,7 @@ class EntityLinkingPipeline:
                 mention_obj=mention_obj,
                 candidates=candidates,
                 text=text,
+                options=options,
                 trace_id=trace_id,
                 conn=conn,
             )
@@ -855,6 +901,7 @@ class EntityLinkingPipeline:
         mention_obj: StandardMention,
         candidates: List[Candidate],
         text: str,
+        options: Dict[str, Any],
         trace_id: str,
         conn: sqlite3.Connection | None = None,
     ) -> Dict[str, Any]:
@@ -893,15 +940,26 @@ class EntityLinkingPipeline:
             conn=conn,
         )
 
-        is_nil = entity is None or score < getattr(
-            self.disambiguator, "nil_threshold", 0.0
+        nil_threshold = float(
+            options.get(
+                "nil_threshold",
+                getattr(self.disambiguator, "nil_threshold", 0.0),
+            )
         )
+        if "nil_threshold" in options and evidence:
+            evidence = f"{evidence}；本次请求NIL阈值={nil_threshold:.2f}"
+        is_nil = entity is None or score < nil_threshold
         self._record_stage(
             trace_id,
             "nil_decision",
             "success",
             "NIL 判定完成",
-            {"mention": mention_obj.mention, "is_nil": is_nil},
+            {
+                "mention": mention_obj.mention,
+                "is_nil": is_nil,
+                "score": score,
+                "nil_threshold": nil_threshold,
+            },
             conn=conn,
         )
 

@@ -2,9 +2,9 @@
 
 这个目录下的命令行入口是 `python -m entity_linker`。
 
-> 当前 `entity_linker` 实现的是本地串联流程：NER → 候选生成 → 存储。
+> 当前 `entity_linker` 实现的是本地串联流程：NER → 候选生成 → fallback规则消歧 → NIL判定 → 存储。
 > 如果仓库内安装并准备好了 `EntityAlignmentV0` 的 BGE 模型目录，系统会尝试接入 `EntityAlignmentV0` 的候选生成和消歧组件；否则会自动回退到本地 fallback 实现。
-> `DisambiguatorPort` 已经留出接口位置，当前默认情况下仍可能使用 placeholder `_NullDisambiguator`，直到可用模型目录就绪。
+> fallback 消歧仅作为 BGE/LLM 未就绪时的可验收规则兜底，真实语义消歧仍通过 `DisambiguatorPort` 保持可插拔接入。
 
 ## 1. 单文本输入
 
@@ -206,8 +206,8 @@ runs = pipeline.list_runs(limit=10)
 print(runs)
 ```
 
-> 注意：当前 `EntityLinkingPipeline` 默认使用本地 `fallback` 组件，`DisambiguatorPort` 仅保留接口位置，默认不执行实际 BGE 消歧。
-> 如果要接入 `EntityAlignmentV0` 中的真实消歧与候选生成模块，需要替换当前 pipeline 的 `self.candidate_gen` 与 `self.disambiguator`。
+> 注意：当前 `EntityLinkingPipeline` 默认使用本地 `fallback` 组件，可完成规则级候选选择与 NIL 判定，但不等同于真实 BGE 语义消歧。
+> 如果要接入 `EntityAlignmentV0` 中的真实消歧与候选生成模块，需要确保 BGE 模型路径和依赖可用，pipeline 会优先尝试加载该后端。
 
 ## 8. 数据库里有什么
 

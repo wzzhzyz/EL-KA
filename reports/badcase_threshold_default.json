@@ -1,0 +1,25 @@
+{
+  "dataset": "data\\eval\\mention_linking_test.json",
+  "input_mode": "mentions",
+  "backend": "local",
+  "nil_threshold": 0.9,
+  "llm_trigger_threshold": 0.65,
+  "metrics": {
+    "samples": 100,
+    "total_mentions": 106,
+    "correct": 106,
+    "overall_accuracy": 1.0,
+    "non_nil_total": 79,
+    "non_nil_correct": 79,
+    "linking_accuracy": 1.0,
+    "gold_nil_total": 27,
+    "nil_true_positive": 27,
+    "nil_false_positive": 0,
+    "nil_false_negative": 0,
+    "nil_precision": 1.0,
+    "nil_recall": 1.0,
+    "nil_f1": 1.0,
+    "missing_predictions": 0
+  },
+  "badcases": []
+}
