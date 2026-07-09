@@ -1,0 +1,1125 @@
+{
+  "timestamp": "2026-07-08T16:53:40.516185",
+  "llm_off": {
+    "mode": "LLM关闭",
+    "pass_rate": 97.2972972972973,
+    "details": [
+      {
+        "test_case": {
+          "text_idx": 0,
+          "text": "国家电网有限公司发布了公告。",
+          "mention": "国家电网有限公司",
+          "expected_entity_id": "ENT_ENERGY_0001",
+          "scenario": ""
+        },
+        "actual_id": "ENT_ENERGY_0001",
+        "actual_name": "国家电网有限公司",
+        "confidence": 0.93310546875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.933",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 1,
+          "text": "国网新源控股有限公司正在扩建。",
+          "mention": "国网新源控股有限公司",
+          "expected_entity_id": "ENT_ENERGY_0010",
+          "scenario": ""
+        },
+        "actual_id": "ENT_ENERGY_0010",
+        "actual_name": "国网新源控股有限公司",
+        "confidence": 0.9267578125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.927",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 2,
+          "text": "中国南方电网有限责任公司开展了新项目。",
+          "mention": "中国南方电网有限责任公司",
+          "expected_entity_id": "ENT_ENERGY_0002",
+          "scenario": ""
+        },
+        "actual_id": "ENT_ENERGY_0002",
+        "actual_name": "中国南方电网有限责任公司",
+        "confidence": 0.94287109375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.943",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 3,
+          "text": "国网2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。",
+          "mention": "国网",
+          "expected_entity_id": "ENT_ENERGY_0001",
+          "scenario": "简称匹配"
+        },
+        "actual_id": "ENT_ENERGY_0001",
+        "actual_name": "国家电网有限公司",
+        "confidence": 0.94384765625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.944",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 4,
+          "text": "南网近期在广东启动了新一轮农网改造工程，预计覆盖2000个行政村。",
+          "mention": "南网",
+          "expected_entity_id": "ENT_ENERGY_0002",
+          "scenario": "简称匹配"
+        },
+        "actual_id": "ENT_ENERGY_0002",
+        "actual_name": "中国南方电网有限责任公司",
+        "confidence": 0.95166015625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.952",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 5,
+          "text": "宁德时代2025年发布了第三代钠离子电池，能量密度达到200Wh/kg。",
+          "mention": "宁德时代",
+          "expected_entity_id": "ENT_ENERGY_0015",
+          "scenario": "标准名匹配"
+        },
+        "actual_id": "ENT_ENERGY_0015",
+        "actual_name": "宁德时代新能源科技股份有限公司",
+        "confidence": 0.951171875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.951",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 6,
+          "text": "CATL与特斯拉签订了新的供货协议，将为上海超级工厂提供下一代动力电池。",
+          "mention": "CATL",
+          "expected_entity_id": "ENT_ENERGY_0015",
+          "scenario": "英文别名+NIL"
+        },
+        "actual_id": "ENT_ENERGY_0015",
+        "actual_name": "宁德时代新能源科技股份有限公司",
+        "confidence": 0.93212890625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.932",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 7,
+          "text": "三峡大坝今年汛期累计拦蓄洪水超过200亿立方米，充分发挥了防洪骨干作用。",
+          "mention": "三峡大坝",
+          "expected_entity_id": "ENT_ENERGY_0012",
+          "scenario": "别名消歧(设施vs企业)"
+        },
+        "actual_id": "ENT_ENERGY_0012",
+        "actual_name": "三峡水电站",
+        "confidence": 0.93994140625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.940",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 8,
+          "text": "三峡集团正加速推进金沙江下游水风光一体化基地建设，首批项目预计2027年投产。",
+          "mention": "三峡集团",
+          "expected_entity_id": "ENT_ENERGY_0008",
+          "scenario": "同名异义消歧"
+        },
+        "actual_id": "ENT_ENERGY_0008",
+        "actual_name": "中国长江三峡集团有限公司",
+        "confidence": 0.9453125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.945",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 9,
+          "text": "国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+          "mention": "国网",
+          "expected_entity_id": "ENT_ENERGY_0001",
+          "scenario": "多候选消歧"
+        },
+        "actual_id": "ENT_ENERGY_0001",
+        "actual_name": "国家电网有限公司",
+        "confidence": 0.9423828125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.942",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 10,
+          "text": "华能2024年清洁能源装机占比首次突破50%，其中风电和光伏新增装机超过1500万千瓦。",
+          "mention": "华能",
+          "expected_entity_id": "ENT_ENERGY_0003",
+          "scenario": "一字之差(华能vs华电)"
+        },
+        "actual_id": "ENT_ENERGY_0003",
+        "actual_name": "中国华能集团有限公司",
+        "confidence": 0.9443359375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.944",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 11,
+          "text": "华电集团天然气发电装机容量位居全国第一，分布式能源项目遍布各省。",
+          "mention": "华电集团",
+          "expected_entity_id": "ENT_ENERGY_0007",
+          "scenario": "简称匹配"
+        },
+        "actual_id": "ENT_ENERGY_0007",
+        "actual_name": "中国华电集团有限公司",
+        "confidence": 0.98486328125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.985",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 12,
+          "text": "中核集团华龙一号海外首堆在巴基斯坦投入商业运行。",
+          "mention": "中核集团",
+          "expected_entity_id": "ENT_ENERGY_0034",
+          "scenario": "简称+NIL"
+        },
+        "actual_id": "ENT_ENERGY_0034",
+        "actual_name": "中国核工业集团有限公司",
+        "confidence": 0.9365234375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.937",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 13,
+          "text": "中广核正在广东阳江建设百万千瓦级海上风电基地。",
+          "mention": "中广核",
+          "expected_entity_id": "ENT_ENERGY_0011",
+          "scenario": "简称匹配(中核vs中广核)"
+        },
+        "actual_id": "ENT_ENERGY_0011",
+        "actual_name": "中国广核集团有限公司",
+        "confidence": 0.9521484375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.952",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 14,
+          "text": "隆基在BC电池技术上取得了重大突破，量产效率突破26.5%。",
+          "mention": "隆基",
+          "expected_entity_id": "ENT_ENERGY_0026",
+          "scenario": "简称+语义验证"
+        },
+        "actual_id": "ENT_ENERGY_0026",
+        "actual_name": "隆基绿能科技股份有限公司",
+        "confidence": 0.94287109375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.943",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 15,
+          "text": "通威在乐山和包头的硅料产能已位居全球第一。",
+          "mention": "通威",
+          "expected_entity_id": "ENT_ENERGY_0036",
+          "scenario": "简称匹配"
+        },
+        "actual_id": "ENT_ENERGY_0036",
+        "actual_name": "通威股份有限公司",
+        "confidence": 0.9462890625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.946",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 16,
+          "text": "阳光电源发布了全新一代320kW组串式逆变器，转换效率达到99.1%。",
+          "mention": "阳光电源",
+          "expected_entity_id": "ENT_ENERGY_0037",
+          "scenario": "标准名匹配"
+        },
+        "actual_id": "ENT_ENERGY_0037",
+        "actual_name": "阳光电源股份有限公司",
+        "confidence": 0.95849609375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.958",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 17,
+          "text": "亿纬锂能近日公告将在匈牙利建设首个欧洲电池工厂，总投资额约10亿欧元。",
+          "mention": "亿纬锂能",
+          "expected_entity_id": "ENT_ENERGY_0038",
+          "scenario": "标准名匹配"
+        },
+        "actual_id": "ENT_ENERGY_0038",
+        "actual_name": "惠州亿纬锂能股份有限公司",
+        "confidence": 0.9375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.938",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 18,
+          "text": "白鹤滩水电站最后一台机组正式投产发电，标志着世界第二大水电站全面投产。",
+          "mention": "白鹤滩水电站",
+          "expected_entity_id": "ENT_ENERGY_0039",
+          "scenario": "简称匹配"
+        },
+        "actual_id": "ENT_ENERGY_0039",
+        "actual_name": "白鹤滩水电站",
+        "confidence": 0.935546875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.936",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 19,
+          "text": "张北柔直工程自投运以来已累计向北京输送绿电超过300亿千瓦时。",
+          "mention": "张北柔直",
+          "expected_entity_id": "ENT_ENERGY_0041",
+          "scenario": "简称+地名"
+        },
+        "actual_id": "ENT_ENERGY_0041",
+        "actual_name": "张北柔性直流电网工程",
+        "confidence": 0.93212890625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.932",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 19,
+          "text": "张北柔直工程自投运以来已累计向北京输送绿电超过300亿千瓦时。",
+          "mention": "北京",
+          "expected_entity_id": "ENT_ENERGY_0028",
+          "scenario": "简称+地名"
+        },
+        "actual_id": "",
+        "actual_name": "",
+        "confidence": 0.0,
+        "method": "",
+        "evidence": "低于 NIL 阈值 (0.8)",
+        "correct": false
+      },
+      {
+        "test_case": {
+          "text_idx": 20,
+          "text": "国家电网和南方电网分别发布年度报告，两家央企均加大了新能源投资力度。",
+          "mention": "国家电网",
+          "expected_entity_id": "ENT_ENERGY_0001",
+          "scenario": "多实体+集合NIL"
+        },
+        "actual_id": "ENT_ENERGY_0001",
+        "actual_name": "国家电网有限公司",
+        "confidence": 0.935546875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.936",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 20,
+          "text": "国家电网和南方电网分别发布年度报告，两家央企均加大了新能源投资力度。",
+          "mention": "南方电网",
+          "expected_entity_id": "ENT_ENERGY_0002",
+          "scenario": "多实体+集合NIL"
+        },
+        "actual_id": "ENT_ENERGY_0002",
+        "actual_name": "中国南方电网有限责任公司",
+        "confidence": 0.93701171875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.937",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 21,
+          "text": "华为在深圳总部发布了最新AI战略，华为计划到2028年实现AI算力全球领先。",
+          "mention": "华为",
+          "expected_entity_id": "ENT_GEN_0051",
+          "scenario": "重复mention一致性"
+        },
+        "actual_id": "ENT_GEN_0051",
+        "actual_name": "华为技术有限公司",
+        "confidence": 0.9501953125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.950",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 22,
+          "text": "腾讯2025年第三季度财报显示微信月活用户突破14亿。",
+          "mention": "腾讯",
+          "expected_entity_id": "ENT_GEN_0052",
+          "scenario": "企业+产品"
+        },
+        "actual_id": "ENT_GEN_0052",
+        "actual_name": "腾讯控股有限公司",
+        "confidence": 0.947265625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.947",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 22,
+          "text": "腾讯2025年第三季度财报显示微信月活用户突破14亿。",
+          "mention": "微信",
+          "expected_entity_id": "ENT_GEN_0061",
+          "scenario": "企业+产品"
+        },
+        "actual_id": "ENT_GEN_0061",
+        "actual_name": "微信",
+        "confidence": 0.94677734375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.947",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 23,
+          "text": "工行2025年半年报显示普惠金融贷款余额突破3万亿元。",
+          "mention": "工行",
+          "expected_entity_id": "ENT_GEN_0055",
+          "scenario": "金融简称"
+        },
+        "actual_id": "ENT_GEN_0055",
+        "actual_name": "中国工商银行股份有限公司",
+        "confidence": 0.9521484375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.952",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 24,
+          "text": "蔚来2025年交付量突破50万辆，换电站数量超过5000座。",
+          "mention": "蔚来",
+          "expected_entity_id": "ENT_GEN_0058",
+          "scenario": "汽车简称"
+        },
+        "actual_id": "ENT_GEN_0058",
+        "actual_name": "蔚来汽车有限公司",
+        "confidence": 0.94287109375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.943",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 25,
+          "text": "国家能源局近日发布了新型储能项目管理规范。",
+          "mention": "国家能源局",
+          "expected_entity_id": "ENT_GEN_0059",
+          "scenario": "政府机构"
+        },
+        "actual_id": "ENT_GEN_0059",
+        "actual_name": "国家能源局",
+        "confidence": 0.95751953125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.958",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 26,
+          "text": "清华大学能源互联网研究院在虚拟电厂领域取得了重要研究进展。",
+          "mention": "清华大学",
+          "expected_entity_id": "ENT_GEN_0060",
+          "scenario": "教育机构"
+        },
+        "actual_id": "ENT_GEN_0060",
+        "actual_name": "清华大学",
+        "confidence": 0.93603515625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.936",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 29,
+          "text": "塔拉滩光伏基地年发电量占青海新能源发电三分之一以上。",
+          "mention": "塔拉滩光伏基地",
+          "expected_entity_id": "ENT_ENERGY_0014",
+          "scenario": "非标别名召回"
+        },
+        "actual_id": "ENT_ENERGY_0014",
+        "actual_name": "青海塔拉滩光伏电站",
+        "confidence": 0.9619140625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.962",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 30,
+          "text": "国网新源今年新投产了两座抽水蓄能电站，总装机容量达到320万千瓦。",
+          "mention": "国网新源",
+          "expected_entity_id": "ENT_ENERGY_0010",
+          "scenario": "子公司精确匹配"
+        },
+        "actual_id": "ENT_ENERGY_0010",
+        "actual_name": "国网新源控股有限公司",
+        "confidence": 0.96875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.969",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 31,
+          "text": "金风科技近日发布了全新一代16MW海上风电机组，叶轮直径达到252米。",
+          "mention": "金风科技",
+          "expected_entity_id": "ENT_ENERGY_0032",
+          "scenario": "标准名+语义"
+        },
+        "actual_id": "ENT_ENERGY_0032",
+        "actual_name": "金风科技股份有限公司",
+        "confidence": 0.958984375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.959",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 32,
+          "text": "远景不仅在风电领域深耕，近年来在储能和能源物联网领域也取得了显著进展。",
+          "mention": "远景",
+          "expected_entity_id": "ENT_ENERGY_0033",
+          "scenario": "简称+多业务"
+        },
+        "actual_id": "ENT_ENERGY_0033",
+        "actual_name": "远景能源有限公司",
+        "confidence": 0.95703125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.957",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 33,
+          "text": "大亚湾核电站自1994年投入商业运行以来，已累计发电超过8000亿千瓦时。",
+          "mention": "大亚湾核电站",
+          "expected_entity_id": "ENT_ENERGY_0017",
+          "scenario": "设施匹配"
+        },
+        "actual_id": "ENT_ENERGY_0017",
+        "actual_name": "大亚湾核电站",
+        "confidence": 0.91943359375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.919",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 34,
+          "text": "青海省共和县塔拉滩光伏基地的发电量已占到青海省新能源发电量的三分之一以上。",
+          "mention": "青海省共和县",
+          "expected_entity_id": "ENT_ENERGY_0031",
+          "scenario": "长文本多实体"
+        },
+        "actual_id": "ENT_ENERGY_0031",
+        "actual_name": "青海省共和县",
+        "confidence": 0.9599609375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.960",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 34,
+          "text": "青海省共和县塔拉滩光伏基地的发电量已占到青海省新能源发电量的三分之一以上。",
+          "mention": "塔拉滩光伏基地",
+          "expected_entity_id": "ENT_ENERGY_0014",
+          "scenario": "长文本多实体"
+        },
+        "actual_id": "ENT_ENERGY_0014",
+        "actual_name": "青海塔拉滩光伏电站",
+        "confidence": 0.9521484375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.952",
+        "correct": true
+      }
+    ]
+  },
+  "llm_on": {
+    "mode": "LLM开启",
+    "pass_rate": 100.0,
+    "details": [
+      {
+        "test_case": {
+          "text_idx": 0,
+          "text": "国家电网有限公司发布了公告。",
+          "mention": "国家电网有限公司",
+          "expected_entity_id": "ENT_ENERGY_0001",
+          "scenario": ""
+        },
+        "actual_id": "ENT_ENERGY_0001",
+        "actual_name": "国家电网有限公司",
+        "confidence": 0.93310546875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.933",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 1,
+          "text": "国网新源控股有限公司正在扩建。",
+          "mention": "国网新源控股有限公司",
+          "expected_entity_id": "ENT_ENERGY_0010",
+          "scenario": ""
+        },
+        "actual_id": "ENT_ENERGY_0010",
+        "actual_name": "国网新源控股有限公司",
+        "confidence": 0.9267578125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.927",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 2,
+          "text": "中国南方电网有限责任公司开展了新项目。",
+          "mention": "中国南方电网有限责任公司",
+          "expected_entity_id": "ENT_ENERGY_0002",
+          "scenario": ""
+        },
+        "actual_id": "ENT_ENERGY_0002",
+        "actual_name": "中国南方电网有限责任公司",
+        "confidence": 0.94287109375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.943",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 3,
+          "text": "国网2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。",
+          "mention": "国网",
+          "expected_entity_id": "ENT_ENERGY_0001",
+          "scenario": "简称匹配"
+        },
+        "actual_id": "ENT_ENERGY_0001",
+        "actual_name": "国家电网有限公司",
+        "confidence": 0.94384765625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.944",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 4,
+          "text": "南网近期在广东启动了新一轮农网改造工程，预计覆盖2000个行政村。",
+          "mention": "南网",
+          "expected_entity_id": "ENT_ENERGY_0002",
+          "scenario": "简称匹配"
+        },
+        "actual_id": "ENT_ENERGY_0002",
+        "actual_name": "中国南方电网有限责任公司",
+        "confidence": 0.95166015625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.952",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 5,
+          "text": "宁德时代2025年发布了第三代钠离子电池，能量密度达到200Wh/kg。",
+          "mention": "宁德时代",
+          "expected_entity_id": "ENT_ENERGY_0015",
+          "scenario": "标准名匹配"
+        },
+        "actual_id": "ENT_ENERGY_0015",
+        "actual_name": "宁德时代新能源科技股份有限公司",
+        "confidence": 0.951171875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.951",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 6,
+          "text": "CATL与特斯拉签订了新的供货协议，将为上海超级工厂提供下一代动力电池。",
+          "mention": "CATL",
+          "expected_entity_id": "ENT_ENERGY_0015",
+          "scenario": "英文别名+NIL"
+        },
+        "actual_id": "ENT_ENERGY_0015",
+        "actual_name": "宁德时代新能源科技股份有限公司",
+        "confidence": 0.93212890625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.932",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 7,
+          "text": "三峡大坝今年汛期累计拦蓄洪水超过200亿立方米，充分发挥了防洪骨干作用。",
+          "mention": "三峡大坝",
+          "expected_entity_id": "ENT_ENERGY_0012",
+          "scenario": "别名消歧(设施vs企业)"
+        },
+        "actual_id": "ENT_ENERGY_0012",
+        "actual_name": "三峡水电站",
+        "confidence": 0.93994140625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.940",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 8,
+          "text": "三峡集团正加速推进金沙江下游水风光一体化基地建设，首批项目预计2027年投产。",
+          "mention": "三峡集团",
+          "expected_entity_id": "ENT_ENERGY_0008",
+          "scenario": "同名异义消歧"
+        },
+        "actual_id": "ENT_ENERGY_0008",
+        "actual_name": "中国长江三峡集团有限公司",
+        "confidence": 0.9453125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.945",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 9,
+          "text": "国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+          "mention": "国网",
+          "expected_entity_id": "ENT_ENERGY_0001",
+          "scenario": "多候选消歧"
+        },
+        "actual_id": "ENT_ENERGY_0001",
+        "actual_name": "国家电网有限公司",
+        "confidence": 0.9423828125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.942",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 10,
+          "text": "华能2024年清洁能源装机占比首次突破50%，其中风电和光伏新增装机超过1500万千瓦。",
+          "mention": "华能",
+          "expected_entity_id": "ENT_ENERGY_0003",
+          "scenario": "一字之差(华能vs华电)"
+        },
+        "actual_id": "ENT_ENERGY_0003",
+        "actual_name": "中国华能集团有限公司",
+        "confidence": 0.9443359375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.944",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 11,
+          "text": "华电集团天然气发电装机容量位居全国第一，分布式能源项目遍布各省。",
+          "mention": "华电集团",
+          "expected_entity_id": "ENT_ENERGY_0007",
+          "scenario": "简称匹配"
+        },
+        "actual_id": "ENT_ENERGY_0007",
+        "actual_name": "中国华电集团有限公司",
+        "confidence": 0.98486328125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.985",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 12,
+          "text": "中核集团华龙一号海外首堆在巴基斯坦投入商业运行。",
+          "mention": "中核集团",
+          "expected_entity_id": "ENT_ENERGY_0034",
+          "scenario": "简称+NIL"
+        },
+        "actual_id": "ENT_ENERGY_0034",
+        "actual_name": "中国核工业集团有限公司",
+        "confidence": 0.9365234375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.937",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 13,
+          "text": "中广核正在广东阳江建设百万千瓦级海上风电基地。",
+          "mention": "中广核",
+          "expected_entity_id": "ENT_ENERGY_0011",
+          "scenario": "简称匹配(中核vs中广核)"
+        },
+        "actual_id": "ENT_ENERGY_0011",
+        "actual_name": "中国广核集团有限公司",
+        "confidence": 0.9521484375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.952",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 14,
+          "text": "隆基在BC电池技术上取得了重大突破，量产效率突破26.5%。",
+          "mention": "隆基",
+          "expected_entity_id": "ENT_ENERGY_0026",
+          "scenario": "简称+语义验证"
+        },
+        "actual_id": "ENT_ENERGY_0026",
+        "actual_name": "隆基绿能科技股份有限公司",
+        "confidence": 0.94287109375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.943",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 15,
+          "text": "通威在乐山和包头的硅料产能已位居全球第一。",
+          "mention": "通威",
+          "expected_entity_id": "ENT_ENERGY_0036",
+          "scenario": "简称匹配"
+        },
+        "actual_id": "ENT_ENERGY_0036",
+        "actual_name": "通威股份有限公司",
+        "confidence": 0.9462890625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.946",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 16,
+          "text": "阳光电源发布了全新一代320kW组串式逆变器，转换效率达到99.1%。",
+          "mention": "阳光电源",
+          "expected_entity_id": "ENT_ENERGY_0037",
+          "scenario": "标准名匹配"
+        },
+        "actual_id": "ENT_ENERGY_0037",
+        "actual_name": "阳光电源股份有限公司",
+        "confidence": 0.95849609375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.958",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 17,
+          "text": "亿纬锂能近日公告将在匈牙利建设首个欧洲电池工厂，总投资额约10亿欧元。",
+          "mention": "亿纬锂能",
+          "expected_entity_id": "ENT_ENERGY_0038",
+          "scenario": "标准名匹配"
+        },
+        "actual_id": "ENT_ENERGY_0038",
+        "actual_name": "惠州亿纬锂能股份有限公司",
+        "confidence": 0.9375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.938",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 18,
+          "text": "白鹤滩水电站最后一台机组正式投产发电，标志着世界第二大水电站全面投产。",
+          "mention": "白鹤滩水电站",
+          "expected_entity_id": "ENT_ENERGY_0039",
+          "scenario": "简称匹配"
+        },
+        "actual_id": "ENT_ENERGY_0039",
+        "actual_name": "白鹤滩水电站",
+        "confidence": 0.935546875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.936",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 19,
+          "text": "张北柔直工程自投运以来已累计向北京输送绿电超过300亿千瓦时。",
+          "mention": "张北柔直",
+          "expected_entity_id": "ENT_ENERGY_0041",
+          "scenario": "简称+地名"
+        },
+        "actual_id": "ENT_ENERGY_0041",
+        "actual_name": "张北柔性直流电网工程",
+        "confidence": 0.93212890625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.932",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 19,
+          "text": "张北柔直工程自投运以来已累计向北京输送绿电超过300亿千瓦时。",
+          "mention": "北京",
+          "expected_entity_id": "ENT_ENERGY_0028",
+          "scenario": "简称+地名"
+        },
+        "actual_id": "ENT_ENERGY_0028",
+        "actual_name": "北京市",
+        "confidence": 1.0,
+        "method": "",
+        "evidence": "LLM选择: 上下文中的“北京”指的是接收张北柔直工程输送绿电的地区，即中华人民共和国首都北京市。候选实体中的“北京市”完全符合该语义。",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 20,
+          "text": "国家电网和南方电网分别发布年度报告，两家央企均加大了新能源投资力度。",
+          "mention": "国家电网",
+          "expected_entity_id": "ENT_ENERGY_0001",
+          "scenario": "多实体+集合NIL"
+        },
+        "actual_id": "ENT_ENERGY_0001",
+        "actual_name": "国家电网有限公司",
+        "confidence": 0.935546875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.936",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 20,
+          "text": "国家电网和南方电网分别发布年度报告，两家央企均加大了新能源投资力度。",
+          "mention": "南方电网",
+          "expected_entity_id": "ENT_ENERGY_0002",
+          "scenario": "多实体+集合NIL"
+        },
+        "actual_id": "ENT_ENERGY_0002",
+        "actual_name": "中国南方电网有限责任公司",
+        "confidence": 0.93701171875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.937",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 21,
+          "text": "华为在深圳总部发布了最新AI战略，华为计划到2028年实现AI算力全球领先。",
+          "mention": "华为",
+          "expected_entity_id": "ENT_GEN_0051",
+          "scenario": "重复mention一致性"
+        },
+        "actual_id": "ENT_GEN_0051",
+        "actual_name": "华为技术有限公司",
+        "confidence": 0.9501953125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.950",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 22,
+          "text": "腾讯2025年第三季度财报显示微信月活用户突破14亿。",
+          "mention": "腾讯",
+          "expected_entity_id": "ENT_GEN_0052",
+          "scenario": "企业+产品"
+        },
+        "actual_id": "ENT_GEN_0052",
+        "actual_name": "腾讯控股有限公司",
+        "confidence": 0.947265625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.947",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 22,
+          "text": "腾讯2025年第三季度财报显示微信月活用户突破14亿。",
+          "mention": "微信",
+          "expected_entity_id": "ENT_GEN_0061",
+          "scenario": "企业+产品"
+        },
+        "actual_id": "ENT_GEN_0061",
+        "actual_name": "微信",
+        "confidence": 0.94677734375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.947",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 23,
+          "text": "工行2025年半年报显示普惠金融贷款余额突破3万亿元。",
+          "mention": "工行",
+          "expected_entity_id": "ENT_GEN_0055",
+          "scenario": "金融简称"
+        },
+        "actual_id": "ENT_GEN_0055",
+        "actual_name": "中国工商银行股份有限公司",
+        "confidence": 0.9521484375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.952",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 24,
+          "text": "蔚来2025年交付量突破50万辆，换电站数量超过5000座。",
+          "mention": "蔚来",
+          "expected_entity_id": "ENT_GEN_0058",
+          "scenario": "汽车简称"
+        },
+        "actual_id": "ENT_GEN_0058",
+        "actual_name": "蔚来汽车有限公司",
+        "confidence": 0.94287109375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.943",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 25,
+          "text": "国家能源局近日发布了新型储能项目管理规范。",
+          "mention": "国家能源局",
+          "expected_entity_id": "ENT_GEN_0059",
+          "scenario": "政府机构"
+        },
+        "actual_id": "ENT_GEN_0059",
+        "actual_name": "国家能源局",
+        "confidence": 0.95751953125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.958",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 26,
+          "text": "清华大学能源互联网研究院在虚拟电厂领域取得了重要研究进展。",
+          "mention": "清华大学",
+          "expected_entity_id": "ENT_GEN_0060",
+          "scenario": "教育机构"
+        },
+        "actual_id": "ENT_GEN_0060",
+        "actual_name": "清华大学",
+        "confidence": 0.93603515625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.936",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 29,
+          "text": "塔拉滩光伏基地年发电量占青海新能源发电三分之一以上。",
+          "mention": "塔拉滩光伏基地",
+          "expected_entity_id": "ENT_ENERGY_0014",
+          "scenario": "非标别名召回"
+        },
+        "actual_id": "ENT_ENERGY_0014",
+        "actual_name": "青海塔拉滩光伏电站",
+        "confidence": 0.9619140625,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.962",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 30,
+          "text": "国网新源今年新投产了两座抽水蓄能电站，总装机容量达到320万千瓦。",
+          "mention": "国网新源",
+          "expected_entity_id": "ENT_ENERGY_0010",
+          "scenario": "子公司精确匹配"
+        },
+        "actual_id": "ENT_ENERGY_0010",
+        "actual_name": "国网新源控股有限公司",
+        "confidence": 0.96875,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.969",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 31,
+          "text": "金风科技近日发布了全新一代16MW海上风电机组，叶轮直径达到252米。",
+          "mention": "金风科技",
+          "expected_entity_id": "ENT_ENERGY_0032",
+          "scenario": "标准名+语义"
+        },
+        "actual_id": "ENT_ENERGY_0032",
+        "actual_name": "金风科技股份有限公司",
+        "confidence": 0.958984375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.959",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 32,
+          "text": "远景不仅在风电领域深耕，近年来在储能和能源物联网领域也取得了显著进展。",
+          "mention": "远景",
+          "expected_entity_id": "ENT_ENERGY_0033",
+          "scenario": "简称+多业务"
+        },
+        "actual_id": "ENT_ENERGY_0033",
+        "actual_name": "远景能源有限公司",
+        "confidence": 0.95703125,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.957",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 33,
+          "text": "大亚湾核电站自1994年投入商业运行以来，已累计发电超过8000亿千瓦时。",
+          "mention": "大亚湾核电站",
+          "expected_entity_id": "ENT_ENERGY_0017",
+          "scenario": "设施匹配"
+        },
+        "actual_id": "ENT_ENERGY_0017",
+        "actual_name": "大亚湾核电站",
+        "confidence": 0.91943359375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.919",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 34,
+          "text": "青海省共和县塔拉滩光伏基地的发电量已占到青海省新能源发电量的三分之一以上。",
+          "mention": "青海省共和县",
+          "expected_entity_id": "ENT_ENERGY_0031",
+          "scenario": "长文本多实体"
+        },
+        "actual_id": "ENT_ENERGY_0031",
+        "actual_name": "青海省共和县",
+        "confidence": 0.9599609375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.960",
+        "correct": true
+      },
+      {
+        "test_case": {
+          "text_idx": 34,
+          "text": "青海省共和县塔拉滩光伏基地的发电量已占到青海省新能源发电量的三分之一以上。",
+          "mention": "塔拉滩光伏基地",
+          "expected_entity_id": "ENT_ENERGY_0014",
+          "scenario": "长文本多实体"
+        },
+        "actual_id": "ENT_ENERGY_0014",
+        "actual_name": "青海塔拉滩光伏电站",
+        "confidence": 0.9521484375,
+        "method": "",
+        "evidence": "RERANKER 精排: 0.952",
+        "correct": true
+      }
+    ]
+  }
+}

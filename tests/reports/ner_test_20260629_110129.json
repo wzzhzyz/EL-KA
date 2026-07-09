@@ -1,0 +1,609 @@
+{
+  "timestamp": "2026-06-29T11:01:29.565933",
+  "summary": {
+    "total": 19,
+    "passed": 4,
+    "failed": 15,
+    "pass_rate": 0.21052631578947367
+  },
+  "details": [
+    {
+      "test_id": 1,
+      "description": "完整机构名称 + 位置验证",
+      "text": "国家电网有限公司2025年营收增长5%。",
+      "text_length": 20,
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "结束位置错误: '国家电网有限公司' 期望 9, 实际 8"
+      ],
+      "warnings": [],
+      "elapsed_ms": 939.819
+    },
+    {
+      "test_id": 2,
+      "description": "完整机构名称 + 地名 + 位置验证",
+      "text": "华能国际电力股份有限公司在华东地区有多个项目。",
+      "text_length": 23,
+      "expected": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 12
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "char_start": 13,
+          "char_end": 18
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 12
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "char_start": 13,
+          "char_end": 17
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "结束位置错误: '华东地区' 期望 18, 实际 17"
+      ],
+      "warnings": [],
+      "elapsed_ms": 29.000999999999998
+    },
+    {
+      "test_id": 3,
+      "description": "完整机构名称（石油）+ 位置验证",
+      "text": "中国石油天然气集团有限公司2024年净利润增长10%。",
+      "text_length": 27,
+      "expected": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 12
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国石油天然气集团有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 13
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "结束位置错误: '中国石油天然气集团有限公司' 期望 12, 实际 13"
+      ],
+      "warnings": [],
+      "elapsed_ms": 29.851
+    },
+    {
+      "test_id": 4,
+      "description": "简称识别（国网）+ 位置验证",
+      "text": "国网在华北新建了线路。",
+      "text_length": 11,
+      "expected": [
+        {
+          "mention": "国网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华北",
+          "type": "GPE",
+          "char_start": 3,
+          "char_end": 5
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['国网']"
+      ],
+      "warnings": [
+        "额外识别: ['华北']"
+      ],
+      "elapsed_ms": 29.313
+    },
+    {
+      "test_id": 5,
+      "description": "简称识别（中石油）+ 位置验证",
+      "text": "中石油2025年净利润增长5%。",
+      "text_length": 16,
+      "expected": [
+        {
+          "mention": "中石油",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中石油",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "elapsed_ms": 24.0
+    },
+    {
+      "test_id": 6,
+      "description": "简称识别（中石化）+ 地名 + 位置验证",
+      "text": "中石化在华东地区有多个项目。",
+      "text_length": 14,
+      "expected": [
+        {
+          "mention": "中石化",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3
+        },
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "char_start": 4,
+          "char_end": 9
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "char_start": 4,
+          "char_end": 8
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['中石化']",
+        "结束位置错误: '华东地区' 期望 9, 实际 8"
+      ],
+      "warnings": [],
+      "elapsed_ms": 24.999
+    },
+    {
+      "test_id": 7,
+      "description": "简称识别（南网）+ 地名 + 位置验证",
+      "text": "南网在华南地区新建了线路。",
+      "text_length": 13,
+      "expected": [
+        {
+          "mention": "南网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "char_start": 3,
+          "char_end": 8
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "char_start": 3,
+          "char_end": 7
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['南网']",
+        "结束位置错误: '华南地区' 期望 8, 实际 7"
+      ],
+      "warnings": [],
+      "elapsed_ms": 24.332
+    },
+    {
+      "test_id": 8,
+      "description": "地名识别（华北地区）+ 位置验证",
+      "text": "华北地区新建了输电线路。",
+      "text_length": 12,
+      "expected": [
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 5
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 4
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "结束位置错误: '华北地区' 期望 5, 实际 4"
+      ],
+      "warnings": [],
+      "elapsed_ms": 22.955
+    },
+    {
+      "test_id": 9,
+      "description": "地名识别（华东地区）+ 位置验证",
+      "text": "华东地区有多个项目正在建设中。",
+      "text_length": 15,
+      "expected": [
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 5
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华东地区",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 4
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "结束位置错误: '华东地区' 期望 5, 实际 4"
+      ],
+      "warnings": [],
+      "elapsed_ms": 25.636
+    },
+    {
+      "test_id": 10,
+      "description": "地名识别（华南地区）+ 位置验证",
+      "text": "华南地区新能源项目进展顺利。",
+      "text_length": 14,
+      "expected": [
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 5
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 4
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "结束位置错误: '华南地区' 期望 5, 实际 4"
+      ],
+      "warnings": [],
+      "elapsed_ms": 28.868000000000002
+    },
+    {
+      "test_id": 11,
+      "description": "机构 + 地名组合 + 位置验证",
+      "text": "国家电网有限公司在华北地区新建了输电线路。",
+      "text_length": 21,
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "char_start": 10,
+          "char_end": 15
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "char_start": 9,
+          "char_end": 13
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "结束位置错误: '国家电网有限公司' 期望 9, 实际 8",
+        "起始位置错误: '华北地区' 期望 10, 实际 9",
+        "结束位置错误: '华北地区' 期望 15, 实际 13"
+      ],
+      "warnings": [],
+      "elapsed_ms": 26.0
+    },
+    {
+      "test_id": 12,
+      "description": "多个实体在同一文本 + 位置验证",
+      "text": "华能国际电力股份有限公司、国家电网有限公司、中石油等能源企业。",
+      "text_length": 31,
+      "expected": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 12
+        },
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 23
+        },
+        {
+          "mention": "中石油",
+          "type": "ORG",
+          "char_start": 25,
+          "char_end": 28
+        }
+      ],
+      "actual": [
+        {
+          "mention": "华能国际电力股份有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 12
+        },
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "char_start": 13,
+          "char_end": 21
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['中石油']",
+        "起始位置错误: '国家电网有限公司' 期望 14, 实际 13",
+        "结束位置错误: '国家电网有限公司' 期望 23, 实际 21"
+      ],
+      "warnings": [],
+      "elapsed_ms": 33.83
+    },
+    {
+      "test_id": 13,
+      "description": "新能源企业（宁德时代）+ 位置验证",
+      "text": "宁德时代新能源科技股份有限公司在华南地区有布局。",
+      "text_length": 24,
+      "expected": [
+        {
+          "mention": "宁德时代新能源科技股份有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 14
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "char_start": 15,
+          "char_end": 20
+        }
+      ],
+      "actual": [
+        {
+          "mention": "宁德时代新能源科技股份有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 15
+        },
+        {
+          "mention": "华南",
+          "type": "GPE",
+          "char_start": 16,
+          "char_end": 18
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['华南地区']",
+        "结束位置错误: '宁德时代新能源科技股份有限公司' 期望 14, 实际 15"
+      ],
+      "warnings": [
+        "额外识别: ['华南']"
+      ],
+      "elapsed_ms": 30.461
+    },
+    {
+      "test_id": 14,
+      "description": "核工业（中核集团）+ 位置验证",
+      "text": "中国核工业集团有限公司在西北地区有核电站。",
+      "text_length": 21,
+      "expected": [
+        {
+          "mention": "中国核工业集团有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 11
+        },
+        {
+          "mention": "西北地区",
+          "type": "GPE",
+          "char_start": 12,
+          "char_end": 17
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国核工业集团有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 11
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "遗漏实体: ['西北地区']"
+      ],
+      "warnings": [],
+      "elapsed_ms": 28.156
+    },
+    {
+      "test_id": 15,
+      "description": "南方电网 + 位置验证",
+      "text": "中国南方电网有限责任公司是华南地区最大的电网企业。",
+      "text_length": 25,
+      "expected": [
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 11
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "char_start": 12,
+          "char_end": 17
+        }
+      ],
+      "actual": [
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 12
+        },
+        {
+          "mention": "华南地区",
+          "type": "GPE",
+          "char_start": 13,
+          "char_end": 17
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "结束位置错误: '中国南方电网有限责任公司' 期望 11, 实际 12",
+        "起始位置错误: '华南地区' 期望 12, 实际 13"
+      ],
+      "warnings": [],
+      "elapsed_ms": 27.223
+    },
+    {
+      "test_id": 16,
+      "description": "包含代词的文本 + 位置验证",
+      "text": "国家电网有限公司2025年营收增长5%。它在华北地区新建了输电线路。",
+      "text_length": 34,
+      "expected": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "char_start": 17,
+          "char_end": 22
+        }
+      ],
+      "actual": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8
+        },
+        {
+          "mention": "华北地区",
+          "type": "GPE",
+          "char_start": 22,
+          "char_end": 26
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "结束位置错误: '国家电网有限公司' 期望 9, 实际 8",
+        "起始位置错误: '华北地区' 期望 17, 实际 22",
+        "结束位置错误: '华北地区' 期望 22, 实际 26"
+      ],
+      "warnings": [],
+      "elapsed_ms": 31.081
+    },
+    {
+      "test_id": 17,
+      "description": "空文本",
+      "text": "",
+      "text_length": 0,
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ],
+      "elapsed_ms": 0.0
+    },
+    {
+      "test_id": 18,
+      "description": "无实体的文本",
+      "text": "这是一个没有实体的测试文本。",
+      "text_length": 14,
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ],
+      "elapsed_ms": 0.0
+    },
+    {
+      "test_id": 19,
+      "description": "只有数字和时间（不应识别为实体）",
+      "text": "2025年，公司营收达到100亿元。",
+      "text_length": 18,
+      "expected": [],
+      "actual": [],
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "没有期望结果，仅记录实际输出"
+      ],
+      "elapsed_ms": 0.0
+    }
+  ]
+}

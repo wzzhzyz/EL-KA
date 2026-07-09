@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-07-02T14:23:25.101109",
+  "total_failed": 4,
+  "failed_cases": [
+    {
+      "test_id": "DIS_001",
+      "text": "国网2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。",
+      "mention": "国网",
+      "scenario": "高置信-精确匹配+语义确认",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "特高压交流输电",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.85,
+        1.0
+      ],
+      "actual_score": 0.7803164780139923,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.780",
+      "error_type": "wrong_entity",
+      "error_message": "实体不匹配: 期望 国家电网有限公司, 实际 特高压交流输电"
+    },
+    {
+      "test_id": "DIS_004",
+      "text": "国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+      "mention": "国网",
+      "scenario": "中置信-多候选需消歧",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.65,
+        0.85
+      ],
+      "actual_score": 0.3698863780498505,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.370, 次高分 0.341",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_009",
+      "text": "宁徳时代新能源科技股份有限公司发布第三代钠离子电池。",
+      "mention": "宁徳时代",
+      "scenario": "低置信-异体字容错",
+      "expected_entity": "宁德时代新能源科技股份有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.5,
+        0.7
+      ],
+      "actual_score": 0.5077647465467453,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.508, 次高分 0.229",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_010",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "mention": "阳光新能源",
+      "scenario": "NIL-实体不在KB(高置信NIL)",
+      "expected_entity": "NIL",
+      "actual_entity": "阳光电源股份有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.45
+      ],
+      "actual_score": 0.8638228476047515,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.864",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    }
+  ]
+}

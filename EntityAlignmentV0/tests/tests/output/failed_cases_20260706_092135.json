@@ -1,0 +1,72 @@
+{
+  "timestamp": "2026-07-06T09:21:35.781064",
+  "total_failed": 3,
+  "failed_cases": [
+    {
+      "test_id": "DIS_010",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "mention": "阳光新能源",
+      "scenario": "NIL-实体不在KB(高置信NIL)",
+      "expected_entity": "NIL",
+      "actual_entity": "阳光电源股份有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.45
+      ],
+      "actual_score": 0.94775390625,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.948",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False",
+      "query": "[*]阳光新能源[/*]是一家专注于光伏逆变器和储能系统的创新企业。",
+      "doc": "实体ID：ENT_ENERGY_0037；标准名称：阳光电源股份有限公司；别名：['阳光电源', '阳光', 'Sungrow Power']；描述：全球领先的光伏逆变器和储能系统供应商，逆变器出货量全球第一。；entity_type_display：新能源企业；industry：光伏逆变器+储能；abbreviation：阳光电源；summary：全球领先的光伏逆变器和储能系统供应商，逆变器出货量全球第一。；business：光伏逆变器研发制造、储能系统集成、电站投资开发、电驱动系统。；location：{'country': '中国', 'province': '安徽省', 'city': '合肥市', 'address': '高新区'}；keywords：光伏逆变器、储能、电站、电力电子；source：{'source_name': '工商注册信息', 'publisher': '国家市场监督管理总局', 'url': 'https://www.samr.gov.cn', 'crawl_time': '2025-03-15', 'license': '公开数据', 'confidence': 1.0}；tags：民营企业、上市公司、光伏、储能、清洁能源、行业龙头；relations：；ambiguity_level：base；shared_aliases：；update_time：2026-06-26；evidence：{}",
+      "candidates_info": "阳光电源股份有限公司(0.747); 国网新源控股有限公司(0.607); 远景能源有限公司(0.604); 天合光能股份有限公司(0.600); 隆基绿能科技股份有限公司(0.594)"
+    },
+    {
+      "test_id": "DIS_013",
+      "text": "两家央企均加大了新能源投资力度，预计2026年合计新增装机超过5000万千瓦。",
+      "mention": "两家央企",
+      "scenario": "NIL-集合指代",
+      "expected_entity": "NIL",
+      "actual_entity": "NIL",
+      "expected_nil": true,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.0,
+        0.4
+      ],
+      "actual_score": 0.63330078125,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.633, 次高分 0.527",
+      "error_type": "score_out_of_range",
+      "error_message": "NIL样本分数异常: 期望 <= 0.40, 实际 0.63",
+      "query": "[*]两家央企[/*]均加大了新能源投资力度，预计2026年合计新增装机超过5000万千瓦。",
+      "doc": "实体ID：ENT_ENERGY_0006；标准名称：国家电力投资集团有限公司；别名：['国家电投', '国电投', 'SPIC', 'State Power Investment Corporation', '国家电投集团']；描述：拥有核电、水电、风电、光伏等全部发电类型，全球最大的光伏发电企业，清洁能源装机占比超过60%。；entity_type_display：发电企业；industry：清洁能源发电；abbreviation：国电投；summary：拥有核电、水电、风电、光伏等全部发电类型，全球最大的光伏发电企业，清洁能源装机占比超过60%。；business：核电投资运营、水电开发、风电与光伏电站建设运营、综合智慧能源服务。；location：{'country': '中国', 'province': '北京市', 'city': '北京市', 'address': '西城区'}；keywords：核电、光伏、风电、水电、清洁能源、综合智慧能源；source：{'source_name': '工商注册信息', 'publisher': '国家市场监督管理总局', 'url': 'https://www.samr.gov.cn', 'crawl_time': '2025-03-15', 'license': '公开数据', 'confidence': 1.0}；tags：央企、光伏、核电、风电、水电、清洁能源；relations：{'target': 'ENT_ENERGY_0014', 'relation': '投资方', 'direction': 'outgoing', 'confidence': 1.0, 'note': '青海塔拉滩光伏基地主要投资建设方'}；ambiguity_level：base；shared_aliases：；update_time：2026-06-20；evidence：{}",
+      "candidates_info": "国家电力投资集团有限公司(0.640); 国家能源投资集团有限责任公司(0.637); 中国华能集团有限公司(0.629); 中国华电集团有限公司(0.628); 中国大唐集团有限公司(0.620)"
+    },
+    {
+      "test_id": "DIS_014",
+      "text": "该企业表示将在2026年前完成首批煤电机组低碳化改造，涉及装机超过3000万千瓦。",
+      "mention": "该企业",
+      "scenario": "NIL-共指代词(应由coref模块处理)",
+      "expected_entity": "NIL",
+      "actual_entity": "NIL",
+      "expected_nil": true,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.0,
+        0.3
+      ],
+      "actual_score": 0.5791015625,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.579, 次高分 0.370",
+      "error_type": "score_out_of_range",
+      "error_message": "NIL样本分数异常: 期望 <= 0.30, 实际 0.58",
+      "query": "[*]该企业[/*]表示将在2026年前完成首批煤电机组低碳化改造，涉及装机超过3000万千瓦。",
+      "doc": "实体ID：ENT_ENERGY_0005；标准名称：国家能源投资集团有限责任公司；别名：['国家能源集团', '国能集团', '国能', 'CHN Energy', '神华集团有限责任公司', '中国国电集团公司']；描述：由原国电集团和神华集团合并重组而成，全球最大的煤炭生产企业和火力发电企业。；entity_type_display：发电企业；industry：综合能源；abbreviation：国能；summary：由原国电集团和神华集团合并重组而成，全球最大的煤炭生产企业和火力发电企业。；business：煤炭开采与销售、火力发电、风力发电、煤制油煤化工、港口航运物流。；location：{'country': '中国', 'province': '北京市', 'city': '北京市', 'address': '东城区'}；keywords：煤炭、火电、风电、煤化工、新能源；source：{'source_name': '工商注册信息', 'publisher': '国家市场监督管理总局', 'url': 'https://www.samr.gov.cn', 'crawl_time': '2025-03-15', 'license': '公开数据', 'confidence': 1.0}；tags：央企、世界500强、火电、风电、煤炭；relations：{'target': 'ENT_ENERGY_0003', 'relation': '兄弟公司', 'direction': 'bidirectional', 'confidence': 1.0, 'note': '同属五大发电集团'}；ambiguity_level：base；shared_aliases：；update_time：2026-06-20；evidence：{}",
+      "candidates_info": "中国大唐集团有限公司(0.574); 中国华电集团有限公司(0.566); 华润电力控股有限公司(0.556); 中国华能集团有限公司(0.552); 国家能源投资集团有限责任公司(0.544)"
+    }
+  ]
+}

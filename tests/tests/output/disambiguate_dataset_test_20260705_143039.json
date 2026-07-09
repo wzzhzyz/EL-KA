@@ -1,0 +1,245 @@
+{
+  "timestamp": "2026-07-05T14:30:39.417957",
+  "config": {
+    "nil_threshold": 0.8,
+    "llm_trigger_threshold": 0.65,
+    "llm_enabled": false,
+    "reranker_enabled": true
+  },
+  "summary": {
+    "total": 15,
+    "passed": 3,
+    "failed": 12,
+    "pass_rate": "20.0%"
+  },
+  "failed_cases": [
+    {
+      "test_id": "DIS_001",
+      "text": "国网2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。",
+      "mention": "国网",
+      "scenario": "高置信-精确匹配+语义确认",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.85,
+        1.0
+      ],
+      "actual_score": 0.652028746008873,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.652, 次高分 0.562",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_002",
+      "text": "CATL与特斯拉签订了新的供货协议，将为上海超级工厂提供下一代动力电池。",
+      "mention": "CATL",
+      "scenario": "高置信-英文别名+语义",
+      "expected_entity": "宁德时代新能源科技股份有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.8,
+        1.0
+      ],
+      "actual_score": 0.541765589416027,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.542, 次高分 0.510",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_003",
+      "text": "华能2024年清洁能源装机占比首次突破50%，其中风电和光伏新增装机超过1500万千瓦。",
+      "mention": "华能",
+      "scenario": "高置信-简称+语义",
+      "expected_entity": "中国华能集团有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.75,
+        0.95
+      ],
+      "actual_score": 0.7051191467046738,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.705, 次高分 0.532",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_004",
+      "text": "国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+      "mention": "国网",
+      "scenario": "中置信-多候选需消歧",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.65,
+        0.85
+      ],
+      "actual_score": 0.6087958681583404,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.609, 次高分 0.566",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_005",
+      "text": "三峡大坝今年汛期累计拦蓄洪水超过200亿立方米，充分发挥了防洪骨干作用。",
+      "mention": "三峡大坝",
+      "scenario": "中置信-需区分设施vs企业",
+      "expected_entity": "三峡水电站",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.7,
+        0.9
+      ],
+      "actual_score": 0.7132982078194617,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.713, 次高分 0.584",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_006",
+      "text": "中核与中广核联合研发的华龙一号已成为中国核电走出去的名片。",
+      "mention": "中核",
+      "scenario": "中置信-一字之差消歧",
+      "expected_entity": "中国核工业集团有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.65,
+        0.85
+      ],
+      "actual_score": 0.7171984431147576,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.717, 次高分 0.555",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_007",
+      "text": "塔拉滩光伏基地年发电量占青海新能源发电三分之一以上。",
+      "mention": "塔拉滩光伏基地",
+      "scenario": "低置信-非标别名依赖语义",
+      "expected_entity": "青海塔拉滩光伏电站",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.55,
+        0.75
+      ],
+      "actual_score": 0.7511965426802636,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.751, 次高分 0.516",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_008",
+      "text": "囯网公司近日宣布在西北地区新建三条特高压输电线路，总投资超过800亿元。",
+      "mention": "囯网",
+      "scenario": "低置信-OCR容错兜底",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.5,
+        0.7
+      ],
+      "actual_score": 0.5715684431791305,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.572, 次高分 0.533",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_009",
+      "text": "宁徳时代新能源科技股份有限公司发布第三代钠离子电池。",
+      "mention": "宁徳时代",
+      "scenario": "低置信-异体字容错",
+      "expected_entity": "宁德时代新能源科技股份有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.5,
+        0.7
+      ],
+      "actual_score": 0.6458460402488708,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.646, 次高分 0.517",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_010",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "mention": "阳光新能源",
+      "scenario": "NIL-实体不在KB(高置信NIL)",
+      "expected_entity": "NIL",
+      "actual_entity": "NIL",
+      "expected_nil": true,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.0,
+        0.45
+      ],
+      "actual_score": 0.5891588568687439,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.589, 次高分 0.534",
+      "error_type": "score_out_of_range",
+      "error_message": "NIL样本分数异常: 期望 <= 0.45, 实际 0.59"
+    },
+    {
+      "test_id": "DIS_012",
+      "text": "华电集团天然气发电装机容量位居全国第一，分布式能源项目遍布各省。",
+      "mention": "华电",
+      "scenario": "高置信-精确匹配(边界case: 华能vs华电)",
+      "expected_entity": "中国华电集团有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.8,
+        1.0
+      ],
+      "actual_score": 0.7370962658524514,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.737, 次高分 0.556",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_015",
+      "text": "国网新源今年新投产了两座抽水蓄能电站，总装机容量达到320万千瓦。",
+      "mention": "国网新源",
+      "scenario": "高置信-子公司精确匹配(验证popularity不覆盖)",
+      "expected_entity": "国网新源控股有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.85,
+        1.0
+      ],
+      "actual_score": 0.7467376393079758,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.747, 次高分 0.544",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    }
+  ]
+}

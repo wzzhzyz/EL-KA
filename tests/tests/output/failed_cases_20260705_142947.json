@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-07-05T14:29:47.544168",
+  "total_failed": 3,
+  "failed_cases": [
+    {
+      "test_id": "DIS_010",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "mention": "阳光新能源",
+      "scenario": "NIL-实体不在KB(高置信NIL)",
+      "expected_entity": "NIL",
+      "actual_entity": "阳光电源股份有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.45
+      ],
+      "actual_score": 0.9107897162437438,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.911",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    },
+    {
+      "test_id": "DIS_011",
+      "text": "工信部发布了5G发展规划，相关负责人表示2026年将实现全国地级市全覆盖。",
+      "mention": "工信部",
+      "scenario": "NIL-实体不在KB",
+      "expected_entity": "NIL",
+      "actual_entity": "NIL",
+      "expected_nil": true,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.0,
+        0.4
+      ],
+      "actual_score": 0.6653556793928146,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.665, 次高分 0.491",
+      "error_type": "score_out_of_range",
+      "error_message": "NIL样本分数异常: 期望 <= 0.40, 实际 0.67"
+    },
+    {
+      "test_id": "DIS_013",
+      "text": "两家央企均加大了新能源投资力度，预计2026年合计新增装机超过5000万千瓦。",
+      "mention": "两家央企",
+      "scenario": "NIL-集合指代",
+      "expected_entity": "NIL",
+      "actual_entity": "国家能源投资集团有限责任公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.4
+      ],
+      "actual_score": 0.8318771481513977,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.832",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    }
+  ]
+}

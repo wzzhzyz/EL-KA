@@ -1,0 +1,272 @@
+{
+  "timestamp": "2026-07-01T23:32:02.969635",
+  "total_failed": 14,
+  "failed_cases": [
+    {
+      "test_id": "DIS_001",
+      "text": "国网2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。",
+      "mention": "国网",
+      "scenario": "高置信-精确匹配+语义确认",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.85,
+        1.0
+      ],
+      "actual_score": 0.5796325206756592,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.580, 次高分 0.564",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_002",
+      "text": "CATL与特斯拉签订了新的供货协议，将为上海超级工厂提供下一代动力电池。",
+      "mention": "CATL",
+      "scenario": "高置信-英文别名+语义",
+      "expected_entity": "宁德时代新能源科技股份有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.8,
+        1.0
+      ],
+      "actual_score": 0.5321983695030212,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.532, 次高分 0.489",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_003",
+      "text": "华能2024年清洁能源装机占比首次突破50%，其中风电和光伏新增装机超过1500万千瓦。",
+      "mention": "华能",
+      "scenario": "高置信-简称+语义",
+      "expected_entity": "中国华能集团有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.75,
+        0.95
+      ],
+      "actual_score": 0.5469430685043335,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.547, 次高分 0.529",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_004",
+      "text": "国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+      "mention": "国网",
+      "scenario": "中置信-多候选需消歧",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.65,
+        0.85
+      ],
+      "actual_score": 0.6487999558448792,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.649, 次高分 0.567",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_005",
+      "text": "三峡大坝今年汛期累计拦蓄洪水超过200亿立方米，充分发挥了防洪骨干作用。",
+      "mention": "三峡大坝",
+      "scenario": "中置信-需区分设施vs企业",
+      "expected_entity": "三峡水电站",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.7,
+        0.9
+      ],
+      "actual_score": 0.6031349301338196,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.603, 次高分 0.528",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_006",
+      "text": "中核与中广核联合研发的华龙一号已成为中国核电走出去的名片。",
+      "mention": "中核",
+      "scenario": "中置信-一字之差消歧",
+      "expected_entity": "中国核工业集团有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.65,
+        0.85
+      ],
+      "actual_score": 0.6057922840118408,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.606, 次高分 0.557",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_008",
+      "text": "囯网公司近日宣布在西北地区新建三条特高压输电线路，总投资超过800亿元。",
+      "mention": "囯网",
+      "scenario": "低置信-OCR容错兜底",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.5,
+        0.7
+      ],
+      "actual_score": 0.547365665435791,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.547, 次高分 0.547",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_009",
+      "text": "宁徳时代新能源科技股份有限公司发布第三代钠离子电池。",
+      "mention": "宁徳时代",
+      "scenario": "低置信-异体字容错",
+      "expected_entity": "宁德时代新能源科技股份有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.5,
+        0.7
+      ],
+      "actual_score": 0.6066347360610962,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.607, 次高分 0.518",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_010",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "mention": "阳光新能源",
+      "scenario": "NIL-实体不在KB(高置信NIL)",
+      "expected_entity": "NIL",
+      "actual_entity": "NIL",
+      "expected_nil": true,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.0,
+        0.45
+      ],
+      "actual_score": 0.6676045656204224,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.668, 次高分 0.580",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.00, 0.45], 实际 0.67"
+    },
+    {
+      "test_id": "DIS_011",
+      "text": "工信部发布了5G发展规划，相关负责人表示2026年将实现全国地级市全覆盖。",
+      "mention": "工信部",
+      "scenario": "NIL-实体不在KB",
+      "expected_entity": "NIL",
+      "actual_entity": "NIL",
+      "expected_nil": true,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.0,
+        0.4
+      ],
+      "actual_score": 0.48937398195266724,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.489, 次高分 0.469",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.00, 0.40], 实际 0.49"
+    },
+    {
+      "test_id": "DIS_012",
+      "text": "华电集团天然气发电装机容量位居全国第一，分布式能源项目遍布各省。",
+      "mention": "华电",
+      "scenario": "高置信-精确匹配(边界case: 华能vs华电)",
+      "expected_entity": "中国华电集团有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.8,
+        1.0
+      ],
+      "actual_score": 0.6477561593055725,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.648, 次高分 0.611",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True"
+    },
+    {
+      "test_id": "DIS_013",
+      "text": "两家央企均加大了新能源投资力度，预计2026年合计新增装机超过5000万千瓦。",
+      "mention": "两家央企",
+      "scenario": "NIL-集合指代",
+      "expected_entity": "NIL",
+      "actual_entity": "NIL",
+      "expected_nil": true,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.0,
+        0.4
+      ],
+      "actual_score": 0.54783034324646,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.548, 次高分 0.537",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.00, 0.40], 实际 0.55"
+    },
+    {
+      "test_id": "DIS_014",
+      "text": "该企业表示将在2026年前完成首批煤电机组低碳化改造，涉及装机超过3000万千瓦。",
+      "mention": "该企业",
+      "scenario": "NIL-共指代词(应由coref模块处理)",
+      "expected_entity": "NIL",
+      "actual_entity": "NIL",
+      "expected_nil": true,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.0,
+        0.3
+      ],
+      "actual_score": 0.4806787669658661,
+      "method": "bge_nil",
+      "evidence": "BGE NIL判定: 最高分 0.481, 次高分 0.473",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.00, 0.30], 实际 0.48"
+    },
+    {
+      "test_id": "DIS_015",
+      "text": "国网新源今年新投产了两座抽水蓄能电站，总装机容量达到320万千瓦。",
+      "mention": "国网新源",
+      "scenario": "高置信-子公司精确匹配(验证popularity不覆盖)",
+      "expected_entity": "国网新源控股有限公司",
+      "actual_entity": "国网新源控股有限公司",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.85,
+        1.0
+      ],
+      "actual_score": 0.625732421875,
+      "method": "bge",
+      "evidence": "BGE语义相似度: 0.626 (来源: alias_exact)",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.85, 1.00], 实际 0.63"
+    }
+  ]
+}

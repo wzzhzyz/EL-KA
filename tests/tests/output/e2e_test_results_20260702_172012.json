@@ -1,0 +1,478 @@
+{
+  "timestamp": "2026-07-02T17:20:12.412199",
+  "summary": {
+    "total_texts": 35,
+    "passed": 22,
+    "failed": 13,
+    "pass_rate": "62.9%",
+    "total_mentions": 42,
+    "correct_mentions": 31,
+    "mention_accuracy": "73.8%"
+  },
+  "error_cases": [
+    {
+      "text_idx": 5,
+      "text": "宁德时代2025年发布了第三代钠离子电池，能量密度达到200Wh/kg。",
+      "scenario": "标准名匹配",
+      "error_type": "missing_entity",
+      "expected": "宁德时代→ENT_ENERGY_0015",
+      "actual": "未识别",
+      "detail": "实体未被识别或链接"
+    },
+    {
+      "text_idx": 6,
+      "text": "CATL与特斯拉签订了新的供货协议，将为上海超级工厂提供下一代动力电池。",
+      "scenario": "英文别名+NIL",
+      "error_type": "nil_mismatch",
+      "expected": "特斯拉→NIL",
+      "actual": "特斯拉→ENT_ENERGY_0016",
+      "detail": "期望NIL但链接到实体"
+    },
+    {
+      "text_idx": 7,
+      "text": "三峡大坝今年汛期累计拦蓄洪水超过200亿立方米，充分发挥了防洪骨干作用。",
+      "scenario": "别名消歧(设施vs企业)",
+      "error_type": "missing_entity",
+      "expected": "三峡大坝→ENT_ENERGY_0012",
+      "actual": "未识别",
+      "detail": "实体未被识别或链接"
+    },
+    {
+      "text_idx": 12,
+      "text": "中核集团华龙一号海外首堆在巴基斯坦投入商业运行。",
+      "scenario": "简称+NIL",
+      "error_type": "missing_entity",
+      "expected": "中核集团→ENT_ENERGY_0034",
+      "actual": "未识别",
+      "detail": "实体未被识别或链接"
+    },
+    {
+      "text_idx": 12,
+      "text": "中核集团华龙一号海外首堆在巴基斯坦投入商业运行。",
+      "scenario": "简称+NIL",
+      "error_type": "nil_mismatch",
+      "expected": "巴基斯坦→NIL",
+      "actual": "巴基斯坦→ENT_ENERGY_0040",
+      "detail": "期望NIL但链接到实体"
+    },
+    {
+      "text_idx": 19,
+      "text": "张北柔直工程自投运以来已累计向北京输送绿电超过300亿千瓦时。",
+      "scenario": "简称+地名",
+      "error_type": "missing_entity",
+      "expected": "张北柔直→ENT_ENERGY_0041",
+      "actual": "未识别",
+      "detail": "实体未被识别或链接"
+    },
+    {
+      "text_idx": 19,
+      "text": "张北柔直工程自投运以来已累计向北京输送绿电超过300亿千瓦时。",
+      "scenario": "简称+地名",
+      "error_type": "wrong_entity",
+      "expected": "北京→ENT_ENERGY_0028",
+      "actual": "北京→ENT_ENERGY_0041",
+      "detail": "链接到错误实体"
+    },
+    {
+      "text_idx": 20,
+      "text": "国家电网和南方电网分别发布年度报告，两家央企均加大了新能源投资力度。",
+      "scenario": "多实体+集合NIL",
+      "error_type": "missing_entity",
+      "expected": "两家央企→NIL",
+      "actual": "未识别",
+      "detail": "实体未被识别或链接"
+    },
+    {
+      "text_idx": 22,
+      "text": "腾讯2025年第三季度财报显示微信月活用户突破14亿。",
+      "scenario": "企业+产品",
+      "error_type": "missing_entity",
+      "expected": "微信→ENT_GEN_0061",
+      "actual": "未识别",
+      "detail": "实体未被识别或链接"
+    },
+    {
+      "text_idx": 26,
+      "text": "清华大学能源互联网研究院在虚拟电厂领域取得了重要研究进展。",
+      "scenario": "教育机构",
+      "error_type": "missing_entity",
+      "expected": "清华大学→ENT_GEN_0060",
+      "actual": "未识别",
+      "detail": "实体未被识别或链接"
+    },
+    {
+      "text_idx": 27,
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "scenario": "NIL(KB有阳光电源但此为不同实体)",
+      "error_type": "nil_mismatch",
+      "expected": "阳光新能源→NIL",
+      "actual": "阳光新能源→ENT_ENERGY_0037",
+      "detail": "期望NIL但链接到实体"
+    },
+    {
+      "text_idx": 28,
+      "text": "工信部发布了5G发展规划。",
+      "scenario": "NIL(实体不在KB)",
+      "error_type": "nil_mismatch",
+      "expected": "工信部→NIL",
+      "actual": "工信部→ENT_GEN_0051",
+      "detail": "期望NIL但链接到实体"
+    },
+    {
+      "text_idx": 29,
+      "text": "塔拉滩光伏基地年发电量占青海新能源发电三分之一以上。",
+      "scenario": "非标别名召回",
+      "error_type": "missing_entity",
+      "expected": "塔拉滩光伏基地→ENT_ENERGY_0014",
+      "actual": "未识别",
+      "detail": "实体未被识别或链接"
+    },
+    {
+      "text_idx": 32,
+      "text": "远景不仅在风电领域深耕，近年来在储能和能源物联网领域也取得了显著进展。",
+      "scenario": "简称+多业务",
+      "error_type": "missing_entity",
+      "expected": "远景→ENT_ENERGY_0033",
+      "actual": "未识别",
+      "detail": "实体未被识别或链接"
+    },
+    {
+      "text_idx": 34,
+      "text": "青海省共和县塔拉滩光伏基地的发电量已占到青海省新能源发电量的三分之一以上。",
+      "scenario": "长文本多实体",
+      "error_type": "missing_entity",
+      "expected": "塔拉滩光伏基地→ENT_ENERGY_0014",
+      "actual": "未识别",
+      "detail": "实体未被识别或链接"
+    },
+    {
+      "text_idx": 34,
+      "text": "青海省共和县塔拉滩光伏基地的发电量已占到青海省新能源发电量的三分之一以上。",
+      "scenario": "长文本多实体",
+      "error_type": "missing_entity",
+      "expected": "青海省共和县→ENT_ENERGY_0031",
+      "actual": "未识别",
+      "detail": "实体未被识别或链接"
+    }
+  ],
+  "details": [
+    {
+      "text_idx": 0,
+      "scenario": "",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 1,
+      "scenario": "",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 2,
+      "scenario": "",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 3,
+      "scenario": "简称匹配",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 4,
+      "scenario": "简称匹配",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: '广东' (ID: ENT_ENERGY_0027)"
+      ]
+    },
+    {
+      "text_idx": 5,
+      "scenario": "标准名匹配",
+      "passed": false,
+      "errors": [
+        "遗漏实体: '宁德时代' (期望ID: ENT_ENERGY_0015)"
+      ],
+      "warnings": [
+        "额外识别: '宁德' (ID: ENT_ENERGY_0015)"
+      ]
+    },
+    {
+      "text_idx": 6,
+      "scenario": "英文别名+NIL",
+      "passed": false,
+      "errors": [
+        "实体ID错误: '特斯拉' 期望NIL, 实际 ENT_ENERGY_0016"
+      ],
+      "warnings": [
+        "额外识别: '上海超级工厂' (ID: ENT_ENERGY_0015)"
+      ]
+    },
+    {
+      "text_idx": 7,
+      "scenario": "别名消歧(设施vs企业)",
+      "passed": false,
+      "errors": [
+        "遗漏实体: '三峡大坝' (期望ID: ENT_ENERGY_0012)"
+      ],
+      "warnings": [
+        "额外识别: '三峡' (ID: ENT_ENERGY_0012)"
+      ]
+    },
+    {
+      "text_idx": 8,
+      "scenario": "同名异义消歧",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: '金沙江' (ID: ENT_ENERGY_0008)"
+      ]
+    },
+    {
+      "text_idx": 9,
+      "scenario": "多候选消歧",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 10,
+      "scenario": "一字之差(华能vs华电)",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: '首' (ID: ENT_ENERGY_0003)"
+      ]
+    },
+    {
+      "text_idx": 11,
+      "scenario": "简称匹配",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 12,
+      "scenario": "简称+NIL",
+      "passed": false,
+      "errors": [
+        "遗漏实体: '中核集团' (期望ID: ENT_ENERGY_0034)",
+        "实体ID错误: '巴基斯坦' 期望NIL, 实际 ENT_ENERGY_0040"
+      ],
+      "warnings": [
+        "额外识别: '一号' (ID: ENT_ENERGY_0040)",
+        "额外识别: '华龙' (ID: ENT_ENERGY_0040)",
+        "额外识别: '中核' (ID: ENT_ENERGY_0034)"
+      ]
+    },
+    {
+      "text_idx": 13,
+      "scenario": "简称匹配(中核vs中广核)",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: '广东' (ID: ENT_ENERGY_0011)",
+        "额外识别: '百万千瓦' (ID: ENT_ENERGY_0011)",
+        "额外识别: '阳江' (ID: ENT_ENERGY_0011)"
+      ]
+    },
+    {
+      "text_idx": 14,
+      "scenario": "简称+语义验证",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 15,
+      "scenario": "简称匹配",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: '包头' (ID: ENT_ENERGY_0036)",
+        "额外识别: '乐山' (ID: ENT_ENERGY_0036)"
+      ]
+    },
+    {
+      "text_idx": 16,
+      "scenario": "标准名匹配",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 17,
+      "scenario": "标准名匹配",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: '欧洲' (ID: ENT_ENERGY_0038)",
+        "额外识别: '首' (ID: ENT_ENERGY_0038)",
+        "额外识别: '匈牙利' (ID: ENT_ENERGY_0038)"
+      ]
+    },
+    {
+      "text_idx": 18,
+      "scenario": "简称匹配",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 19,
+      "scenario": "简称+地名",
+      "passed": false,
+      "errors": [
+        "遗漏实体: '张北柔直' (期望ID: ENT_ENERGY_0041)",
+        "实体ID错误: '北京' 期望 ENT_ENERGY_0028, 实际 ENT_ENERGY_0041"
+      ],
+      "warnings": [
+        "额外识别: '张北' (ID: ENT_ENERGY_0041)"
+      ]
+    },
+    {
+      "text_idx": 20,
+      "scenario": "多实体+集合NIL",
+      "passed": false,
+      "errors": [
+        "遗漏实体: '两家央企' (期望ID: None)"
+      ],
+      "warnings": []
+    },
+    {
+      "text_idx": 21,
+      "scenario": "重复mention一致性",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: '深圳' (ID: ENT_ENERGY_0027)"
+      ]
+    },
+    {
+      "text_idx": 22,
+      "scenario": "企业+产品",
+      "passed": false,
+      "errors": [
+        "遗漏实体: '微信' (期望ID: ENT_GEN_0061)"
+      ],
+      "warnings": []
+    },
+    {
+      "text_idx": 23,
+      "scenario": "金融简称",
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "额外识别: '普惠' (ID: ENT_GEN_0056)"
+      ]
+    },
+    {
+      "text_idx": 24,
+      "scenario": "汽车简称",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 25,
+      "scenario": "政府机构",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 26,
+      "scenario": "教育机构",
+      "passed": false,
+      "errors": [
+        "遗漏实体: '清华大学' (期望ID: ENT_GEN_0060)"
+      ],
+      "warnings": [
+        "额外识别: '清华大学能源互联网研究院' (ID: ENT_ENERGY_0009)"
+      ]
+    },
+    {
+      "text_idx": 27,
+      "scenario": "NIL(KB有阳光电源但此为不同实体)",
+      "passed": false,
+      "errors": [
+        "实体ID错误: '阳光新能源' 期望NIL, 实际 ENT_ENERGY_0037"
+      ],
+      "warnings": []
+    },
+    {
+      "text_idx": 28,
+      "scenario": "NIL(实体不在KB)",
+      "passed": false,
+      "errors": [
+        "实体ID错误: '工信部' 期望NIL, 实际 ENT_GEN_0051"
+      ],
+      "warnings": [
+        "额外识别: '5G' (ID: ENT_GEN_0051)"
+      ]
+    },
+    {
+      "text_idx": 29,
+      "scenario": "非标别名召回",
+      "passed": false,
+      "errors": [
+        "遗漏实体: '塔拉滩光伏基地' (期望ID: ENT_ENERGY_0014)"
+      ],
+      "warnings": [
+        "额外识别: '塔拉滩' (ID: ENT_ENERGY_0014)",
+        "额外识别: '青海' (ID: ENT_ENERGY_0014)"
+      ]
+    },
+    {
+      "text_idx": 30,
+      "scenario": "子公司精确匹配",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 31,
+      "scenario": "标准名+语义",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 32,
+      "scenario": "简称+多业务",
+      "passed": false,
+      "errors": [
+        "遗漏实体: '远景' (期望ID: ENT_ENERGY_0033)"
+      ],
+      "warnings": []
+    },
+    {
+      "text_idx": 33,
+      "scenario": "设施匹配",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "text_idx": 34,
+      "scenario": "长文本多实体",
+      "passed": false,
+      "errors": [
+        "遗漏实体: '塔拉滩光伏基地' (期望ID: ENT_ENERGY_0014)",
+        "遗漏实体: '青海省共和县' (期望ID: ENT_ENERGY_0031)"
+      ],
+      "warnings": [
+        "额外识别: '青海省' (ID: ENT_ENERGY_0031)",
+        "额外识别: '共和县' (ID: ENT_ENERGY_0031)",
+        "额外识别: '塔拉滩' (ID: ENT_ENERGY_0014)"
+      ]
+    }
+  ]
+}

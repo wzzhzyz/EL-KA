@@ -1,0 +1,187 @@
+{
+  "timestamp": "2026-07-01T22:27:33.873379",
+  "config": {
+    "nil_threshold": 0.75,
+    "llm_trigger_threshold": 0.65,
+    "llm_enabled": false
+  },
+  "summary": {
+    "total": 15,
+    "passed": 6,
+    "failed": 9,
+    "pass_rate": "40.0%"
+  },
+  "failed_cases": [
+    {
+      "test_id": "DIS_001",
+      "text": "国网2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。",
+      "mention": "国网",
+      "scenario": "高置信-精确匹配+语义确认",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "国家电网有限公司",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.85,
+        1.0
+      ],
+      "actual_score": 0.8313331604003906,
+      "method": "bge",
+      "evidence": "BGE语义相似度: 0.831 (来源: alias_exact)",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.85, 1.00], 实际 0.83"
+    },
+    {
+      "test_id": "DIS_002",
+      "text": "CATL与特斯拉签订了新的供货协议，将为上海超级工厂提供下一代动力电池。",
+      "mention": "CATL",
+      "scenario": "高置信-英文别名+语义",
+      "expected_entity": "宁德时代新能源科技股份有限公司",
+      "actual_entity": "宁德时代新能源科技股份有限公司",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.8,
+        1.0
+      ],
+      "actual_score": 0.7584803700447083,
+      "method": "bge",
+      "evidence": "BGE语义相似度: 0.758 (来源: alias_exact)",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.80, 1.00], 实际 0.76"
+    },
+    {
+      "test_id": "DIS_004",
+      "text": "国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+      "mention": "国网",
+      "scenario": "中置信-多候选需消歧",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "源网荷储一体化",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.65,
+        0.85
+      ],
+      "actual_score": 0.8156350255012512,
+      "method": "bge",
+      "evidence": "BGE语义相似度: 0.816 (来源: vector)",
+      "error_type": "wrong_entity",
+      "error_message": "实体不匹配: 期望 国家电网有限公司, 实际 源网荷储一体化"
+    },
+    {
+      "test_id": "DIS_008",
+      "text": "囯网公司近日宣布在西北地区新建三条特高压输电线路，总投资超过800亿元。",
+      "mention": "囯网",
+      "scenario": "低置信-OCR容错兜底",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "特高压交流输电",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.5,
+        0.7
+      ],
+      "actual_score": 0.8207067251205444,
+      "method": "bge",
+      "evidence": "BGE语义相似度: 0.821 (来源: vector)",
+      "error_type": "wrong_entity",
+      "error_message": "实体不匹配: 期望 国家电网有限公司, 实际 特高压交流输电"
+    },
+    {
+      "test_id": "DIS_010",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "mention": "阳光新能源",
+      "scenario": "NIL-实体不在KB(高置信NIL)",
+      "expected_entity": "NIL",
+      "actual_entity": "阳光电源股份有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.45
+      ],
+      "actual_score": 0.8417762517929077,
+      "method": "bge",
+      "evidence": "BGE语义相似度: 0.842 (来源: vector)",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    },
+    {
+      "test_id": "DIS_011",
+      "text": "工信部发布了5G发展规划，相关负责人表示2026年将实现全国地级市全覆盖。",
+      "mention": "工信部",
+      "scenario": "NIL-实体不在KB",
+      "expected_entity": "NIL",
+      "actual_entity": "中国核工业集团有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.4
+      ],
+      "actual_score": 0.7666448354721069,
+      "method": "bge",
+      "evidence": "BGE语义相似度: 0.767 (来源: vector)",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    },
+    {
+      "test_id": "DIS_013",
+      "text": "两家央企均加大了新能源投资力度，预计2026年合计新增装机超过5000万千瓦。",
+      "mention": "两家央企",
+      "scenario": "NIL-集合指代",
+      "expected_entity": "NIL",
+      "actual_entity": "国家电力投资集团有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.4
+      ],
+      "actual_score": 0.8067118525505066,
+      "method": "bge",
+      "evidence": "BGE语义相似度: 0.807 (来源: vector)",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    },
+    {
+      "test_id": "DIS_014",
+      "text": "该企业表示将在2026年前完成首批煤电机组低碳化改造，涉及装机超过3000万千瓦。",
+      "mention": "该企业",
+      "scenario": "NIL-共指代词(应由coref模块处理)",
+      "expected_entity": "NIL",
+      "actual_entity": "中国华电集团有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.3
+      ],
+      "actual_score": 0.7723105549812317,
+      "method": "bge",
+      "evidence": "BGE语义相似度: 0.772 (来源: vector)",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    },
+    {
+      "test_id": "DIS_015",
+      "text": "国网新源今年新投产了两座抽水蓄能电站，总装机容量达到320万千瓦。",
+      "mention": "国网新源",
+      "scenario": "高置信-子公司精确匹配(验证popularity不覆盖)",
+      "expected_entity": "国网新源控股有限公司",
+      "actual_entity": "国网新源控股有限公司",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.85,
+        1.0
+      ],
+      "actual_score": 0.8360115885734558,
+      "method": "bge",
+      "evidence": "BGE语义相似度: 0.836 (来源: alias_exact)",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.85, 1.00], 实际 0.84"
+    }
+  ]
+}

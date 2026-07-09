@@ -1,0 +1,84 @@
+{
+  "timestamp": "2026-07-01T17:49:01.592981",
+  "total_failed": 6,
+  "failed_cases": [
+    {
+      "test_name": "NIL检测",
+      "mention": "国网",
+      "context": "国网是一家做电商的公司",
+      "expected": "NIL",
+      "actual": "国家电网有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "method": "bge",
+      "score": 0.8111271262168884,
+      "evidence": "BGE语义相似度: 0.811 (来源: vector)",
+      "error_message": ""
+    },
+    {
+      "test_name": "NIL检测",
+      "mention": "淘宝",
+      "context": "淘宝是中国最大的电商平台",
+      "expected": "NIL",
+      "actual": "北京市",
+      "expected_nil": true,
+      "actual_nil": false,
+      "method": "bge",
+      "score": 0.7740346193313599,
+      "evidence": "BGE语义相似度: 0.774 (来源: vector)",
+      "error_message": ""
+    },
+    {
+      "test_name": "单个候选实体",
+      "mention": "国网",
+      "context": "国网是做电商的",
+      "expected": "NIL",
+      "actual": "国家电网有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "method": "bge_single",
+      "score": 0.8131783604621887,
+      "evidence": "唯一候选且分数 0.813 >= 阈值 0.7",
+      "error_message": ""
+    },
+    {
+      "test_name": "边界情况",
+      "mention": "",
+      "context": "空mention",
+      "expected": "NIL",
+      "actual": "国家电网有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "method": "bge_single",
+      "score": 0.7046948671340942,
+      "evidence": "唯一候选且分数 0.705 >= 阈值 0.7",
+      "error_message": "边界情况失败: 空mention"
+    },
+    {
+      "test_name": "边界情况",
+      "mention": "国国国国国国国国国国国国国国国国国国国国",
+      "context": "超长mention",
+      "expected": "NIL",
+      "actual": "国家电网有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "method": "bge_single",
+      "score": 0.7244663238525391,
+      "evidence": "唯一候选且分数 0.724 >= 阈值 0.7",
+      "error_message": "边界情况失败: 超长mention"
+    },
+    {
+      "test_name": "批量消歧",
+      "mention": "国网",
+      "context": "国网发布2023年社会责任报告",
+      "expected": "国家电网有限公司",
+      "actual": "国家电网信通公司",
+      "expected_nil": false,
+      "actual_nil": false,
+      "method": "bge",
+      "score": 0.7936988472938538,
+      "evidence": "批量消歧失败: 期望 国家电网有限公司, 实际 国家电网信通公司",
+      "error_message": ""
+    }
+  ]
+}

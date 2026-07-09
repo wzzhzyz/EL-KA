@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-07-02T09:20:50.341049",
+  "config": {
+    "nil_threshold": 0.53,
+    "llm_trigger_threshold": 0.8,
+    "llm_enabled": true
+  },
+  "summary": {
+    "total": 15,
+    "passed": 11,
+    "failed": 4,
+    "pass_rate": "73.3%"
+  },
+  "failed_cases": [
+    {
+      "test_id": "DIS_004",
+      "text": "国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+      "mention": "国网",
+      "scenario": "中置信-多候选需消歧",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "国家电网有限公司",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.65,
+        0.85
+      ],
+      "actual_score": 0.95,
+      "method": "llm",
+      "evidence": "LLM选择: 根据上下文，'国网'在这里指的是推进源网荷储一体化建设的主体。国家电网有限公司（别名包括国网）是一个电网企业，并且是央企，符合上下文中描述的角色。其他候选实体要么类型不符，要么与提及的活动关联度较低。 (置信度: 0.95)",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.65, 0.85], 实际 0.95"
+    },
+    {
+      "test_id": "DIS_005",
+      "text": "三峡大坝今年汛期累计拦蓄洪水超过200亿立方米，充分发挥了防洪骨干作用。",
+      "mention": "三峡大坝",
+      "scenario": "中置信-需区分设施vs企业",
+      "expected_entity": "三峡水电站",
+      "actual_entity": "三峡水电站",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.7,
+        0.9
+      ],
+      "actual_score": 0.95,
+      "method": "llm",
+      "evidence": "LLM选择: 三峡大坝是三峡水电站的别名，且上下文提到其在汛期拦蓄洪水的作用，这与电力设施类型的三峡水电站的功能相匹配。 (置信度: 0.95)",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.70, 0.90], 实际 0.95"
+    },
+    {
+      "test_id": "DIS_006",
+      "text": "中核与中广核联合研发的华龙一号已成为中国核电走出去的名片。",
+      "mention": "中核",
+      "scenario": "中置信-一字之差消歧",
+      "expected_entity": "中国核工业集团有限公司",
+      "actual_entity": "中国核工业集团有限公司",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.65,
+        0.85
+      ],
+      "actual_score": 0.95,
+      "method": "llm",
+      "evidence": "LLM选择: 根据上下文，'中核'与'中广核'联合研发了华龙一号，而候选实体列表中的中国核工业集团有限公司（别名包括'中核'）是符合这一描述的发电企业，并且属于核力发电行业。 (置信度: 0.95)",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.65, 0.85], 实际 0.95"
+    },
+    {
+      "test_id": "DIS_010",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "mention": "阳光新能源",
+      "scenario": "NIL-实体不在KB(高置信NIL)",
+      "expected_entity": "NIL",
+      "actual_entity": "阳光电源股份有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.45
+      ],
+      "actual_score": 0.95,
+      "method": "llm",
+      "evidence": "LLM选择: 阳光电源股份有限公司的别名中包含'阳光'，且该公司专注于光伏逆变器和储能系统，与上下文中的描述完全匹配。 (置信度: 0.95)",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    }
+  ]
+}

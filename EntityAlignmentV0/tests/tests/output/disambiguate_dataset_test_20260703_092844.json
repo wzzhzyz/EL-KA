@@ -1,0 +1,93 @@
+{
+  "timestamp": "2026-07-03T09:28:44.962209",
+  "config": {
+    "nil_threshold": 0.45,
+    "llm_trigger_threshold": 0.65,
+    "llm_enabled": false,
+    "reranker_enabled": true
+  },
+  "summary": {
+    "total": 15,
+    "passed": 11,
+    "failed": 4,
+    "pass_rate": "73.3%"
+  },
+  "failed_cases": [
+    {
+      "test_id": "DIS_010",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "mention": "阳光新能源",
+      "scenario": "NIL-实体不在KB(高置信NIL)",
+      "expected_entity": "NIL",
+      "actual_entity": "阳光电源股份有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.45
+      ],
+      "actual_score": 0.9207018256187439,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.921",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    },
+    {
+      "test_id": "DIS_011",
+      "text": "工信部发布了5G发展规划，相关负责人表示2026年将实现全国地级市全覆盖。",
+      "mention": "工信部",
+      "scenario": "NIL-实体不在KB",
+      "expected_entity": "NIL",
+      "actual_entity": "微信",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.4
+      ],
+      "actual_score": 0.6427668571472168,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.643",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    },
+    {
+      "test_id": "DIS_013",
+      "text": "两家央企均加大了新能源投资力度，预计2026年合计新增装机超过5000万千瓦。",
+      "mention": "两家央企",
+      "scenario": "NIL-集合指代",
+      "expected_entity": "NIL",
+      "actual_entity": "国家能源投资集团有限责任公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.4
+      ],
+      "actual_score": 0.8599044919013976,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.860",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    },
+    {
+      "test_id": "DIS_014",
+      "text": "该企业表示将在2026年前完成首批煤电机组低碳化改造，涉及装机超过3000万千瓦。",
+      "mention": "该企业",
+      "scenario": "NIL-共指代词(应由coref模块处理)",
+      "expected_entity": "NIL",
+      "actual_entity": "比亚迪股份有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.3
+      ],
+      "actual_score": 0.4649622082710266,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.465",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "timestamp": "2026-07-05T15:32:31.534478",
+  "total_failed": 5,
+  "failed_cases": [
+    {
+      "test_id": "DIS_001",
+      "text": "国网2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。",
+      "mention": "国网",
+      "scenario": "高置信-精确匹配+语义确认",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "特高压直流输电",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.85,
+        1.0
+      ],
+      "actual_score": 0.962890625,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.963",
+      "error_type": "wrong_entity",
+      "error_message": "实体不匹配: 期望 国家电网有限公司, 实际 特高压直流输电",
+      "query": "[*]国网[/*]2024年在特高压直流输电技术方面取得重大突破，全年营收达到3.8万亿元。",
+      "doc": "实体ID：ENT_ENERGY_0018；标准名称：特高压直流输电；别名：['UHVDC', '特高压直流', '±800kV直流', 'Ultra-High Voltage DC']；描述：±800kV及以上电压等级的直流输电技术，具有远距离、大容量、低损耗的优势，是西电东送战略的核心技术。；entity_type_display：专业术语；industry：输电技术；abbreviation：UHVDC；summary：±800kV及以上电压等级的直流输电技术，具有远距离、大容量、低损耗的优势，是西电东送战略的核心技术。；business：大规模远距离输电、跨区电网互联、清洁能源外送。；location：{'country': '', 'province': '', 'city': '', 'address': ''}；keywords：输电、直流、西电东送、±800kV、换流站；source：{'source_name': '电力行业术语标准', 'publisher': '中国电力企业联合会', 'url': 'https://www.cec.org.cn', 'crawl_time': '2025-06-01', 'license': '行业标准', 'confidence': 1.0}；tags：特高压、直流输电、西电东送、清洁能源；relations：{'target': 'ENT_ENERGY_0019', 'relation': '互补技术', 'direction': 'bidirectional', 'confidence': 1.0, 'note': '直流输电、交流组网互补配合'}；ambiguity_level：base；shared_aliases：；update_time：2026-06-20；evidence：{}",
+      "candidates_info": "国家电网有限公司(0.698); 特高压直流输电(0.644); 中国南方电网有限责任公司(0.619); 特高压交流输电(0.613); 国网新源控股有限公司(0.608)"
+    },
+    {
+      "test_id": "DIS_004",
+      "text": "国网大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+      "mention": "国网",
+      "scenario": "中置信-多候选需消歧",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "源网荷储一体化",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.65,
+        0.85
+      ],
+      "actual_score": 0.953125,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.953",
+      "error_type": "wrong_entity",
+      "error_message": "实体不匹配: 期望 国家电网有限公司, 实际 源网荷储一体化",
+      "query": "[*]国网[/*]大力推进源网荷储一体化建设，在多个省份开展了试点示范项目。",
+      "doc": "实体ID：ENT_ENERGY_0024；标准名称：源网荷储一体化；别名：['源网荷储', '源-网-荷-储', 'Source-Grid-Load-Storage']；描述：将电源、电网、负荷、储能四个环节统筹规划和协调运行，提升电力系统整体效率和可靠性。；entity_type_display：专业术语；industry：电力系统；abbreviation：源网荷储；summary：将电源、电网、负荷、储能四个环节统筹规划和协调运行，提升电力系统整体效率和可靠性。；business：电源侧灵活调节、电网侧智能调度、负荷侧需求响应、储能侧调峰填谷。；location：{'country': '', 'province': '', 'city': '', 'address': ''}；keywords：电力系统、储能、智能电网、需求响应、灵活调节；source：{'source_name': '国家能源局政策文件', 'publisher': '国家能源局', 'url': 'https://www.nea.gov.cn', 'crawl_time': '2025-06-01', 'license': '公开数据', 'confidence': 1.0}；tags：智能电网、储能、新能源、分布式能源；relations：{'target': 'ENT_ENERGY_0021', 'relation': '组成部分', 'direction': 'outgoing', 'confidence': 1.0, 'note': '源网荷储是新型电力系统的核心架构'}；ambiguity_level：base；shared_aliases：；update_time：2026-06-20；evidence：{}",
+      "candidates_info": "源网荷储一体化(0.725); 国家电网有限公司(0.698); 国网新源控股有限公司(0.687); 国网能源研究院有限公司(0.648); 中国南方电网有限责任公司(0.629)"
+    },
+    {
+      "test_id": "DIS_006",
+      "text": "中核与中广核联合研发的华龙一号已成为中国核电走出去的名片。",
+      "mention": "中核",
+      "scenario": "中置信-一字之差消歧",
+      "expected_entity": "中国核工业集团有限公司",
+      "actual_entity": "中国核工业集团有限公司",
+      "expected_nil": false,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.65,
+        0.85
+      ],
+      "actual_score": 0.984375,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.984",
+      "error_type": "score_out_of_range",
+      "error_message": "分数超出范围: 期望 [0.65, 0.85], 实际 0.98",
+      "query": "[*]中核[/*]与中广核联合研发的华龙一号已成为中国核电走出去的名片。",
+      "doc": "实体ID：ENT_ENERGY_0034；标准名称：中国核工业集团有限公司；别名：['中核集团', '中国核工业', '中核', 'CNNC', '中核工业']；描述：中国最大的核电运营商之一，覆盖核工业全产业链。；entity_type_display：发电企业；industry：核力发电；abbreviation：中核；summary：中国最大的核电运营商之一，覆盖核工业全产业链。；business：核电站投资建设运营、铀矿开采核燃料加工、核技术应用、新能源开发。；location：{'country': '中国', 'province': '北京市', 'city': '北京市', 'address': '西城区'}；keywords：核电、核燃料、核技术、铀矿、新能源；source：{'source_name': '工商注册信息', 'publisher': '国家市场监督管理总局', 'url': 'https://www.samr.gov.cn', 'crawl_time': '2025-03-15', 'license': '公开数据', 'confidence': 1.0}；tags：央企、核电、清洁能源、行业龙头；relations：{'target': 'ENT_ENERGY_0011', 'relation': '竞争对手', 'direction': 'bidirectional', 'confidence': 1.0, 'note': '中国两大核电运营商'}；ambiguity_level：base；shared_aliases：；update_time：2026-06-26；evidence：{}",
+      "candidates_info": "中国核工业集团有限公司(0.700); 华龙一号核电机组(0.666); 中国广核集团有限公司(0.643); 中芯国际集成电路制造有限公司(0.603); 中国华电集团有限公司(0.598)"
+    },
+    {
+      "test_id": "DIS_008",
+      "text": "囯网公司近日宣布在西北地区新建三条特高压输电线路，总投资超过800亿元。",
+      "mention": "囯网",
+      "scenario": "低置信-OCR容错兜底",
+      "expected_entity": "国家电网有限公司",
+      "actual_entity": "NIL",
+      "expected_nil": false,
+      "actual_nil": true,
+      "expected_score_range": [
+        0.5,
+        0.7
+      ],
+      "actual_score": 0.7421875,
+      "method": "nil",
+      "evidence": "NIL: 最高分 0.742, 次高分 0.430",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=False, 实际NIL=True",
+      "query": "[*]囯网[/*]公司近日宣布在西北地区新建三条特高压输电线路，总投资超过800亿元。",
+      "doc": "实体ID：ENT_ENERGY_0001；标准名称：国家电网有限公司；别名：['国家电网', '国网', 'State Grid Corporation of China', '电网公司', '国家电网公司', 'SGCC', '国家电力公司', '囯网', '国家电网有 限公司', '国网公司']；描述：全球最大的公用事业企业，负责中国26个省区的电网建设、运营和电力供应。；entity_type_display：电网企业；industry：电力输配；abbreviation：国网；summary：全球最大的公用事业企业，负责中国26个省区的电网建设、运营和电力供应。；business：电网投资建设与运营管理、电力购销与调度、特高压与智能电网技术研发、抽水蓄能与新能源并网服务。；location：{'country': '中国', 'province': '北京市', 'city': '北京市', 'address': '西城区西长安街86号'}；keywords：电力、输配电、特高压、智能电网、电网建设、售电、新能源并网；source：{'source_name': '工商注册信息', 'publisher': '国家市场监督管理总局', 'url': 'https://www.samr.gov.cn', 'crawl_time': '2025-03-15', 'license': '公开数据', 'confidence': 1.0}；tags：央企、世界500强、输电、配电、特高压；relations：{'target': 'ENT_ENERGY_0002', 'relation': '竞争对手', 'direction': 'bidirectional', 'confidence': 1.0, 'note': '南北电网分区经营，业务无重叠'}、{'target': 'ENT_ENERGY_0009', 'relation': '母公司', 'direction': 'outgoing', 'confidence': 1.0, 'note': '国网能源研究院为全资子公司'}、{'target': 'ENT_ENERGY_0010', 'relation': '母公司', 'direction': 'outgoing', 'confidence': 1.0, 'note': '国网新源控股为抽水蓄能专业化子公司'}；ambiguity_level：base；shared_aliases：；update_time：2026-06-20；evidence：{}",
+      "candidates_info": "国家电网有限公司(0.655); 中国南方电网有限责任公司(0.611); 特高压交流输电(0.595); 西电东送(0.591); 特高压直流输电(0.586)"
+    },
+    {
+      "test_id": "DIS_010",
+      "text": "阳光新能源是一家专注于光伏逆变器和储能系统的创新企业。",
+      "mention": "阳光新能源",
+      "scenario": "NIL-实体不在KB(高置信NIL)",
+      "expected_entity": "NIL",
+      "actual_entity": "阳光电源股份有限公司",
+      "expected_nil": true,
+      "actual_nil": false,
+      "expected_score_range": [
+        0.0,
+        0.45
+      ],
+      "actual_score": 0.9873046875,
+      "method": "reranker",
+      "evidence": "RERANKER 精排: 0.987",
+      "error_type": "nil_mismatch",
+      "error_message": "NIL状态不匹配: 期望NIL=True, 实际NIL=False",
+      "query": "[*]阳光新能源[/*]是一家专注于光伏逆变器和储能系统的创新企业。",
+      "doc": "实体ID：ENT_ENERGY_0037；标准名称：阳光电源股份有限公司；别名：['阳光电源', '阳光', 'Sungrow Power']；描述：全球领先的光伏逆变器和储能系统供应商，逆变器出货量全球第一。；entity_type_display：新能源企业；industry：光伏逆变器+储能；abbreviation：阳光电源；summary：全球领先的光伏逆变器和储能系统供应商，逆变器出货量全球第一。；business：光伏逆变器研发制造、储能系统集成、电站投资开发、电驱动系统。；location：{'country': '中国', 'province': '安徽省', 'city': '合肥市', 'address': '高新区'}；keywords：光伏逆变器、储能、电站、电力电子；source：{'source_name': '工商注册信息', 'publisher': '国家市场监督管理总局', 'url': 'https://www.samr.gov.cn', 'crawl_time': '2025-03-15', 'license': '公开数据', 'confidence': 1.0}；tags：民营企业、上市公司、光伏、储能、清洁能源、行业龙头；relations：；ambiguity_level：base；shared_aliases：；update_time：2026-06-26；evidence：{}",
+      "candidates_info": "阳光电源股份有限公司(0.747); 国网新源控股有限公司(0.607); 远景能源有限公司(0.604); 天合光能股份有限公司(0.600); 隆基绿能科技股份有限公司(0.594)"
+    }
+  ]
+}

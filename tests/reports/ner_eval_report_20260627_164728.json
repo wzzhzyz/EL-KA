@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-06-27T16:47:28.752619",
+  "dataset": {
+    "path": "E:\\Code\\Python\\PycharmProjects\\EntityAlignmentV0\\data\\eval_dataset.json",
+    "metadata": {}
+  },
+  "stats": {
+    "total_mentions": 0,
+    "success": 0,
+    "partial": 0,
+    "missed": 0,
+    "type_error": 0,
+    "error": 0,
+    "success_rate": 0,
+    "recall": 0,
+    "by_scenario": {},
+    "by_difficulty": {}
+  },
+  "details": []
+}

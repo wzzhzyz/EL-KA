@@ -1,0 +1,81 @@
+{
+  "config": {
+    "nil_threshold": 0.8,
+    "llm_trigger_threshold": 0.65,
+    "llm_enabled": true
+  },
+  "summary": {
+    "total": 8,
+    "passed": 4,
+    "failed": 4,
+    "pass_rate": "50.0%"
+  },
+  "stats": {
+    "bge_calls": 19,
+    "llm_calls": 0,
+    "llm_cache_hits": 0,
+    "llm_errors": 0,
+    "avg_llm_time": 0.0,
+    "cache_size": 0,
+    "nil_by_bge": 2,
+    "nil_by_llm": 0
+  },
+  "results": [
+    {
+      "test_name": "基础消歧功能",
+      "passed": true,
+      "message": "",
+      "details": {},
+      "timestamp": "2026-07-01T09:57:42.808343"
+    },
+    {
+      "test_name": "NIL检测",
+      "passed": false,
+      "message": "",
+      "details": {},
+      "timestamp": "2026-07-01T09:57:42.862700"
+    },
+    {
+      "test_name": "单个候选实体",
+      "passed": false,
+      "message": "",
+      "details": {},
+      "timestamp": "2026-07-01T09:57:42.881449"
+    },
+    {
+      "test_name": "无候选实体",
+      "passed": true,
+      "message": "",
+      "details": {},
+      "timestamp": "2026-07-01T09:57:42.881449"
+    },
+    {
+      "test_name": "LLM触发测试",
+      "passed": false,
+      "message": "",
+      "details": {},
+      "timestamp": "2026-07-01T09:57:42.897521"
+    },
+    {
+      "test_name": "缓存机制",
+      "passed": false,
+      "message": "缓存未命中",
+      "details": {},
+      "timestamp": "2026-07-01T09:57:42.923582"
+    },
+    {
+      "test_name": "边界情况",
+      "passed": true,
+      "message": "",
+      "details": {},
+      "timestamp": "2026-07-01T09:57:42.998893"
+    },
+    {
+      "test_name": "批量消歧",
+      "passed": true,
+      "message": "处理 4 个mention, 平均耗时 0.016s",
+      "details": {},
+      "timestamp": "2026-07-01T09:57:43.061357"
+    }
+  ]
+}
