@@ -1,0 +1,46 @@
+{
+  "new_entities": [
+    {
+      "entity_id": "ENT_SAMPLE_9001",
+      "entity_name": "示例新能源科技有限公司",
+      "aliases": [
+        "示例新能源",
+        {
+          "name": "Example New Energy",
+          "alias_type": "英文",
+          "priority": 0.65,
+          "confidence": 0.8
+        }
+      ],
+      "abbreviation": "示例新能源",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "entity_type_display": "新能源企业",
+      "industry": "新能源服务",
+      "summary": "用于演示知识库批量扩充脚本的新实体样例，不建议直接写入正式知识库。",
+      "business": "新能源项目咨询、储能系统集成、园区能效优化。",
+      "location": {
+        "country": "中国",
+        "province": "江苏省",
+        "city": "南京市",
+        "address": ""
+      },
+      "keywords": ["新能源", "储能", "园区能效"],
+      "tags": ["新能源", "示例数据"],
+      "ambiguity_level": "sample"
+    }
+  ],
+  "alias_updates": [
+    {
+      "entity_id": "ENT_GEN_0052",
+      "aliases": [
+        "腾讯控股集团",
+        {
+          "name": "Tencent Holdings",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ]
+    }
+  ]
+}

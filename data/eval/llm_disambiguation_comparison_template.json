@@ -1,0 +1,73 @@
+{
+  "template_name": "llm_disambiguation_comparison_template",
+  "version": "1.0",
+  "purpose": "记录同一疑难样本在 LLM 兜底前后的实体消歧结果、证据和人工复核结论。",
+  "fields": {
+    "case_id": "样本ID，对应 data/eval/llm_fallback_difficult_cases.json",
+    "text": "原始文本",
+    "mention": "已识别实体指称",
+    "candidate_entity_ids": "候选实体ID列表",
+    "gold_entity_id": "人工标注标准实体ID；NIL则为空",
+    "expected_nil": "人工标注是否NIL",
+    "baseline": {
+      "entity_id": "LLM兜底前的预测实体ID",
+      "confidence": "LLM兜底前置信度",
+      "method": "baseline方法，例如 alias_exact / alias_fuzzy / bge / fallback_rule",
+      "evidence": "baseline判定证据",
+      "is_correct": "baseline是否正确"
+    },
+    "llm_fallback": {
+      "enabled": "是否启用LLM兜底",
+      "trigger_reason": "触发原因，例如 low_score / small_margin / nil_candidate",
+      "entity_id": "LLM兜底后的预测实体ID",
+      "confidence": "LLM兜底置信度",
+      "reasoning_summary": "LLM输出的简要证据摘要，不记录完整长推理",
+      "is_correct": "LLM兜底后是否正确"
+    },
+    "delta": {
+      "changed": "前后结果是否发生变化",
+      "improvement_type": "corrected_wrong_entity / corrected_nil / unchanged_correct / unchanged_wrong / regression",
+      "confidence_delta": "LLM后置信度 - baseline置信度"
+    },
+    "review": {
+      "reviewer": "复核人",
+      "review_status": "accepted / rejected / pending",
+      "notes": "人工备注和后续处理建议"
+    }
+  },
+  "records": [
+    {
+      "case_id": "LLM_HARD_001",
+      "text": "国网在西北地区推进跨区输电通道扩容，并协调多省调度中心开展联合演练。",
+      "mention": "国网",
+      "candidate_entity_ids": ["ENT_ENERGY_0001", "ENT_ENERGY_0009", "ENT_ENERGY_0010"],
+      "gold_entity_id": "ENT_ENERGY_0001",
+      "expected_nil": false,
+      "baseline": {
+        "entity_id": "",
+        "confidence": null,
+        "method": "",
+        "evidence": "",
+        "is_correct": null
+      },
+      "llm_fallback": {
+        "enabled": true,
+        "trigger_reason": "low_score_or_small_margin",
+        "entity_id": "",
+        "confidence": null,
+        "reasoning_summary": "",
+        "is_correct": null
+      },
+      "delta": {
+        "changed": null,
+        "improvement_type": "",
+        "confidence_delta": null
+      },
+      "review": {
+        "reviewer": "欧小红",
+        "review_status": "pending",
+        "notes": ""
+      }
+    }
+  ]
+}
