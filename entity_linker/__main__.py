@@ -54,7 +54,15 @@ def build_parser() -> argparse.ArgumentParser:
 
     parser.add_argument("--trace-id", help="单条文本的 trace_id；批量时作为前缀使用")
     parser.add_argument(
-        "--enable-coreference", action="store_true", help="保留共指占位步骤"
+        "--enable-coreference", action="store_true", help="启用共指回链步骤"
+    )
+    parser.add_argument(
+        "--enable-ner",
+        action="store_true",
+        help="当未显式提供 mentions 时，允许执行 NER 提取",
+    )
+    parser.add_argument(
+        "--mentions-json", help="可选：JSON 文件，包含已识别的 mentions"
     )
     parser.add_argument("--output", help="将结果保存为 JSON 文件")
     return parser
@@ -64,9 +72,19 @@ def main() -> int:
     args = build_parser().parse_args()
     pipeline = EntityLinkingPipeline()
 
-    options = {"enable_coreference": args.enable_coreference}
+    options = {
+        "enable_coreference": args.enable_coreference,
+        "allow_ner_fallback": args.enable_ner,
+    }
+
+    mentions = None
+    if args.mentions_json:
+        with Path(args.mentions_json).open("r", encoding="utf-8") as handle:
+            mentions = json.load(handle)
 
     if args.text is not None:
+        if mentions is not None:
+            options["mentions"] = mentions if isinstance(mentions, list) else [mentions]
         result = pipeline.run(args.text, options=options, trace_id=args.trace_id)
         rendered = json.dumps(result, ensure_ascii=False, indent=2)
     elif args.texts is not None:

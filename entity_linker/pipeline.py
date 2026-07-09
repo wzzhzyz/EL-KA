@@ -337,6 +337,12 @@ class EntityLinkingPipeline:
         self.backend = "local"
 
     def _resolve_local_kb_path(self) -> Path:
+        configured_kb = self.config.get("kb_path")
+        if configured_kb:
+            existing = self._resolve_existing_path([configured_kb])
+            if existing:
+                return Path(existing)
+
         candidate_paths = [
             self.project_root / "data" / "kb" / "energy_entities.json",
             self.project_root / "data" / "kb.json",
@@ -353,12 +359,127 @@ class EntityLinkingPipeline:
             return repo_path
         return None
 
+    def _reload_kb_if_needed(self, options: Dict[str, Any]) -> None:
+        kb_path = options.get("kb_path")
+        if not kb_path:
+            return
+
+        resolved = self._resolve_existing_path([kb_path])
+        if not resolved:
+            raise PipelineError(f"指定的知识库文件不存在: {kb_path}")
+
+        if self.backend == "local":
+            self.kb = _LocalKnowledgeBase(Path(resolved))
+            self.ner = _FallbackNEREngine(self.kb)
+            self.candidate_gen = _FallbackCandidateGenerator(self.kb)
+            logger.info("已按请求加载本地知识库: %s", resolved)
+            return
+
+        if self.backend == "entity_alignment":
+            self.config["kb_path"] = resolved
+            try:
+                self._init_entity_alignment_components()
+                logger.info("已按请求重新加载 EntityAlignmentV0 知识库: %s", resolved)
+            except Exception as exc:
+                raise PipelineError(
+                    f"按请求重新加载 EntityAlignmentV0 知识库失败: {exc}"
+                ) from exc
+
+    def _read_entity_alignment_project_config(self) -> Dict[str, Any]:
+        config_path = self.project_root / "EntityAlignmentV0" / "config.yaml"
+        if not config_path.exists():
+            return {}
+        try:
+            import yaml
+        except ImportError:
+            logger.warning("PyYAML 未安装，跳过读取 EntityAlignmentV0/config.yaml")
+            return {}
+
+        try:
+            with config_path.open("r", encoding="utf-8") as handle:
+                data = yaml.safe_load(handle) or {}
+            return data if isinstance(data, dict) else {}
+        except Exception as exc:
+            logger.warning(
+                "读取 EntityAlignmentV0/config.yaml 失败，将使用默认配置: %s",
+                exc,
+            )
+            return {}
+
+    def _resolve_existing_path(self, candidates: Sequence[Path | str]) -> Optional[str]:
+        for candidate in candidates:
+            if candidate is None:
+                continue
+            path = candidate if isinstance(candidate, Path) else Path(str(candidate))
+            if not path.is_absolute():
+                path = self.project_root / path
+            if path.exists():
+                return str(path)
+        return None
+
     def _build_entity_alignment_config(self) -> Dict[str, Any]:
-        bge_path = self.config.get(
-            "bge_model_path",
-            str(self.project_root / "data" / "bge-small-zh"),
+        entity_alignment_cfg = self.config.get("entity_alignment", {}) or {}
+        project_cfg = self._read_entity_alignment_project_config()
+        project_disambiguator = project_cfg.get("disambiguator", {}) or {}
+        project_llm = project_cfg.get("llm_fallback", {}) or {}
+        user_disambiguator = entity_alignment_cfg.get("disambiguator", {}) or {}
+        user_llm = entity_alignment_cfg.get("llm_fallback", {}) or {}
+
+        bge_candidates = [
+            entity_alignment_cfg.get("bge_model_path"),
+            entity_alignment_cfg.get("model_path"),
+            project_cfg.get("bge_model_path"),
+            self.config.get("bge_model_path"),
+            self.project_root
+            / "EntityAlignmentV0"
+            / "models_cache"
+            / "bge-large-zh-v1.5",
+            self.project_root / "EntityAlignmentV0" / "models_cache" / "bge-small-zh",
+            self.project_root / "data" / "bge-large-zh-v1.5",
+            self.project_root / "data" / "bge-small-zh",
+        ]
+        bge_path = self._resolve_existing_path(bge_candidates)
+        if bge_path is None:
+            bge_path = str(
+                entity_alignment_cfg.get("bge_model_path")
+                or entity_alignment_cfg.get("model_path")
+                or project_cfg.get("bge_model_path")
+                or self.config.get("bge_model_path")
+                or self.project_root
+                / "EntityAlignmentV0"
+                / "models_cache"
+                / "bge-large-zh-v1.5"
+            )
+
+        reranker_model_path = self._resolve_existing_path(
+            [
+                entity_alignment_cfg.get("reranker_model_path"),
+                project_cfg.get("reranker_model_path"),
+                self.project_root
+                / "EntityAlignmentV0"
+                / "models_cache"
+                / "bge-reranker-large",
+                self.project_root
+                / "EntityAlignmentV0"
+                / "models_cache"
+                / "bge-reranker-base",
+            ]
+        ) or str(
+            entity_alignment_cfg.get("reranker_model_path")
+            or project_cfg.get("reranker_model_path")
+            or self.project_root
+            / "EntityAlignmentV0"
+            / "models_cache"
+            / "bge-reranker-large"
         )
-        return {
+
+        llm_fallback_cfg = {
+            "enabled": False,
+            **(project_llm or {}),
+            **(user_llm or {}),
+        }
+
+        config = {
             "knowledge_base": {
                 "type": "json",
                 "path": str(
@@ -367,10 +488,46 @@ class EntityLinkingPipeline:
             },
             "bge_model_path": bge_path,
             "disambiguator": {
-                "nil_threshold": self.config.get("nil_threshold", 0.65),
+                "nil_threshold": self.config.get(
+                    "nil_threshold",
+                    user_disambiguator.get(
+                        "nil_threshold",
+                        project_disambiguator.get("nil_threshold", 0.65),
+                    ),
+                ),
+                "bge_llm_trigger_threshold": self.config.get(
+                    "bge_llm_trigger_threshold",
+                    user_disambiguator.get(
+                        "bge_llm_trigger_threshold",
+                        project_disambiguator.get("bge_llm_trigger_threshold", 0.55),
+                    ),
+                ),
             },
-            "llm_fallback": {"enabled": False},
+            "reranker_enabled": entity_alignment_cfg.get(
+                "reranker_enabled",
+                project_cfg.get("reranker_enabled", False),
+            ),
+            "reranker_model_path": reranker_model_path,
+            "reranker_top_k": entity_alignment_cfg.get(
+                "reranker_top_k",
+                project_cfg.get("reranker_top_k", 6),
+            ),
+            "reranker_weight": entity_alignment_cfg.get(
+                "reranker_weight",
+                project_cfg.get("reranker_weight", 0.7),
+            ),
+            "bge_reranker_weight": entity_alignment_cfg.get(
+                "bge_reranker_weight",
+                project_cfg.get("bge_reranker_weight", 0.3),
+            ),
+            "llm_fallback": llm_fallback_cfg,
         }
+        logger.info(
+            "已读取 EntityAlignmentV0 配置，使用 BGE 模型路径: %s，Reranker: %s",
+            config["bge_model_path"],
+            config["reranker_enabled"],
+        )
+        return config
 
     def _init_entity_alignment_components(self) -> None:
         src_path = self._resolve_entity_alignment_src_path()
@@ -428,6 +585,18 @@ class EntityLinkingPipeline:
         options = options or {}
         trace_id = trace_id or options.get("trace_id") or new_trace_id()
         with trace_context(trace_id):
+            self._reload_kb_if_needed(options)
+            mentions = options.get("mentions") or []
+            if mentions:
+                return self.run_with_mentions(
+                    text=text,
+                    mentions=mentions,
+                    options=options,
+                    trace_id=trace_id,
+                    conn=conn,
+                    insert_run=False,
+                )
+
             self.db.insert_pipeline_run(
                 run_id=trace_id,
                 task_name="entity_linking",
@@ -436,6 +605,7 @@ class EntityLinkingPipeline:
                     "backend": self.backend,
                     "options": options,
                     "mode": "single",
+                    "input_contract": "text_with_mentions",
                 },
                 conn=conn,
             )
@@ -444,14 +614,36 @@ class EntityLinkingPipeline:
                 "pipeline_start",
                 "running",
                 "开始实体链接",
-                {"text_length": len(text)},
+                {
+                    "text_length": len(text),
+                    "input_contract": "text_with_mentions",
+                    "allow_ner_fallback": bool(
+                        options.get("allow_ner_fallback", False)
+                    ),
+                },
                 conn=conn,
             )
 
             try:
-                result = self._run_single(
-                    text=text, options=options, trace_id=trace_id, conn=conn
-                )
+                if options.get("allow_ner_fallback", False):
+                    result = self._run_single(
+                        text=text, options=options, trace_id=trace_id, conn=conn
+                    )
+                else:
+                    result = {
+                        "trace_id": trace_id,
+                        "text": text,
+                        "results": [],
+                        "stats": {
+                            "total_mentions": 0,
+                            "linked": 0,
+                            "nil": 0,
+                            "coreference_resolved": 0,
+                        },
+                        "backend": self.backend,
+                        "input_mode": "provided_mentions_required",
+                        "message": "未提供 mentions，且未开启 NER fallback",
+                    }
                 self.db.update_pipeline_run(
                     run_id=trace_id,
                     status="success",
@@ -521,27 +713,29 @@ class EntityLinkingPipeline:
         options: Optional[Dict[str, Any]] = None,
         trace_id: Optional[str] = None,
         conn: sqlite3.Connection | None = None,
+        insert_run: bool = True,
     ) -> Dict[str, Any]:
         options = options or {}
         trace_id = trace_id or options.get("trace_id") or new_trace_id()
         with trace_context(trace_id):
-            self.db.insert_pipeline_run(
-                run_id=trace_id,
-                task_name="entity_linking_mentions",
-                status="running",
-                metadata={
-                    "backend": self.backend,
-                    "options": options,
-                    "mode": "with_mentions",
-                },
-                conn=conn,
-            )
+            if insert_run:
+                self.db.insert_pipeline_run(
+                    run_id=trace_id,
+                    task_name="entity_linking_mentions",
+                    status="running",
+                    metadata={
+                        "backend": self.backend,
+                        "options": options,
+                        "mode": "with_mentions",
+                    },
+                    conn=conn,
+                )
             self._record_stage(
                 trace_id,
                 "pipeline_start",
                 "running",
                 "开始实体链接(已有mention)",
-                {"mention_count": len(mentions)},
+                {"mention_count": len(mentions), "input_mode": "provided_mentions"},
                 conn=conn,
             )
 
@@ -614,6 +808,7 @@ class EntityLinkingPipeline:
             {
                 "mention_count": len(mention_objs),
                 "mentions": [m.to_dict() for m in mention_objs[:20]],
+                "input_mode": "ner_extracted",
             },
             conn=conn,
         )
@@ -696,7 +891,7 @@ class EntityLinkingPipeline:
                 field="mention",
                 old_value="",
                 new_value=mention_obj.mention,
-                reason="NER 抽取",
+                reason="provided_mentions" if options.get("mentions") else "NER 抽取",
                 actor="ner",
                 conn=conn,
             )
@@ -746,6 +941,11 @@ class EntityLinkingPipeline:
                     is_nil=True,
                 )
                 result["mention_id"] = mention_id
+                result["link_basis"] = {
+                    "reason": "no_candidates",
+                    "evidence": "无候选实体",
+                    "source": "candidate_generation",
+                }
                 results.append(result)
                 link_result_id = self.db.insert_link_result(
                     mention_id=mention_id,
@@ -808,6 +1008,11 @@ class EntityLinkingPipeline:
                 result["method"] = disambiguation_result.get("method", "disambiguation")
                 result["candidate_count"] = len(candidates)
                 result["candidates"] = candidate_summary
+                result["link_basis"] = {
+                    "reason": "nil_threshold",
+                    "evidence": disambiguation_result.get("evidence", ""),
+                    "source": "disambiguation",
+                }
                 results.append(result)
                 link_result_id = self.db.insert_link_result(
                     mention_id=mention_id,
@@ -847,6 +1052,13 @@ class EntityLinkingPipeline:
             result["method"] = disambiguation_result.get("method", "disambiguation")
             result["candidate_count"] = len(candidates)
             result["candidates"] = candidate_summary
+            result["link_basis"] = {
+                "reason": "entity_selected",
+                "entity_id": entity.entity_id,
+                "standard_name": entity.standard_name,
+                "evidence": disambiguation_result.get("evidence", ""),
+                "source": "disambiguation",
+            }
             results.append(result)
             link_result_id = self.db.insert_link_result(
                 mention_id=mention_id,
@@ -892,7 +1104,9 @@ class EntityLinkingPipeline:
                 {
                     "input_count": len(results),
                     "resolved_count": after_resolved - before_resolved,
-                    "nil_threshold": float(options.get("coreference_nil_threshold", 0.55)),
+                    "nil_threshold": float(
+                        options.get("coreference_nil_threshold", 0.55)
+                    ),
                 },
                 conn=conn,
             )
@@ -921,6 +1135,7 @@ class EntityLinkingPipeline:
             "results": results,
             "stats": stats,
             "backend": self.backend,
+            "input_mode": "provided_mentions",
         }
 
     def _disambiguate_mention(

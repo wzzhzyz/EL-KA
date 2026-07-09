@@ -19,6 +19,7 @@ from .models import (
 )
 from .pipeline import EntityLinkingPipeline, Pipeline
 from .ports import CandidateGeneratorPort, DisambiguatorPort, KnowledgeBasePort, NERPort
+from .registry import AgentRegistry, registry
 from .utils import (
     ValidationError,
     assert_in_choices,
@@ -57,6 +58,8 @@ __all__ = [
     "KnowledgeBasePort",
     "CandidateGeneratorPort",
     "DisambiguatorPort",
+    "AgentRegistry",
+    "registry",
     "BGERankingInput",
     "BGERankingOutput",
     "build_query_text",
