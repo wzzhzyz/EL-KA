@@ -97,7 +97,7 @@
           "type": "ORG",
           "sentence_index": 3,
           "role": "name",
-          "entity_id": "ENT_GEN_0053",
+          "entity_id": "ENT_GEN_0052",
           "standard_entity": "腾讯控股有限公司"
         },
         {
@@ -120,7 +120,7 @@
         },
         {
           "mention_index": 5,
-          "entity_id": "ENT_GEN_0053",
+          "entity_id": "ENT_GEN_0052",
           "is_nil": false
         }
       ]
