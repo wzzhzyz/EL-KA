@@ -1,0 +1,1487 @@
+{
+  "new_entities": [
+    {
+      "entity_id": "ENT_GEN_0064",
+      "entity_name": "北京大学",
+      "aliases": [
+        "北大",
+        {
+          "name": "Peking University",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "PKU"
+      ],
+      "abbreviation": "北大",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "entity_type_display": "教育机构",
+      "industry": "高等教育",
+      "summary": "中国综合性研究型大学，常见简称为北大。",
+      "business": "高等教育、科学研究、社会服务与国际交流。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "海淀区"
+      },
+      "keywords": [
+        "大学",
+        "高等教育",
+        "科研",
+        "985",
+        "211"
+      ],
+      "tags": [
+        "教育",
+        "985",
+        "211"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0065",
+      "entity_name": "上海交通大学",
+      "aliases": [
+        "上海交大",
+        {
+          "name": "Shanghai Jiao Tong University",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "SJTU"
+      ],
+      "abbreviation": "上海交大",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "entity_type_display": "教育机构",
+      "industry": "高等教育",
+      "summary": "位于上海的综合性研究型大学。",
+      "business": "人才培养、科学研究、技术转化与国际合作。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": "闵行区"
+      },
+      "keywords": [
+        "大学",
+        "工程",
+        "医学",
+        "科研"
+      ],
+      "tags": [
+        "教育",
+        "985",
+        "211"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0066",
+      "entity_name": "浙江大学",
+      "aliases": [
+        "浙大",
+        {
+          "name": "Zhejiang University",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "ZJU"
+      ],
+      "abbreviation": "浙大",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "entity_type_display": "教育机构",
+      "industry": "高等教育",
+      "summary": "位于杭州的综合性研究型大学。",
+      "business": "高等教育、科研创新、工程技术与医学研究。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "大学",
+        "人工智能",
+        "工程",
+        "科研"
+      ],
+      "tags": [
+        "教育",
+        "985",
+        "211"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0067",
+      "entity_name": "复旦大学",
+      "aliases": [
+        "复旦",
+        {
+          "name": "Fudan University",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "FDU"
+      ],
+      "abbreviation": "复旦",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "entity_type_display": "教育机构",
+      "industry": "高等教育",
+      "summary": "位于上海的综合性研究型大学。",
+      "business": "高等教育、人文社科、医学与自然科学研究。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": "杨浦区"
+      },
+      "keywords": [
+        "大学",
+        "医学",
+        "科研",
+        "人文社科"
+      ],
+      "tags": [
+        "教育",
+        "985",
+        "211"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0068",
+      "entity_name": "中国科学院",
+      "aliases": [
+        "中科院",
+        {
+          "name": "Chinese Academy of Sciences",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "CAS"
+      ],
+      "abbreviation": "中科院",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "entity_type_display": "研究机构",
+      "industry": "科研机构",
+      "summary": "中国自然科学与高技术综合研究机构。",
+      "business": "基础研究、高技术研究、战略咨询与科研平台建设。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "科研",
+        "基础研究",
+        "高技术",
+        "科学院"
+      ],
+      "tags": [
+        "教育",
+        "人工智能",
+        "科技"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0069",
+      "entity_name": "中国工程院",
+      "aliases": [
+        "工程院",
+        {
+          "name": "Chinese Academy of Engineering",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        "CAE"
+      ],
+      "abbreviation": "工程院",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "entity_type_display": "研究机构",
+      "industry": "工程科技咨询",
+      "summary": "中国工程科学技术领域的国家级学术机构。",
+      "business": "工程科技战略咨询、学术交流与工程科技人才服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "工程",
+        "科技咨询",
+        "院士",
+        "科研"
+      ],
+      "tags": [
+        "科技",
+        "智库"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0070",
+      "entity_name": "百度在线网络技术（北京）有限公司",
+      "aliases": [
+        "百度",
+        {
+          "name": "Baidu",
+          "alias_type": "英文",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        "百度公司"
+      ],
+      "abbreviation": "百度",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "互联网与人工智能",
+      "summary": "以搜索、人工智能、云服务和自动驾驶等业务为主的科技公司。",
+      "business": "搜索引擎、AI大模型、智能云、自动驾驶与地图服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "海淀区"
+      },
+      "keywords": [
+        "搜索",
+        "人工智能",
+        "大模型",
+        "自动驾驶",
+        "云计算"
+      ],
+      "tags": [
+        "科技",
+        "人工智能",
+        "互联网"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0071",
+      "entity_name": "京东集团股份有限公司",
+      "aliases": [
+        "京东集团",
+        {
+          "name": "JD.com",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "京东公司",
+        {
+          "name": "京东",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "京东集团",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "电子商务",
+      "summary": "以自营电商、物流供应链和数字科技为核心的互联网企业。",
+      "business": "电商零售、供应链物流、云服务和数字科技。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "大兴区"
+      },
+      "keywords": [
+        "电商",
+        "物流",
+        "供应链",
+        "零售"
+      ],
+      "tags": [
+        "互联网",
+        "科技",
+        "上市公司"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0072",
+      "entity_name": "北京三快在线科技有限公司",
+      "aliases": [
+        "美团",
+        {
+          "name": "Meituan",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "美团公司"
+      ],
+      "abbreviation": "美团",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "本地生活服务",
+      "summary": "提供本地生活、外卖、到店酒旅和即时配送服务的互联网平台企业。",
+      "business": "外卖配送、到店服务、酒店旅游、即时零售。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "外卖",
+        "本地生活",
+        "即时配送",
+        "平台经济"
+      ],
+      "tags": [
+        "互联网",
+        "科技",
+        "服务业"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0073",
+      "entity_name": "小米集团",
+      "aliases": [
+        "小米",
+        {
+          "name": "Xiaomi",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "小米公司"
+      ],
+      "abbreviation": "小米",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "消费电子",
+      "summary": "以智能手机、IoT设备、智能家居和智能电动汽车为主要业务的科技企业。",
+      "business": "智能手机、IoT设备、智能家居、互联网服务和智能汽车。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "手机",
+        "消费电子",
+        "IoT",
+        "智能汽车"
+      ],
+      "tags": [
+        "科技",
+        "消费电子",
+        "汽车"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0074",
+      "entity_name": "联想集团有限公司",
+      "aliases": [
+        "联想集团",
+        {
+          "name": "Lenovo",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "联想"
+      ],
+      "abbreviation": "联想",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "计算机硬件",
+      "summary": "全球个人电脑、服务器和智能设备制造企业。",
+      "business": "个人电脑、服务器、智能设备、企业级解决方案。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "计算机",
+        "服务器",
+        "智能设备",
+        "制造"
+      ],
+      "tags": [
+        "科技",
+        "消费电子",
+        "制造"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0075",
+      "entity_name": "字节跳动有限公司",
+      "aliases": [
+        "字节跳动",
+        {
+          "name": "ByteDance",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "字节"
+      ],
+      "abbreviation": "字节跳动",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "互联网内容平台",
+      "summary": "以内容分发、短视频、协同办公和AI推荐技术为核心的互联网企业。",
+      "business": "内容平台、短视频、企业协同、AI推荐与广告技术。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "短视频",
+        "推荐算法",
+        "AI",
+        "内容平台"
+      ],
+      "tags": [
+        "互联网",
+        "人工智能",
+        "科技"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0076",
+      "entity_name": "网易公司",
+      "aliases": [
+        "网易",
+        {
+          "name": "NetEase",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "网易集团"
+      ],
+      "abbreviation": "网易",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "互联网与游戏",
+      "summary": "以在线游戏、邮箱、音乐、电商和教育产品为主要业务的互联网企业。",
+      "business": "在线游戏、邮箱、音乐平台、教育与电商服务。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "游戏",
+        "邮箱",
+        "音乐",
+        "互联网"
+      ],
+      "tags": [
+        "互联网",
+        "科技"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0077",
+      "entity_name": "快手科技",
+      "aliases": [
+        "快手",
+        {
+          "name": "Kuaishou",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "快手公司"
+      ],
+      "abbreviation": "快手",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "短视频与直播",
+      "summary": "以短视频、直播、电商和社区内容为主要业务的互联网平台企业。",
+      "business": "短视频内容分发、直播、电商和广告营销。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "短视频",
+        "直播",
+        "电商",
+        "社区"
+      ],
+      "tags": [
+        "互联网",
+        "人工智能",
+        "科技"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0078",
+      "entity_name": "小鹏汽车有限公司",
+      "aliases": [
+        "小鹏汽车",
+        "小鹏",
+        {
+          "name": "XPeng",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "小鹏",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "新能源汽车",
+      "summary": "中国智能电动汽车制造企业，强调智能驾驶与智能座舱能力。",
+      "business": "智能电动汽车研发制造、智能驾驶软件、充电服务。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "广州市",
+        "address": ""
+      },
+      "keywords": [
+        "电动汽车",
+        "智能驾驶",
+        "智能座舱",
+        "新能源"
+      ],
+      "tags": [
+        "汽车",
+        "新能源",
+        "自动驾驶"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0079",
+      "entity_name": "理想汽车",
+      "aliases": [
+        "理想",
+        {
+          "name": "Li Auto",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "理想汽车公司"
+      ],
+      "abbreviation": "理想",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "新能源汽车",
+      "summary": "中国新能源汽车制造企业，产品以家庭智能电动车为主要定位。",
+      "business": "智能电动汽车研发制造、车载软件和销售服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "电动汽车",
+        "增程式",
+        "智能座舱",
+        "新能源"
+      ],
+      "tags": [
+        "汽车",
+        "新能源",
+        "自动驾驶"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0080",
+      "entity_name": "特斯拉公司",
+      "aliases": [
+        "特斯拉",
+        {
+          "name": "Tesla",
+          "alias_type": "英文",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        "Tesla Inc."
+      ],
+      "abbreviation": "特斯拉",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "新能源汽车",
+      "summary": "全球电动汽车、储能和自动驾驶技术企业。",
+      "business": "电动汽车、动力电池、储能系统、自动驾驶软件。",
+      "location": {
+        "country": "美国",
+        "province": "得克萨斯州",
+        "city": "奥斯汀",
+        "address": ""
+      },
+      "keywords": [
+        "电动汽车",
+        "储能",
+        "自动驾驶",
+        "动力电池"
+      ],
+      "tags": [
+        "汽车",
+        "新能源",
+        "自动驾驶"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0081",
+      "entity_name": "中国建设银行股份有限公司",
+      "aliases": [
+        "建设银行",
+        "建行",
+        {
+          "name": "CCB",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "建行",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "银行业",
+      "summary": "中国大型商业银行之一，提供公司银行、个人银行和资产管理等金融服务。",
+      "business": "存贷款、结算、银行卡、财富管理、公司金融。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "银行",
+        "金融",
+        "贷款",
+        "理财"
+      ],
+      "tags": [
+        "金融",
+        "央企",
+        "上市公司"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0082",
+      "entity_name": "中国农业银行股份有限公司",
+      "aliases": [
+        "农业银行",
+        "农行",
+        {
+          "name": "ABC",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "农行",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "银行业",
+      "summary": "中国大型商业银行之一，长期服务三农、小微企业和城乡居民。",
+      "business": "公司金融、个人金融、三农金融、银行卡与结算服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "银行",
+        "金融",
+        "三农",
+        "贷款"
+      ],
+      "tags": [
+        "金融",
+        "央企",
+        "上市公司"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0083",
+      "entity_name": "中国银行股份有限公司",
+      "aliases": [
+        "中国银行",
+        "中行",
+        {
+          "name": "BOC",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "中行",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "银行业",
+      "summary": "中国大型商业银行之一，国际化和跨境金融业务具有代表性。",
+      "business": "公司金融、个人金融、国际结算、跨境金融和资产管理。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "银行",
+        "跨境金融",
+        "外汇",
+        "国际结算"
+      ],
+      "tags": [
+        "金融",
+        "央企",
+        "上市公司"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0084",
+      "entity_name": "交通银行股份有限公司",
+      "aliases": [
+        "交通银行",
+        "交行",
+        {
+          "name": "Bank of Communications",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "交行",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "银行业",
+      "summary": "中国全国性股份制商业银行，提供综合金融服务。",
+      "business": "公司金融、零售金融、信用卡、资产托管和财富管理。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "银行",
+        "金融",
+        "信用卡",
+        "财富管理"
+      ],
+      "tags": [
+        "金融",
+        "上市公司"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0085",
+      "entity_name": "中信证券股份有限公司",
+      "aliases": [
+        "中信证券",
+        {
+          "name": "CITIC Securities",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "中信证券公司"
+      ],
+      "abbreviation": "中信证券",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "证券业",
+      "summary": "中国大型综合证券公司，业务覆盖投行、经纪、资管和研究服务。",
+      "business": "证券经纪、投资银行、资产管理、研究咨询和自营投资。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": ""
+      },
+      "keywords": [
+        "证券",
+        "投行",
+        "资管",
+        "资本市场"
+      ],
+      "tags": [
+        "金融",
+        "上市公司"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0086",
+      "entity_name": "东方财富信息股份有限公司",
+      "aliases": [
+        "东方财富",
+        {
+          "name": "East Money",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        "东财"
+      ],
+      "abbreviation": "东方财富",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "互联网金融",
+      "summary": "提供财经资讯、证券交易、基金销售等服务的互联网金融企业。",
+      "business": "财经资讯、证券服务、基金销售、金融数据与投资社区。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "财经",
+        "证券",
+        "基金",
+        "金融数据"
+      ],
+      "tags": [
+        "金融",
+        "互联网",
+        "上市公司"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0087",
+      "entity_name": "上海证券交易所",
+      "aliases": [
+        "上交所",
+        {
+          "name": "Shanghai Stock Exchange",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "SSE"
+      ],
+      "abbreviation": "上交所",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "证券交易市场",
+      "summary": "中国主要证券交易场所之一。",
+      "business": "证券集中交易、上市审核、市场监管与信息披露服务。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "证券交易所",
+        "股票",
+        "资本市场",
+        "上市"
+      ],
+      "tags": [
+        "金融",
+        "政府机构"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0088",
+      "entity_name": "深圳证券交易所",
+      "aliases": [
+        "深交所",
+        {
+          "name": "Shenzhen Stock Exchange",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "SZSE"
+      ],
+      "abbreviation": "深交所",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "证券交易市场",
+      "summary": "中国主要证券交易场所之一。",
+      "business": "证券集中交易、上市审核、市场监管与信息披露服务。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": ""
+      },
+      "keywords": [
+        "证券交易所",
+        "股票",
+        "资本市场",
+        "创业板"
+      ],
+      "tags": [
+        "金融",
+        "政府机构"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0089",
+      "entity_name": "中华人民共和国国家发展和改革委员会",
+      "aliases": [
+        "国家发展改革委",
+        "发改委",
+        {
+          "name": "NDRC",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "发改委",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "entity_type_display": "政府机构",
+      "industry": "宏观经济管理",
+      "summary": "负责宏观经济和社会发展政策协调的国务院组成部门。",
+      "business": "发展规划、产业政策、投资管理、价格管理和经济运行协调。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "宏观经济",
+        "产业政策",
+        "投资",
+        "规划"
+      ],
+      "tags": [
+        "政府机构",
+        "政策"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0090",
+      "entity_name": "中华人民共和国工业和信息化部",
+      "aliases": [
+        "工业和信息化部",
+        "工信部",
+        {
+          "name": "MIIT",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "工信部",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "entity_type_display": "政府机构",
+      "industry": "工业和信息化管理",
+      "summary": "负责工业、通信业和信息化发展的国务院组成部门。",
+      "business": "工业规划、通信监管、软件产业、制造业数字化和信息化推进。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "工业",
+        "通信",
+        "信息化",
+        "制造业"
+      ],
+      "tags": [
+        "政府机构",
+        "科技",
+        "制造"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0091",
+      "entity_name": "中华人民共和国生态环境部",
+      "aliases": [
+        "生态环境部",
+        "环境部",
+        {
+          "name": "MEE",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "生态环境部",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "entity_type_display": "政府机构",
+      "industry": "生态环境管理",
+      "summary": "负责生态环境保护、污染防治和应对气候变化相关工作的国务院组成部门。",
+      "business": "环境监管、污染防治、气候变化应对、生态保护和环境评价。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "生态环境",
+        "污染防治",
+        "双碳",
+        "气候变化"
+      ],
+      "tags": [
+        "政府机构",
+        "清洁能源",
+        "3060目标"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0092",
+      "entity_name": "国家市场监督管理总局",
+      "aliases": [
+        "市场监管总局",
+        "国家市监总局",
+        {
+          "name": "SAMR",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "市场监管总局",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "entity_type_display": "政府机构",
+      "industry": "市场监管",
+      "summary": "负责市场综合监督管理、登记注册、质量监管和反垄断等工作的国务院直属机构。",
+      "business": "市场监管、企业登记、反垄断、质量监督和食品安全监管。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "市场监管",
+        "企业登记",
+        "反垄断",
+        "质量监督"
+      ],
+      "tags": [
+        "政府机构",
+        "监管"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0093",
+      "entity_name": "广州市",
+      "aliases": [
+        "广州",
+        "羊城",
+        {
+          "name": "Guangzhou",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "广州",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "城市区域",
+      "summary": "广东省省会、粤港澳大湾区核心城市之一。",
+      "business": "区域经济、制造业、贸易服务、科技创新和交通枢纽。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "广州市",
+        "address": ""
+      },
+      "keywords": [
+        "城市",
+        "大湾区",
+        "制造业",
+        "贸易"
+      ],
+      "tags": [
+        "华南",
+        "大湾区",
+        "科技"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0094",
+      "entity_name": "杭州市",
+      "aliases": [
+        "杭州",
+        {
+          "name": "Hangzhou",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        "杭城"
+      ],
+      "abbreviation": "杭州",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "城市区域",
+      "summary": "浙江省省会，数字经济和互联网产业活跃城市。",
+      "business": "数字经济、电子商务、旅游、制造业与科研教育。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "城市",
+        "数字经济",
+        "互联网",
+        "电商"
+      ],
+      "tags": [
+        "华东",
+        "科技",
+        "互联网"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0095",
+      "entity_name": "南京市",
+      "aliases": [
+        "南京",
+        {
+          "name": "Nanjing",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        "金陵"
+      ],
+      "abbreviation": "南京",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "城市区域",
+      "summary": "江苏省省会，长三角中心城市之一。",
+      "business": "科教、先进制造、软件服务、交通枢纽和区域经济。",
+      "location": {
+        "country": "中国",
+        "province": "江苏省",
+        "city": "南京市",
+        "address": ""
+      },
+      "keywords": [
+        "城市",
+        "长三角",
+        "软件",
+        "科教"
+      ],
+      "tags": [
+        "华东",
+        "长三角",
+        "科技"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0096",
+      "entity_name": "武汉市",
+      "aliases": [
+        "武汉",
+        {
+          "name": "Wuhan",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        "江城"
+      ],
+      "abbreviation": "武汉",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "城市区域",
+      "summary": "湖北省省会，中部地区中心城市之一。",
+      "business": "先进制造、光电子信息、教育科研、交通物流和区域经济。",
+      "location": {
+        "country": "中国",
+        "province": "湖北省",
+        "city": "武汉市",
+        "address": ""
+      },
+      "keywords": [
+        "城市",
+        "光电子",
+        "制造",
+        "交通"
+      ],
+      "tags": [
+        "华中",
+        "科技",
+        "制造"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0097",
+      "entity_name": "支付宝",
+      "aliases": [
+        {
+          "name": "Alipay",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        "支付宝App",
+        "支付宝平台"
+      ],
+      "abbreviation": "支付宝",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "移动支付",
+      "summary": "面向个人和商户的移动支付与数字生活服务平台。",
+      "business": "移动支付、生活服务、金融服务入口和小程序生态。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "支付",
+        "金融科技",
+        "移动支付",
+        "数字生活"
+      ],
+      "tags": [
+        "金融科技",
+        "互联网",
+        "软件平台"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0098",
+      "entity_name": "百度地图",
+      "aliases": [
+        {
+          "name": "Baidu Maps",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        "百度地图App",
+        "百度地图平台"
+      ],
+      "abbreviation": "百度地图",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "地图导航",
+      "summary": "百度推出的地图、导航和位置服务平台。",
+      "business": "地图导航、位置服务、路线规划、商户位置检索。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "地图",
+        "导航",
+        "位置服务",
+        "出行"
+      ],
+      "tags": [
+        "互联网",
+        "软件平台",
+        "人工智能"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0099",
+      "entity_name": "高德地图",
+      "aliases": [
+        {
+          "name": "Amap",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        "高德",
+        "高德地图App"
+      ],
+      "abbreviation": "高德地图",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "地图导航",
+      "summary": "提供地图导航、出行规划和位置服务的软件平台。",
+      "business": "地图导航、实时路况、公交驾车路线规划和本地生活入口。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "地图",
+        "导航",
+        "位置服务",
+        "出行"
+      ],
+      "tags": [
+        "互联网",
+        "软件平台",
+        "出行"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0100",
+      "entity_name": "Android",
+      "aliases": [
+        "安卓",
+        {
+          "name": "Android OS",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        "安卓系统"
+      ],
+      "abbreviation": "Android",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "操作系统",
+      "summary": "面向移动设备的操作系统平台。",
+      "business": "移动操作系统、应用生态、设备适配和开发者服务。",
+      "location": {
+        "country": "美国",
+        "province": "加利福尼亚州",
+        "city": "山景城",
+        "address": ""
+      },
+      "keywords": [
+        "操作系统",
+        "移动设备",
+        "应用生态",
+        "安卓"
+      ],
+      "tags": [
+        "科技",
+        "软件平台",
+        "消费电子"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0101",
+      "entity_name": "iOS",
+      "aliases": [
+        "苹果iOS",
+        {
+          "name": "iPhone OS",
+          "alias_type": "曾用名",
+          "priority": 0.65,
+          "confidence": 0.9
+        },
+        "iOS系统"
+      ],
+      "abbreviation": "iOS",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "操作系统",
+      "summary": "苹果公司面向移动设备的操作系统平台。",
+      "business": "移动操作系统、应用生态、安全机制和开发者服务。",
+      "location": {
+        "country": "美国",
+        "province": "加利福尼亚州",
+        "city": "库比蒂诺",
+        "address": ""
+      },
+      "keywords": [
+        "操作系统",
+        "苹果",
+        "移动设备",
+        "应用生态"
+      ],
+      "tags": [
+        "科技",
+        "软件平台",
+        "消费电子"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0102",
+      "entity_name": "中国移动通信集团有限公司",
+      "aliases": [
+        "中国移动",
+        "移动公司",
+        {
+          "name": "China Mobile",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "中国移动",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "通信运营商",
+      "summary": "中国大型移动通信运营商，提供移动通信、宽带和云网融合服务。",
+      "business": "移动通信、固定宽带、云计算、物联网和政企数字化服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "通信",
+        "5G",
+        "宽带",
+        "云计算",
+        "物联网"
+      ],
+      "tags": [
+        "央企",
+        "科技",
+        "5G"
+      ]
+    },
+    {
+      "entity_id": "ENT_GEN_0103",
+      "entity_name": "中国电信集团有限公司",
+      "aliases": [
+        "中国电信",
+        "电信公司",
+        {
+          "name": "China Telecom",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "中国电信",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "通信运营商",
+      "summary": "中国大型综合信息服务运营商，提供通信、宽带、云和政企数字化服务。",
+      "business": "固定通信、移动通信、云计算、数据中心和政企信息化服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "通信",
+        "5G",
+        "云计算",
+        "数据中心",
+        "宽带"
+      ],
+      "tags": [
+        "央企",
+        "科技",
+        "5G"
+      ]
+    }
+  ],
+  "alias_updates": []
+}

@@ -1,12 +1,12 @@
 {
   "dataset_metadata": {
     "name": "entity_linking_eval_dataset",
-    "version": "2.2",
-    "kb_version": "1.0.0",
+    "version": "2.3",
+    "kb_version": "2.1.0",
     "kb_name": "energy_industry_kb",
     "created_date": "2026-06-26",
-    "total_samples": 67,
-    "description": "课题10 实体链接评测数据集——覆盖简称、别名、英文、同名异义、上下文消歧、NIL、OCR错误、拼写错误、中英混写、长文本多mention、共指消解等11类场景",
+    "total_samples": 97,
+    "description": "课题10 实体链接评测数据集——覆盖简称、别名、英文、同名异义、上下文消歧、NIL、OCR错误、拼写错误、中英混写、长文本多mention、共指消解等11类场景；7.9新增跨领域综合评测样本，覆盖教育科研、互联网、金融、政务、区域、软件平台和通信运营商。",
     "usage": "用于 Candidate Generation 召回率、Disambiguation 准确率、NIL Detection F1、Coreference Resolution 精度的自动化评测",
     "coref_method": "rule_priority",
     "coref_rule_types": [
@@ -1089,7 +1089,7 @@
       ],
       "expected_result": {
         "linked": true,
-        "correct_entity": "ENT_GEN_0059",
+        "correct_entity": "ENT_GEN_0058",
         "confidence": "high"
       },
       "difficulty": "easy",
@@ -1109,7 +1109,7 @@
       ],
       "expected_result": {
         "linked": true,
-        "correct_entity": "ENT_GEN_0060",
+        "correct_entity": "ENT_GEN_0059",
         "confidence": "high"
       },
       "difficulty": "easy",
@@ -1129,7 +1129,7 @@
       ],
       "expected_result": {
         "linked": true,
-        "correct_entity": "ENT_GEN_0061",
+        "correct_entity": "ENT_GEN_0060",
         "confidence": "high"
       },
       "difficulty": "easy",
@@ -1149,7 +1149,7 @@
       ],
       "expected_result": {
         "linked": true,
-        "correct_entity": "ENT_GEN_0058",
+        "correct_entity": "ENT_ENERGY_0016",
         "confidence": "high"
       },
       "difficulty": "medium",
@@ -1169,7 +1169,7 @@
       ],
       "expected_result": {
         "linked": true,
-        "correct_entity": "ENT_GEN_0062",
+        "correct_entity": "ENT_GEN_0061",
         "confidence": "high"
       },
       "difficulty": "easy",
@@ -1219,7 +1219,7 @@
       "notes": "代词'它'指代前文'腾讯'。规则优先：'它'通常指代非生命物体或组织机构。"
     },
     {
-      "id": "EVAL_061",
+      "id": "EVAL_060",
       "text": "中国南方电网有限责任公司发布2025年投资计划。这家电力央企将在未来三年投入超过2000亿元用于新型电力系统建设。",
       "mention": "这家电力央企",
       "mention_start": 24,
@@ -1242,7 +1242,7 @@
       "notes": "名词回指用'这家+类别'结构。规则：匹配最近entity_type匹配且tags含'央企'的先行实体。"
     },
     {
-      "id": "EVAL_062",
+      "id": "EVAL_061",
       "text": "隆基绿能在BC电池技术上取得突破。该企业表示，新技术将使光伏组件量产效率突破27%。",
       "mention": "该企业",
       "mention_start": 17,
@@ -1263,28 +1263,32 @@
       "notes": "'该企业'是企业类实体的常见回指形式。规则：匹配最近entity_type为企业类的先行词。"
     },
     {
-      "id": "EVAL_064",
+      "id": "EVAL_062",
       "text": "工业与信息化部日前发布了5G发展规划。工信部相关负责人表示，2026年将实现全国地级市5G网络全覆盖。",
       "mention": "工信部",
       "mention_start": 19,
       "mention_end": 22,
-      "gold_entity": null,
-      "gold_entity_name": null,
-      "candidate_entities": [],
+      "gold_entity": "ENT_GEN_0090",
+      "gold_entity_name": "中华人民共和国工业和信息化部",
+      "candidate_entities": [
+        "ENT_GEN_0090",
+        "ENT_GEN_0089",
+        "ENT_GEN_0092"
+      ],
       "expected_result": {
         "linked": true,
-        "correct_entity": null,
+        "correct_entity": "ENT_GEN_0090",
         "confidence": "medium",
-        "coref_antecedent": "工业与信息化部",
+        "coref_antecedent": "工业和信息化部",
         "coref_rule_type": "abbreviation_fullname",
-        "coref_rule": "隐式简称共指：'工信部'为'工业与信息化部'的常用简称(aliases中收录)"
+        "coref_rule": "简称'工信部'回指/对齐到'工业和信息化部'"
       },
       "difficulty": "medium",
       "scenario": "共指消解——简称-全称共指（隐式）",
-      "notes": "无显式括号定义，但简称在KB aliases中。候选生成命中alias→确认共指关系。这是规则优先的典型case。"
+      "notes": "第一批KB扩充后，工信部已入库，应由旧NIL修正为可链接实体。"
     },
     {
-      "id": "EVAL_065",
+      "id": "EVAL_063",
       "text": "华为在深圳总部发布了最新AI战略。华为轮值董事长表示，华为将持续加大在AI芯片领域的投入。华为计划到2028年实现AI算力全球领先。",
       "mention": "华为",
       "mention_start": 0,
@@ -1306,7 +1310,7 @@
       "notes": "one-sense-per-discourse: 同一文本中相同mention应链接到同一实体。规则：首次链接后缓存结果，后续相同mention复用。"
     },
     {
-      "id": "EVAL_066",
+      "id": "EVAL_064",
       "text": "CATL（宁德时代新能源科技股份有限公司）2025年全球动力电池市占率达到38%。宁德时代董事长表示将继续扩大海外产能。",
       "mention": "宁德时代",
       "mention_start": 5,
@@ -1329,7 +1333,7 @@
       "notes": "显式中英文共指：'CATL（宁德时代...）'。规则：英文缩写+括号中文全称→同一实体。常用在企业年报和行业报告中。"
     },
     {
-      "id": "EVAL_067",
+      "id": "EVAL_065",
       "text": "比亚迪近日发布了2025年ESG报告。BYD在报告中承诺2035年实现全产业链碳中和。比亚迪董事长王传福表示将加速海外市场布局。",
       "mention": "BYD",
       "mention_start": 19,
@@ -1352,7 +1356,7 @@
       "notes": "无显式括号定义。BYD在aliases中(type='英文')→候选生成命中→确认与'比亚迪'为同一实体。规则优先：alias匹配+上下文实体一致性。"
     },
     {
-      "id": "EVAL_068",
+      "id": "EVAL_066",
       "text": "国家电网和南方电网分别发布年度报告。前者营收3.8万亿元，后者营收1.2万亿元。两家央企均加大了新能源投资力度。",
       "mention": "两家央企",
       "mention_start": 40,
@@ -1372,7 +1376,7 @@
       "notes": "集合名词'两家央企'指代两个实体，无法链接到单一entity_id。规则优先应识别为集合共指并标记NIL。边界case。"
     },
     {
-      "id": "EVAL_069",
+      "id": "EVAL_067",
       "text": "华为在5G领域持续领先，其研发投入占营收比例超过20%。未来它将继续深化在AI和云计算领域的布局。",
       "mention": "它",
       "mention_start": 30,
@@ -1391,6 +1395,644 @@
       "difficulty": "hard",
       "scenario": "共指消解——链式共指（多跳指代）",
       "notes": "链式共指(华为→其→它)需构建完整指代链。规则优先：维护已解析mention→entity映射表，遇代词向前查找最近已解析实体。"
+    },
+    {
+      "id": "EVAL_068",
+      "text": "北大与中科院联合建设医学人工智能评测平台。",
+      "mention": "北大",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0064",
+      "gold_entity_name": "北京大学",
+      "candidate_entities": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0068",
+        "ENT_GEN_0060"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0064"
+      },
+      "difficulty": "medium",
+      "scenario": "新增教育科研简称消歧",
+      "notes": "北大应链接到北京大学，中科院为同句干扰实体。"
+    },
+    {
+      "id": "EVAL_069",
+      "text": "Peking University发布跨学科AI治理报告。",
+      "mention": "Peking University",
+      "mention_start": 0,
+      "mention_end": 17,
+      "gold_entity": "ENT_GEN_0064",
+      "gold_entity_name": "北京大学",
+      "candidate_entities": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0060"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "high",
+        "correct_entity": "ENT_GEN_0064"
+      },
+      "difficulty": "easy",
+      "scenario": "英文别名匹配",
+      "notes": "英文全称应稳定链接北京大学。"
+    },
+    {
+      "id": "EVAL_070",
+      "text": "上海交大成立低碳能源联合实验室。",
+      "mention": "上海交大",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0065",
+      "gold_entity_name": "上海交通大学",
+      "candidate_entities": [
+        "ENT_GEN_0065",
+        "ENT_GEN_0087"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0065"
+      },
+      "difficulty": "medium",
+      "scenario": "高校简称与交易所相近",
+      "notes": "上海交大不能误链到上交所。"
+    },
+    {
+      "id": "EVAL_071",
+      "text": "浙大团队发布储能材料计算平台。",
+      "mention": "浙大",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0066",
+      "gold_entity_name": "浙江大学",
+      "candidate_entities": [
+        "ENT_GEN_0066",
+        "ENT_GEN_0068"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "high",
+        "correct_entity": "ENT_GEN_0066"
+      },
+      "difficulty": "easy",
+      "scenario": "高校简称匹配",
+      "notes": "浙大为浙江大学简称。"
+    },
+    {
+      "id": "EVAL_072",
+      "text": "中科院公布先进储能材料成果转化进展。",
+      "mention": "中科院",
+      "mention_start": 0,
+      "mention_end": 3,
+      "gold_entity": "ENT_GEN_0068",
+      "gold_entity_name": "中国科学院",
+      "candidate_entities": [
+        "ENT_GEN_0068",
+        "ENT_GEN_0069",
+        "ENT_ENERGY_0009"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0068"
+      },
+      "difficulty": "medium",
+      "scenario": "科研机构简称消歧",
+      "notes": "中科院应链接中国科学院而非能源研究院。"
+    },
+    {
+      "id": "EVAL_073",
+      "text": "百度地图上线新能源车充电路线规划功能。",
+      "mention": "百度地图",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0098",
+      "gold_entity_name": "百度地图",
+      "candidate_entities": [
+        "ENT_GEN_0098",
+        "ENT_GEN_0070",
+        "ENT_GEN_0099"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0098"
+      },
+      "difficulty": "medium",
+      "scenario": "产品与母公司消歧",
+      "notes": "百度地图是软件平台，不是百度公司主体。"
+    },
+    {
+      "id": "EVAL_074",
+      "text": "百度开放自动驾驶数据集并升级大模型工具链。",
+      "mention": "百度",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0070",
+      "gold_entity_name": "百度在线网络技术（北京）有限公司",
+      "candidate_entities": [
+        "ENT_GEN_0070",
+        "ENT_GEN_0098"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "high",
+        "correct_entity": "ENT_GEN_0070"
+      },
+      "difficulty": "easy",
+      "scenario": "科技企业简称匹配",
+      "notes": "语境指公司主体。"
+    },
+    {
+      "id": "EVAL_075",
+      "text": "京东升级智能物流系统并公布供应链减碳方案。",
+      "mention": "京东",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0071",
+      "gold_entity_name": "京东集团股份有限公司",
+      "candidate_entities": [
+        "ENT_GEN_0071",
+        "ENT_GEN_0053"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "high",
+        "correct_entity": "ENT_GEN_0071"
+      },
+      "difficulty": "easy",
+      "scenario": "电商企业简称匹配",
+      "notes": "京东别名已补入知识库。"
+    },
+    {
+      "id": "EVAL_076",
+      "text": "美团扩大新能源配送车辆试点范围。",
+      "mention": "美团",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0072",
+      "gold_entity_name": "北京三快在线科技有限公司",
+      "candidate_entities": [
+        "ENT_GEN_0072",
+        "ENT_GEN_0071"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "high",
+        "correct_entity": "ENT_GEN_0072"
+      },
+      "difficulty": "easy",
+      "scenario": "本地生活平台匹配",
+      "notes": "美团应链接北京三快在线科技有限公司。"
+    },
+    {
+      "id": "EVAL_077",
+      "text": "小米发布家庭能源管理软件更新。",
+      "mention": "小米",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0073",
+      "gold_entity_name": "小米集团",
+      "candidate_entities": [
+        "ENT_GEN_0073",
+        "ENT_GEN_0080"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0073"
+      },
+      "difficulty": "medium",
+      "scenario": "公司与汽车业务消歧",
+      "notes": "小米在此为集团主体。"
+    },
+    {
+      "id": "EVAL_078",
+      "text": "字节上线数据中心节能调度系统。",
+      "mention": "字节",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0075",
+      "gold_entity_name": "字节跳动有限公司",
+      "candidate_entities": [
+        "ENT_GEN_0075",
+        "ENT_GEN_0062"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0075"
+      },
+      "difficulty": "medium",
+      "scenario": "公司与产品平台消歧",
+      "notes": "字节指字节跳动，不是抖音。"
+    },
+    {
+      "id": "EVAL_079",
+      "text": "快手升级直播电商内容审核模型。",
+      "mention": "快手",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0077",
+      "gold_entity_name": "快手科技",
+      "candidate_entities": [
+        "ENT_GEN_0077",
+        "ENT_GEN_0062"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0077"
+      },
+      "difficulty": "medium",
+      "scenario": "短视频平台相似消歧",
+      "notes": "快手与抖音同类但实体不同。"
+    },
+    {
+      "id": "EVAL_080",
+      "text": "小鹏公布城市辅助驾驶功能更新。",
+      "mention": "小鹏",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0078",
+      "gold_entity_name": "小鹏汽车有限公司",
+      "candidate_entities": [
+        "ENT_GEN_0078",
+        "ENT_GEN_0058",
+        "ENT_GEN_0079"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0078"
+      },
+      "difficulty": "medium",
+      "scenario": "新能源汽车简称消歧",
+      "notes": "小鹏应链接小鹏汽车。"
+    },
+    {
+      "id": "EVAL_081",
+      "text": "理想发布家庭智能电动车软件升级。",
+      "mention": "理想",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0079",
+      "gold_entity_name": "理想汽车",
+      "candidate_entities": [
+        "ENT_GEN_0079",
+        "ENT_GEN_0078"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0079"
+      },
+      "difficulty": "medium",
+      "scenario": "汽车品牌简称消歧",
+      "notes": "理想在汽车语境中为理想汽车。"
+    },
+    {
+      "id": "EVAL_082",
+      "text": "Tesla扩大储能系统在园区微电网中的应用。",
+      "mention": "Tesla",
+      "mention_start": 0,
+      "mention_end": 5,
+      "gold_entity": "ENT_GEN_0080",
+      "gold_entity_name": "特斯拉公司",
+      "candidate_entities": [
+        "ENT_GEN_0080",
+        "ENT_GEN_0058"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "high",
+        "correct_entity": "ENT_GEN_0080"
+      },
+      "difficulty": "easy",
+      "scenario": "英文别名匹配",
+      "notes": "Tesla链接特斯拉公司。"
+    },
+    {
+      "id": "EVAL_083",
+      "text": "建行推出面向制造企业的绿色信贷服务。",
+      "mention": "建行",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0081",
+      "gold_entity_name": "中国建设银行股份有限公司",
+      "candidate_entities": [
+        "ENT_GEN_0081",
+        "ENT_GEN_0055",
+        "ENT_GEN_0082"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0081"
+      },
+      "difficulty": "medium",
+      "scenario": "银行简称消歧",
+      "notes": "建行应链接建设银行。"
+    },
+    {
+      "id": "EVAL_084",
+      "text": "农行支持县域分布式光伏项目融资。",
+      "mention": "农行",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0082",
+      "gold_entity_name": "中国农业银行股份有限公司",
+      "candidate_entities": [
+        "ENT_GEN_0082",
+        "ENT_GEN_0081"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0082"
+      },
+      "difficulty": "medium",
+      "scenario": "银行简称消歧",
+      "notes": "农行应链接农业银行。"
+    },
+    {
+      "id": "EVAL_085",
+      "text": "上交所完善上市公司ESG信息披露规则。",
+      "mention": "上交所",
+      "mention_start": 0,
+      "mention_end": 3,
+      "gold_entity": "ENT_GEN_0087",
+      "gold_entity_name": "上海证券交易所",
+      "candidate_entities": [
+        "ENT_GEN_0087",
+        "ENT_GEN_0065",
+        "ENT_GEN_0088"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": null,
+        "correct_entity": "ENT_GEN_0087"
+      },
+      "difficulty": "hard",
+      "scenario": "交易所与高校简称干扰",
+      "notes": "上交所不能误链到上海交大。"
+    },
+    {
+      "id": "EVAL_086",
+      "text": "发改委部署重点领域节能降碳改造工作。",
+      "mention": "发改委",
+      "mention_start": 0,
+      "mention_end": 3,
+      "gold_entity": "ENT_GEN_0089",
+      "gold_entity_name": "中华人民共和国国家发展和改革委员会",
+      "candidate_entities": [
+        "ENT_GEN_0089",
+        "ENT_GEN_0059",
+        "ENT_GEN_0090"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0089"
+      },
+      "difficulty": "medium",
+      "scenario": "政府机构消歧",
+      "notes": "发改委与能源局、工信部职责不同。"
+    },
+    {
+      "id": "EVAL_087",
+      "text": "工信部推动工业互联网平台应用推广。",
+      "mention": "工信部",
+      "mention_start": 0,
+      "mention_end": 3,
+      "gold_entity": "ENT_GEN_0090",
+      "gold_entity_name": "中华人民共和国工业和信息化部",
+      "candidate_entities": [
+        "ENT_GEN_0090",
+        "ENT_GEN_0092"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "high",
+        "correct_entity": "ENT_GEN_0090"
+      },
+      "difficulty": "easy",
+      "scenario": "政府机构简称匹配",
+      "notes": "工信部为工业和信息化部。"
+    },
+    {
+      "id": "EVAL_088",
+      "text": "生态环境部发布碳排放统计核算工作安排。",
+      "mention": "生态环境部",
+      "mention_start": 0,
+      "mention_end": 5,
+      "gold_entity": "ENT_GEN_0091",
+      "gold_entity_name": "中华人民共和国生态环境部",
+      "candidate_entities": [
+        "ENT_GEN_0091",
+        "ENT_GEN_0089"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "high",
+        "correct_entity": "ENT_GEN_0091"
+      },
+      "difficulty": "easy",
+      "scenario": "政府机构标准名匹配",
+      "notes": "生态环境部负责碳排放核算。"
+    },
+    {
+      "id": "EVAL_089",
+      "text": "广州推进智能网联汽车道路测试。",
+      "mention": "广州",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0093",
+      "gold_entity_name": "广州市",
+      "candidate_entities": [
+        "ENT_GEN_0093",
+        "ENT_ENERGY_0027"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "high",
+        "correct_entity": "ENT_GEN_0093"
+      },
+      "difficulty": "easy",
+      "scenario": "地区简称匹配",
+      "notes": "广州链接广州市。"
+    },
+    {
+      "id": "EVAL_090",
+      "text": "杭州扩大数字经济企业服务范围。",
+      "mention": "杭州",
+      "mention_start": 0,
+      "mention_end": 2,
+      "gold_entity": "ENT_GEN_0094",
+      "gold_entity_name": "杭州市",
+      "candidate_entities": [
+        "ENT_GEN_0094",
+        "ENT_GEN_0053"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "high",
+        "correct_entity": "ENT_GEN_0094"
+      },
+      "difficulty": "easy",
+      "scenario": "地区简称匹配",
+      "notes": "杭州链接杭州市。"
+    },
+    {
+      "id": "EVAL_091",
+      "text": "Alipay优化绿色出行积分服务。",
+      "mention": "Alipay",
+      "mention_start": 0,
+      "mention_end": 6,
+      "gold_entity": "ENT_GEN_0097",
+      "gold_entity_name": "支付宝",
+      "candidate_entities": [
+        "ENT_GEN_0097",
+        "ENT_GEN_0053"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0097"
+      },
+      "difficulty": "medium",
+      "scenario": "英文产品别名匹配",
+      "notes": "Alipay 是支付宝平台。"
+    },
+    {
+      "id": "EVAL_092",
+      "text": "Android更新面向折叠屏设备的系统能力。",
+      "mention": "Android",
+      "mention_start": 0,
+      "mention_end": 7,
+      "gold_entity": "ENT_GEN_0100",
+      "gold_entity_name": "Android",
+      "candidate_entities": [
+        "ENT_GEN_0100",
+        "ENT_GEN_0101",
+        "ENT_GEN_0063"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0100"
+      },
+      "difficulty": "medium",
+      "scenario": "操作系统消歧",
+      "notes": "Android 与 iOS/Windows 11 区分。"
+    },
+    {
+      "id": "EVAL_093",
+      "text": "iOS增强移动设备隐私保护能力。",
+      "mention": "iOS",
+      "mention_start": 0,
+      "mention_end": 3,
+      "gold_entity": "ENT_GEN_0101",
+      "gold_entity_name": "iOS",
+      "candidate_entities": [
+        "ENT_GEN_0101",
+        "ENT_GEN_0100"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0101"
+      },
+      "difficulty": "medium",
+      "scenario": "操作系统消歧",
+      "notes": "iOS链接苹果移动操作系统。"
+    },
+    {
+      "id": "EVAL_094",
+      "text": "中国移动推进5G-A网络试点部署。",
+      "mention": "中国移动",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0102",
+      "gold_entity_name": "中国移动通信集团有限公司",
+      "candidate_entities": [
+        "ENT_GEN_0102",
+        "ENT_GEN_0103"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0102"
+      },
+      "difficulty": "medium",
+      "scenario": "通信运营商相似消歧",
+      "notes": "中国移动与中国电信区分。"
+    },
+    {
+      "id": "EVAL_095",
+      "text": "中国电信建设云网融合数据中心。",
+      "mention": "中国电信",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0103",
+      "gold_entity_name": "中国电信集团有限公司",
+      "candidate_entities": [
+        "ENT_GEN_0103",
+        "ENT_GEN_0102"
+      ],
+      "expected_result": {
+        "linked": true,
+        "confidence": "medium",
+        "correct_entity": "ENT_GEN_0103"
+      },
+      "difficulty": "medium",
+      "scenario": "通信运营商相似消歧",
+      "notes": "中国电信与中国移动区分。"
+    },
+    {
+      "id": "EVAL_096",
+      "text": "世界银行发布全球能源转型融资报告。",
+      "mention": "世界银行",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0083",
+        "ENT_GEN_0081"
+      ],
+      "expected_result": {
+        "linked": false,
+        "confidence": null,
+        "nil": true
+      },
+      "difficulty": "hard",
+      "scenario": "知识库外金融机构NIL",
+      "notes": "世界银行未入库，应输出NIL。"
+    },
+    {
+      "id": "EVAL_097",
+      "text": "北京协和医院上线疑难病远程会诊平台。",
+      "mention": "北京协和医院",
+      "mention_start": 0,
+      "mention_end": 6,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0068"
+      ],
+      "expected_result": {
+        "linked": false,
+        "confidence": null,
+        "nil": true
+      },
+      "difficulty": "hard",
+      "scenario": "医疗机构NIL",
+      "notes": "医疗机构未入库，应输出NIL。"
     }
   ]
 }

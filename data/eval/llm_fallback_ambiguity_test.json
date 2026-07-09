@@ -1,6 +1,6 @@
 {
   "dataset_name": "llm_fallback_ambiguity_test",
-  "version": "1.1",
+  "version": "1.2",
   "purpose": "为低置信候选消歧和后续LLM兜底准备的高歧义上下文测试集",
   "annotation_policy": {
     "trigger_condition": "候选数量大于1，或最高候选与次高候选分差不足，或近似实体可能造成误链接",
@@ -12,680 +12,1798 @@
       "id": "LLM_AMB_001",
       "text": "国网发布新型电力系统行动方案，并将在多个省份推进跨区输电工程。",
       "mention": "国网",
-      "candidate_entity_ids": ["ENT_ENERGY_0001", "ENT_ENERGY_0009", "ENT_ENERGY_0010"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0009",
+        "ENT_ENERGY_0010"
+      ],
       "gold_entity_id": "ENT_ENERGY_0001",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "parent_subsidiary",
-      "decisive_evidence": ["多个省份", "跨区输电", "行动方案"]
+      "decisive_evidence": [
+        "多个省份",
+        "跨区输电",
+        "行动方案"
+      ]
     },
     {
       "id": "LLM_AMB_002",
       "text": "国网能源院发布电力供需形势研究报告，为能源政策制定提供决策参考。",
       "mention": "国网能源院",
-      "candidate_entity_ids": ["ENT_ENERGY_0009", "ENT_ENERGY_0001", "ENT_ENERGY_0050"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0009",
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0050"
+      ],
       "gold_entity_id": "ENT_ENERGY_0009",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "research_institution",
-      "decisive_evidence": ["研究报告", "决策参考"]
+      "decisive_evidence": [
+        "研究报告",
+        "决策参考"
+      ]
     },
     {
       "id": "LLM_AMB_003",
       "text": "国网新源加快建设抽水蓄能电站，计划年内新增多个投产项目。",
       "mention": "国网新源",
-      "candidate_entity_ids": ["ENT_ENERGY_0010", "ENT_ENERGY_0001", "ENT_ENERGY_0009"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0010",
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0009"
+      ],
       "gold_entity_id": "ENT_ENERGY_0010",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "parent_subsidiary",
-      "decisive_evidence": ["抽水蓄能电站", "投产项目"]
+      "decisive_evidence": [
+        "抽水蓄能电站",
+        "投产项目"
+      ]
     },
     {
       "id": "LLM_AMB_004",
       "text": "三峡大坝在本轮洪峰期间发挥拦洪削峰作用，保障了下游防洪安全。",
       "mention": "三峡大坝",
-      "candidate_entity_ids": ["ENT_ENERGY_0012", "ENT_ENERGY_0008"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0012",
+        "ENT_ENERGY_0008"
+      ],
       "gold_entity_id": "ENT_ENERGY_0012",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "facility_vs_enterprise",
-      "decisive_evidence": ["洪峰", "拦洪削峰", "防洪"]
+      "decisive_evidence": [
+        "洪峰",
+        "拦洪削峰",
+        "防洪"
+      ]
     },
     {
       "id": "LLM_AMB_005",
       "text": "三峡集团宣布投资建设新的风光水储一体化基地，并负责项目运营。",
       "mention": "三峡集团",
-      "candidate_entity_ids": ["ENT_ENERGY_0008", "ENT_ENERGY_0012"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0008",
+        "ENT_ENERGY_0012"
+      ],
       "gold_entity_id": "ENT_ENERGY_0008",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "facility_vs_enterprise",
-      "decisive_evidence": ["投资建设", "负责运营"]
+      "decisive_evidence": [
+        "投资建设",
+        "负责运营"
+      ]
     },
     {
       "id": "LLM_AMB_006",
       "text": "华能持续提高新能源装机占比，全年风电和光伏新增装机超过一千万千瓦。",
       "mention": "华能",
-      "candidate_entity_ids": ["ENT_ENERGY_0003", "ENT_ENERGY_0007"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0003",
+        "ENT_ENERGY_0007"
+      ],
       "gold_entity_id": "ENT_ENERGY_0003",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_short_name",
-      "decisive_evidence": ["华能", "新能源装机"]
+      "decisive_evidence": [
+        "华能",
+        "新能源装机"
+      ]
     },
     {
       "id": "LLM_AMB_007",
       "text": "华电加快天然气发电和分布式能源项目布局，提升区域综合能源服务能力。",
       "mention": "华电",
-      "candidate_entity_ids": ["ENT_ENERGY_0007", "ENT_ENERGY_0003"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0007",
+        "ENT_ENERGY_0003"
+      ],
       "gold_entity_id": "ENT_ENERGY_0007",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_short_name",
-      "decisive_evidence": ["华电", "天然气发电", "分布式能源"]
+      "decisive_evidence": [
+        "华电",
+        "天然气发电",
+        "分布式能源"
+      ]
     },
     {
       "id": "LLM_AMB_008",
       "text": "中核集团推进核燃料循环产业建设，覆盖铀矿勘探、核燃料加工与后处理。",
       "mention": "中核集团",
-      "candidate_entity_ids": ["ENT_ENERGY_0034", "ENT_ENERGY_0011"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0034",
+        "ENT_ENERGY_0011"
+      ],
       "gold_entity_id": "ENT_ENERGY_0034",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_short_name",
-      "decisive_evidence": ["核燃料循环", "铀矿勘探", "后处理"]
+      "decisive_evidence": [
+        "核燃料循环",
+        "铀矿勘探",
+        "后处理"
+      ]
     },
     {
       "id": "LLM_AMB_009",
       "text": "中广核公布大亚湾核电基地年度运行数据，多台机组保持安全稳定运行。",
       "mention": "中广核",
-      "candidate_entity_ids": ["ENT_ENERGY_0011", "ENT_ENERGY_0034"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0011",
+        "ENT_ENERGY_0034"
+      ],
       "gold_entity_id": "ENT_ENERGY_0011",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_short_name",
-      "decisive_evidence": ["大亚湾核电基地", "机组运行"]
+      "decisive_evidence": [
+        "大亚湾核电基地",
+        "机组运行"
+      ]
     },
     {
       "id": "LLM_AMB_010",
       "text": "UHVDC适合超远距离大容量送电，可用于跨区域直流输电工程。",
       "mention": "UHVDC",
-      "candidate_entity_ids": ["ENT_ENERGY_0018", "ENT_ENERGY_0019"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0018",
+        "ENT_ENERGY_0019"
+      ],
       "gold_entity_id": "ENT_ENERGY_0018",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "technical_term",
-      "decisive_evidence": ["直流输电", "超远距离"]
+      "decisive_evidence": [
+        "直流输电",
+        "超远距离"
+      ]
     },
     {
       "id": "LLM_AMB_011",
       "text": "UHVAC线路承担区域电网互联任务，重点提升交流主网架输送能力。",
       "mention": "UHVAC",
-      "candidate_entity_ids": ["ENT_ENERGY_0019", "ENT_ENERGY_0018"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0019",
+        "ENT_ENERGY_0018"
+      ],
       "gold_entity_id": "ENT_ENERGY_0019",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "technical_term",
-      "decisive_evidence": ["交流主网架", "区域互联"]
+      "decisive_evidence": [
+        "交流主网架",
+        "区域互联"
+      ]
     },
     {
       "id": "LLM_AMB_012",
       "text": "国家能源集团加快煤电清洁化改造，并扩大风电与光伏装机规模。",
       "mention": "国家能源集团",
-      "candidate_entity_ids": ["ENT_ENERGY_0005", "ENT_GEN_0059"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0005",
+        "ENT_GEN_0059"
+      ],
       "gold_entity_id": "ENT_ENERGY_0005",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "enterprise_vs_government",
-      "decisive_evidence": ["煤电改造", "装机规模"]
+      "decisive_evidence": [
+        "煤电改造",
+        "装机规模"
+      ]
     },
     {
       "id": "LLM_AMB_013",
       "text": "国家能源局发布电力市场监管政策，并就政策实施情况开展专项检查。",
       "mention": "国家能源局",
-      "candidate_entity_ids": ["ENT_GEN_0059", "ENT_ENERGY_0005"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0059",
+        "ENT_ENERGY_0005"
+      ],
       "gold_entity_id": "ENT_GEN_0059",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "enterprise_vs_government",
-      "decisive_evidence": ["发布政策", "监管", "专项检查"]
+      "decisive_evidence": [
+        "发布政策",
+        "监管",
+        "专项检查"
+      ]
     },
     {
       "id": "LLM_AMB_014",
       "text": "中国电科院完成新能源并网技术标准验证，并建设电力系统仿真实验平台。",
       "mention": "中国电科院",
-      "candidate_entity_ids": ["ENT_ENERGY_0050", "ENT_ENERGY_0009"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0050",
+        "ENT_ENERGY_0009"
+      ],
       "gold_entity_id": "ENT_ENERGY_0050",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_institution",
-      "decisive_evidence": ["技术标准验证", "仿真实验平台"]
+      "decisive_evidence": [
+        "技术标准验证",
+        "仿真实验平台"
+      ]
     },
     {
       "id": "LLM_AMB_015",
       "text": "国网能源院围绕电力供需和能源转型路径形成专题研究成果。",
       "mention": "国网能源院",
-      "candidate_entity_ids": ["ENT_ENERGY_0009", "ENT_ENERGY_0050"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0009",
+        "ENT_ENERGY_0050"
+      ],
       "gold_entity_id": "ENT_ENERGY_0009",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_institution",
-      "decisive_evidence": ["电力供需", "转型路径", "专题研究"]
+      "decisive_evidence": [
+        "电力供需",
+        "转型路径",
+        "专题研究"
+      ]
     },
     {
       "id": "LLM_AMB_016",
       "text": "阳光新能源宣布进入风电整机制造领域，并计划建设新的生产基地。",
       "mention": "阳光新能源",
-      "candidate_entity_ids": ["ENT_ENERGY_0037"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0037"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "nil_reason": "entity_not_in_kb",
       "difficulty": "hard",
       "ambiguity_type": "near_name_nil",
-      "decisive_evidence": ["新能源与电源名称不同", "知识库无对应法人实体"]
+      "decisive_evidence": [
+        "新能源与电源名称不同",
+        "知识库无对应法人实体"
+      ]
     },
     {
       "id": "LLM_AMB_017",
       "text": "比亚迪公布刀片电池储能系统方案，同时介绍新能源汽车海外销售进展。",
       "mention": "比亚迪",
-      "candidate_entity_ids": ["ENT_ENERGY_0016"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0016"
+      ],
       "gold_entity_id": "ENT_ENERGY_0016",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "single_entity_multi_role",
-      "decisive_evidence": ["储能", "新能源汽车", "同一法人多业务角色"]
+      "decisive_evidence": [
+        "储能",
+        "新能源汽车",
+        "同一法人多业务角色"
+      ]
     },
     {
       "id": "LLM_AMB_018",
       "text": "南网完成广东主网架升级，并提升跨省电力调度能力。",
       "mention": "南网",
-      "candidate_entity_ids": ["ENT_ENERGY_0002", "ENT_ENERGY_0001"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0002",
+        "ENT_ENERGY_0001"
+      ],
       "gold_entity_id": "ENT_ENERGY_0002",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "similar_grid_company",
-      "decisive_evidence": ["广东", "跨省调度", "南网"]
+      "decisive_evidence": [
+        "广东",
+        "跨省调度",
+        "南网"
+      ]
     },
     {
       "id": "LLM_AMB_019",
       "text": "大唐加快火电机组灵活性改造，并同步扩大风电装机。",
       "mention": "大唐",
-      "candidate_entity_ids": ["ENT_ENERGY_0004", "ENT_ENERGY_0003", "ENT_ENERGY_0007"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0004",
+        "ENT_ENERGY_0003",
+        "ENT_ENERGY_0007"
+      ],
       "gold_entity_id": "ENT_ENERGY_0004",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "similar_short_name",
-      "decisive_evidence": ["大唐", "火电机组", "风电装机"]
+      "decisive_evidence": [
+        "大唐",
+        "火电机组",
+        "风电装机"
+      ]
     },
     {
       "id": "LLM_AMB_020",
       "text": "国家电投在青海建设光伏基地，清洁能源装机占比超过百分之六十。",
       "mention": "国家电投",
-      "candidate_entity_ids": ["ENT_ENERGY_0006", "ENT_ENERGY_0001", "ENT_ENERGY_0005"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0006",
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0005"
+      ],
       "gold_entity_id": "ENT_ENERGY_0006",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_short_name",
-      "decisive_evidence": ["光伏基地", "清洁能源装机", "国家电投"]
+      "decisive_evidence": [
+        "光伏基地",
+        "清洁能源装机",
+        "国家电投"
+      ]
     },
     {
       "id": "LLM_AMB_021",
       "text": "三峡宣布扩大海上风电投资，并由集团统筹项目运营。",
       "mention": "三峡",
-      "candidate_entity_ids": ["ENT_ENERGY_0008", "ENT_ENERGY_0012"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0008",
+        "ENT_ENERGY_0012"
+      ],
       "gold_entity_id": "ENT_ENERGY_0008",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "facility_vs_enterprise",
-      "decisive_evidence": ["投资", "集团", "项目运营"]
+      "decisive_evidence": [
+        "投资",
+        "集团",
+        "项目运营"
+      ]
     },
     {
       "id": "LLM_AMB_022",
       "text": "三峡在洪峰到来前加大下泄流量，并发挥拦洪削峰作用。",
       "mention": "三峡",
-      "candidate_entity_ids": ["ENT_ENERGY_0012", "ENT_ENERGY_0008"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0012",
+        "ENT_ENERGY_0008"
+      ],
       "gold_entity_id": "ENT_ENERGY_0012",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "facility_vs_enterprise",
-      "decisive_evidence": ["洪峰", "下泄流量", "拦洪削峰"]
+      "decisive_evidence": [
+        "洪峰",
+        "下泄流量",
+        "拦洪削峰"
+      ]
     },
     {
       "id": "LLM_AMB_023",
       "text": "溪洛渡提高出力参与电网调峰，同时保障长江上游防洪安全。",
       "mention": "溪洛渡",
-      "candidate_entity_ids": ["ENT_ENERGY_0013", "ENT_ENERGY_0008"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0013",
+        "ENT_ENERGY_0008"
+      ],
       "gold_entity_id": "ENT_ENERGY_0013",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "facility_vs_enterprise",
-      "decisive_evidence": ["出力", "调峰", "防洪"]
+      "decisive_evidence": [
+        "出力",
+        "调峰",
+        "防洪"
+      ]
     },
     {
       "id": "LLM_AMB_024",
       "text": "大亚湾完成年度换料大修，多台核电机组恢复并网运行。",
       "mention": "大亚湾",
-      "candidate_entity_ids": ["ENT_ENERGY_0017", "ENT_ENERGY_0011"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0017",
+        "ENT_ENERGY_0011"
+      ],
       "gold_entity_id": "ENT_ENERGY_0017",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "facility_vs_enterprise",
-      "decisive_evidence": ["换料大修", "核电机组", "并网运行"]
+      "decisive_evidence": [
+        "换料大修",
+        "核电机组",
+        "并网运行"
+      ]
     },
     {
       "id": "LLM_AMB_025",
       "text": "华龙一号完成安全系统验证，示范机组运行指标达到设计要求。",
       "mention": "华龙一号",
-      "candidate_entity_ids": ["ENT_ENERGY_0040", "ENT_ENERGY_0034", "ENT_ENERGY_0011"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0040",
+        "ENT_ENERGY_0034",
+        "ENT_ENERGY_0011"
+      ],
       "gold_entity_id": "ENT_ENERGY_0040",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "product_vs_enterprise",
-      "decisive_evidence": ["安全系统", "示范机组", "设计要求"]
+      "decisive_evidence": [
+        "安全系统",
+        "示范机组",
+        "设计要求"
+      ]
     },
     {
       "id": "LLM_AMB_026",
       "text": "阳光发布新一代组串式逆变器，并公布储能系统海外订单。",
       "mention": "阳光",
-      "candidate_entity_ids": ["ENT_ENERGY_0037"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0037"
+      ],
       "gold_entity_id": "ENT_ENERGY_0037",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "short_name_polysemy",
-      "decisive_evidence": ["组串式逆变器", "储能系统", "海外订单"]
+      "decisive_evidence": [
+        "组串式逆变器",
+        "储能系统",
+        "海外订单"
+      ]
     },
     {
       "id": "LLM_AMB_027",
       "text": "国能扩大煤炭清洁利用项目投资，并新增多个新能源场站。",
       "mention": "国能",
-      "candidate_entity_ids": ["ENT_ENERGY_0005", "ENT_GEN_0059"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0005",
+        "ENT_GEN_0059"
+      ],
       "gold_entity_id": "ENT_ENERGY_0005",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "enterprise_vs_government",
-      "decisive_evidence": ["项目投资", "煤炭", "新能源场站"]
+      "decisive_evidence": [
+        "项目投资",
+        "煤炭",
+        "新能源场站"
+      ]
     },
     {
       "id": "LLM_AMB_028",
       "text": "南网在云南建设新的跨省输电通道，服务西电东送。",
       "mention": "南网",
-      "candidate_entity_ids": ["ENT_ENERGY_0002", "ENT_ENERGY_0001"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0002",
+        "ENT_ENERGY_0001"
+      ],
       "gold_entity_id": "ENT_ENERGY_0002",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_grid_company",
-      "decisive_evidence": ["云南", "西电东送", "跨省输电"]
+      "decisive_evidence": [
+        "云南",
+        "西电东送",
+        "跨省输电"
+      ]
     },
     {
       "id": "LLM_AMB_029",
       "text": "电科院完成新能源并网控制策略验证，并更新仿真实验平台。",
       "mention": "电科院",
-      "candidate_entity_ids": ["ENT_ENERGY_0050", "ENT_ENERGY_0009", "ENT_ENERGY_0049"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0050",
+        "ENT_ENERGY_0009",
+        "ENT_ENERGY_0049"
+      ],
       "gold_entity_id": "ENT_ENERGY_0050",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_institution",
-      "decisive_evidence": ["控制策略验证", "仿真实验平台"]
+      "decisive_evidence": [
+        "控制策略验证",
+        "仿真实验平台"
+      ]
     },
     {
       "id": "LLM_AMB_030",
       "text": "电规总院发布全国电力发展规划研究报告，并测算新增装机需求。",
       "mention": "电规总院",
-      "candidate_entity_ids": ["ENT_ENERGY_0049", "ENT_ENERGY_0050", "ENT_ENERGY_0009"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0049",
+        "ENT_ENERGY_0050",
+        "ENT_ENERGY_0009"
+      ],
       "gold_entity_id": "ENT_ENERGY_0049",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_institution",
-      "decisive_evidence": ["电力发展规划", "装机需求", "研究报告"]
+      "decisive_evidence": [
+        "电力发展规划",
+        "装机需求",
+        "研究报告"
+      ]
     },
     {
       "id": "LLM_AMB_031",
       "text": "远景公布风电整机海外订单，并推出新一代能源物联网平台。",
       "mention": "远景",
-      "candidate_entity_ids": ["ENT_ENERGY_0033"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0033"
+      ],
       "gold_entity_id": "ENT_ENERGY_0033",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "short_name_polysemy",
-      "decisive_evidence": ["风电整机", "能源物联网", "海外订单"]
+      "decisive_evidence": [
+        "风电整机",
+        "能源物联网",
+        "海外订单"
+      ]
     },
     {
       "id": "LLM_AMB_032",
       "text": "平安披露绿色金融业务数据，并扩大新能源项目保险覆盖范围。",
       "mention": "平安",
-      "candidate_entity_ids": ["ENT_GEN_0056"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0056"
+      ],
       "gold_entity_id": "ENT_GEN_0056",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "common_word_vs_enterprise",
-      "decisive_evidence": ["绿色金融", "保险", "业务数据"]
+      "decisive_evidence": [
+        "绿色金融",
+        "保险",
+        "业务数据"
+      ]
     },
     {
       "id": "LLM_AMB_033",
       "text": "招行推出面向光伏企业的供应链金融产品，并提供绿色信贷额度。",
       "mention": "招行",
-      "candidate_entity_ids": ["ENT_GEN_0057", "ENT_GEN_0055"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0057",
+        "ENT_GEN_0055"
+      ],
       "gold_entity_id": "ENT_GEN_0057",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_short_name",
-      "decisive_evidence": ["招行", "供应链金融", "绿色信贷"]
+      "decisive_evidence": [
+        "招行",
+        "供应链金融",
+        "绿色信贷"
+      ]
     },
     {
       "id": "LLM_AMB_034",
       "text": "微信上线家庭用电账单服务，用户可在小程序中查询月度能耗。",
       "mention": "微信",
-      "candidate_entity_ids": ["ENT_GEN_0061", "ENT_GEN_0052"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0061",
+        "ENT_GEN_0052"
+      ],
       "gold_entity_id": "ENT_GEN_0061",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "parent_product",
-      "decisive_evidence": ["小程序", "用户", "用电账单服务"]
+      "decisive_evidence": [
+        "小程序",
+        "用户",
+        "用电账单服务"
+      ]
     },
     {
       "id": "LLM_AMB_035",
       "text": "抖音推出节能科普频道，并上线绿色生活主题短视频活动。",
       "mention": "抖音",
-      "candidate_entity_ids": ["ENT_GEN_0062", "ENT_GEN_0052"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0062",
+        "ENT_GEN_0052"
+      ],
       "gold_entity_id": "ENT_GEN_0062",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "product_vs_enterprise",
-      "decisive_evidence": ["短视频", "频道", "主题活动"]
+      "decisive_evidence": [
+        "短视频",
+        "频道",
+        "主题活动"
+      ]
     },
     {
       "id": "LLM_AMB_036",
       "text": "VPP聚合分布式电源与可调负荷，参与电力现货市场交易。",
       "mention": "VPP",
-      "candidate_entity_ids": ["ENT_ENERGY_0042", "ENT_ENERGY_0024"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0042",
+        "ENT_ENERGY_0024"
+      ],
       "gold_entity_id": "ENT_ENERGY_0042",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "abbreviation_polysemy",
-      "decisive_evidence": ["聚合", "可调负荷", "现货市场"]
+      "decisive_evidence": [
+        "聚合",
+        "可调负荷",
+        "现货市场"
+      ]
     },
     {
       "id": "LLM_AMB_037",
       "text": "绿证可用于证明可再生能源电量的环境属性，并支持企业绿色消费声明。",
       "mention": "绿证",
-      "candidate_entity_ids": ["ENT_ENERGY_0043", "ENT_ENERGY_0020"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0043",
+        "ENT_ENERGY_0020"
+      ],
       "gold_entity_id": "ENT_ENERGY_0043",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "technical_term",
-      "decisive_evidence": ["环境属性", "可再生能源电量", "绿色消费声明"]
+      "decisive_evidence": [
+        "环境属性",
+        "可再生能源电量",
+        "绿色消费声明"
+      ]
     },
     {
       "id": "LLM_AMB_038",
       "text": "工业和信息化部发布工业领域节能降碳指导意见，并组织专项督查。",
       "mention": "工业和信息化部",
-      "candidate_entity_ids": ["ENT_GEN_0059", "ENT_ENERGY_0005"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0059",
+        "ENT_ENERGY_0005"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "nil_reason": "entity_not_in_kb",
       "difficulty": "hard",
       "ambiguity_type": "near_name_nil",
-      "decisive_evidence": ["工业领域", "指导意见", "知识库无对应政府机构"]
+      "decisive_evidence": [
+        "工业领域",
+        "指导意见",
+        "知识库无对应政府机构"
+      ]
     },
     {
       "id": "LLM_AMB_039",
       "text": "中国能源研究会发布能源转型研究成果，并召开年度学术会议。",
       "mention": "中国能源研究会",
-      "candidate_entity_ids": ["ENT_ENERGY_0009", "ENT_ENERGY_0049", "ENT_ENERGY_0050"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0009",
+        "ENT_ENERGY_0049",
+        "ENT_ENERGY_0050"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "nil_reason": "entity_not_in_kb",
       "difficulty": "hard",
       "ambiguity_type": "near_name_nil",
-      "decisive_evidence": ["学术会议", "研究会", "知识库无对应社会组织"]
+      "decisive_evidence": [
+        "学术会议",
+        "研究会",
+        "知识库无对应社会组织"
+      ]
     },
     {
       "id": "LLM_AMB_040",
       "text": "国家电力公司在历史文件中负责全国电网建设，该名称后来不再作为现行法人名称使用。",
       "mention": "国家电力公司",
-      "candidate_entity_ids": ["ENT_ENERGY_0001", "ENT_ENERGY_0006"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0006"
+      ],
       "gold_entity_id": "ENT_ENERGY_0001",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "historical_name",
-      "decisive_evidence": ["历史文件", "全国电网建设", "曾用名"]
+      "decisive_evidence": [
+        "历史文件",
+        "全国电网建设",
+        "曾用名"
+      ]
     },
     {
       "id": "LLM_AMB_041",
       "text": "平安扩大新能源项目保险覆盖范围，并披露绿色金融业务数据。",
       "mention": "平安",
-      "candidate_entity_ids": ["ENT_GEN_0056", "ENT_GEN_0055", "ENT_GEN_0057"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0056",
+        "ENT_GEN_0055",
+        "ENT_GEN_0057"
+      ],
       "gold_entity_id": "ENT_GEN_0056",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "common_word_vs_enterprise",
-      "decisive_evidence": ["保险", "绿色金融", "业务数据"]
+      "decisive_evidence": [
+        "保险",
+        "绿色金融",
+        "业务数据"
+      ]
     },
     {
       "id": "LLM_AMB_042",
       "text": "工行公布清洁能源项目贷款余额，并推出企业碳账户服务。",
       "mention": "工行",
-      "candidate_entity_ids": ["ENT_GEN_0055", "ENT_GEN_0057", "ENT_GEN_0056"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0055",
+        "ENT_GEN_0057",
+        "ENT_GEN_0056"
+      ],
       "gold_entity_id": "ENT_GEN_0055",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "similar_financial_institution",
-      "decisive_evidence": ["工行", "贷款余额", "企业碳账户"]
+      "decisive_evidence": [
+        "工行",
+        "贷款余额",
+        "企业碳账户"
+      ]
     },
     {
       "id": "LLM_AMB_043",
       "text": "招行面向光伏制造企业推出跨境结算和供应链融资方案。",
       "mention": "招行",
-      "candidate_entity_ids": ["ENT_GEN_0057", "ENT_GEN_0055", "ENT_GEN_0056"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0057",
+        "ENT_GEN_0055",
+        "ENT_GEN_0056"
+      ],
       "gold_entity_id": "ENT_GEN_0057",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_financial_institution",
-      "decisive_evidence": ["招行", "跨境结算", "供应链融资"]
+      "decisive_evidence": [
+        "招行",
+        "跨境结算",
+        "供应链融资"
+      ]
     },
     {
       "id": "LLM_AMB_044",
       "text": "中芯提高晶圆制造产能，并披露先进制程研发进展。",
       "mention": "中芯",
-      "candidate_entity_ids": ["ENT_GEN_0054", "ENT_ENERGY_0015", "ENT_GEN_0051"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0054",
+        "ENT_ENERGY_0015",
+        "ENT_GEN_0051"
+      ],
       "gold_entity_id": "ENT_GEN_0054",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_short_name",
-      "decisive_evidence": ["晶圆制造", "先进制程", "产能"]
+      "decisive_evidence": [
+        "晶圆制造",
+        "先进制程",
+        "产能"
+      ]
     },
     {
       "id": "LLM_AMB_045",
       "text": "清华成立人工智能治理研究中心，并发布面向社会的课程资源。",
       "mention": "清华",
-      "candidate_entity_ids": ["ENT_GEN_0060", "ENT_ENERGY_0009", "ENT_ENERGY_0050"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0060",
+        "ENT_ENERGY_0009",
+        "ENT_ENERGY_0050"
+      ],
       "gold_entity_id": "ENT_GEN_0060",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_institution",
-      "decisive_evidence": ["清华", "研究中心", "课程资源"]
+      "decisive_evidence": [
+        "清华",
+        "研究中心",
+        "课程资源"
+      ]
     },
     {
       "id": "LLM_AMB_046",
       "text": "微信上线家庭用电账单查询功能，用户可通过小程序查看月度能耗。",
       "mention": "微信",
-      "candidate_entity_ids": ["ENT_GEN_0061", "ENT_GEN_0052"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0061",
+        "ENT_GEN_0052"
+      ],
       "gold_entity_id": "ENT_GEN_0061",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "parent_product",
-      "decisive_evidence": ["小程序", "用户", "查询功能"]
+      "decisive_evidence": [
+        "小程序",
+        "用户",
+        "查询功能"
+      ]
     },
     {
       "id": "LLM_AMB_047",
       "text": "抖音上线传统文化短视频专题，并向创作者开放互动工具。",
       "mention": "抖音",
-      "candidate_entity_ids": ["ENT_GEN_0062", "ENT_GEN_0052", "ENT_GEN_0053"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0062",
+        "ENT_GEN_0052",
+        "ENT_GEN_0053"
+      ],
       "gold_entity_id": "ENT_GEN_0062",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "product_vs_enterprise",
-      "decisive_evidence": ["短视频", "创作者", "互动工具"]
+      "decisive_evidence": [
+        "短视频",
+        "创作者",
+        "互动工具"
+      ]
     },
     {
       "id": "LLM_AMB_048",
       "text": "Windows11修复文件管理器异常，并更新无线网络安全组件。",
       "mention": "Windows11",
-      "candidate_entity_ids": ["ENT_GEN_0063", "ENT_GEN_0051"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0063",
+        "ENT_GEN_0051"
+      ],
       "gold_entity_id": "ENT_GEN_0063",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "product_version",
-      "decisive_evidence": ["Windows11", "文件管理器", "安全组件"]
+      "decisive_evidence": [
+        "Windows11",
+        "文件管理器",
+        "安全组件"
+      ]
     },
     {
       "id": "LLM_AMB_049",
       "text": "NIO公布高速换电网络计划，并在多个城市新增服务站点。",
       "mention": "NIO",
-      "candidate_entity_ids": ["ENT_GEN_0058", "ENT_ENERGY_0016", "ENT_ENERGY_0015"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0058",
+        "ENT_ENERGY_0016",
+        "ENT_ENERGY_0015"
+      ],
       "gold_entity_id": "ENT_GEN_0058",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "abbreviation_polysemy",
-      "decisive_evidence": ["NIO", "换电网络", "服务站点"]
+      "decisive_evidence": [
+        "NIO",
+        "换电网络",
+        "服务站点"
+      ]
     },
     {
       "id": "LLM_AMB_050",
       "text": "CATL发布商用车电池包，并展示新一代超快充技术。",
       "mention": "CATL",
-      "candidate_entity_ids": ["ENT_ENERGY_0015", "ENT_ENERGY_0016", "ENT_GEN_0058"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0015",
+        "ENT_ENERGY_0016",
+        "ENT_GEN_0058"
+      ],
       "gold_entity_id": "ENT_ENERGY_0015",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "abbreviation_polysemy",
-      "decisive_evidence": ["电池包", "超快充", "商用车"]
+      "decisive_evidence": [
+        "电池包",
+        "超快充",
+        "商用车"
+      ]
     },
     {
       "id": "LLM_AMB_051",
       "text": "阿里上线面向中小企业的跨境电商服务，并升级云计算基础设施。",
       "mention": "阿里",
-      "candidate_entity_ids": ["ENT_GEN_0053", "ENT_GEN_0052", "ENT_GEN_0051"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0053",
+        "ENT_GEN_0052",
+        "ENT_GEN_0051"
+      ],
       "gold_entity_id": "ENT_GEN_0053",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "similar_short_name",
-      "decisive_evidence": ["跨境电商", "云计算", "中小企业"]
+      "decisive_evidence": [
+        "跨境电商",
+        "云计算",
+        "中小企业"
+      ]
     },
     {
       "id": "LLM_AMB_052",
       "text": "华为公布数据中心节能方案，同时发布新一代网络设备。",
       "mention": "华为",
-      "candidate_entity_ids": ["ENT_GEN_0051", "ENT_GEN_0052", "ENT_GEN_0054"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0051",
+        "ENT_GEN_0052",
+        "ENT_GEN_0054"
+      ],
       "gold_entity_id": "ENT_GEN_0051",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "single_entity_multi_role",
-      "decisive_evidence": ["华为", "数据中心", "网络设备"]
+      "decisive_evidence": [
+        "华为",
+        "数据中心",
+        "网络设备"
+      ]
     },
     {
       "id": "LLM_AMB_053",
       "text": "中国移动启动算力网络升级，并部署新的边缘计算节点。",
       "mention": "中国移动",
-      "candidate_entity_ids": ["ENT_GEN_0051", "ENT_ENERGY_0001", "ENT_ENERGY_0002"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0051",
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0002"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "nil_reason": "entity_not_in_kb",
       "difficulty": "hard",
       "ambiguity_type": "near_name_nil",
-      "decisive_evidence": ["中国移动", "算力网络", "知识库无对应运营商"]
+      "decisive_evidence": [
+        "中国移动",
+        "算力网络",
+        "知识库无对应运营商"
+      ]
     },
     {
       "id": "LLM_AMB_054",
       "text": "北京大学成立医学与人工智能交叉研究平台，并开放部分课程。",
       "mention": "北京大学",
-      "candidate_entity_ids": ["ENT_GEN_0060", "ENT_ENERGY_0028"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0060",
+        "ENT_ENERGY_0028"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "nil_reason": "entity_not_in_kb",
       "difficulty": "hard",
       "ambiguity_type": "near_name_nil",
-      "decisive_evidence": ["北京大学", "课程", "知识库仅有清华大学"]
+      "decisive_evidence": [
+        "北京大学",
+        "课程",
+        "知识库仅有清华大学"
+      ]
     },
     {
       "id": "LLM_AMB_055",
       "text": "中国农业银行推出县域光伏项目绿色信贷产品。",
       "mention": "中国农业银行",
-      "candidate_entity_ids": ["ENT_GEN_0055", "ENT_GEN_0057", "ENT_GEN_0056"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0055",
+        "ENT_GEN_0057",
+        "ENT_GEN_0056"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "nil_reason": "entity_not_in_kb",
       "difficulty": "hard",
       "ambiguity_type": "near_name_nil",
-      "decisive_evidence": ["农业银行", "县域", "知识库无对应银行"]
+      "decisive_evidence": [
+        "农业银行",
+        "县域",
+        "知识库无对应银行"
+      ]
     },
     {
       "id": "LLM_AMB_056",
       "text": "京东升级智能物流系统，并扩大新能源配送车辆使用规模。",
       "mention": "京东",
-      "candidate_entity_ids": ["ENT_GEN_0053", "ENT_GEN_0052"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0053",
+        "ENT_GEN_0052"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "nil_reason": "entity_not_in_kb",
       "difficulty": "hard",
       "ambiguity_type": "near_name_nil",
-      "decisive_evidence": ["智能物流", "配送", "知识库无京东实体"]
+      "decisive_evidence": [
+        "智能物流",
+        "配送",
+        "知识库无京东实体"
+      ]
     },
     {
       "id": "LLM_AMB_057",
       "text": "北京协和医院上线疑难病远程会诊平台，覆盖多个临床专科。",
       "mention": "北京协和医院",
-      "candidate_entity_ids": ["ENT_GEN_0060", "ENT_ENERGY_0028"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0060",
+        "ENT_ENERGY_0028"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "nil_reason": "entity_not_in_kb",
       "difficulty": "hard",
       "ambiguity_type": "near_name_nil",
-      "decisive_evidence": ["医院", "临床专科", "知识库无医疗机构"]
+      "decisive_evidence": [
+        "医院",
+        "临床专科",
+        "知识库无医疗机构"
+      ]
     },
     {
       "id": "LLM_AMB_058",
       "text": "中国中车完成高速列车试验，并公布新型牵引系统能耗数据。",
       "mention": "中国中车",
-      "candidate_entity_ids": ["ENT_ENERGY_0001", "ENT_ENERGY_0002", "ENT_GEN_0058"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0002",
+        "ENT_GEN_0058"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "nil_reason": "entity_not_in_kb",
       "difficulty": "hard",
       "ambiguity_type": "near_name_nil",
-      "decisive_evidence": ["高速列车", "牵引系统", "知识库无轨道交通企业"]
+      "decisive_evidence": [
+        "高速列车",
+        "牵引系统",
+        "知识库无轨道交通企业"
+      ]
     },
     {
       "id": "LLM_AMB_059",
       "text": "中国科学院发布先进储能材料研究进展，并推进成果转化。",
       "mention": "中国科学院",
-      "candidate_entity_ids": ["ENT_ENERGY_0009", "ENT_ENERGY_0050", "ENT_GEN_0060"],
-      "gold_entity_id": null,
-      "expected_nil": true,
-      "nil_reason": "entity_not_in_kb",
+      "candidate_entity_ids": [
+        "ENT_GEN_0068",
+        "ENT_ENERGY_0009",
+        "ENT_ENERGY_0050"
+      ],
+      "gold_entity_id": "ENT_GEN_0068",
+      "expected_nil": false,
       "difficulty": "hard",
-      "ambiguity_type": "near_name_nil",
-      "decisive_evidence": ["科学院", "材料研究", "知识库无对应科研机构"]
+      "ambiguity_type": "newly_in_kb_after_expansion",
+      "decisive_evidence": [
+        "科学院",
+        "储能材料",
+        "成果转化"
+      ]
     },
     {
       "id": "LLM_AMB_060",
       "text": "上海证券交易所发布上市公司可持续发展信息披露指引。",
       "mention": "上海证券交易所",
-      "candidate_entity_ids": ["ENT_GEN_0055", "ENT_GEN_0057", "ENT_GEN_0056"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0087",
+        "ENT_GEN_0055",
+        "ENT_GEN_0057"
+      ],
+      "gold_entity_id": "ENT_GEN_0087",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "newly_in_kb_after_expansion",
+      "decisive_evidence": [
+        "证券交易所",
+        "上市公司",
+        "信息披露"
+      ]
+    },
+    {
+      "text": "北大医学团队发布AI辅助诊疗研究，但北京大学深圳研究生院未参与该项目。",
+      "mention": "北大",
+      "candidate_entity_ids": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0060",
+        "ENT_GEN_0068"
+      ],
+      "gold_entity_id": "ENT_GEN_0064",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "university_short_name",
+      "decisive_evidence": [
+        "医学团队",
+        "北京大学",
+        "未参与研究生院"
+      ],
+      "id": "LLM_AMB_061"
+    },
+    {
+      "text": "上海交大低碳实验室与上交所联合举办绿色金融论坛。",
+      "mention": "上交",
+      "candidate_entity_ids": [
+        "ENT_GEN_0065",
+        "ENT_GEN_0087",
+        "ENT_GEN_0088"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "nil_reason": "ambiguous_abbreviation_not_canonical_alias",
+      "difficulty": "hard",
+      "ambiguity_type": "abbreviation_polysemy",
+      "decisive_evidence": [
+        "上交既可能指上海交大也可能指上交所",
+        "mention不完整",
+        "需人工或LLM判断"
+      ],
+      "id": "LLM_AMB_062"
+    },
+    {
+      "text": "中科院自动化所发布多模态大模型评测报告。",
+      "mention": "中科院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0068",
+        "ENT_GEN_0069",
+        "ENT_GEN_0060"
+      ],
+      "gold_entity_id": "ENT_GEN_0068",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "research_institution_short_name",
+      "decisive_evidence": [
+        "自动化所",
+        "科研报告",
+        "中国科学院体系"
+      ],
+      "id": "LLM_AMB_063"
+    },
+    {
+      "text": "百度地图推出新能源车充电路线规划，而百度同步开放自动驾驶数据集。",
+      "mention": "百度",
+      "candidate_entity_ids": [
+        "ENT_GEN_0070",
+        "ENT_GEN_0098",
+        "ENT_GEN_0099"
+      ],
+      "gold_entity_id": "ENT_GEN_0070",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "parent_product",
+      "decisive_evidence": [
+        "开放自动驾驶数据集",
+        "公司主体",
+        "百度地图为产品"
+      ],
+      "id": "LLM_AMB_064"
+    },
+    {
+      "text": "百度地图在北京上线车道级导航，并接入更多充电站数据。",
+      "mention": "百度地图",
+      "candidate_entity_ids": [
+        "ENT_GEN_0098",
+        "ENT_GEN_0070",
+        "ENT_GEN_0099"
+      ],
+      "gold_entity_id": "ENT_GEN_0098",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "product_vs_parent_company",
+      "decisive_evidence": [
+        "车道级导航",
+        "充电站数据",
+        "地图产品"
+      ],
+      "id": "LLM_AMB_065"
+    },
+    {
+      "text": "高德发布实时路况预测能力，服务节假日跨城出行。",
+      "mention": "高德",
+      "candidate_entity_ids": [
+        "ENT_GEN_0099",
+        "ENT_GEN_0098",
+        "ENT_GEN_0053"
+      ],
+      "gold_entity_id": "ENT_GEN_0099",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "software_platform_short_name",
+      "decisive_evidence": [
+        "实时路况",
+        "跨城出行",
+        "地图导航"
+      ],
+      "id": "LLM_AMB_066"
+    },
+    {
+      "text": "京东物流升级仓储机器人，但京东金融没有参与此次系统改造。",
+      "mention": "京东",
+      "candidate_entity_ids": [
+        "ENT_GEN_0071",
+        "ENT_GEN_0053",
+        "ENT_GEN_0072"
+      ],
+      "gold_entity_id": "ENT_GEN_0071",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "parent_subsidiary_or_business_line",
+      "decisive_evidence": [
+        "京东物流",
+        "仓储机器人",
+        "集团业务主体"
+      ],
+      "id": "LLM_AMB_067"
+    },
+    {
+      "text": "美团无人机在深圳扩大配送试点，覆盖更多低空物流场景。",
+      "mention": "美团",
+      "candidate_entity_ids": [
+        "ENT_GEN_0072",
+        "ENT_GEN_0071",
+        "ENT_GEN_0093"
+      ],
+      "gold_entity_id": "ENT_GEN_0072",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "platform_enterprise",
+      "decisive_evidence": [
+        "无人机配送",
+        "低空物流",
+        "本地生活平台"
+      ],
+      "id": "LLM_AMB_068"
+    },
+    {
+      "text": "小米汽车发布城市NOA更新，小米手机团队仅提供部分系统适配。",
+      "mention": "小米",
+      "candidate_entity_ids": [
+        "ENT_GEN_0073",
+        "ENT_GEN_0078",
+        "ENT_GEN_0080"
+      ],
+      "gold_entity_id": "ENT_GEN_0073",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "company_vs_business_line",
+      "decisive_evidence": [
+        "小米汽车",
+        "小米手机团队",
+        "集团主体"
+      ],
+      "id": "LLM_AMB_069"
+    },
+    {
+      "text": "字节数据中心采购更多绿电，用于支撑视频推荐模型训练。",
+      "mention": "字节",
+      "candidate_entity_ids": [
+        "ENT_GEN_0075",
+        "ENT_GEN_0062",
+        "ENT_GEN_0077"
+      ],
+      "gold_entity_id": "ENT_GEN_0075",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "company_vs_product_platform",
+      "decisive_evidence": [
+        "数据中心",
+        "视频推荐模型",
+        "公司主体"
+      ],
+      "id": "LLM_AMB_070"
+    },
+    {
+      "text": "快手电商发布商家增长工具，短视频内容审核模型同步升级。",
+      "mention": "快手",
+      "candidate_entity_ids": [
+        "ENT_GEN_0077",
+        "ENT_GEN_0062",
+        "ENT_GEN_0075"
+      ],
+      "gold_entity_id": "ENT_GEN_0077",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_short_video_platform",
+      "decisive_evidence": [
+        "快手电商",
+        "短视频",
+        "内容审核"
+      ],
+      "id": "LLM_AMB_071"
+    },
+    {
+      "text": "小鹏能源团队上线超充站运营平台，但小鹏汽车仍是公告主体。",
+      "mention": "小鹏",
+      "candidate_entity_ids": [
+        "ENT_GEN_0078",
+        "ENT_GEN_0058",
+        "ENT_GEN_0079"
+      ],
+      "gold_entity_id": "ENT_GEN_0078",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "auto_brand_vs_energy_business",
+      "decisive_evidence": [
+        "超充站",
+        "小鹏汽车",
+        "公告主体"
+      ],
+      "id": "LLM_AMB_072"
+    },
+    {
+      "text": "理想公布家庭充电桩服务升级计划，与第三方能源公司合作。",
+      "mention": "理想",
+      "candidate_entity_ids": [
+        "ENT_GEN_0079",
+        "ENT_GEN_0078",
+        "ENT_GEN_0058"
+      ],
+      "gold_entity_id": "ENT_GEN_0079",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "auto_short_name",
+      "decisive_evidence": [
+        "家庭充电桩",
+        "汽车服务",
+        "能源公司合作"
+      ],
+      "id": "LLM_AMB_073"
+    },
+    {
+      "text": "Tesla储能系统接入园区微电网，车辆业务没有出现在本次公告中。",
+      "mention": "Tesla",
+      "candidate_entity_ids": [
+        "ENT_GEN_0080",
+        "ENT_GEN_0058",
+        "ENT_ENERGY_0037"
+      ],
+      "gold_entity_id": "ENT_GEN_0080",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "auto_vs_storage_business",
+      "decisive_evidence": [
+        "储能系统",
+        "园区微电网",
+        "车辆业务未出现"
+      ],
+      "id": "LLM_AMB_074"
+    },
+    {
+      "text": "建行绿色金融部支持分布式光伏项目，建设银行总行负责授信审批。",
+      "mention": "建行",
+      "candidate_entity_ids": [
+        "ENT_GEN_0081",
+        "ENT_GEN_0055",
+        "ENT_GEN_0082"
+      ],
+      "gold_entity_id": "ENT_GEN_0081",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_financial_institution",
+      "decisive_evidence": [
+        "建设银行",
+        "绿色金融",
+        "授信审批"
+      ],
+      "id": "LLM_AMB_075"
+    },
+    {
+      "text": "农行县域支行推出光伏贷，服务分布式能源项目。",
+      "mention": "农行",
+      "candidate_entity_ids": [
+        "ENT_GEN_0082",
+        "ENT_GEN_0081",
+        "ENT_GEN_0083"
+      ],
+      "gold_entity_id": "ENT_GEN_0082",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_financial_institution",
+      "decisive_evidence": [
+        "县域支行",
+        "光伏贷",
+        "农业银行简称"
+      ],
+      "id": "LLM_AMB_076"
+    },
+    {
+      "text": "中行参与绿色债券承销，并提供跨境结算支持。",
+      "mention": "中行",
+      "candidate_entity_ids": [
+        "ENT_GEN_0083",
+        "ENT_GEN_0085",
+        "ENT_GEN_0081"
+      ],
+      "gold_entity_id": "ENT_GEN_0083",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "bank_short_name",
+      "decisive_evidence": [
+        "跨境结算",
+        "绿色债券",
+        "中国银行简称"
+      ],
+      "id": "LLM_AMB_077"
+    },
+    {
+      "text": "上交所发布ESG披露指南，上海交大专家参与了意见咨询。",
+      "mention": "上交所",
+      "candidate_entity_ids": [
+        "ENT_GEN_0087",
+        "ENT_GEN_0065",
+        "ENT_GEN_0088"
+      ],
+      "gold_entity_id": "ENT_GEN_0087",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "exchange_vs_university",
+      "decisive_evidence": [
+        "ESG披露指南",
+        "交易所",
+        "上海交大只是专家来源"
+      ],
+      "id": "LLM_AMB_078"
+    },
+    {
+      "text": "深交所完善创业板规则，支持绿色制造企业融资。",
+      "mention": "深交所",
+      "candidate_entity_ids": [
+        "ENT_GEN_0088",
+        "ENT_GEN_0087",
+        "ENT_GEN_0085"
+      ],
+      "gold_entity_id": "ENT_GEN_0088",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_financial_market",
+      "decisive_evidence": [
+        "创业板",
+        "交易所",
+        "融资规则"
+      ],
+      "id": "LLM_AMB_079"
+    },
+    {
+      "text": "发改委部署重点领域节能降碳，国家能源局随后发布配套电力政策。",
+      "mention": "发改委",
+      "candidate_entity_ids": [
+        "ENT_GEN_0089",
+        "ENT_GEN_0059",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity_id": "ENT_GEN_0089",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "government_agency_vs_energy_regulator",
+      "decisive_evidence": [
+        "节能降碳部署",
+        "国家能源局另行发布",
+        "宏观政策"
+      ],
+      "id": "LLM_AMB_080"
+    },
+    {
+      "text": "工信部组织工业互联网平台应用试点，市场监管总局负责后续标准检查。",
+      "mention": "工信部",
+      "candidate_entity_ids": [
+        "ENT_GEN_0090",
+        "ENT_GEN_0092",
+        "ENT_GEN_0089"
+      ],
+      "gold_entity_id": "ENT_GEN_0090",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "government_agency",
+      "decisive_evidence": [
+        "工业互联网",
+        "应用试点",
+        "工业和信息化管理"
+      ],
+      "id": "LLM_AMB_081"
+    },
+    {
+      "text": "生态环境部更新碳排放核算指南，发改委参与政策协调。",
+      "mention": "生态环境部",
+      "candidate_entity_ids": [
+        "ENT_GEN_0091",
+        "ENT_GEN_0089",
+        "ENT_GEN_0059"
+      ],
+      "gold_entity_id": "ENT_GEN_0091",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "government_agency",
+      "decisive_evidence": [
+        "碳排放核算",
+        "生态环境",
+        "政策协调不是主体"
+      ],
+      "id": "LLM_AMB_082"
+    },
+    {
+      "text": "广州发布智能网联汽车道路测试政策，深圳企业参与试点。",
+      "mention": "广州",
+      "candidate_entity_ids": [
+        "ENT_GEN_0093",
+        "ENT_ENERGY_0027",
+        "ENT_GEN_0094"
+      ],
+      "gold_entity_id": "ENT_GEN_0093",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "region_similar_city",
+      "decisive_evidence": [
+        "道路测试政策",
+        "广州发布",
+        "深圳只是企业来源"
+      ],
+      "id": "LLM_AMB_083"
+    },
+    {
+      "text": "杭州扩大数字经济政策覆盖范围，阿里巴巴参与部分试点。",
+      "mention": "杭州",
+      "candidate_entity_ids": [
+        "ENT_GEN_0094",
+        "ENT_GEN_0053",
+        "ENT_GEN_0095"
+      ],
+      "gold_entity_id": "ENT_GEN_0094",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "region_vs_enterprise_context",
+      "decisive_evidence": [
+        "政策覆盖范围",
+        "城市主体",
+        "阿里巴巴只是参与方"
+      ],
+      "id": "LLM_AMB_084"
+    },
+    {
+      "text": "Alipay上线绿色出行积分，蚂蚁集团未作为独立实体进入本知识库。",
+      "mention": "Alipay",
+      "candidate_entity_ids": [
+        "ENT_GEN_0097",
+        "ENT_GEN_0053",
+        "ENT_GEN_0056"
+      ],
+      "gold_entity_id": "ENT_GEN_0097",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "product_vs_parent_company",
+      "decisive_evidence": [
+        "绿色出行积分",
+        "支付产品",
+        "蚂蚁集团未入库"
+      ],
+      "id": "LLM_AMB_085"
+    },
+    {
+      "text": "Android系统更新优化折叠屏体验，手机厂商仅负责适配。",
+      "mention": "Android",
+      "candidate_entity_ids": [
+        "ENT_GEN_0100",
+        "ENT_GEN_0101",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity_id": "ENT_GEN_0100",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "software_platform",
+      "decisive_evidence": [
+        "系统更新",
+        "折叠屏",
+        "手机厂商适配"
+      ],
+      "id": "LLM_AMB_086"
+    },
+    {
+      "text": "iOS隐私权限策略更新后，多款移动应用调整数据采集逻辑。",
+      "mention": "iOS",
+      "candidate_entity_ids": [
+        "ENT_GEN_0101",
+        "ENT_GEN_0100",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity_id": "ENT_GEN_0101",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "software_platform",
+      "decisive_evidence": [
+        "隐私权限",
+        "移动应用",
+        "苹果系统"
+      ],
+      "id": "LLM_AMB_087"
+    },
+    {
+      "text": "中国移动推进5G-A试点，中国电信同步建设云网融合数据中心。",
+      "mention": "中国移动",
+      "candidate_entity_ids": [
+        "ENT_GEN_0102",
+        "ENT_GEN_0103",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity_id": "ENT_GEN_0102",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_telecom_operator",
+      "decisive_evidence": [
+        "5G-A试点",
+        "中国电信为另一个主体",
+        "通信运营商"
+      ],
+      "id": "LLM_AMB_088"
+    },
+    {
+      "text": "中国电信发布云网融合白皮书，中国移动只参与联合测试。",
+      "mention": "中国电信",
+      "candidate_entity_ids": [
+        "ENT_GEN_0103",
+        "ENT_GEN_0102",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity_id": "ENT_GEN_0103",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_telecom_operator",
+      "decisive_evidence": [
+        "云网融合白皮书",
+        "发布主体",
+        "中国移动只是参与测试"
+      ],
+      "id": "LLM_AMB_089"
+    },
+    {
+      "text": "世界银行发布能源转型融资报告，但当前知识库尚未收录该国际机构。",
+      "mention": "世界银行",
+      "candidate_entity_ids": [
+        "ENT_GEN_0083",
+        "ENT_GEN_0081",
+        "ENT_GEN_0086"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "nil_reason": "entity_not_in_kb",
       "difficulty": "hard",
       "ambiguity_type": "near_name_nil",
-      "decisive_evidence": ["证券交易所", "上市公司", "知识库无交易所实体"]
+      "decisive_evidence": [
+        "国际机构",
+        "能源转型融资",
+        "知识库未收录"
+      ],
+      "id": "LLM_AMB_090"
+    },
+    {
+      "text": "北京协和医院发布远程会诊平台，当前知识库没有医疗机构实体。",
+      "mention": "北京协和医院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0068",
+        "ENT_GEN_0092"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "nil_reason": "entity_not_in_kb",
+      "difficulty": "hard",
+      "ambiguity_type": "medical_institution_nil",
+      "decisive_evidence": [
+        "医院",
+        "远程会诊",
+        "医疗机构未入库"
+      ],
+      "id": "LLM_AMB_091"
+    },
+    {
+      "text": "中国商飞公布国产客机交付进展，但知识库尚未包含航空制造企业。",
+      "mention": "中国商飞",
+      "candidate_entity_ids": [
+        "ENT_GEN_0073",
+        "ENT_GEN_0080",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "nil_reason": "entity_not_in_kb",
+      "difficulty": "hard",
+      "ambiguity_type": "manufacturing_nil",
+      "decisive_evidence": [
+        "国产客机",
+        "航空制造",
+        "知识库未收录"
+      ],
+      "id": "LLM_AMB_092"
+    },
+    {
+      "text": "故宫博物院上线数字文物平台，但文博机构暂未进入知识库。",
+      "mention": "故宫博物院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0068",
+        "ENT_GEN_0095"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "nil_reason": "entity_not_in_kb",
+      "difficulty": "hard",
+      "ambiguity_type": "culture_institution_nil",
+      "decisive_evidence": [
+        "文物",
+        "博物院",
+        "文博机构未入库"
+      ],
+      "id": "LLM_AMB_093"
+    },
+    {
+      "text": "科大讯飞发布教育大模型，但该企业尚未被当前知识库收录。",
+      "mention": "科大讯飞",
+      "candidate_entity_ids": [
+        "ENT_GEN_0070",
+        "ENT_GEN_0075",
+        "ENT_GEN_0064"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "nil_reason": "entity_not_in_kb",
+      "difficulty": "hard",
+      "ambiguity_type": "ai_company_nil",
+      "decisive_evidence": [
+        "教育大模型",
+        "企业未入库",
+        "不能误链到百度或字节"
+      ],
+      "id": "LLM_AMB_094"
+    },
+    {
+      "text": "中国中车推进轨道交通节能改造，但轨道交通企业未进入当前知识库。",
+      "mention": "中国中车",
+      "candidate_entity_ids": [
+        "ENT_GEN_0080",
+        "ENT_GEN_0090",
+        "ENT_GEN_0102"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "nil_reason": "entity_not_in_kb",
+      "difficulty": "hard",
+      "ambiguity_type": "transport_manufacturer_nil",
+      "decisive_evidence": [
+        "轨道交通",
+        "节能改造",
+        "知识库未收录"
+      ],
+      "id": "LLM_AMB_095"
+    },
+    {
+      "text": "深圳大学建设海洋能源实验平台，但该高校不在当前知识库。",
+      "mention": "深圳大学",
+      "candidate_entity_ids": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0065",
+        "ENT_ENERGY_0027"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "nil_reason": "entity_not_in_kb",
+      "difficulty": "medium",
+      "ambiguity_type": "education_nil",
+      "decisive_evidence": [
+        "深圳大学",
+        "高校实体",
+        "知识库未收录"
+      ],
+      "id": "LLM_AMB_096"
     }
   ],
   "statistics": {
-    "total": 60,
-    "non_nil": 49,
-    "nil": 11,
-    "hard": 45,
-    "medium": 15,
+    "total": 96,
+    "non_nil": 79,
+    "nil": 17,
+    "hard": 64,
+    "medium": 32,
     "ambiguity_types": {
       "parent_subsidiary": 2,
       "research_institution": 1,
@@ -694,17 +1812,45 @@
       "technical_term": 3,
       "enterprise_vs_government": 3,
       "similar_institution": 5,
-      "near_name_nil": 11,
+      "near_name_nil": 10,
       "single_entity_multi_role": 2,
       "similar_grid_company": 2,
       "product_vs_enterprise": 3,
       "short_name_polysemy": 2,
       "common_word_vs_enterprise": 2,
-      "parent_product": 2,
-      "abbreviation_polysemy": 3,
+      "parent_product": 3,
+      "abbreviation_polysemy": 4,
       "historical_name": 1,
-      "similar_financial_institution": 2,
-      "product_version": 1
+      "similar_financial_institution": 4,
+      "product_version": 1,
+      "newly_in_kb_after_expansion": 2,
+      "university_short_name": 1,
+      "research_institution_short_name": 1,
+      "product_vs_parent_company": 2,
+      "software_platform_short_name": 1,
+      "parent_subsidiary_or_business_line": 1,
+      "platform_enterprise": 1,
+      "company_vs_business_line": 1,
+      "company_vs_product_platform": 1,
+      "similar_short_video_platform": 1,
+      "auto_brand_vs_energy_business": 1,
+      "auto_short_name": 1,
+      "auto_vs_storage_business": 1,
+      "bank_short_name": 1,
+      "exchange_vs_university": 1,
+      "similar_financial_market": 1,
+      "government_agency_vs_energy_regulator": 1,
+      "government_agency": 2,
+      "region_similar_city": 1,
+      "region_vs_enterprise_context": 1,
+      "software_platform": 2,
+      "similar_telecom_operator": 2,
+      "medical_institution_nil": 1,
+      "manufacturing_nil": 1,
+      "culture_institution_nil": 1,
+      "ai_company_nil": 1,
+      "transport_manufacturer_nil": 1,
+      "education_nil": 1
     }
   }
 }

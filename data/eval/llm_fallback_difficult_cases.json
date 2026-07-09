@@ -1,6 +1,6 @@
 {
   "dataset_name": "llm_fallback_difficult_cases",
-  "version": "1.0",
+  "version": "1.1",
   "purpose": "收集高歧义、低置信度疑难文本，用于验证 LLM 兜底消歧在规则/BGE 低置信场景下的增益。",
   "selection_policy": {
     "input_contract": "text + 已识别 mention + 候选实体列表",
@@ -19,232 +19,675 @@
       "id": "LLM_HARD_001",
       "text": "国网在西北地区推进跨区输电通道扩容，并协调多省调度中心开展联合演练。",
       "mention": "国网",
-      "candidate_entity_ids": ["ENT_ENERGY_0001", "ENT_ENERGY_0009", "ENT_ENERGY_0010"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0009",
+        "ENT_ENERGY_0010"
+      ],
       "gold_entity_id": "ENT_ENERGY_0001",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "parent_subsidiary_shared_alias",
       "baseline_risk": "国网可指国家电网，也可能被误召回到国网能源研究院或国网新源控股。",
       "low_confidence_reason": "mention 极短且候选存在上下级关系，规则分数差距容易偏小。",
-      "decisive_evidence": ["跨区输电", "多省调度中心", "西北地区"],
+      "decisive_evidence": [
+        "跨区输电",
+        "多省调度中心",
+        "西北地区"
+      ],
       "llm_prompt_focus": "判断上下文是否描述全国性电网运营主体，而非研究院或抽水蓄能子公司。"
     },
     {
       "id": "LLM_HARD_002",
       "text": "国网能源院发布电力供需预测报告，建议完善新能源消纳政策。",
       "mention": "国网能源院",
-      "candidate_entity_ids": ["ENT_ENERGY_0009", "ENT_ENERGY_0001", "ENT_ENERGY_0050"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0009",
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0050"
+      ],
       "gold_entity_id": "ENT_ENERGY_0009",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "research_institution_vs_parent_company",
       "baseline_risk": "候选中母公司国家电网知名度更高，可能覆盖研究院实体。",
       "low_confidence_reason": "上下文只出现报告/政策建议，需要利用机构职能推理。",
-      "decisive_evidence": ["预测报告", "建议", "政策"],
+      "decisive_evidence": [
+        "预测报告",
+        "建议",
+        "政策"
+      ],
       "llm_prompt_focus": "识别研究报告发布主体更符合能源研究院，而不是电网运营公司。"
     },
     {
       "id": "LLM_HARD_003",
       "text": "新源公司在浙江推进抽水蓄能电站扩建，并承担电网调峰任务。",
       "mention": "新源公司",
-      "candidate_entity_ids": ["ENT_ENERGY_0010", "ENT_ENERGY_0001", "ENT_ENERGY_0037"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0010",
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0037"
+      ],
       "gold_entity_id": "ENT_ENERGY_0010",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "generic_alias",
       "baseline_risk": "新源公司是泛化简称，容易被新能源企业或母公司干扰。",
       "low_confidence_reason": "简称不完整，需要结合抽水蓄能和调峰业务判断。",
-      "decisive_evidence": ["抽水蓄能", "电网调峰", "浙江"],
+      "decisive_evidence": [
+        "抽水蓄能",
+        "电网调峰",
+        "浙江"
+      ],
       "llm_prompt_focus": "结合业务类型判断是否为国网新源控股。"
     },
     {
       "id": "LLM_HARD_004",
       "text": "南网在海南推进数字电网改造，重点覆盖配电自动化和海岛微网运行。",
       "mention": "南网",
-      "candidate_entity_ids": ["ENT_ENERGY_0002", "ENT_ENERGY_0001"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0002",
+        "ENT_ENERGY_0001"
+      ],
       "gold_entity_id": "ENT_ENERGY_0002",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "regional_grid_alias",
       "baseline_risk": "南网与国家电网同属电网企业，短 mention 可能造成候选分数接近。",
       "low_confidence_reason": "简称短，且电网业务词与多个候选共享。",
-      "decisive_evidence": ["海南", "数字电网", "配电自动化"],
+      "decisive_evidence": [
+        "海南",
+        "数字电网",
+        "配电自动化"
+      ],
       "llm_prompt_focus": "识别海南属于南方电网经营区域。"
     },
     {
       "id": "LLM_HARD_005",
       "text": "能源局要求完善电力市场交易规则，并推动绿证与碳市场衔接。",
       "mention": "能源局",
-      "candidate_entity_ids": ["ENT_GEN_0059", "ENT_ENERGY_0005"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0059",
+        "ENT_ENERGY_0005"
+      ],
       "gold_entity_id": "ENT_GEN_0059",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "government_vs_enterprise",
       "baseline_risk": "能源局与能源集团共享能源关键词，候选召回可能混淆政府机构和企业。",
       "low_confidence_reason": "文本中没有完整机构名，需要依赖监管动作推理。",
-      "decisive_evidence": ["要求", "交易规则", "绿证", "碳市场"],
+      "decisive_evidence": [
+        "要求",
+        "交易规则",
+        "绿证",
+        "碳市场"
+      ],
       "llm_prompt_focus": "判断发布监管要求的主体应为政府能源主管部门。"
     },
     {
       "id": "LLM_HARD_006",
       "text": "平安推出企业年金数字化服务方案，面向银行、保险和资管客户开放。",
       "mention": "平安",
-      "candidate_entity_ids": ["ENT_GEN_0056", "ENT_GEN_0055", "ENT_GEN_0057"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0056",
+        "ENT_GEN_0055",
+        "ENT_GEN_0057"
+      ],
       "gold_entity_id": "ENT_GEN_0056",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "short_alias_finance",
       "baseline_risk": "平安是短别名，金融上下文又与银行类候选高度相似。",
       "low_confidence_reason": "候选均属于金融领域，语义距离接近。",
-      "decisive_evidence": ["保险", "资管", "企业年金"],
+      "decisive_evidence": [
+        "保险",
+        "资管",
+        "企业年金"
+      ],
       "llm_prompt_focus": "结合保险和综合金融业务判断为中国平安。"
     },
     {
       "id": "LLM_HARD_007",
       "text": "招行上线财富管理大模型助手，优先服务零售客户和私人银行客户。",
       "mention": "招行",
-      "candidate_entity_ids": ["ENT_GEN_0057", "ENT_GEN_0055", "ENT_GEN_0056"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0057",
+        "ENT_GEN_0055",
+        "ENT_GEN_0056"
+      ],
       "gold_entity_id": "ENT_GEN_0057",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "bank_alias",
       "baseline_risk": "多家金融机构共享银行、财富管理关键词。",
       "low_confidence_reason": "短别名且同领域候选密集。",
-      "decisive_evidence": ["零售客户", "私人银行", "财富管理"],
+      "decisive_evidence": [
+        "零售客户",
+        "私人银行",
+        "财富管理"
+      ],
       "llm_prompt_focus": "识别招行是招商银行的常用简称。"
     },
     {
       "id": "LLM_HARD_008",
       "text": "清华发布人工智能治理报告，并与能源企业联合建设低碳计算实验平台。",
       "mention": "清华",
-      "candidate_entity_ids": ["ENT_GEN_0060", "ENT_ENERGY_0009"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0060",
+        "ENT_ENERGY_0009"
+      ],
       "gold_entity_id": "ENT_GEN_0060",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "education_vs_research_org",
       "baseline_risk": "研究报告上下文可能误召回能源研究院类实体。",
       "low_confidence_reason": "报告、研究、平台等词对研究机构和高校都相似。",
-      "decisive_evidence": ["清华", "人工智能治理", "实验平台"],
+      "decisive_evidence": [
+        "清华",
+        "人工智能治理",
+        "实验平台"
+      ],
       "llm_prompt_focus": "判断清华作为高校简称而非能源行业研究机构。"
     },
     {
       "id": "LLM_HARD_009",
       "text": "微信在企业服务场景中升级小程序能力，支持能源公司快速搭建客户服务入口。",
       "mention": "微信",
-      "candidate_entity_ids": ["ENT_GEN_0061", "ENT_GEN_0052", "ENT_GEN_0062"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0061",
+        "ENT_GEN_0052",
+        "ENT_GEN_0062"
+      ],
       "gold_entity_id": "ENT_GEN_0061",
       "expected_nil": false,
       "difficulty": "hard",
       "ambiguity_type": "product_vs_company",
       "baseline_risk": "微信可能被误链接到腾讯公司而不是产品实体。",
       "low_confidence_reason": "产品和所属公司上下文高度相关。",
-      "decisive_evidence": ["小程序", "客户服务入口", "产品能力"],
+      "decisive_evidence": [
+        "小程序",
+        "客户服务入口",
+        "产品能力"
+      ],
       "llm_prompt_focus": "区分产品实体微信和公司实体腾讯。"
     },
     {
       "id": "LLM_HARD_010",
       "text": "腾讯在云计算峰会上展示能源行业大模型方案，并与多家电力企业签约。",
       "mention": "腾讯",
-      "candidate_entity_ids": ["ENT_GEN_0052", "ENT_GEN_0061", "ENT_GEN_0062"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0052",
+        "ENT_GEN_0061",
+        "ENT_GEN_0062"
+      ],
       "gold_entity_id": "ENT_GEN_0052",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "company_vs_product",
       "baseline_risk": "产品实体微信和抖音等互联网实体会造成同领域干扰。",
       "low_confidence_reason": "互联网/AI/云计算标签重叠。",
-      "decisive_evidence": ["云计算峰会", "行业大模型方案", "签约"],
+      "decisive_evidence": [
+        "云计算峰会",
+        "行业大模型方案",
+        "签约"
+      ],
       "llm_prompt_focus": "判断主体是公司而非产品。"
     },
     {
       "id": "LLM_HARD_011",
       "text": "北京能源研究会发布地方能源转型倡议，建议社会资本参与绿色园区建设。",
       "mention": "北京能源研究会",
-      "candidate_entity_ids": ["ENT_ENERGY_0009", "ENT_GEN_0059", "ENT_ENERGY_0005"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0009",
+        "ENT_GEN_0059",
+        "ENT_ENERGY_0005"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "difficulty": "hard",
       "ambiguity_type": "near_name_nil",
       "baseline_risk": "名称与国网能源研究院、国家能源局、国家能源集团均有词面重叠。",
       "low_confidence_reason": "近似机构名但不在 KB 中，规则/向量可能误链接。",
-      "decisive_evidence": ["北京能源研究会", "社会资本", "绿色园区"],
-      "llm_prompt_focus": "判断是否为 KB 未收录的新机构，而非强行链接到相似能源机构。"
+      "decisive_evidence": [
+        "北京能源研究会",
+        "社会资本",
+        "绿色园区"
+      ],
+      "llm_prompt_focus": "判断是否为 KB 未收录的新机构，而非强行链接到相似能源机构。",
+      "nil_reason": "entity_not_in_kb"
     },
     {
       "id": "LLM_HARD_012",
       "text": "阳光新能源宣布建设组件回收基地，并计划进入分布式储能运维市场。",
       "mention": "阳光新能源",
-      "candidate_entity_ids": ["ENT_ENERGY_0037", "ENT_ENERGY_0006", "ENT_ENERGY_0005"],
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0037",
+        "ENT_ENERGY_0006",
+        "ENT_ENERGY_0005"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "difficulty": "hard",
       "ambiguity_type": "near_alias_nil",
       "baseline_risk": "阳光新能源与阳光电源词面相近，容易被模糊匹配误链接。",
       "low_confidence_reason": "新能源、储能等领域词与候选共享。",
-      "decisive_evidence": ["组件回收基地", "分布式储能运维", "阳光新能源"],
-      "llm_prompt_focus": "判断该 mention 是否为知识库外实体。"
+      "decisive_evidence": [
+        "组件回收基地",
+        "分布式储能运维",
+        "阳光新能源"
+      ],
+      "llm_prompt_focus": "判断该 mention 是否为知识库外实体。",
+      "nil_reason": "entity_not_in_kb"
     },
     {
       "id": "LLM_HARD_013",
       "text": "京东能源服务平台开始为工业园区提供负荷预测和用电优化服务。",
       "mention": "京东能源服务平台",
-      "candidate_entity_ids": ["ENT_GEN_0053", "ENT_GEN_0062", "ENT_ENERGY_0050"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0053",
+        "ENT_GEN_0062",
+        "ENT_ENERGY_0050"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "difficulty": "hard",
       "ambiguity_type": "cross_domain_nil",
       "baseline_risk": "京东不在当前 KB，能源服务又可能误召回能源类实体。",
       "low_confidence_reason": "跨领域实体，候选语义均只有局部匹配。",
-      "decisive_evidence": ["京东能源服务平台", "工业园区", "负荷预测"],
-      "llm_prompt_focus": "判断 KB 是否缺少该电商/能源平台实体。"
+      "decisive_evidence": [
+        "京东能源服务平台",
+        "工业园区",
+        "负荷预测"
+      ],
+      "llm_prompt_focus": "判断 KB 是否缺少该电商/能源平台实体。",
+      "nil_reason": "entity_not_in_kb"
     },
     {
       "id": "LLM_HARD_014",
       "text": "协和医院建设绿色低碳院区，并与电力公司合作开展智慧用能改造。",
       "mention": "协和医院",
-      "candidate_entity_ids": ["ENT_GEN_0060", "ENT_ENERGY_0028", "ENT_GEN_0059"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0060",
+        "ENT_ENERGY_0028",
+        "ENT_GEN_0059"
+      ],
       "gold_entity_id": null,
       "expected_nil": true,
       "difficulty": "hard",
       "ambiguity_type": "medical_nil",
       "baseline_risk": "北京、机构、绿色低碳等词可能误召回地区或高校实体。",
       "low_confidence_reason": "医疗实体不在 KB，能源上下文造成噪声。",
-      "decisive_evidence": ["医院", "院区", "智慧用能"],
-      "llm_prompt_focus": "识别该实体属于医疗领域且当前 KB 未覆盖。"
+      "decisive_evidence": [
+        "医院",
+        "院区",
+        "智慧用能"
+      ],
+      "llm_prompt_focus": "识别该实体属于医疗领域且当前 KB 未覆盖。",
+      "nil_reason": "entity_not_in_kb"
     },
     {
       "id": "LLM_HARD_015",
       "text": "Win11 的能效模式在新版本中优化了笔记本续航表现。",
       "mention": "Win11",
-      "candidate_entity_ids": ["ENT_GEN_0063", "ENT_GEN_0053", "ENT_GEN_0061"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0063",
+        "ENT_GEN_0053",
+        "ENT_GEN_0061"
+      ],
       "gold_entity_id": "ENT_GEN_0063",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "software_product",
       "baseline_risk": "能效、版本、平台等词可能与科技公司或其他软件平台混淆。",
       "low_confidence_reason": "产品名短，且上下文不出现微软。",
-      "decisive_evidence": ["能效模式", "新版本", "笔记本续航"],
+      "decisive_evidence": [
+        "能效模式",
+        "新版本",
+        "笔记本续航"
+      ],
       "llm_prompt_focus": "判断 Win11 是 Windows 11 操作系统。"
     },
     {
       "id": "LLM_HARD_016",
       "text": "蔚来在欧洲市场推出换电网络合作计划，并强调补能体验。",
       "mention": "蔚来",
-      "candidate_entity_ids": ["ENT_GEN_0058", "ENT_ENERGY_0037", "ENT_GEN_0052"],
+      "candidate_entity_ids": [
+        "ENT_GEN_0058",
+        "ENT_ENERGY_0037",
+        "ENT_GEN_0052"
+      ],
       "gold_entity_id": "ENT_GEN_0058",
       "expected_nil": false,
       "difficulty": "medium",
       "ambiguity_type": "auto_vs_energy",
       "baseline_risk": "换电、补能等词可能召回新能源或储能企业。",
       "low_confidence_reason": "汽车与能源领域上下文混合。",
-      "decisive_evidence": ["欧洲市场", "换电网络", "补能体验"],
+      "decisive_evidence": [
+        "欧洲市场",
+        "换电网络",
+        "补能体验"
+      ],
       "llm_prompt_focus": "判断该 mention 是智能电动汽车公司。"
+    },
+    {
+      "id": "LLM_HARD_017",
+      "text": "百度地图上线充电路线规划，但百度同时公布自动驾驶数据集。",
+      "mention": "百度",
+      "candidate_entity_ids": [
+        "ENT_GEN_0070",
+        "ENT_GEN_0098",
+        "ENT_GEN_0099"
+      ],
+      "gold_entity_id": "ENT_GEN_0070",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "parent_product",
+      "baseline_risk": "地图产品和公司主体同时出现，容易误链到百度地图。",
+      "low_confidence_reason": "mention为公司简称，产品名只是上下文干扰。",
+      "decisive_evidence": [
+        "自动驾驶数据集",
+        "百度地图为产品",
+        "公司主体"
+      ],
+      "llm_prompt_focus": "区分百度公司与百度地图产品。"
+    },
+    {
+      "id": "LLM_HARD_018",
+      "text": "京东物流升级仓储系统，京东金融未参与本次改造。",
+      "mention": "京东",
+      "candidate_entity_ids": [
+        "ENT_GEN_0071",
+        "ENT_GEN_0053",
+        "ENT_GEN_0072"
+      ],
+      "gold_entity_id": "ENT_GEN_0071",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "business_line_vs_group",
+      "baseline_risk": "物流和金融业务线会干扰集团主体判断。",
+      "low_confidence_reason": "mention短且业务线多。",
+      "decisive_evidence": [
+        "京东物流",
+        "集团业务",
+        "金融未参与"
+      ],
+      "llm_prompt_focus": "判断公告主体是否为京东集团。"
+    },
+    {
+      "id": "LLM_HARD_019",
+      "text": "小米汽车更新家庭能源管理功能，小米手机团队只负责应用适配。",
+      "mention": "小米",
+      "candidate_entity_ids": [
+        "ENT_GEN_0073",
+        "ENT_GEN_0078",
+        "ENT_GEN_0080"
+      ],
+      "gold_entity_id": "ENT_GEN_0073",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "company_vs_product_line",
+      "baseline_risk": "汽车和手机业务线都出现，容易误链到汽车企业。",
+      "low_confidence_reason": "上下文跨消费电子和汽车。",
+      "decisive_evidence": [
+        "小米汽车",
+        "小米手机团队",
+        "集团主体"
+      ],
+      "llm_prompt_focus": "判断小米是否指集团主体。"
+    },
+    {
+      "id": "LLM_HARD_020",
+      "text": "发改委部署节能降碳，国家能源局发布配套电力政策。",
+      "mention": "发改委",
+      "candidate_entity_ids": [
+        "ENT_GEN_0089",
+        "ENT_GEN_0059",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity_id": "ENT_GEN_0089",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "government_agency_vs_regulator",
+      "baseline_risk": "多个政府机构同句出现。",
+      "low_confidence_reason": "政策职责需要结合上下文。",
+      "decisive_evidence": [
+        "部署节能降碳",
+        "国家能源局另行发布",
+        "宏观政策"
+      ],
+      "llm_prompt_focus": "区分发改委与国家能源局。"
+    },
+    {
+      "id": "LLM_HARD_021",
+      "text": "上交所发布ESG披露指引，上海交大专家参与咨询。",
+      "mention": "上交所",
+      "candidate_entity_ids": [
+        "ENT_GEN_0087",
+        "ENT_GEN_0065",
+        "ENT_GEN_0088"
+      ],
+      "gold_entity_id": "ENT_GEN_0087",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "exchange_vs_university",
+      "baseline_risk": "上交所与上海交大简称接近。",
+      "low_confidence_reason": "两个候选同句出现。",
+      "decisive_evidence": [
+        "ESG披露",
+        "上市公司",
+        "专家参与咨询"
+      ],
+      "llm_prompt_focus": "判断证券交易所而非高校。"
+    },
+    {
+      "id": "LLM_HARD_022",
+      "text": "Alipay上线绿色出行积分，蚂蚁集团没有作为独立实体入库。",
+      "mention": "Alipay",
+      "candidate_entity_ids": [
+        "ENT_GEN_0097",
+        "ENT_GEN_0053",
+        "ENT_GEN_0056"
+      ],
+      "gold_entity_id": "ENT_GEN_0097",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "product_vs_parent_company",
+      "baseline_risk": "产品与母公司关系容易混淆。",
+      "low_confidence_reason": "英文产品名上下文较短。",
+      "decisive_evidence": [
+        "绿色出行积分",
+        "支付产品",
+        "母公司未入库"
+      ],
+      "llm_prompt_focus": "判断 Alipay 是支付平台。"
+    },
+    {
+      "id": "LLM_HARD_023",
+      "text": "中国移动推进5G-A试点，中国电信参与联合测试。",
+      "mention": "中国移动",
+      "candidate_entity_ids": [
+        "ENT_GEN_0102",
+        "ENT_GEN_0103",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity_id": "ENT_GEN_0102",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_telecom_operator",
+      "baseline_risk": "两个运营商同句出现。",
+      "low_confidence_reason": "通信场景高度相似。",
+      "decisive_evidence": [
+        "5G-A试点",
+        "中国电信只是参与",
+        "运营商主体"
+      ],
+      "llm_prompt_focus": "区分中国移动和中国电信。"
+    },
+    {
+      "id": "LLM_HARD_024",
+      "text": "世界银行发布能源转型融资报告，但当前知识库尚未收录该国际机构。",
+      "mention": "世界银行",
+      "candidate_entity_ids": [
+        "ENT_GEN_0083",
+        "ENT_GEN_0081",
+        "ENT_GEN_0086"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "near_name_nil",
+      "baseline_risk": "金融机构候选容易把世界银行误链到中国银行。",
+      "low_confidence_reason": "银行类词面相似但实体未入库。",
+      "decisive_evidence": [
+        "国际机构",
+        "知识库未收录",
+        "能源转型融资"
+      ],
+      "llm_prompt_focus": "判断应输出NIL而不是国内银行。",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_025",
+      "text": "北京协和医院上线远程会诊平台，当前知识库没有医疗机构实体。",
+      "mention": "北京协和医院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0068",
+        "ENT_GEN_0092"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "medical_institution_nil",
+      "baseline_risk": "高校和科研机构候选可能误吸收医院场景。",
+      "low_confidence_reason": "医疗领域不在当前KB覆盖范围。",
+      "decisive_evidence": [
+        "医院",
+        "远程会诊",
+        "医疗机构未入库"
+      ],
+      "llm_prompt_focus": "判断医疗机构应NIL。",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_026",
+      "text": "科大讯飞发布教育大模型，但当前知识库尚未收录该AI企业。",
+      "mention": "科大讯飞",
+      "candidate_entity_ids": [
+        "ENT_GEN_0070",
+        "ENT_GEN_0075",
+        "ENT_GEN_0064"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "ai_company_nil",
+      "baseline_risk": "AI企业候选容易误链到百度或字节。",
+      "low_confidence_reason": "语义领域相近但实体缺失。",
+      "decisive_evidence": [
+        "教育大模型",
+        "企业未入库",
+        "不能误链到百度"
+      ],
+      "llm_prompt_focus": "判断知识库未覆盖时输出NIL。",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_027",
+      "text": "中国商飞公布国产客机交付进展，但航空制造企业不在当前知识库。",
+      "mention": "中国商飞",
+      "candidate_entity_ids": [
+        "ENT_GEN_0073",
+        "ENT_GEN_0080",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "manufacturing_nil",
+      "baseline_risk": "制造业候选与汽车/工信部语义接近。",
+      "low_confidence_reason": "航空制造领域暂未覆盖。",
+      "decisive_evidence": [
+        "国产客机",
+        "航空制造",
+        "未入库"
+      ],
+      "llm_prompt_focus": "判断应NIL。",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_028",
+      "text": "故宫博物院上线数字文物平台，但文博机构暂未进入知识库。",
+      "mention": "故宫博物院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0068",
+        "ENT_GEN_0095"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "culture_institution_nil",
+      "baseline_risk": "机构类候选可能误链到高校或科研机构。",
+      "low_confidence_reason": "文化机构类型未覆盖。",
+      "decisive_evidence": [
+        "文物",
+        "博物院",
+        "文博机构未入库"
+      ],
+      "llm_prompt_focus": "判断文博实体应NIL。",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_029",
+      "text": "Android系统更新与iOS隐私策略同日发布，开发者需要分别适配。",
+      "mention": "Android",
+      "candidate_entity_ids": [
+        "ENT_GEN_0100",
+        "ENT_GEN_0101",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity_id": "ENT_GEN_0100",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "software_platform_comparison",
+      "baseline_risk": "Android 与 iOS 同句出现。",
+      "low_confidence_reason": "两个操作系统语义接近。",
+      "decisive_evidence": [
+        "Android系统更新",
+        "iOS为对照",
+        "开发者适配"
+      ],
+      "llm_prompt_focus": "区分两个移动操作系统。"
+    },
+    {
+      "id": "LLM_HARD_030",
+      "text": "高德发布充电站搜索服务，百度地图随后上线类似功能。",
+      "mention": "高德",
+      "candidate_entity_ids": [
+        "ENT_GEN_0099",
+        "ENT_GEN_0098",
+        "ENT_GEN_0070"
+      ],
+      "gold_entity_id": "ENT_GEN_0099",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_map_platform",
+      "baseline_risk": "两个地图平台同句出现。",
+      "low_confidence_reason": "地图导航领域高度相似。",
+      "decisive_evidence": [
+        "高德发布",
+        "百度地图随后",
+        "充电站搜索"
+      ],
+      "llm_prompt_focus": "区分高德地图与百度地图。"
     }
   ],
   "statistics": {
-    "sample_count": 16,
-    "nil_count": 4,
-    "non_nil_count": 12,
-    "hard_count": 11,
-    "medium_count": 5
+    "sample_count": 30,
+    "nil_count": 9,
+    "non_nil_count": 21,
+    "hard_count": 22,
+    "medium_count": 8
   }
 }

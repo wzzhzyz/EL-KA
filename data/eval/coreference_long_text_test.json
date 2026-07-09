@@ -208,6 +208,629 @@
           "is_nil": false
         }
       ]
+    },
+    {
+      "id": "COREF_LONG_005",
+      "text": "北京大学发布医学人工智能研究计划。该校表示将与中科院共建开放数据平台。随后，中国科学院也公布合作安排，该机构将负责基础模型评测。",
+      "mentions": [
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064",
+          "standard_entity": "北京大学"
+        },
+        {
+          "mention": "该校",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "中国科学院",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0068",
+          "standard_entity": "中国科学院"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0064",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0068",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_006",
+      "text": "百度在线网络技术（北京）有限公司开放自动驾驶数据集。该公司表示将继续投入大模型工具链。随后，百度地图上线充电路线规划，它将服务新能源车用户。",
+      "mentions": [
+        {
+          "mention": "百度在线网络技术（北京）有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070",
+          "standard_entity": "百度在线网络技术（北京）有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "百度地图",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0098",
+          "standard_entity": "百度地图"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0070",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0098",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_007",
+      "text": "京东集团股份有限公司升级智能物流系统。该企业称新系统将减少仓储能耗。美团随后公布配送减碳方案，它将在深圳试点新能源车辆。",
+      "mentions": [
+        {
+          "mention": "京东集团股份有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0071",
+          "standard_entity": "京东集团股份有限公司"
+        },
+        {
+          "mention": "该企业",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "美团",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0072",
+          "standard_entity": "北京三快在线科技有限公司"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0071",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0072",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_008",
+      "text": "小鹏汽车有限公司公布城市辅助驾驶更新。该公司将在广州扩大测试道路。理想汽车也发布软件升级，它强调家庭出行场景。",
+      "mentions": [
+        {
+          "mention": "小鹏汽车有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0078",
+          "standard_entity": "小鹏汽车有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "理想汽车",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0079",
+          "standard_entity": "理想汽车"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0078",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0079",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_009",
+      "text": "中国建设银行股份有限公司推出绿色信贷服务。该机构表示将重点支持制造企业。中国农业银行随后发布县域光伏贷款方案，该机构将覆盖更多县域客户。",
+      "mentions": [
+        {
+          "mention": "中国建设银行股份有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0081",
+          "standard_entity": "中国建设银行股份有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "中国农业银行",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0082",
+          "standard_entity": "中国农业银行股份有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0081",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0082",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_010",
+      "text": "发改委部署节能降碳改造工作。该机构要求各地完善项目储备。工信部随后公布工业互联网试点名单，该机构将负责制造业场景推广。",
+      "mentions": [
+        {
+          "mention": "发改委",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089",
+          "standard_entity": "中华人民共和国国家发展和改革委员会"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "工信部",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0090",
+          "standard_entity": "中华人民共和国工业和信息化部"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0089",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0090",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_011",
+      "text": "支付宝上线绿色出行积分服务。它将与更多城市公共交通系统对接。Android也发布系统更新，该平台增强了折叠屏适配。",
+      "mentions": [
+        {
+          "mention": "支付宝",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0097",
+          "standard_entity": "支付宝"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "Android",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0100",
+          "standard_entity": "Android"
+        },
+        {
+          "mention": "该平台",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0097",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0100",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_012",
+      "text": "中国移动通信集团有限公司推进5G-A网络试点。该公司将在广州建设边缘计算节点。中国电信集团有限公司同步建设云网融合数据中心，它将服务政企客户。",
+      "mentions": [
+        {
+          "mention": "中国移动通信集团有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0102",
+          "standard_entity": "中国移动通信集团有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "中国电信集团有限公司",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0103",
+          "standard_entity": "中国电信集团有限公司"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0102",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0103",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_013",
+      "text": "该企业宣布将在下季度发布更多细节。随后，南京市公布软件产业创新政策，该市将建设开源社区服务平台。",
+      "mentions": [
+        {
+          "mention": "该企业",
+          "type": "PRON",
+          "sentence_index": 0,
+          "role": "anaphor"
+        },
+        {
+          "mention": "南京市",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0095",
+          "standard_entity": "南京市"
+        },
+        {
+          "mention": "该市",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 0,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0095",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_014",
+      "text": "百度和京东分别公布数据中心节能计划。两家企业均表示将提高绿电使用比例。",
+      "mentions": [
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070",
+          "standard_entity": "百度在线网络技术（北京）有限公司"
+        },
+        {
+          "mention": "京东",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0071",
+          "standard_entity": "京东集团股份有限公司"
+        },
+        {
+          "mention": "两家企业",
+          "type": "NOUN",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_015",
+      "text": "张伟担任小米汽车软件负责人。他介绍了智能座舱升级方案。小米集团随后发布公告，该公司将继续投入车载系统研发。",
+      "mentions": [
+        {
+          "mention": "张伟",
+          "type": "PERSON",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "PER_TEST_0001",
+          "standard_entity": "张伟"
+        },
+        {
+          "mention": "他",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "小米集团",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0073",
+          "standard_entity": "小米集团"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "PER_TEST_0001",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0073",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_016",
+      "text": "东方财富信息股份有限公司上线基金风险分析工具。该公司表示将完善投资者教育内容。中信证券也发布新能源研究报告，该机构看好储能产业链。",
+      "mentions": [
+        {
+          "mention": "东方财富信息股份有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0086",
+          "standard_entity": "东方财富信息股份有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "中信证券",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0085",
+          "standard_entity": "中信证券股份有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0086",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0085",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_017",
+      "text": "高德地图发布充电站搜索服务。它将覆盖高速服务区和城市商圈。百度地图随后上线类似能力，该平台强调新能源车路线规划。",
+      "mentions": [
+        {
+          "mention": "高德地图",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0099",
+          "standard_entity": "高德地图"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "百度地图",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0098",
+          "standard_entity": "百度地图"
+        },
+        {
+          "mention": "该平台",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0099",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0098",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_018",
+      "text": "世界银行发布能源转型融资报告。该机构尚未进入当前知识库。随后，中国银行发布跨境绿色债券服务方案，该机构将提供结算支持。",
+      "mentions": [
+        {
+          "mention": "世界银行",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "中国银行",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0083",
+          "standard_entity": "中国银行股份有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0083",
+          "is_nil": false
+        }
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "dataset_name": "candidate_retrieval_validation",
-  "version": "1.0",
+  "version": "1.2",
   "purpose": "候选生成召回率校验——同名异指、模糊匹配、BGE语义召回",
   "candidate_methods": [
     "alias_exact",
@@ -246,21 +246,436 @@
       "gold_reason": "专业术语简称精确命中",
       "scenario": "专业术语匹配",
       "note": "mention='双碳'是'碳中和'的abbreviation"
+    },
+    {
+      "id": "CR_021",
+      "text": "北大与中科院联合发布医学人工智能评测标准。",
+      "mention": "北大",
+      "expected_candidates": [
+        "ENT_GEN_0064"
+      ],
+      "gold_entity": "ENT_GEN_0064",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "教育机构简称召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_022",
+      "text": "Peking University开放交叉学科课程资源。",
+      "mention": "Peking University",
+      "expected_candidates": [
+        "ENT_GEN_0064"
+      ],
+      "gold_entity": "ENT_GEN_0064",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "教育机构英文名召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_023",
+      "text": "上海交大建设低碳能源联合实验室。",
+      "mention": "上海交大",
+      "expected_candidates": [
+        "ENT_GEN_0065"
+      ],
+      "gold_entity": "ENT_GEN_0065",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "高校简称召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_024",
+      "text": "中科院发布先进储能材料研究进展。",
+      "mention": "中科院",
+      "expected_candidates": [
+        "ENT_GEN_0068"
+      ],
+      "gold_entity": "ENT_GEN_0068",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "科研机构简称召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_025",
+      "text": "百度地图上线新能源车充电路线规划。",
+      "mention": "百度地图",
+      "expected_candidates": [
+        "ENT_GEN_0098",
+        "ENT_GEN_0070"
+      ],
+      "gold_entity": "ENT_GEN_0098",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "产品与母公司多候选",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_026",
+      "text": "百度开放自动驾驶测试数据集。",
+      "mention": "百度",
+      "expected_candidates": [
+        "ENT_GEN_0070",
+        "ENT_GEN_0098"
+      ],
+      "gold_entity": "ENT_GEN_0070",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "公司与产品多候选",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_027",
+      "text": "京东升级供应链减碳管理平台。",
+      "mention": "京东",
+      "expected_candidates": [
+        "ENT_GEN_0071"
+      ],
+      "gold_entity": "ENT_GEN_0071",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "新增别名召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_028",
+      "text": "JD.com发布跨境电商物流方案。",
+      "mention": "JD.com",
+      "expected_candidates": [
+        "ENT_GEN_0071"
+      ],
+      "gold_entity": "ENT_GEN_0071",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "英文别名召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_029",
+      "text": "美团扩大新能源配送车辆试点。",
+      "mention": "美团",
+      "expected_candidates": [
+        "ENT_GEN_0072"
+      ],
+      "gold_entity": "ENT_GEN_0072",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "平台企业召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_030",
+      "text": "小米发布智能汽车软件更新。",
+      "mention": "小米",
+      "expected_candidates": [
+        "ENT_GEN_0073"
+      ],
+      "gold_entity": "ENT_GEN_0073",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "科技企业简称召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_031",
+      "text": "字节上线数据中心节能调度系统。",
+      "mention": "字节",
+      "expected_candidates": [
+        "ENT_GEN_0075"
+      ],
+      "gold_entity": "ENT_GEN_0075",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "互联网企业简称召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_032",
+      "text": "快手升级直播电商审核模型。",
+      "mention": "快手",
+      "expected_candidates": [
+        "ENT_GEN_0077",
+        "ENT_GEN_0062"
+      ],
+      "gold_entity": "ENT_GEN_0077",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "同类平台多候选",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_033",
+      "text": "小鹏公布城市辅助驾驶更新。",
+      "mention": "小鹏",
+      "expected_candidates": [
+        "ENT_GEN_0078",
+        "ENT_GEN_0058",
+        "ENT_GEN_0079"
+      ],
+      "gold_entity": "ENT_GEN_0078",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "汽车品牌多候选",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_034",
+      "text": "理想发布家庭智能电动车升级。",
+      "mention": "理想",
+      "expected_candidates": [
+        "ENT_GEN_0079",
+        "ENT_GEN_0078"
+      ],
+      "gold_entity": "ENT_GEN_0079",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "汽车品牌召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_035",
+      "text": "Tesla部署园区储能系统。",
+      "mention": "Tesla",
+      "expected_candidates": [
+        "ENT_GEN_0080"
+      ],
+      "gold_entity": "ENT_GEN_0080",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "英文别名召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_036",
+      "text": "建行推出绿色信贷产品。",
+      "mention": "建行",
+      "expected_candidates": [
+        "ENT_GEN_0081",
+        "ENT_GEN_0055",
+        "ENT_GEN_0082"
+      ],
+      "gold_entity": "ENT_GEN_0081",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "银行简称多候选",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_037",
+      "text": "农行支持县域光伏融资。",
+      "mention": "农行",
+      "expected_candidates": [
+        "ENT_GEN_0082",
+        "ENT_GEN_0081"
+      ],
+      "gold_entity": "ENT_GEN_0082",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "银行简称召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_038",
+      "text": "中行提供跨境绿色债券结算服务。",
+      "mention": "中行",
+      "expected_candidates": [
+        "ENT_GEN_0083"
+      ],
+      "gold_entity": "ENT_GEN_0083",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "银行简称召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_039",
+      "text": "上交所发布ESG披露指引。",
+      "mention": "上交所",
+      "expected_candidates": [
+        "ENT_GEN_0087",
+        "ENT_GEN_0065",
+        "ENT_GEN_0088"
+      ],
+      "gold_entity": "ENT_GEN_0087",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "交易所与高校干扰",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_040",
+      "text": "深交所完善创业板绿色融资规则。",
+      "mention": "深交所",
+      "expected_candidates": [
+        "ENT_GEN_0088",
+        "ENT_GEN_0087"
+      ],
+      "gold_entity": "ENT_GEN_0088",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "交易所召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_041",
+      "text": "发改委部署节能降碳改造工作。",
+      "mention": "发改委",
+      "expected_candidates": [
+        "ENT_GEN_0089",
+        "ENT_GEN_0059",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity": "ENT_GEN_0089",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "政府机构多候选",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_042",
+      "text": "工信部推动工业互联网平台试点。",
+      "mention": "工信部",
+      "expected_candidates": [
+        "ENT_GEN_0090",
+        "ENT_GEN_0092"
+      ],
+      "gold_entity": "ENT_GEN_0090",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "政府机构简称召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_043",
+      "text": "生态环境部发布碳排放核算指南。",
+      "mention": "生态环境部",
+      "expected_candidates": [
+        "ENT_GEN_0091",
+        "ENT_GEN_0089"
+      ],
+      "gold_entity": "ENT_GEN_0091",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "政府机构标准名召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_044",
+      "text": "广州推进智能网联汽车道路测试。",
+      "mention": "广州",
+      "expected_candidates": [
+        "ENT_GEN_0093"
+      ],
+      "gold_entity": "ENT_GEN_0093",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "地区别名召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_045",
+      "text": "Hangzhou扩大数字经济企业服务。",
+      "mention": "Hangzhou",
+      "expected_candidates": [
+        "ENT_GEN_0094"
+      ],
+      "gold_entity": "ENT_GEN_0094",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "地区英文名召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_046",
+      "text": "Alipay优化绿色出行积分服务。",
+      "mention": "Alipay",
+      "expected_candidates": [
+        "ENT_GEN_0097"
+      ],
+      "gold_entity": "ENT_GEN_0097",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "软件平台英文别名召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_047",
+      "text": "Android更新折叠屏系统能力。",
+      "mention": "Android",
+      "expected_candidates": [
+        "ENT_GEN_0100",
+        "ENT_GEN_0101",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity": "ENT_GEN_0100",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "操作系统多候选",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_048",
+      "text": "iOS增强移动设备隐私保护。",
+      "mention": "iOS",
+      "expected_candidates": [
+        "ENT_GEN_0101",
+        "ENT_GEN_0100"
+      ],
+      "gold_entity": "ENT_GEN_0101",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "操作系统召回",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_049",
+      "text": "中国移动推进5G-A网络试点。",
+      "mention": "中国移动",
+      "expected_candidates": [
+        "ENT_GEN_0102",
+        "ENT_GEN_0103"
+      ],
+      "gold_entity": "ENT_GEN_0102",
+      "gold_reason": "新增知识库实体或别名应被召回",
+      "scenario": "通信运营商多候选",
+      "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "id": "CR_050",
+      "text": "世界银行发布能源转型融资报告。",
+      "mention": "世界银行",
+      "expected_candidates": [],
+      "gold_entity": null,
+      "gold_reason": "知识库外实体，应无候选",
+      "scenario": "NIL-知识库外实体",
+      "note": "第五步扩充的跨领域候选召回样本。"
     }
   ],
   "statistics": {
-    "total_samples": 20,
+    "total_samples": 50,
     "scenario_distribution": {
-      "精确匹配-单候选": 12,
-      "同名异指-多候选": 3,
-      "模糊匹配-容错": 2,
+      "同名异指-三候选": 1,
+      "精确匹配-单候选": 5,
+      "精确匹配-应区分华能华电": 1,
+      "标准名匹配": 1,
+      "英文别名匹配": 1,
+      "两字简称": 1,
+      "三字简称-应区分中核中广核": 1,
+      "非标别名-考验召回": 1,
+      "模糊匹配-编辑距离1": 1,
+      "模糊匹配-异体字": 1,
+      "教育机构简称": 1,
+      "金融机构简称": 1,
       "NIL-候选为空": 2,
-      "非标别名": 1
+      "精确匹配-四字简称": 1,
+      "专业术语匹配": 1,
+      "教育机构简称召回": 1,
+      "教育机构英文名召回": 1,
+      "高校简称召回": 1,
+      "科研机构简称召回": 1,
+      "产品与母公司多候选": 1,
+      "公司与产品多候选": 1,
+      "新增别名召回": 1,
+      "英文别名召回": 2,
+      "平台企业召回": 1,
+      "科技企业简称召回": 1,
+      "互联网企业简称召回": 1,
+      "同类平台多候选": 1,
+      "汽车品牌多候选": 1,
+      "汽车品牌召回": 1,
+      "银行简称多候选": 1,
+      "银行简称召回": 2,
+      "交易所与高校干扰": 1,
+      "交易所召回": 1,
+      "政府机构多候选": 1,
+      "政府机构简称召回": 1,
+      "政府机构标准名召回": 1,
+      "地区别名召回": 1,
+      "地区英文名召回": 1,
+      "软件平台英文别名召回": 1,
+      "操作系统多候选": 1,
+      "操作系统召回": 1,
+      "通信运营商多候选": 1,
+      "NIL-知识库外实体": 1
     },
     "expected_recall_targets": {
-      "alias_exact": "16/18 = 88.9% (精确匹配应召回的非NIL样本)",
-      "alias_fuzzy": "18/18 = 100% (含模糊匹配后)",
-      "overall_recall_at_5": "18/18 = 100%"
+      "non_nil_samples": 47,
+      "nil_samples": 3
     }
   }
 }

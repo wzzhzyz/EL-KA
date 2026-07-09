@@ -1,6 +1,6 @@
 {
   "dataset_name": "mention_given_linking_test",
-  "version": "1.1",
+  "version": "1.2",
   "purpose": "任务书口径：在已给定文本与已识别实体指称的前提下评测实体链接、消歧与NIL检测",
   "input_contract": {
     "required": [
@@ -21,12 +21,12 @@
     "type": "json",
     "path": "data/kb/energy_entities.json",
     "kb_version": "2.1.0",
-    "entity_count": 63
+    "entity_count": 103
   },
   "statistics": {
-    "samples": 100,
-    "mentions": 106,
-    "nil_mentions": 27,
+    "samples": 150,
+    "mentions": 156,
+    "nil_mentions": 14,
     "empty_mention_samples": 1
   },
   "samples": [
@@ -182,10 +182,10 @@
         },
         {
           "mention": "特斯拉",
-          "entity_id": null
+          "entity_id": "ENT_GEN_0080"
         }
       ],
-      "has_nil": true,
+      "has_nil": false,
       "scenario": "英文别名+NIL"
     },
     {
@@ -699,10 +699,10 @@
       "expected_entities": [
         {
           "mention": "工信部",
-          "entity_id": null
+          "entity_id": "ENT_GEN_0090"
         }
       ],
-      "has_nil": true,
+      "has_nil": false,
       "scenario": "NIL(实体不在KB)"
     },
     {
@@ -853,514 +853,2396 @@
     {
       "id": "MENTION_LINK_037",
       "text": "南网完成了粤港澳大湾区主网架升级，区域供电可靠性进一步提升。",
-      "mentions": [{"mention": "南网", "type": "ORG", "char_start": 0, "char_end": 2, "confidence": 1.0}],
-      "expected_entities": [{"mention": "南网", "entity_id": "ENT_ENERGY_0002"}],
+      "mentions": [
+        {
+          "mention": "南网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南网",
+          "entity_id": "ENT_ENERGY_0002"
+        }
+      ],
       "has_nil": false,
       "scenario": "电网企业简称"
     },
     {
       "id": "MENTION_LINK_038",
       "text": "大唐集团持续推进火电机组灵活性改造，并扩大新能源装机规模。",
-      "mentions": [{"mention": "大唐集团", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "大唐集团", "entity_id": "ENT_ENERGY_0004"}],
+      "mentions": [
+        {
+          "mention": "大唐集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "大唐集团",
+          "entity_id": "ENT_ENERGY_0004"
+        }
+      ],
       "has_nil": false,
       "scenario": "发电集团简称"
     },
     {
       "id": "MENTION_LINK_039",
       "text": "国家电投在青海建设大型光伏基地，清洁能源装机占比继续提升。",
-      "mentions": [{"mention": "国家电投", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "国家电投", "entity_id": "ENT_ENERGY_0006"}],
+      "mentions": [
+        {
+          "mention": "国家电投",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国家电投",
+          "entity_id": "ENT_ENERGY_0006"
+        }
+      ],
       "has_nil": false,
       "scenario": "相似机构名消歧"
     },
     {
       "id": "MENTION_LINK_040",
       "text": "三峡宣布新增海上风电投资，并由集团负责项目建设与运营。",
-      "mentions": [{"mention": "三峡", "type": "ORG", "char_start": 0, "char_end": 2, "confidence": 1.0}],
-      "expected_entities": [{"mention": "三峡", "entity_id": "ENT_ENERGY_0008"}],
+      "mentions": [
+        {
+          "mention": "三峡",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "三峡",
+          "entity_id": "ENT_ENERGY_0008"
+        }
+      ],
       "has_nil": false,
       "scenario": "企业与设施歧义"
     },
     {
       "id": "MENTION_LINK_041",
       "text": "溪洛渡在汛期承担长江上游防洪和调峰任务。",
-      "mentions": [{"mention": "溪洛渡", "type": "LOC", "char_start": 0, "char_end": 3, "confidence": 1.0}],
-      "expected_entities": [{"mention": "溪洛渡", "entity_id": "ENT_ENERGY_0013"}],
+      "mentions": [
+        {
+          "mention": "溪洛渡",
+          "type": "LOC",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "溪洛渡",
+          "entity_id": "ENT_ENERGY_0013"
+        }
+      ],
       "has_nil": false,
       "scenario": "水电设施简称"
     },
     {
       "id": "MENTION_LINK_042",
       "text": "BYD发布新一代储能电池系统，并加快海外市场交付。",
-      "mentions": [{"mention": "BYD", "type": "ORG", "char_start": 0, "char_end": 3, "confidence": 1.0}],
-      "expected_entities": [{"mention": "BYD", "entity_id": "ENT_ENERGY_0016"}],
+      "mentions": [
+        {
+          "mention": "BYD",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "BYD",
+          "entity_id": "ENT_ENERGY_0016"
+        }
+      ],
       "has_nil": false,
       "scenario": "英文企业别名"
     },
     {
       "id": "MENTION_LINK_043",
       "text": "特高压直流适合跨区域远距离大容量送电。",
-      "mentions": [{"mention": "特高压直流", "type": "UNKNOWN", "char_start": 0, "char_end": 5, "confidence": 1.0}],
-      "expected_entities": [{"mention": "特高压直流", "entity_id": "ENT_ENERGY_0018"}],
+      "mentions": [
+        {
+          "mention": "特高压直流",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "特高压直流",
+          "entity_id": "ENT_ENERGY_0018"
+        }
+      ],
       "has_nil": false,
       "scenario": "相似技术术语消歧"
     },
     {
       "id": "MENTION_LINK_044",
       "text": "特高压交流用于加强区域主网架互联和电力交换。",
-      "mentions": [{"mention": "特高压交流", "type": "UNKNOWN", "char_start": 0, "char_end": 5, "confidence": 1.0}],
-      "expected_entities": [{"mention": "特高压交流", "entity_id": "ENT_ENERGY_0019"}],
+      "mentions": [
+        {
+          "mention": "特高压交流",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "特高压交流",
+          "entity_id": "ENT_ENERGY_0019"
+        }
+      ],
       "has_nil": false,
       "scenario": "相似技术术语消歧"
     },
     {
       "id": "MENTION_LINK_045",
       "text": "双碳目标推动能源结构调整和重点行业绿色转型。",
-      "mentions": [{"mention": "双碳", "type": "UNKNOWN", "char_start": 0, "char_end": 2, "confidence": 1.0}],
-      "expected_entities": [{"mention": "双碳", "entity_id": "ENT_ENERGY_0020"}],
+      "mentions": [
+        {
+          "mention": "双碳",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "双碳",
+          "entity_id": "ENT_ENERGY_0020"
+        }
+      ],
       "has_nil": false,
       "scenario": "政策简称"
     },
     {
       "id": "MENTION_LINK_046",
       "text": "新型电力系统需要提升新能源消纳和灵活调节能力。",
-      "mentions": [{"mention": "新型电力系统", "type": "UNKNOWN", "char_start": 0, "char_end": 6, "confidence": 1.0}],
-      "expected_entities": [{"mention": "新型电力系统", "entity_id": "ENT_ENERGY_0021"}],
+      "mentions": [
+        {
+          "mention": "新型电力系统",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "新型电力系统",
+          "entity_id": "ENT_ENERGY_0021"
+        }
+      ],
       "has_nil": false,
       "scenario": "行业概念别名"
     },
     {
       "id": "MENTION_LINK_047",
       "text": "抽蓄在高峰时段放电，并在低谷时段回补上库水量。",
-      "mentions": [{"mention": "抽蓄", "type": "UNKNOWN", "char_start": 0, "char_end": 2, "confidence": 1.0}],
-      "expected_entities": [{"mention": "抽蓄", "entity_id": "ENT_ENERGY_0022"}],
+      "mentions": [
+        {
+          "mention": "抽蓄",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "抽蓄",
+          "entity_id": "ENT_ENERGY_0022"
+        }
+      ],
       "has_nil": false,
       "scenario": "技术简称"
     },
     {
       "id": "MENTION_LINK_048",
       "text": "综合能源通过冷热电协同提高园区能源利用效率。",
-      "mentions": [{"mention": "综合能源", "type": "UNKNOWN", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "综合能源", "entity_id": "ENT_ENERGY_0023"}],
+      "mentions": [
+        {
+          "mention": "综合能源",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "综合能源",
+          "entity_id": "ENT_ENERGY_0023"
+        }
+      ],
       "has_nil": false,
       "scenario": "行业概念匹配"
     },
     {
       "id": "MENTION_LINK_049",
       "text": "源网荷储一体化项目将发电、电网、负荷与储能统一协调。",
-      "mentions": [{"mention": "源网荷储", "type": "UNKNOWN", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "源网荷储", "entity_id": "ENT_ENERGY_0024"}],
+      "mentions": [
+        {
+          "mention": "源网荷储",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "源网荷储",
+          "entity_id": "ENT_ENERGY_0024"
+        }
+      ],
       "has_nil": false,
       "scenario": "行业术语匹配"
     },
     {
       "id": "MENTION_LINK_050",
       "text": "西电东送持续将西部清洁能源输送至东部负荷中心。",
-      "mentions": [{"mention": "西电东送", "type": "UNKNOWN", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "西电东送", "entity_id": "ENT_ENERGY_0025"}],
+      "mentions": [
+        {
+          "mention": "西电东送",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "西电东送",
+          "entity_id": "ENT_ENERGY_0025"
+        }
+      ],
       "has_nil": false,
       "scenario": "工程简称"
     },
     {
       "id": "MENTION_LINK_051",
       "text": "天合发布高功率光伏组件，并宣布扩大海外产能。",
-      "mentions": [{"mention": "天合", "type": "ORG", "char_start": 0, "char_end": 2, "confidence": 1.0}],
-      "expected_entities": [{"mention": "天合", "entity_id": "ENT_ENERGY_0029"}],
+      "mentions": [
+        {
+          "mention": "天合",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "天合",
+          "entity_id": "ENT_ENERGY_0029"
+        }
+      ],
       "has_nil": false,
       "scenario": "企业短别名"
     },
     {
       "id": "MENTION_LINK_052",
       "text": "华润新增多个风电项目，全年可再生能源发电量稳步增长。",
-      "mentions": [{"mention": "华润", "type": "ORG", "char_start": 0, "char_end": 2, "confidence": 1.0}],
-      "expected_entities": [{"mention": "华润", "entity_id": "ENT_ENERGY_0035"}],
+      "mentions": [
+        {
+          "mention": "华润",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华润",
+          "entity_id": "ENT_ENERGY_0035"
+        }
+      ],
       "has_nil": false,
       "scenario": "跨行业短别名消歧"
     },
     {
       "id": "MENTION_LINK_053",
       "text": "亿纬公布储能电芯扩产计划，新产线将在年内投产。",
-      "mentions": [{"mention": "亿纬", "type": "ORG", "char_start": 0, "char_end": 2, "confidence": 1.0}],
-      "expected_entities": [{"mention": "亿纬", "entity_id": "ENT_ENERGY_0038"}],
+      "mentions": [
+        {
+          "mention": "亿纬",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "亿纬",
+          "entity_id": "ENT_ENERGY_0038"
+        }
+      ],
       "has_nil": false,
       "scenario": "企业简称匹配"
     },
     {
       "id": "MENTION_LINK_054",
       "text": "Hualong One完成新一轮安全系统验证，并进入示范运行阶段。",
-      "mentions": [{"mention": "Hualong One", "type": "UNKNOWN", "char_start": 0, "char_end": 11, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Hualong One", "entity_id": "ENT_ENERGY_0040"}],
+      "mentions": [
+        {
+          "mention": "Hualong One",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Hualong One",
+          "entity_id": "ENT_ENERGY_0040"
+        }
+      ],
       "has_nil": false,
       "scenario": "英文产品别名"
     },
     {
       "id": "MENTION_LINK_055",
       "text": "VPP聚合分布式电源、储能和可调负荷参与电力市场。",
-      "mentions": [{"mention": "VPP", "type": "UNKNOWN", "char_start": 0, "char_end": 3, "confidence": 1.0}],
-      "expected_entities": [{"mention": "VPP", "entity_id": "ENT_ENERGY_0042"}],
+      "mentions": [
+        {
+          "mention": "VPP",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "VPP",
+          "entity_id": "ENT_ENERGY_0042"
+        }
+      ],
       "has_nil": false,
       "scenario": "英文技术缩写"
     },
     {
       "id": "MENTION_LINK_056",
       "text": "Smart Grid通过数字化感知提升配电网故障处置效率。",
-      "mentions": [{"mention": "Smart Grid", "type": "UNKNOWN", "char_start": 0, "char_end": 10, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Smart Grid", "entity_id": "ENT_ENERGY_0045"}],
+      "mentions": [
+        {
+          "mention": "Smart Grid",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Smart Grid",
+          "entity_id": "ENT_ENERGY_0045"
+        }
+      ],
       "has_nil": false,
       "scenario": "英文概念别名"
     },
     {
       "id": "MENTION_LINK_057",
       "text": "Xiongan New Area启动近零碳园区综合能源示范工程。",
-      "mentions": [{"mention": "Xiongan New Area", "type": "GPE", "char_start": 0, "char_end": 16, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Xiongan New Area", "entity_id": "ENT_ENERGY_0046"}],
+      "mentions": [
+        {
+          "mention": "Xiongan New Area",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 16,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Xiongan New Area",
+          "entity_id": "ENT_ENERGY_0046"
+        }
+      ],
       "has_nil": false,
       "scenario": "英文地名别名"
     },
     {
       "id": "MENTION_LINK_058",
       "text": "抖音上线节能科普专题，集中展示绿色生活案例。",
-      "mentions": [{"mention": "抖音", "type": "UNKNOWN", "char_start": 0, "char_end": 2, "confidence": 1.0}],
-      "expected_entities": [{"mention": "抖音", "entity_id": "ENT_GEN_0062"}],
+      "mentions": [
+        {
+          "mention": "抖音",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "抖音",
+          "entity_id": "ENT_GEN_0062"
+        }
+      ],
       "has_nil": false,
       "scenario": "产品实体匹配"
     },
     {
       "id": "MENTION_LINK_059",
       "text": "工业和信息化部发布工业领域节能降碳指导意见。",
-      "mentions": [{"mention": "工业和信息化部", "type": "ORG", "char_start": 0, "char_end": 7, "confidence": 1.0}],
-      "expected_entities": [{"mention": "工业和信息化部", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "工业和信息化部",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "工业和信息化部",
+          "entity_id": "ENT_GEN_0090"
+        }
+      ],
+      "has_nil": false,
       "scenario": "知识库外政府机构NIL"
     },
     {
       "id": "MENTION_LINK_060",
       "text": "中国能源研究会发布年度能源转型研究成果。",
-      "mentions": [{"mention": "中国能源研究会", "type": "ORG", "char_start": 0, "char_end": 7, "confidence": 1.0}],
-      "expected_entities": [{"mention": "中国能源研究会", "entity_id": null}],
+      "mentions": [
+        {
+          "mention": "中国能源研究会",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国能源研究会",
+          "entity_id": null
+        }
+      ],
       "has_nil": true,
       "scenario": "近似机构名NIL"
     },
     {
       "id": "MENTION_LINK_061",
       "text": "Huawei发布新一代数据中心网络方案，重点降低大规模算力集群能耗。",
-      "mentions": [{"mention": "Huawei", "type": "ORG", "char_start": 0, "char_end": 6, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Huawei", "entity_id": "ENT_GEN_0051"}],
+      "mentions": [
+        {
+          "mention": "Huawei",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Huawei",
+          "entity_id": "ENT_GEN_0051"
+        }
+      ],
       "has_nil": false,
       "scenario": "科技企业英文别名"
     },
     {
       "id": "MENTION_LINK_062",
       "text": "Tencent公布云计算业务进展，并扩大人工智能基础设施投入。",
-      "mentions": [{"mention": "Tencent", "type": "ORG", "char_start": 0, "char_end": 7, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Tencent", "entity_id": "ENT_GEN_0052"}],
+      "mentions": [
+        {
+          "mention": "Tencent",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Tencent",
+          "entity_id": "ENT_GEN_0052"
+        }
+      ],
       "has_nil": false,
       "scenario": "互联网企业英文别名"
     },
     {
       "id": "MENTION_LINK_063",
       "text": "Alibaba上线新的跨境电商服务，帮助中小企业拓展海外市场。",
-      "mentions": [{"mention": "Alibaba", "type": "ORG", "char_start": 0, "char_end": 7, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Alibaba", "entity_id": "ENT_GEN_0053"}],
+      "mentions": [
+        {
+          "mention": "Alibaba",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Alibaba",
+          "entity_id": "ENT_GEN_0053"
+        }
+      ],
       "has_nil": false,
       "scenario": "电商企业英文别名"
     },
     {
       "id": "MENTION_LINK_064",
       "text": "SMIC披露先进制程研发进展，并计划提高晶圆制造产能。",
-      "mentions": [{"mention": "SMIC", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "SMIC", "entity_id": "ENT_GEN_0054"}],
+      "mentions": [
+        {
+          "mention": "SMIC",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "SMIC",
+          "entity_id": "ENT_GEN_0054"
+        }
+      ],
       "has_nil": false,
       "scenario": "半导体企业英文简称"
     },
     {
       "id": "MENTION_LINK_065",
       "text": "ICBC发布绿色金融报告，披露清洁能源项目贷款余额。",
-      "mentions": [{"mention": "ICBC", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "ICBC", "entity_id": "ENT_GEN_0055"}],
+      "mentions": [
+        {
+          "mention": "ICBC",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "ICBC",
+          "entity_id": "ENT_GEN_0055"
+        }
+      ],
       "has_nil": false,
       "scenario": "银行英文简称"
     },
     {
       "id": "MENTION_LINK_066",
       "text": "Ping An扩大气候风险保险覆盖范围，并推出企业碳管理服务。",
-      "mentions": [{"mention": "Ping An", "type": "ORG", "char_start": 0, "char_end": 7, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Ping An", "entity_id": "ENT_GEN_0056"}],
+      "mentions": [
+        {
+          "mention": "Ping An",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Ping An",
+          "entity_id": "ENT_GEN_0056"
+        }
+      ],
       "has_nil": false,
       "scenario": "保险集团英文别名"
     },
     {
       "id": "MENTION_LINK_067",
       "text": "CMB为新能源制造企业提供供应链融资和跨境结算服务。",
-      "mentions": [{"mention": "CMB", "type": "ORG", "char_start": 0, "char_end": 3, "confidence": 1.0}],
-      "expected_entities": [{"mention": "CMB", "entity_id": "ENT_GEN_0057"}],
+      "mentions": [
+        {
+          "mention": "CMB",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "CMB",
+          "entity_id": "ENT_GEN_0057"
+        }
+      ],
       "has_nil": false,
       "scenario": "银行缩写消歧"
     },
     {
       "id": "MENTION_LINK_068",
       "text": "NIO公布高速换电网络建设计划，并将新增多个服务站点。",
-      "mentions": [{"mention": "NIO", "type": "ORG", "char_start": 0, "char_end": 3, "confidence": 1.0}],
-      "expected_entities": [{"mention": "NIO", "entity_id": "ENT_GEN_0058"}],
+      "mentions": [
+        {
+          "mention": "NIO",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "NIO",
+          "entity_id": "ENT_GEN_0058"
+        }
+      ],
       "has_nil": false,
       "scenario": "汽车企业英文别名"
     },
     {
       "id": "MENTION_LINK_069",
       "text": "Tsinghua University发布人工智能治理研究成果，并开放相关课程资源。",
-      "mentions": [{"mention": "Tsinghua University", "type": "ORG", "char_start": 0, "char_end": 19, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Tsinghua University", "entity_id": "ENT_GEN_0060"}],
+      "mentions": [
+        {
+          "mention": "Tsinghua University",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 19,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Tsinghua University",
+          "entity_id": "ENT_GEN_0060"
+        }
+      ],
       "has_nil": false,
       "scenario": "高校英文别名"
     },
     {
       "id": "MENTION_LINK_070",
       "text": "WeChat新增城市公共服务入口，用户可在线办理多项政务业务。",
-      "mentions": [{"mention": "WeChat", "type": "UNKNOWN", "char_start": 0, "char_end": 6, "confidence": 1.0}],
-      "expected_entities": [{"mention": "WeChat", "entity_id": "ENT_GEN_0061"}],
+      "mentions": [
+        {
+          "mention": "WeChat",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "WeChat",
+          "entity_id": "ENT_GEN_0061"
+        }
+      ],
       "has_nil": false,
       "scenario": "社交产品英文名"
     },
     {
       "id": "MENTION_LINK_071",
       "text": "Douyin上线传统文化专题，创作者可使用新的互动展示工具。",
-      "mentions": [{"mention": "Douyin", "type": "UNKNOWN", "char_start": 0, "char_end": 6, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Douyin", "entity_id": "ENT_GEN_0062"}],
+      "mentions": [
+        {
+          "mention": "Douyin",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Douyin",
+          "entity_id": "ENT_GEN_0062"
+        }
+      ],
       "has_nil": false,
       "scenario": "短视频产品英文名"
     },
     {
       "id": "MENTION_LINK_072",
       "text": "Windows11发布安全更新，修复文件管理和无线网络相关问题。",
-      "mentions": [{"mention": "Windows11", "type": "UNKNOWN", "char_start": 0, "char_end": 9, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Windows11", "entity_id": "ENT_GEN_0063"}],
+      "mentions": [
+        {
+          "mention": "Windows11",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Windows11",
+          "entity_id": "ENT_GEN_0063"
+        }
+      ],
       "has_nil": false,
       "scenario": "操作系统别名"
     },
     {
       "id": "MENTION_LINK_073",
       "text": "Shenzhen新增多个数字政府应用场景，并开放公共数据接口。",
-      "mentions": [{"mention": "Shenzhen", "type": "GPE", "char_start": 0, "char_end": 8, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Shenzhen", "entity_id": "ENT_ENERGY_0027"}],
+      "mentions": [
+        {
+          "mention": "Shenzhen",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Shenzhen",
+          "entity_id": "ENT_ENERGY_0027"
+        }
+      ],
       "has_nil": false,
       "scenario": "城市英文名"
     },
     {
       "id": "MENTION_LINK_074",
       "text": "Beijing启动公共建筑节能改造计划，覆盖学校、医院和办公园区。",
-      "mentions": [{"mention": "Beijing", "type": "GPE", "char_start": 0, "char_end": 7, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Beijing", "entity_id": "ENT_ENERGY_0028"}],
+      "mentions": [
+        {
+          "mention": "Beijing",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Beijing",
+          "entity_id": "ENT_ENERGY_0028"
+        }
+      ],
       "has_nil": false,
       "scenario": "城市英文名"
     },
     {
       "id": "MENTION_LINK_075",
       "text": "Xiongan New Area推进智慧交通与近零碳园区协同建设。",
-      "mentions": [{"mention": "Xiongan New Area", "type": "GPE", "char_start": 0, "char_end": 16, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Xiongan New Area", "entity_id": "ENT_ENERGY_0046"}],
+      "mentions": [
+        {
+          "mention": "Xiongan New Area",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 16,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Xiongan New Area",
+          "entity_id": "ENT_ENERGY_0046"
+        }
+      ],
       "has_nil": false,
       "scenario": "新区英文名"
     },
     {
       "id": "MENTION_LINK_076",
       "text": "Ordos建设现代煤化工示范项目，并配套可再生能源电源。",
-      "mentions": [{"mention": "Ordos", "type": "GPE", "char_start": 0, "char_end": 5, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Ordos", "entity_id": "ENT_ENERGY_0048"}],
+      "mentions": [
+        {
+          "mention": "Ordos",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Ordos",
+          "entity_id": "ENT_ENERGY_0048"
+        }
+      ],
       "has_nil": false,
       "scenario": "城市英文名"
     },
     {
       "id": "MENTION_LINK_077",
       "text": "Jiuquan持续扩大风电装备制造能力，完善新能源产业链配套。",
-      "mentions": [{"mention": "Jiuquan", "type": "GPE", "char_start": 0, "char_end": 7, "confidence": 1.0}],
-      "expected_entities": [{"mention": "Jiuquan", "entity_id": "ENT_ENERGY_0047"}],
+      "mentions": [
+        {
+          "mention": "Jiuquan",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Jiuquan",
+          "entity_id": "ENT_ENERGY_0047"
+        }
+      ],
       "has_nil": false,
       "scenario": "城市英文名"
     },
     {
       "id": "MENTION_LINK_078",
       "text": "CATL推出面向商用车的新型电池包，并公布超快充技术路线。",
-      "mentions": [{"mention": "CATL", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "CATL", "entity_id": "ENT_ENERGY_0015"}],
+      "mentions": [
+        {
+          "mention": "CATL",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "CATL",
+          "entity_id": "ENT_ENERGY_0015"
+        }
+      ],
       "has_nil": false,
       "scenario": "电池企业英文简称"
     },
     {
       "id": "MENTION_LINK_079",
       "text": "SGCC启动跨区输电工程年度检修，保障迎峰度夏电力供应。",
-      "mentions": [{"mention": "SGCC", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "SGCC", "entity_id": "ENT_ENERGY_0001"}],
+      "mentions": [
+        {
+          "mention": "SGCC",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "SGCC",
+          "entity_id": "ENT_ENERGY_0001"
+        }
+      ],
       "has_nil": false,
       "scenario": "电网企业英文简称"
     },
     {
       "id": "MENTION_LINK_080",
       "text": "China Southern Power Grid推进南方五省区数字电网建设。",
-      "mentions": [{"mention": "China Southern Power Grid", "type": "ORG", "char_start": 0, "char_end": 25, "confidence": 1.0}],
-      "expected_entities": [{"mention": "China Southern Power Grid", "entity_id": "ENT_ENERGY_0002"}],
+      "mentions": [
+        {
+          "mention": "China Southern Power Grid",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 25,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "China Southern Power Grid",
+          "entity_id": "ENT_ENERGY_0002"
+        }
+      ],
       "has_nil": false,
       "scenario": "电网企业英文全称"
     },
     {
       "id": "MENTION_LINK_081",
       "text": "北京大学成立交叉学科研究平台，支持医学与人工智能联合研究。",
-      "mentions": [{"mention": "北京大学", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "北京大学", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北京大学",
+          "entity_id": "ENT_GEN_0064"
+        }
+      ],
+      "has_nil": false,
       "scenario": "教育领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_082",
       "text": "复旦大学发布公共卫生研究报告，并开放匿名化调查数据。",
-      "mentions": [{"mention": "复旦大学", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "复旦大学", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "复旦大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "复旦大学",
+          "entity_id": "ENT_GEN_0067"
+        }
+      ],
+      "has_nil": false,
       "scenario": "教育领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_083",
       "text": "北京协和医院上线疑难病远程会诊平台，覆盖多个临床专科。",
-      "mentions": [{"mention": "北京协和医院", "type": "ORG", "char_start": 0, "char_end": 6, "confidence": 1.0}],
-      "expected_entities": [{"mention": "北京协和医院", "entity_id": null}],
+      "mentions": [
+        {
+          "mention": "北京协和医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北京协和医院",
+          "entity_id": null
+        }
+      ],
       "has_nil": true,
       "scenario": "医疗领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_084",
       "text": "故宫博物院发布数字文物展览，观众可在线浏览高清藏品。",
-      "mentions": [{"mention": "故宫博物院", "type": "ORG", "char_start": 0, "char_end": 5, "confidence": 1.0}],
-      "expected_entities": [{"mention": "故宫博物院", "entity_id": null}],
+      "mentions": [
+        {
+          "mention": "故宫博物院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "故宫博物院",
+          "entity_id": null
+        }
+      ],
       "has_nil": true,
       "scenario": "文化领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_085",
       "text": "中国中车完成新型高速列车试验，进一步降低运行能耗。",
-      "mentions": [{"mention": "中国中车", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "中国中车", "entity_id": null}],
+      "mentions": [
+        {
+          "mention": "中国中车",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国中车",
+          "entity_id": null
+        }
+      ],
       "has_nil": true,
       "scenario": "轨道交通领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_086",
       "text": "中国商飞公布国产客机交付进展，并扩建维修保障网络。",
-      "mentions": [{"mention": "中国商飞", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "中国商飞", "entity_id": null}],
+      "mentions": [
+        {
+          "mention": "中国商飞",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国商飞",
+          "entity_id": null
+        }
+      ],
       "has_nil": true,
       "scenario": "航空制造领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_087",
       "text": "中国移动启动算力网络升级，并在多个城市部署边缘计算节点。",
-      "mentions": [{"mention": "中国移动", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "中国移动", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "中国移动",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国移动",
+          "entity_id": "ENT_GEN_0102"
+        }
+      ],
+      "has_nil": false,
       "scenario": "通信领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_088",
       "text": "京东升级智能物流系统，提升仓储机器人协同调度效率。",
-      "mentions": [{"mention": "京东", "type": "ORG", "char_start": 0, "char_end": 2, "confidence": 1.0}],
-      "expected_entities": [{"mention": "京东", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "京东",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "京东",
+          "entity_id": "ENT_GEN_0071"
+        }
+      ],
+      "has_nil": false,
       "scenario": "电商领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_089",
       "text": "美团发布即时配送减碳方案，试点使用更多新能源配送车辆。",
-      "mentions": [{"mention": "美团", "type": "ORG", "char_start": 0, "char_end": 2, "confidence": 1.0}],
-      "expected_entities": [{"mention": "美团", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "美团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "美团",
+          "entity_id": "ENT_GEN_0072"
+        }
+      ],
+      "has_nil": false,
       "scenario": "生活服务领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_090",
       "text": "字节跳动公布数据中心节能改造进展，并扩大清洁能源使用比例。",
-      "mentions": [{"mention": "字节跳动", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "字节跳动", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "字节跳动",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "字节跳动",
+          "entity_id": "ENT_GEN_0075"
+        }
+      ],
+      "has_nil": false,
       "scenario": "互联网领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_091",
       "text": "中国农业银行推出面向县域光伏项目的绿色信贷产品。",
-      "mentions": [{"mention": "中国农业银行", "type": "ORG", "char_start": 0, "char_end": 6, "confidence": 1.0}],
-      "expected_entities": [{"mention": "中国农业银行", "entity_id": null}],
+      "mentions": [
+        {
+          "mention": "中国农业银行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国农业银行",
+          "entity_id": null
+        }
+      ],
       "has_nil": true,
       "scenario": "金融领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_092",
       "text": "上海证券交易所发布上市公司可持续发展信息披露指引。",
-      "mentions": [{"mention": "上海证券交易所", "type": "ORG", "char_start": 0, "char_end": 7, "confidence": 1.0}],
-      "expected_entities": [{"mention": "上海证券交易所", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "上海证券交易所",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上海证券交易所",
+          "entity_id": "ENT_GEN_0087"
+        }
+      ],
+      "has_nil": false,
       "scenario": "证券领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_093",
       "text": "中国国家博物馆推出古代科技主题展览，并提供线上导览。",
-      "mentions": [{"mention": "中国国家博物馆", "type": "ORG", "char_start": 0, "char_end": 7, "confidence": 1.0}],
-      "expected_entities": [{"mention": "中国国家博物馆", "entity_id": null}],
+      "mentions": [
+        {
+          "mention": "中国国家博物馆",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国国家博物馆",
+          "entity_id": null
+        }
+      ],
       "has_nil": true,
       "scenario": "文博领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_094",
       "text": "袁隆平农业高科技发布耐盐碱水稻新品种试验结果。",
-      "mentions": [{"mention": "袁隆平农业高科技", "type": "ORG", "char_start": 0, "char_end": 8, "confidence": 1.0}],
-      "expected_entities": [{"mention": "袁隆平农业高科技", "entity_id": null}],
+      "mentions": [
+        {
+          "mention": "袁隆平农业高科技",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "袁隆平农业高科技",
+          "entity_id": null
+        }
+      ],
       "has_nil": true,
       "scenario": "农业科技领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_095",
       "text": "科大讯飞推出面向课堂教学的新型语音交互模型。",
-      "mentions": [{"mention": "科大讯飞", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "科大讯飞", "entity_id": null}],
+      "mentions": [
+        {
+          "mention": "科大讯飞",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "科大讯飞",
+          "entity_id": null
+        }
+      ],
       "has_nil": true,
       "scenario": "人工智能领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_096",
       "text": "百度开放自动驾驶测试数据集，支持复杂道路场景研究。",
-      "mentions": [{"mention": "百度", "type": "ORG", "char_start": 0, "char_end": 2, "confidence": 1.0}],
-      "expected_entities": [{"mention": "百度", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "百度",
+          "entity_id": "ENT_GEN_0070"
+        }
+      ],
+      "has_nil": false,
       "scenario": "互联网领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_097",
       "text": "小米集团发布智能汽车软件更新，并优化家庭能源管理功能。",
-      "mentions": [{"mention": "小米集团", "type": "ORG", "char_start": 0, "char_end": 4, "confidence": 1.0}],
-      "expected_entities": [{"mention": "小米集团", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "小米集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "小米集团",
+          "entity_id": "ENT_GEN_0073"
+        }
+      ],
+      "has_nil": false,
       "scenario": "消费电子领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_098",
       "text": "上海交通大学成立低碳能源联合实验室，开展储能材料研究。",
-      "mentions": [{"mention": "上海交通大学", "type": "ORG", "char_start": 0, "char_end": 6, "confidence": 1.0}],
-      "expected_entities": [{"mention": "上海交通大学", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "上海交通大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上海交通大学",
+          "entity_id": "ENT_GEN_0065"
+        }
+      ],
+      "has_nil": false,
       "scenario": "教育领域知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_099",
       "text": "中国科学院发布先进储能材料研究进展，并推进成果转化。",
-      "mentions": [{"mention": "中国科学院", "type": "ORG", "char_start": 0, "char_end": 5, "confidence": 1.0}],
-      "expected_entities": [{"mention": "中国科学院", "entity_id": null}],
-      "has_nil": true,
+      "mentions": [
+        {
+          "mention": "中国科学院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国科学院",
+          "entity_id": "ENT_GEN_0068"
+        }
+      ],
+      "has_nil": false,
       "scenario": "科研机构知识库外实体NIL"
     },
     {
       "id": "MENTION_LINK_100",
       "text": "世界卫生组织发布极端高温健康风险应对建议。",
-      "mentions": [{"mention": "世界卫生组织", "type": "ORG", "char_start": 0, "char_end": 6, "confidence": 1.0}],
-      "expected_entities": [{"mention": "世界卫生组织", "entity_id": null}],
+      "mentions": [
+        {
+          "mention": "世界卫生组织",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "世界卫生组织",
+          "entity_id": null
+        }
+      ],
       "has_nil": true,
       "scenario": "国际组织知识库外实体NIL"
+    },
+    {
+      "id": "MENTION_LINK_101",
+      "text": "北大启动医学人工智能联合研究计划。",
+      "mentions": [
+        {
+          "mention": "北大",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北大",
+          "entity_id": "ENT_GEN_0064"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "教育机构简称"
+    },
+    {
+      "id": "MENTION_LINK_102",
+      "text": "Peking University发布跨学科科研合作计划。",
+      "mentions": [
+        {
+          "mention": "Peking University",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 17,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Peking University",
+          "entity_id": "ENT_GEN_0064"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "教育机构英文名"
+    },
+    {
+      "id": "MENTION_LINK_103",
+      "text": "上海交大建设低碳能源联合实验平台。",
+      "mentions": [
+        {
+          "mention": "上海交大",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上海交大",
+          "entity_id": "ENT_GEN_0065"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "教育机构简称"
+    },
+    {
+      "id": "MENTION_LINK_104",
+      "text": "浙大开放智能机器人实验课程资源。",
+      "mentions": [
+        {
+          "mention": "浙大",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "浙大",
+          "entity_id": "ENT_GEN_0066"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "教育机构简称"
+    },
+    {
+      "id": "MENTION_LINK_105",
+      "text": "ZJU团队公布储能材料计算模拟结果。",
+      "mentions": [
+        {
+          "mention": "ZJU",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "ZJU",
+          "entity_id": "ENT_GEN_0066"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "教育机构英文缩写"
+    },
+    {
+      "id": "MENTION_LINK_106",
+      "text": "复旦发布公共卫生数据治理研究报告。",
+      "mentions": [
+        {
+          "mention": "复旦",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "复旦",
+          "entity_id": "ENT_GEN_0067"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "教育机构简称"
+    },
+    {
+      "id": "MENTION_LINK_107",
+      "text": "中科院推进先进储能材料成果转化。",
+      "mentions": [
+        {
+          "mention": "中科院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中科院",
+          "entity_id": "ENT_GEN_0068"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "研究机构简称"
+    },
+    {
+      "id": "MENTION_LINK_108",
+      "text": "CAS发布空间科学任务开放数据。",
+      "mentions": [
+        {
+          "mention": "CAS",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "CAS",
+          "entity_id": "ENT_GEN_0068"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "研究机构英文缩写"
+    },
+    {
+      "id": "MENTION_LINK_109",
+      "text": "工程院组织智能制造战略咨询会议。",
+      "mentions": [
+        {
+          "mention": "工程院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "工程院",
+          "entity_id": "ENT_GEN_0069"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "研究机构简称"
+    },
+    {
+      "id": "MENTION_LINK_110",
+      "text": "百度开放自动驾驶仿真测试平台。",
+      "mentions": [
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "百度",
+          "entity_id": "ENT_GEN_0070"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "科技企业简称"
+    },
+    {
+      "id": "MENTION_LINK_111",
+      "text": "Baidu升级大模型开发工具链。",
+      "mentions": [
+        {
+          "mention": "Baidu",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Baidu",
+          "entity_id": "ENT_GEN_0070"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "科技企业英文名"
+    },
+    {
+      "id": "MENTION_LINK_112",
+      "text": "京东升级智能仓储机器人调度系统。",
+      "mentions": [
+        {
+          "mention": "京东",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "京东",
+          "entity_id": "ENT_GEN_0071"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "电商企业简称"
+    },
+    {
+      "id": "MENTION_LINK_113",
+      "text": "JD.com发布供应链碳排放管理工具。",
+      "mentions": [
+        {
+          "mention": "JD.com",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "JD.com",
+          "entity_id": "ENT_GEN_0071"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "电商企业英文别名"
+    },
+    {
+      "id": "MENTION_LINK_114",
+      "text": "美团扩大新能源配送车辆试点范围。",
+      "mentions": [
+        {
+          "mention": "美团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "美团",
+          "entity_id": "ENT_GEN_0072"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "生活服务平台简称"
+    },
+    {
+      "id": "MENTION_LINK_115",
+      "text": "Meituan发布即时零售履约效率报告。",
+      "mentions": [
+        {
+          "mention": "Meituan",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Meituan",
+          "entity_id": "ENT_GEN_0072"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "生活服务平台英文名"
+    },
+    {
+      "id": "MENTION_LINK_116",
+      "text": "小米发布家庭能源管理软件更新。",
+      "mentions": [
+        {
+          "mention": "小米",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "小米",
+          "entity_id": "ENT_GEN_0073"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "科技企业简称"
+    },
+    {
+      "id": "MENTION_LINK_117",
+      "text": "Lenovo推出新一代AI PC产品线。",
+      "mentions": [
+        {
+          "mention": "Lenovo",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Lenovo",
+          "entity_id": "ENT_GEN_0074"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "科技企业英文名"
+    },
+    {
+      "id": "MENTION_LINK_118",
+      "text": "字节上线数据中心节能调度系统。",
+      "mentions": [
+        {
+          "mention": "字节",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "字节",
+          "entity_id": "ENT_GEN_0075"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "互联网企业简称"
+    },
+    {
+      "id": "MENTION_LINK_119",
+      "text": "网易发布云游戏低时延优化方案。",
+      "mentions": [
+        {
+          "mention": "网易",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "网易",
+          "entity_id": "ENT_GEN_0076"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "互联网企业简称"
+    },
+    {
+      "id": "MENTION_LINK_120",
+      "text": "快手升级直播电商内容审核模型。",
+      "mentions": [
+        {
+          "mention": "快手",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "快手",
+          "entity_id": "ENT_GEN_0077"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "短视频平台企业简称"
+    },
+    {
+      "id": "MENTION_LINK_121",
+      "text": "小鹏公布城市辅助驾驶功能更新。",
+      "mentions": [
+        {
+          "mention": "小鹏",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "小鹏",
+          "entity_id": "ENT_GEN_0078"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "汽车企业简称"
+    },
+    {
+      "id": "MENTION_LINK_122",
+      "text": "XPeng展示下一代智能座舱系统。",
+      "mentions": [
+        {
+          "mention": "XPeng",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "XPeng",
+          "entity_id": "ENT_GEN_0078"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "汽车企业英文别名"
+    },
+    {
+      "id": "MENTION_LINK_123",
+      "text": "理想发布家庭智能电动车软件升级。",
+      "mentions": [
+        {
+          "mention": "理想",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "理想",
+          "entity_id": "ENT_GEN_0079"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "汽车企业简称"
+    },
+    {
+      "id": "MENTION_LINK_124",
+      "text": "Li Auto公布充电网络建设计划。",
+      "mentions": [
+        {
+          "mention": "Li Auto",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Li Auto",
+          "entity_id": "ENT_GEN_0079"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "汽车企业英文别名"
+    },
+    {
+      "id": "MENTION_LINK_125",
+      "text": "Tesla扩大储能系统在园区微电网中的应用。",
+      "mentions": [
+        {
+          "mention": "Tesla",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Tesla",
+          "entity_id": "ENT_GEN_0080"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "汽车企业英文名"
+    },
+    {
+      "id": "MENTION_LINK_126",
+      "text": "建行推出面向制造企业的绿色信贷服务。",
+      "mentions": [
+        {
+          "mention": "建行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "建行",
+          "entity_id": "ENT_GEN_0081"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "银行简称"
+    },
+    {
+      "id": "MENTION_LINK_127",
+      "text": "CCB发布绿色金融年度实践报告。",
+      "mentions": [
+        {
+          "mention": "CCB",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "CCB",
+          "entity_id": "ENT_GEN_0081"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "银行英文缩写"
+    },
+    {
+      "id": "MENTION_LINK_128",
+      "text": "农行支持县域分布式光伏项目融资。",
+      "mentions": [
+        {
+          "mention": "农行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "农行",
+          "entity_id": "ENT_GEN_0082"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "银行简称"
+    },
+    {
+      "id": "MENTION_LINK_129",
+      "text": "中行优化跨境结算与绿色债券服务。",
+      "mentions": [
+        {
+          "mention": "中行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中行",
+          "entity_id": "ENT_GEN_0083"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "银行简称"
+    },
+    {
+      "id": "MENTION_LINK_130",
+      "text": "交行发布零售金融数字化转型方案。",
+      "mentions": [
+        {
+          "mention": "交行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "交行",
+          "entity_id": "ENT_GEN_0084"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "银行简称"
+    },
+    {
+      "id": "MENTION_LINK_131",
+      "text": "中信证券发布新能源产业链研究报告。",
+      "mentions": [
+        {
+          "mention": "中信证券",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中信证券",
+          "entity_id": "ENT_GEN_0085"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "证券机构"
+    },
+    {
+      "id": "MENTION_LINK_132",
+      "text": "东方财富上线基金组合风险分析工具。",
+      "mentions": [
+        {
+          "mention": "东方财富",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "东方财富",
+          "entity_id": "ENT_GEN_0086"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "互联网金融平台"
+    },
+    {
+      "id": "MENTION_LINK_133",
+      "text": "上交所完善上市公司ESG信息披露规则。",
+      "mentions": [
+        {
+          "mention": "上交所",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上交所",
+          "entity_id": "ENT_GEN_0087"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "证券交易所简称"
+    },
+    {
+      "id": "MENTION_LINK_134",
+      "text": "深交所发布创业板公司可持续发展指引。",
+      "mentions": [
+        {
+          "mention": "深交所",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "深交所",
+          "entity_id": "ENT_GEN_0088"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "证券交易所简称"
+    },
+    {
+      "id": "MENTION_LINK_135",
+      "text": "发改委部署重点领域节能降碳改造工作。",
+      "mentions": [
+        {
+          "mention": "发改委",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "发改委",
+          "entity_id": "ENT_GEN_0089"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "政府机构简称"
+    },
+    {
+      "id": "MENTION_LINK_136",
+      "text": "工信部推动工业互联网平台应用推广。",
+      "mentions": [
+        {
+          "mention": "工信部",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "工信部",
+          "entity_id": "ENT_GEN_0090"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "政府机构简称"
+    },
+    {
+      "id": "MENTION_LINK_137",
+      "text": "生态环境部发布碳排放统计核算工作安排。",
+      "mentions": [
+        {
+          "mention": "生态环境部",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "生态环境部",
+          "entity_id": "ENT_GEN_0091"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "政府机构"
+    },
+    {
+      "id": "MENTION_LINK_138",
+      "text": "市场监管总局加强平台经济反垄断监管。",
+      "mentions": [
+        {
+          "mention": "市场监管总局",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "市场监管总局",
+          "entity_id": "ENT_GEN_0092"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "政府机构简称"
+    },
+    {
+      "id": "MENTION_LINK_139",
+      "text": "广州推进智能网联汽车道路测试。",
+      "mentions": [
+        {
+          "mention": "广州",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "广州",
+          "entity_id": "ENT_GEN_0093"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "地区简称"
+    },
+    {
+      "id": "MENTION_LINK_140",
+      "text": "Hangzhou扩大数字经济企业服务范围。",
+      "mentions": [
+        {
+          "mention": "Hangzhou",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Hangzhou",
+          "entity_id": "ENT_GEN_0094"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "地区英文名"
+    },
+    {
+      "id": "MENTION_LINK_141",
+      "text": "南京建设软件产业创新集群。",
+      "mentions": [
+        {
+          "mention": "南京",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南京",
+          "entity_id": "ENT_GEN_0095"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "地区简称"
+    },
+    {
+      "id": "MENTION_LINK_142",
+      "text": "武汉推进光电子信息产业升级。",
+      "mentions": [
+        {
+          "mention": "武汉",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "武汉",
+          "entity_id": "ENT_GEN_0096"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "地区简称"
+    },
+    {
+      "id": "MENTION_LINK_143",
+      "text": "Alipay优化绿色出行积分服务。",
+      "mentions": [
+        {
+          "mention": "Alipay",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Alipay",
+          "entity_id": "ENT_GEN_0097"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "软件平台英文名"
+    },
+    {
+      "id": "MENTION_LINK_144",
+      "text": "百度地图上线新能源车充电路线规划功能。",
+      "mentions": [
+        {
+          "mention": "百度地图",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "百度地图",
+          "entity_id": "ENT_GEN_0098"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "软件平台标准名"
+    },
+    {
+      "id": "MENTION_LINK_145",
+      "text": "高德提供实时路况和充电站搜索服务。",
+      "mentions": [
+        {
+          "mention": "高德",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "高德",
+          "entity_id": "ENT_GEN_0099"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "软件平台简称"
+    },
+    {
+      "id": "MENTION_LINK_146",
+      "text": "Android更新面向折叠屏设备的系统能力。",
+      "mentions": [
+        {
+          "mention": "Android",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Android",
+          "entity_id": "ENT_GEN_0100"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "操作系统英文名"
+    },
+    {
+      "id": "MENTION_LINK_147",
+      "text": "iOS增强移动设备隐私保护能力。",
+      "mentions": [
+        {
+          "mention": "iOS",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "iOS",
+          "entity_id": "ENT_GEN_0101"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "操作系统标准名"
+    },
+    {
+      "id": "MENTION_LINK_148",
+      "text": "中国电信建设云网融合数据中心。",
+      "mentions": [
+        {
+          "mention": "中国电信",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国电信",
+          "entity_id": "ENT_GEN_0103"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "通信运营商"
+    },
+    {
+      "id": "MENTION_LINK_149",
+      "text": "China Mobile推进5G-A网络试点部署。",
+      "mentions": [
+        {
+          "mention": "China Mobile",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "China Mobile",
+          "entity_id": "ENT_GEN_0102"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "通信运营商英文名"
+    },
+    {
+      "id": "MENTION_LINK_150",
+      "text": "世界银行发布全球能源转型融资报告。",
+      "mentions": [
+        {
+          "mention": "世界银行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "世界银行",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "新增知识库外实体NIL"
     }
   ]
 }
