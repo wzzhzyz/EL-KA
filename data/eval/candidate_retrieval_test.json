@@ -1926,13 +1926,867 @@
       "scenario": "长尾-金融资讯召回",
       "note": "金融信息平台候选。",
       "id": "CR_151"
+    },
+    {
+      "text": "第三方调度联盟参与电网负荷预测。",
+      "mention": "第三方调度联盟",
+      "expected_candidates": [
+        "ENT_GEN_0124",
+        "ENT_GEN_0125",
+        "ENT_ENERGY_0001"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次A Schema验证样本，覆盖候选召回与NIL-like结构。",
+      "scenario": "批次A-候选NIL电网近似",
+      "note": "未入库联盟名与电网公司语义接近。",
+      "id": "CR_152"
+    },
+    {
+      "text": "携程研究院发布暑运趋势报告。",
+      "mention": "携程研究院",
+      "expected_candidates": [
+        "ENT_GEN_0113",
+        "ENT_GEN_0114",
+        "ENT_GEN_0135"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次A Schema验证样本，覆盖候选召回与NIL-like结构。",
+      "scenario": "批次A-候选NIL交通近似",
+      "note": "未入库研究机构与交通候选相近。",
+      "id": "CR_153"
+    },
+    {
+      "text": "Notion空间用于项目材料协作。",
+      "mention": "Notion空间",
+      "expected_candidates": [
+        "ENT_GEN_0127",
+        "ENT_GEN_0128",
+        "ENT_GEN_0106"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次A Schema验证样本，覆盖候选召回与NIL-like结构。",
+      "scenario": "批次A-候选NIL办公产品",
+      "note": "未入库产品与办公工具候选相近。",
+      "id": "CR_154"
+    },
+    {
+      "text": "华西医院发布远程会诊规范。",
+      "mention": "华西医院",
+      "expected_candidates": [
+        "ENT_GEN_0131",
+        "ENT_GEN_0133",
+        "ENT_GEN_0111"
+      ],
+      "gold_entity": "ENT_GEN_0131",
+      "gold_reason": "批次A Schema验证样本，覆盖候选召回与NIL-like结构。",
+      "scenario": "批次A-候选医疗正例",
+      "note": "医院简称召回。",
+      "id": "CR_155"
+    },
+    {
+      "text": "东航同步航班运行数据。",
+      "mention": "东航",
+      "expected_candidates": [
+        "ENT_GEN_0136",
+        "ENT_GEN_0135",
+        "ENT_GEN_0114"
+      ],
+      "gold_entity": "ENT_GEN_0136",
+      "gold_reason": "批次A Schema验证样本，覆盖候选召回与NIL-like结构。",
+      "scenario": "批次A-候选航空正例",
+      "note": "航空公司简称召回。",
+      "id": "CR_156"
+    },
+    {
+      "text": "东方财富解读绿色债券行情。",
+      "mention": "东方财富",
+      "expected_candidates": [
+        "ENT_GEN_0086",
+        "ENT_GEN_0085",
+        "ENT_GEN_0087"
+      ],
+      "gold_entity": "ENT_GEN_0086",
+      "gold_reason": "批次A Schema验证样本，覆盖候选召回与NIL-like结构。",
+      "scenario": "批次A-候选金融正例",
+      "note": "金融资讯实体召回。",
+      "id": "CR_157"
+    },
+    {
+      "text": "香港交易所讨论绿色融资规则。",
+      "mention": "香港交易所",
+      "expected_candidates": [
+        "ENT_GEN_0087",
+        "ENT_GEN_0088",
+        "ENT_GEN_0123"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次A Schema验证样本，覆盖候选召回与NIL-like结构。",
+      "scenario": "批次A-候选交易所NIL",
+      "note": "地区不同且未入库，不应误链内地交易所。",
+      "id": "CR_158"
+    },
+    {
+      "text": "国网上海电力上线配电自动化系统。",
+      "mention": "国网上海电力",
+      "expected_candidates": [
+        "ENT_GEN_0143",
+        "ENT_GEN_0124",
+        "ENT_ENERGY_0001"
+      ],
+      "gold_entity": "ENT_GEN_0143",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-电网候选",
+      "note": "地区电网公司召回。",
+      "id": "CR_159"
+    },
+    {
+      "text": "国网山东电力推进负荷预测。",
+      "mention": "国网山东电力",
+      "expected_candidates": [
+        "ENT_GEN_0145",
+        "ENT_GEN_0144",
+        "ENT_GEN_0124"
+      ],
+      "gold_entity": "ENT_GEN_0145",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-电网候选",
+      "note": "新增电网实体召回。",
+      "id": "CR_160"
+    },
+    {
+      "text": "天坛医院部署远程会诊平台。",
+      "mention": "天坛医院",
+      "expected_candidates": [
+        "ENT_GEN_0147",
+        "ENT_GEN_0131",
+        "ENT_GEN_0111"
+      ],
+      "gold_entity": "ENT_GEN_0147",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-医疗候选",
+      "note": "医疗机构召回。",
+      "id": "CR_161"
+    },
+    {
+      "text": "邵逸夫医院评估智慧医院系统。",
+      "mention": "邵逸夫医院",
+      "expected_candidates": [
+        "ENT_GEN_0148",
+        "ENT_GEN_0149",
+        "ENT_GEN_0133"
+      ],
+      "gold_entity": "ENT_GEN_0148",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-医疗候选",
+      "note": "医院简称召回。",
+      "id": "CR_162"
+    },
+    {
+      "text": "首都机场发布航班保障方案。",
+      "mention": "首都机场",
+      "expected_candidates": [
+        "ENT_GEN_0150",
+        "ENT_GEN_0137",
+        "ENT_GEN_0135"
+      ],
+      "gold_entity": "ENT_GEN_0150",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-交通候选",
+      "note": "机场运营主体召回。",
+      "id": "CR_163"
+    },
+    {
+      "text": "深圳地铁更新运行图。",
+      "mention": "深圳地铁",
+      "expected_candidates": [
+        "ENT_GEN_0151",
+        "ENT_GEN_0138",
+        "ENT_GEN_0113"
+      ],
+      "gold_entity": "ENT_GEN_0151",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-交通候选",
+      "note": "地铁运营主体召回。",
+      "id": "CR_164"
+    },
+    {
+      "text": "海南航空公布航线恢复计划。",
+      "mention": "海南航空",
+      "expected_candidates": [
+        "ENT_GEN_0152",
+        "ENT_GEN_0114",
+        "ENT_GEN_0135"
+      ],
+      "gold_entity": "ENT_GEN_0152",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-交通候选",
+      "note": "航空公司召回。",
+      "id": "CR_165"
+    },
+    {
+      "text": "中国日报报道能源转型。",
+      "mention": "中国日报",
+      "expected_candidates": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0139",
+        "ENT_GEN_0140"
+      ],
+      "gold_entity": "ENT_GEN_0153",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-媒体候选",
+      "note": "媒体机构召回。",
+      "id": "CR_166"
+    },
+    {
+      "text": "经济日报解读绿色金融。",
+      "mention": "经济日报",
+      "expected_candidates": [
+        "ENT_GEN_0154",
+        "ENT_GEN_0153",
+        "ENT_GEN_0139"
+      ],
+      "gold_entity": "ENT_GEN_0154",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-媒体候选",
+      "note": "经济类媒体召回。",
+      "id": "CR_167"
+    },
+    {
+      "text": "南方报业推出城市治理专题。",
+      "mention": "南方报业",
+      "expected_candidates": [
+        "ENT_GEN_0155",
+        "ENT_GEN_0142",
+        "ENT_GEN_0140"
+      ],
+      "gold_entity": "ENT_GEN_0155",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-媒体候选",
+      "note": "地方媒体集团召回。",
+      "id": "CR_168"
+    },
+    {
+      "text": "奇瑞汽车发布出口车型计划。",
+      "mention": "奇瑞汽车",
+      "expected_candidates": [
+        "ENT_GEN_0156",
+        "ENT_GEN_0107",
+        "ENT_GEN_0058"
+      ],
+      "gold_entity": "ENT_GEN_0156",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-车企候选",
+      "note": "车企简称召回。",
+      "id": "CR_169"
+    },
+    {
+      "text": "长城汽车评估智能驾驶接口。",
+      "mention": "长城汽车",
+      "expected_candidates": [
+        "ENT_GEN_0157",
+        "ENT_GEN_0108",
+        "ENT_GEN_0078"
+      ],
+      "gold_entity": "ENT_GEN_0157",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-车企候选",
+      "note": "汽车制造商召回。",
+      "id": "CR_170"
+    },
+    {
+      "text": "吉利汽车披露智能座舱计划。",
+      "mention": "吉利汽车",
+      "expected_candidates": [
+        "ENT_GEN_0158",
+        "ENT_GEN_0156",
+        "ENT_GEN_0079"
+      ],
+      "gold_entity": "ENT_GEN_0158",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-车企候选",
+      "note": "车企简称召回。",
+      "id": "CR_171"
+    },
+    {
+      "text": "State Grid Zhejiang参与英文材料评测。",
+      "mention": "State Grid Zhejiang",
+      "expected_candidates": [
+        "ENT_GEN_0144",
+        "ENT_GEN_0143",
+        "ENT_GEN_0145"
+      ],
+      "gold_entity": "ENT_GEN_0144",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-英文别名候选",
+      "note": "英文别名召回。",
+      "id": "CR_172"
+    },
+    {
+      "text": "China Daily发布产业观察。",
+      "mention": "China Daily",
+      "expected_candidates": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0154",
+        "ENT_GEN_0140"
+      ],
+      "gold_entity": "ENT_GEN_0153",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-英文媒体候选",
+      "note": "英文媒体别名召回。",
+      "id": "CR_173"
+    },
+    {
+      "text": "Chery更新海外车型计划。",
+      "mention": "Chery",
+      "expected_candidates": [
+        "ENT_GEN_0156",
+        "ENT_GEN_0158",
+        "ENT_GEN_0080"
+      ],
+      "gold_entity": "ENT_GEN_0156",
+      "gold_reason": "批次B弱类型实体扩充后的正向候选召回样本。",
+      "scenario": "批次B-英文车企候选",
+      "note": "英文别名召回。",
+      "id": "CR_174"
+    },
+    {
+      "text": "国网江苏新能源服务公司参与储能调度试点，国网江苏电力仅提供接口支持。",
+      "mention": "国网江苏新能源服务公司",
+      "expected_candidates": [
+        "ENT_GEN_0124",
+        "ENT_ENERGY_0001",
+        "ENT_GEN_0144"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-电网近似NIL",
+      "note": "名称包含国网江苏但不是国网江苏省电力有限公司。",
+      "id": "CR_175"
+    },
+    {
+      "text": "浙江省智慧电力研究院发布负荷预测报告，国网浙江电力参与评审。",
+      "mention": "浙江省智慧电力研究院",
+      "expected_candidates": [
+        "ENT_GEN_0144",
+        "ENT_ENERGY_0009",
+        "ENT_GEN_0068"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-电力研究院NIL",
+      "note": "研究院未入库，不能误链电网公司或已有研究机构。",
+      "id": "CR_176"
+    },
+    {
+      "text": "山东鲁能配电服务中心提交巡检计划，国网山东电力只是监管接口。",
+      "mention": "山东鲁能配电服务中心",
+      "expected_candidates": [
+        "ENT_GEN_0145",
+        "ENT_ENERGY_0001",
+        "ENT_GEN_0143"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-地区电网NIL",
+      "note": "地区和配电词相似但主体未入库。",
+      "id": "CR_177"
+    },
+    {
+      "text": "广西新能源调度中心试运行，广西电网提供历史负荷数据。",
+      "mention": "广西新能源调度中心",
+      "expected_candidates": [
+        "ENT_GEN_0146",
+        "ENT_GEN_0125",
+        "ENT_ENERGY_0002"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-调度中心NIL",
+      "note": "中心类机构未入库，不应误链广西电网。",
+      "id": "CR_178"
+    },
+    {
+      "text": "上海电力交易研究所讨论市场化交易，国网上海电力作为参会单位。",
+      "mention": "上海电力交易研究所",
+      "expected_candidates": [
+        "ENT_GEN_0143",
+        "ENT_GEN_0087",
+        "ENT_GEN_0123"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-交易研究所NIL",
+      "note": "研究所不是电网公司或证券交易所。",
+      "id": "CR_179"
+    },
+    {
+      "text": "北京神经医学中心引用天坛医院数据，但该中心未入库。",
+      "mention": "北京神经医学中心",
+      "expected_candidates": [
+        "ENT_GEN_0147",
+        "ENT_GEN_0131",
+        "ENT_GEN_0111"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-医疗中心NIL",
+      "note": "医学中心与医院语义接近但不是同一实体。",
+      "id": "CR_180"
+    },
+    {
+      "text": "浙江邵逸夫医学研究院与邵逸夫医院合作开发质控模型。",
+      "mention": "浙江邵逸夫医学研究院",
+      "expected_candidates": [
+        "ENT_GEN_0148",
+        "ENT_GEN_0066",
+        "ENT_GEN_0133"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-医学研究院NIL",
+      "note": "研究院未入库，不能误链医院。",
+      "id": "CR_181"
+    },
+    {
+      "text": "江苏人民医疗集团发布采购公告，江苏省人民医院只是合作方。",
+      "mention": "江苏人民医疗集团",
+      "expected_candidates": [
+        "ENT_GEN_0149",
+        "ENT_GEN_0133",
+        "ENT_GEN_0112"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-医疗集团NIL",
+      "note": "集团和医院名称近似但主体不同。",
+      "id": "CR_182"
+    },
+    {
+      "text": "华东远程会诊中心协调多院会诊，华西医院提供专家支持。",
+      "mention": "华东远程会诊中心",
+      "expected_candidates": [
+        "ENT_GEN_0131",
+        "ENT_GEN_0148",
+        "ENT_GEN_0149"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-远程会诊中心NIL",
+      "note": "中心未入库，不能误链任一医院。",
+      "id": "CR_183"
+    },
+    {
+      "text": "北京首都航空服务中心发布值机指引，首都机场转发通知。",
+      "mention": "北京首都航空服务中心",
+      "expected_candidates": [
+        "ENT_GEN_0150",
+        "ENT_GEN_0135",
+        "ENT_GEN_0152"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-航空服务中心NIL",
+      "note": "服务中心不是首都机场或航空公司。",
+      "id": "CR_184"
+    },
+    {
+      "text": "深圳轨道交通研究院评估客流模型，深圳地铁提供历史数据。",
+      "mention": "深圳轨道交通研究院",
+      "expected_candidates": [
+        "ENT_GEN_0151",
+        "ENT_GEN_0138",
+        "ENT_GEN_0113"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-轨道研究院NIL",
+      "note": "研究院未入库，不应误链地铁集团。",
+      "id": "CR_185"
+    },
+    {
+      "text": "海南航空旅游研究院发布报告，海南航空未参与该项目。",
+      "mention": "海南航空旅游研究院",
+      "expected_candidates": [
+        "ENT_GEN_0152",
+        "ENT_GEN_0114",
+        "ENT_GEN_0135"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-航空研究院NIL",
+      "note": "研究院名称含海南航空但不是航空公司实体。",
+      "id": "CR_186"
+    },
+    {
+      "text": "上海机场建设咨询公司参与招标，上海机场只是业主单位。",
+      "mention": "上海机场建设咨询公司",
+      "expected_candidates": [
+        "ENT_GEN_0137",
+        "ENT_GEN_0150",
+        "ENT_GEN_0151"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-机场咨询公司NIL",
+      "note": "咨询公司不是机场运营主体。",
+      "id": "CR_187"
+    },
+    {
+      "text": "中国日报数据研究院发布传播报告，中国日报作为引用来源。",
+      "mention": "中国日报数据研究院",
+      "expected_candidates": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0140",
+        "ENT_GEN_0139"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-媒体研究院NIL",
+      "note": "研究院不是媒体机构本体。",
+      "id": "CR_188"
+    },
+    {
+      "text": "经济观察日报社参与论坛，经济日报只是被引用媒体。",
+      "mention": "经济观察日报社",
+      "expected_candidates": [
+        "ENT_GEN_0154",
+        "ENT_GEN_0153",
+        "ENT_GEN_0142"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-媒体近名NIL",
+      "note": "经济观察日报社未入库，不能误链经济日报社。",
+      "id": "CR_189"
+    },
+    {
+      "text": "南方融媒体实验室上线专题，南方报业提供内容资源。",
+      "mention": "南方融媒体实验室",
+      "expected_candidates": [
+        "ENT_GEN_0155",
+        "ENT_GEN_0142",
+        "ENT_GEN_0140"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-融媒体实验室NIL",
+      "note": "实验室未入库，不能误链南方报业。",
+      "id": "CR_190"
+    },
+    {
+      "text": "央视财经频道报道新能源价格，央视新闻转载摘要。",
+      "mention": "央视财经频道",
+      "expected_candidates": [
+        "ENT_GEN_0141",
+        "ENT_GEN_0116",
+        "ENT_GEN_0139"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-频道NIL",
+      "note": "频道未作为独立实体入库。",
+      "id": "CR_191"
+    },
+    {
+      "text": "奇瑞新能源研究院发布电池测试报告，奇瑞汽车参与评审。",
+      "mention": "奇瑞新能源研究院",
+      "expected_candidates": [
+        "ENT_GEN_0156",
+        "ENT_GEN_0158",
+        "ENT_GEN_0107"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-车企研究院NIL",
+      "note": "研究院不是整车企业。",
+      "id": "CR_192"
+    },
+    {
+      "text": "长城智能驾驶实验室披露测试计划，长城汽车提供车辆。",
+      "mention": "长城智能驾驶实验室",
+      "expected_candidates": [
+        "ENT_GEN_0157",
+        "ENT_GEN_0078",
+        "ENT_GEN_0108"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-车企实验室NIL",
+      "note": "实验室未入库，不能误链车企。",
+      "id": "CR_193"
+    },
+    {
+      "text": "吉利智能座舱研究院展示原型系统，吉利汽车提供测试车。",
+      "mention": "吉利智能座舱研究院",
+      "expected_candidates": [
+        "ENT_GEN_0158",
+        "ENT_GEN_0156",
+        "ENT_GEN_0079"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-车企研究院NIL",
+      "note": "研究院和车企不是同一实体。",
+      "id": "CR_194"
+    },
+    {
+      "text": "比亚迪汽车金融服务公司讨论贷款产品，当前库中只有比亚迪整车主体。",
+      "mention": "比亚迪汽车金融服务公司",
+      "expected_candidates": [
+        "ENT_GEN_0122",
+        "ENT_GEN_0156",
+        "ENT_GEN_0081"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-车企金融NIL",
+      "note": "金融服务公司与整车主体不同。",
+      "id": "CR_195"
+    },
+    {
+      "text": "香港绿色债券交易中心发布规则，上交所和北交所只是对照样本。",
+      "mention": "香港绿色债券交易中心",
+      "expected_candidates": [
+        "ENT_GEN_0087",
+        "ENT_GEN_0123",
+        "ENT_GEN_0088"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-交易中心NIL",
+      "note": "地区和业务相似但未入库。",
+      "id": "CR_196"
+    },
+    {
+      "text": "杭州低碳城市研究院发布报告，杭州市政府部门未直接参与。",
+      "mention": "杭州低碳城市研究院",
+      "expected_candidates": [
+        "ENT_GEN_0094",
+        "ENT_GEN_0091",
+        "ENT_GEN_0059"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-城市研究院NIL",
+      "note": "研究院不是地区实体或主管部门。",
+      "id": "CR_197"
+    },
+    {
+      "text": "微软Azure中国研发中心参与云平台评测，华为云和百度智能云只是候选干扰。",
+      "mention": "微软Azure中国研发中心",
+      "expected_candidates": [
+        "ENT_GEN_0129",
+        "ENT_GEN_0130",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-云研发中心NIL",
+      "note": "未入库研发中心，不能误链云平台。",
+      "id": "CR_198"
+    },
+    {
+      "text": "OpenAI能源实验室提交模型说明，百度和华为只是国内候选。",
+      "mention": "OpenAI能源实验室",
+      "expected_candidates": [
+        "ENT_GEN_0070",
+        "ENT_GEN_0051",
+        "ENT_GEN_0075"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-AI实验室NIL",
+      "note": "未入库实验室，不应误链国内科技公司。",
+      "id": "CR_199"
+    },
+    {
+      "text": "腾讯会议海外版参与测试，腾讯会议本体作为对照产品。",
+      "mention": "腾讯会议海外版",
+      "expected_candidates": [
+        "ENT_GEN_0104",
+        "ENT_GEN_0126",
+        "ENT_GEN_0127"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-产品版本NIL",
+      "note": "海外版未入库，不应强行链接本体产品。",
+      "id": "CR_200"
+    },
+    {
+      "text": "国网江苏省电力设计院参与规划，国网江苏电力负责验收。",
+      "mention": "国网江苏省电力设计院",
+      "expected_candidates": [
+        "ENT_GEN_0124",
+        "ENT_ENERGY_0001",
+        "ENT_GEN_0145"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-电力设计院NIL",
+      "note": "设计院不是省级电网公司。",
+      "id": "CR_201"
+    },
+    {
+      "text": "广州轨道交通产业联盟评估客流，广州地铁提供线路数据。",
+      "mention": "广州轨道交通产业联盟",
+      "expected_candidates": [
+        "ENT_GEN_0138",
+        "ENT_GEN_0151",
+        "ENT_GEN_0113"
+      ],
+      "gold_entity": null,
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-轨道联盟NIL",
+      "note": "产业联盟未入库。",
+      "id": "CR_202"
+    },
+    {
+      "text": "国网上海电力上线配网自动化系统。",
+      "mention": "国网上海电力",
+      "expected_candidates": [
+        "ENT_GEN_0143",
+        "ENT_GEN_0124",
+        "ENT_ENERGY_0001"
+      ],
+      "gold_entity": "ENT_GEN_0143",
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-电网正例对照",
+      "note": "确保高相似NIL旁边仍有正例对照。",
+      "id": "CR_203"
+    },
+    {
+      "text": "国网浙江电力发布迎峰度夏方案。",
+      "mention": "国网浙江电力",
+      "expected_candidates": [
+        "ENT_GEN_0144",
+        "ENT_GEN_0143",
+        "ENT_GEN_0145"
+      ],
+      "gold_entity": "ENT_GEN_0144",
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-电网正例对照",
+      "note": "地区电网正例。",
+      "id": "CR_204"
+    },
+    {
+      "text": "天坛医院部署远程会诊平台。",
+      "mention": "天坛医院",
+      "expected_candidates": [
+        "ENT_GEN_0147",
+        "ENT_GEN_0131",
+        "ENT_GEN_0111"
+      ],
+      "gold_entity": "ENT_GEN_0147",
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-医疗正例对照",
+      "note": "医院正例。",
+      "id": "CR_205"
+    },
+    {
+      "text": "首都机场发布航班保障计划。",
+      "mention": "首都机场",
+      "expected_candidates": [
+        "ENT_GEN_0150",
+        "ENT_GEN_0137",
+        "ENT_GEN_0152"
+      ],
+      "gold_entity": "ENT_GEN_0150",
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-交通正例对照",
+      "note": "机场正例。",
+      "id": "CR_206"
+    },
+    {
+      "text": "经济日报解读产业政策。",
+      "mention": "经济日报",
+      "expected_candidates": [
+        "ENT_GEN_0154",
+        "ENT_GEN_0153",
+        "ENT_GEN_0139"
+      ],
+      "gold_entity": "ENT_GEN_0154",
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-媒体正例对照",
+      "note": "媒体正例。",
+      "id": "CR_207"
+    },
+    {
+      "text": "奇瑞汽车发布出口车型计划。",
+      "mention": "奇瑞汽车",
+      "expected_candidates": [
+        "ENT_GEN_0156",
+        "ENT_GEN_0157",
+        "ENT_GEN_0158"
+      ],
+      "gold_entity": "ENT_GEN_0156",
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-车企正例对照",
+      "note": "车企正例。",
+      "id": "CR_208"
+    },
+    {
+      "text": "深圳地铁更新晚高峰运行图。",
+      "mention": "深圳地铁",
+      "expected_candidates": [
+        "ENT_GEN_0151",
+        "ENT_GEN_0138",
+        "ENT_GEN_0113"
+      ],
+      "gold_entity": "ENT_GEN_0151",
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-交通正例对照",
+      "note": "地铁正例。",
+      "id": "CR_209"
+    },
+    {
+      "text": "中国日报发布国际传播观察。",
+      "mention": "中国日报",
+      "expected_candidates": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0154",
+        "ENT_GEN_0140"
+      ],
+      "gold_entity": "ENT_GEN_0153",
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-媒体正例对照",
+      "note": "媒体正例。",
+      "id": "CR_210"
+    },
+    {
+      "text": "吉利汽车披露智能座舱路线。",
+      "mention": "吉利汽车",
+      "expected_candidates": [
+        "ENT_GEN_0158",
+        "ENT_GEN_0156",
+        "ENT_GEN_0079"
+      ],
+      "gold_entity": "ENT_GEN_0158",
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-车企正例对照",
+      "note": "车企正例。",
+      "id": "CR_211"
+    },
+    {
+      "text": "广西电网评估海上风电接入。",
+      "mention": "广西电网",
+      "expected_candidates": [
+        "ENT_GEN_0146",
+        "ENT_GEN_0125",
+        "ENT_ENERGY_0002"
+      ],
+      "gold_entity": "ENT_GEN_0146",
+      "gold_reason": "批次C NIL与候选召回压力样本，验证高相似错误候选下不应强制链接。",
+      "scenario": "批次C-电网正例对照",
+      "note": "电网正例。",
+      "id": "CR_212"
     }
   ],
   "statistics": {
-    "sample_count": 151,
+    "sample_count": 212,
     "nil_sample_count": 10,
     "multi_candidate_count": 80,
     "empty_candidate_count": 10,
-    "nil_like_sample_count": 16
+    "nil_like_sample_count": 48
   }
 }

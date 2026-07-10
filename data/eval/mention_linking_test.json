@@ -28,10 +28,10 @@
     "mentions": 305,
     "nil_mentions": 35,
     "empty_mention_samples": 2,
-    "sample_count": 379,
-    "mention_count": 755,
-    "nil_mention_count": 123,
-    "multi_mention_sample_count": 173
+    "sample_count": 505,
+    "mention_count": 1052,
+    "nil_mention_count": 185,
+    "multi_mention_sample_count": 295
   },
   "samples": [
     {
@@ -12124,6 +12124,4533 @@
       ],
       "has_nil": true,
       "scenario": "长尾-国际组织NIL"
+    },
+    {
+      "id": "MENTION_LINK_380",
+      "text": "国网江苏电力在南京试点配网自动化，华为云提供算力支持。",
+      "mentions": [
+        {
+          "mention": "国网江苏电力",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 0.9
+        },
+        {
+          "mention": "南京",
+          "type": "GPE",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 0.86
+        },
+        {
+          "mention": "华为云",
+          "type": "PRODUCT",
+          "char_start": 17,
+          "char_end": 20,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网江苏电力",
+          "entity_id": "ENT_GEN_0124"
+        },
+        {
+          "mention": "南京",
+          "entity_id": "ENT_GEN_0095"
+        },
+        {
+          "mention": "华为云",
+          "entity_id": "ENT_GEN_0129"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次A-电网云平台正例"
+    },
+    {
+      "id": "MENTION_LINK_381",
+      "text": "广东电网与广州地铁共享用电负荷预测，第三方调度联盟暂未入库。",
+      "mentions": [
+        {
+          "mention": "广东电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.9
+        },
+        {
+          "mention": "广州地铁",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "第三方调度联盟",
+          "type": "ORG",
+          "char_start": 18,
+          "char_end": 25,
+          "confidence": 0.72
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "广东电网",
+          "entity_id": "ENT_GEN_0125"
+        },
+        {
+          "mention": "广州地铁",
+          "entity_id": "ENT_GEN_0138"
+        },
+        {
+          "mention": "第三方调度联盟",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次A-电网交通NIL"
+    },
+    {
+      "id": "MENTION_LINK_382",
+      "text": "瑞金医院通过钉钉收集随访数据，中日医院负责质控复核。",
+      "mentions": [
+        {
+          "mention": "瑞金医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "钉钉",
+          "type": "PRODUCT",
+          "char_start": 6,
+          "char_end": 8,
+          "confidence": 0.88
+        },
+        {
+          "mention": "中日医院",
+          "type": "ORG",
+          "char_start": 15,
+          "char_end": 19,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "瑞金医院",
+          "entity_id": "ENT_GEN_0112"
+        },
+        {
+          "mention": "钉钉",
+          "entity_id": "ENT_GEN_0105"
+        },
+        {
+          "mention": "中日医院",
+          "entity_id": "ENT_GEN_0111"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次A-医疗办公正例"
+    },
+    {
+      "id": "MENTION_LINK_383",
+      "text": "国航和南航分别发布暑运计划，携程研究院作为外部机构未入库。",
+      "mentions": [
+        {
+          "mention": "国航",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 0.89
+        },
+        {
+          "mention": "南航",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "confidence": 0.89
+        },
+        {
+          "mention": "携程研究院",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 19,
+          "confidence": 0.73
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国航",
+          "entity_id": "ENT_GEN_0135"
+        },
+        {
+          "mention": "南航",
+          "entity_id": "ENT_GEN_0114"
+        },
+        {
+          "mention": "携程研究院",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次A-交通NIL"
+    },
+    {
+      "id": "MENTION_LINK_384",
+      "text": "人民日报、新华社和央视新闻报道新能源并网政策。",
+      "mentions": [
+        {
+          "mention": "人民日报",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "新华社",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 8,
+          "confidence": 0.89
+        },
+        {
+          "mention": "央视新闻",
+          "type": "ORG",
+          "char_start": 9,
+          "char_end": 13,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "人民日报",
+          "entity_id": "ENT_GEN_0139"
+        },
+        {
+          "mention": "新华社",
+          "entity_id": "ENT_GEN_0115"
+        },
+        {
+          "mention": "央视新闻",
+          "entity_id": "ENT_GEN_0141"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次A-媒体正例"
+    },
+    {
+      "id": "MENTION_LINK_385",
+      "text": "小鹏和理想更新城区辅助驾驶说明，蔚来公布补能合作计划。",
+      "mentions": [
+        {
+          "mention": "小鹏",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 0.89
+        },
+        {
+          "mention": "理想",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "confidence": 0.89
+        },
+        {
+          "mention": "蔚来",
+          "type": "ORG",
+          "char_start": 16,
+          "char_end": 18,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "小鹏",
+          "entity_id": "ENT_GEN_0078"
+        },
+        {
+          "mention": "理想",
+          "entity_id": "ENT_GEN_0079"
+        },
+        {
+          "mention": "蔚来",
+          "entity_id": "ENT_GEN_0058"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次A-车企正例"
+    },
+    {
+      "id": "MENTION_LINK_386",
+      "text": "国家能源局与生态环境部联合发布碳监测说明。",
+      "mentions": [
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 0.9
+        },
+        {
+          "mention": "生态环境部",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 11,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国家能源局",
+          "entity_id": "ENT_GEN_0059"
+        },
+        {
+          "mention": "生态环境部",
+          "entity_id": "ENT_GEN_0091"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次A-政务正例"
+    },
+    {
+      "id": "MENTION_LINK_387",
+      "text": "腾讯文档和WPS Office用于验收材料协作，Notion空间暂未入库。",
+      "mentions": [
+        {
+          "mention": "腾讯文档",
+          "type": "PRODUCT",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.88
+        },
+        {
+          "mention": "WPS Office",
+          "type": "PRODUCT",
+          "char_start": 5,
+          "char_end": 15,
+          "confidence": 0.88
+        },
+        {
+          "mention": "Notion空间",
+          "type": "PRODUCT",
+          "char_start": 24,
+          "char_end": 32,
+          "confidence": 0.73
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "腾讯文档",
+          "entity_id": "ENT_GEN_0127"
+        },
+        {
+          "mention": "WPS Office",
+          "entity_id": "ENT_GEN_0128"
+        },
+        {
+          "mention": "Notion空间",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次A-办公产品NIL"
+    },
+    {
+      "id": "MENTION_LINK_388",
+      "text": "中国移动和中国电信在杭州部署边缘计算节点。",
+      "mentions": [
+        {
+          "mention": "中国移动",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "中国电信",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "杭州",
+          "type": "GPE",
+          "char_start": 10,
+          "char_end": 12,
+          "confidence": 0.86
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国移动",
+          "entity_id": "ENT_GEN_0102"
+        },
+        {
+          "mention": "中国电信",
+          "entity_id": "ENT_GEN_0103"
+        },
+        {
+          "mention": "杭州",
+          "entity_id": "ENT_GEN_0094"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次A-通信城市正例"
+    },
+    {
+      "id": "MENTION_LINK_389",
+      "text": "北交所和东方财富解读绿色债券规则，香港交易所暂按NIL处理。",
+      "mentions": [
+        {
+          "mention": "北交所",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 0.89
+        },
+        {
+          "mention": "东方财富",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 8,
+          "confidence": 0.88
+        },
+        {
+          "mention": "香港交易所",
+          "type": "ORG",
+          "char_start": 17,
+          "char_end": 22,
+          "confidence": 0.74
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北交所",
+          "entity_id": "ENT_GEN_0123"
+        },
+        {
+          "mention": "东方财富",
+          "entity_id": "ENT_GEN_0086"
+        },
+        {
+          "mention": "香港交易所",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次A-金融NIL"
+    },
+    {
+      "id": "MENTION_LINK_390",
+      "text": "华西医院与中山医院测试远程会诊流程。",
+      "mentions": [
+        {
+          "mention": "华西医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "中山医院",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华西医院",
+          "entity_id": "ENT_GEN_0131"
+        },
+        {
+          "mention": "中山医院",
+          "entity_id": "ENT_GEN_0133"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次A-医疗正例"
+    },
+    {
+      "id": "MENTION_LINK_391",
+      "text": "上海机场和东航同步航班运行数据，高德地图展示交通路线。",
+      "mentions": [
+        {
+          "mention": "上海机场",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "东航",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 0.89
+        },
+        {
+          "mention": "高德地图",
+          "type": "PRODUCT",
+          "char_start": 16,
+          "char_end": 20,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上海机场",
+          "entity_id": "ENT_GEN_0137"
+        },
+        {
+          "mention": "东航",
+          "entity_id": "ENT_GEN_0136"
+        },
+        {
+          "mention": "高德地图",
+          "entity_id": "ENT_GEN_0099"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次A-交通地图正例"
+    },
+    {
+      "id": "MENTION_LINK_392",
+      "text": "国网上海电力和国网浙江电力联合测试跨省负荷预测模型。",
+      "mentions": [
+        {
+          "mention": "国网上海电力",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 0.9
+        },
+        {
+          "mention": "国网浙江电力",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 13,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网上海电力",
+          "entity_id": "ENT_GEN_0143"
+        },
+        {
+          "mention": "国网浙江电力",
+          "entity_id": "ENT_GEN_0144"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-电网弱类型正例"
+    },
+    {
+      "id": "MENTION_LINK_393",
+      "text": "国网山东电力在济南推进配电自动化，广西电网同步评估新能源接入方案。",
+      "mentions": [
+        {
+          "mention": "国网山东电力",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 0.9
+        },
+        {
+          "mention": "广西电网",
+          "type": "ORG",
+          "char_start": 17,
+          "char_end": 21,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网山东电力",
+          "entity_id": "ENT_GEN_0145"
+        },
+        {
+          "mention": "广西电网",
+          "entity_id": "ENT_GEN_0146"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-电网弱类型正例"
+    },
+    {
+      "id": "MENTION_LINK_394",
+      "text": "天坛医院和邵逸夫医院分别接入远程会诊平台。",
+      "mentions": [
+        {
+          "mention": "天坛医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "邵逸夫医院",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 10,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "天坛医院",
+          "entity_id": "ENT_GEN_0147"
+        },
+        {
+          "mention": "邵逸夫医院",
+          "entity_id": "ENT_GEN_0148"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-医疗弱类型正例"
+    },
+    {
+      "id": "MENTION_LINK_395",
+      "text": "江苏省人民医院使用企业微信协调多学科会诊。",
+      "mentions": [
+        {
+          "mention": "江苏省人民医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 0.89
+        },
+        {
+          "mention": "企业微信",
+          "type": "PRODUCT",
+          "char_start": 9,
+          "char_end": 13,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "江苏省人民医院",
+          "entity_id": "ENT_GEN_0149"
+        },
+        {
+          "mention": "企业微信",
+          "entity_id": "ENT_GEN_0126"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-医疗办公正例"
+    },
+    {
+      "id": "MENTION_LINK_396",
+      "text": "首都机场和深圳地铁共享节假日客流预测结果。",
+      "mentions": [
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "深圳地铁",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "首都机场",
+          "entity_id": "ENT_GEN_0150"
+        },
+        {
+          "mention": "深圳地铁",
+          "entity_id": "ENT_GEN_0151"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-交通弱类型正例"
+    },
+    {
+      "id": "MENTION_LINK_397",
+      "text": "海南航空与国航比较航线恢复计划。",
+      "mentions": [
+        {
+          "mention": "海南航空",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "国航",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "海南航空",
+          "entity_id": "ENT_GEN_0152"
+        },
+        {
+          "mention": "国航",
+          "entity_id": "ENT_GEN_0135"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-交通航空正例"
+    },
+    {
+      "id": "MENTION_LINK_398",
+      "text": "中国日报和经济日报分别报道绿色金融政策。",
+      "mentions": [
+        {
+          "mention": "中国日报",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "经济日报",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国日报",
+          "entity_id": "ENT_GEN_0153"
+        },
+        {
+          "mention": "经济日报",
+          "entity_id": "ENT_GEN_0154"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-媒体弱类型正例"
+    },
+    {
+      "id": "MENTION_LINK_399",
+      "text": "南方报业与人民网联合推出城市治理专题。",
+      "mentions": [
+        {
+          "mention": "南方报业",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "人民网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 8,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南方报业",
+          "entity_id": "ENT_GEN_0155"
+        },
+        {
+          "mention": "人民网",
+          "entity_id": "ENT_GEN_0140"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-媒体联动正例"
+    },
+    {
+      "id": "MENTION_LINK_400",
+      "text": "奇瑞汽车、长城汽车和吉利汽车分别发布新能源车型规划。",
+      "mentions": [
+        {
+          "mention": "奇瑞汽车",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "长城汽车",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "吉利汽车",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "奇瑞汽车",
+          "entity_id": "ENT_GEN_0156"
+        },
+        {
+          "mention": "长城汽车",
+          "entity_id": "ENT_GEN_0157"
+        },
+        {
+          "mention": "吉利汽车",
+          "entity_id": "ENT_GEN_0158"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-车企弱类型正例"
+    },
+    {
+      "id": "MENTION_LINK_401",
+      "text": "Chery和Geely Auto出现在英文材料中，仍应链接到对应车企。",
+      "mentions": [
+        {
+          "mention": "Chery",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 0.86
+        },
+        {
+          "mention": "Geely Auto",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 16,
+          "confidence": 0.86
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Chery",
+          "entity_id": "ENT_GEN_0156"
+        },
+        {
+          "mention": "Geely Auto",
+          "entity_id": "ENT_GEN_0158"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-车企英文别名正例"
+    },
+    {
+      "id": "MENTION_LINK_402",
+      "text": "State Grid Zhejiang在英文报告中对应国网浙江电力。",
+      "mentions": [
+        {
+          "mention": "State Grid Zhejiang",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 19,
+          "confidence": 0.84
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "State Grid Zhejiang",
+          "entity_id": "ENT_GEN_0144"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-电网英文别名正例"
+    },
+    {
+      "id": "MENTION_LINK_403",
+      "text": "China Daily和Economic Daily共同报道产业政策。",
+      "mentions": [
+        {
+          "mention": "China Daily",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 11,
+          "confidence": 0.84
+        },
+        {
+          "mention": "Economic Daily",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 26,
+          "confidence": 0.84
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "China Daily",
+          "entity_id": "ENT_GEN_0153"
+        },
+        {
+          "mention": "Economic Daily",
+          "entity_id": "ENT_GEN_0154"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-媒体英文别名正例"
+    },
+    {
+      "id": "MENTION_LINK_404",
+      "text": "深圳地铁和广州地铁比较晚高峰调度策略。",
+      "mentions": [
+        {
+          "mention": "深圳地铁",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "广州地铁",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "深圳地铁",
+          "entity_id": "ENT_GEN_0151"
+        },
+        {
+          "mention": "广州地铁",
+          "entity_id": "ENT_GEN_0138"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-地铁机构正例"
+    },
+    {
+      "id": "MENTION_LINK_405",
+      "text": "首都机场、上海机场和海南航空共同参与航旅数据联调。",
+      "mentions": [
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "上海机场",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "海南航空",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "首都机场",
+          "entity_id": "ENT_GEN_0150"
+        },
+        {
+          "mention": "上海机场",
+          "entity_id": "ENT_GEN_0137"
+        },
+        {
+          "mention": "海南航空",
+          "entity_id": "ENT_GEN_0152"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-交通多实体正例"
+    },
+    {
+      "id": "MENTION_LINK_406",
+      "text": "江苏省人民医院和华西医院共享质控指标。",
+      "mentions": [
+        {
+          "mention": "江苏省人民医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 0.89
+        },
+        {
+          "mention": "华西医院",
+          "type": "ORG",
+          "char_start": 8,
+          "char_end": 12,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "江苏省人民医院",
+          "entity_id": "ENT_GEN_0149"
+        },
+        {
+          "mention": "华西医院",
+          "entity_id": "ENT_GEN_0131"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-医疗多实体正例"
+    },
+    {
+      "id": "MENTION_LINK_407",
+      "text": "南方报业、澎湃新闻和央视新闻分别追踪城市更新议题。",
+      "mentions": [
+        {
+          "mention": "南方报业",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "澎湃新闻",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "央视新闻",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南方报业",
+          "entity_id": "ENT_GEN_0155"
+        },
+        {
+          "mention": "澎湃新闻",
+          "entity_id": "ENT_GEN_0142"
+        },
+        {
+          "mention": "央视新闻",
+          "entity_id": "ENT_GEN_0141"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-媒体多实体正例"
+    },
+    {
+      "id": "MENTION_LINK_408",
+      "text": "长城汽车与上汽集团评估智能驾驶数据接口。",
+      "mentions": [
+        {
+          "mention": "长城汽车",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "上汽集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "长城汽车",
+          "entity_id": "ENT_GEN_0157"
+        },
+        {
+          "mention": "上汽集团",
+          "entity_id": "ENT_GEN_0108"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-车企多实体正例"
+    },
+    {
+      "id": "MENTION_LINK_409",
+      "text": "国网上海市电力公司在浦东试点配网巡检机器人。",
+      "mentions": [
+        {
+          "mention": "国网上海市电力公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网上海市电力公司",
+          "entity_id": "ENT_GEN_0143"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次B-电网全称正例"
+    },
+    {
+      "id": "MENTION_LINK_410",
+      "text": "国网江苏新能源服务公司参与储能调度试点，国网江苏电力提供接口支持。",
+      "mentions": [
+        {
+          "mention": "国网江苏新能源服务公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 11,
+          "confidence": 0.74
+        },
+        {
+          "mention": "国网江苏电力",
+          "type": "ORG",
+          "char_start": 20,
+          "char_end": 26,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网江苏新能源服务公司",
+          "entity_id": null
+        },
+        {
+          "mention": "国网江苏电力",
+          "entity_id": "ENT_GEN_0124"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-电网近似NIL"
+    },
+    {
+      "id": "MENTION_LINK_411",
+      "text": "浙江省智慧电力研究院发布报告，国网浙江电力参与评审。",
+      "mentions": [
+        {
+          "mention": "浙江省智慧电力研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "国网浙江电力",
+          "type": "ORG",
+          "char_start": 15,
+          "char_end": 21,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "浙江省智慧电力研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "国网浙江电力",
+          "entity_id": "ENT_GEN_0144"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_412",
+      "text": "山东鲁能配电服务中心提交巡检计划，国网山东电力负责验收。",
+      "mentions": [
+        {
+          "mention": "山东鲁能配电服务中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "国网山东电力",
+          "type": "ORG",
+          "char_start": 17,
+          "char_end": 23,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "山东鲁能配电服务中心",
+          "entity_id": null
+        },
+        {
+          "mention": "国网山东电力",
+          "entity_id": "ENT_GEN_0145"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-配电服务NIL"
+    },
+    {
+      "id": "MENTION_LINK_413",
+      "text": "广西新能源调度中心试运行，广西电网提供历史负荷数据。",
+      "mentions": [
+        {
+          "mention": "广西新能源调度中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "广西电网",
+          "type": "ORG",
+          "char_start": 13,
+          "char_end": 17,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "广西新能源调度中心",
+          "entity_id": null
+        },
+        {
+          "mention": "广西电网",
+          "entity_id": "ENT_GEN_0146"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-调度中心NIL"
+    },
+    {
+      "id": "MENTION_LINK_414",
+      "text": "北京神经医学中心引用天坛医院数据。",
+      "mentions": [
+        {
+          "mention": "北京神经医学中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 0.74
+        },
+        {
+          "mention": "天坛医院",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北京神经医学中心",
+          "entity_id": null
+        },
+        {
+          "mention": "天坛医院",
+          "entity_id": "ENT_GEN_0147"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-医疗中心NIL"
+    },
+    {
+      "id": "MENTION_LINK_415",
+      "text": "浙江邵逸夫医学研究院与邵逸夫医院合作开发质控模型。",
+      "mentions": [
+        {
+          "mention": "浙江邵逸夫医学研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "邵逸夫医院",
+          "type": "ORG",
+          "char_start": 11,
+          "char_end": 16,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "浙江邵逸夫医学研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "邵逸夫医院",
+          "entity_id": "ENT_GEN_0148"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-医学研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_416",
+      "text": "江苏人民医疗集团发布采购公告，江苏省人民医院只是合作方。",
+      "mentions": [
+        {
+          "mention": "江苏人民医疗集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 0.74
+        },
+        {
+          "mention": "江苏省人民医院",
+          "type": "ORG",
+          "char_start": 15,
+          "char_end": 22,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "江苏人民医疗集团",
+          "entity_id": null
+        },
+        {
+          "mention": "江苏省人民医院",
+          "entity_id": "ENT_GEN_0149"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-医疗集团NIL"
+    },
+    {
+      "id": "MENTION_LINK_417",
+      "text": "北京首都航空服务中心发布值机指引，首都机场转发通知。",
+      "mentions": [
+        {
+          "mention": "北京首都航空服务中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "char_start": 17,
+          "char_end": 21,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北京首都航空服务中心",
+          "entity_id": null
+        },
+        {
+          "mention": "首都机场",
+          "entity_id": "ENT_GEN_0150"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-航空服务NIL"
+    },
+    {
+      "id": "MENTION_LINK_418",
+      "text": "深圳轨道交通研究院评估客流模型，深圳地铁提供历史数据。",
+      "mentions": [
+        {
+          "mention": "深圳轨道交通研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "深圳地铁",
+          "type": "ORG",
+          "char_start": 16,
+          "char_end": 20,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "深圳轨道交通研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "深圳地铁",
+          "entity_id": "ENT_GEN_0151"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-轨道研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_419",
+      "text": "海南航空旅游研究院发布报告，海南航空未参与该项目。",
+      "mentions": [
+        {
+          "mention": "海南航空旅游研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "海南航空",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "海南航空旅游研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "海南航空",
+          "entity_id": "ENT_GEN_0152"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-航空研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_420",
+      "text": "中国日报数据研究院发布传播报告，中国日报作为引用来源。",
+      "mentions": [
+        {
+          "mention": "中国日报数据研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "中国日报",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国日报数据研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "中国日报",
+          "entity_id": "ENT_GEN_0153"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-媒体研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_421",
+      "text": "经济观察日报社参与论坛，经济日报只是被引用媒体。",
+      "mentions": [
+        {
+          "mention": "经济观察日报社",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 0.74
+        },
+        {
+          "mention": "经济日报",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 16,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "经济观察日报社",
+          "entity_id": null
+        },
+        {
+          "mention": "经济日报",
+          "entity_id": "ENT_GEN_0154"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-近名媒体NIL"
+    },
+    {
+      "id": "MENTION_LINK_422",
+      "text": "南方融媒体实验室上线专题，南方报业提供内容资源。",
+      "mentions": [
+        {
+          "mention": "南方融媒体实验室",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 0.74
+        },
+        {
+          "mention": "南方报业",
+          "type": "ORG",
+          "char_start": 13,
+          "char_end": 17,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南方融媒体实验室",
+          "entity_id": null
+        },
+        {
+          "mention": "南方报业",
+          "entity_id": "ENT_GEN_0155"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-融媒体实验室NIL"
+    },
+    {
+      "id": "MENTION_LINK_423",
+      "text": "奇瑞新能源研究院发布报告，奇瑞汽车参与评审。",
+      "mentions": [
+        {
+          "mention": "奇瑞新能源研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 0.74
+        },
+        {
+          "mention": "奇瑞汽车",
+          "type": "ORG",
+          "char_start": 13,
+          "char_end": 17,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "奇瑞新能源研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "奇瑞汽车",
+          "entity_id": "ENT_GEN_0156"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-车企研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_424",
+      "text": "长城智能驾驶实验室披露计划，长城汽车提供车辆。",
+      "mentions": [
+        {
+          "mention": "长城智能驾驶实验室",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "长城汽车",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 18,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "长城智能驾驶实验室",
+          "entity_id": null
+        },
+        {
+          "mention": "长城汽车",
+          "entity_id": "ENT_GEN_0157"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-车企实验室NIL"
+    },
+    {
+      "id": "MENTION_LINK_425",
+      "text": "吉利智能座舱研究院展示系统，吉利汽车提供测试车。",
+      "mentions": [
+        {
+          "mention": "吉利智能座舱研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "吉利汽车",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 18,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "吉利智能座舱研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "吉利汽车",
+          "entity_id": "ENT_GEN_0158"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-车企研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_426",
+      "text": "香港绿色债券交易中心发布规则，上交所和北交所只是对照样本。",
+      "mentions": [
+        {
+          "mention": "香港绿色债券交易中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "上交所",
+          "type": "ORG",
+          "char_start": 15,
+          "char_end": 18,
+          "confidence": 0.89
+        },
+        {
+          "mention": "北交所",
+          "type": "ORG",
+          "char_start": 19,
+          "char_end": 22,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "香港绿色债券交易中心",
+          "entity_id": null
+        },
+        {
+          "mention": "上交所",
+          "entity_id": "ENT_GEN_0087"
+        },
+        {
+          "mention": "北交所",
+          "entity_id": "ENT_GEN_0123"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-交易中心NIL"
+    },
+    {
+      "id": "MENTION_LINK_427",
+      "text": "微软Azure中国研发中心参与云平台评测，华为云和百度智能云作为对照。",
+      "mentions": [
+        {
+          "mention": "微软Azure中国研发中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 13,
+          "confidence": 0.74
+        },
+        {
+          "mention": "华为云",
+          "type": "PRODUCT",
+          "char_start": 21,
+          "char_end": 24,
+          "confidence": 0.88
+        },
+        {
+          "mention": "百度智能云",
+          "type": "PRODUCT",
+          "char_start": 25,
+          "char_end": 30,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "微软Azure中国研发中心",
+          "entity_id": null
+        },
+        {
+          "mention": "华为云",
+          "entity_id": "ENT_GEN_0129"
+        },
+        {
+          "mention": "百度智能云",
+          "entity_id": "ENT_GEN_0130"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-云研发中心NIL"
+    },
+    {
+      "id": "MENTION_LINK_428",
+      "text": "OpenAI能源实验室提交模型说明，百度和华为只是候选干扰。",
+      "mentions": [
+        {
+          "mention": "OpenAI能源实验室",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 11,
+          "confidence": 0.74
+        },
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 18,
+          "char_end": 20,
+          "confidence": 0.89
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 21,
+          "char_end": 23,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "OpenAI能源实验室",
+          "entity_id": null
+        },
+        {
+          "mention": "百度",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "华为",
+          "entity_id": "ENT_GEN_0051"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-AI实验室NIL"
+    },
+    {
+      "id": "MENTION_LINK_429",
+      "text": "广州轨道交通产业联盟评估客流，广州地铁提供线路数据。",
+      "mentions": [
+        {
+          "mention": "广州轨道交通产业联盟",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "广州地铁",
+          "type": "ORG",
+          "char_start": 15,
+          "char_end": 19,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "广州轨道交通产业联盟",
+          "entity_id": null
+        },
+        {
+          "mention": "广州地铁",
+          "entity_id": "ENT_GEN_0138"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-轨道联盟NIL"
+    },
+    {
+      "id": "MENTION_LINK_430",
+      "text": "国网上海电力、天坛医院和中国日报分别完成正例对照测试。",
+      "mentions": [
+        {
+          "mention": "国网上海电力",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 0.9
+        },
+        {
+          "mention": "天坛医院",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 11,
+          "confidence": 0.89
+        },
+        {
+          "mention": "中国日报",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 16,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网上海电力",
+          "entity_id": "ENT_GEN_0143"
+        },
+        {
+          "mention": "天坛医院",
+          "entity_id": "ENT_GEN_0147"
+        },
+        {
+          "mention": "中国日报",
+          "entity_id": "ENT_GEN_0153"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次C-正例对照"
+    },
+    {
+      "id": "MENTION_LINK_431",
+      "text": "首都机场、深圳地铁和奇瑞汽车用于正例召回对照。",
+      "mentions": [
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "深圳地铁",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "奇瑞汽车",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "首都机场",
+          "entity_id": "ENT_GEN_0150"
+        },
+        {
+          "mention": "深圳地铁",
+          "entity_id": "ENT_GEN_0151"
+        },
+        {
+          "mention": "奇瑞汽车",
+          "entity_id": "ENT_GEN_0156"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次C-正例对照"
+    },
+    {
+      "id": "MENTION_LINK_432",
+      "text": "经济日报、南方报业和吉利汽车分别出现在行业分析报告中。",
+      "mentions": [
+        {
+          "mention": "经济日报",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "南方报业",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "吉利汽车",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "经济日报",
+          "entity_id": "ENT_GEN_0154"
+        },
+        {
+          "mention": "南方报业",
+          "entity_id": "ENT_GEN_0155"
+        },
+        {
+          "mention": "吉利汽车",
+          "entity_id": "ENT_GEN_0158"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次C-正例对照"
+    },
+    {
+      "id": "MENTION_LINK_433",
+      "text": "国网浙江电力、广西电网和长城汽车用于候选召回正例校准。",
+      "mentions": [
+        {
+          "mention": "国网浙江电力",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 0.9
+        },
+        {
+          "mention": "广西电网",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 11,
+          "confidence": 0.9
+        },
+        {
+          "mention": "长城汽车",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 16,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网浙江电力",
+          "entity_id": "ENT_GEN_0144"
+        },
+        {
+          "mention": "广西电网",
+          "entity_id": "ENT_GEN_0146"
+        },
+        {
+          "mention": "长城汽车",
+          "entity_id": "ENT_GEN_0157"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "批次C-正例对照"
+    },
+    {
+      "id": "MENTION_LINK_434",
+      "text": "腾讯会议海外版参与测试，腾讯会议本体作为对照产品。",
+      "mentions": [
+        {
+          "mention": "腾讯会议海外版",
+          "type": "PRODUCT",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 0.74
+        },
+        {
+          "mention": "腾讯会议",
+          "type": "PRODUCT",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "腾讯会议海外版",
+          "entity_id": null
+        },
+        {
+          "mention": "腾讯会议",
+          "entity_id": "ENT_GEN_0104"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-产品版本NIL"
+    },
+    {
+      "id": "MENTION_LINK_435",
+      "text": "国网江苏省电力设计院参与规划，国网江苏电力负责验收。",
+      "mentions": [
+        {
+          "mention": "国网江苏省电力设计院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "国网江苏电力",
+          "type": "ORG",
+          "char_start": 15,
+          "char_end": 21,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网江苏省电力设计院",
+          "entity_id": null
+        },
+        {
+          "mention": "国网江苏电力",
+          "entity_id": "ENT_GEN_0124"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-设计院NIL"
+    },
+    {
+      "id": "MENTION_LINK_436",
+      "text": "杭州低碳城市研究院发布报告，杭州市提供公开数据。",
+      "mentions": [
+        {
+          "mention": "杭州低碳城市研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "杭州市",
+          "type": "GPE",
+          "char_start": 14,
+          "char_end": 17,
+          "confidence": 0.86
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "杭州低碳城市研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "杭州市",
+          "entity_id": "ENT_GEN_0094"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-城市研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_437",
+      "text": "上海机场建设咨询公司参与招标，上海机场只是业主单位。",
+      "mentions": [
+        {
+          "mention": "上海机场建设咨询公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "上海机场",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上海机场建设咨询公司",
+          "entity_id": null
+        },
+        {
+          "mention": "上海机场",
+          "entity_id": "ENT_GEN_0137"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-机场咨询NIL"
+    },
+    {
+      "id": "MENTION_LINK_438",
+      "text": "华东远程会诊中心协调多院会诊，华西医院提供专家支持。",
+      "mentions": [
+        {
+          "mention": "华东远程会诊中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 0.74
+        },
+        {
+          "mention": "华西医院",
+          "type": "ORG",
+          "char_start": 15,
+          "char_end": 19,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华东远程会诊中心",
+          "entity_id": null
+        },
+        {
+          "mention": "华西医院",
+          "entity_id": "ENT_GEN_0131"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-会诊中心NIL"
+    },
+    {
+      "id": "MENTION_LINK_439",
+      "text": "央视财经频道报道新能源价格，央视新闻转载摘要。",
+      "mentions": [
+        {
+          "mention": "央视财经频道",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 0.74
+        },
+        {
+          "mention": "央视新闻",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 18,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "央视财经频道",
+          "entity_id": null
+        },
+        {
+          "mention": "央视新闻",
+          "entity_id": "ENT_GEN_0141"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "批次C-频道NIL"
+    },
+    {
+      "id": "MENTION_LINK_440",
+      "text": "国网上海电力和国网山东电力共同测试台风天气下的供电保障。",
+      "mentions": [
+        {
+          "mention": "国网上海电力",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 0.9
+        },
+        {
+          "mention": "国网山东电力",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 13,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网上海电力",
+          "entity_id": "ENT_GEN_0143"
+        },
+        {
+          "mention": "国网山东电力",
+          "entity_id": "ENT_GEN_0145"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-电网多实体"
+    },
+    {
+      "id": "MENTION_LINK_441",
+      "text": "国网浙江电力、广西电网和国家电网分别提交调度接口清单。",
+      "mentions": [
+        {
+          "mention": "国网浙江电力",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 0.9
+        },
+        {
+          "mention": "广西电网",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 11,
+          "confidence": 0.9
+        },
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 16,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网浙江电力",
+          "entity_id": "ENT_GEN_0144"
+        },
+        {
+          "mention": "广西电网",
+          "entity_id": "ENT_GEN_0146"
+        },
+        {
+          "mention": "国家电网",
+          "entity_id": "ENT_ENERGY_0001"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-电网多实体"
+    },
+    {
+      "id": "MENTION_LINK_442",
+      "text": "State Grid Zhejiang在英文报告中对应国网浙江电力。",
+      "mentions": [
+        {
+          "mention": "State Grid Zhejiang",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 19,
+          "confidence": 0.84
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "State Grid Zhejiang",
+          "entity_id": "ENT_GEN_0144"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-英文电网别名"
+    },
+    {
+      "id": "MENTION_LINK_443",
+      "text": "国网山东省电力公司发布迎峰度夏供电保障公告。",
+      "mentions": [
+        {
+          "mention": "国网山东省电力公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网山东省电力公司",
+          "entity_id": "ENT_GEN_0145"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-电网全称"
+    },
+    {
+      "id": "MENTION_LINK_444",
+      "text": "广西新能源调度中心与广西电网共同出现在材料中，前者未入库。",
+      "mentions": [
+        {
+          "mention": "广西新能源调度中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "广西电网",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "广西新能源调度中心",
+          "entity_id": null
+        },
+        {
+          "mention": "广西电网",
+          "entity_id": "ENT_GEN_0146"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-电网NIL"
+    },
+    {
+      "id": "MENTION_LINK_445",
+      "text": "上海电力交易研究所引用上交所规则，但该研究所未在库中。",
+      "mentions": [
+        {
+          "mention": "上海电力交易研究所",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "上交所",
+          "type": "ORG",
+          "char_start": 11,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上海电力交易研究所",
+          "entity_id": null
+        },
+        {
+          "mention": "上交所",
+          "entity_id": "ENT_GEN_0087"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-电力交易NIL"
+    },
+    {
+      "id": "MENTION_LINK_446",
+      "text": "国网江苏省电力设计院和国网江苏电力分别参与规划与验收。",
+      "mentions": [
+        {
+          "mention": "国网江苏省电力设计院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "国网江苏电力",
+          "type": "ORG",
+          "char_start": 11,
+          "char_end": 17,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网江苏省电力设计院",
+          "entity_id": null
+        },
+        {
+          "mention": "国网江苏电力",
+          "entity_id": "ENT_GEN_0124"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-设计院NIL"
+    },
+    {
+      "id": "MENTION_LINK_447",
+      "text": "南网和广东电网分别提供南方区域调度数据。",
+      "mentions": [
+        {
+          "mention": "南网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 0.9
+        },
+        {
+          "mention": "广东电网",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 7,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南网",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "广东电网",
+          "entity_id": "ENT_GEN_0125"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-电网简称"
+    },
+    {
+      "id": "MENTION_LINK_448",
+      "text": "天坛医院和江苏省人民医院共同接入远程会诊平台。",
+      "mentions": [
+        {
+          "mention": "天坛医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "江苏省人民医院",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 12,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "天坛医院",
+          "entity_id": "ENT_GEN_0147"
+        },
+        {
+          "mention": "江苏省人民医院",
+          "entity_id": "ENT_GEN_0149"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-医疗多实体"
+    },
+    {
+      "id": "MENTION_LINK_449",
+      "text": "邵逸夫医院与瑞金医院比较智慧医院质控指标。",
+      "mentions": [
+        {
+          "mention": "邵逸夫医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 0.89
+        },
+        {
+          "mention": "瑞金医院",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "邵逸夫医院",
+          "entity_id": "ENT_GEN_0148"
+        },
+        {
+          "mention": "瑞金医院",
+          "entity_id": "ENT_GEN_0112"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-医疗多实体"
+    },
+    {
+      "id": "MENTION_LINK_450",
+      "text": "华西医院、中山医院和同济医院分别提交远程会诊规范。",
+      "mentions": [
+        {
+          "mention": "华西医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "中山医院",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "同济医院",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华西医院",
+          "entity_id": "ENT_GEN_0131"
+        },
+        {
+          "mention": "中山医院",
+          "entity_id": "ENT_GEN_0133"
+        },
+        {
+          "mention": "同济医院",
+          "entity_id": "ENT_GEN_0134"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-医疗多实体"
+    },
+    {
+      "id": "MENTION_LINK_451",
+      "text": "北京神经医学中心引用天坛医院数据，中心本身未入库。",
+      "mentions": [
+        {
+          "mention": "北京神经医学中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 0.74
+        },
+        {
+          "mention": "天坛医院",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北京神经医学中心",
+          "entity_id": null
+        },
+        {
+          "mention": "天坛医院",
+          "entity_id": "ENT_GEN_0147"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-医疗中心NIL"
+    },
+    {
+      "id": "MENTION_LINK_452",
+      "text": "浙江邵逸夫医学研究院与邵逸夫医院合作，研究院未入库。",
+      "mentions": [
+        {
+          "mention": "浙江邵逸夫医学研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "邵逸夫医院",
+          "type": "ORG",
+          "char_start": 11,
+          "char_end": 16,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "浙江邵逸夫医学研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "邵逸夫医院",
+          "entity_id": "ENT_GEN_0148"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-医疗研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_453",
+      "text": "江苏人民医疗集团和江苏省人民医院名称相近，但前者未入库。",
+      "mentions": [
+        {
+          "mention": "江苏人民医疗集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 0.74
+        },
+        {
+          "mention": "江苏省人民医院",
+          "type": "ORG",
+          "char_start": 9,
+          "char_end": 16,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "江苏人民医疗集团",
+          "entity_id": null
+        },
+        {
+          "mention": "江苏省人民医院",
+          "entity_id": "ENT_GEN_0149"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-医疗集团NIL"
+    },
+    {
+      "id": "MENTION_LINK_454",
+      "text": "协和医院与中日医院共同出现在材料中，协和医院当前按NIL处理。",
+      "mentions": [
+        {
+          "mention": "协和医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.74
+        },
+        {
+          "mention": "中日医院",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "协和医院",
+          "entity_id": null
+        },
+        {
+          "mention": "中日医院",
+          "entity_id": "ENT_GEN_0111"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-医疗NIL"
+    },
+    {
+      "id": "MENTION_LINK_455",
+      "text": "首都机场和上海机场同步航班保障数据。",
+      "mentions": [
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "上海机场",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "首都机场",
+          "entity_id": "ENT_GEN_0150"
+        },
+        {
+          "mention": "上海机场",
+          "entity_id": "ENT_GEN_0137"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-交通机场"
+    },
+    {
+      "id": "MENTION_LINK_456",
+      "text": "深圳地铁、广州地铁和国铁集团分别提供客流预测样本。",
+      "mentions": [
+        {
+          "mention": "深圳地铁",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "广州地铁",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "国铁集团",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "深圳地铁",
+          "entity_id": "ENT_GEN_0151"
+        },
+        {
+          "mention": "广州地铁",
+          "entity_id": "ENT_GEN_0138"
+        },
+        {
+          "mention": "国铁集团",
+          "entity_id": "ENT_GEN_0113"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-交通多实体"
+    },
+    {
+      "id": "MENTION_LINK_457",
+      "text": "海南航空、国航和东航分别更新暑运航线计划。",
+      "mentions": [
+        {
+          "mention": "海南航空",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "国航",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 0.89
+        },
+        {
+          "mention": "东航",
+          "type": "ORG",
+          "char_start": 8,
+          "char_end": 10,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "海南航空",
+          "entity_id": "ENT_GEN_0152"
+        },
+        {
+          "mention": "国航",
+          "entity_id": "ENT_GEN_0135"
+        },
+        {
+          "mention": "东航",
+          "entity_id": "ENT_GEN_0136"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-航空公司"
+    },
+    {
+      "id": "MENTION_LINK_458",
+      "text": "北京首都航空服务中心发布提示，首都机场只是转发单位。",
+      "mentions": [
+        {
+          "mention": "北京首都航空服务中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "char_start": 15,
+          "char_end": 19,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北京首都航空服务中心",
+          "entity_id": null
+        },
+        {
+          "mention": "首都机场",
+          "entity_id": "ENT_GEN_0150"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-航空服务NIL"
+    },
+    {
+      "id": "MENTION_LINK_459",
+      "text": "深圳轨道交通研究院评估模型，深圳地铁提供历史客流。",
+      "mentions": [
+        {
+          "mention": "深圳轨道交通研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "深圳地铁",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 18,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "深圳轨道交通研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "深圳地铁",
+          "entity_id": "ENT_GEN_0151"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-轨道研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_460",
+      "text": "上海机场建设咨询公司中标项目，上海机场负责验收。",
+      "mentions": [
+        {
+          "mention": "上海机场建设咨询公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "上海机场",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上海机场建设咨询公司",
+          "entity_id": null
+        },
+        {
+          "mention": "上海机场",
+          "entity_id": "ENT_GEN_0137"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-机场咨询NIL"
+    },
+    {
+      "id": "MENTION_LINK_461",
+      "text": "携程研究院发布航旅报告，海南航空作为案例出现。",
+      "mentions": [
+        {
+          "mention": "携程研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 0.74
+        },
+        {
+          "mention": "海南航空",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 16,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "携程研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "海南航空",
+          "entity_id": "ENT_GEN_0152"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-交通研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_462",
+      "text": "中国日报和经济日报分别报道绿色金融政策。",
+      "mentions": [
+        {
+          "mention": "中国日报",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "经济日报",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国日报",
+          "entity_id": "ENT_GEN_0153"
+        },
+        {
+          "mention": "经济日报",
+          "entity_id": "ENT_GEN_0154"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-媒体多实体"
+    },
+    {
+      "id": "MENTION_LINK_463",
+      "text": "南方报业、人民网和澎湃新闻共同推出城市治理专题。",
+      "mentions": [
+        {
+          "mention": "南方报业",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "人民网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 8,
+          "confidence": 0.89
+        },
+        {
+          "mention": "澎湃新闻",
+          "type": "ORG",
+          "char_start": 9,
+          "char_end": 13,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南方报业",
+          "entity_id": "ENT_GEN_0155"
+        },
+        {
+          "mention": "人民网",
+          "entity_id": "ENT_GEN_0140"
+        },
+        {
+          "mention": "澎湃新闻",
+          "entity_id": "ENT_GEN_0142"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-媒体多实体"
+    },
+    {
+      "id": "MENTION_LINK_464",
+      "text": "China Daily和Economic Daily出现在英文材料中。",
+      "mentions": [
+        {
+          "mention": "China Daily",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 11,
+          "confidence": 0.84
+        },
+        {
+          "mention": "Economic Daily",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 26,
+          "confidence": 0.84
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "China Daily",
+          "entity_id": "ENT_GEN_0153"
+        },
+        {
+          "mention": "Economic Daily",
+          "entity_id": "ENT_GEN_0154"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-媒体英文别名"
+    },
+    {
+      "id": "MENTION_LINK_465",
+      "text": "经济观察日报社参与论坛，经济日报只是对照媒体。",
+      "mentions": [
+        {
+          "mention": "经济观察日报社",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 0.74
+        },
+        {
+          "mention": "经济日报",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 16,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "经济观察日报社",
+          "entity_id": null
+        },
+        {
+          "mention": "经济日报",
+          "entity_id": "ENT_GEN_0154"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-近名媒体NIL"
+    },
+    {
+      "id": "MENTION_LINK_466",
+      "text": "南方融媒体实验室上线专题，南方报业提供内容授权。",
+      "mentions": [
+        {
+          "mention": "南方融媒体实验室",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 0.74
+        },
+        {
+          "mention": "南方报业",
+          "type": "ORG",
+          "char_start": 13,
+          "char_end": 17,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南方融媒体实验室",
+          "entity_id": null
+        },
+        {
+          "mention": "南方报业",
+          "entity_id": "ENT_GEN_0155"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-媒体实验室NIL"
+    },
+    {
+      "id": "MENTION_LINK_467",
+      "text": "央视财经频道报道价格，央视新闻转载摘要。",
+      "mentions": [
+        {
+          "mention": "央视财经频道",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 0.74
+        },
+        {
+          "mention": "央视新闻",
+          "type": "ORG",
+          "char_start": 11,
+          "char_end": 15,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "央视财经频道",
+          "entity_id": null
+        },
+        {
+          "mention": "央视新闻",
+          "entity_id": "ENT_GEN_0141"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-频道NIL"
+    },
+    {
+      "id": "MENTION_LINK_468",
+      "text": "中国日报数据研究院提交报告，中国日报作为来源出现。",
+      "mentions": [
+        {
+          "mention": "中国日报数据研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "中国日报",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国日报数据研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "中国日报",
+          "entity_id": "ENT_GEN_0153"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-媒体研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_469",
+      "text": "奇瑞汽车、长城汽车和吉利汽车分别展示新能源车型。",
+      "mentions": [
+        {
+          "mention": "奇瑞汽车",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "长城汽车",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "吉利汽车",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "奇瑞汽车",
+          "entity_id": "ENT_GEN_0156"
+        },
+        {
+          "mention": "长城汽车",
+          "entity_id": "ENT_GEN_0157"
+        },
+        {
+          "mention": "吉利汽车",
+          "entity_id": "ENT_GEN_0158"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-车企多实体"
+    },
+    {
+      "id": "MENTION_LINK_470",
+      "text": "Chery和Geely Auto在英文材料中出现。",
+      "mentions": [
+        {
+          "mention": "Chery",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 0.84
+        },
+        {
+          "mention": "Geely Auto",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 16,
+          "confidence": 0.84
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Chery",
+          "entity_id": "ENT_GEN_0156"
+        },
+        {
+          "mention": "Geely Auto",
+          "entity_id": "ENT_GEN_0158"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-车企英文别名"
+    },
+    {
+      "id": "MENTION_LINK_471",
+      "text": "比亚迪、蔚来和特斯拉分别发布补能计划。",
+      "mentions": [
+        {
+          "mention": "比亚迪",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 0.89
+        },
+        {
+          "mention": "蔚来",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 6,
+          "confidence": 0.89
+        },
+        {
+          "mention": "特斯拉",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 10,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "比亚迪",
+          "entity_id": "ENT_GEN_0122"
+        },
+        {
+          "mention": "蔚来",
+          "entity_id": "ENT_GEN_0058"
+        },
+        {
+          "mention": "特斯拉",
+          "entity_id": "ENT_GEN_0080"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-车企多实体"
+    },
+    {
+      "id": "MENTION_LINK_472",
+      "text": "奇瑞新能源研究院发布报告，奇瑞汽车提供测试车辆。",
+      "mentions": [
+        {
+          "mention": "奇瑞新能源研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 0.74
+        },
+        {
+          "mention": "奇瑞汽车",
+          "type": "ORG",
+          "char_start": 13,
+          "char_end": 17,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "奇瑞新能源研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "奇瑞汽车",
+          "entity_id": "ENT_GEN_0156"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-车企研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_473",
+      "text": "长城智能驾驶实验室披露计划，长城汽车提供样车。",
+      "mentions": [
+        {
+          "mention": "长城智能驾驶实验室",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "长城汽车",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 18,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "长城智能驾驶实验室",
+          "entity_id": null
+        },
+        {
+          "mention": "长城汽车",
+          "entity_id": "ENT_GEN_0157"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-车企实验室NIL"
+    },
+    {
+      "id": "MENTION_LINK_474",
+      "text": "吉利智能座舱研究院展示原型系统，吉利汽车负责车辆适配。",
+      "mentions": [
+        {
+          "mention": "吉利智能座舱研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "吉利汽车",
+          "type": "ORG",
+          "char_start": 16,
+          "char_end": 20,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "吉利智能座舱研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "吉利汽车",
+          "entity_id": "ENT_GEN_0158"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-车企研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_475",
+      "text": "比亚迪汽车金融服务公司参与论坛，比亚迪作为车企主体出现。",
+      "mentions": [
+        {
+          "mention": "比亚迪汽车金融服务公司",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 11,
+          "confidence": 0.74
+        },
+        {
+          "mention": "比亚迪",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "比亚迪汽车金融服务公司",
+          "entity_id": null
+        },
+        {
+          "mention": "比亚迪",
+          "entity_id": "ENT_GEN_0122"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-车企金融NIL"
+    },
+    {
+      "id": "MENTION_LINK_476",
+      "text": "工行、招行和中国平安共同参与绿色金融试点。",
+      "mentions": [
+        {
+          "mention": "工行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 0.89
+        },
+        {
+          "mention": "招行",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "confidence": 0.89
+        },
+        {
+          "mention": "中国平安",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "工行",
+          "entity_id": "ENT_GEN_0055"
+        },
+        {
+          "mention": "招行",
+          "entity_id": "ENT_GEN_0057"
+        },
+        {
+          "mention": "中国平安",
+          "entity_id": "ENT_GEN_0056"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-金融多实体"
+    },
+    {
+      "id": "MENTION_LINK_477",
+      "text": "中国银行、交通银行和中信证券共同协调绿色债券发行。",
+      "mentions": [
+        {
+          "mention": "中国银行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "交通银行",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "中信证券",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国银行",
+          "entity_id": "ENT_GEN_0083"
+        },
+        {
+          "mention": "交通银行",
+          "entity_id": "ENT_GEN_0084"
+        },
+        {
+          "mention": "中信证券",
+          "entity_id": "ENT_GEN_0085"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-金融多实体"
+    },
+    {
+      "id": "MENTION_LINK_478",
+      "text": "上交所、深交所和北交所分别披露绿色债券规则。",
+      "mentions": [
+        {
+          "mention": "上交所",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 0.89
+        },
+        {
+          "mention": "深交所",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 7,
+          "confidence": 0.89
+        },
+        {
+          "mention": "北交所",
+          "type": "ORG",
+          "char_start": 8,
+          "char_end": 11,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上交所",
+          "entity_id": "ENT_GEN_0087"
+        },
+        {
+          "mention": "深交所",
+          "entity_id": "ENT_GEN_0088"
+        },
+        {
+          "mention": "北交所",
+          "entity_id": "ENT_GEN_0123"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-交易所多实体"
+    },
+    {
+      "id": "MENTION_LINK_479",
+      "text": "香港绿色债券交易中心发布规则，上交所只是参考案例。",
+      "mentions": [
+        {
+          "mention": "香港绿色债券交易中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "上交所",
+          "type": "ORG",
+          "char_start": 15,
+          "char_end": 18,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "香港绿色债券交易中心",
+          "entity_id": null
+        },
+        {
+          "mention": "上交所",
+          "entity_id": "ENT_GEN_0087"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-交易中心NIL"
+    },
+    {
+      "id": "MENTION_LINK_480",
+      "text": "香港交易所讨论绿色金融，北交所提供内地规则对照。",
+      "mentions": [
+        {
+          "mention": "香港交易所",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 0.74
+        },
+        {
+          "mention": "北交所",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 15,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "香港交易所",
+          "entity_id": null
+        },
+        {
+          "mention": "北交所",
+          "entity_id": "ENT_GEN_0123"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-交易所NIL"
+    },
+    {
+      "id": "MENTION_LINK_481",
+      "text": "世界银行发布融资报告，中国银行和建设银行作为国内候选。",
+      "mentions": [
+        {
+          "mention": "世界银行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.74
+        },
+        {
+          "mention": "中国银行",
+          "type": "ORG",
+          "char_start": 11,
+          "char_end": 15,
+          "confidence": 0.89
+        },
+        {
+          "mention": "建设银行",
+          "type": "ORG",
+          "char_start": 16,
+          "char_end": 20,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "世界银行",
+          "entity_id": null
+        },
+        {
+          "mention": "中国银行",
+          "entity_id": "ENT_GEN_0083"
+        },
+        {
+          "mention": "建设银行",
+          "entity_id": "ENT_GEN_0081"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-国际金融NIL"
+    },
+    {
+      "id": "MENTION_LINK_482",
+      "text": "华为云、百度智能云和腾讯文档共同参与项目验收。",
+      "mentions": [
+        {
+          "mention": "华为云",
+          "type": "PRODUCT",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 0.88
+        },
+        {
+          "mention": "百度智能云",
+          "type": "PRODUCT",
+          "char_start": 4,
+          "char_end": 9,
+          "confidence": 0.88
+        },
+        {
+          "mention": "腾讯文档",
+          "type": "PRODUCT",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华为云",
+          "entity_id": "ENT_GEN_0129"
+        },
+        {
+          "mention": "百度智能云",
+          "entity_id": "ENT_GEN_0130"
+        },
+        {
+          "mention": "腾讯文档",
+          "entity_id": "ENT_GEN_0127"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-云办公产品"
+    },
+    {
+      "id": "MENTION_LINK_483",
+      "text": "微软Azure中国研发中心参与评测，华为云和百度智能云作为对照。",
+      "mentions": [
+        {
+          "mention": "微软Azure中国研发中心",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 13,
+          "confidence": 0.74
+        },
+        {
+          "mention": "华为云",
+          "type": "PRODUCT",
+          "char_start": 18,
+          "char_end": 21,
+          "confidence": 0.88
+        },
+        {
+          "mention": "百度智能云",
+          "type": "PRODUCT",
+          "char_start": 22,
+          "char_end": 27,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "微软Azure中国研发中心",
+          "entity_id": null
+        },
+        {
+          "mention": "华为云",
+          "entity_id": "ENT_GEN_0129"
+        },
+        {
+          "mention": "百度智能云",
+          "entity_id": "ENT_GEN_0130"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-云研发中心NIL"
+    },
+    {
+      "id": "MENTION_LINK_484",
+      "text": "腾讯会议海外版用于跨境评审，腾讯会议用于国内答辩。",
+      "mentions": [
+        {
+          "mention": "腾讯会议海外版",
+          "type": "PRODUCT",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 0.74
+        },
+        {
+          "mention": "腾讯会议",
+          "type": "PRODUCT",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "腾讯会议海外版",
+          "entity_id": null
+        },
+        {
+          "mention": "腾讯会议",
+          "entity_id": "ENT_GEN_0104"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-产品版本NIL"
+    },
+    {
+      "id": "MENTION_LINK_485",
+      "text": "Android、iOS和Windows 11完成终端兼容测试。",
+      "mentions": [
+        {
+          "mention": "Android",
+          "type": "PRODUCT",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 0.88
+        },
+        {
+          "mention": "iOS",
+          "type": "PRODUCT",
+          "char_start": 8,
+          "char_end": 11,
+          "confidence": 0.88
+        },
+        {
+          "mention": "Windows 11",
+          "type": "PRODUCT",
+          "char_start": 12,
+          "char_end": 22,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Android",
+          "entity_id": "ENT_GEN_0100"
+        },
+        {
+          "mention": "iOS",
+          "entity_id": "ENT_GEN_0101"
+        },
+        {
+          "mention": "Windows 11",
+          "entity_id": "ENT_GEN_0063"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-操作系统多实体"
+    },
+    {
+      "id": "MENTION_LINK_486",
+      "text": "HarmonyOS参与终端测试，Android和iOS作为对照系统。",
+      "mentions": [
+        {
+          "mention": "HarmonyOS",
+          "type": "PRODUCT",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "Android",
+          "type": "PRODUCT",
+          "char_start": 16,
+          "char_end": 23,
+          "confidence": 0.88
+        },
+        {
+          "mention": "iOS",
+          "type": "PRODUCT",
+          "char_start": 24,
+          "char_end": 27,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "HarmonyOS",
+          "entity_id": null
+        },
+        {
+          "mention": "Android",
+          "entity_id": "ENT_GEN_0100"
+        },
+        {
+          "mention": "iOS",
+          "entity_id": "ENT_GEN_0101"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-操作系统NIL"
+    },
+    {
+      "id": "MENTION_LINK_487",
+      "text": "腾讯文档、WPS Office和飞书用于材料协作。",
+      "mentions": [
+        {
+          "mention": "腾讯文档",
+          "type": "PRODUCT",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.88
+        },
+        {
+          "mention": "WPS Office",
+          "type": "PRODUCT",
+          "char_start": 5,
+          "char_end": 15,
+          "confidence": 0.88
+        },
+        {
+          "mention": "飞书",
+          "type": "PRODUCT",
+          "char_start": 16,
+          "char_end": 18,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "腾讯文档",
+          "entity_id": "ENT_GEN_0127"
+        },
+        {
+          "mention": "WPS Office",
+          "entity_id": "ENT_GEN_0128"
+        },
+        {
+          "mention": "飞书",
+          "entity_id": "ENT_GEN_0106"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-办公产品"
+    },
+    {
+      "id": "MENTION_LINK_488",
+      "text": "Notion空间作为外部协作工具出现，飞书作为内部对照产品。",
+      "mentions": [
+        {
+          "mention": "Notion空间",
+          "type": "PRODUCT",
+          "char_start": 0,
+          "char_end": 8,
+          "confidence": 0.74
+        },
+        {
+          "mention": "飞书",
+          "type": "PRODUCT",
+          "char_start": 19,
+          "char_end": 21,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Notion空间",
+          "entity_id": null
+        },
+        {
+          "mention": "飞书",
+          "entity_id": "ENT_GEN_0106"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-办公产品NIL"
+    },
+    {
+      "id": "MENTION_LINK_489",
+      "text": "清华、北大和上海交大共同发布大模型安全白皮书。",
+      "mentions": [
+        {
+          "mention": "清华",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 0.89
+        },
+        {
+          "mention": "北大",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "confidence": 0.89
+        },
+        {
+          "mention": "上海交大",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "清华",
+          "entity_id": "ENT_GEN_0060"
+        },
+        {
+          "mention": "北大",
+          "entity_id": "ENT_GEN_0064"
+        },
+        {
+          "mention": "上海交大",
+          "entity_id": "ENT_GEN_0065"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-高校多实体"
+    },
+    {
+      "id": "MENTION_LINK_490",
+      "text": "浙江大学、复旦大学和南京大学分别提交数据治理课程材料。",
+      "mentions": [
+        {
+          "mention": "浙江大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "复旦大学",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 0.89
+        },
+        {
+          "mention": "南京大学",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "浙江大学",
+          "entity_id": "ENT_GEN_0066"
+        },
+        {
+          "mention": "复旦大学",
+          "entity_id": "ENT_GEN_0067"
+        },
+        {
+          "mention": "南京大学",
+          "entity_id": "ENT_GEN_0110"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-高校多实体"
+    },
+    {
+      "id": "MENTION_LINK_491",
+      "text": "华中科技大学和华科在同一材料中指向同一高校。",
+      "mentions": [
+        {
+          "mention": "华中科技大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 0.89
+        },
+        {
+          "mention": "华科",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 0.86
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华中科技大学",
+          "entity_id": "ENT_GEN_0109"
+        },
+        {
+          "mention": "华科",
+          "entity_id": "ENT_GEN_0109"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-高校别名"
+    },
+    {
+      "id": "MENTION_LINK_492",
+      "text": "联合国气候署引用清华研究报告，但该国际组织未入库。",
+      "mentions": [
+        {
+          "mention": "联合国气候署",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 0.74
+        },
+        {
+          "mention": "清华",
+          "type": "ORG",
+          "char_start": 8,
+          "char_end": 10,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "联合国气候署",
+          "entity_id": null
+        },
+        {
+          "mention": "清华",
+          "entity_id": "ENT_GEN_0060"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-国际组织NIL"
+    },
+    {
+      "id": "MENTION_LINK_493",
+      "text": "生态环境部、应急管理部和国家统计局共同发布灾害数据说明。",
+      "mentions": [
+        {
+          "mention": "生态环境部",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 0.9
+        },
+        {
+          "mention": "应急管理部",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 11,
+          "confidence": 0.9
+        },
+        {
+          "mention": "国家统计局",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 17,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "生态环境部",
+          "entity_id": "ENT_GEN_0091"
+        },
+        {
+          "mention": "应急管理部",
+          "entity_id": "ENT_GEN_0118"
+        },
+        {
+          "mention": "国家统计局",
+          "entity_id": "ENT_GEN_0117"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-政务多实体"
+    },
+    {
+      "id": "MENTION_LINK_494",
+      "text": "发改委、工信部和市场监管总局分别提出新能源车监管要求。",
+      "mentions": [
+        {
+          "mention": "发改委",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 0.9
+        },
+        {
+          "mention": "工信部",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 7,
+          "confidence": 0.9
+        },
+        {
+          "mention": "市场监管总局",
+          "type": "ORG",
+          "char_start": 8,
+          "char_end": 14,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "发改委",
+          "entity_id": "ENT_GEN_0089"
+        },
+        {
+          "mention": "工信部",
+          "entity_id": "ENT_GEN_0090"
+        },
+        {
+          "mention": "市场监管总局",
+          "entity_id": "ENT_GEN_0092"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-政务多实体"
+    },
+    {
+      "id": "MENTION_LINK_495",
+      "text": "杭州、南京和武汉分别上线城市治理平台。",
+      "mentions": [
+        {
+          "mention": "杭州",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 0.86
+        },
+        {
+          "mention": "南京",
+          "type": "GPE",
+          "char_start": 3,
+          "char_end": 5,
+          "confidence": 0.86
+        },
+        {
+          "mention": "武汉",
+          "type": "GPE",
+          "char_start": 6,
+          "char_end": 8,
+          "confidence": 0.86
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "杭州",
+          "entity_id": "ENT_GEN_0094"
+        },
+        {
+          "mention": "南京",
+          "entity_id": "ENT_GEN_0095"
+        },
+        {
+          "mention": "武汉",
+          "entity_id": "ENT_GEN_0096"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-地区多实体"
+    },
+    {
+      "id": "MENTION_LINK_496",
+      "text": "杭州低碳城市研究院发布报告，杭州市提供公开数据。",
+      "mentions": [
+        {
+          "mention": "杭州低碳城市研究院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 9,
+          "confidence": 0.74
+        },
+        {
+          "mention": "杭州市",
+          "type": "GPE",
+          "char_start": 14,
+          "char_end": 17,
+          "confidence": 0.86
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "杭州低碳城市研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "杭州市",
+          "entity_id": "ENT_GEN_0094"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-城市研究院NIL"
+    },
+    {
+      "id": "MENTION_LINK_497",
+      "text": "青海共和县、酒泉和鄂尔多斯分别推进储能基地建设。",
+      "mentions": [
+        {
+          "mention": "青海共和县",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 0.86
+        },
+        {
+          "mention": "酒泉",
+          "type": "GPE",
+          "char_start": 6,
+          "char_end": 8,
+          "confidence": 0.86
+        },
+        {
+          "mention": "鄂尔多斯",
+          "type": "GPE",
+          "char_start": 9,
+          "char_end": 13,
+          "confidence": 0.86
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "青海共和县",
+          "entity_id": "ENT_ENERGY_0031"
+        },
+        {
+          "mention": "酒泉",
+          "entity_id": "ENT_ENERGY_0047"
+        },
+        {
+          "mention": "鄂尔多斯",
+          "entity_id": "ENT_ENERGY_0048"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-能源地区"
+    },
+    {
+      "id": "MENTION_LINK_498",
+      "text": "雄安新区和宜昌试点新型电力系统，国家电网提供调度支持。",
+      "mentions": [
+        {
+          "mention": "雄安新区",
+          "type": "GPE",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.86
+        },
+        {
+          "mention": "宜昌",
+          "type": "GPE",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 0.86
+        },
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 16,
+          "char_end": 20,
+          "confidence": 0.9
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "雄安新区",
+          "entity_id": "ENT_ENERGY_0046"
+        },
+        {
+          "mention": "宜昌",
+          "entity_id": "ENT_ENERGY_0030"
+        },
+        {
+          "mention": "国家电网",
+          "entity_id": "ENT_ENERGY_0001"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-城市电网"
+    },
+    {
+      "id": "MENTION_LINK_499",
+      "text": "腾讯、阿里巴巴和百度共同参加AI安全论坛。",
+      "mentions": [
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 0.89
+        },
+        {
+          "mention": "阿里巴巴",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 7,
+          "confidence": 0.89
+        },
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 8,
+          "char_end": 10,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "腾讯",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "阿里巴巴",
+          "entity_id": "ENT_GEN_0053"
+        },
+        {
+          "mention": "百度",
+          "entity_id": "ENT_GEN_0070"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-科技企业"
+    },
+    {
+      "id": "MENTION_LINK_500",
+      "text": "字节跳动、快手和网易分别提交内容安全报告。",
+      "mentions": [
+        {
+          "mention": "字节跳动",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "快手",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 0.89
+        },
+        {
+          "mention": "网易",
+          "type": "ORG",
+          "char_start": 8,
+          "char_end": 10,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "字节跳动",
+          "entity_id": "ENT_GEN_0075"
+        },
+        {
+          "mention": "快手",
+          "entity_id": "ENT_GEN_0077"
+        },
+        {
+          "mention": "网易",
+          "entity_id": "ENT_GEN_0076"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-互联网企业"
+    },
+    {
+      "id": "MENTION_LINK_501",
+      "text": "OpenAI能源实验室提交模型说明，百度和华为只是候选干扰。",
+      "mentions": [
+        {
+          "mention": "OpenAI能源实验室",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 11,
+          "confidence": 0.74
+        },
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 18,
+          "char_end": 20,
+          "confidence": 0.89
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 21,
+          "char_end": 23,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "OpenAI能源实验室",
+          "entity_id": null
+        },
+        {
+          "mention": "百度",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "华为",
+          "entity_id": "ENT_GEN_0051"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-AI实验室NIL"
+    },
+    {
+      "id": "MENTION_LINK_502",
+      "text": "小米、联想和中芯国际分别展示国产算力终端。",
+      "mentions": [
+        {
+          "mention": "小米",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 0.89
+        },
+        {
+          "mention": "联想",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "confidence": 0.89
+        },
+        {
+          "mention": "中芯国际",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "小米",
+          "entity_id": "ENT_GEN_0073"
+        },
+        {
+          "mention": "联想",
+          "entity_id": "ENT_GEN_0074"
+        },
+        {
+          "mention": "中芯国际",
+          "entity_id": "ENT_GEN_0054"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-科技制造"
+    },
+    {
+      "id": "MENTION_LINK_503",
+      "text": "微软云服务和微软Azure中国研发中心都未入库，华为云作为对照。",
+      "mentions": [
+        {
+          "mention": "微软云服务",
+          "type": "PRODUCT",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 0.74
+        },
+        {
+          "mention": "微软Azure中国研发中心",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 19,
+          "confidence": 0.74
+        },
+        {
+          "mention": "华为云",
+          "type": "PRODUCT",
+          "char_start": 24,
+          "char_end": 27,
+          "confidence": 0.88
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "微软云服务",
+          "entity_id": null
+        },
+        {
+          "mention": "微软Azure中国研发中心",
+          "entity_id": null
+        },
+        {
+          "mention": "华为云",
+          "entity_id": "ENT_GEN_0129"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-云服务NIL"
+    },
+    {
+      "id": "MENTION_LINK_504",
+      "text": "国铁集团、南航和海南航空共享客流趋势。",
+      "mentions": [
+        {
+          "mention": "国铁集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 0.89
+        },
+        {
+          "mention": "南航",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 0.89
+        },
+        {
+          "mention": "海南航空",
+          "type": "ORG",
+          "char_start": 8,
+          "char_end": 12,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国铁集团",
+          "entity_id": "ENT_GEN_0113"
+        },
+        {
+          "mention": "南航",
+          "entity_id": "ENT_GEN_0114"
+        },
+        {
+          "mention": "海南航空",
+          "entity_id": "ENT_GEN_0152"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "主测试补齐-交通多实体"
+    },
+    {
+      "id": "MENTION_LINK_505",
+      "text": "广州轨道交通产业联盟评估客流，广州地铁提供线路数据。",
+      "mentions": [
+        {
+          "mention": "广州轨道交通产业联盟",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 10,
+          "confidence": 0.74
+        },
+        {
+          "mention": "广州地铁",
+          "type": "ORG",
+          "char_start": 15,
+          "char_end": 19,
+          "confidence": 0.89
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "广州轨道交通产业联盟",
+          "entity_id": null
+        },
+        {
+          "mention": "广州地铁",
+          "entity_id": "ENT_GEN_0138"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "主测试补齐-轨道联盟NIL"
     }
   ]
 }

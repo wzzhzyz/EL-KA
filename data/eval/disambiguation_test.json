@@ -2006,6 +2006,396 @@
       "reason": "未入库操作系统。",
       "scenario": "长尾-系统NIL",
       "id": "DIS_132"
+    },
+    {
+      "text": "国网浙江电力指浙江省电网公司，不是国网江苏电力。",
+      "mention": "国网浙江电力",
+      "gold_entity": "ENT_GEN_0144",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.64,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "地区修饰词决定实体。",
+      "scenario": "批次B-电网消歧",
+      "id": "DIS_133"
+    },
+    {
+      "text": "广西电网服务广西地区供电保障，不应链接到中国南方电网总公司。",
+      "mention": "广西电网",
+      "gold_entity": "ENT_GEN_0146",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.64,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "省级公司与集团主体区分。",
+      "scenario": "批次B-电网消歧",
+      "id": "DIS_134"
+    },
+    {
+      "text": "天坛医院在神经医学语境中出现，应链接新增医疗机构。",
+      "mention": "天坛医院",
+      "gold_entity": "ENT_GEN_0147",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.64,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "医院简称与医疗上下文一致。",
+      "scenario": "批次B-医疗消歧",
+      "id": "DIS_135"
+    },
+    {
+      "text": "首都机场是机场运营主体，不是航空公司。",
+      "mention": "首都机场",
+      "gold_entity": "ENT_GEN_0150",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.64,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "机场和航空公司类型区分。",
+      "scenario": "批次B-交通消歧",
+      "id": "DIS_136"
+    },
+    {
+      "text": "深圳地铁是城市轨道交通机构，不是广州地铁。",
+      "mention": "深圳地铁",
+      "gold_entity": "ENT_GEN_0151",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.64,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "地区前缀消歧。",
+      "scenario": "批次B-交通消歧",
+      "id": "DIS_137"
+    },
+    {
+      "text": "中国日报是媒体机构，不是人民日报或人民网。",
+      "mention": "中国日报",
+      "gold_entity": "ENT_GEN_0153",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.64,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "媒体名称差异。",
+      "scenario": "批次B-媒体消歧",
+      "id": "DIS_138"
+    },
+    {
+      "text": "经济日报聚焦经济报道，应链接经济日报社。",
+      "mention": "经济日报",
+      "gold_entity": "ENT_GEN_0154",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.64,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "经济媒体上下文。",
+      "scenario": "批次B-媒体消歧",
+      "id": "DIS_139"
+    },
+    {
+      "text": "奇瑞汽车在出口车型语境中出现，应链接奇瑞汽车股份有限公司。",
+      "mention": "奇瑞汽车",
+      "gold_entity": "ENT_GEN_0156",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.64,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "汽车制造上下文。",
+      "scenario": "批次B-车企消歧",
+      "id": "DIS_140"
+    },
+    {
+      "text": "长城汽车不是上汽集团，应链接长城汽车股份有限公司。",
+      "mention": "长城汽车",
+      "gold_entity": "ENT_GEN_0157",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.64,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "车企简称明确。",
+      "scenario": "批次B-车企消歧",
+      "id": "DIS_141"
+    },
+    {
+      "text": "吉利汽车在智能座舱语境中出现，应链接吉利汽车控股有限公司。",
+      "mention": "吉利汽车",
+      "gold_entity": "ENT_GEN_0158",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.64,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "车企简称明确。",
+      "scenario": "批次B-车企消歧",
+      "id": "DIS_142"
+    },
+    {
+      "text": "国网江苏新能源服务公司参与储能调度试点，国网江苏电力仅提供接口支持。",
+      "mention": "国网江苏新能源服务公司",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "名称包含国网江苏但不是国网江苏省电力有限公司。",
+      "scenario": "批次C-电网近似NIL",
+      "id": "DIS_143",
+      "candidate_entities": [
+        "ENT_GEN_0124",
+        "ENT_ENERGY_0001",
+        "ENT_GEN_0144"
+      ]
+    },
+    {
+      "text": "浙江省智慧电力研究院发布负荷预测报告，国网浙江电力参与评审。",
+      "mention": "浙江省智慧电力研究院",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "研究院未入库，不能误链电网公司或已有研究机构。",
+      "scenario": "批次C-电力研究院NIL",
+      "id": "DIS_144",
+      "candidate_entities": [
+        "ENT_GEN_0144",
+        "ENT_ENERGY_0009",
+        "ENT_GEN_0068"
+      ]
+    },
+    {
+      "text": "山东鲁能配电服务中心提交巡检计划，国网山东电力只是监管接口。",
+      "mention": "山东鲁能配电服务中心",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "地区和配电词相似但主体未入库。",
+      "scenario": "批次C-地区电网NIL",
+      "id": "DIS_145",
+      "candidate_entities": [
+        "ENT_GEN_0145",
+        "ENT_ENERGY_0001",
+        "ENT_GEN_0143"
+      ]
+    },
+    {
+      "text": "广西新能源调度中心试运行，广西电网提供历史负荷数据。",
+      "mention": "广西新能源调度中心",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "中心类机构未入库，不应误链广西电网。",
+      "scenario": "批次C-调度中心NIL",
+      "id": "DIS_146",
+      "candidate_entities": [
+        "ENT_GEN_0146",
+        "ENT_GEN_0125",
+        "ENT_ENERGY_0002"
+      ]
+    },
+    {
+      "text": "上海电力交易研究所讨论市场化交易，国网上海电力作为参会单位。",
+      "mention": "上海电力交易研究所",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "研究所不是电网公司或证券交易所。",
+      "scenario": "批次C-交易研究所NIL",
+      "id": "DIS_147",
+      "candidate_entities": [
+        "ENT_GEN_0143",
+        "ENT_GEN_0087",
+        "ENT_GEN_0123"
+      ]
+    },
+    {
+      "text": "北京神经医学中心引用天坛医院数据，但该中心未入库。",
+      "mention": "北京神经医学中心",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "医学中心与医院语义接近但不是同一实体。",
+      "scenario": "批次C-医疗中心NIL",
+      "id": "DIS_148",
+      "candidate_entities": [
+        "ENT_GEN_0147",
+        "ENT_GEN_0131",
+        "ENT_GEN_0111"
+      ]
+    },
+    {
+      "text": "浙江邵逸夫医学研究院与邵逸夫医院合作开发质控模型。",
+      "mention": "浙江邵逸夫医学研究院",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "研究院未入库，不能误链医院。",
+      "scenario": "批次C-医学研究院NIL",
+      "id": "DIS_149",
+      "candidate_entities": [
+        "ENT_GEN_0148",
+        "ENT_GEN_0066",
+        "ENT_GEN_0133"
+      ]
+    },
+    {
+      "text": "江苏人民医疗集团发布采购公告，江苏省人民医院只是合作方。",
+      "mention": "江苏人民医疗集团",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "集团和医院名称近似但主体不同。",
+      "scenario": "批次C-医疗集团NIL",
+      "id": "DIS_150",
+      "candidate_entities": [
+        "ENT_GEN_0149",
+        "ENT_GEN_0133",
+        "ENT_GEN_0112"
+      ]
+    },
+    {
+      "text": "华东远程会诊中心协调多院会诊，华西医院提供专家支持。",
+      "mention": "华东远程会诊中心",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "中心未入库，不能误链任一医院。",
+      "scenario": "批次C-远程会诊中心NIL",
+      "id": "DIS_151",
+      "candidate_entities": [
+        "ENT_GEN_0131",
+        "ENT_GEN_0148",
+        "ENT_GEN_0149"
+      ]
+    },
+    {
+      "text": "北京首都航空服务中心发布值机指引，首都机场转发通知。",
+      "mention": "北京首都航空服务中心",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "服务中心不是首都机场或航空公司。",
+      "scenario": "批次C-航空服务中心NIL",
+      "id": "DIS_152",
+      "candidate_entities": [
+        "ENT_GEN_0150",
+        "ENT_GEN_0135",
+        "ENT_GEN_0152"
+      ]
+    },
+    {
+      "text": "深圳轨道交通研究院评估客流模型，深圳地铁提供历史数据。",
+      "mention": "深圳轨道交通研究院",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "研究院未入库，不应误链地铁集团。",
+      "scenario": "批次C-轨道研究院NIL",
+      "id": "DIS_153",
+      "candidate_entities": [
+        "ENT_GEN_0151",
+        "ENT_GEN_0138",
+        "ENT_GEN_0113"
+      ]
+    },
+    {
+      "text": "海南航空旅游研究院发布报告，海南航空未参与该项目。",
+      "mention": "海南航空旅游研究院",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.46
+      ],
+      "expected_nil": true,
+      "reason": "研究院名称含海南航空但不是航空公司实体。",
+      "scenario": "批次C-航空研究院NIL",
+      "id": "DIS_154",
+      "candidate_entities": [
+        "ENT_GEN_0152",
+        "ENT_GEN_0114",
+        "ENT_GEN_0135"
+      ]
     }
   ],
   "statistics": {
@@ -2026,7 +2416,7 @@
       "mention_is_coref": 2,
       "non_entity_concept": 2
     },
-    "sample_count": 132,
-    "nil_like_sample_count": 29
+    "sample_count": 154,
+    "nil_like_sample_count": 41
   }
 }

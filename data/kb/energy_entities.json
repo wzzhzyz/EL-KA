@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "kb_version": "2.3.0",
+  "kb_version": "2.4.0",
   "kb_name": "entity_linking_kb",
   "kb_description": "多行业实体链接知识库——覆盖能源、科技、金融、汽车、教育等领域的实体，面向课题10实体链接与知识对齐智能体，支持热插拔和行业切换",
   "entity_type_enum": {
@@ -9214,6 +9214,910 @@
       "update_time": "2026-07-10",
       "ambiguity_level": "base",
       "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0143",
+      "entity_name": "国网上海市电力公司",
+      "aliases": [
+        {
+          "name": "国网上海电力",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "上海电力公司",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "State Grid Shanghai",
+          "alias_type": "英文",
+          "priority": 0.72,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "国网上海电力",
+      "entity_type": "GRID_COMPANY",
+      "entity_type_display": "电网公司",
+      "industry": "电力能源",
+      "summary": "负责上海地区电网建设、供电服务和电力调度的省级电网企业。",
+      "business": "电网运营、供电服务、配网建设、调度管理。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "电网",
+        "供电",
+        "上海"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "电网",
+        "供电"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0144",
+      "entity_name": "国网浙江省电力有限公司",
+      "aliases": [
+        {
+          "name": "国网浙江电力",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "浙江电力",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "State Grid Zhejiang",
+          "alias_type": "英文",
+          "priority": 0.72,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "国网浙江电力",
+      "entity_type": "GRID_COMPANY",
+      "entity_type_display": "电网公司",
+      "industry": "电力能源",
+      "summary": "负责浙江省电力供应、电网建设和调度运行的省级电网企业。",
+      "business": "供电服务、智能电网、配网建设、新能源并网。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "电网",
+        "浙江",
+        "新能源并网"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "电网",
+        "新能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0145",
+      "entity_name": "国网山东省电力公司",
+      "aliases": [
+        {
+          "name": "国网山东电力",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "山东电力公司",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "State Grid Shandong",
+          "alias_type": "英文",
+          "priority": 0.72,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "国网山东电力",
+      "entity_type": "GRID_COMPANY",
+      "entity_type_display": "电网公司",
+      "industry": "电力能源",
+      "summary": "负责山东省供电服务和电网运行管理的省级电网企业。",
+      "business": "电网调度、供电保障、配电自动化。",
+      "location": {
+        "country": "中国",
+        "province": "山东省",
+        "city": "济南市",
+        "address": ""
+      },
+      "keywords": [
+        "电网",
+        "山东",
+        "供电"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "电网",
+        "供电"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0146",
+      "entity_name": "广西电网有限责任公司",
+      "aliases": [
+        {
+          "name": "广西电网",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "广西电网公司",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Guangxi Power Grid",
+          "alias_type": "英文",
+          "priority": 0.72,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "广西电网",
+      "entity_type": "GRID_COMPANY",
+      "entity_type_display": "电网公司",
+      "industry": "电力能源",
+      "summary": "服务广西地区供电保障和电网建设的电网企业。",
+      "business": "供电服务、电网建设、新能源接入。",
+      "location": {
+        "country": "中国",
+        "province": "广西壮族自治区",
+        "city": "南宁市",
+        "address": ""
+      },
+      "keywords": [
+        "电网",
+        "广西",
+        "供电"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "电网",
+        "供电"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0147",
+      "entity_name": "北京天坛医院",
+      "aliases": [
+        {
+          "name": "天坛医院",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "首都医科大学附属北京天坛医院",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Beijing Tiantan Hospital",
+          "alias_type": "英文",
+          "priority": 0.72,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "天坛医院",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "entity_type_display": "医疗机构",
+      "industry": "医疗卫生",
+      "summary": "以神经系统疾病诊疗和综合医疗服务见长的医院。",
+      "business": "临床诊疗、医学研究、远程会诊和医疗质控。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "医院",
+        "医疗",
+        "神经医学"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "医院",
+        "医疗"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0148",
+      "entity_name": "浙江大学医学院附属邵逸夫医院",
+      "aliases": [
+        {
+          "name": "邵逸夫医院",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "浙大邵逸夫医院",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Sir Run Run Shaw Hospital",
+          "alias_type": "英文",
+          "priority": 0.72,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "邵逸夫医院",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "entity_type_display": "医疗机构",
+      "industry": "医疗卫生",
+      "summary": "浙江大学医学院附属综合性医院，承担临床诊疗和医学研究任务。",
+      "business": "医疗服务、科研教学、智慧医院建设。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "医院",
+        "浙江大学",
+        "智慧医院"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "医院",
+        "医疗"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0149",
+      "entity_name": "江苏省人民医院",
+      "aliases": [
+        {
+          "name": "省人民医院",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "江苏人民医院",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Jiangsu Provincial People's Hospital",
+          "alias_type": "英文",
+          "priority": 0.72,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "江苏省人民医院",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "entity_type_display": "医疗机构",
+      "industry": "医疗卫生",
+      "summary": "江苏省综合性医疗机构，提供临床诊疗、教学和科研服务。",
+      "business": "医疗服务、科研教学、远程医疗。",
+      "location": {
+        "country": "中国",
+        "province": "江苏省",
+        "city": "南京市",
+        "address": ""
+      },
+      "keywords": [
+        "医院",
+        "江苏",
+        "远程医疗"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "医院",
+        "医疗"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0150",
+      "entity_name": "北京首都国际机场股份有限公司",
+      "aliases": [
+        {
+          "name": "首都机场",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "北京首都机场",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "BCIA",
+          "alias_type": "英文缩写",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "首都机场",
+      "entity_type": "TRANSPORTATION_ORG",
+      "entity_type_display": "交通机构",
+      "industry": "交通运输",
+      "summary": "运营北京首都国际机场相关业务的机场运营主体。",
+      "business": "机场运营、航班保障、旅客服务和交通枢纽管理。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "机场",
+        "航空",
+        "交通"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "交通",
+        "机场"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0151",
+      "entity_name": "深圳地铁集团有限公司",
+      "aliases": [
+        {
+          "name": "深圳地铁",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "深铁集团",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Shenzhen Metro",
+          "alias_type": "英文",
+          "priority": 0.72,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "深圳地铁",
+      "entity_type": "TRANSPORTATION_ORG",
+      "entity_type_display": "交通机构",
+      "industry": "城市轨道交通",
+      "summary": "负责深圳城市轨道交通建设、运营和综合开发的交通机构。",
+      "business": "轨道交通运营、线路建设、客流调度。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": ""
+      },
+      "keywords": [
+        "地铁",
+        "深圳",
+        "轨道交通"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "交通",
+        "地铁"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0152",
+      "entity_name": "海南航空控股股份有限公司",
+      "aliases": [
+        {
+          "name": "海南航空",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "海航控股",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Hainan Airlines",
+          "alias_type": "英文",
+          "priority": 0.72,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "海南航空",
+      "entity_type": "TRANSPORTATION_ORG",
+      "entity_type_display": "交通机构",
+      "industry": "航空运输",
+      "summary": "从事航空客运、航线运营和相关航空服务的运输企业。",
+      "business": "航空运输、航班运营、旅客服务。",
+      "location": {
+        "country": "中国",
+        "province": "海南省",
+        "city": "海口市",
+        "address": ""
+      },
+      "keywords": [
+        "航空",
+        "航线",
+        "交通"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "交通",
+        "航空"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0153",
+      "entity_name": "中国日报社",
+      "aliases": [
+        {
+          "name": "中国日报",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "China Daily",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 0.95
+        }
+      ],
+      "abbreviation": "中国日报",
+      "entity_type": "MEDIA_ORG",
+      "entity_type_display": "媒体机构",
+      "industry": "新闻媒体",
+      "summary": "面向国内外传播新闻资讯和评论内容的媒体机构。",
+      "business": "新闻报道、国际传播、评论和新媒体内容。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "新闻",
+        "媒体",
+        "国际传播"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "媒体",
+        "新闻"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0154",
+      "entity_name": "经济日报社",
+      "aliases": [
+        {
+          "name": "经济日报",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Economic Daily",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "经济日报",
+      "entity_type": "MEDIA_ORG",
+      "entity_type_display": "媒体机构",
+      "industry": "新闻媒体",
+      "summary": "聚焦经济政策、产业动态和财经报道的媒体机构。",
+      "business": "经济新闻、政策解读、产业报道。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "经济",
+        "新闻",
+        "财经"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "媒体",
+        "财经"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0155",
+      "entity_name": "南方报业传媒集团",
+      "aliases": [
+        {
+          "name": "南方报业",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "南方报业集团",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Nanfang Media Group",
+          "alias_type": "英文",
+          "priority": 0.72,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "南方报业",
+      "entity_type": "MEDIA_ORG",
+      "entity_type_display": "媒体机构",
+      "industry": "新闻媒体",
+      "summary": "广东地区综合性报业和新媒体传播集团。",
+      "business": "新闻报道、政务传播、融媒体运营。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "广州市",
+        "address": ""
+      },
+      "keywords": [
+        "新闻",
+        "媒体",
+        "广东"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "媒体",
+        "新闻"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0156",
+      "entity_name": "奇瑞汽车股份有限公司",
+      "aliases": [
+        {
+          "name": "奇瑞汽车",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "奇瑞",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Chery",
+          "alias_type": "英文",
+          "priority": 0.78,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "奇瑞汽车",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "汽车制造",
+      "summary": "从事乘用车研发、制造和销售的汽车制造企业。",
+      "business": "整车制造、新能源汽车、海外销售和智能化技术。",
+      "location": {
+        "country": "中国",
+        "province": "安徽省",
+        "city": "芜湖市",
+        "address": ""
+      },
+      "keywords": [
+        "汽车",
+        "新能源",
+        "出口"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "汽车",
+        "新能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0157",
+      "entity_name": "长城汽车股份有限公司",
+      "aliases": [
+        {
+          "name": "长城汽车",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "GWM",
+          "alias_type": "英文缩写",
+          "priority": 0.76,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "长城汽车",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "汽车制造",
+      "summary": "从事整车研发、生产和销售的汽车制造企业。",
+      "business": "汽车制造、智能驾驶、海外销售。",
+      "location": {
+        "country": "中国",
+        "province": "河北省",
+        "city": "保定市",
+        "address": ""
+      },
+      "keywords": [
+        "汽车",
+        "智能驾驶",
+        "制造"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "汽车",
+        "制造"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0158",
+      "entity_name": "吉利汽车控股有限公司",
+      "aliases": [
+        {
+          "name": "吉利汽车",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Geely Auto",
+          "alias_type": "英文",
+          "priority": 0.76,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "吉利汽车",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "汽车制造",
+      "summary": "从事乘用车研发、制造和销售的汽车企业。",
+      "business": "整车制造、新能源汽车、智能座舱。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "汽车",
+        "新能源",
+        "智能座舱"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "汽车",
+        "新能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     }
   ],
   "ner_type_mapping": {
@@ -9291,5 +10195,34 @@
     "交通运输",
     "新闻媒体",
     "协同办公"
-  ]
+  ],
+  "last_expansion_report": {
+    "phase": "batch_b_weak_type_positive_samples",
+    "date": "2026-07-10",
+    "added_entities": [
+      "ENT_GEN_0143",
+      "ENT_GEN_0144",
+      "ENT_GEN_0145",
+      "ENT_GEN_0146",
+      "ENT_GEN_0147",
+      "ENT_GEN_0148",
+      "ENT_GEN_0149",
+      "ENT_GEN_0150",
+      "ENT_GEN_0151",
+      "ENT_GEN_0152",
+      "ENT_GEN_0153",
+      "ENT_GEN_0154",
+      "ENT_GEN_0155",
+      "ENT_GEN_0156",
+      "ENT_GEN_0157",
+      "ENT_GEN_0158"
+    ],
+    "focus_types": [
+      "GRID_COMPANY",
+      "MEDICAL_INSTITUTION",
+      "TRANSPORTATION_ORG",
+      "MEDIA_ORG",
+      "AUTO_MANUFACTURER"
+    ]
+  }
 }

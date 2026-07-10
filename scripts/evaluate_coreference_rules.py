@@ -31,6 +31,7 @@ if str(ROOT) not in sys.path:
 COLLECTIVE_SURFACES = {
     "两家公司",
     "两家企业",
+    "两家机构",
     "两家央企",
     "这些企业",
     "上述企业",

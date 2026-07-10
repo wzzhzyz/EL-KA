@@ -33,6 +33,7 @@ PERSON_ANAPHORS = {
 COLLECTIVE_ANAPHORS = {
     "两家公司",
     "两家企业",
+    "两家机构",
     "两家央企",
     "两家高校",
     "两所高校",

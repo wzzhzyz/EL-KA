@@ -1423,14 +1423,1083 @@
       "llm_prompt_focus": "金融平台与交易所消歧",
       "baseline_risk": "同类型候选较多，基础规则容易按词面误链。",
       "low_confidence_reason": "候选实体领域相近，需要上下文证据或NIL判断。"
+    },
+    {
+      "id": "LLM_HARD_064",
+      "text": "第三方调度联盟参与负荷预测，候选中只有国网江苏电力和广东电网。",
+      "mention": "第三方调度联盟",
+      "candidate_entity_ids": [
+        "ENT_GEN_0124",
+        "ENT_GEN_0125",
+        "ENT_ENERGY_0001"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "medium",
+      "ambiguity_type": "oov_grid_like_org",
+      "baseline_risk": "批次A用于验证LLM困难样本结构，候选相似且上下文需要综合判断。",
+      "low_confidence_reason": "字符串或类型相似度不足以稳定判断。",
+      "decisive_evidence": [
+        "第三方调度联盟",
+        "未入库",
+        "候选为电网公司而非联盟"
+      ],
+      "llm_prompt_focus": "识别电网近似机构NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_065",
+      "text": "东方财富提供行情入口，本句不是指上交所或深交所。",
+      "mention": "东方财富",
+      "candidate_entity_ids": [
+        "ENT_GEN_0086",
+        "ENT_GEN_0087",
+        "ENT_GEN_0088"
+      ],
+      "gold_entity_id": "ENT_GEN_0086",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "finance_platform_vs_exchange",
+      "baseline_risk": "批次A用于验证LLM困难样本结构，候选相似且上下文需要综合判断。",
+      "low_confidence_reason": "字符串或类型相似度不足以稳定判断。",
+      "decisive_evidence": [
+        "东方财富",
+        "行情入口",
+        "金融信息平台"
+      ],
+      "llm_prompt_focus": "区分金融资讯平台和交易所"
+    },
+    {
+      "id": "LLM_HARD_066",
+      "text": "香港交易所讨论绿色金融规则，当前知识库没有该交易所。",
+      "mention": "香港交易所",
+      "candidate_entity_ids": [
+        "ENT_GEN_0087",
+        "ENT_GEN_0088",
+        "ENT_GEN_0123"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "regional_exchange_nil",
+      "baseline_risk": "批次A用于验证LLM困难样本结构，候选相似且上下文需要综合判断。",
+      "low_confidence_reason": "字符串或类型相似度不足以稳定判断。",
+      "decisive_evidence": [
+        "香港交易所",
+        "未入库",
+        "不是上交所/深交所/北交所"
+      ],
+      "llm_prompt_focus": "识别地区交易所NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_067",
+      "text": "华西医院发布会诊规范，文本未指向中山医院或中日医院。",
+      "mention": "华西医院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0131",
+        "ENT_GEN_0133",
+        "ENT_GEN_0111"
+      ],
+      "gold_entity_id": "ENT_GEN_0131",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "hospital_short_name_disambiguation",
+      "baseline_risk": "批次A用于验证LLM困难样本结构，候选相似且上下文需要综合判断。",
+      "low_confidence_reason": "字符串或类型相似度不足以稳定判断。",
+      "decisive_evidence": [
+        "华西医院",
+        "会诊规范",
+        "候选均为医院"
+      ],
+      "llm_prompt_focus": "医院简称消歧"
+    },
+    {
+      "id": "LLM_HARD_068",
+      "text": "Notion空间用于项目协作，但当前知识库仅包含腾讯文档、WPS和飞书。",
+      "mention": "Notion空间",
+      "candidate_entity_ids": [
+        "ENT_GEN_0127",
+        "ENT_GEN_0128",
+        "ENT_GEN_0106"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "medium",
+      "ambiguity_type": "office_product_oov",
+      "baseline_risk": "批次A用于验证LLM困难样本结构，候选相似且上下文需要综合判断。",
+      "low_confidence_reason": "字符串或类型相似度不足以稳定判断。",
+      "decisive_evidence": [
+        "Notion空间",
+        "未入库",
+        "办公工具候选干扰"
+      ],
+      "llm_prompt_focus": "识别办公产品NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_069",
+      "text": "国网江苏新能源服务公司参与储能调度试点，国网江苏电力仅提供接口支持。",
+      "mention": "国网江苏新能源服务公司",
+      "candidate_entity_ids": [
+        "ENT_GEN_0124",
+        "ENT_ENERGY_0001",
+        "ENT_GEN_0144"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "batch_c_电网近似NIL",
+      "baseline_risk": "候选实体与未入库mention同领域且名称高度相似。",
+      "low_confidence_reason": "字符串相似和行业类型均可能诱导误链，需要NIL兜底。",
+      "decisive_evidence": [
+        "国网江苏新能源服务公司",
+        "未入库",
+        "候选为高相似错误实体"
+      ],
+      "llm_prompt_focus": "判断高相似候选下是否应保持NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_070",
+      "text": "浙江省智慧电力研究院发布负荷预测报告，国网浙江电力参与评审。",
+      "mention": "浙江省智慧电力研究院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0144",
+        "ENT_ENERGY_0009",
+        "ENT_GEN_0068"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "batch_c_电力研究院NIL",
+      "baseline_risk": "候选实体与未入库mention同领域且名称高度相似。",
+      "low_confidence_reason": "字符串相似和行业类型均可能诱导误链，需要NIL兜底。",
+      "decisive_evidence": [
+        "浙江省智慧电力研究院",
+        "未入库",
+        "候选为高相似错误实体"
+      ],
+      "llm_prompt_focus": "判断高相似候选下是否应保持NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_071",
+      "text": "山东鲁能配电服务中心提交巡检计划，国网山东电力只是监管接口。",
+      "mention": "山东鲁能配电服务中心",
+      "candidate_entity_ids": [
+        "ENT_GEN_0145",
+        "ENT_ENERGY_0001",
+        "ENT_GEN_0143"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "batch_c_地区电网NIL",
+      "baseline_risk": "候选实体与未入库mention同领域且名称高度相似。",
+      "low_confidence_reason": "字符串相似和行业类型均可能诱导误链，需要NIL兜底。",
+      "decisive_evidence": [
+        "山东鲁能配电服务中心",
+        "未入库",
+        "候选为高相似错误实体"
+      ],
+      "llm_prompt_focus": "判断高相似候选下是否应保持NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_072",
+      "text": "广西新能源调度中心试运行，广西电网提供历史负荷数据。",
+      "mention": "广西新能源调度中心",
+      "candidate_entity_ids": [
+        "ENT_GEN_0146",
+        "ENT_GEN_0125",
+        "ENT_ENERGY_0002"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "batch_c_调度中心NIL",
+      "baseline_risk": "候选实体与未入库mention同领域且名称高度相似。",
+      "low_confidence_reason": "字符串相似和行业类型均可能诱导误链，需要NIL兜底。",
+      "decisive_evidence": [
+        "广西新能源调度中心",
+        "未入库",
+        "候选为高相似错误实体"
+      ],
+      "llm_prompt_focus": "判断高相似候选下是否应保持NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_073",
+      "text": "上海电力交易研究所讨论市场化交易，国网上海电力作为参会单位。",
+      "mention": "上海电力交易研究所",
+      "candidate_entity_ids": [
+        "ENT_GEN_0143",
+        "ENT_GEN_0087",
+        "ENT_GEN_0123"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "batch_c_交易研究所NIL",
+      "baseline_risk": "候选实体与未入库mention同领域且名称高度相似。",
+      "low_confidence_reason": "字符串相似和行业类型均可能诱导误链，需要NIL兜底。",
+      "decisive_evidence": [
+        "上海电力交易研究所",
+        "未入库",
+        "候选为高相似错误实体"
+      ],
+      "llm_prompt_focus": "判断高相似候选下是否应保持NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_074",
+      "text": "北京神经医学中心引用天坛医院数据，但该中心未入库。",
+      "mention": "北京神经医学中心",
+      "candidate_entity_ids": [
+        "ENT_GEN_0147",
+        "ENT_GEN_0131",
+        "ENT_GEN_0111"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "batch_c_医疗中心NIL",
+      "baseline_risk": "候选实体与未入库mention同领域且名称高度相似。",
+      "low_confidence_reason": "字符串相似和行业类型均可能诱导误链，需要NIL兜底。",
+      "decisive_evidence": [
+        "北京神经医学中心",
+        "未入库",
+        "候选为高相似错误实体"
+      ],
+      "llm_prompt_focus": "判断高相似候选下是否应保持NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_075",
+      "text": "浙江邵逸夫医学研究院与邵逸夫医院合作开发质控模型。",
+      "mention": "浙江邵逸夫医学研究院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0148",
+        "ENT_GEN_0066",
+        "ENT_GEN_0133"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "batch_c_医学研究院NIL",
+      "baseline_risk": "候选实体与未入库mention同领域且名称高度相似。",
+      "low_confidence_reason": "字符串相似和行业类型均可能诱导误链，需要NIL兜底。",
+      "decisive_evidence": [
+        "浙江邵逸夫医学研究院",
+        "未入库",
+        "候选为高相似错误实体"
+      ],
+      "llm_prompt_focus": "判断高相似候选下是否应保持NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_076",
+      "text": "江苏人民医疗集团发布采购公告，江苏省人民医院只是合作方。",
+      "mention": "江苏人民医疗集团",
+      "candidate_entity_ids": [
+        "ENT_GEN_0149",
+        "ENT_GEN_0133",
+        "ENT_GEN_0112"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "batch_c_医疗集团NIL",
+      "baseline_risk": "候选实体与未入库mention同领域且名称高度相似。",
+      "low_confidence_reason": "字符串相似和行业类型均可能诱导误链，需要NIL兜底。",
+      "decisive_evidence": [
+        "江苏人民医疗集团",
+        "未入库",
+        "候选为高相似错误实体"
+      ],
+      "llm_prompt_focus": "判断高相似候选下是否应保持NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_077",
+      "text": "材料先提到国网江苏电力，又提到国网江苏省电力设计院。后文说该设计院负责方案图纸，因此mention应保持NIL。",
+      "mention": "国网江苏省电力设计院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0124",
+        "ENT_ENERGY_0001",
+        "ENT_GEN_0145"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "grid_design_institute_nil",
+      "baseline_risk": "名称高度包含国网江苏电力。",
+      "low_confidence_reason": "设计院与省级电网公司同领域且词面相似。",
+      "decisive_evidence": [
+        "设计院",
+        "方案图纸",
+        "不是供电公司"
+      ],
+      "llm_prompt_focus": "区分省级电网公司与设计院",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_078",
+      "text": "报告写明浙江省智慧电力研究院提交算法白皮书，国网浙江电力只是评审单位。",
+      "mention": "浙江省智慧电力研究院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0144",
+        "ENT_ENERGY_0009",
+        "ENT_GEN_0068"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "research_institute_vs_grid_company",
+      "baseline_risk": "电力研究院与电网公司高度相关。",
+      "low_confidence_reason": "候选均在电力或研究机构领域，规则可能按浙江电力误链。",
+      "decisive_evidence": [
+        "研究院",
+        "提交算法白皮书",
+        "评审单位不是主体"
+      ],
+      "llm_prompt_focus": "识别未入库研究院NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_079",
+      "text": "文本称广西新能源调度中心试运行，广西电网只提供历史负荷曲线。",
+      "mention": "广西新能源调度中心",
+      "candidate_entity_ids": [
+        "ENT_GEN_0146",
+        "ENT_GEN_0125",
+        "ENT_ENERGY_0002"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "dispatch_center_nil",
+      "baseline_risk": "地区和电网业务强相关。",
+      "low_confidence_reason": "调度中心与电网公司上下文紧密，容易误链。",
+      "decisive_evidence": [
+        "调度中心",
+        "试运行",
+        "广西电网只提供数据"
+      ],
+      "llm_prompt_focus": "区分中心与电网公司",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_080",
+      "text": "上海电力交易研究所讨论现货市场机制，国网上海电力作为参会单位。",
+      "mention": "上海电力交易研究所",
+      "candidate_entity_ids": [
+        "ENT_GEN_0143",
+        "ENT_GEN_0087",
+        "ENT_GEN_0123"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "power_trade_research_nil",
+      "baseline_risk": "交易、上海、电力多个词触发错误候选。",
+      "low_confidence_reason": "候选既有电网公司又有交易所，均不是研究所。",
+      "decisive_evidence": [
+        "研究所",
+        "现货市场机制",
+        "参会单位"
+      ],
+      "llm_prompt_focus": "识别研究所NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_081",
+      "text": "北京神经医学中心引用天坛医院数据，但公告称该中心是第三方项目协调方。",
+      "mention": "北京神经医学中心",
+      "candidate_entity_ids": [
+        "ENT_GEN_0147",
+        "ENT_GEN_0131",
+        "ENT_GEN_0111"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "medical_center_nil",
+      "baseline_risk": "神经医学语境强烈指向天坛医院。",
+      "low_confidence_reason": "需要结合第三方协调方证据判断不是医院本体。",
+      "decisive_evidence": [
+        "第三方项目协调方",
+        "引用天坛医院数据",
+        "中心"
+      ],
+      "llm_prompt_focus": "医疗中心NIL判断",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_082",
+      "text": "浙江邵逸夫医学研究院与邵逸夫医院合作，前者负责算法评估。",
+      "mention": "浙江邵逸夫医学研究院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0148",
+        "ENT_GEN_0066",
+        "ENT_GEN_0133"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "medical_research_institute_nil",
+      "baseline_risk": "名称包含邵逸夫，容易误链邵逸夫医院。",
+      "low_confidence_reason": "前者/后者语境提示研究院与医院是不同主体。",
+      "decisive_evidence": [
+        "医学研究院",
+        "前者负责算法评估",
+        "与邵逸夫医院合作"
+      ],
+      "llm_prompt_focus": "区分研究院和医院",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_083",
+      "text": "江苏人民医疗集团发布采购公告，江苏省人民医院只是参与投标咨询。",
+      "mention": "江苏人民医疗集团",
+      "candidate_entity_ids": [
+        "ENT_GEN_0149",
+        "ENT_GEN_0133",
+        "ENT_GEN_0112"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "medical_group_nil",
+      "baseline_risk": "名称与江苏省人民医院高度相似。",
+      "low_confidence_reason": "医疗集团与医院主体不同，候选均为医院。",
+      "decisive_evidence": [
+        "医疗集团",
+        "采购公告",
+        "医院只是咨询"
+      ],
+      "llm_prompt_focus": "识别医疗集团NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_084",
+      "text": "华东远程会诊中心协调三家医院接入，华西医院仅提供专家支持。",
+      "mention": "华东远程会诊中心",
+      "candidate_entity_ids": [
+        "ENT_GEN_0131",
+        "ENT_GEN_0148",
+        "ENT_GEN_0149"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "telemedicine_center_nil",
+      "baseline_risk": "远程会诊语义强指向医院候选。",
+      "low_confidence_reason": "协调中心和医院角色不同。",
+      "decisive_evidence": [
+        "协调三家医院",
+        "中心",
+        "仅提供专家支持"
+      ],
+      "llm_prompt_focus": "远程会诊中心NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_085",
+      "text": "北京首都航空服务中心发布值机指引，首都机场和海南航空均为被引用单位。",
+      "mention": "北京首都航空服务中心",
+      "candidate_entity_ids": [
+        "ENT_GEN_0150",
+        "ENT_GEN_0152",
+        "ENT_GEN_0135"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "airport_service_center_nil",
+      "baseline_risk": "首都航空服务中心与首都机场词面接近。",
+      "low_confidence_reason": "服务中心不是机场运营主体或航空公司。",
+      "decisive_evidence": [
+        "服务中心",
+        "值机指引",
+        "被引用单位"
+      ],
+      "llm_prompt_focus": "区分服务中心、机场和航空公司",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_086",
+      "text": "深圳轨道交通研究院评估客流模型，深圳地铁仅提供历史样本。",
+      "mention": "深圳轨道交通研究院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0151",
+        "ENT_GEN_0138",
+        "ENT_GEN_0113"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "metro_research_institute_nil",
+      "baseline_risk": "深圳轨道交通与深圳地铁高度相似。",
+      "low_confidence_reason": "研究院与运营集团不是同一主体。",
+      "decisive_evidence": [
+        "研究院",
+        "评估客流模型",
+        "仅提供样本"
+      ],
+      "llm_prompt_focus": "轨道研究院NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_087",
+      "text": "海南航空旅游研究院发布趋势报告，但海南航空没有参与该项目。",
+      "mention": "海南航空旅游研究院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0152",
+        "ENT_GEN_0114",
+        "ENT_GEN_0135"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "airline_research_institute_nil",
+      "baseline_risk": "名称包含海南航空。",
+      "low_confidence_reason": "上下文明确海南航空未参与，不能误链。",
+      "decisive_evidence": [
+        "旅游研究院",
+        "海南航空没有参与",
+        "趋势报告"
+      ],
+      "llm_prompt_focus": "航空研究院NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_088",
+      "text": "上海机场建设咨询公司中标设计咨询，上海机场只是业主单位。",
+      "mention": "上海机场建设咨询公司",
+      "candidate_entity_ids": [
+        "ENT_GEN_0137",
+        "ENT_GEN_0150",
+        "ENT_GEN_0151"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "airport_consulting_company_nil",
+      "baseline_risk": "名称包含上海机场。",
+      "low_confidence_reason": "咨询公司和机场运营主体角色不同。",
+      "decisive_evidence": [
+        "建设咨询公司",
+        "中标设计咨询",
+        "业主单位"
+      ],
+      "llm_prompt_focus": "机场近名公司NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_089",
+      "text": "中国日报数据研究院发布传播报告，中国日报只是数据来源之一。",
+      "mention": "中国日报数据研究院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0139",
+        "ENT_GEN_0140"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "media_data_institute_nil",
+      "baseline_risk": "名称包含中国日报。",
+      "low_confidence_reason": "数据研究院与报社本体不同。",
+      "decisive_evidence": [
+        "数据研究院",
+        "传播报告",
+        "数据来源之一"
+      ],
+      "llm_prompt_focus": "媒体研究院NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_090",
+      "text": "经济观察日报社参与论坛，经济日报在材料中只是对照媒体。",
+      "mention": "经济观察日报社",
+      "candidate_entity_ids": [
+        "ENT_GEN_0154",
+        "ENT_GEN_0153",
+        "ENT_GEN_0142"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "near_name_media_nil",
+      "baseline_risk": "经济观察日报社和经济日报词面相近。",
+      "low_confidence_reason": "两者不是同一媒体实体。",
+      "decisive_evidence": [
+        "经济观察日报社",
+        "对照媒体",
+        "经济日报"
+      ],
+      "llm_prompt_focus": "近名媒体NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_091",
+      "text": "南方融媒体实验室上线城市专题，南方报业提供内容授权。",
+      "mention": "南方融媒体实验室",
+      "candidate_entity_ids": [
+        "ENT_GEN_0155",
+        "ENT_GEN_0142",
+        "ENT_GEN_0140"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "media_lab_nil",
+      "baseline_risk": "南方融媒体与南方报业语义接近。",
+      "low_confidence_reason": "实验室与集团主体不同。",
+      "decisive_evidence": [
+        "实验室",
+        "上线专题",
+        "提供内容授权"
+      ],
+      "llm_prompt_focus": "融媒体实验室NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_092",
+      "text": "央视财经频道报道新能源价格，央视新闻转载其中一段。",
+      "mention": "央视财经频道",
+      "candidate_entity_ids": [
+        "ENT_GEN_0141",
+        "ENT_GEN_0116",
+        "ENT_GEN_0139"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "media_channel_nil",
+      "baseline_risk": "央视财经频道与央视新闻同属媒体语境。",
+      "low_confidence_reason": "频道未作为实体入库，且不是央视新闻。",
+      "decisive_evidence": [
+        "财经频道",
+        "央视新闻转载",
+        "未作为实体入库"
+      ],
+      "llm_prompt_focus": "频道实体NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_093",
+      "text": "奇瑞新能源研究院发布电池测试报告，奇瑞汽车只是提供测试车辆。",
+      "mention": "奇瑞新能源研究院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0156",
+        "ENT_GEN_0158",
+        "ENT_GEN_0107"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "auto_research_institute_nil",
+      "baseline_risk": "名称包含奇瑞且属于汽车领域。",
+      "low_confidence_reason": "研究院与整车企业主体不同。",
+      "decisive_evidence": [
+        "新能源研究院",
+        "测试报告",
+        "提供测试车辆"
+      ],
+      "llm_prompt_focus": "车企研究院NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_094",
+      "text": "长城智能驾驶实验室披露计划，长城汽车提供样车。",
+      "mention": "长城智能驾驶实验室",
+      "candidate_entity_ids": [
+        "ENT_GEN_0157",
+        "ENT_GEN_0108",
+        "ENT_GEN_0078"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "auto_lab_nil",
+      "baseline_risk": "名称包含长城汽车业务线。",
+      "low_confidence_reason": "实验室未入库，不等于长城汽车。",
+      "decisive_evidence": [
+        "智能驾驶实验室",
+        "提供样车",
+        "披露计划"
+      ],
+      "llm_prompt_focus": "车企实验室NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_095",
+      "text": "吉利智能座舱研究院展示原型系统，吉利汽车只负责车辆适配。",
+      "mention": "吉利智能座舱研究院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0158",
+        "ENT_GEN_0156",
+        "ENT_GEN_0079"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "auto_cockpit_institute_nil",
+      "baseline_risk": "名称包含吉利和智能座舱。",
+      "low_confidence_reason": "研究院与汽车公司主体不同。",
+      "decisive_evidence": [
+        "智能座舱研究院",
+        "原型系统",
+        "车辆适配"
+      ],
+      "llm_prompt_focus": "车企研究院NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_096",
+      "text": "香港绿色债券交易中心发布规则，上交所、深交所和北交所只是参考案例。",
+      "mention": "香港绿色债券交易中心",
+      "candidate_entity_ids": [
+        "ENT_GEN_0087",
+        "ENT_GEN_0088",
+        "ENT_GEN_0123"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "regional_exchange_center_nil",
+      "baseline_risk": "交易中心与交易所候选高度相似。",
+      "low_confidence_reason": "地区和主体均不同。",
+      "decisive_evidence": [
+        "香港",
+        "绿色债券交易中心",
+        "参考案例"
+      ],
+      "llm_prompt_focus": "交易中心NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_097",
+      "text": "微软Azure中国研发中心参与云评测，华为云和百度智能云只是国内对照平台。",
+      "mention": "微软Azure中国研发中心",
+      "candidate_entity_ids": [
+        "ENT_GEN_0129",
+        "ENT_GEN_0130",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "cloud_rnd_center_nil",
+      "baseline_risk": "云平台语义强相似。",
+      "low_confidence_reason": "研发中心不是华为云或百度智能云。",
+      "decisive_evidence": [
+        "微软Azure",
+        "研发中心",
+        "对照平台"
+      ],
+      "llm_prompt_focus": "云研发中心NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_098",
+      "text": "OpenAI能源实验室提交模型说明，百度、华为和字节跳动只是国内候选。",
+      "mention": "OpenAI能源实验室",
+      "candidate_entity_ids": [
+        "ENT_GEN_0070",
+        "ENT_GEN_0051",
+        "ENT_GEN_0075"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "ai_energy_lab_nil",
+      "baseline_risk": "AI公司/实验室候选语义相近。",
+      "low_confidence_reason": "实验室未入库，候选不是同一主体。",
+      "decisive_evidence": [
+        "OpenAI能源实验室",
+        "国内候选",
+        "模型说明"
+      ],
+      "llm_prompt_focus": "外部AI实验室NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_099",
+      "text": "腾讯会议海外版用于跨境评审，腾讯会议本体仅作为国内对照版本。",
+      "mention": "腾讯会议海外版",
+      "candidate_entity_ids": [
+        "ENT_GEN_0104",
+        "ENT_GEN_0126",
+        "ENT_GEN_0127"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "product_variant_nil",
+      "baseline_risk": "产品名完全包含腾讯会议。",
+      "low_confidence_reason": "版本实体未入库，且上下文区分海外版与本体。",
+      "decisive_evidence": [
+        "海外版",
+        "国内对照版本",
+        "腾讯会议本体"
+      ],
+      "llm_prompt_focus": "产品版本NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_100",
+      "text": "国网浙江电力在英文稿中写作 State Grid Zhejiang，后文仍指浙江省电网公司。",
+      "mention": "State Grid Zhejiang",
+      "candidate_entity_ids": [
+        "ENT_GEN_0144",
+        "ENT_GEN_0143",
+        "ENT_GEN_0145"
+      ],
+      "gold_entity_id": "ENT_GEN_0144",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "english_alias_grid_link",
+      "baseline_risk": "英文别名与多个国网省级公司候选相似。",
+      "low_confidence_reason": "需要结合 Zhejiang 判断具体地区。",
+      "decisive_evidence": [
+        "State Grid Zhejiang",
+        "浙江省",
+        "电网公司"
+      ],
+      "llm_prompt_focus": "英文别名消歧"
+    },
+    {
+      "id": "LLM_HARD_101",
+      "text": "China Daily 在英文材料中发布国际传播专题，不是经济日报或人民网。",
+      "mention": "China Daily",
+      "candidate_entity_ids": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0154",
+        "ENT_GEN_0140"
+      ],
+      "gold_entity_id": "ENT_GEN_0153",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "english_alias_media_link",
+      "baseline_risk": "英文媒体名与多个媒体候选并列。",
+      "low_confidence_reason": "需要识别 China Daily 对应中国日报。",
+      "decisive_evidence": [
+        "China Daily",
+        "国际传播专题",
+        "不是经济日报"
+      ],
+      "llm_prompt_focus": "英文媒体别名消歧"
+    },
+    {
+      "id": "LLM_HARD_102",
+      "text": "Chery 在出口车型材料中指奇瑞汽车，不是吉利汽车或特斯拉。",
+      "mention": "Chery",
+      "candidate_entity_ids": [
+        "ENT_GEN_0156",
+        "ENT_GEN_0158",
+        "ENT_GEN_0080"
+      ],
+      "gold_entity_id": "ENT_GEN_0156",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "english_alias_auto_link",
+      "baseline_risk": "英文别名短且候选均为车企。",
+      "low_confidence_reason": "需要依据 Chery 与出口车型上下文判断。",
+      "decisive_evidence": [
+        "Chery",
+        "出口车型",
+        "奇瑞汽车"
+      ],
+      "llm_prompt_focus": "英文车企别名消歧"
+    },
+    {
+      "id": "LLM_HARD_103",
+      "text": "国网山东电力和广西电网都在文中出现，后文该公司继续优化山东侧模型。",
+      "mention": "该公司",
+      "candidate_entity_ids": [
+        "ENT_GEN_0145",
+        "ENT_GEN_0146",
+        "ENT_GEN_0144"
+      ],
+      "gold_entity_id": "ENT_GEN_0145",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "coref_semantic_override",
+      "baseline_risk": "最近实体偏置可能指向广西电网。",
+      "low_confidence_reason": "山东侧模型提示应回指国网山东电力。",
+      "decisive_evidence": [
+        "山东侧模型",
+        "国网山东电力",
+        "广西电网"
+      ],
+      "llm_prompt_focus": "语义线索覆盖最近实体偏置"
+    },
+    {
+      "id": "LLM_HARD_104",
+      "text": "首都机场和海南航空都参与联调，后文该机构负责航站楼旅客服务页面。",
+      "mention": "该机构",
+      "candidate_entity_ids": [
+        "ENT_GEN_0150",
+        "ENT_GEN_0152",
+        "ENT_GEN_0135"
+      ],
+      "gold_entity_id": "ENT_GEN_0150",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "coref_role_disambiguation",
+      "baseline_risk": "该机构可能回指最近航空公司。",
+      "low_confidence_reason": "航站楼旅客服务页面更符合机场运营主体。",
+      "decisive_evidence": [
+        "航站楼",
+        "旅客服务页面",
+        "首都机场"
+      ],
+      "llm_prompt_focus": "角色线索共指消歧"
+    },
+    {
+      "id": "LLM_HARD_105",
+      "text": "中国日报和经济日报都报道政策，后文该机构发布英文摘要。",
+      "mention": "该机构",
+      "candidate_entity_ids": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0154",
+        "ENT_GEN_0140"
+      ],
+      "gold_entity_id": "ENT_GEN_0153",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "coref_media_language_cue",
+      "baseline_risk": "两个媒体候选相邻。",
+      "low_confidence_reason": "英文摘要和国际传播语境指向中国日报。",
+      "decisive_evidence": [
+        "英文摘要",
+        "中国日报",
+        "国际传播"
+      ],
+      "llm_prompt_focus": "语言线索共指消歧"
+    },
+    {
+      "id": "LLM_HARD_106",
+      "text": "奇瑞汽车和吉利汽车都展示新车型，后文该公司强调出口车型认证。",
+      "mention": "该公司",
+      "candidate_entity_ids": [
+        "ENT_GEN_0156",
+        "ENT_GEN_0158",
+        "ENT_GEN_0157"
+      ],
+      "gold_entity_id": "ENT_GEN_0156",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "coref_auto_business_cue",
+      "baseline_risk": "车企候选同类型且相邻。",
+      "low_confidence_reason": "出口车型认证线索指向奇瑞汽车。",
+      "decisive_evidence": [
+        "出口车型认证",
+        "奇瑞汽车",
+        "吉利汽车"
+      ],
+      "llm_prompt_focus": "业务线索共指消歧"
+    },
+    {
+      "id": "LLM_HARD_107",
+      "text": "国网江苏新能源服务公司和国网江苏电力同时出现，前者未入库，后者是省级电网公司。",
+      "mention": "国网江苏新能源服务公司",
+      "candidate_entity_ids": [
+        "ENT_GEN_0124",
+        "ENT_ENERGY_0001",
+        "ENT_GEN_0144"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "same_prefix_nil",
+      "baseline_risk": "与已入库国网江苏电力共享长前缀。",
+      "low_confidence_reason": "前者明确是未入库新能源服务公司。",
+      "decisive_evidence": [
+        "前者未入库",
+        "新能源服务公司",
+        "省级电网公司"
+      ],
+      "llm_prompt_focus": "同前缀实体NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_108",
+      "text": "北京首都航空服务中心和首都机场同时出现，前者负责客服指引，后者负责机场运行。",
+      "mention": "北京首都航空服务中心",
+      "candidate_entity_ids": [
+        "ENT_GEN_0150",
+        "ENT_GEN_0152",
+        "ENT_GEN_0135"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "role_contrast_nil",
+      "baseline_risk": "名称高度相似且上下文同时出现正确候选。",
+      "low_confidence_reason": "前者/后者角色对比显示不是同一实体。",
+      "decisive_evidence": [
+        "前者负责客服指引",
+        "后者负责机场运行"
+      ],
+      "llm_prompt_focus": "角色对比NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_109",
+      "text": "南方融媒体实验室和南方报业同时出现，前者开发专题页面，后者提供内容授权。",
+      "mention": "南方融媒体实验室",
+      "candidate_entity_ids": [
+        "ENT_GEN_0155",
+        "ENT_GEN_0142",
+        "ENT_GEN_0140"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "media_lab_role_contrast_nil",
+      "baseline_risk": "同前缀媒体名容易误链。",
+      "low_confidence_reason": "前者和后者角色不同，实验室未入库。",
+      "decisive_evidence": [
+        "前者开发专题页面",
+        "后者提供内容授权"
+      ],
+      "llm_prompt_focus": "媒体实验室NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_HARD_110",
+      "text": "长城智能驾驶实验室和长城汽车同时出现，前者负责算法测试，后者提供样车。",
+      "mention": "长城智能驾驶实验室",
+      "candidate_entity_ids": [
+        "ENT_GEN_0157",
+        "ENT_GEN_0108",
+        "ENT_GEN_0078"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "auto_lab_role_contrast_nil",
+      "baseline_risk": "同品牌车企候选强干扰。",
+      "low_confidence_reason": "实验室与整车企业职责不同。",
+      "decisive_evidence": [
+        "前者负责算法测试",
+        "后者提供样车"
+      ],
+      "llm_prompt_focus": "车企实验室NIL",
+      "nil_reason": "entity_not_in_kb"
     }
   ],
   "statistics": {
-    "sample_count": 63,
+    "sample_count": 110,
     "nil_count": 22,
     "non_nil_count": 33,
     "hard_count": 42,
     "medium_count": 13,
-    "nil_like_sample_count": 26
+    "nil_like_sample_count": 64
   }
 }

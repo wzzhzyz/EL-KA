@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T10:13:58",
+  "generated_at": "2026-07-10T17:12:23",
   "project": "课题10：实体链接与知识对齐智能体",
   "member_scope": "第三成员欧小红：数据处理与实体链接模块实现",
   "dataset_contracts": {
@@ -14,9 +14,9 @@
   },
   "summary": {
     "knowledge_base": {
-      "entities": 142,
+      "entities": 158,
       "entity_types": {
-        "GRID_COMPANY": 4,
+        "GRID_COMPANY": 8,
         "POWER_GENERATOR": 10,
         "RESEARCH_INSTITUTION": 6,
         "POWER_FACILITY": 7,
@@ -25,43 +25,43 @@
         "REGION": 11,
         "TECH_COMPANY": 15,
         "FINANCIAL_INSTITUTION": 14,
-        "AUTO_MANUFACTURER": 6,
+        "AUTO_MANUFACTURER": 9,
         "GOVERNMENT_AGENCY": 7,
         "EDUCATIONAL_INSTITUTION": 7,
         "CONSUMER_PRODUCT": 7,
         "SOFTWARE_PLATFORM": 9,
-        "MEDICAL_INSTITUTION": 6,
-        "TRANSPORTATION_ORG": 6,
-        "MEDIA_ORG": 6
+        "MEDICAL_INSTITUTION": 9,
+        "TRANSPORTATION_ORG": 9,
+        "MEDIA_ORG": 9
       },
-      "alias_total": 446
+      "alias_total": 490
     },
     "eval_dataset.json": {
       "contract": "综合实体链接、消歧、NIL 评测集",
-      "samples": 240,
-      "nil_samples": 52,
+      "samples": 264,
+      "nil_samples": 64,
       "difficulty": {
         "easy": 49,
-        "medium": 139,
-        "hard": 52
+        "medium": 151,
+        "hard": 64
       },
-      "scenario_count": 184
+      "scenario_count": 201
     },
     "mention_linking_test.json": {
       "contract": "已识别 mention 输入下的实体链接主评测集",
-      "samples": 379,
-      "mentions": 755,
-      "nil_mentions": 123,
-      "multi_mention_samples": 173,
+      "samples": 505,
+      "mentions": 1052,
+      "nil_mentions": 185,
+      "multi_mention_samples": 295,
       "empty_mention_samples": 2,
-      "scenario_count": 312
+      "scenario_count": 423
     },
     "coreference_long_text_test.json": {
       "contract": "长文本共指消解专项评测集",
-      "samples": 111,
-      "coreference_cases": 203,
-      "nil_cases": 46,
-      "anaphor_surface_count": 39
+      "samples": 154,
+      "coreference_cases": 257,
+      "nil_cases": 59,
+      "anaphor_surface_count": 41
     },
     "llm_fallback_ambiguity_test.json": {
       "contract": "LLM 兜底疑难消歧样本集",
@@ -74,22 +74,22 @@
     },
     "llm_fallback_difficult_cases.json": {
       "contract": "高歧义、低置信度困难样本集",
-      "samples": 63,
-      "nil_samples": 26,
+      "samples": 110,
+      "nil_samples": 64,
       "difficulty": {
-        "hard": 46,
-        "medium": 17
+        "hard": 90,
+        "medium": 20
       }
     },
     "candidate_retrieval_test.json": {
       "contract": "候选实体召回专项测试集",
-      "samples": 151,
-      "nil_like_samples": 16
+      "samples": 212,
+      "nil_like_samples": 48
     },
     "disambiguation_test.json": {
       "contract": "实体消歧与排序专项测试集",
-      "samples": 132,
-      "nil_like_samples": 29
+      "samples": 154,
+      "nil_like_samples": 41
     },
     "ner_test_dataset.json": {
       "contract": "NER 辅助测试集，不作为最终输入契约主数据",
@@ -98,10 +98,10 @@
     },
     "batch_texts/batch_ground_truth": {
       "contract": "批量接口联调与 batch 评测输入",
-      "texts": 155,
-      "entries": 155,
-      "mentions": 258,
-      "nil_mentions": 46
+      "texts": 214,
+      "entries": 214,
+      "mentions": 452,
+      "nil_mentions": 86
     }
   },
   "errors": [],

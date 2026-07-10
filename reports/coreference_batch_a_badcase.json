@@ -1,0 +1,21 @@
+{
+  "case_id": "BATCH_A_COREF_BADCASE_001",
+  "original_sample_id": "COREF_LONG_114",
+  "original_surface": "两家机构",
+  "expected": {
+    "entity_id": null,
+    "is_nil": true
+  },
+  "observed_prediction": {
+    "entity_id": "ENT_GEN_0133",
+    "is_nil": false,
+    "rule": "recency_type_sentence"
+  },
+  "analysis": "当前本地共指规则的集合指代表达表包含两家公司、两家企业、上述机构等，但不包含“两家机构”。因此该表达被当作普通名词性指代，触发最近类型兼容实体回指，误链到中山医院。",
+  "decision": "不修改核心算法；批次A用于Schema验证，正式样本改为当前规则已支持的“上述机构”。“两家机构”保留为后续批次D困难共指样本/算法边界待处理项。",
+  "resolution": {
+    "status": "resolved",
+    "method": "将“两家机构”加入本地集合指代表达表，并新增正式回归样本验证 NIL 输出。",
+    "regression_sample_id": "COREF_LONG_154"
+  }
+}

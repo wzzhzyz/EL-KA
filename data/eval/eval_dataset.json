@@ -5,7 +5,7 @@
     "kb_version": "2.1.0",
     "kb_name": "energy_industry_kb",
     "created_date": "2026-06-26",
-    "total_samples": 240,
+    "total_samples": 264,
     "description": "课题10 实体链接评测数据集——覆盖简称、别名、英文、同名异义、上下文消歧、NIL、OCR错误、拼写错误、中英混写、长文本多mention、共指消解等11类场景；7.9新增跨领域综合评测样本，覆盖教育科研、互联网、金融、政务、区域、软件平台和通信运营商。；新增多领域综合样本，补充相似实体、英文别名、多实体干扰、NIL与共指边界。",
     "usage": "用于 Candidate Generation 召回率、Disambiguation 准确率、NIL Detection F1、Coreference Resolution 精度的自动化评测",
     "coref_method": "rule_priority",
@@ -5091,6 +5091,558 @@
       "scenario": "长尾-能源地区",
       "notes": "地区实体正例。",
       "id": "EVAL_240"
+    },
+    {
+      "text": "国网上海电力部署配网巡检机器人。",
+      "mention": "国网上海电力",
+      "mention_start": 0,
+      "mention_end": 6,
+      "gold_entity": "ENT_GEN_0143",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0143",
+        "ENT_GEN_0124",
+        "ENT_ENERGY_0001"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0143",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-电网正例",
+      "notes": "新增弱类型实体的简称链接。",
+      "id": "EVAL_241"
+    },
+    {
+      "text": "国网浙江电力推进新能源并网调度。",
+      "mention": "国网浙江电力",
+      "mention_start": 0,
+      "mention_end": 6,
+      "gold_entity": "ENT_GEN_0144",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0144",
+        "ENT_GEN_0145",
+        "ENT_GEN_0124"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0144",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-电网正例",
+      "notes": "地区电网简称消歧。",
+      "id": "EVAL_242"
+    },
+    {
+      "text": "广西电网评估海上风电接入能力。",
+      "mention": "广西电网",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0146",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0146",
+        "ENT_GEN_0125",
+        "ENT_ENERGY_0002"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0146",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-电网正例",
+      "notes": "省级电网公司正例。",
+      "id": "EVAL_243"
+    },
+    {
+      "text": "天坛医院发布神经医学远程会诊流程。",
+      "mention": "天坛医院",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0147",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0147",
+        "ENT_GEN_0131",
+        "ENT_GEN_0111"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0147",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-医疗正例",
+      "notes": "医院简称消歧。",
+      "id": "EVAL_244"
+    },
+    {
+      "text": "邵逸夫医院接入智慧医院平台。",
+      "mention": "邵逸夫医院",
+      "mention_start": 0,
+      "mention_end": 5,
+      "gold_entity": "ENT_GEN_0148",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0148",
+        "ENT_GEN_0149",
+        "ENT_GEN_0133"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0148",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-医疗正例",
+      "notes": "新增医疗机构召回。",
+      "id": "EVAL_245"
+    },
+    {
+      "text": "首都机场发布暑运保障方案。",
+      "mention": "首都机场",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0150",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0150",
+        "ENT_GEN_0137",
+        "ENT_GEN_0135"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0150",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-交通正例",
+      "notes": "机场机构简称。",
+      "id": "EVAL_246"
+    },
+    {
+      "text": "深圳地铁更新晚高峰运行图。",
+      "mention": "深圳地铁",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0151",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0151",
+        "ENT_GEN_0138",
+        "ENT_GEN_0113"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0151",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-交通正例",
+      "notes": "地铁机构消歧。",
+      "id": "EVAL_247"
+    },
+    {
+      "text": "中国日报报道绿色金融政策。",
+      "mention": "中国日报",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0153",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0139",
+        "ENT_GEN_0140"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0153",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-媒体正例",
+      "notes": "新增媒体机构正例。",
+      "id": "EVAL_248"
+    },
+    {
+      "text": "经济日报解读产业政策。",
+      "mention": "经济日报",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0154",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0154",
+        "ENT_GEN_0153",
+        "ENT_GEN_0139"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0154",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-媒体正例",
+      "notes": "经济媒体机构链接。",
+      "id": "EVAL_249"
+    },
+    {
+      "text": "奇瑞汽车发布新能源车型规划。",
+      "mention": "奇瑞汽车",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0156",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0156",
+        "ENT_GEN_0058",
+        "ENT_GEN_0107"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0156",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-车企正例",
+      "notes": "新增车企正例。",
+      "id": "EVAL_250"
+    },
+    {
+      "text": "长城汽车测试智能驾驶接口。",
+      "mention": "长城汽车",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0157",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0157",
+        "ENT_GEN_0108",
+        "ENT_GEN_0078"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0157",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-车企正例",
+      "notes": "汽车制造商链接。",
+      "id": "EVAL_251"
+    },
+    {
+      "text": "吉利汽车披露智能座舱计划。",
+      "mention": "吉利汽车",
+      "mention_start": 0,
+      "mention_end": 4,
+      "gold_entity": "ENT_GEN_0158",
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0158",
+        "ENT_GEN_0156",
+        "ENT_GEN_0108"
+      ],
+      "expected_result": {
+        "linked": true,
+        "correct_entity": "ENT_GEN_0158",
+        "nil": false,
+        "confidence": "medium"
+      },
+      "difficulty": "medium",
+      "scenario": "批次B-车企正例",
+      "notes": "新增车企简称链接。",
+      "id": "EVAL_252"
+    },
+    {
+      "text": "国网江苏新能源服务公司参与储能调度试点，国网江苏电力仅提供接口支持。",
+      "mention": "国网江苏新能源服务公司",
+      "mention_start": 0,
+      "mention_end": 11,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0124",
+        "ENT_ENERGY_0001",
+        "ENT_GEN_0144"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-电网近似NIL",
+      "notes": "名称包含国网江苏但不是国网江苏省电力有限公司。",
+      "id": "EVAL_253"
+    },
+    {
+      "text": "浙江省智慧电力研究院发布负荷预测报告，国网浙江电力参与评审。",
+      "mention": "浙江省智慧电力研究院",
+      "mention_start": 0,
+      "mention_end": 10,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0144",
+        "ENT_ENERGY_0009",
+        "ENT_GEN_0068"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-电力研究院NIL",
+      "notes": "研究院未入库，不能误链电网公司或已有研究机构。",
+      "id": "EVAL_254"
+    },
+    {
+      "text": "山东鲁能配电服务中心提交巡检计划，国网山东电力只是监管接口。",
+      "mention": "山东鲁能配电服务中心",
+      "mention_start": 0,
+      "mention_end": 10,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0145",
+        "ENT_ENERGY_0001",
+        "ENT_GEN_0143"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-地区电网NIL",
+      "notes": "地区和配电词相似但主体未入库。",
+      "id": "EVAL_255"
+    },
+    {
+      "text": "广西新能源调度中心试运行，广西电网提供历史负荷数据。",
+      "mention": "广西新能源调度中心",
+      "mention_start": 0,
+      "mention_end": 9,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0146",
+        "ENT_GEN_0125",
+        "ENT_ENERGY_0002"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-调度中心NIL",
+      "notes": "中心类机构未入库，不应误链广西电网。",
+      "id": "EVAL_256"
+    },
+    {
+      "text": "上海电力交易研究所讨论市场化交易，国网上海电力作为参会单位。",
+      "mention": "上海电力交易研究所",
+      "mention_start": 0,
+      "mention_end": 9,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0143",
+        "ENT_GEN_0087",
+        "ENT_GEN_0123"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-交易研究所NIL",
+      "notes": "研究所不是电网公司或证券交易所。",
+      "id": "EVAL_257"
+    },
+    {
+      "text": "北京神经医学中心引用天坛医院数据，但该中心未入库。",
+      "mention": "北京神经医学中心",
+      "mention_start": 0,
+      "mention_end": 8,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0147",
+        "ENT_GEN_0131",
+        "ENT_GEN_0111"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-医疗中心NIL",
+      "notes": "医学中心与医院语义接近但不是同一实体。",
+      "id": "EVAL_258"
+    },
+    {
+      "text": "浙江邵逸夫医学研究院与邵逸夫医院合作开发质控模型。",
+      "mention": "浙江邵逸夫医学研究院",
+      "mention_start": 0,
+      "mention_end": 10,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0148",
+        "ENT_GEN_0066",
+        "ENT_GEN_0133"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-医学研究院NIL",
+      "notes": "研究院未入库，不能误链医院。",
+      "id": "EVAL_259"
+    },
+    {
+      "text": "江苏人民医疗集团发布采购公告，江苏省人民医院只是合作方。",
+      "mention": "江苏人民医疗集团",
+      "mention_start": 0,
+      "mention_end": 8,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0149",
+        "ENT_GEN_0133",
+        "ENT_GEN_0112"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-医疗集团NIL",
+      "notes": "集团和医院名称近似但主体不同。",
+      "id": "EVAL_260"
+    },
+    {
+      "text": "华东远程会诊中心协调多院会诊，华西医院提供专家支持。",
+      "mention": "华东远程会诊中心",
+      "mention_start": 0,
+      "mention_end": 8,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0131",
+        "ENT_GEN_0148",
+        "ENT_GEN_0149"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-远程会诊中心NIL",
+      "notes": "中心未入库，不能误链任一医院。",
+      "id": "EVAL_261"
+    },
+    {
+      "text": "北京首都航空服务中心发布值机指引，首都机场转发通知。",
+      "mention": "北京首都航空服务中心",
+      "mention_start": 0,
+      "mention_end": 10,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0150",
+        "ENT_GEN_0135",
+        "ENT_GEN_0152"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-航空服务中心NIL",
+      "notes": "服务中心不是首都机场或航空公司。",
+      "id": "EVAL_262"
+    },
+    {
+      "text": "深圳轨道交通研究院评估客流模型，深圳地铁提供历史数据。",
+      "mention": "深圳轨道交通研究院",
+      "mention_start": 0,
+      "mention_end": 9,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0151",
+        "ENT_GEN_0138",
+        "ENT_GEN_0113"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-轨道研究院NIL",
+      "notes": "研究院未入库，不应误链地铁集团。",
+      "id": "EVAL_263"
+    },
+    {
+      "text": "海南航空旅游研究院发布报告，海南航空未参与该项目。",
+      "mention": "海南航空旅游研究院",
+      "mention_start": 0,
+      "mention_end": 9,
+      "gold_entity": null,
+      "gold_entity_name": null,
+      "candidate_entities": [
+        "ENT_GEN_0152",
+        "ENT_GEN_0114",
+        "ENT_GEN_0135"
+      ],
+      "expected_result": {
+        "linked": false,
+        "correct_entity": null,
+        "nil": true,
+        "confidence": "low"
+      },
+      "difficulty": "hard",
+      "scenario": "批次C-航空研究院NIL",
+      "notes": "研究院名称含海南航空但不是航空公司实体。",
+      "id": "EVAL_264"
     }
   ]
 }

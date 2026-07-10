@@ -4831,6 +4831,1628 @@
           "is_nil": false
         }
       ]
+    },
+    {
+      "id": "COREF_LONG_112",
+      "text": "国网江苏电力部署巡检平台。该公司随后在南京扩大试点。",
+      "mentions": [
+        {
+          "mention": "国网江苏电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0124",
+          "standard_entity": "国网江苏省电力有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0124",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_113",
+      "text": "小鹏和理想分别发布补能方案。前者强调城区超充，后者强调家庭充电。",
+      "mentions": [
+        {
+          "mention": "小鹏",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0078",
+          "standard_entity": "小鹏汽车有限公司"
+        },
+        {
+          "mention": "理想",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0079",
+          "standard_entity": "理想汽车"
+        },
+        {
+          "mention": "前者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0078",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0079",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_114",
+      "text": "华西医院和中山医院共同测试远程会诊。上述机构不能合并为单一实体。",
+      "mentions": [
+        {
+          "mention": "华西医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0131",
+          "standard_entity": "四川大学华西医院"
+        },
+        {
+          "mention": "中山医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0133",
+          "standard_entity": "复旦大学附属中山医院"
+        },
+        {
+          "mention": "上述机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_115",
+      "text": "百度智能云提供模型训练资源。项目经过两轮评估。该平台最终进入测试名单。",
+      "mentions": [
+        {
+          "mention": "百度智能云",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0130",
+          "standard_entity": "百度智能云"
+        },
+        {
+          "mention": "该平台",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0130",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_116",
+      "text": "人民日报引用国家能源局文件。该机构随后解释政策口径。",
+      "mentions": [
+        {
+          "mention": "人民日报",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0139",
+          "standard_entity": "人民日报社"
+        },
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0059",
+          "standard_entity": "国家能源局"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0059",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_117",
+      "text": "国航和东航同步运行数据。它们都属于航空运输主体。",
+      "mentions": [
+        {
+          "mention": "国航",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0135",
+          "standard_entity": "中国国际航空股份有限公司"
+        },
+        {
+          "mention": "东航",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0136",
+          "standard_entity": "中国东方航空股份有限公司"
+        },
+        {
+          "mention": "它们",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_118",
+      "text": "国网上海电力完成配网巡检。项目经过两轮验收。监管部门要求补充日志。该公司随后提交整改清单。",
+      "mentions": [
+        {
+          "mention": "国网上海电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0143",
+          "standard_entity": "国网上海市电力公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0143",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_119",
+      "text": "国网浙江电力发布调度方案。地方部门完成备案。项目组更新接口。该公司继续开展联调。",
+      "mentions": [
+        {
+          "mention": "国网浙江电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0144",
+          "standard_entity": "国网浙江省电力有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0144",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_120",
+      "text": "天坛医院上线远程会诊。平台完成灰度测试。患者端开始试运行。该院随后发布使用说明。",
+      "mentions": [
+        {
+          "mention": "天坛医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0147",
+          "standard_entity": "北京天坛医院"
+        },
+        {
+          "mention": "该院",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0147",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_121",
+      "text": "首都机场调整航班保障流程。系统完成压力测试。调度台更新预案。该机构随后开放数据接口。",
+      "mentions": [
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0150",
+          "standard_entity": "北京首都国际机场股份有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0150",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_122",
+      "text": "中国日报推出国际传播专题。编辑部完成终审。专题页面上线。该机构随后发布英文摘要。",
+      "mentions": [
+        {
+          "mention": "中国日报",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0153",
+          "standard_entity": "中国日报社"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0153",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_123",
+      "text": "奇瑞汽车发布出口车型计划。海外团队完成路测。供应链更新排产。该公司随后提交合规材料。",
+      "mentions": [
+        {
+          "mention": "奇瑞汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0156",
+          "standard_entity": "奇瑞汽车股份有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0156",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_124",
+      "text": "国网江苏电力和国网浙江电力分别发布迎峰度夏方案。前者强调配网巡检，后者强调新能源并网。",
+      "mentions": [
+        {
+          "mention": "国网江苏电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0124",
+          "standard_entity": "国网江苏省电力有限公司"
+        },
+        {
+          "mention": "国网浙江电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0144",
+          "standard_entity": "国网浙江省电力有限公司"
+        },
+        {
+          "mention": "前者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0124",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0144",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_125",
+      "text": "天坛医院和邵逸夫医院分别测试远程会诊。前者聚焦神经医学，后者评估智慧医院流程。",
+      "mentions": [
+        {
+          "mention": "天坛医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0147",
+          "standard_entity": "北京天坛医院"
+        },
+        {
+          "mention": "邵逸夫医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0148",
+          "standard_entity": "浙江大学医学院附属邵逸夫医院"
+        },
+        {
+          "mention": "前者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0147",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0148",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_126",
+      "text": "首都机场和深圳地铁同时更新客流预测模型。前者关注航班保障，后者关注晚高峰调度。",
+      "mentions": [
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0150",
+          "standard_entity": "北京首都国际机场股份有限公司"
+        },
+        {
+          "mention": "深圳地铁",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0151",
+          "standard_entity": "深圳地铁集团有限公司"
+        },
+        {
+          "mention": "前者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0150",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0151",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_127",
+      "text": "中国日报和经济日报分别解读绿色金融政策。前者强调国际传播，后者强调产业影响。",
+      "mentions": [
+        {
+          "mention": "中国日报",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0153",
+          "standard_entity": "中国日报社"
+        },
+        {
+          "mention": "经济日报",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0154",
+          "standard_entity": "经济日报社"
+        },
+        {
+          "mention": "前者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0153",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0154",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_128",
+      "text": "奇瑞汽车和吉利汽车分别展示智能座舱。前者强调出口车型，后者强调车机生态。",
+      "mentions": [
+        {
+          "mention": "奇瑞汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0156",
+          "standard_entity": "奇瑞汽车股份有限公司"
+        },
+        {
+          "mention": "吉利汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0158",
+          "standard_entity": "吉利汽车控股有限公司"
+        },
+        {
+          "mention": "前者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0156",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0158",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_129",
+      "text": "国网上海电力、国网山东电力和广西电网均参加负荷预测评审。上述机构不能合并为一个实体。",
+      "mentions": [
+        {
+          "mention": "国网上海电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0143",
+          "standard_entity": "国网上海市电力公司"
+        },
+        {
+          "mention": "国网山东电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0145",
+          "standard_entity": "国网山东省电力公司"
+        },
+        {
+          "mention": "广西电网",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0146",
+          "standard_entity": "广西电网有限责任公司"
+        },
+        {
+          "mention": "上述机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_130",
+      "text": "华西医院、天坛医院和江苏省人民医院均参与远程会诊。多家机构的联合项目不对应单一实体。",
+      "mentions": [
+        {
+          "mention": "华西医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0131",
+          "standard_entity": "四川大学华西医院"
+        },
+        {
+          "mention": "天坛医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0147",
+          "standard_entity": "北京天坛医院"
+        },
+        {
+          "mention": "江苏省人民医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0149",
+          "standard_entity": "江苏省人民医院"
+        },
+        {
+          "mention": "多家机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_131",
+      "text": "首都机场、上海机场和海南航空均参与航旅联调。上述机构不能输出为单一 entity_id。",
+      "mentions": [
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0150",
+          "standard_entity": "北京首都国际机场股份有限公司"
+        },
+        {
+          "mention": "上海机场",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0137",
+          "standard_entity": "上海国际机场股份有限公司"
+        },
+        {
+          "mention": "海南航空",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0152",
+          "standard_entity": "海南航空控股股份有限公司"
+        },
+        {
+          "mention": "上述机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_132",
+      "text": "中国日报、经济日报和南方报业共同制作专题。多家机构只表示集合，不能绑定单一媒体实体。",
+      "mentions": [
+        {
+          "mention": "中国日报",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0153",
+          "standard_entity": "中国日报社"
+        },
+        {
+          "mention": "经济日报",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0154",
+          "standard_entity": "经济日报社"
+        },
+        {
+          "mention": "南方报业",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0155",
+          "standard_entity": "南方报业传媒集团"
+        },
+        {
+          "mention": "多家机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_133",
+      "text": "奇瑞汽车、长城汽车和吉利汽车均展示新车型。上述企业不能合并为单一汽车实体。",
+      "mentions": [
+        {
+          "mention": "奇瑞汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0156",
+          "standard_entity": "奇瑞汽车股份有限公司"
+        },
+        {
+          "mention": "长城汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0157",
+          "standard_entity": "长城汽车股份有限公司"
+        },
+        {
+          "mention": "吉利汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0158",
+          "standard_entity": "吉利汽车控股有限公司"
+        },
+        {
+          "mention": "上述企业",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_134",
+      "text": "国网上海电力完成接口改造。浙江省智慧电力研究院提交外部报告。该公司随后开放测试环境。",
+      "mentions": [
+        {
+          "mention": "国网上海电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0143",
+          "standard_entity": "国网上海市电力公司"
+        },
+        {
+          "mention": "浙江省智慧电力研究院",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0143",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_135",
+      "text": "天坛医院完成系统升级。北京神经医学中心提交外部材料。该院随后安排专家复核。",
+      "mentions": [
+        {
+          "mention": "天坛医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0147",
+          "standard_entity": "北京天坛医院"
+        },
+        {
+          "mention": "北京神经医学中心",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name"
+        },
+        {
+          "mention": "该院",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0147",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_136",
+      "text": "首都机场完成航班保障联调。北京首都航空服务中心发布外部指引。该机构随后更新旅客服务页面。",
+      "mentions": [
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0150",
+          "standard_entity": "北京首都国际机场股份有限公司"
+        },
+        {
+          "mention": "北京首都航空服务中心",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0150",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_137",
+      "text": "中国日报完成英文专题上线。中国日报数据研究院提交外部分析。该机构随后发布摘要。",
+      "mentions": [
+        {
+          "mention": "中国日报",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0153",
+          "standard_entity": "中国日报社"
+        },
+        {
+          "mention": "中国日报数据研究院",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0153",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_138",
+      "text": "奇瑞汽车完成出口车型测试。奇瑞新能源研究院提交外部报告。该公司随后发布量产计划。",
+      "mentions": [
+        {
+          "mention": "奇瑞汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0156",
+          "standard_entity": "奇瑞汽车股份有限公司"
+        },
+        {
+          "mention": "奇瑞新能源研究院",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0156",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_139",
+      "text": "国网山东电力先完成负荷预测。随后广西电网提交对比数据。该公司继续优化山东侧模型。",
+      "mentions": [
+        {
+          "mention": "国网山东电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0145",
+          "standard_entity": "国网山东省电力公司"
+        },
+        {
+          "mention": "广西电网",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0146",
+          "standard_entity": "广西电网有限责任公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0146",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_140",
+      "text": "邵逸夫医院先完成质控模型。随后江苏省人民医院接入平台。该院继续负责江苏侧复核。",
+      "mentions": [
+        {
+          "mention": "邵逸夫医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0148",
+          "standard_entity": "浙江大学医学院附属邵逸夫医院"
+        },
+        {
+          "mention": "江苏省人民医院",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0149",
+          "standard_entity": "江苏省人民医院"
+        },
+        {
+          "mention": "该院",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0149",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_141",
+      "text": "深圳地铁先发布运行图。随后广州地铁共享客流样本。该机构继续更新深圳侧模型。",
+      "mentions": [
+        {
+          "mention": "深圳地铁",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0151",
+          "standard_entity": "深圳地铁集团有限公司"
+        },
+        {
+          "mention": "广州地铁",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0138",
+          "standard_entity": "广州地铁集团有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0138",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_142",
+      "text": "经济日报先发布政策解读。随后人民网转载摘要。该机构继续跟踪经济影响。",
+      "mentions": [
+        {
+          "mention": "经济日报",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0154",
+          "standard_entity": "经济日报社"
+        },
+        {
+          "mention": "人民网",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0140",
+          "standard_entity": "人民网股份有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0140",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_143",
+      "text": "长城汽车先披露智能驾驶接口。随后上汽集团提交联调数据。该公司继续负责后一组样车。",
+      "mentions": [
+        {
+          "mention": "长城汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0157",
+          "standard_entity": "长城汽车股份有限公司"
+        },
+        {
+          "mention": "上汽集团",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0108",
+          "standard_entity": "上海汽车集团股份有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0108",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_144",
+      "text": "国网江苏电力、国网浙江电力和浙江省智慧电力研究院共同参与评审。上述机构中包含未入库主体，因此不能输出单一实体。",
+      "mentions": [
+        {
+          "mention": "国网江苏电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0124",
+          "standard_entity": "国网江苏省电力有限公司"
+        },
+        {
+          "mention": "国网浙江电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0144",
+          "standard_entity": "国网浙江省电力有限公司"
+        },
+        {
+          "mention": "浙江省智慧电力研究院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name"
+        },
+        {
+          "mention": "上述机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_145",
+      "text": "天坛医院、华西医院和北京神经医学中心共同参与材料审核。上述机构中存在未入库主体，不能强制绑定单一医院。",
+      "mentions": [
+        {
+          "mention": "天坛医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0147",
+          "standard_entity": "北京天坛医院"
+        },
+        {
+          "mention": "华西医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0131",
+          "standard_entity": "四川大学华西医院"
+        },
+        {
+          "mention": "北京神经医学中心",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name"
+        },
+        {
+          "mention": "上述机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_146",
+      "text": "首都机场、海南航空和北京首都航空服务中心共同发布提示。上述机构中存在未入库主体，不能合并为一个交通实体。",
+      "mentions": [
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0150",
+          "standard_entity": "北京首都国际机场股份有限公司"
+        },
+        {
+          "mention": "海南航空",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0152",
+          "standard_entity": "海南航空控股股份有限公司"
+        },
+        {
+          "mention": "北京首都航空服务中心",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name"
+        },
+        {
+          "mention": "上述机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_147",
+      "text": "中国日报、经济日报和经济观察日报社共同参加论坛。上述机构中存在未入库媒体，不能输出单一 entity_id。",
+      "mentions": [
+        {
+          "mention": "中国日报",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0153",
+          "standard_entity": "中国日报社"
+        },
+        {
+          "mention": "经济日报",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0154",
+          "standard_entity": "经济日报社"
+        },
+        {
+          "mention": "经济观察日报社",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name"
+        },
+        {
+          "mention": "上述机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_148",
+      "text": "奇瑞汽车、长城汽车和长城智能驾驶实验室共同参与测试。上述企业中包含未入库实验室，不能合并为单一企业。",
+      "mentions": [
+        {
+          "mention": "奇瑞汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0156",
+          "standard_entity": "奇瑞汽车股份有限公司"
+        },
+        {
+          "mention": "长城汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0157",
+          "standard_entity": "长城汽车股份有限公司"
+        },
+        {
+          "mention": "长城智能驾驶实验室",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name"
+        },
+        {
+          "mention": "上述企业",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_149",
+      "text": "国网上海电力发布公告。该公司完成接口升级。随后国网浙江电力接入。该公司继续优化浙江侧调度。",
+      "mentions": [
+        {
+          "mention": "国网上海电力",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0143",
+          "standard_entity": "国网上海市电力公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "国网浙江电力",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0144",
+          "standard_entity": "国网浙江省电力有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0143",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0144",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_150",
+      "text": "天坛医院完成试点。该院发布流程。随后江苏省人民医院接入。该院负责江苏侧复核。",
+      "mentions": [
+        {
+          "mention": "天坛医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0147",
+          "standard_entity": "北京天坛医院"
+        },
+        {
+          "mention": "该院",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "江苏省人民医院",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0149",
+          "standard_entity": "江苏省人民医院"
+        },
+        {
+          "mention": "该院",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0147",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0149",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_151",
+      "text": "首都机场完成保障联调。该机构更新旅客页面。随后深圳地铁共享客流模型。该机构继续优化地铁调度。",
+      "mentions": [
+        {
+          "mention": "首都机场",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0150",
+          "standard_entity": "北京首都国际机场股份有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "深圳地铁",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0151",
+          "standard_entity": "深圳地铁集团有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0150",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0151",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_152",
+      "text": "中国日报完成专题上线。该机构发布英文摘要。随后南方报业推出地方案例。该机构继续跟踪城市治理。",
+      "mentions": [
+        {
+          "mention": "中国日报",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0153",
+          "standard_entity": "中国日报社"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "南方报业",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0155",
+          "standard_entity": "南方报业传媒集团"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0153",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0155",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_153",
+      "text": "奇瑞汽车完成出口车型测试。该公司发布计划。随后吉利汽车展示智能座舱。该公司继续更新车机生态。",
+      "mentions": [
+        {
+          "mention": "奇瑞汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0156",
+          "standard_entity": "奇瑞汽车股份有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "吉利汽车",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0158",
+          "standard_entity": "吉利汽车控股有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 3,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0156",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0158",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_154",
+      "text": "华西医院和中山医院共同测试远程会诊。两家机构不能合并为单一实体。",
+      "mentions": [
+        {
+          "mention": "华西医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0131",
+          "standard_entity": "四川大学华西医院"
+        },
+        {
+          "mention": "中山医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0133",
+          "standard_entity": "复旦大学附属中山医院"
+        },
+        {
+          "mention": "两家机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
     }
   ]
 }
