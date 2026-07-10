@@ -1,6 +1,6 @@
 {
   "dataset_name": "disambiguation_confidence_test",
-  "version": "1.2",
+  "version": "1.4",
   "purpose": "消歧模块置信度分层测试——高/低置信样本, KB存在/NIL区分",
   "nil_threshold": 0.65,
   "bge_llm_trigger_threshold": 0.65,
@@ -160,17 +160,16 @@
       "id": "DIS_011",
       "text": "工信部发布了5G发展规划，相关负责人表示2026年将实现全国地级市全覆盖。",
       "mention": "工信部",
-      "gold_entity": null,
-      "confidence_level": "high",
-      "kb_status": "nil",
+      "gold_entity": "ENT_GEN_0090",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
       "expected_bge_score_range": [
-        0.0,
-        0.4
+        0.65,
+        0.9
       ],
-      "expected_nil": true,
-      "nil_reason": "entity_not_in_kb",
-      "reason": "mention不在KB中, alias未命中+无相似实体→NIL",
-      "scenario": "NIL-实体不在KB"
+      "expected_nil": false,
+      "reason": "mention不在KB中, alias未命中+无相似实体→NIL；该mention已确认存在于KB，本阶段修正为正例。",
+      "scenario": "NIL-实体不在KB-KB已入库修正"
     },
     {
       "id": "DIS_012",
@@ -691,24 +690,1343 @@
       "expected_nil": false,
       "reason": "操作系统匹配。",
       "scenario": "新增-操作系统"
+    },
+    {
+      "text": "国家电网和国网新源分别汇报抽水蓄能项目，国网关注全网调峰需求。",
+      "mention": "国网",
+      "gold_entity": "ENT_ENERGY_0001",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "国网可指母公司或子公司，上下文全网调峰指向国家电网。",
+      "scenario": "母公司vs子公司-简称消歧",
+      "id": "DIS_046"
+    },
+    {
+      "text": "国网新源今年新投产两座抽水蓄能电站。",
+      "mention": "国网新源",
+      "gold_entity": "ENT_ENERGY_0010",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.85,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "国网新源全称命中子公司，抽水蓄能语义强化。",
+      "scenario": "母公司vs子公司-精确消歧",
+      "id": "DIS_047"
+    },
+    {
+      "text": "三峡集团推进金沙江下游水风光一体化基地建设。",
+      "mention": "三峡集团",
+      "gold_entity": "ENT_ENERGY_0008",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "集团投资建设行为指向企业主体。",
+      "scenario": "企业vs设施-集团主体",
+      "id": "DIS_048"
+    },
+    {
+      "text": "三峡水电站在汛期承担防洪调度任务。",
+      "mention": "三峡水电站",
+      "gold_entity": "ENT_ENERGY_0012",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "防洪调度任务指向水电站设施。",
+      "scenario": "企业vs设施-设施主体",
+      "id": "DIS_049"
+    },
+    {
+      "text": "三峡大坝开展泄洪调度。",
+      "mention": "三峡大坝",
+      "gold_entity": "ENT_ENERGY_0012",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "三峡大坝为三峡水电站设施别名。",
+      "scenario": "别名设施消歧",
+      "id": "DIS_050"
+    },
+    {
+      "text": "百度发布自动驾驶云服务。",
+      "mention": "百度",
+      "gold_entity": "ENT_GEN_0070",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "发布云服务的主体是百度公司。",
+      "scenario": "公司vs平台-公司主体",
+      "id": "DIS_051"
+    },
+    {
+      "text": "百度地图新增新能源车路线规划。",
+      "mention": "百度地图",
+      "gold_entity": "ENT_GEN_0098",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "地图功能上线指向百度地图平台。",
+      "scenario": "公司vs平台-平台主体",
+      "id": "DIS_052"
+    },
+    {
+      "text": "腾讯发布产业互联网解决方案。",
+      "mention": "腾讯",
+      "gold_entity": "ENT_GEN_0052",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "产业互联网方案由腾讯集团发布。",
+      "scenario": "公司vs产品-公司主体",
+      "id": "DIS_053"
+    },
+    {
+      "text": "微信上线低碳账单功能。",
+      "mention": "微信",
+      "gold_entity": "ENT_GEN_0061",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "低碳账单功能属于微信产品。",
+      "scenario": "公司vs产品-产品主体",
+      "id": "DIS_054"
+    },
+    {
+      "text": "阿里巴巴升级云计算服务，淘宝只是电商业务入口。",
+      "mention": "阿里巴巴",
+      "gold_entity": "ENT_GEN_0053",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "云计算服务指向阿里巴巴集团主体。",
+      "scenario": "集团vs业务线",
+      "id": "DIS_055"
+    },
+    {
+      "text": "清华大学发布能源互联网课程。",
+      "mention": "清华大学",
+      "gold_entity": "ENT_GEN_0060",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "高校全称直接命中清华大学。",
+      "scenario": "高校全称消歧",
+      "id": "DIS_056"
+    },
+    {
+      "text": "清华与北大联合建设碳中和课程，清华负责电力系统方向。",
+      "mention": "清华",
+      "gold_entity": "ENT_GEN_0060",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "清华简称需区分北大，上下文回指清华。",
+      "scenario": "高校简称多实体消歧",
+      "id": "DIS_057"
+    },
+    {
+      "text": "北京大学建设医学人工智能平台。",
+      "mention": "北京大学",
+      "gold_entity": "ENT_GEN_0064",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "北京大学全称命中。",
+      "scenario": "高校全称消歧",
+      "id": "DIS_058"
+    },
+    {
+      "text": "北大与清华联合发布研究计划，北大负责医学方向。",
+      "mention": "北大",
+      "gold_entity": "ENT_GEN_0064",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "北大简称指向北京大学。",
+      "scenario": "高校简称多实体消歧",
+      "id": "DIS_059"
+    },
+    {
+      "text": "上海交通大学上线智慧能源实验平台。",
+      "mention": "上海交通大学",
+      "gold_entity": "ENT_GEN_0065",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "完整校名命中上海交通大学。",
+      "scenario": "高校长名称消歧",
+      "id": "DIS_060"
+    },
+    {
+      "text": "上交发布电力系统仿真课程。",
+      "mention": "上交",
+      "gold_entity": "ENT_GEN_0065",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.88
+      ],
+      "expected_nil": false,
+      "reason": "上交在课程语境中指上海交通大学，而不是交易所。",
+      "scenario": "高校简称vs交易所",
+      "id": "DIS_061"
+    },
+    {
+      "text": "中国银行发布跨境绿色结算服务。",
+      "mention": "中国银行",
+      "gold_entity": "ENT_GEN_0083",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "银行全称直接命中中国银行。",
+      "scenario": "金融机构全称消歧",
+      "id": "DIS_062"
+    },
+    {
+      "text": "中行推出绿色金融服务方案。",
+      "mention": "中行",
+      "gold_entity": "ENT_GEN_0083",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "中行简称指中国银行，需要避开建设银行。",
+      "scenario": "金融简称消歧",
+      "id": "DIS_063"
+    },
+    {
+      "text": "招商银行上线企业碳账户服务。",
+      "mention": "招商银行",
+      "gold_entity": "ENT_GEN_0057",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "招商银行全称命中。",
+      "scenario": "金融机构全称消歧",
+      "id": "DIS_064"
+    },
+    {
+      "text": "CMB发布财富管理合作产品。",
+      "mention": "CMB",
+      "gold_entity": "ENT_GEN_0057",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "CMB指招商银行。",
+      "scenario": "金融英文简称消歧",
+      "id": "DIS_065"
+    },
+    {
+      "text": "中国平安推出新能源车险产品。",
+      "mention": "中国平安",
+      "gold_entity": "ENT_GEN_0056",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "保险产品语境指向中国平安。",
+      "scenario": "保险集团消歧",
+      "id": "DIS_066"
+    },
+    {
+      "text": "Ping An发布绿色保险报告。",
+      "mention": "Ping An",
+      "gold_entity": "ENT_GEN_0056",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "Ping An为中国平安英文别名。",
+      "scenario": "金融英文别名消歧",
+      "id": "DIS_067"
+    },
+    {
+      "text": "SMIC扩大成熟制程产能。",
+      "mention": "SMIC",
+      "gold_entity": "ENT_GEN_0054",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "SMIC应解析为中芯国际。",
+      "scenario": "英文缩写消歧",
+      "id": "DIS_068"
+    },
+    {
+      "text": "中芯国际参与国产芯片生态建设。",
+      "mention": "中芯国际",
+      "gold_entity": "ENT_GEN_0054",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "中文简称命中中芯国际。",
+      "scenario": "半导体企业消歧",
+      "id": "DIS_069"
+    },
+    {
+      "text": "Huawei参与半导体供应链合作。",
+      "mention": "Huawei",
+      "gold_entity": "ENT_GEN_0051",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "Huawei指华为。",
+      "scenario": "英文别名消歧",
+      "id": "DIS_070"
+    },
+    {
+      "text": "华为发布园区能源管理模型。",
+      "mention": "华为",
+      "gold_entity": "ENT_GEN_0051",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "华为简称命中华为技术有限公司。",
+      "scenario": "科技企业简称消歧",
+      "id": "DIS_071"
+    },
+    {
+      "text": "长安汽车参与自动驾驶标准讨论。",
+      "mention": "长安汽车",
+      "gold_entity": "ENT_GEN_0071",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "长安汽车需与比亚迪、小米汽车区分。",
+      "scenario": "汽车企业同类消歧",
+      "id": "DIS_072"
+    },
+    {
+      "text": "比亚迪建设储能电池基地。",
+      "mention": "比亚迪",
+      "gold_entity": "ENT_GEN_0079",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "比亚迪为车企，不能误链宁德时代。",
+      "scenario": "车企vs电池企业消歧",
+      "id": "DIS_073"
+    },
+    {
+      "text": "小米汽车展示智能座舱系统。",
+      "mention": "小米汽车",
+      "gold_entity": "ENT_GEN_0078",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "小米汽车指向汽车企业实体。",
+      "scenario": "汽车品牌消歧",
+      "id": "DIS_074"
+    },
+    {
+      "text": "中国移动建设绿色数据中心。",
+      "mention": "中国移动",
+      "gold_entity": "ENT_GEN_0102",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "中国移动需与中国电信区分。",
+      "scenario": "通信运营商消歧",
+      "id": "DIS_075"
+    },
+    {
+      "text": "国家发改委研究电力市场价格机制。",
+      "mention": "国家发改委",
+      "gold_entity": "ENT_GEN_0089",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "价格机制语境指向国家发改委。",
+      "scenario": "政府机构消歧",
+      "id": "DIS_076"
+    },
+    {
+      "text": "工信部发布车联网安全指南。",
+      "mention": "工信部",
+      "gold_entity": "ENT_GEN_0090",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "车联网安全指南语境指向工信部。",
+      "scenario": "政府机构消歧",
+      "id": "DIS_077"
+    },
+    {
+      "text": "国家能源局完善新能源消纳机制。",
+      "mention": "国家能源局",
+      "gold_entity": "ENT_ENERGY_0014",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "新能源消纳监管语境指向国家能源局。",
+      "scenario": "能源监管机构消歧",
+      "id": "DIS_078"
+    },
+    {
+      "text": "北京发布自动驾驶示范区政策。",
+      "mention": "北京",
+      "gold_entity": "ENT_GEN_0093",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "北京作为地名命中北京市。",
+      "scenario": "地区消歧",
+      "id": "DIS_079"
+    },
+    {
+      "text": "广州公布充电设施补贴政策。",
+      "mention": "广州",
+      "gold_entity": "ENT_GEN_0093",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.55,
+        0.8
+      ],
+      "expected_nil": false,
+      "reason": "广州地名在当前KB中容易受地区实体覆盖影响，作为低置信地名消歧样本。",
+      "scenario": "地区歧义低置信",
+      "id": "DIS_080"
+    },
+    {
+      "text": "Android更新折叠屏系统能力。 该样本用于与iOS样本形成操作系统对比。",
+      "mention": "Android",
+      "gold_entity": "ENT_GEN_0100",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "Android需与iOS区分。；第八阶段调整文本上下文以避免重复。",
+      "scenario": "操作系统消歧-去重修正",
+      "id": "DIS_081"
+    },
+    {
+      "text": "iOS增强移动设备隐私保护能力。 该样本用于与Android样本形成操作系统对比。",
+      "mention": "iOS",
+      "gold_entity": "ENT_GEN_0101",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "iOS需与Android区分。；第八阶段调整文本上下文以避免重复。",
+      "scenario": "操作系统消歧-去重修正",
+      "id": "DIS_082"
+    },
+    {
+      "text": "囯网在西北新建特高压线路。",
+      "mention": "囯网",
+      "gold_entity": "ENT_ENERGY_0001",
+      "confidence_level": "low",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.45,
+        0.7
+      ],
+      "expected_nil": false,
+      "reason": "囯网为国网形近字，需要模糊或语义兜底。",
+      "scenario": "OCR形近字低置信消歧",
+      "id": "DIS_083"
+    },
+    {
+      "text": "宁徳时代发布第三代钠离子电池。",
+      "mention": "宁徳时代",
+      "gold_entity": "ENT_ENERGY_0015",
+      "confidence_level": "low",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.45,
+        0.7
+      ],
+      "expected_nil": false,
+      "reason": "徳/德异体字导致精确匹配失败。",
+      "scenario": "异体字低置信消歧",
+      "id": "DIS_084"
+    },
+    {
+      "text": "三陕集团推进清洁能源基地建设。",
+      "mention": "三陕集团",
+      "gold_entity": "ENT_ENERGY_0008",
+      "confidence_level": "low",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.45,
+        0.7
+      ],
+      "expected_nil": false,
+      "reason": "三陕为三峡错别字，需要语义兜底。",
+      "scenario": "错别字低置信消歧",
+      "id": "DIS_085"
+    },
+    {
+      "text": "世界银行发布能源转型融资报告。 该样本用于复核国际金融机构NIL策略。",
+      "mention": "世界银行",
+      "gold_entity": null,
+      "confidence_level": "nil_high",
+      "kb_status": "nil",
+      "expected_bge_score_range": [
+        0.0,
+        0.35
+      ],
+      "expected_nil": true,
+      "reason": "世界银行未入库，不能误链中国银行。；第八阶段调整文本上下文以避免重复。",
+      "scenario": "NIL-国际金融机构-去重修正",
+      "nil_reason": "entity_not_in_kb",
+      "id": "DIS_086"
+    },
+    {
+      "text": "北京协和医院上线远程会诊平台。 该样本用于复核医疗机构NIL策略。",
+      "mention": "北京协和医院",
+      "gold_entity": null,
+      "confidence_level": "nil_high",
+      "kb_status": "nil",
+      "expected_bge_score_range": [
+        0.0,
+        0.35
+      ],
+      "expected_nil": true,
+      "reason": "医疗机构未入库。；第八阶段调整文本上下文以避免重复。",
+      "scenario": "NIL-医疗机构-去重修正",
+      "nil_reason": "entity_not_in_kb",
+      "id": "DIS_087"
+    },
+    {
+      "text": "复旦大学成立绿色金融研究中心。",
+      "mention": "复旦大学",
+      "gold_entity": "ENT_GEN_0067",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "复旦大学未入库，不能误链清华或北大。；该mention已确认存在于KB，本阶段修正为正例。",
+      "scenario": "NIL-高校未入库-KB已入库修正",
+      "id": "DIS_088"
+    },
+    {
+      "text": "浙江大学发布新能源材料成果。",
+      "mention": "浙江大学",
+      "gold_entity": "ENT_GEN_0066",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "浙江大学未入库，不能误链其他高校。；该mention已确认存在于KB，本阶段修正为正例。",
+      "scenario": "NIL-高校未入库-KB已入库修正",
+      "id": "DIS_089"
+    },
+    {
+      "text": "蔚来汽车公布换电站建设计划。",
+      "mention": "蔚来汽车",
+      "gold_entity": "ENT_GEN_0058",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "蔚来汽车未入库，不能误链小米汽车或比亚迪。；该mention已确认存在于KB，本阶段修正为正例。",
+      "scenario": "NIL-汽车企业未入库-KB已入库修正",
+      "id": "DIS_090"
+    },
+    {
+      "text": "小鹏汽车升级城市辅助驾驶系统。",
+      "mention": "小鹏汽车",
+      "gold_entity": "ENT_GEN_0078",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "小鹏汽车未入库，不能误链已有车企。；该mention已确认存在于KB，本阶段修正为正例。",
+      "scenario": "NIL-汽车企业未入库-KB已入库修正",
+      "id": "DIS_091"
+    },
+    {
+      "text": "国际能源署更新全球电力市场展望。",
+      "mention": "国际能源署",
+      "gold_entity": null,
+      "confidence_level": "nil_high",
+      "kb_status": "nil",
+      "expected_bge_score_range": [
+        0.0,
+        0.35
+      ],
+      "expected_nil": true,
+      "reason": "国际能源署未入库，不能误链国家能源局。",
+      "scenario": "NIL-国际能源机构",
+      "nil_reason": "entity_not_in_kb",
+      "id": "DIS_092"
+    },
+    {
+      "text": "交通运输部发布高速服务区充电指南。",
+      "mention": "交通运输部",
+      "gold_entity": null,
+      "confidence_level": "nil_high",
+      "kb_status": "nil",
+      "expected_bge_score_range": [
+        0.0,
+        0.35
+      ],
+      "expected_nil": true,
+      "reason": "交通运输部未入库。",
+      "scenario": "NIL-政府机构未入库",
+      "nil_reason": "entity_not_in_kb",
+      "id": "DIS_093"
+    },
+    {
+      "text": "数据质量直接影响实体链接效果。",
+      "mention": "数据质量",
+      "gold_entity": null,
+      "confidence_level": "medium",
+      "kb_status": "nil",
+      "expected_bge_score_range": [
+        0.0,
+        0.3
+      ],
+      "expected_nil": true,
+      "reason": "普通概念不是实体。",
+      "scenario": "NIL-普通概念",
+      "nil_reason": "non_entity_concept",
+      "id": "DIS_094"
+    },
+    {
+      "text": "能源转型需要跨行业协同。",
+      "mention": "能源转型",
+      "gold_entity": null,
+      "confidence_level": "medium",
+      "kb_status": "nil",
+      "expected_bge_score_range": [
+        0.0,
+        0.3
+      ],
+      "expected_nil": true,
+      "reason": "抽象概念不应链接到企业。",
+      "scenario": "NIL-普通概念",
+      "nil_reason": "non_entity_concept",
+      "id": "DIS_095"
+    },
+    {
+      "text": "双方将继续讨论合作细节。",
+      "mention": "双方",
+      "gold_entity": null,
+      "confidence_level": "medium",
+      "kb_status": "nil",
+      "expected_bge_score_range": [
+        0.0,
+        0.3
+      ],
+      "expected_nil": true,
+      "reason": "集合指代不对应单一实体。",
+      "scenario": "NIL-集合指代",
+      "nil_reason": "ambiguous_collective",
+      "id": "DIS_096"
+    },
+    {
+      "text": "多家企业参加储能研讨会。",
+      "mention": "多家企业",
+      "gold_entity": null,
+      "confidence_level": "medium",
+      "kb_status": "nil",
+      "expected_bge_score_range": [
+        0.0,
+        0.3
+      ],
+      "expected_nil": true,
+      "reason": "集合短语不能链接到单一实体。",
+      "scenario": "NIL-集合指代",
+      "nil_reason": "ambiguous_collective",
+      "id": "DIS_097"
+    },
+    {
+      "text": "华为数字能源研究院展示微网控制器。",
+      "mention": "华为数字能源研究院",
+      "gold_entity": null,
+      "confidence_level": "nil_high",
+      "kb_status": "nil",
+      "expected_bge_score_range": [
+        0.0,
+        0.4
+      ],
+      "expected_nil": true,
+      "reason": "名称包含华为但研究院未入库。",
+      "scenario": "NIL-高相似机构",
+      "nil_reason": "entity_not_in_kb",
+      "id": "DIS_098"
+    },
+    {
+      "text": "百度智能交通实验室测试信号灯优化模型。",
+      "mention": "百度智能交通实验室",
+      "gold_entity": null,
+      "confidence_level": "nil_high",
+      "kb_status": "nil",
+      "expected_bge_score_range": [
+        0.0,
+        0.4
+      ],
+      "expected_nil": true,
+      "reason": "名称包含百度但实验室未入库。",
+      "scenario": "NIL-高相似机构",
+      "nil_reason": "entity_not_in_kb",
+      "id": "DIS_099"
+    },
+    {
+      "text": "清华能源互联网实验室开放测试数据。",
+      "mention": "清华能源互联网实验室",
+      "gold_entity": null,
+      "confidence_level": "nil_high",
+      "kb_status": "nil",
+      "expected_bge_score_range": [
+        0.0,
+        0.4
+      ],
+      "expected_nil": true,
+      "reason": "名称包含清华但实验室未单独入库。",
+      "scenario": "NIL-高校实验室",
+      "nil_reason": "entity_not_in_kb",
+      "id": "DIS_100"
+    },
+    {
+      "text": "腾讯会议支持在线会议，腾讯提供云端基础能力。",
+      "mention": "腾讯会议",
+      "gold_entity": "ENT_GEN_0104",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "腾讯会议需与腾讯公司区分。",
+      "scenario": "KB扩充-产品vs母公司",
+      "id": "DIS_101"
+    },
+    {
+      "text": "广汽埃安和比亚迪共同参加新能源车论坛。",
+      "mention": "广汽埃安",
+      "gold_entity": "ENT_GEN_0107",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "新增车企与已有车企同段出现。",
+      "scenario": "KB扩充-车企同类消歧",
+      "id": "DIS_102"
+    },
+    {
+      "text": "华中科技大学与清华大学合作建设智能电网实验平台。",
+      "mention": "华中科技大学",
+      "gold_entity": "ENT_GEN_0109",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "新增高校与已有高校区分。",
+      "scenario": "KB扩充-高校同类消歧",
+      "id": "DIS_103"
+    },
+    {
+      "text": "瑞金医院上线智慧医院能源管理系统。",
+      "mention": "瑞金医院",
+      "gold_entity": "ENT_GEN_0112",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "医院简称指向瑞金医院。",
+      "scenario": "KB扩充-医疗机构消歧",
+      "id": "DIS_104"
+    },
+    {
+      "text": "南航优化航班燃油效率管理。",
+      "mention": "南航",
+      "gold_entity": "ENT_GEN_0114",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "南航指中国南方航空。",
+      "scenario": "KB扩充-交通机构简称",
+      "id": "DIS_105"
+    },
+    {
+      "text": "新华社报道新能源产业政策，央视总台推出专题节目。",
+      "mention": "新华社",
+      "gold_entity": "ENT_GEN_0115",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "新华社和央视总台同段出现。",
+      "scenario": "KB扩充-媒体机构消歧",
+      "id": "DIS_106"
+    },
+    {
+      "text": "应急管理部介绍安全生产监管要求。",
+      "mention": "应急管理部",
+      "gold_entity": "ENT_GEN_0118",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "应急管理部为新增政府机构。",
+      "scenario": "KB扩充-政务机构消歧",
+      "id": "DIS_107"
+    },
+    {
+      "text": "中国银联公布绿色支付案例。",
+      "mention": "中国银联",
+      "gold_entity": "ENT_GEN_0119",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "中国银联为支付清算机构。",
+      "scenario": "KB扩充-金融支付机构",
+      "id": "DIS_108"
+    },
+    {
+      "text": "商汤科技展示企业碳排放识别算法。",
+      "mention": "商汤科技",
+      "gold_entity": "ENT_GEN_0121",
+      "confidence_level": "high",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.8,
+        1.0
+      ],
+      "expected_nil": false,
+      "reason": "商汤科技为新增AI企业。",
+      "scenario": "KB扩充-AI企业消歧",
+      "id": "DIS_109"
+    },
+    {
+      "text": "北交所发布ESG信息披露指南。",
+      "mention": "北交所",
+      "gold_entity": "ENT_GEN_0123",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "北交所需与上交所区分。",
+      "scenario": "KB扩充-交易所消歧",
+      "id": "DIS_110"
+    },
+    {
+      "text": "国网江苏电力和国家电网共同推进配电网升级。",
+      "mention": "国网江苏电力",
+      "gold_entity": "ENT_GEN_0124",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "低覆盖KB类型扩充后的消歧正例。",
+      "scenario": "KB低覆盖-电网消歧",
+      "id": "DIS_111"
+    },
+    {
+      "text": "企业微信与微信分别服务企业和个人用户。",
+      "mention": "企业微信",
+      "gold_entity": "ENT_GEN_0126",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "低覆盖KB类型扩充后的消歧正例。",
+      "scenario": "KB低覆盖-产品vs产品",
+      "id": "DIS_112"
+    },
+    {
+      "text": "华为云和华为共同发布园区能源管理方案。",
+      "mention": "华为云",
+      "gold_entity": "ENT_GEN_0129",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "低覆盖KB类型扩充后的消歧正例。",
+      "scenario": "KB低覆盖-平台vs公司",
+      "id": "DIS_113"
+    },
+    {
+      "text": "华西医院和瑞金医院讨论智慧医院建设。",
+      "mention": "华西医院",
+      "gold_entity": "ENT_GEN_0131",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "低覆盖KB类型扩充后的消歧正例。",
+      "scenario": "KB低覆盖-医疗机构",
+      "id": "DIS_114"
+    },
+    {
+      "text": "国航和南方航空分别发布燃油效率方案。",
+      "mention": "国航",
+      "gold_entity": "ENT_GEN_0135",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "低覆盖KB类型扩充后的消歧正例。",
+      "scenario": "KB低覆盖-航空机构",
+      "id": "DIS_115"
+    },
+    {
+      "text": "人民日报和新华社分别报道新能源政策。",
+      "mention": "人民日报",
+      "gold_entity": "ENT_GEN_0139",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "低覆盖KB类型扩充后的消歧正例。",
+      "scenario": "KB低覆盖-媒体机构",
+      "id": "DIS_116"
+    },
+    {
+      "text": "华为云不是华为公司本体，而是本次能源巡检项目使用的云平台。",
+      "mention": "华为云",
+      "gold_entity": "ENT_GEN_0129",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.66,
+        0.88
+      ],
+      "expected_nil": false,
+      "reason": "上下文强调云平台。",
+      "scenario": "跨领域-公司产品消歧",
+      "id": "DIS_117"
+    },
+    {
+      "text": "国航与东航分别优化航线，前者负责北京出港计划。",
+      "mention": "国航",
+      "gold_entity": "ENT_GEN_0135",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.65,
+        0.88
+      ],
+      "expected_nil": false,
+      "reason": "简称对应中国国际航空。",
+      "scenario": "跨领域-航空公司消歧",
+      "id": "DIS_118"
+    },
+    {
+      "text": "世界银行提出融资建议，但该机构未录入当前知识库。",
+      "mention": "世界银行",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.45
+      ],
+      "expected_nil": true,
+      "reason": "未入库国际机构。",
+      "scenario": "跨领域-国际金融NIL",
+      "id": "DIS_119"
+    },
+    {
+      "text": "中山医院位于上海，本句不是泛指所有中山医院。",
+      "mention": "中山医院",
+      "gold_entity": "ENT_GEN_0133",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.63,
+        0.86
+      ],
+      "expected_nil": false,
+      "reason": "结合现有KB中山医院实体。",
+      "scenario": "跨领域-医院简称消歧",
+      "id": "DIS_120"
+    },
+    {
+      "text": "微软云服务没有对应实体，不能回退链接到Windows 11。",
+      "mention": "微软云服务",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.42
+      ],
+      "expected_nil": true,
+      "reason": "产品类别相近但实体缺失。",
+      "scenario": "跨领域-软件NIL",
+      "id": "DIS_121"
+    },
+    {
+      "text": "人民网转载国家统计局数据解读。",
+      "mention": "人民网",
+      "gold_entity": "ENT_GEN_0140",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.66,
+        0.9
+      ],
+      "expected_nil": false,
+      "reason": "人民网应区别于人民日报。",
+      "scenario": "跨领域-媒体平台消歧",
+      "id": "DIS_122"
+    },
+    {
+      "text": "银联负责支付清算，不应链接到任一商业银行。",
+      "mention": "银联",
+      "gold_entity": "ENT_GEN_0119",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.66,
+        0.88
+      ],
+      "expected_nil": false,
+      "reason": "支付清算语境。",
+      "scenario": "跨领域-金融机构消歧",
+      "id": "DIS_123"
+    },
+    {
+      "text": "环球时报当前未入库，候选中的人民日报和新华社只是媒体类别干扰。",
+      "mention": "环球时报",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.44
+      ],
+      "expected_nil": true,
+      "reason": "相似媒体干扰。",
+      "scenario": "跨领域-媒体NIL",
+      "id": "DIS_124"
+    },
+    {
+      "text": "中国移动在本句指运营商，不是移动应用。",
+      "mention": "中国移动",
+      "gold_entity": "ENT_GEN_0102",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.66,
+        0.88
+      ],
+      "expected_nil": false,
+      "reason": "上下文为运营商网络。",
+      "scenario": "长尾-运营商消歧",
+      "id": "DIS_125"
+    },
+    {
+      "text": "OpenAI没有进入当前知识库，不能链接到字节跳动或百度。",
+      "mention": "OpenAI",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.42
+      ],
+      "expected_nil": true,
+      "reason": "未入库外部AI机构。",
+      "scenario": "长尾-AI公司NIL",
+      "id": "DIS_126"
+    },
+    {
+      "text": "Android是操作系统实体，不应链接到手机厂商。",
+      "mention": "Android",
+      "gold_entity": "ENT_GEN_0100",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.66,
+        0.88
+      ],
+      "expected_nil": false,
+      "reason": "产品/系统语境。",
+      "scenario": "长尾-操作系统消歧",
+      "id": "DIS_127"
+    },
+    {
+      "text": "香港交易所未入库，候选中的上交所和深交所只是交易所类别干扰。",
+      "mention": "香港交易所",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.43
+      ],
+      "expected_nil": true,
+      "reason": "未入库地区交易所。",
+      "scenario": "长尾-交易所NIL",
+      "id": "DIS_128"
+    },
+    {
+      "text": "东方财富是金融信息平台，不是证券公司本体。",
+      "mention": "东方财富",
+      "gold_entity": "ENT_GEN_0086",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.66,
+        0.88
+      ],
+      "expected_nil": false,
+      "reason": "行情入口语境。",
+      "scenario": "长尾-金融平台消歧",
+      "id": "DIS_129"
+    },
+    {
+      "text": "协和医院未入库，不能误链到中日医院或瑞金医院。",
+      "mention": "协和医院",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.44
+      ],
+      "expected_nil": true,
+      "reason": "医院同类干扰。",
+      "scenario": "长尾-医院NIL",
+      "id": "DIS_130"
+    },
+    {
+      "text": "国铁集团在客流预测语境中指铁路集团。",
+      "mention": "国铁集团",
+      "gold_entity": "ENT_GEN_0113",
+      "confidence_level": "medium",
+      "kb_status": "in_kb",
+      "expected_bge_score_range": [
+        0.66,
+        0.88
+      ],
+      "expected_nil": false,
+      "reason": "铁路交通上下文。",
+      "scenario": "长尾-交通机构消歧",
+      "id": "DIS_131"
+    },
+    {
+      "text": "HarmonyOS未入库，Android和iOS只是系统类别干扰。",
+      "mention": "HarmonyOS",
+      "gold_entity": null,
+      "confidence_level": "low",
+      "kb_status": "not_in_kb",
+      "expected_bge_score_range": [
+        0.0,
+        0.44
+      ],
+      "expected_nil": true,
+      "reason": "未入库操作系统。",
+      "scenario": "长尾-系统NIL",
+      "id": "DIS_132"
     }
   ],
   "statistics": {
-    "total": 45,
+    "total": 116,
     "by_confidence": {
-      "high": 16,
-      "medium": 20,
-      "low": 3,
-      "nil_high": 6
+      "high": 40,
+      "medium": 57,
+      "low": 6,
+      "nil_high": 13
     },
     "by_kb_status": {
-      "in_kb": 33,
-      "nil": 12
+      "in_kb": 94,
+      "nil": 22
     },
     "nil_reasons": {
-      "entity_not_in_kb": 8,
-      "ambiguous_collective": 2,
-      "mention_is_coref": 2
-    }
+      "entity_not_in_kb": 14,
+      "ambiguous_collective": 4,
+      "mention_is_coref": 2,
+      "non_entity_concept": 2
+    },
+    "sample_count": 132,
+    "nil_like_sample_count": 29
   }
 }

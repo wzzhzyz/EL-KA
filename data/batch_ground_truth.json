@@ -1,8 +1,8 @@
 {
   "dataset_name": "phase1_e2e_ground_truth",
-  "version": "1.2",
+  "version": "1.3",
   "purpose": "阶段一全流程端到端批量跑测——标准实体/NIL标注",
-  "total_texts": 60,
+  "total_texts": 155,
   "entries": [
     {
       "text_idx": 0,
@@ -76,11 +76,11 @@
         },
         {
           "mention": "特斯拉",
-          "entity_id": null
+          "entity_id": "ENT_GEN_0080"
         }
       ],
-      "has_nil": true,
-      "scenario": "英文别名+NIL"
+      "has_nil": false,
+      "scenario": "英文别名+NIL-KB已入库修正"
     },
     {
       "text_idx": 7,
@@ -338,11 +338,11 @@
       "expected_entities": [
         {
           "mention": "工信部",
-          "entity_id": null
+          "entity_id": "ENT_GEN_0090"
         }
       ],
-      "has_nil": true,
-      "scenario": "NIL(实体不在KB)"
+      "has_nil": false,
+      "scenario": "NIL(实体不在KB)-KB已入库修正"
     },
     {
       "text_idx": 29,
@@ -682,6 +682,1438 @@
       "expected_entities": [],
       "has_nil": false,
       "scenario": "无实体"
+    },
+    {
+      "text_idx": 60,
+      "expected_entities": [
+        {
+          "mention": "国网",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南网",
+          "entity_id": "ENT_ENERGY_0002"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "电网企业简称双实体"
+    },
+    {
+      "text_idx": 61,
+      "expected_entities": [
+        {
+          "mention": "国家电投",
+          "entity_id": "ENT_ENERGY_0006"
+        },
+        {
+          "mention": "国家能源集团",
+          "entity_id": "ENT_ENERGY_0005"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "发电集团双实体"
+    },
+    {
+      "text_idx": 62,
+      "expected_entities": [
+        {
+          "mention": "三峡集团",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "三峡大坝",
+          "entity_id": "ENT_ENERGY_0012"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "企业设施同名干扰"
+    },
+    {
+      "text_idx": 63,
+      "expected_entities": [
+        {
+          "mention": "宁德时代",
+          "entity_id": "ENT_ENERGY_0015"
+        },
+        {
+          "mention": "特斯拉",
+          "entity_id": "ENT_GEN_0080"
+        },
+        {
+          "mention": "CATL",
+          "entity_id": "ENT_ENERGY_0015"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "中英文别名"
+    },
+    {
+      "text_idx": 64,
+      "expected_entities": [
+        {
+          "mention": "北大",
+          "entity_id": "ENT_GEN_0064"
+        },
+        {
+          "mention": "中科院",
+          "entity_id": "ENT_GEN_0068"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "教育科研简称"
+    },
+    {
+      "text_idx": 65,
+      "expected_entities": [
+        {
+          "mention": "上海交大",
+          "entity_id": "ENT_GEN_0065"
+        },
+        {
+          "mention": "浙大",
+          "entity_id": "ENT_GEN_0066"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "高校简称"
+    },
+    {
+      "text_idx": 66,
+      "expected_entities": [
+        {
+          "mention": "百度",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "百度地图",
+          "entity_id": "ENT_GEN_0098"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "公司产品同句"
+    },
+    {
+      "text_idx": 67,
+      "expected_entities": [
+        {
+          "mention": "京东",
+          "entity_id": "ENT_GEN_0071"
+        },
+        {
+          "mention": "美团",
+          "entity_id": "ENT_GEN_0072"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "互联网平台"
+    },
+    {
+      "text_idx": 68,
+      "expected_entities": [
+        {
+          "mention": "小鹏",
+          "entity_id": "ENT_GEN_0078"
+        },
+        {
+          "mention": "理想",
+          "entity_id": "ENT_GEN_0079"
+        },
+        {
+          "mention": "蔚来",
+          "entity_id": "ENT_GEN_0058"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "新能源汽车多实体"
+    },
+    {
+      "text_idx": 69,
+      "expected_entities": [
+        {
+          "mention": "建行",
+          "entity_id": "ENT_GEN_0081"
+        },
+        {
+          "mention": "农行",
+          "entity_id": "ENT_GEN_0082"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "银行简称"
+    },
+    {
+      "text_idx": 70,
+      "expected_entities": [
+        {
+          "mention": "上交所",
+          "entity_id": "ENT_GEN_0087"
+        },
+        {
+          "mention": "深交所",
+          "entity_id": "ENT_GEN_0088"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "交易所双实体"
+    },
+    {
+      "text_idx": 71,
+      "expected_entities": [
+        {
+          "mention": "生态环境部",
+          "entity_id": "ENT_GEN_0091"
+        },
+        {
+          "mention": "国家能源局",
+          "entity_id": "ENT_GEN_0059"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "政府机构双实体"
+    },
+    {
+      "text_idx": 72,
+      "expected_entities": [
+        {
+          "mention": "广州",
+          "entity_id": "ENT_GEN_0093"
+        },
+        {
+          "mention": "杭州",
+          "entity_id": "ENT_GEN_0094"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "城市双实体"
+    },
+    {
+      "text_idx": 73,
+      "expected_entities": [
+        {
+          "mention": "南京",
+          "entity_id": "ENT_GEN_0095"
+        },
+        {
+          "mention": "武汉",
+          "entity_id": "ENT_GEN_0096"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "城市双实体"
+    },
+    {
+      "text_idx": 74,
+      "expected_entities": [
+        {
+          "mention": "Alipay",
+          "entity_id": "ENT_GEN_0097"
+        },
+        {
+          "mention": "WeChat",
+          "entity_id": "ENT_GEN_0061"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "软件英文别名"
+    },
+    {
+      "text_idx": 75,
+      "expected_entities": [
+        {
+          "mention": "Android",
+          "entity_id": "ENT_GEN_0100"
+        },
+        {
+          "mention": "iOS",
+          "entity_id": "ENT_GEN_0101"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "操作系统双实体"
+    },
+    {
+      "text_idx": 76,
+      "expected_entities": [
+        {
+          "mention": "中国移动",
+          "entity_id": "ENT_GEN_0102"
+        },
+        {
+          "mention": "中国电信",
+          "entity_id": "ENT_GEN_0103"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "通信运营商双实体"
+    },
+    {
+      "text_idx": 77,
+      "expected_entities": [
+        {
+          "mention": "腾讯",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "阿里巴巴",
+          "entity_id": "ENT_GEN_0053"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "互联网巨头"
+    },
+    {
+      "text_idx": 78,
+      "expected_entities": [
+        {
+          "mention": "华为",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "中芯国际",
+          "entity_id": "ENT_GEN_0054"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "科技制造"
+    },
+    {
+      "text_idx": 79,
+      "expected_entities": [
+        {
+          "mention": "世界银行",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "国际金融机构NIL"
+    },
+    {
+      "text_idx": 80,
+      "expected_entities": [
+        {
+          "mention": "世界卫生组织",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "国际组织NIL"
+    },
+    {
+      "text_idx": 81,
+      "expected_entities": [
+        {
+          "mention": "北京协和医院",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "医疗机构NIL"
+    },
+    {
+      "text_idx": 82,
+      "expected_entities": [
+        {
+          "mention": "中国商飞",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "航空制造NIL"
+    },
+    {
+      "text_idx": 83,
+      "expected_entities": [
+        {
+          "mention": "他们",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "集合代词NIL"
+    },
+    {
+      "text_idx": 84,
+      "expected_entities": [
+        {
+          "mention": "双方",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "集合指代NIL"
+    },
+    {
+      "text_idx": 85,
+      "expected_entities": [
+        {
+          "mention": "前者",
+          "entity_id": null
+        },
+        {
+          "mention": "后者",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "顺序指代NIL"
+    },
+    {
+      "text_idx": 86,
+      "expected_entities": [],
+      "has_nil": false,
+      "scenario": "无实体"
+    },
+    {
+      "text_idx": 87,
+      "expected_entities": [
+        {
+          "mention": "科大讯飞",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "AI企业NIL"
+    },
+    {
+      "text_idx": 88,
+      "expected_entities": [
+        {
+          "mention": "深圳大学",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "高校NIL"
+    },
+    {
+      "text_idx": 89,
+      "expected_entities": [
+        {
+          "mention": "两款应用",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "集合产品NIL"
+    },
+    {
+      "text_idx": 90,
+      "expected_entities": [
+        {
+          "mention": "中信证券",
+          "entity_id": "ENT_GEN_0085"
+        },
+        {
+          "mention": "东方财富",
+          "entity_id": "ENT_GEN_0086"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "金融双实体"
+    },
+    {
+      "text_idx": 91,
+      "expected_entities": [
+        {
+          "mention": "Windows11",
+          "entity_id": "ENT_GEN_0063"
+        },
+        {
+          "mention": "Android",
+          "entity_id": "ENT_GEN_0100"
+        },
+        {
+          "mention": "iOS",
+          "entity_id": "ENT_GEN_0101"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "操作系统多实体"
+    },
+    {
+      "text_idx": 92,
+      "expected_entities": [
+        {
+          "mention": "Ping An",
+          "entity_id": "ENT_GEN_0056"
+        },
+        {
+          "mention": "CMB",
+          "entity_id": "ENT_GEN_0057"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "金融英文别名"
+    },
+    {
+      "text_idx": 93,
+      "expected_entities": [
+        {
+          "mention": "Huawei",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "SMIC",
+          "entity_id": "ENT_GEN_0054"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "科技英文别名"
+    },
+    {
+      "text_idx": 94,
+      "expected_entities": [
+        {
+          "mention": "Guangzhou",
+          "entity_id": "ENT_GEN_0093"
+        },
+        {
+          "mention": "Hangzhou",
+          "entity_id": "ENT_GEN_0094"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "城市英文别名"
+    },
+    {
+      "text_idx": 95,
+      "expected_entities": [
+        {
+          "mention": "中国中车",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "轨道交通NIL"
+    },
+    {
+      "text_idx": 96,
+      "expected_entities": [
+        {
+          "mention": "广汽集团",
+          "entity_id": null
+        },
+        {
+          "mention": "广州",
+          "entity_id": "ENT_GEN_0093"
+        }
+      ],
+      "has_nil": true,
+      "scenario": "近领域企业NIL"
+    },
+    {
+      "text_idx": 97,
+      "expected_entities": [
+        {
+          "mention": "两家银行",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "集合金融NIL"
+    },
+    {
+      "text_idx": 98,
+      "expected_entities": [
+        {
+          "mention": "上述企业",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "集合名词NIL"
+    },
+    {
+      "text_idx": 99,
+      "expected_entities": [
+        {
+          "mention": "这家研究院",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "无先行词NIL"
+    },
+    {
+      "text_idx": 100,
+      "expected_entities": [
+        {
+          "mention": "世界银行",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "国际金融机构NIL"
+    },
+    {
+      "text_idx": 101,
+      "expected_entities": [
+        {
+          "mention": "北京协和医院",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "医疗机构NIL"
+    },
+    {
+      "text_idx": 102,
+      "expected_entities": [
+        {
+          "mention": "复旦大学",
+          "entity_id": "ENT_GEN_0067"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "高校NIL-KB已入库修正"
+    },
+    {
+      "text_idx": 103,
+      "expected_entities": [
+        {
+          "mention": "蔚来汽车",
+          "entity_id": "ENT_GEN_0058"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "汽车企业NIL-KB已入库修正"
+    },
+    {
+      "text_idx": 104,
+      "expected_entities": [
+        {
+          "mention": "小鹏汽车",
+          "entity_id": "ENT_GEN_0078"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "汽车企业NIL-KB已入库修正"
+    },
+    {
+      "text_idx": 105,
+      "expected_entities": [
+        {
+          "mention": "国际能源署",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "国际能源机构NIL"
+    },
+    {
+      "text_idx": 106,
+      "expected_entities": [
+        {
+          "mention": "交通运输部",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "政府机构NIL"
+    },
+    {
+      "text_idx": 107,
+      "expected_entities": [
+        {
+          "mention": "深圳能源集团",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "能源企业NIL"
+    },
+    {
+      "text_idx": 108,
+      "expected_entities": [
+        {
+          "mention": "北京绿色交易所",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "交易机构NIL"
+    },
+    {
+      "text_idx": 109,
+      "expected_entities": [
+        {
+          "mention": "数据质量",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "普通概念NIL"
+    },
+    {
+      "text_idx": 110,
+      "expected_entities": [
+        {
+          "mention": "能源转型",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "普通概念NIL"
+    },
+    {
+      "text_idx": 111,
+      "expected_entities": [
+        {
+          "mention": "多家企业",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "集合指代NIL"
+    },
+    {
+      "text_idx": 112,
+      "expected_entities": [
+        {
+          "mention": "双方",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "集合指代NIL"
+    },
+    {
+      "text_idx": 113,
+      "expected_entities": [
+        {
+          "mention": "他们",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "集合指代NIL"
+    },
+    {
+      "text_idx": 114,
+      "expected_entities": [
+        {
+          "mention": "两款应用",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "集合产品NIL"
+    },
+    {
+      "text_idx": 115,
+      "expected_entities": [
+        {
+          "mention": "南网数字能源研究中心",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "高相似机构NIL"
+    },
+    {
+      "text_idx": 116,
+      "expected_entities": [
+        {
+          "mention": "腾讯能源实验室",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "高相似机构NIL"
+    },
+    {
+      "text_idx": 117,
+      "expected_entities": [
+        {
+          "mention": "华为数字能源研究院",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "高相似机构NIL"
+    },
+    {
+      "text_idx": 118,
+      "expected_entities": [
+        {
+          "mention": "清华能源互联网实验室",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "高校实验室NIL"
+    },
+    {
+      "text_idx": 119,
+      "expected_entities": [
+        {
+          "mention": "广州智能网联汽车办公室",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "地方机构NIL"
+    },
+    {
+      "text_idx": 120,
+      "expected_entities": [
+        {
+          "mention": "国家电网",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "北京",
+          "entity_id": "ENT_GEN_0093"
+        },
+        {
+          "mention": "国家发改委",
+          "entity_id": "ENT_GEN_0089"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "长文本新闻"
+    },
+    {
+      "text_idx": 121,
+      "expected_entities": [
+        {
+          "mention": "宁德时代",
+          "entity_id": "ENT_ENERGY_0015"
+        },
+        {
+          "mention": "比亚迪",
+          "entity_id": "ENT_GEN_0079"
+        },
+        {
+          "mention": "蔚来汽车",
+          "entity_id": "ENT_GEN_0058"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "长文本企业公告-KB已入库修正"
+    },
+    {
+      "text_idx": 122,
+      "expected_entities": [
+        {
+          "mention": "工信部",
+          "entity_id": "ENT_GEN_0090"
+        },
+        {
+          "mention": "中国移动",
+          "entity_id": "ENT_GEN_0102"
+        },
+        {
+          "mention": "中国电信",
+          "entity_id": "ENT_GEN_0103"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "长文本政策"
+    },
+    {
+      "text_idx": 123,
+      "expected_entities": [
+        {
+          "mention": "百度地图",
+          "entity_id": "ENT_GEN_0098"
+        },
+        {
+          "mention": "国家电网",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "百度",
+          "entity_id": "ENT_GEN_0070"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "长文本技术报告"
+    },
+    {
+      "text_idx": 124,
+      "expected_entities": [
+        {
+          "mention": "招商银行",
+          "entity_id": "ENT_GEN_0057"
+        },
+        {
+          "mention": "中国平安",
+          "entity_id": "ENT_GEN_0056"
+        },
+        {
+          "mention": "中国银行",
+          "entity_id": "ENT_GEN_0083"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "长文本金融"
+    },
+    {
+      "text_idx": 125,
+      "expected_entities": [
+        {
+          "mention": "清华大学",
+          "entity_id": "ENT_GEN_0060"
+        },
+        {
+          "mention": "北京大学",
+          "entity_id": "ENT_GEN_0064"
+        },
+        {
+          "mention": "上海交通大学",
+          "entity_id": "ENT_GEN_0065"
+        },
+        {
+          "mention": "复旦大学",
+          "entity_id": "ENT_GEN_0067"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "长文本教育-KB已入库修正"
+    },
+    {
+      "text_idx": 126,
+      "expected_entities": [
+        {
+          "mention": "三峡集团",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "三峡水电站",
+          "entity_id": "ENT_ENERGY_0012"
+        },
+        {
+          "mention": "华润电力",
+          "entity_id": "ENT_ENERGY_0035"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "长文本能源-KB已入库修正"
+    },
+    {
+      "text_idx": 127,
+      "expected_entities": [
+        {
+          "mention": "Huawei",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "SMIC",
+          "entity_id": "ENT_GEN_0054"
+        },
+        {
+          "mention": "腾讯",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "阿里巴巴",
+          "entity_id": "ENT_GEN_0053"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "长文本科技"
+    },
+    {
+      "text_idx": 128,
+      "expected_entities": [
+        {
+          "mention": "北京",
+          "entity_id": "ENT_GEN_0093"
+        },
+        {
+          "mention": "广州",
+          "entity_id": "ENT_GEN_0080"
+        },
+        {
+          "mention": "国家能源局",
+          "entity_id": "ENT_ENERGY_0014"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "长文本区域政策"
+    },
+    {
+      "text_idx": 129,
+      "expected_entities": [
+        {
+          "mention": "华为数字能源研究院",
+          "entity_id": null
+        },
+        {
+          "mention": "清华能源互联网实验室",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "长文本高相似NIL"
+    },
+    {
+      "text_idx": 130,
+      "expected_entities": [
+        {
+          "mention": "腾讯会议",
+          "entity_id": "ENT_GEN_0104"
+        },
+        {
+          "mention": "钉钉",
+          "entity_id": "ENT_GEN_0105"
+        },
+        {
+          "mention": "飞书",
+          "entity_id": "ENT_GEN_0106"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB补充-协同办公产品"
+    },
+    {
+      "text_idx": 131,
+      "expected_entities": [
+        {
+          "mention": "广汽埃安",
+          "entity_id": "ENT_GEN_0107"
+        },
+        {
+          "mention": "上汽集团",
+          "entity_id": "ENT_GEN_0108"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB补充-汽车制造"
+    },
+    {
+      "text_idx": 132,
+      "expected_entities": [
+        {
+          "mention": "中日友好医院",
+          "entity_id": "ENT_GEN_0111"
+        },
+        {
+          "mention": "瑞金医院",
+          "entity_id": "ENT_GEN_0112"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB补充-医疗机构"
+    },
+    {
+      "text_idx": 133,
+      "expected_entities": [
+        {
+          "mention": "国铁集团",
+          "entity_id": "ENT_GEN_0113"
+        },
+        {
+          "mention": "南方航空",
+          "entity_id": "ENT_GEN_0114"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB补充-交通运输"
+    },
+    {
+      "text_idx": 134,
+      "expected_entities": [
+        {
+          "mention": "新华社",
+          "entity_id": "ENT_GEN_0115"
+        },
+        {
+          "mention": "中央广播电视总台",
+          "entity_id": "ENT_GEN_0116"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB补充-媒体机构"
+    },
+    {
+      "text_idx": 135,
+      "expected_entities": [
+        {
+          "mention": "国家统计局",
+          "entity_id": "ENT_GEN_0117"
+        },
+        {
+          "mention": "应急管理部",
+          "entity_id": "ENT_GEN_0118"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB补充-政务机构"
+    },
+    {
+      "text_idx": 136,
+      "expected_entities": [
+        {
+          "mention": "中国银联",
+          "entity_id": "ENT_GEN_0119"
+        },
+        {
+          "mention": "邮储银行",
+          "entity_id": "ENT_GEN_0120"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB补充-金融机构"
+    },
+    {
+      "text_idx": 137,
+      "expected_entities": [
+        {
+          "mention": "商汤科技",
+          "entity_id": "ENT_GEN_0121"
+        },
+        {
+          "mention": "中科院计算所",
+          "entity_id": "ENT_GEN_0122"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB补充-AI与研究机构"
+    },
+    {
+      "text_idx": 138,
+      "expected_entities": [
+        {
+          "mention": "国网江苏电力",
+          "entity_id": "ENT_GEN_0124"
+        },
+        {
+          "mention": "广东电网",
+          "entity_id": "ENT_GEN_0125"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB低覆盖-电网"
+    },
+    {
+      "text_idx": 139,
+      "expected_entities": [
+        {
+          "mention": "企业微信",
+          "entity_id": "ENT_GEN_0126"
+        },
+        {
+          "mention": "腾讯文档",
+          "entity_id": "ENT_GEN_0127"
+        },
+        {
+          "mention": "WPS",
+          "entity_id": "ENT_GEN_0128"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB低覆盖-产品"
+    },
+    {
+      "text_idx": 140,
+      "expected_entities": [
+        {
+          "mention": "华西医院",
+          "entity_id": "ENT_GEN_0131"
+        },
+        {
+          "mention": "湘雅医院",
+          "entity_id": "ENT_GEN_0132"
+        },
+        {
+          "mention": "中山医院",
+          "entity_id": "ENT_GEN_0133"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB低覆盖-医疗"
+    },
+    {
+      "text_idx": 141,
+      "expected_entities": [
+        {
+          "mention": "国航",
+          "entity_id": "ENT_GEN_0135"
+        },
+        {
+          "mention": "东方航空",
+          "entity_id": "ENT_GEN_0136"
+        },
+        {
+          "mention": "上海机场",
+          "entity_id": "ENT_GEN_0137"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB低覆盖-交通"
+    },
+    {
+      "text_idx": 142,
+      "expected_entities": [
+        {
+          "mention": "人民日报",
+          "entity_id": "ENT_GEN_0139"
+        },
+        {
+          "mention": "人民网",
+          "entity_id": "ENT_GEN_0140"
+        },
+        {
+          "mention": "央视新闻",
+          "entity_id": "ENT_GEN_0141"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "KB低覆盖-媒体"
+    },
+    {
+      "text_idx": 143,
+      "expected_entities": [
+        {
+          "mention": "国网江苏电力",
+          "entity_id": "ENT_GEN_0124"
+        },
+        {
+          "mention": "华为云",
+          "entity_id": "ENT_GEN_0129"
+        },
+        {
+          "mention": "腾讯文档",
+          "entity_id": "ENT_GEN_0127"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "跨领域-batch电网云平台"
+    },
+    {
+      "text_idx": 144,
+      "expected_entities": [
+        {
+          "mention": "华西医院",
+          "entity_id": "ENT_GEN_0131"
+        },
+        {
+          "mention": "同济医院",
+          "entity_id": "ENT_GEN_0134"
+        },
+        {
+          "mention": "百度智能云",
+          "entity_id": "ENT_GEN_0130"
+        },
+        {
+          "mention": "国际医疗联盟",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "跨领域-batch医疗NIL"
+    },
+    {
+      "text_idx": 145,
+      "expected_entities": [
+        {
+          "mention": "国航",
+          "entity_id": "ENT_GEN_0135"
+        },
+        {
+          "mention": "东航",
+          "entity_id": "ENT_GEN_0136"
+        },
+        {
+          "mention": "上海机场",
+          "entity_id": "ENT_GEN_0137"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "跨领域-batch交通"
+    },
+    {
+      "text_idx": 146,
+      "expected_entities": [
+        {
+          "mention": "建行",
+          "entity_id": "ENT_GEN_0081"
+        },
+        {
+          "mention": "邮储银行",
+          "entity_id": "ENT_GEN_0120"
+        },
+        {
+          "mention": "银联",
+          "entity_id": "ENT_GEN_0119"
+        },
+        {
+          "mention": "支付宝",
+          "entity_id": "ENT_GEN_0097"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "跨领域-batch金融支付"
+    },
+    {
+      "text_idx": 147,
+      "expected_entities": [
+        {
+          "mention": "中芯国际",
+          "entity_id": "ENT_GEN_0054"
+        },
+        {
+          "mention": "联想",
+          "entity_id": "ENT_GEN_0074"
+        },
+        {
+          "mention": "微软云服务",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "跨领域-batch算力NIL"
+    },
+    {
+      "text_idx": 148,
+      "expected_entities": [
+        {
+          "mention": "生态环境部",
+          "entity_id": "ENT_GEN_0091"
+        },
+        {
+          "mention": "鄂尔多斯",
+          "entity_id": "ENT_ENERGY_0048"
+        },
+        {
+          "mention": "百度地图",
+          "entity_id": "ENT_GEN_0098"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "跨领域-batch环保地图"
+    },
+    {
+      "text_idx": 149,
+      "expected_entities": [
+        {
+          "mention": "工行",
+          "entity_id": "ENT_GEN_0055"
+        },
+        {
+          "mention": "招行",
+          "entity_id": "ENT_GEN_0057"
+        },
+        {
+          "mention": "中国平安",
+          "entity_id": "ENT_GEN_0056"
+        },
+        {
+          "mention": "香港交易所",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "长尾-batch金融NIL"
+    },
+    {
+      "text_idx": 150,
+      "expected_entities": [
+        {
+          "mention": "字节跳动",
+          "entity_id": "ENT_GEN_0075"
+        },
+        {
+          "mention": "快手",
+          "entity_id": "ENT_GEN_0077"
+        },
+        {
+          "mention": "OpenAI",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "长尾-batchAI公司NIL"
+    },
+    {
+      "text_idx": 151,
+      "expected_entities": [
+        {
+          "mention": "Android",
+          "entity_id": "ENT_GEN_0100"
+        },
+        {
+          "mention": "iOS",
+          "entity_id": "ENT_GEN_0101"
+        },
+        {
+          "mention": "Windows 11",
+          "entity_id": "ENT_GEN_0063"
+        },
+        {
+          "mention": "HarmonyOS",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "长尾-batch系统NIL"
+    },
+    {
+      "text_idx": 152,
+      "expected_entities": [
+        {
+          "mention": "瑞金医院",
+          "entity_id": "ENT_GEN_0112"
+        },
+        {
+          "mention": "中日医院",
+          "entity_id": "ENT_GEN_0111"
+        },
+        {
+          "mention": "钉钉",
+          "entity_id": "ENT_GEN_0105"
+        },
+        {
+          "mention": "协和医院",
+          "entity_id": null
+        }
+      ],
+      "has_nil": true,
+      "scenario": "长尾-batch医疗NIL"
+    },
+    {
+      "text_idx": 153,
+      "expected_entities": [
+        {
+          "mention": "小鹏",
+          "entity_id": "ENT_GEN_0078"
+        },
+        {
+          "mention": "理想",
+          "entity_id": "ENT_GEN_0079"
+        },
+        {
+          "mention": "蔚来",
+          "entity_id": "ENT_GEN_0058"
+        },
+        {
+          "mention": "特斯拉",
+          "entity_id": "ENT_GEN_0080"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "长尾-batch车企"
+    },
+    {
+      "text_idx": 154,
+      "expected_entities": [
+        {
+          "mention": "人民网",
+          "entity_id": "ENT_GEN_0140"
+        },
+        {
+          "mention": "新华社",
+          "entity_id": "ENT_GEN_0115"
+        },
+        {
+          "mention": "央视总台",
+          "entity_id": "ENT_GEN_0116"
+        }
+      ],
+      "has_nil": false,
+      "scenario": "长尾-batch媒体"
     }
   ]
 }

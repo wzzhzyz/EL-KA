@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "dataset_name": "coreference_long_text_test",
-  "description": "7.7 共指模块长文本测试素材，覆盖代词、名词性指代、集合指代、无先行词和类型约束场景。",
+  "description": "7.7 共指模块长文本测试素材，覆盖代词、名词性指代、集合指代、无先行词和类型约束场景。；已扩充复杂共指、集合指代、人物指代、平台/产品/系统指代和地区指代样本。",
   "samples": [
     {
       "id": "COREF_LONG_001",
@@ -828,6 +828,4006 @@
         {
           "mention_index": 3,
           "entity_id": "ENT_GEN_0083",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_019",
+      "text": "百度在线网络技术（北京）有限公司发布自动驾驶开放平台。该公司表示将继续投入大模型工具链。京东集团股份有限公司随后升级供应链算法，该企业将减少仓储能耗。",
+      "mentions": [
+        {
+          "mention": "百度在线网络技术（北京）有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070",
+          "standard_entity": "百度在线网络技术（北京）有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "京东集团股份有限公司",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0071",
+          "standard_entity": "京东集团股份有限公司"
+        },
+        {
+          "mention": "该企业",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0070",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0071",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_020",
+      "text": "美团发布即时配送减碳方案。它计划在深圳扩大新能源车辆试点。快手科技随后升级直播电商审核模型，该平台将提升商家风控能力。",
+      "mentions": [
+        {
+          "mention": "美团",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0072",
+          "standard_entity": "北京三快在线科技有限公司"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "快手科技",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0077",
+          "standard_entity": "快手科技"
+        },
+        {
+          "mention": "该平台",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0072",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0077",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_021",
+      "text": "小鹏汽车有限公司公布城市辅助驾驶功能。该公司将在广州增加测试道路。特斯拉公司也发布储能系统方案，它将接入园区微电网。",
+      "mentions": [
+        {
+          "mention": "小鹏汽车有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0078",
+          "standard_entity": "小鹏汽车有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "特斯拉公司",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0080",
+          "standard_entity": "特斯拉公司"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0078",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0080",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_022",
+      "text": "中国建设银行股份有限公司推出绿色信贷产品。该机构表示将支持制造企业节能改造。交通银行股份有限公司随后发布财富管理方案，该机构将覆盖更多零售客户。",
+      "mentions": [
+        {
+          "mention": "中国建设银行股份有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0081",
+          "standard_entity": "中国建设银行股份有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "交通银行股份有限公司",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0084",
+          "standard_entity": "交通银行股份有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0081",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0084",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_023",
+      "text": "上海证券交易所发布ESG披露指引。该机构要求上市公司完善气候风险说明。深圳证券交易所也公布创业板规则，它将服务绿色制造企业融资。",
+      "mentions": [
+        {
+          "mention": "上海证券交易所",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0087",
+          "standard_entity": "上海证券交易所"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "深圳证券交易所",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0088",
+          "standard_entity": "深圳证券交易所"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0087",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0088",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_024",
+      "text": "中华人民共和国国家发展和改革委员会部署节能降碳工作。该机构强调项目储备和资金安排。中华人民共和国工业和信息化部随后公布工业互联网试点，该机构将负责制造业场景推广。",
+      "mentions": [
+        {
+          "mention": "中华人民共和国国家发展和改革委员会",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089",
+          "standard_entity": "中华人民共和国国家发展和改革委员会"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "中华人民共和国工业和信息化部",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0090",
+          "standard_entity": "中华人民共和国工业和信息化部"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0089",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0090",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_025",
+      "text": "中华人民共和国生态环境部发布碳排放核算指南。该机构要求重点行业完善数据报送。国家市场监督管理总局随后加强平台经济监管，它将负责标准检查。",
+      "mentions": [
+        {
+          "mention": "中华人民共和国生态环境部",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0091",
+          "standard_entity": "中华人民共和国生态环境部"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "国家市场监督管理总局",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0092",
+          "standard_entity": "国家市场监督管理总局"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0091",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0092",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_026",
+      "text": "广州市发布智能网联汽车道路测试政策。该市将开放更多示范路段。杭州市随后扩大数字经济扶持范围，当地将支持平台企业建设绿色数据中心。",
+      "mentions": [
+        {
+          "mention": "广州市",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0093",
+          "standard_entity": "广州市"
+        },
+        {
+          "mention": "该市",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "杭州市",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0094",
+          "standard_entity": "杭州市"
+        },
+        {
+          "mention": "当地",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0093",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0094",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_027",
+      "text": "南京市建设软件产业创新集群。该市将设立开源社区服务平台。武汉市随后推进光电子信息产业升级，它将吸引更多制造企业。",
+      "mentions": [
+        {
+          "mention": "南京市",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0095",
+          "standard_entity": "南京市"
+        },
+        {
+          "mention": "该市",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "武汉市",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0096",
+          "standard_entity": "武汉市"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0095",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0096",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_028",
+      "text": "支付宝上线绿色出行积分服务。该平台将接入更多公共交通系统。高德地图随后发布充电站搜索功能，它将覆盖高速服务区。",
+      "mentions": [
+        {
+          "mention": "支付宝",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0097",
+          "standard_entity": "支付宝"
+        },
+        {
+          "mention": "该平台",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "高德地图",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0099",
+          "standard_entity": "高德地图"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0097",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0099",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_029",
+      "text": "Android发布折叠屏系统更新。该平台将优化多任务窗口。iOS随后增强隐私权限控制，它将限制后台数据访问。",
+      "mentions": [
+        {
+          "mention": "Android",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0100",
+          "standard_entity": "Android"
+        },
+        {
+          "mention": "该平台",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "iOS",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0101",
+          "standard_entity": "iOS"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0100",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0101",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_030",
+      "text": "中国移动通信集团有限公司推进5G-A试点。该公司将在广州建设边缘计算节点。中国电信集团有限公司同步建设云网融合数据中心，该公司将服务政企客户。",
+      "mentions": [
+        {
+          "mention": "中国移动通信集团有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0102",
+          "standard_entity": "中国移动通信集团有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "中国电信集团有限公司",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0103",
+          "standard_entity": "中国电信集团有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0102",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0103",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_031",
+      "text": "国家电网有限公司与中国南方电网有限责任公司分别发布年度报告。双方均表示将扩大新能源并网能力。",
+      "mentions": [
+        {
+          "mention": "国家电网有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "standard_entity": "国家电网有限公司"
+        },
+        {
+          "mention": "中国南方电网有限责任公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "standard_entity": "中国南方电网有限责任公司"
+        },
+        {
+          "mention": "双方",
+          "type": "NOUN",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_032",
+      "text": "百度在线网络技术（北京）有限公司和京东集团股份有限公司分别公布数据中心节能计划。上述企业均承诺提高绿电使用比例。",
+      "mentions": [
+        {
+          "mention": "百度在线网络技术（北京）有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070",
+          "standard_entity": "百度在线网络技术（北京）有限公司"
+        },
+        {
+          "mention": "京东集团股份有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0071",
+          "standard_entity": "京东集团股份有限公司"
+        },
+        {
+          "mention": "上述企业",
+          "type": "NOUN",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_033",
+      "text": "中国建设银行股份有限公司和中国农业银行股份有限公司联合推出县域绿色金融服务。两家公司均将支持分布式光伏项目融资。",
+      "mentions": [
+        {
+          "mention": "中国建设银行股份有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0081",
+          "standard_entity": "中国建设银行股份有限公司"
+        },
+        {
+          "mention": "中国农业银行股份有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0082",
+          "standard_entity": "中国农业银行股份有限公司"
+        },
+        {
+          "mention": "两家公司",
+          "type": "NOUN",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_034",
+      "text": "小鹏汽车有限公司和理想汽车分别发布智能驾驶更新。他们都强调家庭出行和城市道路场景。",
+      "mentions": [
+        {
+          "mention": "小鹏汽车有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0078",
+          "standard_entity": "小鹏汽车有限公司"
+        },
+        {
+          "mention": "理想汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0079",
+          "standard_entity": "理想汽车"
+        },
+        {
+          "mention": "他们",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_035",
+      "text": "上海证券交易所和深圳证券交易所分别完善上市规则。二者均关注绿色制造企业的信息披露。",
+      "mentions": [
+        {
+          "mention": "上海证券交易所",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0087",
+          "standard_entity": "上海证券交易所"
+        },
+        {
+          "mention": "深圳证券交易所",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0088",
+          "standard_entity": "深圳证券交易所"
+        },
+        {
+          "mention": "二者",
+          "type": "NOUN",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_036",
+      "text": "北京大学和上海交通大学联合建设低碳能源课程。两家高校均计划开放实验教学资源。",
+      "mentions": [
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064",
+          "standard_entity": "北京大学"
+        },
+        {
+          "mention": "上海交通大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0065",
+          "standard_entity": "上海交通大学"
+        },
+        {
+          "mention": "两家高校",
+          "type": "NOUN",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_037",
+      "text": "世界银行发布能源转型融资报告。该机构尚未进入当前知识库。中国银行随后发布跨境绿色债券服务方案，该机构将提供结算支持。",
+      "mentions": [
+        {
+          "mention": "世界银行",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "中国银行",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0083",
+          "standard_entity": "中国银行股份有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0083",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_038",
+      "text": "该平台宣布将在下季度升级服务接口。随后，支付宝上线绿色出行积分服务，它将接入更多公交系统。",
+      "mentions": [
+        {
+          "mention": "该平台",
+          "type": "PRON",
+          "sentence_index": 0,
+          "role": "anaphor"
+        },
+        {
+          "mention": "支付宝",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0097",
+          "standard_entity": "支付宝"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 0,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0097",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_039",
+      "text": "该市计划建设新的软件园区。随后，南京市公布产业扶持政策，该市将吸引更多开源社区项目。",
+      "mentions": [
+        {
+          "mention": "该市",
+          "type": "PRON",
+          "sentence_index": 0,
+          "role": "anaphor"
+        },
+        {
+          "mention": "南京市",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0095",
+          "standard_entity": "南京市"
+        },
+        {
+          "mention": "该市",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 0,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0095",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_040",
+      "text": "张伟负责百度地图充电路线项目。他介绍了路径规划算法。百度地图随后上线新版服务，该平台将覆盖更多新能源车用户。",
+      "mentions": [
+        {
+          "mention": "张伟",
+          "type": "PERSON",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "PER_TEST_0001",
+          "standard_entity": "张伟"
+        },
+        {
+          "mention": "他",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "百度地图",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0098",
+          "standard_entity": "百度地图"
+        },
+        {
+          "mention": "该平台",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "PER_TEST_0001",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0098",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_041",
+      "text": "李娜担任中国移动5G-A试点负责人。她表示边缘计算节点将在广州落地。中国移动通信集团有限公司随后发布公告，该公司将扩大试点范围。",
+      "mentions": [
+        {
+          "mention": "李娜",
+          "type": "PERSON",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "PER_TEST_0002",
+          "standard_entity": "李娜"
+        },
+        {
+          "mention": "她",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "中国移动通信集团有限公司",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0102",
+          "standard_entity": "中国移动通信集团有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "PER_TEST_0002",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0102",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_042",
+      "text": "国家发展改革委和工业和信息化部联合召开节能降碳会议。双方表示将分别推进投资管理和制造业数字化工作。",
+      "mentions": [
+        {
+          "mention": "国家发展改革委",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089",
+          "standard_entity": "中华人民共和国国家发展和改革委员会"
+        },
+        {
+          "mention": "工业和信息化部",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0090",
+          "standard_entity": "中华人民共和国工业和信息化部"
+        },
+        {
+          "mention": "双方",
+          "type": "NOUN",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_043",
+      "text": "高德地图和百度地图分别发布充电站搜索功能。这些企业均强调新能源车出行服务。",
+      "mentions": [
+        {
+          "mention": "高德地图",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0099",
+          "standard_entity": "高德地图"
+        },
+        {
+          "mention": "百度地图",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0098",
+          "standard_entity": "百度地图"
+        },
+        {
+          "mention": "这些企业",
+          "type": "NOUN",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_044",
+      "text": "中国科学院发布先进储能材料成果。该机构表示将推动技术转化。浙江大学随后公布计算平台，该校将开放部分实验数据。",
+      "mentions": [
+        {
+          "mention": "中国科学院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0068",
+          "standard_entity": "中国科学院"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "浙江大学",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0066",
+          "standard_entity": "浙江大学"
+        },
+        {
+          "mention": "该校",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0068",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0066",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_045",
+      "text": "网易公司发布云游戏低时延方案。该公司表示将优化边缘节点。字节跳动有限公司随后上线节能调度系统，该企业将服务视频推荐模型训练。",
+      "mentions": [
+        {
+          "mention": "网易公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0076",
+          "standard_entity": "网易公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "字节跳动有限公司",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0075",
+          "standard_entity": "字节跳动有限公司"
+        },
+        {
+          "mention": "该企业",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0076",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0075",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_046",
+      "text": "东方财富信息股份有限公司上线基金风险分析工具。该公司表示将完善投资者教育。中信证券股份有限公司随后发布新能源研究报告，它看好储能产业链。",
+      "mentions": [
+        {
+          "mention": "东方财富信息股份有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0086",
+          "standard_entity": "东方财富信息股份有限公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "中信证券股份有限公司",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0085",
+          "standard_entity": "中信证券股份有限公司"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0086",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0085",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_047",
+      "text": "特斯拉公司和蔚来汽车有限公司分别公布充电网络计划。两家企业均表示将提升高速服务区补能能力。",
+      "mentions": [
+        {
+          "mention": "特斯拉公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0080",
+          "standard_entity": "特斯拉公司"
+        },
+        {
+          "mention": "蔚来汽车有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0058",
+          "standard_entity": "蔚来汽车有限公司"
+        },
+        {
+          "mention": "两家企业",
+          "type": "NOUN",
+          "sentence_index": 1,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_048",
+      "text": "清华大学发布人工智能交叉研究计划。该校将建设开放实验平台。复旦大学随后发布公共卫生研究报告，该校将开放匿名化调查数据。",
+      "mentions": [
+        {
+          "mention": "清华大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0060",
+          "standard_entity": "清华大学"
+        },
+        {
+          "mention": "该校",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "复旦大学",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0067",
+          "standard_entity": "复旦大学"
+        },
+        {
+          "mention": "该校",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0060",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0067",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_049",
+      "text": "Windows 11发布新版能效模式。该平台将优化笔记本续航。Android随后更新折叠屏适配，它将改善多任务窗口体验。",
+      "mentions": [
+        {
+          "mention": "Windows 11",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0063",
+          "standard_entity": "Windows 11"
+        },
+        {
+          "mention": "该平台",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "Android",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0100",
+          "standard_entity": "Android"
+        },
+        {
+          "mention": "它",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0063",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0100",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_050",
+      "text": "中国平安保险集团股份有限公司发布金融科技报告。该集团表示将加强医疗健康服务。招商银行股份有限公司随后升级财富管理系统，该机构将服务高净值客户。",
+      "mentions": [
+        {
+          "mention": "中国平安保险集团股份有限公司",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0056",
+          "standard_entity": "中国平安保险集团股份有限公司"
+        },
+        {
+          "mention": "该集团",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "anaphor"
+        },
+        {
+          "mention": "招商银行股份有限公司",
+          "type": "ORG",
+          "sentence_index": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0057",
+          "standard_entity": "招商银行股份有限公司"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 2,
+          "role": "anaphor"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0056",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0057",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_051",
+      "text": "国家电网与南方电网讨论跨区输电协同。该公司强调将先完善华北调峰机制，双方随后确认共享应急资源。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "standard_entity": "国家电网有限公司"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "standard_entity": "中国南方电网有限责任公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_ENERGY_0002",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_052",
+      "text": "华为和腾讯联合发布产业互联网方案。前者负责边缘设备接入，后者提供云端协同能力。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051",
+          "standard_entity": "华为技术有限公司"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052",
+          "standard_entity": "腾讯控股有限公司"
+        },
+        {
+          "mention": "前者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0051",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0052",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_053",
+      "text": "百度地图接入新的城市交通数据。该平台随后优化拥堵预测模型，它还增加了新能源充电站搜索入口。",
+      "mentions": [
+        {
+          "mention": "百度地图",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0098",
+          "standard_entity": "百度地图"
+        },
+        {
+          "mention": "该平台",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "它",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0098",
+          "is_nil": false
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0098",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_054",
+      "text": "李伟带队调研国家电网数字化项目。该负责人认为系统上线后还需要继续优化，他建议增加低压台区数据校验。",
+      "mentions": [
+        {
+          "mention": "李伟",
+          "type": "PERSON",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "PER_TEST_0101",
+          "standard_entity": "李伟"
+        },
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "standard_entity": "国家电网有限公司"
+        },
+        {
+          "mention": "该负责人",
+          "type": "PERSON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "他",
+          "type": "PERSON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "PER_TEST_0101",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "PER_TEST_0101",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_055",
+      "text": "张敏在清华大学主持能源政策研讨。该校邀请多家企业参会，她则负责整理会议纪要。",
+      "mentions": [
+        {
+          "mention": "张敏",
+          "type": "PERSON",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "PER_TEST_0102",
+          "standard_entity": "张敏"
+        },
+        {
+          "mention": "清华大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0060",
+          "standard_entity": "清华大学"
+        },
+        {
+          "mention": "该校",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "她",
+          "type": "PERSON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0060",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "PER_TEST_0102",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_056",
+      "text": "宁德时代和比亚迪讨论动力电池回收。两家企业都提出建设区域回收中心，后者还计划开放车端数据接口。",
+      "mentions": [
+        {
+          "mention": "宁德时代",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0015",
+          "standard_entity": "宁德时代新能源科技股份有限公司"
+        },
+        {
+          "mention": "比亚迪",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0079",
+          "standard_entity": "比亚迪股份有限公司"
+        },
+        {
+          "mention": "两家企业",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0079",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_057",
+      "text": "北京发布自动驾驶示范区扩容计划。当地表示将优先开放机场高速测试路段，该市还会同步完善保险规则。",
+      "mentions": [
+        {
+          "mention": "北京",
+          "type": "GPE",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0093",
+          "standard_entity": "北京市"
+        },
+        {
+          "mention": "当地",
+          "type": "GPE",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该市",
+          "type": "GPE",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0093",
+          "is_nil": false
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0093",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_058",
+      "text": "招商银行与中国银行联合推广跨境结算服务。前者主打企业账户管理，后者负责海外分支网络支持。",
+      "mentions": [
+        {
+          "mention": "招商银行",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0057",
+          "standard_entity": "招商银行股份有限公司"
+        },
+        {
+          "mention": "中国银行",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0083",
+          "standard_entity": "中国银行股份有限公司"
+        },
+        {
+          "mention": "前者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0057",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0083",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_059",
+      "text": "微信上线面向商户的低碳账单功能。该产品支持统计门店用电数据，它还会生成节能建议。",
+      "mentions": [
+        {
+          "mention": "微信",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0061",
+          "standard_entity": "微信"
+        },
+        {
+          "mention": "该产品",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "它",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0061",
+          "is_nil": false
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0061",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_060",
+      "text": "小米汽车在发布会上介绍智能座舱系统。该系统随后接入充电地图服务，它还支持语音查询电价。",
+      "mentions": [
+        {
+          "mention": "小米汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0078",
+          "standard_entity": "小米汽车有限公司"
+        },
+        {
+          "mention": "智能座舱系统",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "SYS_TEST_0101",
+          "standard_entity": "智能座舱系统"
+        },
+        {
+          "mention": "该系统",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "它",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "SYS_TEST_0101",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "SYS_TEST_0101",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_061",
+      "text": "国家发改委和工信部共同研究绿色算力政策。上述机构均提出建立能耗监测机制，二者暂未公布正式细则。",
+      "mentions": [
+        {
+          "mention": "国家发改委",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089",
+          "standard_entity": "中华人民共和国国家发展和改革委员会"
+        },
+        {
+          "mention": "工信部",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0090",
+          "standard_entity": "中华人民共和国工业和信息化部"
+        },
+        {
+          "mention": "上述机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "二者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_062",
+      "text": "南方电网在广东试点柔性配电网。该公司称项目将覆盖多个工业园区，它还计划接入分布式储能。",
+      "mentions": [
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "standard_entity": "中国南方电网有限责任公司"
+        },
+        {
+          "mention": "该公司",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "它",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_ENERGY_0002",
+          "is_nil": false
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_ENERGY_0002",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_063",
+      "text": "中芯国际和华为讨论国产芯片生态。前者强调先进制程产能，后者关注终端适配。",
+      "mentions": [
+        {
+          "mention": "中芯国际",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0054",
+          "standard_entity": "中芯国际集成电路制造有限公司"
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051",
+          "standard_entity": "华为技术有限公司"
+        },
+        {
+          "mention": "前者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0054",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0051",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_064",
+      "text": "上海交通大学建设智能电网实验室。该校计划开放仿真平台，它也将联合企业培养工程师。",
+      "mentions": [
+        {
+          "mention": "上海交通大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0065",
+          "standard_entity": "上海交通大学"
+        },
+        {
+          "mention": "该校",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "它",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0065",
+          "is_nil": false
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0065",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_065",
+      "text": "百度和百度地图同时参加智慧交通展。该平台展示导航节能路线，前者则发布自动驾驶云服务。",
+      "mentions": [
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070",
+          "standard_entity": "百度在线网络技术（北京）有限公司"
+        },
+        {
+          "mention": "百度地图",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0098",
+          "standard_entity": "百度地图"
+        },
+        {
+          "mention": "该平台",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "前者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0098",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0070",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_066",
+      "text": "国家电网、宁德时代和比亚迪参加储能圆桌会。多家企业均提到电池回收标准，他们没有形成单一责任主体。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "standard_entity": "国家电网有限公司"
+        },
+        {
+          "mention": "宁德时代",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0015",
+          "standard_entity": "宁德时代新能源科技股份有限公司"
+        },
+        {
+          "mention": "比亚迪",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0079",
+          "standard_entity": "比亚迪股份有限公司"
+        },
+        {
+          "mention": "多家企业",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "他们",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 4,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_067",
+      "text": "王强负责评估招商银行的绿色金融产品。该负责人指出企业客户需求增长，他还建议增加碳账户功能。",
+      "mentions": [
+        {
+          "mention": "王强",
+          "type": "PERSON",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "PER_TEST_0103",
+          "standard_entity": "王强"
+        },
+        {
+          "mention": "招商银行",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0057",
+          "standard_entity": "招商银行股份有限公司"
+        },
+        {
+          "mention": "该负责人",
+          "type": "PERSON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "他",
+          "type": "PERSON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "PER_TEST_0103",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "PER_TEST_0103",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_068",
+      "text": "刘洋在北京大学介绍新能源材料项目。她强调实验数据需要复核，该校随后公布开放课题名单。",
+      "mentions": [
+        {
+          "mention": "刘洋",
+          "type": "PERSON",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "PER_TEST_0104",
+          "standard_entity": "刘洋"
+        },
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064",
+          "standard_entity": "北京大学"
+        },
+        {
+          "mention": "她",
+          "type": "PERSON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该校",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "PER_TEST_0104",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0064",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_069",
+      "text": "三峡集团运营三峡水电站多年。该公司继续推进梯级电站调度，后者则承担防洪和发电任务。",
+      "mentions": [
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008",
+          "standard_entity": "中国长江三峡集团有限公司"
+        },
+        {
+          "mention": "三峡水电站",
+          "type": "POWER_FACILITY",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0012",
+          "standard_entity": "三峡水电站"
+        },
+        {
+          "mention": "该公司",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_ENERGY_0008",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_ENERGY_0012",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_070",
+      "text": "中国移动和腾讯云共建边缘节点。双方计划共享网络资源，两家公司仍需分别完成安全评估。",
+      "mentions": [
+        {
+          "mention": "中国移动",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0102",
+          "standard_entity": "中国移动通信集团有限公司"
+        },
+        {
+          "mention": "腾讯云",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052",
+          "standard_entity": "腾讯控股有限公司"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_071",
+      "text": "清华大学和北京大学联合申请碳中和科研平台。两所高校均派出研究团队，上述机构不应链接为单一实体。",
+      "mentions": [
+        {
+          "mention": "清华大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0060",
+          "standard_entity": "清华大学"
+        },
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064",
+          "standard_entity": "北京大学"
+        },
+        {
+          "mention": "两所高校",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "上述机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_072",
+      "text": "中国平安发布保险科技平台。该平台支持新能源车险定价，它还接入维修网络数据。",
+      "mentions": [
+        {
+          "mention": "中国平安",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0056",
+          "standard_entity": "中国平安保险集团股份有限公司"
+        },
+        {
+          "mention": "保险科技平台",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "SYS_TEST_0102",
+          "standard_entity": "保险科技平台"
+        },
+        {
+          "mention": "该平台",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "它",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "SYS_TEST_0102",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "SYS_TEST_0102",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_073",
+      "text": "阿里巴巴升级企业采购系统。该系统连接淘宝商家和工业客户，该系统会自动生成供应链风险提醒。",
+      "mentions": [
+        {
+          "mention": "阿里巴巴",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0053",
+          "standard_entity": "阿里巴巴集团控股有限公司"
+        },
+        {
+          "mention": "企业采购系统",
+          "type": "SYSTEM",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "SYS_TEST_0103",
+          "standard_entity": "企业采购系统"
+        },
+        {
+          "mention": "淘宝",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0059",
+          "standard_entity": "淘宝"
+        },
+        {
+          "mention": "该系统",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该系统",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": "SYS_TEST_0103",
+          "is_nil": false
+        },
+        {
+          "mention_index": 4,
+          "entity_id": "SYS_TEST_0103",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_074",
+      "text": "国家电网在天津建设虚拟电厂平台。该平台聚合楼宇负荷，该平台还向调度中心提供响应曲线。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "standard_entity": "国家电网有限公司"
+        },
+        {
+          "mention": "天津",
+          "type": "GPE",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0095",
+          "standard_entity": "天津市"
+        },
+        {
+          "mention": "虚拟电厂平台",
+          "type": "SYSTEM",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "SYS_TEST_0104",
+          "standard_entity": "虚拟电厂平台"
+        },
+        {
+          "mention": "该平台",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该平台",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": "SYS_TEST_0104",
+          "is_nil": false
+        },
+        {
+          "mention_index": 4,
+          "entity_id": "SYS_TEST_0104",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_075",
+      "text": "广州发布智能网联汽车测试方案。当地计划开放更多道路，该方案还要求企业提交安全报告。",
+      "mentions": [
+        {
+          "mention": "广州",
+          "type": "GPE",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0080",
+          "standard_entity": "广州市"
+        },
+        {
+          "mention": "智能网联汽车测试方案",
+          "type": "SYSTEM",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "SYS_TEST_0105",
+          "standard_entity": "智能网联汽车测试方案"
+        },
+        {
+          "mention": "当地",
+          "type": "GPE",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该方案",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0080",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "SYS_TEST_0105",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_076",
+      "text": "华为推出能源管理模型。该模型能够预测园区负荷，该模型还支持光伏出力异常检测。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051",
+          "standard_entity": "华为技术有限公司"
+        },
+        {
+          "mention": "能源管理模型",
+          "type": "SYSTEM",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "SYS_TEST_0106",
+          "standard_entity": "能源管理模型"
+        },
+        {
+          "mention": "该模型",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该模型",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "SYS_TEST_0106",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "SYS_TEST_0106",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_077",
+      "text": "招商银行推出企业碳账户服务。该业务面向制造业客户，该业务将展示贷款利率优惠条件。",
+      "mentions": [
+        {
+          "mention": "招商银行",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0057",
+          "standard_entity": "招商银行股份有限公司"
+        },
+        {
+          "mention": "企业碳账户服务",
+          "type": "SYSTEM",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "SYS_TEST_0107",
+          "standard_entity": "企业碳账户服务"
+        },
+        {
+          "mention": "该业务",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该业务",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "SYS_TEST_0107",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "SYS_TEST_0107",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_078",
+      "text": "国网新源建设抽水蓄能调度系统。该系统记录机组启停计划，该系统还会向国家电网同步调峰数据。",
+      "mentions": [
+        {
+          "mention": "国网新源",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0010",
+          "standard_entity": "国网新源控股有限公司"
+        },
+        {
+          "mention": "抽水蓄能调度系统",
+          "type": "SYSTEM",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "SYS_TEST_0108",
+          "standard_entity": "抽水蓄能调度系统"
+        },
+        {
+          "mention": "该系统",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该系统",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "standard_entity": "国家电网有限公司"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "SYS_TEST_0108",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "SYS_TEST_0108",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_079",
+      "text": "李娜和张敏共同负责北京大学项目。她需要整理实验数据，两人后续都会参加答辩。",
+      "mentions": [
+        {
+          "mention": "李娜",
+          "type": "PERSON",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "PER_TEST_0105",
+          "standard_entity": "李娜"
+        },
+        {
+          "mention": "张敏",
+          "type": "PERSON",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "PER_TEST_0102",
+          "standard_entity": "张敏"
+        },
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064",
+          "standard_entity": "北京大学"
+        },
+        {
+          "mention": "她",
+          "type": "PERSON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "两人",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": "PER_TEST_0102",
+          "is_nil": false
+        },
+        {
+          "mention_index": 4,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_080",
+      "text": "腾讯和微信团队发布支付低碳页面。该产品面向个人用户，前者提供集团资源支持。",
+      "mentions": [
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052",
+          "standard_entity": "腾讯控股有限公司"
+        },
+        {
+          "mention": "微信",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0061",
+          "standard_entity": "微信"
+        },
+        {
+          "mention": "该产品",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "前者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0061",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0052",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_081",
+      "text": "北京和上海同时发布充电设施规划。两地都提出建设快充走廊，当地还要求平台公开价格。",
+      "mentions": [
+        {
+          "mention": "北京",
+          "type": "GPE",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0093",
+          "standard_entity": "北京市"
+        },
+        {
+          "mention": "上海",
+          "type": "GPE",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0096",
+          "standard_entity": "上海市"
+        },
+        {
+          "mention": "两地",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "当地",
+          "type": "GPE",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0096",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_082",
+      "text": "中国银行和招商银行讨论数字人民币结算。双方尚未公布联合产品，上述银行也未形成单一主体。",
+      "mentions": [
+        {
+          "mention": "中国银行",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0083",
+          "standard_entity": "中国银行股份有限公司"
+        },
+        {
+          "mention": "招商银行",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0057",
+          "standard_entity": "招商银行股份有限公司"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "上述银行",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_083",
+      "text": "工信部发布新能源车联网指导意见。该机构要求车企加强数据安全，它还将组织试点城市验收。",
+      "mentions": [
+        {
+          "mention": "工信部",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0090",
+          "standard_entity": "中华人民共和国工业和信息化部"
+        },
+        {
+          "mention": "该机构",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "它",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0090",
+          "is_nil": false
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0090",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_084",
+      "text": "国家发改委会同国家能源局推进电力市场改革。该机构负责运行监管，前者负责价格机制设计。",
+      "mentions": [
+        {
+          "mention": "国家发改委",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089",
+          "standard_entity": "中华人民共和国国家发展和改革委员会"
+        },
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0014",
+          "standard_entity": "国家能源局"
+        },
+        {
+          "mention": "该机构",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "前者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_ENERGY_0014",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0089",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_085",
+      "text": "阿里巴巴和淘宝共同测试低碳商品标签。该平台负责前端展示，后者也将接入商家评级。",
+      "mentions": [
+        {
+          "mention": "阿里巴巴",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0053",
+          "standard_entity": "阿里巴巴集团控股有限公司"
+        },
+        {
+          "mention": "淘宝",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0059",
+          "standard_entity": "淘宝"
+        },
+        {
+          "mention": "该平台",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0059",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0059",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_086",
+      "text": "宁德时代发布储能安全白皮书。该企业强调热失控预警，它还计划开放部分测试数据。",
+      "mentions": [
+        {
+          "mention": "宁德时代",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0015",
+          "standard_entity": "宁德时代新能源科技股份有限公司"
+        },
+        {
+          "mention": "该企业",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "它",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_ENERGY_0015",
+          "is_nil": false
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_ENERGY_0015",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_087",
+      "text": "长安汽车和比亚迪参与智能驾驶标准讨论。两家企业均提交测试报告，他们的意见需要专家组汇总。",
+      "mentions": [
+        {
+          "mention": "长安汽车",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0071",
+          "standard_entity": "长安汽车股份有限公司"
+        },
+        {
+          "mention": "比亚迪",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0079",
+          "standard_entity": "比亚迪股份有限公司"
+        },
+        {
+          "mention": "两家企业",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "他们",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_088",
+      "text": "百度推出交通大模型，百度地图负责场景落地。该模型用于预测路网流量，后者负责向用户展示结果。",
+      "mentions": [
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070",
+          "standard_entity": "百度在线网络技术（北京）有限公司"
+        },
+        {
+          "mention": "交通大模型",
+          "type": "SYSTEM",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "SYS_TEST_0109",
+          "standard_entity": "交通大模型"
+        },
+        {
+          "mention": "百度地图",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0098",
+          "standard_entity": "百度地图"
+        },
+        {
+          "mention": "该模型",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": "SYS_TEST_0109",
+          "is_nil": false
+        },
+        {
+          "mention_index": 4,
+          "entity_id": "ENT_GEN_0098",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_089",
+      "text": "上海交通大学与清华大学共建能源互联网课程。两家高校计划共享实验数据，二者都不是单一可链接实体。",
+      "mentions": [
+        {
+          "mention": "上海交通大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0065",
+          "standard_entity": "上海交通大学"
+        },
+        {
+          "mention": "清华大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0060",
+          "standard_entity": "清华大学"
+        },
+        {
+          "mention": "两家高校",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "二者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_090",
+      "text": "中国平安和招商银行合作服务新能源车主。双方计划推出联合权益包，前者负责保险定价。",
+      "mentions": [
+        {
+          "mention": "中国平安",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0056",
+          "standard_entity": "中国平安保险集团股份有限公司"
+        },
+        {
+          "mention": "招商银行",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0057",
+          "standard_entity": "招商银行股份有限公司"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "前者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0056",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_091",
+      "text": "南方电网建设海岛微网管理平台。该平台整合风电和储能数据，该平台还支持离线运行策略。",
+      "mentions": [
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "standard_entity": "中国南方电网有限责任公司"
+        },
+        {
+          "mention": "海岛微网管理平台",
+          "type": "SYSTEM",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "SYS_TEST_0110",
+          "standard_entity": "海岛微网管理平台"
+        },
+        {
+          "mention": "该平台",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该平台",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "SYS_TEST_0110",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "SYS_TEST_0110",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_092",
+      "text": "国家电网和国网新源分别汇报抽水蓄能项目。前者关注全网调峰需求，后者负责电站建设进度。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "standard_entity": "国家电网有限公司"
+        },
+        {
+          "mention": "国网新源",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0010",
+          "standard_entity": "国网新源控股有限公司"
+        },
+        {
+          "mention": "前者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_ENERGY_0001",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_ENERGY_0010",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_093",
+      "text": "王磊向工信部提交车联网安全报告。该负责人随后解释测试流程，他还补充了数据脱敏方案。",
+      "mentions": [
+        {
+          "mention": "王磊",
+          "type": "PERSON",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "PER_TEST_0106",
+          "standard_entity": "王磊"
+        },
+        {
+          "mention": "工信部",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0090",
+          "standard_entity": "中华人民共和国工业和信息化部"
+        },
+        {
+          "mention": "该负责人",
+          "type": "PERSON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "他",
+          "type": "PERSON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "PER_TEST_0106",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "PER_TEST_0106",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_094",
+      "text": "赵婷负责百度地图充电站数据治理。她先清洗重复站点，该平台随后上线新的筛选入口。",
+      "mentions": [
+        {
+          "mention": "赵婷",
+          "type": "PERSON",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "PER_TEST_0107",
+          "standard_entity": "赵婷"
+        },
+        {
+          "mention": "百度地图",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0098",
+          "standard_entity": "百度地图"
+        },
+        {
+          "mention": "她",
+          "type": "PERSON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该平台",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "PER_TEST_0107",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0098",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_095",
+      "text": "微信和支付宝同时支持绿色出行券。两款应用都面向个人用户，它们不应被解析为单一实体。",
+      "mentions": [
+        {
+          "mention": "微信",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0061",
+          "standard_entity": "微信"
+        },
+        {
+          "mention": "支付宝",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0063",
+          "standard_entity": "支付宝"
+        },
+        {
+          "mention": "两款应用",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "它们",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_096",
+      "text": "南京发布虚拟电厂补贴办法。当地要求聚合商报送负荷数据，该市还将组织季度评估。",
+      "mentions": [
+        {
+          "mention": "南京",
+          "type": "GPE",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0097",
+          "standard_entity": "南京市"
+        },
+        {
+          "mention": "当地",
+          "type": "GPE",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该市",
+          "type": "GPE",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0097",
+          "is_nil": false
+        },
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0097",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_097",
+      "text": "华能集团和三峡集团共同投资海上风电项目。双方将分别负责不同海域，上述企业不对应单个实体。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003",
+          "standard_entity": "中国华能集团有限公司"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008",
+          "standard_entity": "中国长江三峡集团有限公司"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "上述企业",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_098",
+      "text": "北京大学开发科研项目管理系统。该系统跟踪经费使用情况，该系统还支持与学院平台同步。",
+      "mentions": [
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064",
+          "standard_entity": "北京大学"
+        },
+        {
+          "mention": "科研项目管理系统",
+          "type": "SYSTEM",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "SYS_TEST_0111",
+          "standard_entity": "科研项目管理系统"
+        },
+        {
+          "mention": "该系统",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "该系统",
+          "type": "SYSTEM",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "SYS_TEST_0111",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "SYS_TEST_0111",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_099",
+      "text": "国家发改委、工信部和国家能源局参加政策协调会。他们讨论了电力市场、算力中心和新能源车政策。",
+      "mentions": [
+        {
+          "mention": "国家发改委",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089",
+          "standard_entity": "中华人民共和国国家发展和改革委员会"
+        },
+        {
+          "mention": "工信部",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0090",
+          "standard_entity": "中华人民共和国工业和信息化部"
+        },
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0014",
+          "standard_entity": "国家能源局"
+        },
+        {
+          "mention": "他们",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_100",
+      "text": "阿里巴巴、腾讯和华为均展示企业级AI服务。多家企业都强调安全合规，这些企业不能合并为一个实体。",
+      "mentions": [
+        {
+          "mention": "阿里巴巴",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0053",
+          "standard_entity": "阿里巴巴集团控股有限公司"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052",
+          "standard_entity": "腾讯控股有限公司"
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051",
+          "standard_entity": "华为技术有限公司"
+        },
+        {
+          "mention": "多家企业",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "这些企业",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "is_nil": true
+        },
+        {
+          "mention_index": 4,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_101",
+      "text": "华为云参与电网巡检项目。该平台提供算力资源。",
+      "mentions": [
+        {
+          "mention": "华为云",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0129",
+          "standard_entity": "华为云"
+        },
+        {
+          "mention": "该平台",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0129",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_102",
+      "text": "华西医院发布远程会诊流程。该院随后接入企业微信。",
+      "mentions": [
+        {
+          "mention": "华西医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0131",
+          "standard_entity": "四川大学华西医院"
+        },
+        {
+          "mention": "该院",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "企业微信",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0126",
+          "standard_entity": "企业微信"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0131",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_103",
+      "text": "国家统计局发布消费数据。该局随后解释统计口径。",
+      "mentions": [
+        {
+          "mention": "国家统计局",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0117",
+          "standard_entity": "国家统计局"
+        },
+        {
+          "mention": "该局",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0117",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_104",
+      "text": "国航和东航分别调整航线。两家公司都强调暑运保障。",
+      "mentions": [
+        {
+          "mention": "国航",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0135",
+          "standard_entity": "中国国际航空股份有限公司"
+        },
+        {
+          "mention": "东航",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0136",
+          "standard_entity": "中国东方航空股份有限公司"
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_105",
+      "text": "清华和北大共同发布研究报告。两所高校都强调数据治理。",
+      "mentions": [
+        {
+          "mention": "清华",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0060",
+          "standard_entity": "清华大学"
+        },
+        {
+          "mention": "北大",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064",
+          "standard_entity": "北京大学"
+        },
+        {
+          "mention": "两所高校",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_106",
+      "text": "百度智能云参与能源调度项目。该平台提供模型训练资源。",
+      "mentions": [
+        {
+          "mention": "百度智能云",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0130",
+          "standard_entity": "百度智能云"
+        },
+        {
+          "mention": "该平台",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0130",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_107",
+      "text": "国家能源局发布监管要求。该机构随后公开征求意见。",
+      "mentions": [
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0059",
+          "standard_entity": "国家能源局"
+        },
+        {
+          "mention": "该机构",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0059",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_108",
+      "text": "小鹏和理想分别发布补能计划。前者强调城区超充，后者强调家庭场景。",
+      "mentions": [
+        {
+          "mention": "小鹏",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0078",
+          "standard_entity": "小鹏汽车有限公司"
+        },
+        {
+          "mention": "理想",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0079",
+          "standard_entity": "理想汽车"
+        },
+        {
+          "mention": "前者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "后者",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": "ENT_GEN_0078",
+          "is_nil": false
+        },
+        {
+          "mention_index": 3,
+          "entity_id": "ENT_GEN_0079",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_109",
+      "text": "工行和招行共同披露绿色贷款。上述银行不能合并为单一实体。",
+      "mentions": [
+        {
+          "mention": "工行",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0055",
+          "standard_entity": "中国工商银行股份有限公司"
+        },
+        {
+          "mention": "招行",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0057",
+          "standard_entity": "招商银行股份有限公司"
+        },
+        {
+          "mention": "上述银行",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "is_nil": true
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_110",
+      "text": "Android完成兼容测试。该系统随后发布适配清单。",
+      "mentions": [
+        {
+          "mention": "Android",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0100",
+          "standard_entity": "Android"
+        },
+        {
+          "mention": "该系统",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0100",
+          "is_nil": false
+        }
+      ]
+    },
+    {
+      "id": "COREF_LONG_111",
+      "text": "瑞金医院上线随访流程。该院随后接入钉钉。",
+      "mentions": [
+        {
+          "mention": "瑞金医院",
+          "type": "ORG",
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_GEN_0112",
+          "standard_entity": "上海交通大学医学院附属瑞金医院"
+        },
+        {
+          "mention": "该院",
+          "type": "PRON",
+          "sentence_index": 1,
+          "role": "pronoun"
+        },
+        {
+          "mention": "钉钉",
+          "type": "ORG",
+          "sentence_index": 1,
+          "role": "name",
+          "entity_id": "ENT_GEN_0105",
+          "standard_entity": "钉钉"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 1,
+          "entity_id": "ENT_GEN_0112",
           "is_nil": false
         }
       ]

@@ -34,10 +34,30 @@ COLLECTIVE_ANAPHORS = {
     "两家公司",
     "两家企业",
     "两家央企",
+    "两家高校",
+    "两所高校",
+    "两所大学",
     "这些企业",
+    "这些机构",
+    "多家企业",
+    "多家机构",
     "上述企业",
+    "上述机构",
+    "上述银行",
     "双方",
     "二者",
+    "两人",
+    "两地",
+    "两款应用",
+    "它们",
+    "他们",
+    "她们",
+}
+
+
+ORDINAL_ANAPHORS = {
+    "前者": 0,
+    "后者": 1,
 }
 
 
@@ -66,6 +86,7 @@ def is_anaphor(text: str, mention_type: str = "UNKNOWN", role: str = "") -> bool
         or normalized in ORG_ANAPHORS
         or normalized in PERSON_ANAPHORS
         or normalized in COLLECTIVE_ANAPHORS
+        or normalized in ORDINAL_ANAPHORS
     )
 
 
@@ -268,6 +289,27 @@ class RuleBasedCoreferenceResolver:
                 rule="collective_nil",
                 is_nil=True,
             )
+
+        ordinal_position = ORDINAL_ANAPHORS.get(normalize_text(mention.mention))
+        if ordinal_position is not None:
+            named_antecedents = [
+                (antecedent_index, antecedent)
+                for antecedent_index, antecedent in active_entities
+                if antecedent.role != "resolved_anaphor"
+            ]
+            if len(named_antecedents) >= 2:
+                antecedent_index, antecedent = named_antecedents[-2 + ordinal_position]
+                return CoreferenceResolution(
+                    mention=mention.mention,
+                    entity_id=antecedent.entity_id,
+                    entity_name=antecedent.entity_name,
+                    antecedent=antecedent.mention,
+                    antecedent_index=antecedent_index,
+                    confidence=0.86,
+                    evidence=f"{mention.mention}按前者/后者顺序回指{antecedent.mention}",
+                    rule="ordinal_pair",
+                    is_nil=False,
+                )
 
         if not is_anaphor(mention.mention, mention.mention_type, mention.role):
             return CoreferenceResolution(

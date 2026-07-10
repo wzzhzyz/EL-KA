@@ -1,6 +1,6 @@
 {
   "dataset_name": "candidate_retrieval_validation",
-  "version": "1.2",
+  "version": "1.4",
   "purpose": "候选生成召回率校验——同名异指、模糊匹配、BGE语义召回",
   "candidate_methods": [
     "alias_exact",
@@ -195,11 +195,13 @@
       "id": "CR_016",
       "text": "工信部发布了5G发展规划。",
       "mention": "工信部",
-      "expected_candidates": [],
-      "gold_entity": null,
-      "gold_reason": "NIL-不在KB中",
-      "scenario": "NIL-候选为空",
-      "note": "mention='工信部'不在KB中，候选生成应为空列表"
+      "expected_candidates": [
+        "ENT_GEN_0090"
+      ],
+      "gold_entity": "ENT_GEN_0090",
+      "gold_reason": "KB已存在实体，本阶段由NIL修正为候选召回正例",
+      "scenario": "NIL-候选为空-KB已入库修正",
+      "note": "mention='工信部'不在KB中，候选生成应为空列表；已根据KB别名修正。"
     },
     {
       "id": "CR_017",
@@ -624,58 +626,1313 @@
       "gold_reason": "知识库外实体，应无候选",
       "scenario": "NIL-知识库外实体",
       "note": "第五步扩充的跨领域候选召回样本。"
+    },
+    {
+      "text": "国家电网发布新一代调度平台。",
+      "mention": "国家电网",
+      "expected_candidates": [
+        "ENT_ENERGY_0001"
+      ],
+      "gold_entity": "ENT_ENERGY_0001",
+      "gold_reason": "实体全称直接命中。",
+      "scenario": "精确匹配-电网企业",
+      "note": "验证完整名称召回。",
+      "id": "CR_051"
+    },
+    {
+      "text": "南方电网在广东推进柔性配电网试点。",
+      "mention": "南方电网",
+      "expected_candidates": [
+        "ENT_ENERGY_0002"
+      ],
+      "gold_entity": "ENT_ENERGY_0002",
+      "gold_reason": "实体全称直接命中。",
+      "scenario": "精确匹配-电网企业",
+      "note": "验证区域电网企业召回。",
+      "id": "CR_052"
+    },
+    {
+      "text": "国网新源公布抽水蓄能电站建设计划。",
+      "mention": "国网新源",
+      "expected_candidates": [
+        "ENT_ENERGY_0010",
+        "ENT_ENERGY_0001"
+      ],
+      "gold_entity": "ENT_ENERGY_0010",
+      "gold_reason": "国网新源应召回子公司，同时可保留母公司候选。",
+      "scenario": "子公司别名召回",
+      "note": "验证母子公司候选召回。",
+      "id": "CR_053"
+    },
+    {
+      "text": "三峡集团投资海上风电基地。",
+      "mention": "三峡集团",
+      "expected_candidates": [
+        "ENT_ENERGY_0008",
+        "ENT_ENERGY_0012"
+      ],
+      "gold_entity": "ENT_ENERGY_0008",
+      "gold_reason": "集团指向企业，三峡水电站为干扰候选。",
+      "scenario": "设施vs企业多候选",
+      "note": "验证三峡相关多候选。",
+      "id": "CR_054"
+    },
+    {
+      "text": "三峡水电站承担防洪和发电任务。",
+      "mention": "三峡水电站",
+      "expected_candidates": [
+        "ENT_ENERGY_0012",
+        "ENT_ENERGY_0008"
+      ],
+      "gold_entity": "ENT_ENERGY_0012",
+      "gold_reason": "水电站指向设施，集团为干扰。",
+      "scenario": "设施vs企业多候选",
+      "note": "验证设施实体召回。",
+      "id": "CR_055"
+    },
+    {
+      "text": "CATL公布钠离子电池量产计划。",
+      "mention": "CATL",
+      "expected_candidates": [
+        "ENT_ENERGY_0015"
+      ],
+      "gold_entity": "ENT_ENERGY_0015",
+      "gold_reason": "CATL是宁德时代英文简称。",
+      "scenario": "英文简称召回",
+      "note": "验证英文 alias。",
+      "id": "CR_056"
+    },
+    {
+      "text": "宁德时代扩建储能电池产线。",
+      "mention": "宁德时代",
+      "expected_candidates": [
+        "ENT_ENERGY_0015"
+      ],
+      "gold_entity": "ENT_ENERGY_0015",
+      "gold_reason": "中文常用简称命中。",
+      "scenario": "中文简称召回",
+      "note": "验证企业简称。",
+      "id": "CR_057"
+    },
+    {
+      "text": "华为发布园区能源管理模型。",
+      "mention": "华为",
+      "expected_candidates": [
+        "ENT_GEN_0051"
+      ],
+      "gold_entity": "ENT_GEN_0051",
+      "gold_reason": "华为指向华为技术有限公司。",
+      "scenario": "科技企业简称召回",
+      "note": "验证短简称召回。",
+      "id": "CR_058"
+    },
+    {
+      "text": "Huawei参与半导体供应链合作。",
+      "mention": "Huawei",
+      "expected_candidates": [
+        "ENT_GEN_0051"
+      ],
+      "gold_entity": "ENT_GEN_0051",
+      "gold_reason": "Huawei为华为英文名。",
+      "scenario": "英文别名召回",
+      "note": "验证中英文别名。",
+      "id": "CR_059"
+    },
+    {
+      "text": "腾讯推出绿色算力解决方案。",
+      "mention": "腾讯",
+      "expected_candidates": [
+        "ENT_GEN_0052",
+        "ENT_GEN_0061"
+      ],
+      "gold_entity": "ENT_GEN_0052",
+      "gold_reason": "腾讯为公司，微信可作为产品干扰。",
+      "scenario": "公司vs产品多候选",
+      "note": "验证公司产品同域召回。",
+      "id": "CR_060"
+    },
+    {
+      "text": "微信上线低碳账单功能。",
+      "mention": "微信",
+      "expected_candidates": [
+        "ENT_GEN_0061",
+        "ENT_GEN_0052"
+      ],
+      "gold_entity": "ENT_GEN_0061",
+      "gold_reason": "微信为产品，腾讯为母公司干扰。",
+      "scenario": "产品vs公司多候选",
+      "note": "验证产品实体召回。",
+      "id": "CR_061"
+    },
+    {
+      "text": "阿里巴巴升级企业采购系统。",
+      "mention": "阿里巴巴",
+      "expected_candidates": [
+        "ENT_GEN_0053"
+      ],
+      "gold_entity": "ENT_GEN_0053",
+      "gold_reason": "集团名称直接命中。",
+      "scenario": "集团主体召回",
+      "note": "验证互联网集团召回。",
+      "id": "CR_062"
+    },
+    {
+      "text": "SMIC扩大成熟制程产能。",
+      "mention": "SMIC",
+      "expected_candidates": [
+        "ENT_GEN_0054",
+        "ENT_GEN_0051"
+      ],
+      "gold_entity": "ENT_GEN_0054",
+      "gold_reason": "SMIC应召回中芯国际，华为为半导体上下文干扰。",
+      "scenario": "英文简称多候选",
+      "note": "验证英文缩写召回。",
+      "id": "CR_063"
+    },
+    {
+      "text": "中芯国际参与国产芯片生态建设。",
+      "mention": "中芯国际",
+      "expected_candidates": [
+        "ENT_GEN_0054",
+        "ENT_GEN_0051"
+      ],
+      "gold_entity": "ENT_GEN_0054",
+      "gold_reason": "中芯国际直接命中，华为为生态干扰。",
+      "scenario": "中文简称多候选",
+      "note": "验证半导体候选召回。",
+      "id": "CR_064"
+    },
+    {
+      "text": "中国平安推出新能源车险产品。",
+      "mention": "中国平安",
+      "expected_candidates": [
+        "ENT_GEN_0056",
+        "ENT_GEN_0057"
+      ],
+      "gold_entity": "ENT_GEN_0056",
+      "gold_reason": "中国平安为保险集团，招商银行为金融干扰。",
+      "scenario": "金融机构多候选",
+      "note": "验证金融实体召回。",
+      "id": "CR_065"
+    },
+    {
+      "text": "Ping An发布绿色保险报告。",
+      "mention": "Ping An",
+      "expected_candidates": [
+        "ENT_GEN_0056"
+      ],
+      "gold_entity": "ENT_GEN_0056",
+      "gold_reason": "Ping An为中国平安英文别名。",
+      "scenario": "金融英文别名召回",
+      "note": "验证英文金融别名。",
+      "id": "CR_066"
+    },
+    {
+      "text": "招商银行上线企业碳账户服务。",
+      "mention": "招商银行",
+      "expected_candidates": [
+        "ENT_GEN_0057",
+        "ENT_GEN_0083"
+      ],
+      "gold_entity": "ENT_GEN_0057",
+      "gold_reason": "招商银行为正确实体，中国银行为同类干扰。",
+      "scenario": "银行多候选",
+      "note": "验证同类银行召回。",
+      "id": "CR_067"
+    },
+    {
+      "text": "CMB推出财富管理合作产品。",
+      "mention": "CMB",
+      "expected_candidates": [
+        "ENT_GEN_0057",
+        "ENT_GEN_0083"
+      ],
+      "gold_entity": "ENT_GEN_0057",
+      "gold_reason": "CMB指招商银行。",
+      "scenario": "英文简称多候选",
+      "note": "验证英文缩写与银行干扰。",
+      "id": "CR_068"
+    },
+    {
+      "text": "中国银行发布跨境结算服务升级公告。",
+      "mention": "中国银行",
+      "expected_candidates": [
+        "ENT_GEN_0083",
+        "ENT_GEN_0081"
+      ],
+      "gold_entity": "ENT_GEN_0083",
+      "gold_reason": "中国银行为正确实体，建设银行为同类干扰。",
+      "scenario": "银行精确匹配",
+      "note": "验证银行候选召回。",
+      "id": "CR_069"
+    },
+    {
+      "text": "BOC参与绿色债券承销。",
+      "mention": "BOC",
+      "expected_candidates": [
+        "ENT_GEN_0083",
+        "ENT_GEN_0081"
+      ],
+      "gold_entity": "ENT_GEN_0083",
+      "gold_reason": "BOC指中国银行。",
+      "scenario": "银行英文简称",
+      "note": "验证英文简称召回。",
+      "id": "CR_070"
+    },
+    {
+      "text": "清华大学建设能源互联网实验平台。",
+      "mention": "清华大学",
+      "expected_candidates": [
+        "ENT_GEN_0060",
+        "ENT_GEN_0064"
+      ],
+      "gold_entity": "ENT_GEN_0060",
+      "gold_reason": "清华大学为正确实体，北京大学为同类干扰。",
+      "scenario": "高校多候选",
+      "note": "验证高校候选召回。",
+      "id": "CR_071"
+    },
+    {
+      "text": "北京大学发布碳中和研究计划。",
+      "mention": "北京大学",
+      "expected_candidates": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0060"
+      ],
+      "gold_entity": "ENT_GEN_0064",
+      "gold_reason": "北京大学为正确实体，清华大学为同类干扰。",
+      "scenario": "高校多候选",
+      "note": "验证高校候选召回。",
+      "id": "CR_072"
+    },
+    {
+      "text": "上海交通大学上线智慧能源课程。",
+      "mention": "上海交通大学",
+      "expected_candidates": [
+        "ENT_GEN_0065",
+        "ENT_GEN_0060"
+      ],
+      "gold_entity": "ENT_GEN_0065",
+      "gold_reason": "上海交通大学直接命中。",
+      "scenario": "高校精确匹配",
+      "note": "验证长高校名召回。",
+      "id": "CR_073"
+    },
+    {
+      "text": "上交发布电力系统仿真平台。",
+      "mention": "上交",
+      "expected_candidates": [
+        "ENT_GEN_0065"
+      ],
+      "gold_entity": "ENT_GEN_0065",
+      "gold_reason": "上交通常指上海交通大学。",
+      "scenario": "高校简称召回",
+      "note": "验证短简称召回。",
+      "id": "CR_074"
+    },
+    {
+      "text": "百度推出交通大模型。",
+      "mention": "百度",
+      "expected_candidates": [
+        "ENT_GEN_0070",
+        "ENT_GEN_0098"
+      ],
+      "gold_entity": "ENT_GEN_0070",
+      "gold_reason": "百度为公司，百度地图为平台干扰。",
+      "scenario": "公司vs平台多候选",
+      "note": "验证同品牌多候选。",
+      "id": "CR_075"
+    },
+    {
+      "text": "百度地图开放充电站检索入口。",
+      "mention": "百度地图",
+      "expected_candidates": [
+        "ENT_GEN_0098",
+        "ENT_GEN_0070"
+      ],
+      "gold_entity": "ENT_GEN_0098",
+      "gold_reason": "百度地图为平台，百度公司为干扰。",
+      "scenario": "平台vs公司多候选",
+      "note": "验证平台实体召回。",
+      "id": "CR_076"
+    },
+    {
+      "text": "长安汽车参与自动驾驶标准讨论。",
+      "mention": "长安汽车",
+      "expected_candidates": [
+        "ENT_GEN_0071",
+        "ENT_GEN_0079",
+        "ENT_GEN_0078"
+      ],
+      "gold_entity": "ENT_GEN_0071",
+      "gold_reason": "长安汽车为正确实体，其他车企为干扰。",
+      "scenario": "汽车企业多候选",
+      "note": "验证汽车行业多候选。",
+      "id": "CR_077"
+    },
+    {
+      "text": "比亚迪建设储能电池基地。",
+      "mention": "比亚迪",
+      "expected_candidates": [
+        "ENT_GEN_0079",
+        "ENT_ENERGY_0015"
+      ],
+      "gold_entity": "ENT_GEN_0079",
+      "gold_reason": "比亚迪为车企，宁德时代为电池企业干扰。",
+      "scenario": "车企vs电池企业",
+      "note": "验证近领域候选。",
+      "id": "CR_078"
+    },
+    {
+      "text": "小米汽车展示智能座舱系统。",
+      "mention": "小米汽车",
+      "expected_candidates": [
+        "ENT_GEN_0078",
+        "ENT_GEN_0079"
+      ],
+      "gold_entity": "ENT_GEN_0078",
+      "gold_reason": "小米汽车为正确实体，比亚迪为同类干扰。",
+      "scenario": "汽车企业多候选",
+      "note": "验证汽车实体召回。",
+      "id": "CR_079"
+    },
+    {
+      "text": "中国移动建设绿色数据中心。",
+      "mention": "中国移动",
+      "expected_candidates": [
+        "ENT_GEN_0102",
+        "ENT_GEN_0052"
+      ],
+      "gold_entity": "ENT_GEN_0102",
+      "gold_reason": "中国移动为通信企业，腾讯为科技干扰。",
+      "scenario": "通信运营商召回",
+      "note": "验证通信企业召回。",
+      "id": "CR_080"
+    },
+    {
+      "text": "国家发改委研究电力市场价格机制。",
+      "mention": "国家发改委",
+      "expected_candidates": [
+        "ENT_GEN_0089",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity": "ENT_GEN_0089",
+      "gold_reason": "国家发改委为正确实体，工信部为同类干扰。",
+      "scenario": "政府机构多候选",
+      "note": "验证政府机构召回。",
+      "id": "CR_081"
+    },
+    {
+      "text": "工信部发布车联网安全指南。",
+      "mention": "工信部",
+      "expected_candidates": [
+        "ENT_GEN_0090",
+        "ENT_GEN_0089"
+      ],
+      "gold_entity": "ENT_GEN_0090",
+      "gold_reason": "工信部为正确实体，发改委为同类干扰。",
+      "scenario": "政府机构多候选",
+      "note": "验证政府机构召回。",
+      "id": "CR_082"
+    },
+    {
+      "text": "国家能源局完善新能源消纳机制。",
+      "mention": "国家能源局",
+      "expected_candidates": [
+        "ENT_ENERGY_0014",
+        "ENT_GEN_0089"
+      ],
+      "gold_entity": "ENT_ENERGY_0014",
+      "gold_reason": "国家能源局为正确实体。",
+      "scenario": "能源监管机构召回",
+      "note": "验证能源监管机构召回。",
+      "id": "CR_083"
+    },
+    {
+      "text": "北京发布自动驾驶示范区政策。",
+      "mention": "北京",
+      "expected_candidates": [
+        "ENT_GEN_0093",
+        "ENT_GEN_0080"
+      ],
+      "gold_entity": "ENT_GEN_0093",
+      "gold_reason": "北京为地区，广州为地名干扰。",
+      "scenario": "地区多候选",
+      "note": "验证地区召回。",
+      "id": "CR_084"
+    },
+    {
+      "text": "广州公布充电设施补贴政策。",
+      "mention": "广州",
+      "expected_candidates": [
+        "ENT_GEN_0080",
+        "ENT_GEN_0093"
+      ],
+      "gold_entity": "ENT_GEN_0080",
+      "gold_reason": "广州为正确地区，北京为干扰。",
+      "scenario": "地区多候选",
+      "note": "验证地区召回。",
+      "id": "CR_085"
+    },
+    {
+      "text": "华能集团推进海上风电项目。",
+      "mention": "华能集团",
+      "expected_candidates": [
+        "ENT_ENERGY_0003",
+        "ENT_ENERGY_0008"
+      ],
+      "gold_entity": "ENT_ENERGY_0003",
+      "gold_reason": "华能集团为正确实体，三峡集团为同类干扰。",
+      "scenario": "发电集团多候选",
+      "note": "验证电力企业召回。",
+      "id": "CR_086"
+    },
+    {
+      "text": "国网讨论抽水蓄能调峰机制。",
+      "mention": "国网",
+      "expected_candidates": [
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0010"
+      ],
+      "gold_entity": "ENT_ENERGY_0001",
+      "gold_reason": "国网可召回母公司和国网新源，正确需靠下游消歧。",
+      "scenario": "简称多候选",
+      "note": "验证简称召回宽度。",
+      "id": "CR_087"
+    },
+    {
+      "text": "三峡参与水风光一体化基地建设。",
+      "mention": "三峡",
+      "expected_candidates": [
+        "ENT_ENERGY_0008",
+        "ENT_ENERGY_0012"
+      ],
+      "gold_entity": "ENT_ENERGY_0008",
+      "gold_reason": "三峡可召回集团和水电站，候选召回应保留歧义。",
+      "scenario": "短简称多候选",
+      "note": "验证短 mention 多候选。",
+      "id": "CR_088"
+    },
+    {
+      "text": "中行发布绿色金融服务方案。",
+      "mention": "中行",
+      "expected_candidates": [
+        "ENT_GEN_0083",
+        "ENT_GEN_0081"
+      ],
+      "gold_entity": "ENT_GEN_0083",
+      "gold_reason": "中行指中国银行，建设银行为同类干扰。",
+      "scenario": "银行简称多候选",
+      "note": "验证中文简称召回。",
+      "id": "CR_089"
+    },
+    {
+      "text": "清华发布能源互联网课程。",
+      "mention": "清华",
+      "expected_candidates": [
+        "ENT_GEN_0060",
+        "ENT_GEN_0064"
+      ],
+      "gold_entity": "ENT_GEN_0060",
+      "gold_reason": "清华指清华大学，北大为同类干扰。",
+      "scenario": "高校简称多候选",
+      "note": "验证高校简称召回。",
+      "id": "CR_090"
+    },
+    {
+      "text": "世界银行发布能源转型融资报告。 候选召回阶段应保持空候选或弱候选策略。",
+      "mention": "世界银行",
+      "expected_candidates": [],
+      "gold_entity": null,
+      "gold_reason": "世界银行未入库，应允许候选为空。",
+      "scenario": "NIL-未入库机构-去重修正",
+      "note": "验证未入库国际机构。；第八阶段调整文本上下文以避免重复。",
+      "id": "CR_091"
+    },
+    {
+      "text": "北京协和医院上线远程会诊平台。",
+      "mention": "北京协和医院",
+      "expected_candidates": [],
+      "gold_entity": null,
+      "gold_reason": "医疗机构未入库，应无强候选。",
+      "scenario": "NIL-医疗机构未入库",
+      "note": "验证医疗机构 NIL。",
+      "id": "CR_092"
+    },
+    {
+      "text": "复旦大学成立绿色金融研究中心。",
+      "mention": "复旦大学",
+      "expected_candidates": [
+        "ENT_GEN_0067"
+      ],
+      "gold_entity": "ENT_GEN_0067",
+      "gold_reason": "KB已存在实体，本阶段由NIL修正为候选召回正例",
+      "scenario": "NIL-高校未入库-KB已入库修正",
+      "note": "验证高校 NIL。；已根据KB别名修正。",
+      "id": "CR_093"
+    },
+    {
+      "text": "蔚来汽车公布换电站建设计划。",
+      "mention": "蔚来汽车",
+      "expected_candidates": [
+        "ENT_GEN_0058"
+      ],
+      "gold_entity": "ENT_GEN_0058",
+      "gold_reason": "KB已存在实体，本阶段由NIL修正为候选召回正例",
+      "scenario": "NIL-车企未入库-KB已入库修正",
+      "note": "验证车企 NIL。；已根据KB别名修正。",
+      "id": "CR_094"
+    },
+    {
+      "text": "国际能源署更新全球电力市场展望。",
+      "mention": "国际能源署",
+      "expected_candidates": [],
+      "gold_entity": null,
+      "gold_reason": "国际能源署未入库，应避免误召回国家能源局。",
+      "scenario": "NIL-国际能源机构未入库",
+      "note": "验证高相似 NIL。",
+      "id": "CR_095"
+    },
+    {
+      "text": "数据质量影响实体链接效果。",
+      "mention": "数据质量",
+      "expected_candidates": [],
+      "gold_entity": null,
+      "gold_reason": "普通概念不是实体。",
+      "scenario": "NIL-普通概念",
+      "note": "验证概念 NIL。",
+      "id": "CR_096"
+    },
+    {
+      "text": "能源转型需要跨行业协同。",
+      "mention": "能源转型",
+      "expected_candidates": [],
+      "gold_entity": null,
+      "gold_reason": "普通概念不应召回企业。",
+      "scenario": "NIL-普通概念",
+      "note": "验证概念 NIL。",
+      "id": "CR_097"
+    },
+    {
+      "text": "双方将继续讨论合作细节。",
+      "mention": "双方",
+      "expected_candidates": [],
+      "gold_entity": null,
+      "gold_reason": "集合指代不对应单一实体。",
+      "scenario": "NIL-集合指代",
+      "note": "验证集合 NIL。",
+      "id": "CR_098"
+    },
+    {
+      "text": "多家企业参加储能研讨会。",
+      "mention": "多家企业",
+      "expected_candidates": [],
+      "gold_entity": null,
+      "gold_reason": "集合短语不应召回单一公司。",
+      "scenario": "NIL-集合指代",
+      "note": "验证集合 NIL。",
+      "id": "CR_099"
+    },
+    {
+      "text": "华为数字能源研究院展示微网控制器。",
+      "mention": "华为数字能源研究院",
+      "expected_candidates": [],
+      "gold_entity": null,
+      "gold_reason": "研究院未入库，不能误召回华为。",
+      "scenario": "NIL-高相似机构",
+      "note": "验证高相似 NIL。",
+      "id": "CR_100"
+    },
+    {
+      "text": "腾讯会议支持在线会议和低碳办公统计。",
+      "mention": "腾讯会议",
+      "expected_candidates": [
+        "ENT_GEN_0104",
+        "ENT_GEN_0052"
+      ],
+      "gold_entity": "ENT_GEN_0104",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-消费产品召回",
+      "note": "产品与母公司共同召回。",
+      "id": "CR_101"
+    },
+    {
+      "text": "钉钉发布企业能耗填报模板。",
+      "mention": "钉钉",
+      "expected_candidates": [
+        "ENT_GEN_0105",
+        "ENT_GEN_0053"
+      ],
+      "gold_entity": "ENT_GEN_0105",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-消费产品召回",
+      "note": "产品与集团干扰。",
+      "id": "CR_102"
+    },
+    {
+      "text": "飞书上线项目碳排放协同表。",
+      "mention": "飞书",
+      "expected_candidates": [
+        "ENT_GEN_0106"
+      ],
+      "gold_entity": "ENT_GEN_0106",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-消费产品召回",
+      "note": "新增协同办公产品。",
+      "id": "CR_103"
+    },
+    {
+      "text": "广汽埃安公布超充网络计划。",
+      "mention": "广汽埃安",
+      "expected_candidates": [
+        "ENT_GEN_0107",
+        "ENT_GEN_0079",
+        "ENT_GEN_0078"
+      ],
+      "gold_entity": "ENT_GEN_0107",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-汽车制造召回",
+      "note": "车企多候选。",
+      "id": "CR_104"
+    },
+    {
+      "text": "上汽集团发布新能源商用车方案。",
+      "mention": "上汽集团",
+      "expected_candidates": [
+        "ENT_GEN_0108",
+        "ENT_GEN_0071",
+        "ENT_GEN_0079"
+      ],
+      "gold_entity": "ENT_GEN_0108",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-汽车制造召回",
+      "note": "汽车制造商多候选。",
+      "id": "CR_105"
+    },
+    {
+      "text": "华中科技大学建设能源互联网实验平台。",
+      "mention": "华中科技大学",
+      "expected_candidates": [
+        "ENT_GEN_0109",
+        "ENT_GEN_0060",
+        "ENT_GEN_0064"
+      ],
+      "gold_entity": "ENT_GEN_0109",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-高校召回",
+      "note": "高校多候选。",
+      "id": "CR_106"
+    },
+    {
+      "text": "南京大学发布双碳课程。",
+      "mention": "南京大学",
+      "expected_candidates": [
+        "ENT_GEN_0110",
+        "ENT_GEN_0060"
+      ],
+      "gold_entity": "ENT_GEN_0110",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-高校召回",
+      "note": "新增高校正例。",
+      "id": "CR_107"
+    },
+    {
+      "text": "中日友好医院开展楼宇节能改造。",
+      "mention": "中日友好医院",
+      "expected_candidates": [
+        "ENT_GEN_0111",
+        "ENT_GEN_0112"
+      ],
+      "gold_entity": "ENT_GEN_0111",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-医疗机构召回",
+      "note": "医疗机构多候选。",
+      "id": "CR_108"
+    },
+    {
+      "text": "瑞金医院上线智慧能源管理系统。",
+      "mention": "瑞金医院",
+      "expected_candidates": [
+        "ENT_GEN_0112",
+        "ENT_GEN_0111"
+      ],
+      "gold_entity": "ENT_GEN_0112",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-医疗机构召回",
+      "note": "医院简称召回。",
+      "id": "CR_109"
+    },
+    {
+      "text": "国铁集团发布铁路能源保障方案。",
+      "mention": "国铁集团",
+      "expected_candidates": [
+        "ENT_GEN_0113",
+        "ENT_GEN_0114"
+      ],
+      "gold_entity": "ENT_GEN_0113",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-交通运输召回",
+      "note": "铁路与航空机构区分。",
+      "id": "CR_110"
+    },
+    {
+      "text": "南航优化航班燃油效率管理。",
+      "mention": "南航",
+      "expected_candidates": [
+        "ENT_GEN_0114",
+        "ENT_GEN_0113"
+      ],
+      "gold_entity": "ENT_GEN_0114",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-交通运输召回",
+      "note": "航空简称召回。",
+      "id": "CR_111"
+    },
+    {
+      "text": "新华社报道新能源产业政策。",
+      "mention": "新华社",
+      "expected_candidates": [
+        "ENT_GEN_0115",
+        "ENT_GEN_0116"
+      ],
+      "gold_entity": "ENT_GEN_0115",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-媒体机构召回",
+      "note": "媒体机构多候选。",
+      "id": "CR_112"
+    },
+    {
+      "text": "央视总台推出绿色发展专题节目。",
+      "mention": "央视总台",
+      "expected_candidates": [
+        "ENT_GEN_0116",
+        "ENT_GEN_0115"
+      ],
+      "gold_entity": "ENT_GEN_0116",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-媒体机构召回",
+      "note": "媒体简称召回。",
+      "id": "CR_113"
+    },
+    {
+      "text": "国家统计局发布能源消费数据。",
+      "mention": "国家统计局",
+      "expected_candidates": [
+        "ENT_GEN_0117",
+        "ENT_GEN_0118"
+      ],
+      "gold_entity": "ENT_GEN_0117",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-政务机构召回",
+      "note": "政务机构多候选。",
+      "id": "CR_114"
+    },
+    {
+      "text": "应急管理部介绍安全生产监管要求。",
+      "mention": "应急管理部",
+      "expected_candidates": [
+        "ENT_GEN_0118",
+        "ENT_GEN_0089"
+      ],
+      "gold_entity": "ENT_GEN_0118",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-政务机构召回",
+      "note": "应急管理部与发改委区分。",
+      "id": "CR_115"
+    },
+    {
+      "text": "中国银联公布绿色支付案例。",
+      "mention": "中国银联",
+      "expected_candidates": [
+        "ENT_GEN_0119",
+        "ENT_GEN_0057",
+        "ENT_GEN_0083"
+      ],
+      "gold_entity": "ENT_GEN_0119",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-金融机构召回",
+      "note": "支付机构与银行区分。",
+      "id": "CR_116"
+    },
+    {
+      "text": "邮储银行推出绿色信贷服务。",
+      "mention": "邮储银行",
+      "expected_candidates": [
+        "ENT_GEN_0120",
+        "ENT_GEN_0083",
+        "ENT_GEN_0057"
+      ],
+      "gold_entity": "ENT_GEN_0120",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-金融机构召回",
+      "note": "新增银行正例。",
+      "id": "CR_117"
+    },
+    {
+      "text": "商汤科技展示碳排放识别算法。",
+      "mention": "商汤科技",
+      "expected_candidates": [
+        "ENT_GEN_0121",
+        "ENT_GEN_0070",
+        "ENT_GEN_0051"
+      ],
+      "gold_entity": "ENT_GEN_0121",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-AI企业召回",
+      "note": "AI企业与科技企业干扰。",
+      "id": "CR_118"
+    },
+    {
+      "text": "中科院计算所发布人工智能芯片报告。",
+      "mention": "中科院计算所",
+      "expected_candidates": [
+        "ENT_GEN_0122",
+        "ENT_GEN_0068"
+      ],
+      "gold_entity": "ENT_GEN_0122",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-研究机构召回",
+      "note": "研究所与中科院相关实体区分。",
+      "id": "CR_119"
+    },
+    {
+      "text": "北交所发布ESG信息披露指南。",
+      "mention": "北交所",
+      "expected_candidates": [
+        "ENT_GEN_0123",
+        "ENT_GEN_0087"
+      ],
+      "gold_entity": "ENT_GEN_0123",
+      "gold_reason": "知识库补充实体召回正例",
+      "scenario": "KB扩充-交易所召回",
+      "note": "北交所与上交所区分。",
+      "id": "CR_120"
+    },
+    {
+      "text": "国网江苏电力推进配电网升级。",
+      "mention": "国网江苏电力",
+      "expected_candidates": [
+        "ENT_GEN_0124",
+        "ENT_ENERGY_0001"
+      ],
+      "gold_entity": "ENT_GEN_0124",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-电网召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_121"
+    },
+    {
+      "text": "广东电网建设新型配电系统。",
+      "mention": "广东电网",
+      "expected_candidates": [
+        "ENT_GEN_0125",
+        "ENT_ENERGY_0002"
+      ],
+      "gold_entity": "ENT_GEN_0125",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-电网召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_122"
+    },
+    {
+      "text": "企业微信上线低碳办公模板。",
+      "mention": "企业微信",
+      "expected_candidates": [
+        "ENT_GEN_0126",
+        "ENT_GEN_0061"
+      ],
+      "gold_entity": "ENT_GEN_0126",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-产品召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_123"
+    },
+    {
+      "text": "腾讯文档支持协同填报。",
+      "mention": "腾讯文档",
+      "expected_candidates": [
+        "ENT_GEN_0127",
+        "ENT_GEN_0052"
+      ],
+      "gold_entity": "ENT_GEN_0127",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-产品召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_124"
+    },
+    {
+      "text": "WPS发布绿色办公模板。",
+      "mention": "WPS",
+      "expected_candidates": [
+        "ENT_GEN_0128"
+      ],
+      "gold_entity": "ENT_GEN_0128",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-产品召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_125"
+    },
+    {
+      "text": "华为云发布园区能源管理方案。",
+      "mention": "华为云",
+      "expected_candidates": [
+        "ENT_GEN_0129",
+        "ENT_GEN_0051"
+      ],
+      "gold_entity": "ENT_GEN_0129",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-云平台召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_126"
+    },
+    {
+      "text": "百度智能云推出能耗预测服务。",
+      "mention": "百度智能云",
+      "expected_candidates": [
+        "ENT_GEN_0130",
+        "ENT_GEN_0070"
+      ],
+      "gold_entity": "ENT_GEN_0130",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-云平台召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_127"
+    },
+    {
+      "text": "华西医院开展智慧医院节能改造。",
+      "mention": "华西医院",
+      "expected_candidates": [
+        "ENT_GEN_0131",
+        "ENT_GEN_0112"
+      ],
+      "gold_entity": "ENT_GEN_0131",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-医疗召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_128"
+    },
+    {
+      "text": "湘雅医院上线楼宇能耗监测。",
+      "mention": "湘雅医院",
+      "expected_candidates": [
+        "ENT_GEN_0132",
+        "ENT_GEN_0134"
+      ],
+      "gold_entity": "ENT_GEN_0132",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-医疗召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_129"
+    },
+    {
+      "text": "国航发布燃油效率管理方案。",
+      "mention": "国航",
+      "expected_candidates": [
+        "ENT_GEN_0135",
+        "ENT_GEN_0114",
+        "ENT_GEN_0136"
+      ],
+      "gold_entity": "ENT_GEN_0135",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-交通召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_130"
+    },
+    {
+      "text": "东方航空优化航线节能策略。",
+      "mention": "东方航空",
+      "expected_candidates": [
+        "ENT_GEN_0136",
+        "ENT_GEN_0135"
+      ],
+      "gold_entity": "ENT_GEN_0136",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-交通召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_131"
+    },
+    {
+      "text": "广州地铁公布节能改造计划。",
+      "mention": "广州地铁",
+      "expected_candidates": [
+        "ENT_GEN_0138",
+        "ENT_GEN_0113"
+      ],
+      "gold_entity": "ENT_GEN_0138",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-交通召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_132"
+    },
+    {
+      "text": "人民日报报道绿色发展政策。",
+      "mention": "人民日报",
+      "expected_candidates": [
+        "ENT_GEN_0139",
+        "ENT_GEN_0115"
+      ],
+      "gold_entity": "ENT_GEN_0139",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-媒体召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_133"
+    },
+    {
+      "text": "人民网整理新能源专题。",
+      "mention": "人民网",
+      "expected_candidates": [
+        "ENT_GEN_0140",
+        "ENT_GEN_0139"
+      ],
+      "gold_entity": "ENT_GEN_0140",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-媒体召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_134"
+    },
+    {
+      "text": "央视新闻推出绿色发展节目。",
+      "mention": "央视新闻",
+      "expected_candidates": [
+        "ENT_GEN_0141",
+        "ENT_GEN_0116"
+      ],
+      "gold_entity": "ENT_GEN_0141",
+      "gold_reason": "低覆盖KB类型扩充后的候选召回正例",
+      "scenario": "KB低覆盖-媒体召回",
+      "note": "用于验证新增实体可被候选召回。",
+      "id": "CR_135"
+    },
+    {
+      "text": "华为云和百度智能云分别参与能源平台竞标。",
+      "mention": "百度智能云",
+      "expected_candidates": [
+        "ENT_GEN_0130",
+        "ENT_GEN_0129",
+        "ENT_GEN_0070"
+      ],
+      "gold_entity": "ENT_GEN_0130",
+      "gold_reason": "跨领域复杂文本扩充后的候选召回样本",
+      "scenario": "跨领域-云平台召回",
+      "note": "云服务简称需要召回正确平台。",
+      "id": "CR_136"
+    },
+    {
+      "text": "上海机场披露航班运行效率数据。",
+      "mention": "上海机场",
+      "expected_candidates": [
+        "ENT_GEN_0137",
+        "ENT_GEN_0093",
+        "ENT_GEN_0135"
+      ],
+      "gold_entity": "ENT_GEN_0137",
+      "gold_reason": "跨领域复杂文本扩充后的候选召回样本",
+      "scenario": "跨领域-交通召回",
+      "note": "机场类实体召回。",
+      "id": "CR_137"
+    },
+    {
+      "text": "环球时报报道绿色金融论坛。",
+      "mention": "环球时报",
+      "expected_candidates": [
+        "ENT_GEN_0139",
+        "ENT_GEN_0140",
+        "ENT_GEN_0142"
+      ],
+      "gold_entity": null,
+      "gold_reason": "跨领域复杂文本扩充后的候选召回样本",
+      "scenario": "跨领域-媒体NIL召回",
+      "note": "未入库媒体作为NIL干扰样本。",
+      "id": "CR_138"
+    },
+    {
+      "text": "中山医院和华西医院开展远程会诊。",
+      "mention": "中山医院",
+      "expected_candidates": [
+        "ENT_GEN_0133",
+        "ENT_GEN_0131",
+        "ENT_GEN_0111"
+      ],
+      "gold_entity": "ENT_GEN_0133",
+      "gold_reason": "跨领域复杂文本扩充后的候选召回样本",
+      "scenario": "跨领域-医疗召回",
+      "note": "医院简称召回。",
+      "id": "CR_139"
+    },
+    {
+      "text": "微软云服务参与工业互联网试点。",
+      "mention": "微软云服务",
+      "expected_candidates": [
+        "ENT_GEN_0129",
+        "ENT_GEN_0130",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity": null,
+      "gold_reason": "跨领域复杂文本扩充后的候选召回样本",
+      "scenario": "跨领域-云服务NIL召回",
+      "note": "未入库云平台干扰。",
+      "id": "CR_140"
+    },
+    {
+      "text": "广汽埃安发布换电合作计划。",
+      "mention": "广汽埃安",
+      "expected_candidates": [
+        "ENT_GEN_0107",
+        "ENT_GEN_0058",
+        "ENT_GEN_0108"
+      ],
+      "gold_entity": "ENT_GEN_0107",
+      "gold_reason": "跨领域复杂文本扩充后的候选召回样本",
+      "scenario": "跨领域-车企召回",
+      "note": "新能源车企召回。",
+      "id": "CR_141"
+    },
+    {
+      "text": "东方财富整理绿色债券行情。",
+      "mention": "东方财富",
+      "expected_candidates": [
+        "ENT_GEN_0086",
+        "ENT_GEN_0087",
+        "ENT_GEN_0088"
+      ],
+      "gold_entity": "ENT_GEN_0086",
+      "gold_reason": "跨领域复杂文本扩充后的候选召回样本",
+      "scenario": "跨领域-金融资讯召回",
+      "note": "金融资讯平台召回。",
+      "id": "CR_142"
+    },
+    {
+      "text": "腾讯文档用于项目验收材料协作。",
+      "mention": "腾讯文档",
+      "expected_candidates": [
+        "ENT_GEN_0127",
+        "ENT_GEN_0104",
+        "ENT_GEN_0126"
+      ],
+      "gold_entity": "ENT_GEN_0127",
+      "gold_reason": "跨领域复杂文本扩充后的候选召回样本",
+      "scenario": "跨领域-办公软件召回",
+      "note": "办公产品召回。",
+      "id": "CR_143"
+    },
+    {
+      "text": "OpenAI参与大模型评测。",
+      "mention": "OpenAI",
+      "expected_candidates": [
+        "ENT_GEN_0075",
+        "ENT_GEN_0051",
+        "ENT_GEN_0070"
+      ],
+      "gold_entity": null,
+      "gold_reason": "长尾领域与NIL干扰扩充后的候选召回样本",
+      "scenario": "长尾-AI公司NIL召回",
+      "note": "同领域候选干扰。",
+      "id": "CR_144"
+    },
+    {
+      "text": "中国移动上线边缘计算平台。",
+      "mention": "中国移动",
+      "expected_candidates": [
+        "ENT_GEN_0102",
+        "ENT_GEN_0103",
+        "ENT_GEN_0074"
+      ],
+      "gold_entity": "ENT_GEN_0102",
+      "gold_reason": "长尾领域与NIL干扰扩充后的候选召回样本",
+      "scenario": "长尾-通信召回",
+      "note": "运营商候选召回。",
+      "id": "CR_145"
+    },
+    {
+      "text": "香港交易所讨论绿色金融。",
+      "mention": "香港交易所",
+      "expected_candidates": [
+        "ENT_GEN_0087",
+        "ENT_GEN_0088",
+        "ENT_GEN_0123"
+      ],
+      "gold_entity": null,
+      "gold_reason": "长尾领域与NIL干扰扩充后的候选召回样本",
+      "scenario": "长尾-交易所NIL召回",
+      "note": "未入库交易所干扰。",
+      "id": "CR_146"
+    },
+    {
+      "text": "Android完成终端适配。",
+      "mention": "Android",
+      "expected_candidates": [
+        "ENT_GEN_0100",
+        "ENT_GEN_0101",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity": "ENT_GEN_0100",
+      "gold_reason": "长尾领域与NIL干扰扩充后的候选召回样本",
+      "scenario": "长尾-系统召回",
+      "note": "操作系统候选。",
+      "id": "CR_147"
+    },
+    {
+      "text": "协和医院参与远程医疗项目。",
+      "mention": "协和医院",
+      "expected_candidates": [
+        "ENT_GEN_0111",
+        "ENT_GEN_0112",
+        "ENT_GEN_0131"
+      ],
+      "gold_entity": null,
+      "gold_reason": "长尾领域与NIL干扰扩充后的候选召回样本",
+      "scenario": "长尾-医院NIL召回",
+      "note": "未入库医院干扰。",
+      "id": "CR_148"
+    },
+    {
+      "text": "国铁集团共享客流预测结果。",
+      "mention": "国铁集团",
+      "expected_candidates": [
+        "ENT_GEN_0113",
+        "ENT_GEN_0114",
+        "ENT_GEN_0135"
+      ],
+      "gold_entity": "ENT_GEN_0113",
+      "gold_reason": "长尾领域与NIL干扰扩充后的候选召回样本",
+      "scenario": "长尾-交通召回",
+      "note": "铁路集团召回。",
+      "id": "CR_149"
+    },
+    {
+      "text": "HarmonyOS参与终端测试。",
+      "mention": "HarmonyOS",
+      "expected_candidates": [
+        "ENT_GEN_0100",
+        "ENT_GEN_0101",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity": null,
+      "gold_reason": "长尾领域与NIL干扰扩充后的候选召回样本",
+      "scenario": "长尾-系统NIL召回",
+      "note": "未入库系统干扰。",
+      "id": "CR_150"
+    },
+    {
+      "text": "东方财富更新行情入口。",
+      "mention": "东方财富",
+      "expected_candidates": [
+        "ENT_GEN_0086",
+        "ENT_GEN_0085",
+        "ENT_GEN_0087"
+      ],
+      "gold_entity": "ENT_GEN_0086",
+      "gold_reason": "长尾领域与NIL干扰扩充后的候选召回样本",
+      "scenario": "长尾-金融资讯召回",
+      "note": "金融信息平台候选。",
+      "id": "CR_151"
     }
   ],
   "statistics": {
-    "total_samples": 50,
-    "scenario_distribution": {
-      "同名异指-三候选": 1,
-      "精确匹配-单候选": 5,
-      "精确匹配-应区分华能华电": 1,
-      "标准名匹配": 1,
-      "英文别名匹配": 1,
-      "两字简称": 1,
-      "三字简称-应区分中核中广核": 1,
-      "非标别名-考验召回": 1,
-      "模糊匹配-编辑距离1": 1,
-      "模糊匹配-异体字": 1,
-      "教育机构简称": 1,
-      "金融机构简称": 1,
-      "NIL-候选为空": 2,
-      "精确匹配-四字简称": 1,
-      "专业术语匹配": 1,
-      "教育机构简称召回": 1,
-      "教育机构英文名召回": 1,
-      "高校简称召回": 1,
-      "科研机构简称召回": 1,
-      "产品与母公司多候选": 1,
-      "公司与产品多候选": 1,
-      "新增别名召回": 1,
-      "英文别名召回": 2,
-      "平台企业召回": 1,
-      "科技企业简称召回": 1,
-      "互联网企业简称召回": 1,
-      "同类平台多候选": 1,
-      "汽车品牌多候选": 1,
-      "汽车品牌召回": 1,
-      "银行简称多候选": 1,
-      "银行简称召回": 2,
-      "交易所与高校干扰": 1,
-      "交易所召回": 1,
-      "政府机构多候选": 1,
-      "政府机构简称召回": 1,
-      "政府机构标准名召回": 1,
-      "地区别名召回": 1,
-      "地区英文名召回": 1,
-      "软件平台英文别名召回": 1,
-      "操作系统多候选": 1,
-      "操作系统召回": 1,
-      "通信运营商多候选": 1,
-      "NIL-知识库外实体": 1
-    },
-    "expected_recall_targets": {
-      "non_nil_samples": 47,
-      "nil_samples": 3
-    }
+    "sample_count": 151,
+    "nil_sample_count": 10,
+    "multi_candidate_count": 80,
+    "empty_candidate_count": 10,
+    "nil_like_sample_count": 16
   }
 }

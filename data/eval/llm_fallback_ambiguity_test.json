@@ -1,6 +1,6 @@
 {
   "dataset_name": "llm_fallback_ambiguity_test",
-  "version": "1.2",
+  "version": "1.3",
   "purpose": "为低置信候选消歧和后续LLM兜底准备的高歧义上下文测试集",
   "annotation_policy": {
     "trigger_condition": "候选数量大于1，或最高候选与次高候选分差不足，或近似实体可能造成误链接",
@@ -1796,36 +1796,1163 @@
         "知识库未收录"
       ],
       "id": "LLM_AMB_096"
+    },
+    {
+      "id": "LLM_AMB_097",
+      "text": "国家发展改革委与工业和信息化部联合召开会议，双方将分别推进投资管理和制造业数字化。",
+      "mention": "双方",
+      "candidate_entity_ids": [
+        "ENT_GEN_0089",
+        "ENT_GEN_0090",
+        "ENT_GEN_0092"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "ambiguous_collective",
+      "decisive_evidence": [
+        "两个政府机构",
+        "双方",
+        "多个实体不能落到单一entity_id"
+      ],
+      "llm_prompt_focus": "collective_coref_nil",
+      "nil_reason": "ambiguous_collective"
+    },
+    {
+      "id": "LLM_AMB_098",
+      "text": "小鹏和理想分别公布智能驾驶更新，他们都强调城市道路场景。",
+      "mention": "他们",
+      "candidate_entity_ids": [
+        "ENT_GEN_0078",
+        "ENT_GEN_0079",
+        "ENT_GEN_0058"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "collective_pronoun_nil",
+      "decisive_evidence": [
+        "两个汽车企业",
+        "他们",
+        "集合指代"
+      ],
+      "llm_prompt_focus": "collective_coref_nil",
+      "nil_reason": "ambiguous_collective"
+    },
+    {
+      "id": "LLM_AMB_099",
+      "text": "百度和京东分别公布数据中心节能计划，上述企业均承诺提高绿电使用比例。",
+      "mention": "上述企业",
+      "candidate_entity_ids": [
+        "ENT_GEN_0070",
+        "ENT_GEN_0071",
+        "ENT_GEN_0075"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "collective_noun_nil",
+      "decisive_evidence": [
+        "百度",
+        "京东",
+        "上述企业"
+      ],
+      "llm_prompt_focus": "collective_coref_nil",
+      "nil_reason": "ambiguous_collective"
+    },
+    {
+      "id": "LLM_AMB_100",
+      "text": "北京大学和上海交通大学联合建设课程，两家高校均计划开放实验教学资源。",
+      "mention": "两家高校",
+      "candidate_entity_ids": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0065",
+        "ENT_GEN_0060"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "collective_school_nil",
+      "decisive_evidence": [
+        "两个高校",
+        "两家高校",
+        "集合指代"
+      ],
+      "llm_prompt_focus": "collective_coref_nil",
+      "nil_reason": "ambiguous_collective"
+    },
+    {
+      "id": "LLM_AMB_101",
+      "text": "上交所发布ESG披露指引，上海交大专家参与咨询。",
+      "mention": "上交",
+      "candidate_entity_ids": [
+        "ENT_GEN_0087",
+        "ENT_GEN_0065",
+        "ENT_GEN_0088"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "abbreviation_polysemy",
+      "decisive_evidence": [
+        "上交可指上交所或上海交大",
+        "mention不完整",
+        "需兜底"
+      ],
+      "llm_prompt_focus": "ambiguous_short_form_nil",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_AMB_102",
+      "text": "南网公司与国家电网共同讨论跨区输电，南网负责南方五省调度。",
+      "mention": "南网",
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0002",
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0045"
+      ],
+      "gold_entity_id": "ENT_ENERGY_0002",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_grid_company",
+      "decisive_evidence": [
+        "南方五省",
+        "南网",
+        "调度"
+      ],
+      "llm_prompt_focus": "grid_company_short_name"
+    },
+    {
+      "id": "LLM_AMB_103",
+      "text": "国家电投和国家能源集团联合投资新能源基地，国电投负责光伏侧建设。",
+      "mention": "国电投",
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0006",
+        "ENT_ENERGY_0005",
+        "ENT_ENERGY_0007"
+      ],
+      "gold_entity_id": "ENT_ENERGY_0006",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_power_generator",
+      "decisive_evidence": [
+        "国家电投",
+        "光伏侧",
+        "发电集团相似"
+      ],
+      "llm_prompt_focus": "power_group_short_name"
+    },
+    {
+      "id": "LLM_AMB_104",
+      "text": "华电和华能分别公布燃机项目，华电强调天然气发电装机。",
+      "mention": "华电",
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0007",
+        "ENT_ENERGY_0003",
+        "ENT_ENERGY_0004"
+      ],
+      "gold_entity_id": "ENT_ENERGY_0007",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_short_name",
+      "decisive_evidence": [
+        "华电",
+        "天然气发电",
+        "华能干扰"
+      ],
+      "llm_prompt_focus": "power_group_short_name"
+    },
+    {
+      "id": "LLM_AMB_105",
+      "text": "三峡集团发布水风光一体化计划，三峡大坝不属于本次投资主体。",
+      "mention": "三峡集团",
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0008",
+        "ENT_ENERGY_0012",
+        "ENT_ENERGY_0013"
+      ],
+      "gold_entity_id": "ENT_ENERGY_0008",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "facility_vs_enterprise",
+      "decisive_evidence": [
+        "投资主体",
+        "集团",
+        "大坝为设施"
+      ],
+      "llm_prompt_focus": "enterprise_vs_facility"
+    },
+    {
+      "id": "LLM_AMB_106",
+      "text": "三峡大坝汛期拦蓄洪水，三峡集团发布了配套调度说明。",
+      "mention": "三峡大坝",
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0012",
+        "ENT_ENERGY_0008",
+        "ENT_ENERGY_0013"
+      ],
+      "gold_entity_id": "ENT_ENERGY_0012",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "facility_vs_enterprise",
+      "decisive_evidence": [
+        "汛期",
+        "拦蓄洪水",
+        "设施功能"
+      ],
+      "llm_prompt_focus": "facility_vs_enterprise"
+    },
+    {
+      "id": "LLM_AMB_107",
+      "text": "百度地图和高德地图分别上线充电站搜索，前者强调新能源车路线规划。",
+      "mention": "前者",
+      "candidate_entity_ids": [
+        "ENT_GEN_0098",
+        "ENT_GEN_0099",
+        "ENT_GEN_0070"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "ordinal_coref_nil",
+      "decisive_evidence": [
+        "前者指百度地图",
+        "需要顺序共指",
+        "当前单mention链接不直接处理"
+      ],
+      "llm_prompt_focus": "ordinal_coreference_requires_rule",
+      "nil_reason": "mention_is_coref"
+    },
+    {
+      "id": "LLM_AMB_108",
+      "text": "百度地图和高德地图分别上线充电站搜索，后者覆盖更多高速服务区。",
+      "mention": "后者",
+      "candidate_entity_ids": [
+        "ENT_GEN_0099",
+        "ENT_GEN_0098",
+        "ENT_GEN_0070"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "ordinal_coref_nil",
+      "decisive_evidence": [
+        "后者指高德地图",
+        "需要顺序共指",
+        "当前单mention链接不直接处理"
+      ],
+      "llm_prompt_focus": "ordinal_coreference_requires_rule",
+      "nil_reason": "mention_is_coref"
+    },
+    {
+      "id": "LLM_AMB_109",
+      "text": "支付宝上线绿色出行积分，Alipay国际版同步优化跨境支付体验。",
+      "mention": "Alipay",
+      "candidate_entity_ids": [
+        "ENT_GEN_0097",
+        "ENT_GEN_0053",
+        "ENT_GEN_0056"
+      ],
+      "gold_entity_id": "ENT_GEN_0097",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "product_alias_cross_language",
+      "decisive_evidence": [
+        "绿色出行积分",
+        "跨境支付",
+        "支付平台"
+      ],
+      "llm_prompt_focus": "cross_lingual_alias"
+    },
+    {
+      "id": "LLM_AMB_110",
+      "text": "Android与iOS同日发布更新，Android重点优化折叠屏多任务。",
+      "mention": "Android",
+      "candidate_entity_ids": [
+        "ENT_GEN_0100",
+        "ENT_GEN_0101",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity_id": "ENT_GEN_0100",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "software_platform_comparison",
+      "decisive_evidence": [
+        "Android",
+        "折叠屏",
+        "iOS对照"
+      ],
+      "llm_prompt_focus": "software_platform"
+    },
+    {
+      "id": "LLM_AMB_111",
+      "text": "iOS隐私权限策略更新后，多款移动应用调整数据采集逻辑。 该记录用于比较LLM对系统平台类mention的解释差异。",
+      "mention": "iOS",
+      "candidate_entity_ids": [
+        "ENT_GEN_0101",
+        "ENT_GEN_0100",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity_id": "ENT_GEN_0101",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "software_platform",
+      "decisive_evidence": [
+        "隐私权限",
+        "移动应用",
+        "iOS"
+      ],
+      "llm_prompt_focus": "software_platform",
+      "scenario": "-去重修正"
+    },
+    {
+      "id": "LLM_AMB_112",
+      "text": "中国移动和中国电信分别推进5G-A试点，中国移动负责广州边缘计算节点。",
+      "mention": "中国移动",
+      "candidate_entity_ids": [
+        "ENT_GEN_0102",
+        "ENT_GEN_0103",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity_id": "ENT_GEN_0102",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_telecom_operator",
+      "decisive_evidence": [
+        "中国电信干扰",
+        "5G-A",
+        "广州节点"
+      ],
+      "llm_prompt_focus": "telecom_operator"
+    },
+    {
+      "id": "LLM_AMB_113",
+      "text": "中国电信建设云网融合数据中心，中国移动只参与联合测试。",
+      "mention": "中国电信",
+      "candidate_entity_ids": [
+        "ENT_GEN_0103",
+        "ENT_GEN_0102",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity_id": "ENT_GEN_0103",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "similar_telecom_operator",
+      "decisive_evidence": [
+        "云网融合",
+        "发布主体",
+        "中国移动参与"
+      ],
+      "llm_prompt_focus": "telecom_operator"
+    },
+    {
+      "id": "LLM_AMB_114",
+      "text": "广州发布道路测试政策，广汽集团参与部分试点但未进入当前知识库。",
+      "mention": "广汽集团",
+      "candidate_entity_ids": [
+        "ENT_GEN_0093",
+        "ENT_GEN_0080",
+        "ENT_GEN_0078"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "auto_company_nil",
+      "decisive_evidence": [
+        "广汽集团",
+        "未入库",
+        "广州为地区"
+      ],
+      "llm_prompt_focus": "near_region_enterprise_nil",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_AMB_115",
+      "text": "深圳大学建设海洋能源实验平台，深圳市提供部分政策支持。",
+      "mention": "深圳大学",
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0027",
+        "ENT_GEN_0064",
+        "ENT_GEN_0065"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "medium",
+      "ambiguity_type": "education_nil",
+      "decisive_evidence": [
+        "深圳大学",
+        "高校未入库",
+        "深圳市干扰"
+      ],
+      "llm_prompt_focus": "education_nil",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_AMB_116",
+      "text": "中国国家博物馆推出数字文物平台，当前知识库只有高校和科研机构。",
+      "mention": "中国国家博物馆",
+      "candidate_entity_ids": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0068",
+        "ENT_GEN_0095"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "culture_institution_nil",
+      "decisive_evidence": [
+        "博物馆",
+        "文博机构",
+        "未入库"
+      ],
+      "llm_prompt_focus": "culture_nil",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_AMB_117",
+      "text": "世界卫生组织发布高温健康风险建议，当前知识库没有该国际组织。",
+      "mention": "世界卫生组织",
+      "candidate_entity_ids": [
+        "ENT_GEN_0091",
+        "ENT_GEN_0068",
+        "ENT_GEN_0092"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "international_org_nil",
+      "decisive_evidence": [
+        "国际组织",
+        "健康风险",
+        "未入库"
+      ],
+      "llm_prompt_focus": "international_org_nil",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_AMB_118",
+      "text": "科大讯飞发布教育大模型，百度和字节只是同领域候选。",
+      "mention": "科大讯飞",
+      "candidate_entity_ids": [
+        "ENT_GEN_0070",
+        "ENT_GEN_0075",
+        "ENT_GEN_0064"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "ai_company_nil",
+      "decisive_evidence": [
+        "教育大模型",
+        "企业未入库",
+        "同领域候选干扰"
+      ],
+      "llm_prompt_focus": "near_domain_nil",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_AMB_119",
+      "text": "中国中车推进轨道交通节能改造，工信部只参与标准指导。",
+      "mention": "中国中车",
+      "candidate_entity_ids": [
+        "ENT_GEN_0090",
+        "ENT_GEN_0080",
+        "ENT_GEN_0102"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "transport_manufacturer_nil",
+      "decisive_evidence": [
+        "轨道交通",
+        "企业未入库",
+        "工信部干扰"
+      ],
+      "llm_prompt_focus": "transport_nil",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_AMB_120",
+      "text": "北京协和医院上线远程会诊平台，中国科学院参与算法评估。",
+      "mention": "北京协和医院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0068",
+        "ENT_GEN_0064",
+        "ENT_GEN_0092"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "medical_institution_nil",
+      "decisive_evidence": [
+        "医院",
+        "医疗机构",
+        "未入库"
+      ],
+      "llm_prompt_focus": "medical_nil",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_AMB_121",
+      "text": "宁德时代与特斯拉合作储能项目，CATL负责电池系统集成。",
+      "mention": "CATL",
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0015",
+        "ENT_GEN_0080",
+        "ENT_ENERGY_0038"
+      ],
+      "gold_entity_id": "ENT_ENERGY_0015",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "english_alias_with_partner",
+      "decisive_evidence": [
+        "CATL",
+        "电池系统",
+        "特斯拉合作"
+      ],
+      "llm_prompt_focus": "english_alias"
+    },
+    {
+      "id": "LLM_AMB_122",
+      "text": "BYD发布储能系统更新，比亚迪汽车业务不是本次公告重点。",
+      "mention": "BYD",
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0016",
+        "ENT_GEN_0058",
+        "ENT_GEN_0080"
+      ],
+      "gold_entity_id": "ENT_ENERGY_0016",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "english_alias_business_line",
+      "decisive_evidence": [
+        "BYD",
+        "储能系统",
+        "比亚迪"
+      ],
+      "llm_prompt_focus": "english_alias"
+    },
+    {
+      "id": "LLM_AMB_123",
+      "text": "东方财富上线基金组合风险分析，中信证券只是报告引用来源。",
+      "mention": "东方财富",
+      "candidate_entity_ids": [
+        "ENT_GEN_0086",
+        "ENT_GEN_0085",
+        "ENT_GEN_0057"
+      ],
+      "gold_entity_id": "ENT_GEN_0086",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_financial_institution",
+      "decisive_evidence": [
+        "基金组合",
+        "风险分析",
+        "中信证券引用"
+      ],
+      "llm_prompt_focus": "financial_platform"
+    },
+    {
+      "id": "LLM_AMB_124",
+      "text": "中信证券发布新能源产业链研究，东方财富转载了该报告。",
+      "mention": "中信证券",
+      "candidate_entity_ids": [
+        "ENT_GEN_0085",
+        "ENT_GEN_0086",
+        "ENT_GEN_0087"
+      ],
+      "gold_entity_id": "ENT_GEN_0085",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_financial_institution",
+      "decisive_evidence": [
+        "发布研究",
+        "证券公司",
+        "东方财富转载"
+      ],
+      "llm_prompt_focus": "securities_company"
+    },
+    {
+      "id": "LLM_AMB_125",
+      "text": "市场监管总局加强平台经济监管，发改委参与宏观政策协调。",
+      "mention": "市场监管总局",
+      "candidate_entity_ids": [
+        "ENT_GEN_0092",
+        "ENT_GEN_0089",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity_id": "ENT_GEN_0092",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "government_agency",
+      "decisive_evidence": [
+        "平台经济监管",
+        "市场监管",
+        "发改委协调"
+      ],
+      "llm_prompt_focus": "government_agency"
+    },
+    {
+      "id": "LLM_AMB_126",
+      "text": "生态环境部更新碳排放核算指南，国家能源局参与电力数据口径讨论。",
+      "mention": "生态环境部",
+      "candidate_entity_ids": [
+        "ENT_GEN_0091",
+        "ENT_GEN_0059",
+        "ENT_GEN_0089"
+      ],
+      "gold_entity_id": "ENT_GEN_0091",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "government_agency",
+      "decisive_evidence": [
+        "碳排放核算",
+        "生态环境",
+        "能源局参与"
+      ],
+      "llm_prompt_focus": "government_agency"
+    },
+    {
+      "id": "LLM_AMB_127",
+      "text": "南京和武汉分别建设软件与光电子产业集群，南京重点支持开源社区。",
+      "mention": "南京",
+      "candidate_entity_ids": [
+        "ENT_GEN_0095",
+        "ENT_GEN_0096",
+        "ENT_GEN_0094"
+      ],
+      "gold_entity_id": "ENT_GEN_0095",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "region_similar_city",
+      "decisive_evidence": [
+        "南京",
+        "软件产业",
+        "武汉干扰"
+      ],
+      "llm_prompt_focus": "region"
+    },
+    {
+      "id": "LLM_AMB_128",
+      "text": "武汉推进光电子信息产业升级，南京只是对照城市。",
+      "mention": "武汉",
+      "candidate_entity_ids": [
+        "ENT_GEN_0096",
+        "ENT_GEN_0095",
+        "ENT_GEN_0093"
+      ],
+      "gold_entity_id": "ENT_GEN_0096",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "region_similar_city",
+      "decisive_evidence": [
+        "武汉",
+        "光电子",
+        "南京对照"
+      ],
+      "llm_prompt_focus": "region"
+    },
+    {
+      "id": "LLM_AMB_129",
+      "text": "清华和北大联合发布AI伦理课程，清华负责工程案例部分。",
+      "mention": "清华",
+      "candidate_entity_ids": [
+        "ENT_GEN_0060",
+        "ENT_GEN_0064",
+        "ENT_GEN_0068"
+      ],
+      "gold_entity_id": "ENT_GEN_0060",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_university_short_name",
+      "decisive_evidence": [
+        "清华",
+        "北大干扰",
+        "工程案例"
+      ],
+      "llm_prompt_focus": "university_short_name"
+    },
+    {
+      "id": "LLM_AMB_130",
+      "text": "北大和清华联合发布AI伦理课程，北大负责医学案例部分。",
+      "mention": "北大",
+      "candidate_entity_ids": [
+        "ENT_GEN_0064",
+        "ENT_GEN_0060",
+        "ENT_GEN_0068"
+      ],
+      "gold_entity_id": "ENT_GEN_0064",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_university_short_name",
+      "decisive_evidence": [
+        "北大",
+        "清华干扰",
+        "医学案例"
+      ],
+      "llm_prompt_focus": "university_short_name"
+    },
+    {
+      "id": "LLM_AMB_131",
+      "text": "复旦公共卫生团队发布报告，上海交大只参与数据工具开发。",
+      "mention": "复旦",
+      "candidate_entity_ids": [
+        "ENT_GEN_0067",
+        "ENT_GEN_0065",
+        "ENT_GEN_0064"
+      ],
+      "gold_entity_id": "ENT_GEN_0067",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "similar_university_short_name",
+      "decisive_evidence": [
+        "复旦",
+        "公共卫生",
+        "上海交大干扰"
+      ],
+      "llm_prompt_focus": "university_short_name"
+    },
+    {
+      "id": "LLM_AMB_132",
+      "text": "工程院组织智能制造咨询，中科院参与基础研究评审。",
+      "mention": "工程院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0069",
+        "ENT_GEN_0068",
+        "ENT_GEN_0090"
+      ],
+      "gold_entity_id": "ENT_GEN_0069",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "research_institution_short_name",
+      "decisive_evidence": [
+        "工程科技咨询",
+        "中科院干扰",
+        "智能制造"
+      ],
+      "llm_prompt_focus": "research_institution"
+    },
+    {
+      "id": "LLM_AMB_133",
+      "text": "Windows11发布能效模式更新，Android和iOS只作为移动端对照。",
+      "mention": "Windows11",
+      "candidate_entity_ids": [
+        "ENT_GEN_0063",
+        "ENT_GEN_0100",
+        "ENT_GEN_0101"
+      ],
+      "gold_entity_id": "ENT_GEN_0063",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "product_version",
+      "decisive_evidence": [
+        "Windows11",
+        "能效模式",
+        "移动端对照"
+      ],
+      "llm_prompt_focus": "software_product"
+    },
+    {
+      "id": "LLM_AMB_134",
+      "text": "腾讯发布混元大模型更新，微信只是应用入口之一。",
+      "mention": "腾讯",
+      "candidate_entity_ids": [
+        "ENT_GEN_0052",
+        "ENT_GEN_0061",
+        "ENT_GEN_0053"
+      ],
+      "gold_entity_id": "ENT_GEN_0052",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "parent_product",
+      "decisive_evidence": [
+        "混元大模型",
+        "腾讯发布",
+        "微信应用入口"
+      ],
+      "llm_prompt_focus": "parent_vs_product"
+    },
+    {
+      "id": "LLM_AMB_135",
+      "text": "微信上线企业服务插件，腾讯控股只是其所属公司。",
+      "mention": "微信",
+      "candidate_entity_ids": [
+        "ENT_GEN_0061",
+        "ENT_GEN_0052",
+        "ENT_GEN_0097"
+      ],
+      "gold_entity_id": "ENT_GEN_0061",
+      "expected_nil": false,
+      "difficulty": "hard",
+      "ambiguity_type": "product_vs_enterprise",
+      "decisive_evidence": [
+        "微信上线",
+        "插件",
+        "所属公司干扰"
+      ],
+      "llm_prompt_focus": "product_vs_parent"
+    },
+    {
+      "id": "LLM_AMB_136",
+      "text": "阿里巴巴升级云计算服务，淘宝只是电商业务入口。",
+      "mention": "阿里巴巴",
+      "candidate_entity_ids": [
+        "ENT_GEN_0053",
+        "ENT_GEN_0097",
+        "ENT_GEN_0071"
+      ],
+      "gold_entity_id": "ENT_GEN_0053",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "parent_product",
+      "decisive_evidence": [
+        "云计算",
+        "集团主体",
+        "淘宝干扰"
+      ],
+      "llm_prompt_focus": "parent_vs_product"
+    },
+    {
+      "id": "LLM_AMB_137",
+      "text": "支付宝和微信支付均推出绿色出行积分，两款应用都不是银行机构。",
+      "mention": "两款应用",
+      "candidate_entity_ids": [
+        "ENT_GEN_0097",
+        "ENT_GEN_0061",
+        "ENT_GEN_0055"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "collective_product_nil",
+      "decisive_evidence": [
+        "支付宝",
+        "微信支付",
+        "两款应用集合"
+      ],
+      "llm_prompt_focus": "collective_nil",
+      "nil_reason": "ambiguous_collective"
+    },
+    {
+      "id": "LLM_AMB_138",
+      "text": "建行和农行分别推出绿色信贷产品，两家银行均服务县域光伏项目。",
+      "mention": "两家银行",
+      "candidate_entity_ids": [
+        "ENT_GEN_0081",
+        "ENT_GEN_0082",
+        "ENT_GEN_0055"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "collective_financial_nil",
+      "decisive_evidence": [
+        "建行",
+        "农行",
+        "两家银行"
+      ],
+      "llm_prompt_focus": "collective_nil",
+      "nil_reason": "ambiguous_collective"
+    },
+    {
+      "id": "LLM_AMB_139",
+      "text": "国家电网和南方电网分别公布并网计划，二者均强调新能源消纳。",
+      "mention": "二者",
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0001",
+        "ENT_ENERGY_0002",
+        "ENT_ENERGY_0045"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "collective_grid_nil",
+      "decisive_evidence": [
+        "两个电网企业",
+        "二者",
+        "集合指代"
+      ],
+      "llm_prompt_focus": "collective_nil",
+      "nil_reason": "ambiguous_collective"
+    },
+    {
+      "id": "LLM_AMB_140",
+      "text": "这家研究院发布能源预测报告，但上下文没有给出明确先行词。",
+      "mention": "这家研究院",
+      "candidate_entity_ids": [
+        "ENT_ENERGY_0009",
+        "ENT_GEN_0068",
+        "ENT_GEN_0069"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "medium",
+      "ambiguity_type": "missing_antecedent_nil",
+      "decisive_evidence": [
+        "这家研究院",
+        "无明确先行词",
+        "不能强行链接"
+      ],
+      "llm_prompt_focus": "missing_antecedent",
+      "nil_reason": "mention_is_coref"
+    },
+    {
+      "id": "LLM_AMB_141",
+      "text": "该云平台服务于电网巡检，但前文同时出现华为云和百度智能云。",
+      "mention": "该云平台",
+      "candidate_entity_ids": [
+        "ENT_GEN_0129",
+        "ENT_GEN_0130",
+        "ENT_GEN_0051"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "ambiguous_coref_nil",
+      "decisive_evidence": [
+        "该云平台",
+        "华为云",
+        "百度智能云",
+        "无法唯一回指"
+      ],
+      "llm_prompt_focus": "判断单数指代在多候选下是否应NIL",
+      "nil_reason": "ambiguous_antecedent"
+    },
+    {
+      "id": "LLM_AMB_142",
+      "text": "这家医院发布诊疗规范，前文同时提到华西医院和同济医院。",
+      "mention": "这家医院",
+      "candidate_entity_ids": [
+        "ENT_GEN_0131",
+        "ENT_GEN_0134",
+        "ENT_GEN_0111"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "ambiguous_medical_coref",
+      "decisive_evidence": [
+        "这家医院",
+        "华西医院",
+        "同济医院",
+        "多先行词"
+      ],
+      "llm_prompt_focus": "识别医院指代歧义",
+      "nil_reason": "ambiguous_antecedent"
+    },
+    {
+      "id": "LLM_AMB_143",
+      "text": "该媒体称政策影响扩大，但材料同时引用人民日报和澎湃新闻。",
+      "mention": "该媒体",
+      "candidate_entity_ids": [
+        "ENT_GEN_0139",
+        "ENT_GEN_0142",
+        "ENT_GEN_0115"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "ambiguous_media_coref",
+      "decisive_evidence": [
+        "该媒体",
+        "人民日报",
+        "澎湃新闻"
+      ],
+      "llm_prompt_focus": "媒体指代无法唯一绑定",
+      "nil_reason": "ambiguous_antecedent"
+    },
+    {
+      "id": "LLM_AMB_144",
+      "text": "微软云服务参与试点，候选里只有华为云和百度智能云。",
+      "mention": "微软云服务",
+      "candidate_entity_ids": [
+        "ENT_GEN_0129",
+        "ENT_GEN_0130"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "medium",
+      "ambiguity_type": "out_of_kb_cloud",
+      "decisive_evidence": [
+        "微软云服务",
+        "未入库",
+        "不能误链"
+      ],
+      "llm_prompt_focus": "判断云服务未入库NIL",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_AMB_145",
+      "text": "国航发布公告后，该公司说明航班计划。",
+      "mention": "该公司",
+      "candidate_entity_ids": [
+        "ENT_GEN_0135",
+        "ENT_GEN_0136"
+      ],
+      "gold_entity_id": "ENT_GEN_0135",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "resolvable_coref",
+      "decisive_evidence": [
+        "国航",
+        "该公司",
+        "最近单一先行词"
+      ],
+      "llm_prompt_focus": "可解析单指代应链接先行词"
+    },
+    {
+      "id": "LLM_AMB_146",
+      "text": "广州地铁披露客流数据，该公司随后调整运营间隔。",
+      "mention": "该公司",
+      "candidate_entity_ids": [
+        "ENT_GEN_0138",
+        "ENT_GEN_0137"
+      ],
+      "gold_entity_id": "ENT_GEN_0138",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "transport_coref",
+      "decisive_evidence": [
+        "广州地铁",
+        "该公司",
+        "运营间隔"
+      ],
+      "llm_prompt_focus": "交通机构单先行词回指"
+    },
+    {
+      "id": "LLM_AMB_147",
+      "text": "该系统完成终端测试，但前文同时出现Android、iOS和Windows 11。",
+      "mention": "该系统",
+      "candidate_entity_ids": [
+        "ENT_GEN_0100",
+        "ENT_GEN_0101",
+        "ENT_GEN_0063"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "multi_system_coref_nil",
+      "decisive_evidence": [
+        "该系统",
+        "Android",
+        "iOS",
+        "Windows 11"
+      ],
+      "llm_prompt_focus": "多系统先行词下判断NIL",
+      "nil_reason": "ambiguous_antecedent"
+    },
+    {
+      "id": "LLM_AMB_148",
+      "text": "这家银行披露绿色贷款，但前文同时出现工行和招行。",
+      "mention": "这家银行",
+      "candidate_entity_ids": [
+        "ENT_GEN_0055",
+        "ENT_GEN_0057",
+        "ENT_GEN_0083"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "bank_coref_ambiguous",
+      "decisive_evidence": [
+        "这家银行",
+        "工行",
+        "招行"
+      ],
+      "llm_prompt_focus": "银行指代无法唯一绑定",
+      "nil_reason": "ambiguous_antecedent"
+    },
+    {
+      "id": "LLM_AMB_149",
+      "text": "该公司发布智能驾驶报告，前文同时出现小鹏、理想和蔚来。",
+      "mention": "该公司",
+      "candidate_entity_ids": [
+        "ENT_GEN_0078",
+        "ENT_GEN_0079",
+        "ENT_GEN_0058"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "hard",
+      "ambiguity_type": "auto_coref_ambiguous",
+      "decisive_evidence": [
+        "该公司",
+        "小鹏",
+        "理想",
+        "蔚来"
+      ],
+      "llm_prompt_focus": "车企指代歧义",
+      "nil_reason": "ambiguous_antecedent"
+    },
+    {
+      "id": "LLM_AMB_150",
+      "text": "OpenAI参与大模型评测，候选中只有国内互联网公司。",
+      "mention": "OpenAI",
+      "candidate_entity_ids": [
+        "ENT_GEN_0075",
+        "ENT_GEN_0070",
+        "ENT_GEN_0052"
+      ],
+      "gold_entity_id": null,
+      "expected_nil": true,
+      "difficulty": "medium",
+      "ambiguity_type": "ai_company_oov",
+      "decisive_evidence": [
+        "OpenAI",
+        "未入库",
+        "候选不是同一实体"
+      ],
+      "llm_prompt_focus": "外部AI公司NIL判断",
+      "nil_reason": "entity_not_in_kb"
+    },
+    {
+      "id": "LLM_AMB_151",
+      "text": "国铁集团发布客流预测，该机构随后共享数据。",
+      "mention": "该机构",
+      "candidate_entity_ids": [
+        "ENT_GEN_0113",
+        "ENT_GEN_0114"
+      ],
+      "gold_entity_id": "ENT_GEN_0113",
+      "expected_nil": false,
+      "difficulty": "medium",
+      "ambiguity_type": "transport_resolvable_coref",
+      "decisive_evidence": [
+        "国铁集团",
+        "该机构",
+        "单一先行词"
+      ],
+      "llm_prompt_focus": "可解析交通机构回指"
     }
   ],
   "statistics": {
-    "total": 96,
-    "non_nil": 79,
-    "nil": 17,
-    "hard": 64,
-    "medium": 32,
+    "total": 140,
+    "non_nil": 105,
+    "nil": 35,
+    "hard": 87,
+    "medium": 53,
     "ambiguity_types": {
       "parent_subsidiary": 2,
       "research_institution": 1,
-      "facility_vs_enterprise": 6,
-      "similar_short_name": 9,
+      "facility_vs_enterprise": 8,
+      "similar_short_name": 10,
       "technical_term": 3,
       "enterprise_vs_government": 3,
       "similar_institution": 5,
       "near_name_nil": 10,
       "single_entity_multi_role": 2,
-      "similar_grid_company": 2,
-      "product_vs_enterprise": 3,
+      "similar_grid_company": 3,
+      "product_vs_enterprise": 4,
       "short_name_polysemy": 2,
       "common_word_vs_enterprise": 2,
-      "parent_product": 3,
-      "abbreviation_polysemy": 4,
+      "parent_product": 5,
+      "abbreviation_polysemy": 5,
       "historical_name": 1,
-      "similar_financial_institution": 4,
-      "product_version": 1,
+      "similar_financial_institution": 6,
+      "product_version": 2,
       "newly_in_kb_after_expansion": 2,
       "university_short_name": 1,
-      "research_institution_short_name": 1,
+      "research_institution_short_name": 2,
       "product_vs_parent_company": 2,
       "software_platform_short_name": 1,
       "parent_subsidiary_or_business_line": 1,
@@ -1840,17 +2967,36 @@
       "exchange_vs_university": 1,
       "similar_financial_market": 1,
       "government_agency_vs_energy_regulator": 1,
-      "government_agency": 2,
-      "region_similar_city": 1,
+      "government_agency": 4,
+      "region_similar_city": 3,
       "region_vs_enterprise_context": 1,
-      "software_platform": 2,
-      "similar_telecom_operator": 2,
-      "medical_institution_nil": 1,
+      "software_platform": 3,
+      "similar_telecom_operator": 4,
+      "medical_institution_nil": 2,
       "manufacturing_nil": 1,
-      "culture_institution_nil": 1,
-      "ai_company_nil": 1,
-      "transport_manufacturer_nil": 1,
-      "education_nil": 1
-    }
+      "culture_institution_nil": 2,
+      "ai_company_nil": 2,
+      "transport_manufacturer_nil": 2,
+      "education_nil": 2,
+      "ambiguous_collective": 1,
+      "collective_pronoun_nil": 1,
+      "collective_noun_nil": 1,
+      "collective_school_nil": 1,
+      "similar_power_generator": 1,
+      "ordinal_coref_nil": 2,
+      "product_alias_cross_language": 1,
+      "software_platform_comparison": 1,
+      "auto_company_nil": 1,
+      "international_org_nil": 1,
+      "english_alias_with_partner": 1,
+      "english_alias_business_line": 1,
+      "similar_university_short_name": 3,
+      "collective_product_nil": 1,
+      "collective_financial_nil": 1,
+      "collective_grid_nil": 1,
+      "missing_antecedent_nil": 1
+    },
+    "sample_count": 151,
+    "nil_like_sample_count": 43
   }
 }
