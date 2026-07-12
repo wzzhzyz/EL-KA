@@ -9,7 +9,7 @@ from transformers import AutoTokenizer
 
 # 方法1：使用绝对路径（推荐）
 # 请将下面的路径替换为你的实际模型路径
-model_path = r"E:\Code\Python\PycharmProjects\EntityAlignmentV0\finetuned_bge_reranker_large1"
+model_path = r"/models_cache/finetuned_bge_reranker_large1"
 
 # 方法2：使用相对路径（相对于当前工作目录）
 # model_path = "./finetuned_bge_reranker_large"

@@ -1,5 +1,5 @@
 # src/knowledge/kb_manager.py
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Tuple, Set
 import numpy as np
 from src.models.entity import StandardEntity
 from src.knowledge.adapters.factory import AdapterFactory
@@ -25,6 +25,7 @@ class KnowledgeBase:
         # 索引
         self.alias_index: Dict[str, str] = {}  # alias → entity_id
         self.entity_map: Dict[str, StandardEntity] = {}  # entity_id → StandardEntity
+        self.alias_indices: Dict[str, Set[str]] ={}
 
         # ============================================================
         # 向量缓存（供消歧、候选生成等模块复用）
@@ -40,6 +41,7 @@ class KnowledgeBase:
     def _build_index(self):
         """构建索引"""
         self.alias_index.clear()
+        self.alias_indices.clear()
         self.entity_map.clear()
         self._entity_id_to_index.clear()
 
@@ -51,11 +53,12 @@ class KnowledgeBase:
             # 标准名称作为别名
             if entity.standard_name:
                 self.alias_index[entity.standard_name] = eid
-
+                self.alias_indices.setdefault(entity.standard_name, set()).add(eid)
             # 所有别名
             for alias in entity.aliases:
                 if alias:
                     self.alias_index[alias] = eid
+                    self.alias_indices.setdefault(entity.standard_name, set()).add(eid)
 
     # ============================================================
     # 实体向量管理
@@ -149,15 +152,24 @@ class KnowledgeBase:
         别名精确匹配：返回所有匹配该别名的实体
         """
         results = []
-        # 一个别名可能对应多个实体（同名异指）
-        for eid, entity in self.entity_map.items():
-            # 检查标准名称
-            if entity.standard_name == alias:
+        # 使用 get() 安全访问，避免 KeyError
+        eids_set = self.alias_indices.get(alias)
+        if eids_set is not None:
+            for eid in eids_set:
+                entity=self.entity_map[eid]
                 results.append(entity)
-            # 检查别名列表
-            elif alias in entity.aliases:
-                results.append(entity)
+
         return results
+
+        # 一个别名可能对应多个实体（同名异指）
+        # for eid, entity in self.entity_map.items():
+        #     # 检查标准名称
+        #     if entity.standard_name == alias:
+        #         results.append(entity)
+        #     # 检查别名列表
+        #     elif alias in entity.aliases:
+        #         results.append(entity)
+        # return results
 
     def get_entities_by_alias_fuzzy(self, alias: str, max_results: int = 5) -> List[StandardEntity]:
         """
@@ -194,6 +206,7 @@ class KnowledgeBase:
 
         self.entities = self.adapter.load()
         self.alias_index.clear()
+        self.alias_indices.clear()
         self.entity_map.clear()
         self._entity_id_to_index.clear()
         self._embeddings = None

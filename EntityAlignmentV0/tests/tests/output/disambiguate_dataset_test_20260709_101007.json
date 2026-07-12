@@ -1,0 +1,6 @@
+{
+  "timestamp": "2026-07-09T10:10:07.968292",
+  "config": {
+    "nil_threshold": 0.8,
+    "llm_trigger_threshold": 0.9,
+    "llm_enabled": 

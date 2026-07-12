@@ -57,7 +57,7 @@ class Disambiguator:
         # ============================================================
         # 3. 🔥 LLM 抽象层客户端（替换原来的 LLM 兜底逻辑）
         # ============================================================
-        llm_config = {
+        self.llm_config = {
             "enabled": config.get("llm_fallback", {}).get("enabled", False),
             "provider": config.get("llm_fallback", {}).get("provider", "openai"),
             "api_key": config.get("llm_fallback", {}).get("api_key"),
@@ -70,7 +70,7 @@ class Disambiguator:
             "trigger_threshold": self.llm_trigger_threshold,
         }
 
-        self.llm_client = LLMDisambiguator(llm_config)
+        self.llm_client = LLMDisambiguator(self.llm_config)
 
         # ============================================================
         # 4. 缓存（用于 LLM 消歧结果）
@@ -646,7 +646,7 @@ class Disambiguator:
         if len(candidates) >= 2:
             second = candidates[1]
             gap = top.score - second.score
-            if gap < 0.01 and top.score < 0.6:
+            if gap < 0.05 and top.score < 0.65:
                 logger.info(f"  📊 NIL判定: 最高分 {top.score:.3f}, 次高分 {second.score:.3f}, 差距 {gap:.3f} < 0.01")
                 return True
 
@@ -957,7 +957,7 @@ class Disambiguator:
             if len(candidates) > 1:
                 nil_reason += f", 次高分 {candidates[1].score:.3f}"
 
-            if self.enable_llm and top.score < self.llm_trigger_threshold:
+            if self.is_llm_enabled() and top.score < self.llm_trigger_threshold:
                 logger.info(f"  🤖 NIL检测触发LLM二次确认")
                 llm_result = self._llm_disambiguate(mention, candidates, context, mention_type)
                 if llm_result.get("entity") is not None:
@@ -980,7 +980,7 @@ class Disambiguator:
             }
 
         # LLM兜底（使用新的 LLM 抽象层）
-        if self.enable_llm and top.score < self.llm_trigger_threshold:
+        if self.is_llm_enabled() and top.score < self.llm_trigger_threshold:
             logger.info(f"  🤖 低置信度 {top.score:.3f} < {self.llm_trigger_threshold}，触发LLM兜底")
             llm_result = self._llm_disambiguate(mention, candidates, context, mention_type)
 
@@ -1009,6 +1009,7 @@ class Disambiguator:
 
     def get_stats(self) -> Dict:
         """获取统计信息"""
+        cache_size=len(self._cache)
         return {
             "reranker_calls": self.stats["reranker_calls"],
             "llm_calls": self.stats["llm_calls"],
@@ -1018,7 +1019,7 @@ class Disambiguator:
             "nil_by_score": self.stats["nil_by_score"],
             "nil_by_llm": self.stats["nil_by_llm"],
             "reranker_used": self.stats["reranker_used"],
-            "cache_size": len(self._cache)
+            "cache_size": cache_size
         }
 
     def clear_cache(self):

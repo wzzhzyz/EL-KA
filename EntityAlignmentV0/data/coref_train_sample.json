@@ -1,0 +1,18 @@
+[
+  {
+    "doc_id": "coref_sample_001",
+    "doc": "国家电网有限公司于2020年发布了年度社会责任报告。该报告详细阐述了公司在清洁能源领域的贡献。它特别提到，全年消纳新能源电量达6000亿千瓦时。这份文件还公布了未来五年的碳减排目标。",
+    "clusters": [
+      [
+        {"name": "国家电网有限公司", "char_start": 0, "char_end": 8},
+        {"name": "公司", "char_start": 34, "char_end": 36},
+        {"name": "它", "char_start": 47, "char_end": 48}
+      ],
+      [
+        {"name": "年度社会责任报告", "char_start": 17, "char_end": 25},
+        {"name": "该报告", "char_start": 26, "char_end": 29},
+        {"name": "这份文件", "char_start": 72, "char_end": 76}
+      ]
+    ]
+  }
+]

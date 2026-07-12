@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "kb_version": "2.0.0",
+  "kb_version": "2.3.0",
   "kb_name": "entity_linking_kb",
   "kb_description": "多行业实体链接知识库——覆盖能源、科技、金融、汽车、教育等领域的实体，面向课题10实体链接与知识对齐智能体，支持热插拔和行业切换",
   "entity_type_enum": {
@@ -17,7 +17,10 @@
     "GOVERNMENT_AGENCY": "政府机构",
     "EDUCATIONAL_INSTITUTION": "教育机构",
     "CONSUMER_PRODUCT": "消费品",
-    "SOFTWARE_PLATFORM": "软件平台"
+    "SOFTWARE_PLATFORM": "软件平台",
+    "MEDICAL_INSTITUTION": "医疗机构",
+    "TRANSPORTATION_ORG": "交通运输机构",
+    "MEDIA_ORG": "媒体机构"
   },
   "tag_taxonomy": {
     "ownership": [
@@ -168,6 +171,30 @@
           "alias_type": "英文",
           "priority": 0.7,
           "confidence": 1.0
+        },
+        {
+          "name": "国家电力公司",
+          "alias_type": "曾用名",
+          "priority": 0.55,
+          "confidence": 0.8
+        },
+        {
+          "name": "囯网",
+          "alias_type": "俗称",
+          "priority": 0.5,
+          "confidence": 0.6
+        },
+        {
+          "name": "国家电网有 限公司",
+          "alias_type": "俗称",
+          "priority": 0.3,
+          "confidence": 0.4
+        },
+        {
+          "name": "国网公司",
+          "alias_type": "简称",
+          "priority": 0.7,
+          "confidence": 1.0
         }
       ],
       "abbreviation": "国网",
@@ -230,7 +257,9 @@
         "特高压"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0002",
@@ -252,6 +281,12 @@
           "name": "China Southern Power Grid",
           "alias_type": "英文",
           "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "南网公司",
+          "alias_type": "简称",
+          "priority": 0.65,
           "confidence": 1.0
         }
       ],
@@ -298,7 +333,9 @@
         "西电东送"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0003",
@@ -371,7 +408,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0004",
@@ -400,6 +439,12 @@
           "alias_type": "英文",
           "priority": 0.6,
           "confidence": 1.0
+        },
+        {
+          "name": "中国大唐集团公司",
+          "alias_type": "曾用名",
+          "priority": 0.75,
+          "confidence": 0.9
         }
       ],
       "abbreviation": "大唐",
@@ -443,7 +488,9 @@
         "风电"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0005",
@@ -472,6 +519,18 @@
           "alias_type": "英文",
           "priority": 0.65,
           "confidence": 1.0
+        },
+        {
+          "name": "神华集团有限责任公司",
+          "alias_type": "曾用名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "中国国电集团公司",
+          "alias_type": "曾用名",
+          "priority": 0.7,
+          "confidence": 0.9
         }
       ],
       "abbreviation": "国能",
@@ -518,7 +577,9 @@
         "煤炭"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0006",
@@ -546,6 +607,12 @@
           "name": "State Power Investment Corporation",
           "alias_type": "英文",
           "priority": 0.55,
+          "confidence": 1.0
+        },
+        {
+          "name": "国家电投集团",
+          "alias_type": "简称",
+          "priority": 0.75,
           "confidence": 1.0
         }
       ],
@@ -595,7 +662,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0007",
@@ -624,6 +693,12 @@
           "alias_type": "英文",
           "priority": 0.6,
           "confidence": 1.0
+        },
+        {
+          "name": "中国华电集团公司",
+          "alias_type": "曾用名",
+          "priority": 0.7,
+          "confidence": 0.9
         }
       ],
       "abbreviation": "华电",
@@ -668,7 +743,9 @@
         "分布式能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0008",
@@ -756,7 +833,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0009",
@@ -823,7 +902,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0010",
@@ -889,7 +970,9 @@
         "储能"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0011",
@@ -917,6 +1000,12 @@
           "name": "China General Nuclear Power Group",
           "alias_type": "英文",
           "priority": 0.55,
+          "confidence": 1.0
+        },
+        {
+          "name": "中广核集团",
+          "alias_type": "简称",
+          "priority": 0.8,
           "confidence": 1.0
         }
       ],
@@ -964,7 +1053,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0012",
@@ -1039,7 +1130,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0013",
@@ -1099,7 +1192,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0014",
@@ -1178,7 +1273,9 @@
         "西部"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0015",
@@ -1206,6 +1303,18 @@
           "name": "宁德",
           "alias_type": "简称",
           "priority": 0.45,
+          "confidence": 0.6
+        },
+        {
+          "name": "宁德新能源科技有限公司",
+          "alias_type": "曾用名",
+          "priority": 0.55,
+          "confidence": 0.7
+        },
+        {
+          "name": "宁徳时代",
+          "alias_type": "俗称",
+          "priority": 0.5,
           "confidence": 0.6
         }
       ],
@@ -1255,7 +1364,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0016",
@@ -1278,12 +1389,18 @@
           "alias_type": "英文",
           "priority": 0.4,
           "confidence": 0.7
+        },
+        {
+          "name": "比亚迪汽车",
+          "alias_type": "简称",
+          "priority": 0.82,
+          "confidence": 1.0
         }
       ],
       "abbreviation": "比亚迪",
       "entity_type": "NEW_ENERGY_ENTERPRISE",
-      "entity_type_display": "新能源企业",
-      "industry": "新能源汽车+储能",
+      "entity_type_display": "新能源企业/汽车制造商",
+      "industry": "新能源汽车+储能+制造",
       "summary": "全球领先的新能源汽车制造商和动力电池供应商，掌握电池、电机、电控、芯片全产业链核心技术。",
       "business": "新能源汽车研发制造销售、动力电池（刀片电池）研发生产、光伏组件制造、储能系统、轨道交通（云轨云巴）。",
       "location": {
@@ -1323,10 +1440,16 @@
         "世界500强",
         "新能源汽车",
         "储能",
-        "行业龙头"
+        "行业龙头",
+        "汽车"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "ambiguous",
+      "shared_aliases": [
+        "比亚迪",
+        "BYD"
+      ]
     },
     {
       "entity_id": "ENT_ENERGY_0017",
@@ -1401,7 +1524,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0018",
@@ -1475,7 +1600,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0019",
@@ -1548,7 +1675,9 @@
         "电网互联"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0020",
@@ -1613,7 +1742,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0021",
@@ -1687,7 +1818,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0022",
@@ -1755,7 +1888,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0023",
@@ -1814,7 +1949,9 @@
         "储能"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0024",
@@ -1882,7 +2019,9 @@
         "分布式能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0025",
@@ -1950,7 +2089,9 @@
         "直流输电"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0026",
@@ -2019,7 +2160,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0027",
@@ -2048,6 +2191,12 @@
           "alias_type": "简称",
           "priority": 0.85,
           "confidence": 1.0
+        },
+        {
+          "name": "宝安县",
+          "alias_type": "曾用名",
+          "priority": 0.3,
+          "confidence": 0.7
         }
       ],
       "abbreviation": "深",
@@ -2099,7 +2248,9 @@
         "经济特区"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0028",
@@ -2134,6 +2285,12 @@
           "alias_type": "简称",
           "priority": 0.85,
           "confidence": 1.0
+        },
+        {
+          "name": "北平",
+          "alias_type": "曾用名",
+          "priority": 0.35,
+          "confidence": 0.7
         }
       ],
       "abbreviation": "京",
@@ -2176,7 +2333,9 @@
         "首都"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0029",
@@ -2246,7 +2405,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0030",
@@ -2318,7 +2479,9 @@
         "水电"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0031",
@@ -2385,7 +2548,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0032",
@@ -2454,7 +2619,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0033",
@@ -2525,7 +2692,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-20"
+      "update_time": "2026-06-20",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0034",
@@ -2553,6 +2722,12 @@
           "name": "CNNC",
           "alias_type": "英文",
           "priority": 0.7,
+          "confidence": 1.0
+        },
+        {
+          "name": "中核工业",
+          "alias_type": "简称",
+          "priority": 0.8,
           "confidence": 1.0
         }
       ],
@@ -2599,7 +2774,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0035",
@@ -2661,7 +2838,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0036",
@@ -2729,7 +2908,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0037",
@@ -2790,7 +2971,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0038",
@@ -2858,7 +3041,9 @@
         "新能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0039",
@@ -2926,7 +3111,9 @@
         "西南"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0040",
@@ -3000,7 +3187,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0041",
@@ -3067,7 +3256,9 @@
         "华北"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0042",
@@ -3134,7 +3325,9 @@
         "新能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0043",
@@ -3200,7 +3393,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0044",
@@ -3267,7 +3462,9 @@
         "新能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0045",
@@ -3333,7 +3530,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0046",
@@ -3385,7 +3584,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0047",
@@ -3438,7 +3639,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0048",
@@ -3493,7 +3696,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0049",
@@ -3551,7 +3756,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_ENERGY_0050",
@@ -3619,7 +3826,9 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0051",
@@ -3648,6 +3857,18 @@
           "alias_type": "英文",
           "priority": 0.5,
           "confidence": 1.0
+        },
+        {
+          "name": "华为技术有限公司",
+          "alias_type": "曾用名",
+          "priority": 0.6,
+          "confidence": 0.8
+        },
+        {
+          "name": "华カ",
+          "alias_type": "俗称",
+          "priority": 0.5,
+          "confidence": 0.5
         }
       ],
       "abbreviation": "华为",
@@ -3687,7 +3908,9 @@
         "人工智能"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0052",
@@ -3710,6 +3933,12 @@
           "alias_type": "简称",
           "priority": 0.7,
           "confidence": 1.0
+        },
+        {
+          "name": "騰訊",
+          "alias_type": "俗称",
+          "priority": 0.7,
+          "confidence": 0.9
         }
       ],
       "abbreviation": "腾讯",
@@ -3750,7 +3979,9 @@
         "人工智能"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0053",
@@ -3772,6 +4003,12 @@
           "name": "Alibaba",
           "alias_type": "英文",
           "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "阿里集团",
+          "alias_type": "简称",
+          "priority": 0.72,
           "confidence": 1.0
         }
       ],
@@ -3813,7 +4050,9 @@
         "人工智能"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0054",
@@ -3873,7 +4112,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0055",
@@ -3895,6 +4136,12 @@
           "name": "ICBC",
           "alias_type": "英文",
           "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "中国工商银行",
+          "alias_type": "简称",
+          "priority": 0.82,
           "confidence": 1.0
         }
       ],
@@ -3935,7 +4182,9 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0056",
@@ -3957,6 +4206,12 @@
           "name": "Ping An",
           "alias_type": "英文",
           "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "平安集团",
+          "alias_type": "简称",
+          "priority": 0.78,
           "confidence": 1.0
         }
       ],
@@ -3996,7 +4251,9 @@
         "金融科技"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0057",
@@ -4055,72 +4312,12 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
       "entity_id": "ENT_GEN_0058",
-      "entity_name": "比亚迪股份有限公司",
-      "aliases": [
-        {
-          "name": "比亚迪",
-          "alias_type": "简称",
-          "priority": 0.95,
-          "confidence": 1.0
-        },
-        {
-          "name": "BYD",
-          "alias_type": "英文",
-          "priority": 0.88,
-          "confidence": 1.0
-        },
-        {
-          "name": "比亚迪汽车",
-          "alias_type": "简称",
-          "priority": 0.82,
-          "confidence": 1.0
-        }
-      ],
-      "abbreviation": "比亚迪汽车",
-      "entity_type": "AUTO_MANUFACTURER",
-      "entity_type_display": "汽车制造商",
-      "industry": "新能源汽车",
-      "summary": "全球领先的新能源汽车制造商，掌握电池、电机、电控全产业链核心技术。",
-      "business": "新能源汽车研发制造、动力电池（刀片电池）、光伏储能、轨道交通。",
-      "location": {
-        "country": "中国",
-        "province": "广东省",
-        "city": "深圳市",
-        "address": "坪山区"
-      },
-      "keywords": [
-        "新能源汽车",
-        "动力电池",
-        "电动车",
-        "刀片电池",
-        "储能"
-      ],
-      "source": {
-        "source_name": "工商注册信息",
-        "publisher": "国家市场监督管理总局",
-        "url": "https://www.samr.gov.cn",
-        "crawl_time": "2025-03-15",
-        "license": "公开数据",
-        "confidence": 1.0
-      },
-      "relations": [],
-      "tags": [
-        "民营企业",
-        "上市公司",
-        "世界500强",
-        "新能源汽车",
-        "汽车",
-        "行业龙头"
-      ],
-      "evidence": {},
-      "update_time": "2026-06-26"
-    },
-    {
-      "entity_id": "ENT_GEN_0059",
       "entity_name": "蔚来汽车有限公司",
       "aliases": [
         {
@@ -4139,6 +4336,12 @@
           "name": "蔚来汽车",
           "alias_type": "简称",
           "priority": 0.82,
+          "confidence": 1.0
+        },
+        {
+          "name": "蔚来公司",
+          "alias_type": "简称",
+          "priority": 0.7,
           "confidence": 1.0
         }
       ],
@@ -4178,10 +4381,12 @@
         "自动驾驶"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0060",
+      "entity_id": "ENT_GEN_0059",
       "entity_name": "国家能源局",
       "aliases": [
         {
@@ -4243,10 +4448,12 @@
         "清洁能源"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0061",
+      "entity_id": "ENT_GEN_0060",
       "entity_name": "清华大学",
       "aliases": [
         {
@@ -4304,10 +4511,12 @@
         "行业龙头"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0062",
+      "entity_id": "ENT_GEN_0061",
       "entity_name": "微信",
       "aliases": [
         {
@@ -4370,10 +4579,12 @@
         "人工智能"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0063",
+      "entity_id": "ENT_GEN_0062",
       "entity_name": "抖音",
       "aliases": [
         {
@@ -4429,10 +4640,12 @@
         "消费电子"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     },
     {
-      "entity_id": "ENT_GEN_0064",
+      "entity_id": "ENT_GEN_0063",
       "entity_name": "Windows 11",
       "aliases": [
         {
@@ -4488,7 +4701,4519 @@
         "消费电子"
       ],
       "evidence": {},
-      "update_time": "2026-06-26"
+      "update_time": "2026-06-26",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0064",
+      "entity_name": "北京大学",
+      "aliases": [
+        {
+          "name": "北大",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Peking University",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "PKU",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "北大",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "entity_type_display": "教育机构",
+      "industry": "高等教育",
+      "summary": "中国综合性研究型大学，常见简称为北大。",
+      "business": "高等教育、科学研究、社会服务与国际交流。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "海淀区"
+      },
+      "keywords": [
+        "大学",
+        "高等教育",
+        "科研",
+        "985",
+        "211"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "教育",
+        "985",
+        "211"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0065",
+      "entity_name": "上海交通大学",
+      "aliases": [
+        {
+          "name": "上海交大",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Shanghai Jiao Tong University",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "SJTU",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "上海交大",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "entity_type_display": "教育机构",
+      "industry": "高等教育",
+      "summary": "位于上海的综合性研究型大学。",
+      "business": "人才培养、科学研究、技术转化与国际合作。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": "闵行区"
+      },
+      "keywords": [
+        "大学",
+        "工程",
+        "医学",
+        "科研"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "教育",
+        "985",
+        "211"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0066",
+      "entity_name": "浙江大学",
+      "aliases": [
+        {
+          "name": "浙大",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Zhejiang University",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "ZJU",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "浙大",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "entity_type_display": "教育机构",
+      "industry": "高等教育",
+      "summary": "位于杭州的综合性研究型大学。",
+      "business": "高等教育、科研创新、工程技术与医学研究。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "大学",
+        "人工智能",
+        "工程",
+        "科研"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "教育",
+        "985",
+        "211"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0067",
+      "entity_name": "复旦大学",
+      "aliases": [
+        {
+          "name": "复旦",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Fudan University",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "FDU",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "复旦",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "entity_type_display": "教育机构",
+      "industry": "高等教育",
+      "summary": "位于上海的综合性研究型大学。",
+      "business": "高等教育、人文社科、医学与自然科学研究。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": "杨浦区"
+      },
+      "keywords": [
+        "大学",
+        "医学",
+        "科研",
+        "人文社科"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "教育",
+        "985",
+        "211"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0068",
+      "entity_name": "中国科学院",
+      "aliases": [
+        {
+          "name": "中科院",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Chinese Academy of Sciences",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "CAS",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "中科院",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "entity_type_display": "研究机构",
+      "industry": "科研机构",
+      "summary": "中国自然科学与高技术综合研究机构。",
+      "business": "基础研究、高技术研究、战略咨询与科研平台建设。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "科研",
+        "基础研究",
+        "高技术",
+        "科学院"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "教育",
+        "人工智能",
+        "科技"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0069",
+      "entity_name": "中国工程院",
+      "aliases": [
+        {
+          "name": "工程院",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Chinese Academy of Engineering",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "CAE",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "工程院",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "entity_type_display": "研究机构",
+      "industry": "工程科技咨询",
+      "summary": "中国工程科学技术领域的国家级学术机构。",
+      "business": "工程科技战略咨询、学术交流与工程科技人才服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "工程",
+        "科技咨询",
+        "院士",
+        "科研"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "智库"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0070",
+      "entity_name": "百度在线网络技术（北京）有限公司",
+      "aliases": [
+        {
+          "name": "百度",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Baidu",
+          "alias_type": "英文",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "百度公司",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "百度",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "互联网与人工智能",
+      "summary": "以搜索、人工智能、云服务和自动驾驶等业务为主的科技公司。",
+      "business": "搜索引擎、AI大模型、智能云、自动驾驶与地图服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "海淀区"
+      },
+      "keywords": [
+        "搜索",
+        "人工智能",
+        "大模型",
+        "自动驾驶",
+        "云计算"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "人工智能",
+        "互联网"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0071",
+      "entity_name": "京东集团股份有限公司",
+      "aliases": [
+        {
+          "name": "京东集团",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "JD.com",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "京东公司",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "京东",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "京东集团",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "电子商务",
+      "summary": "以自营电商、物流供应链和数字科技为核心的互联网企业。",
+      "business": "电商零售、供应链物流、云服务和数字科技。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": "大兴区"
+      },
+      "keywords": [
+        "电商",
+        "物流",
+        "供应链",
+        "零售"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "互联网",
+        "科技",
+        "上市公司"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0072",
+      "entity_name": "北京三快在线科技有限公司",
+      "aliases": [
+        {
+          "name": "美团",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Meituan",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "美团公司",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "美团",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "本地生活服务",
+      "summary": "提供本地生活、外卖、到店酒旅和即时配送服务的互联网平台企业。",
+      "business": "外卖配送、到店服务、酒店旅游、即时零售。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "外卖",
+        "本地生活",
+        "即时配送",
+        "平台经济"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "互联网",
+        "科技",
+        "服务业"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0073",
+      "entity_name": "小米集团",
+      "aliases": [
+        {
+          "name": "小米",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Xiaomi",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "小米公司",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "小米",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "消费电子",
+      "summary": "以智能手机、IoT设备、智能家居和智能电动汽车为主要业务的科技企业。",
+      "business": "智能手机、IoT设备、智能家居、互联网服务和智能汽车。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "手机",
+        "消费电子",
+        "IoT",
+        "智能汽车"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "消费电子",
+        "汽车"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0074",
+      "entity_name": "联想集团有限公司",
+      "aliases": [
+        {
+          "name": "联想集团",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Lenovo",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "联想",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "联想",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "计算机硬件",
+      "summary": "全球个人电脑、服务器和智能设备制造企业。",
+      "business": "个人电脑、服务器、智能设备、企业级解决方案。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "计算机",
+        "服务器",
+        "智能设备",
+        "制造"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "消费电子",
+        "制造"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0075",
+      "entity_name": "字节跳动有限公司",
+      "aliases": [
+        {
+          "name": "字节跳动",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "ByteDance",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "字节",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "字节跳动",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "互联网内容平台",
+      "summary": "以内容分发、短视频、协同办公和AI推荐技术为核心的互联网企业。",
+      "business": "内容平台、短视频、企业协同、AI推荐与广告技术。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "短视频",
+        "推荐算法",
+        "AI",
+        "内容平台"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "互联网",
+        "人工智能",
+        "科技"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0076",
+      "entity_name": "网易公司",
+      "aliases": [
+        {
+          "name": "网易",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "NetEase",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "网易集团",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "网易",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "互联网与游戏",
+      "summary": "以在线游戏、邮箱、音乐、电商和教育产品为主要业务的互联网企业。",
+      "business": "在线游戏、邮箱、音乐平台、教育与电商服务。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "游戏",
+        "邮箱",
+        "音乐",
+        "互联网"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "互联网",
+        "科技"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0077",
+      "entity_name": "快手科技",
+      "aliases": [
+        {
+          "name": "快手",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Kuaishou",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "快手公司",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "快手",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "短视频与直播",
+      "summary": "以短视频、直播、电商和社区内容为主要业务的互联网平台企业。",
+      "business": "短视频内容分发、直播、电商和广告营销。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "短视频",
+        "直播",
+        "电商",
+        "社区"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "互联网",
+        "人工智能",
+        "科技"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0078",
+      "entity_name": "小鹏汽车有限公司",
+      "aliases": [
+        {
+          "name": "小鹏汽车",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "小鹏",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "XPeng",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "小鹏",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "新能源汽车",
+      "summary": "中国智能电动汽车制造企业，强调智能驾驶与智能座舱能力。",
+      "business": "智能电动汽车研发制造、智能驾驶软件、充电服务。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "广州市",
+        "address": ""
+      },
+      "keywords": [
+        "电动汽车",
+        "智能驾驶",
+        "智能座舱",
+        "新能源"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "汽车",
+        "新能源",
+        "自动驾驶"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0079",
+      "entity_name": "理想汽车",
+      "aliases": [
+        {
+          "name": "理想",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Li Auto",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "理想汽车公司",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "理想",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "新能源汽车",
+      "summary": "中国新能源汽车制造企业，产品以家庭智能电动车为主要定位。",
+      "business": "智能电动汽车研发制造、车载软件和销售服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "电动汽车",
+        "增程式",
+        "智能座舱",
+        "新能源"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "汽车",
+        "新能源",
+        "自动驾驶"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0080",
+      "entity_name": "特斯拉公司",
+      "aliases": [
+        {
+          "name": "特斯拉",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Tesla",
+          "alias_type": "英文",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Tesla Inc.",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "特斯拉",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "新能源汽车",
+      "summary": "全球电动汽车、储能和自动驾驶技术企业。",
+      "business": "电动汽车、动力电池、储能系统、自动驾驶软件。",
+      "location": {
+        "country": "美国",
+        "province": "得克萨斯州",
+        "city": "奥斯汀",
+        "address": ""
+      },
+      "keywords": [
+        "电动汽车",
+        "储能",
+        "自动驾驶",
+        "动力电池"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "汽车",
+        "新能源",
+        "自动驾驶"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0081",
+      "entity_name": "中国建设银行股份有限公司",
+      "aliases": [
+        {
+          "name": "建设银行",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "建行",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "CCB",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "建行",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "银行业",
+      "summary": "中国大型商业银行之一，提供公司银行、个人银行和资产管理等金融服务。",
+      "business": "存贷款、结算、银行卡、财富管理、公司金融。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "银行",
+        "金融",
+        "贷款",
+        "理财"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融",
+        "央企",
+        "上市公司"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0082",
+      "entity_name": "中国农业银行股份有限公司",
+      "aliases": [
+        {
+          "name": "农业银行",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "农行",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "ABC",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "农行",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "银行业",
+      "summary": "中国大型商业银行之一，长期服务三农、小微企业和城乡居民。",
+      "business": "公司金融、个人金融、三农金融、银行卡与结算服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "银行",
+        "金融",
+        "三农",
+        "贷款"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融",
+        "央企",
+        "上市公司"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0083",
+      "entity_name": "中国银行股份有限公司",
+      "aliases": [
+        {
+          "name": "中国银行",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "中行",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "BOC",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "中行",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "银行业",
+      "summary": "中国大型商业银行之一，国际化和跨境金融业务具有代表性。",
+      "business": "公司金融、个人金融、国际结算、跨境金融和资产管理。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "银行",
+        "跨境金融",
+        "外汇",
+        "国际结算"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融",
+        "央企",
+        "上市公司"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0084",
+      "entity_name": "交通银行股份有限公司",
+      "aliases": [
+        {
+          "name": "交通银行",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "交行",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Bank of Communications",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "交行",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "银行业",
+      "summary": "中国全国性股份制商业银行，提供综合金融服务。",
+      "business": "公司金融、零售金融、信用卡、资产托管和财富管理。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "银行",
+        "金融",
+        "信用卡",
+        "财富管理"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融",
+        "上市公司"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0085",
+      "entity_name": "中信证券股份有限公司",
+      "aliases": [
+        {
+          "name": "中信证券",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "CITIC Securities",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "中信证券公司",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "中信证券",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "证券业",
+      "summary": "中国大型综合证券公司，业务覆盖投行、经纪、资管和研究服务。",
+      "business": "证券经纪、投资银行、资产管理、研究咨询和自营投资。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": ""
+      },
+      "keywords": [
+        "证券",
+        "投行",
+        "资管",
+        "资本市场"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融",
+        "上市公司"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0086",
+      "entity_name": "东方财富信息股份有限公司",
+      "aliases": [
+        {
+          "name": "东方财富",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "East Money",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "东财",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "东方财富",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "互联网金融",
+      "summary": "提供财经资讯、证券交易、基金销售等服务的互联网金融企业。",
+      "business": "财经资讯、证券服务、基金销售、金融数据与投资社区。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "财经",
+        "证券",
+        "基金",
+        "金融数据"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融",
+        "互联网",
+        "上市公司"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0087",
+      "entity_name": "上海证券交易所",
+      "aliases": [
+        {
+          "name": "上交所",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Shanghai Stock Exchange",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "SSE",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "上交所",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "证券交易市场",
+      "summary": "中国主要证券交易场所之一。",
+      "business": "证券集中交易、上市审核、市场监管与信息披露服务。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "证券交易所",
+        "股票",
+        "资本市场",
+        "上市"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融",
+        "政府机构"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0088",
+      "entity_name": "深圳证券交易所",
+      "aliases": [
+        {
+          "name": "深交所",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Shenzhen Stock Exchange",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "SZSE",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "深交所",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "证券交易市场",
+      "summary": "中国主要证券交易场所之一。",
+      "business": "证券集中交易、上市审核、市场监管与信息披露服务。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": ""
+      },
+      "keywords": [
+        "证券交易所",
+        "股票",
+        "资本市场",
+        "创业板"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融",
+        "政府机构"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0089",
+      "entity_name": "中华人民共和国国家发展和改革委员会",
+      "aliases": [
+        {
+          "name": "国家发展改革委",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "发改委",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "NDRC",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "发改委",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "entity_type_display": "政府机构",
+      "industry": "宏观经济管理",
+      "summary": "负责宏观经济和社会发展政策协调的国务院组成部门。",
+      "business": "发展规划、产业政策、投资管理、价格管理和经济运行协调。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "宏观经济",
+        "产业政策",
+        "投资",
+        "规划"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "政府机构",
+        "政策"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0090",
+      "entity_name": "中华人民共和国工业和信息化部",
+      "aliases": [
+        {
+          "name": "工业和信息化部",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "工信部",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "MIIT",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "工信部",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "entity_type_display": "政府机构",
+      "industry": "工业和信息化管理",
+      "summary": "负责工业、通信业和信息化发展的国务院组成部门。",
+      "business": "工业规划、通信监管、软件产业、制造业数字化和信息化推进。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "工业",
+        "通信",
+        "信息化",
+        "制造业"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "政府机构",
+        "科技",
+        "制造"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0091",
+      "entity_name": "中华人民共和国生态环境部",
+      "aliases": [
+        {
+          "name": "生态环境部",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "环境部",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "MEE",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "生态环境部",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "entity_type_display": "政府机构",
+      "industry": "生态环境管理",
+      "summary": "负责生态环境保护、污染防治和应对气候变化相关工作的国务院组成部门。",
+      "business": "环境监管、污染防治、气候变化应对、生态保护和环境评价。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "生态环境",
+        "污染防治",
+        "双碳",
+        "气候变化"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "政府机构",
+        "清洁能源",
+        "3060目标"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0092",
+      "entity_name": "国家市场监督管理总局",
+      "aliases": [
+        {
+          "name": "市场监管总局",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "国家市监总局",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "SAMR",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "市场监管总局",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "entity_type_display": "政府机构",
+      "industry": "市场监管",
+      "summary": "负责市场综合监督管理、登记注册、质量监管和反垄断等工作的国务院直属机构。",
+      "business": "市场监管、企业登记、反垄断、质量监督和食品安全监管。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "市场监管",
+        "企业登记",
+        "反垄断",
+        "质量监督"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "政府机构",
+        "监管"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0093",
+      "entity_name": "广州市",
+      "aliases": [
+        {
+          "name": "广州",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "羊城",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Guangzhou",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "广州",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "城市区域",
+      "summary": "广东省省会、粤港澳大湾区核心城市之一。",
+      "business": "区域经济、制造业、贸易服务、科技创新和交通枢纽。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "广州市",
+        "address": ""
+      },
+      "keywords": [
+        "城市",
+        "大湾区",
+        "制造业",
+        "贸易"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "华南",
+        "大湾区",
+        "科技"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0094",
+      "entity_name": "杭州市",
+      "aliases": [
+        {
+          "name": "杭州",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Hangzhou",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "杭城",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "杭州",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "城市区域",
+      "summary": "浙江省省会，数字经济和互联网产业活跃城市。",
+      "business": "数字经济、电子商务、旅游、制造业与科研教育。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "城市",
+        "数字经济",
+        "互联网",
+        "电商"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "华东",
+        "科技",
+        "互联网"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0095",
+      "entity_name": "南京市",
+      "aliases": [
+        {
+          "name": "南京",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Nanjing",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "金陵",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "南京",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "城市区域",
+      "summary": "江苏省省会，长三角中心城市之一。",
+      "business": "科教、先进制造、软件服务、交通枢纽和区域经济。",
+      "location": {
+        "country": "中国",
+        "province": "江苏省",
+        "city": "南京市",
+        "address": ""
+      },
+      "keywords": [
+        "城市",
+        "长三角",
+        "软件",
+        "科教"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "华东",
+        "长三角",
+        "科技"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0096",
+      "entity_name": "武汉市",
+      "aliases": [
+        {
+          "name": "武汉",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Wuhan",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "江城",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "武汉",
+      "entity_type": "REGION",
+      "entity_type_display": "地区",
+      "industry": "城市区域",
+      "summary": "湖北省省会，中部地区中心城市之一。",
+      "business": "先进制造、光电子信息、教育科研、交通物流和区域经济。",
+      "location": {
+        "country": "中国",
+        "province": "湖北省",
+        "city": "武汉市",
+        "address": ""
+      },
+      "keywords": [
+        "城市",
+        "光电子",
+        "制造",
+        "交通"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "华中",
+        "科技",
+        "制造"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0097",
+      "entity_name": "支付宝",
+      "aliases": [
+        {
+          "name": "Alipay",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "支付宝App",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "支付宝平台",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "支付宝",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "移动支付",
+      "summary": "面向个人和商户的移动支付与数字生活服务平台。",
+      "business": "移动支付、生活服务、金融服务入口和小程序生态。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "支付",
+        "金融科技",
+        "移动支付",
+        "数字生活"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融科技",
+        "互联网",
+        "软件平台"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0098",
+      "entity_name": "百度地图",
+      "aliases": [
+        {
+          "name": "Baidu Maps",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "百度地图App",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "百度地图平台",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "百度地图",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "地图导航",
+      "summary": "百度推出的地图、导航和位置服务平台。",
+      "business": "地图导航、位置服务、路线规划、商户位置检索。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "地图",
+        "导航",
+        "位置服务",
+        "出行"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "互联网",
+        "软件平台",
+        "人工智能"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0099",
+      "entity_name": "高德地图",
+      "aliases": [
+        {
+          "name": "Amap",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "高德",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "高德地图App",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "高德地图",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "地图导航",
+      "summary": "提供地图导航、出行规划和位置服务的软件平台。",
+      "business": "地图导航、实时路况、公交驾车路线规划和本地生活入口。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "地图",
+        "导航",
+        "位置服务",
+        "出行"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "互联网",
+        "软件平台",
+        "出行"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0100",
+      "entity_name": "Android",
+      "aliases": [
+        {
+          "name": "安卓",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "Android OS",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "安卓系统",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "Android",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "操作系统",
+      "summary": "面向移动设备的操作系统平台。",
+      "business": "移动操作系统、应用生态、设备适配和开发者服务。",
+      "location": {
+        "country": "美国",
+        "province": "加利福尼亚州",
+        "city": "山景城",
+        "address": ""
+      },
+      "keywords": [
+        "操作系统",
+        "移动设备",
+        "应用生态",
+        "安卓"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "软件平台",
+        "消费电子"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0101",
+      "entity_name": "iOS",
+      "aliases": [
+        {
+          "name": "苹果iOS",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "iPhone OS",
+          "alias_type": "曾用名",
+          "priority": 0.65,
+          "confidence": 0.9
+        },
+        {
+          "name": "iOS系统",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "iOS",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "操作系统",
+      "summary": "苹果公司面向移动设备的操作系统平台。",
+      "business": "移动操作系统、应用生态、安全机制和开发者服务。",
+      "location": {
+        "country": "美国",
+        "province": "加利福尼亚州",
+        "city": "库比蒂诺",
+        "address": ""
+      },
+      "keywords": [
+        "操作系统",
+        "苹果",
+        "移动设备",
+        "应用生态"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "软件平台",
+        "消费电子"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0102",
+      "entity_name": "中国移动通信集团有限公司",
+      "aliases": [
+        {
+          "name": "中国移动",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "移动公司",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "China Mobile",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "中国移动",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "通信运营商",
+      "summary": "中国大型移动通信运营商，提供移动通信、宽带和云网融合服务。",
+      "business": "移动通信、固定宽带、云计算、物联网和政企数字化服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "通信",
+        "5G",
+        "宽带",
+        "云计算",
+        "物联网"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "央企",
+        "科技",
+        "5G"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0103",
+      "entity_name": "中国电信集团有限公司",
+      "aliases": [
+        {
+          "name": "中国电信",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "电信公司",
+          "alias_type": "补充别名",
+          "priority": 0.7,
+          "confidence": 0.9
+        },
+        {
+          "name": "China Telecom",
+          "alias_type": "英文",
+          "priority": 0.85,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "中国电信",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "通信运营商",
+      "summary": "中国大型综合信息服务运营商，提供通信、宽带、云和政企数字化服务。",
+      "business": "固定通信、移动通信、云计算、数据中心和政企信息化服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "通信",
+        "5G",
+        "云计算",
+        "数据中心",
+        "宽带"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-09",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "央企",
+        "科技",
+        "5G"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-09",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0104",
+      "entity_name": "腾讯会议",
+      "aliases": [
+        {
+          "name": "腾讯会议",
+          "alias_type": "产品名",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Tencent Meeting",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "腾讯会议",
+      "entity_type": "CONSUMER_PRODUCT",
+      "entity_type_display": "消费品",
+      "industry": "协同办公",
+      "summary": "腾讯旗下在线会议与协同办公产品。",
+      "business": "视频会议、在线协作、企业会议和远程办公服务。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": ""
+      },
+      "keywords": [
+        "视频会议",
+        "协同办公",
+        "远程办公"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "软件产品"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0105",
+      "entity_name": "钉钉",
+      "aliases": [
+        {
+          "name": "钉钉",
+          "alias_type": "产品名",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "DingTalk",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "钉钉",
+      "entity_type": "CONSUMER_PRODUCT",
+      "entity_type_display": "消费品",
+      "industry": "协同办公",
+      "summary": "阿里巴巴旗下企业协同办公平台。",
+      "business": "即时沟通、组织管理、在线文档、会议和企业数字化服务。",
+      "location": {
+        "country": "中国",
+        "province": "浙江省",
+        "city": "杭州市",
+        "address": ""
+      },
+      "keywords": [
+        "协同办公",
+        "企业服务",
+        "在线会议"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "软件产品"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0106",
+      "entity_name": "飞书",
+      "aliases": [
+        {
+          "name": "飞书",
+          "alias_type": "产品名",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Lark",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "飞书",
+      "entity_type": "CONSUMER_PRODUCT",
+      "entity_type_display": "消费品",
+      "industry": "协同办公",
+      "summary": "面向企业的协同办公与知识管理产品。",
+      "business": "在线文档、即时沟通、视频会议、项目管理和知识库服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "协同办公",
+        "知识管理",
+        "在线文档"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "软件产品"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0107",
+      "entity_name": "广汽埃安新能源汽车股份有限公司",
+      "aliases": [
+        {
+          "name": "广汽埃安",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "埃安",
+          "alias_type": "简称",
+          "priority": 0.75,
+          "confidence": 0.95
+        },
+        {
+          "name": "AION",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "广汽埃安",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "新能源汽车",
+      "summary": "中国新能源汽车制造商，聚焦纯电动汽车和智能出行。",
+      "business": "新能源汽车研发、制造、销售和智能网联服务。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "广州市",
+        "address": ""
+      },
+      "keywords": [
+        "新能源汽车",
+        "智能驾驶",
+        "纯电动"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "汽车",
+        "新能源"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0108",
+      "entity_name": "上海汽车集团股份有限公司",
+      "aliases": [
+        {
+          "name": "上汽集团",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "SAIC Motor",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "上汽",
+          "alias_type": "简称",
+          "priority": 0.75,
+          "confidence": 0.95
+        }
+      ],
+      "abbreviation": "上汽集团",
+      "entity_type": "AUTO_MANUFACTURER",
+      "entity_type_display": "汽车制造商",
+      "industry": "汽车制造",
+      "summary": "中国大型汽车制造集团，覆盖整车、零部件和出行服务。",
+      "business": "乘用车、商用车、新能源汽车、汽车零部件和出行服务。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "汽车制造",
+        "新能源汽车",
+        "整车"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "汽车",
+        "制造"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0109",
+      "entity_name": "华中科技大学",
+      "aliases": [
+        {
+          "name": "华中科技大学",
+          "alias_type": "全称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "华科",
+          "alias_type": "简称",
+          "priority": 0.75,
+          "confidence": 0.95
+        },
+        {
+          "name": "HUST",
+          "alias_type": "英文",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "华科",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "entity_type_display": "教育机构",
+      "industry": "高等教育",
+      "summary": "位于武汉的综合性研究型大学。",
+      "business": "高等教育、科研、工程技术和医学研究。",
+      "location": {
+        "country": "中国",
+        "province": "湖北省",
+        "city": "武汉市",
+        "address": ""
+      },
+      "keywords": [
+        "高校",
+        "科研",
+        "工程",
+        "医学"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "教育",
+        "科研"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0110",
+      "entity_name": "南京大学",
+      "aliases": [
+        {
+          "name": "南京大学",
+          "alias_type": "全称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "南大",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "NJU",
+          "alias_type": "英文",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "南大",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "entity_type_display": "教育机构",
+      "industry": "高等教育",
+      "summary": "位于南京的综合性研究型大学。",
+      "business": "高等教育、基础研究、交叉学科和人才培养。",
+      "location": {
+        "country": "中国",
+        "province": "江苏省",
+        "city": "南京市",
+        "address": ""
+      },
+      "keywords": [
+        "高校",
+        "科研",
+        "教育"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "教育",
+        "科研"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0111",
+      "entity_name": "中日友好医院",
+      "aliases": [
+        {
+          "name": "中日友好医院",
+          "alias_type": "全称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "中日医院",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 0.95
+        }
+      ],
+      "abbreviation": "中日医院",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "entity_type_display": "医疗机构",
+      "industry": "医疗卫生",
+      "summary": "位于北京的综合性医院。",
+      "business": "临床医疗、医学研究、公共卫生和远程会诊服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "医院",
+        "医疗",
+        "远程会诊"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "医疗",
+        "公共卫生"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0112",
+      "entity_name": "上海交通大学医学院附属瑞金医院",
+      "aliases": [
+        {
+          "name": "瑞金医院",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "上海瑞金医院",
+          "alias_type": "俗称",
+          "priority": 0.75,
+          "confidence": 0.95
+        }
+      ],
+      "abbreviation": "瑞金医院",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "entity_type_display": "医疗机构",
+      "industry": "医疗卫生",
+      "summary": "上海大型综合性医院。",
+      "business": "临床医疗、医学科研、智慧医院和健康管理服务。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "医院",
+        "医疗",
+        "智慧医院"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "医疗",
+        "科研"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0113",
+      "entity_name": "中国国家铁路集团有限公司",
+      "aliases": [
+        {
+          "name": "国铁集团",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "中国铁路",
+          "alias_type": "简称",
+          "priority": 0.8,
+          "confidence": 0.95
+        },
+        {
+          "name": "China Railway",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "国铁集团",
+      "entity_type": "TRANSPORTATION_ORG",
+      "entity_type_display": "交通运输机构",
+      "industry": "铁路运输",
+      "summary": "中国铁路运输组织与基础设施运营主体。",
+      "business": "铁路客货运输、铁路基础设施运营、运输调度和铁路建设管理。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "铁路",
+        "交通",
+        "运输"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "交通",
+        "央企"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0114",
+      "entity_name": "中国南方航空股份有限公司",
+      "aliases": [
+        {
+          "name": "南方航空",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "南航",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "China Southern Airlines",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "南航",
+      "entity_type": "TRANSPORTATION_ORG",
+      "entity_type_display": "交通运输机构",
+      "industry": "航空运输",
+      "summary": "中国大型航空运输企业。",
+      "business": "航空客运、货运、航线运营和航空服务。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "广州市",
+        "address": ""
+      },
+      "keywords": [
+        "航空",
+        "交通",
+        "运输"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "交通",
+        "航空"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0115",
+      "entity_name": "新华通讯社",
+      "aliases": [
+        {
+          "name": "新华社",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Xinhua News Agency",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "新华社",
+      "entity_type": "MEDIA_ORG",
+      "entity_type_display": "媒体机构",
+      "industry": "新闻媒体",
+      "summary": "中国国家通讯社。",
+      "business": "新闻采集、发布、融媒体传播和国际传播服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "新闻",
+        "媒体",
+        "通讯社"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "媒体",
+        "新闻"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0116",
+      "entity_name": "中央广播电视总台",
+      "aliases": [
+        {
+          "name": "央视总台",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "中央广播电视总台",
+          "alias_type": "全称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "CMG",
+          "alias_type": "英文",
+          "priority": 0.7,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "央视总台",
+      "entity_type": "MEDIA_ORG",
+      "entity_type_display": "媒体机构",
+      "industry": "广播电视",
+      "summary": "中国国家广播电视和新媒体机构。",
+      "business": "广播电视节目制作、新闻传播、新媒体平台和国际传播。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "媒体",
+        "电视",
+        "广播"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "媒体",
+        "新闻"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0117",
+      "entity_name": "国家统计局",
+      "aliases": [
+        {
+          "name": "国家统计局",
+          "alias_type": "全称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "统计局",
+          "alias_type": "简称",
+          "priority": 0.7,
+          "confidence": 0.8
+        }
+      ],
+      "abbreviation": "国家统计局",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "entity_type_display": "政府机构",
+      "industry": "宏观统计",
+      "summary": "负责组织和发布国家统计数据的政府机构。",
+      "business": "国民经济统计、人口统计、数据发布和统计调查。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "统计",
+        "经济数据",
+        "政府机构"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "政府机构",
+        "数据"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0118",
+      "entity_name": "中华人民共和国应急管理部",
+      "aliases": [
+        {
+          "name": "应急管理部",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "应急部",
+          "alias_type": "简称",
+          "priority": 0.65,
+          "confidence": 0.85
+        }
+      ],
+      "abbreviation": "应急管理部",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "entity_type_display": "政府机构",
+      "industry": "应急管理",
+      "summary": "负责安全生产、防灾减灾和应急管理的国务院组成部门。",
+      "business": "安全生产监管、灾害应急、风险监测和应急救援协调。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "应急管理",
+        "安全生产",
+        "灾害应急"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "政府机构",
+        "安全"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0119",
+      "entity_name": "中国银联股份有限公司",
+      "aliases": [
+        {
+          "name": "中国银联",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "银联",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "UnionPay",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "银联",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "支付清算",
+      "summary": "中国银行卡联合组织和支付清算服务机构。",
+      "business": "银行卡转接清算、支付网络、金融科技和跨境支付服务。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "支付",
+        "清算",
+        "银行卡"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融",
+        "支付"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0120",
+      "entity_name": "中国邮政储蓄银行股份有限公司",
+      "aliases": [
+        {
+          "name": "邮储银行",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "PSBC",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "邮储银行",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "商业银行",
+      "summary": "中国大型商业银行之一。",
+      "business": "零售银行、普惠金融、绿色信贷和公司金融服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "银行",
+        "绿色信贷",
+        "普惠金融"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融",
+        "银行"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0121",
+      "entity_name": "商汤集团股份有限公司",
+      "aliases": [
+        {
+          "name": "商汤科技",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "SenseTime",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        },
+        {
+          "name": "商汤",
+          "alias_type": "简称",
+          "priority": 0.75,
+          "confidence": 0.95
+        }
+      ],
+      "abbreviation": "商汤科技",
+      "entity_type": "TECH_COMPANY",
+      "entity_type_display": "科技企业",
+      "industry": "人工智能",
+      "summary": "人工智能软件与算法企业。",
+      "business": "计算机视觉、大模型、智慧城市和智能汽车算法服务。",
+      "location": {
+        "country": "中国",
+        "province": "香港",
+        "city": "香港",
+        "address": ""
+      },
+      "keywords": [
+        "AI",
+        "人工智能",
+        "计算机视觉"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "人工智能"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0122",
+      "entity_name": "中国科学院计算技术研究所",
+      "aliases": [
+        {
+          "name": "中科院计算所",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "计算所",
+          "alias_type": "简称",
+          "priority": 0.7,
+          "confidence": 0.85
+        },
+        {
+          "name": "ICT CAS",
+          "alias_type": "英文",
+          "priority": 0.65,
+          "confidence": 0.85
+        }
+      ],
+      "abbreviation": "中科院计算所",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "entity_type_display": "研究机构",
+      "industry": "科研机构",
+      "summary": "中国科学院下属计算技术研究机构。",
+      "business": "计算机体系结构、人工智能、网络技术和高性能计算研究。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "科研",
+        "计算机",
+        "人工智能"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科研",
+        "科技"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0123",
+      "entity_name": "北京证券交易所",
+      "aliases": [
+        {
+          "name": "北交所",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "BSE",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "北交所",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "entity_type_display": "金融机构",
+      "industry": "证券交易",
+      "summary": "服务创新型中小企业的证券交易场所。",
+      "business": "证券交易、上市服务、市场监管和信息披露。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "证券",
+        "交易所",
+        "资本市场"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "金融",
+        "交易所"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0124",
+      "entity_name": "国网江苏省电力有限公司",
+      "aliases": [
+        {
+          "name": "国网江苏电力",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "江苏电力",
+          "alias_type": "简称",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "国网江苏电力",
+      "entity_type": "GRID_COMPANY",
+      "entity_type_display": "电网企业",
+      "industry": "电力输配",
+      "summary": "国家电网在江苏区域的省级电力公司。",
+      "business": "电网建设、供电服务、新能源并网和配电网运维。",
+      "location": {
+        "country": "中国",
+        "province": "江苏省",
+        "city": "南京市",
+        "address": ""
+      },
+      "keywords": [
+        "电网",
+        "江苏",
+        "供电",
+        "新能源并网"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "电网",
+        "地方公司"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0125",
+      "entity_name": "广东电网有限责任公司",
+      "aliases": [
+        {
+          "name": "广东电网",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "广东电网公司",
+          "alias_type": "俗称",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "广东电网",
+      "entity_type": "GRID_COMPANY",
+      "entity_type_display": "电网企业",
+      "industry": "电力输配",
+      "summary": "南方电网旗下广东区域电网企业。",
+      "business": "广东地区电网建设、供电服务、配电网运维和新能源接入。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "广州市",
+        "address": ""
+      },
+      "keywords": [
+        "电网",
+        "广东",
+        "供电",
+        "配电网"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "电网",
+        "地方公司"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0126",
+      "entity_name": "企业微信",
+      "aliases": [
+        {
+          "name": "企业微信",
+          "alias_type": "产品名",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "WeCom",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "企业微信",
+      "entity_type": "CONSUMER_PRODUCT",
+      "entity_type_display": "消费品",
+      "industry": "协同办公",
+      "summary": "腾讯面向企业组织的办公协同产品。",
+      "business": "企业沟通、组织通讯录、客户连接、在线协同和办公应用集成。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": ""
+      },
+      "keywords": [
+        "协同办公",
+        "企业服务",
+        "腾讯"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "软件产品"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0127",
+      "entity_name": "腾讯文档",
+      "aliases": [
+        {
+          "name": "腾讯文档",
+          "alias_type": "产品名",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Tencent Docs",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "腾讯文档",
+      "entity_type": "CONSUMER_PRODUCT",
+      "entity_type_display": "消费品",
+      "industry": "在线文档",
+      "summary": "腾讯旗下在线文档与协作产品。",
+      "business": "在线表格、文档协作、项目资料管理和团队共享。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": ""
+      },
+      "keywords": [
+        "在线文档",
+        "协同办公",
+        "腾讯"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "软件产品"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0128",
+      "entity_name": "WPS Office",
+      "aliases": [
+        {
+          "name": "WPS",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "WPS Office",
+          "alias_type": "产品名",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "金山文档",
+          "alias_type": "相关产品",
+          "priority": 0.6,
+          "confidence": 0.8
+        }
+      ],
+      "abbreviation": "WPS",
+      "entity_type": "CONSUMER_PRODUCT",
+      "entity_type_display": "消费品",
+      "industry": "办公软件",
+      "summary": "办公文档处理与协作软件产品。",
+      "business": "文字处理、表格、演示文稿、云文档和协同办公。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "办公软件",
+        "文档",
+        "协同办公"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "软件产品"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0129",
+      "entity_name": "华为云",
+      "aliases": [
+        {
+          "name": "华为云",
+          "alias_type": "产品名",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Huawei Cloud",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "华为云",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "云计算",
+      "summary": "华为面向企业和开发者的云计算平台。",
+      "business": "云计算、AI服务、数据存储、企业数字化和行业云解决方案。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "深圳市",
+        "address": ""
+      },
+      "keywords": [
+        "云计算",
+        "AI",
+        "华为"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "云平台"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0130",
+      "entity_name": "百度智能云",
+      "aliases": [
+        {
+          "name": "百度智能云",
+          "alias_type": "产品名",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Baidu AI Cloud",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "百度智能云",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "entity_type_display": "软件平台",
+      "industry": "云计算",
+      "summary": "百度面向企业的智能云服务平台。",
+      "business": "云计算、AI平台、大模型服务和行业数字化解决方案。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "云计算",
+        "AI",
+        "百度"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "科技",
+        "云平台"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0131",
+      "entity_name": "四川大学华西医院",
+      "aliases": [
+        {
+          "name": "华西医院",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "四川大学华西医院",
+          "alias_type": "全称",
+          "priority": 0.9,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "华西医院",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "entity_type_display": "医疗机构",
+      "industry": "医疗卫生",
+      "summary": "大型综合性医院和医学研究机构。",
+      "business": "临床医疗、医学科研、远程医疗和智慧医院建设。",
+      "location": {
+        "country": "中国",
+        "province": "四川省",
+        "city": "成都市",
+        "address": ""
+      },
+      "keywords": [
+        "医院",
+        "医疗",
+        "智慧医院"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "医疗",
+        "科研"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0132",
+      "entity_name": "中南大学湘雅医院",
+      "aliases": [
+        {
+          "name": "湘雅医院",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "中南大学湘雅医院",
+          "alias_type": "全称",
+          "priority": 0.9,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "湘雅医院",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "entity_type_display": "医疗机构",
+      "industry": "医疗卫生",
+      "summary": "大型综合性医院。",
+      "business": "临床医疗、医学科研、智慧医院和公共卫生服务。",
+      "location": {
+        "country": "中国",
+        "province": "湖南省",
+        "city": "长沙市",
+        "address": ""
+      },
+      "keywords": [
+        "医院",
+        "医疗",
+        "科研"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "医疗"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0133",
+      "entity_name": "复旦大学附属中山医院",
+      "aliases": [
+        {
+          "name": "中山医院",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 0.95
+        },
+        {
+          "name": "复旦中山医院",
+          "alias_type": "俗称",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "中山医院",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "entity_type_display": "医疗机构",
+      "industry": "医疗卫生",
+      "summary": "复旦大学附属大型综合性医院。",
+      "business": "临床诊疗、医学研究、智慧医院和能源管理试点。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "医院",
+        "医疗",
+        "复旦"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "医疗",
+        "科研"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0134",
+      "entity_name": "华中科技大学同济医学院附属同济医院",
+      "aliases": [
+        {
+          "name": "同济医院",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 0.95
+        },
+        {
+          "name": "武汉同济医院",
+          "alias_type": "俗称",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "同济医院",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "entity_type_display": "医疗机构",
+      "industry": "医疗卫生",
+      "summary": "华中科技大学附属综合性医院。",
+      "business": "临床医疗、医学科研、智慧医院和应急医疗服务。",
+      "location": {
+        "country": "中国",
+        "province": "湖北省",
+        "city": "武汉市",
+        "address": ""
+      },
+      "keywords": [
+        "医院",
+        "医疗",
+        "华中科技大学"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "医疗",
+        "科研"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0135",
+      "entity_name": "中国国际航空股份有限公司",
+      "aliases": [
+        {
+          "name": "中国国航",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "国航",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "Air China",
+          "alias_type": "英文",
+          "priority": 0.8,
+          "confidence": 1.0
+        }
+      ],
+      "abbreviation": "国航",
+      "entity_type": "TRANSPORTATION_ORG",
+      "entity_type_display": "交通运输机构",
+      "industry": "航空运输",
+      "summary": "中国大型航空运输企业。",
+      "business": "航空客运、货运、航线运营和航空服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "航空",
+        "交通",
+        "运输"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "交通",
+        "航空"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0136",
+      "entity_name": "中国东方航空股份有限公司",
+      "aliases": [
+        {
+          "name": "东方航空",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "东航",
+          "alias_type": "简称",
+          "priority": 0.85,
+          "confidence": 1.0
+        },
+        {
+          "name": "China Eastern",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "东航",
+      "entity_type": "TRANSPORTATION_ORG",
+      "entity_type_display": "交通运输机构",
+      "industry": "航空运输",
+      "summary": "中国大型航空运输企业。",
+      "business": "航空客运、货运、航线运营和航空服务。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "航空",
+        "交通",
+        "运输"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "交通",
+        "航空"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0137",
+      "entity_name": "上海国际机场股份有限公司",
+      "aliases": [
+        {
+          "name": "上海机场",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Shanghai Airport",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "上海机场",
+      "entity_type": "TRANSPORTATION_ORG",
+      "entity_type_display": "交通运输机构",
+      "industry": "机场运营",
+      "summary": "上海机场运营服务企业。",
+      "business": "机场运营、航空地面服务、交通枢纽能源管理和商业服务。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "机场",
+        "交通",
+        "航空"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "交通",
+        "机场"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0138",
+      "entity_name": "广州地铁集团有限公司",
+      "aliases": [
+        {
+          "name": "广州地铁",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "Guangzhou Metro",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "广州地铁",
+      "entity_type": "TRANSPORTATION_ORG",
+      "entity_type_display": "交通运输机构",
+      "industry": "城市轨道交通",
+      "summary": "广州城市轨道交通建设与运营主体。",
+      "business": "地铁建设、轨道交通运营、站点能源管理和城市交通服务。",
+      "location": {
+        "country": "中国",
+        "province": "广东省",
+        "city": "广州市",
+        "address": ""
+      },
+      "keywords": [
+        "地铁",
+        "轨道交通",
+        "广州"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "交通",
+        "城市轨道"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0139",
+      "entity_name": "人民日报社",
+      "aliases": [
+        {
+          "name": "人民日报",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "People's Daily",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "人民日报",
+      "entity_type": "MEDIA_ORG",
+      "entity_type_display": "媒体机构",
+      "industry": "新闻媒体",
+      "summary": "综合性新闻媒体机构。",
+      "business": "新闻采编、评论传播、融媒体发布和政策解读。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "新闻",
+        "媒体",
+        "评论"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "媒体",
+        "新闻"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0140",
+      "entity_name": "人民网股份有限公司",
+      "aliases": [
+        {
+          "name": "人民网",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "people.cn",
+          "alias_type": "英文",
+          "priority": 0.65,
+          "confidence": 0.8
+        }
+      ],
+      "abbreviation": "人民网",
+      "entity_type": "MEDIA_ORG",
+      "entity_type_display": "媒体机构",
+      "industry": "新闻网站",
+      "summary": "综合性新闻网站与网络媒体平台。",
+      "business": "新闻发布、网络传播、舆情服务和政策专题报道。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "新闻",
+        "媒体",
+        "网站"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "媒体",
+        "互联网"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0141",
+      "entity_name": "央视新闻",
+      "aliases": [
+        {
+          "name": "央视新闻",
+          "alias_type": "产品名",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "CCTV News",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "央视新闻",
+      "entity_type": "MEDIA_ORG",
+      "entity_type_display": "媒体机构",
+      "industry": "新闻媒体",
+      "summary": "中央广播电视总台旗下新闻传播品牌。",
+      "business": "新闻报道、移动端传播、视频节目和新媒体资讯服务。",
+      "location": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京市",
+        "address": ""
+      },
+      "keywords": [
+        "新闻",
+        "媒体",
+        "视频"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "媒体",
+        "新闻"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
+    },
+    {
+      "entity_id": "ENT_GEN_0142",
+      "entity_name": "上海报业集团澎湃新闻",
+      "aliases": [
+        {
+          "name": "澎湃新闻",
+          "alias_type": "简称",
+          "priority": 0.9,
+          "confidence": 1.0
+        },
+        {
+          "name": "The Paper",
+          "alias_type": "英文",
+          "priority": 0.75,
+          "confidence": 0.9
+        }
+      ],
+      "abbreviation": "澎湃新闻",
+      "entity_type": "MEDIA_ORG",
+      "entity_type_display": "媒体机构",
+      "industry": "新闻媒体",
+      "summary": "综合性网络新闻媒体。",
+      "business": "新闻报道、深度报道、政务信息和新媒体传播。",
+      "location": {
+        "country": "中国",
+        "province": "上海市",
+        "city": "上海市",
+        "address": ""
+      },
+      "keywords": [
+        "新闻",
+        "媒体",
+        "政务"
+      ],
+      "source": {
+        "source_name": "人工补充",
+        "publisher": "欧小红",
+        "url": "",
+        "crawl_time": "2026-07-10",
+        "license": "课程项目内部整理",
+        "confidence": 0.8
+      },
+      "relations": [],
+      "tags": [
+        "媒体",
+        "新闻"
+      ],
+      "evidence": {},
+      "update_time": "2026-07-10",
+      "ambiguity_level": "base",
+      "shared_aliases": []
     }
   ],
   "ner_type_mapping": {
@@ -4501,7 +9226,10 @@
       "FINANCIAL_INSTITUTION",
       "AUTO_MANUFACTURER",
       "GOVERNMENT_AGENCY",
-      "EDUCATIONAL_INSTITUTION"
+      "EDUCATIONAL_INSTITUTION",
+      "MEDICAL_INSTITUTION",
+      "TRANSPORTATION_ORG",
+      "MEDIA_ORG"
     ],
     "PERSON": [
       "PERSON_BUSINESS",
@@ -4525,7 +9253,32 @@
       "nil_threshold",
       "bge_llm_trigger_threshold",
       "linkable_types"
-    ]
+    ],
+    "last_expansion_report": {
+      "added_entities": [
+        "ENT_GEN_0124",
+        "ENT_GEN_0125",
+        "ENT_GEN_0126",
+        "ENT_GEN_0127",
+        "ENT_GEN_0128",
+        "ENT_GEN_0129",
+        "ENT_GEN_0130",
+        "ENT_GEN_0131",
+        "ENT_GEN_0132",
+        "ENT_GEN_0133",
+        "ENT_GEN_0134",
+        "ENT_GEN_0135",
+        "ENT_GEN_0136",
+        "ENT_GEN_0137",
+        "ENT_GEN_0138",
+        "ENT_GEN_0139",
+        "ENT_GEN_0140",
+        "ENT_GEN_0141",
+        "ENT_GEN_0142"
+      ],
+      "updated_aliases": [],
+      "warnings": []
+    }
   },
   "industry_domains": [
     "能源",
@@ -4533,6 +9286,10 @@
     "金融",
     "汽车与制造",
     "教育科研",
-    "通用"
+    "通用",
+    "医疗卫生",
+    "交通运输",
+    "新闻媒体",
+    "协同办公"
   ]
 }

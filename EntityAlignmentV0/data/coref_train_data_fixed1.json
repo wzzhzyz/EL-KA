@@ -1,0 +1,511 @@
+[
+  {
+    "doc_id": "coref_train_001",
+    "doc": "华为技术有限公司在深圳召开了新品发布会。这家企业展示了最新的旗舰手机，并宣布它将于下月正式开售。任正非在会上表示，公司会继续加大研发投入。",
+    "clusters": [
+      [
+        {
+          "name": "华为技术有限公司",
+          "char_start": 0,
+          "char_end": 8
+        },
+        {
+          "name": "这家企业",
+          "char_start": 20,
+          "char_end": 24
+        },
+        {
+          "name": "公司",
+          "char_start": 57,
+          "char_end": 59
+        }
+      ],
+      [
+        {
+          "name": "旗舰手机",
+          "char_start": 30,
+          "char_end": 34
+        },
+        {
+          "name": "它",
+          "char_start": 38,
+          "char_end": 39
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_002",
+    "doc": "李娜是中国著名的网球运动员。她曾两次夺得大满贯冠军，退役后这位名将投身于青少年网球培训事业。",
+    "clusters": [
+      [
+        {
+          "name": "李娜",
+          "char_start": 0,
+          "char_end": 2
+        },
+        {
+          "name": "她",
+          "char_start": 14,
+          "char_end": 15
+        },
+        {
+          "name": "这位名将",
+          "char_start": 29,
+          "char_end": 33
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_003",
+    "doc": "特斯拉发布了第三季度财报。该公司当季营收大幅增长，其电动汽车交付量创下历史新高。分析师认为，这家车企在中国市场的表现尤为亮眼。",
+    "clusters": [
+      [
+        {
+          "name": "特斯拉",
+          "char_start": 0,
+          "char_end": 3
+        },
+        {
+          "name": "该公司",
+          "char_start": 13,
+          "char_end": 16
+        },
+        {
+          "name": "其",
+          "char_start": 25,
+          "char_end": 26
+        },
+        {
+          "name": "这家车企",
+          "char_start": 46,
+          "char_end": 50
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_004",
+    "doc": "小王把报告交给了张经理。他仔细看完后，对这份报告的结构提出了修改意见。第二天，张经理又找小王讨论了细节。",
+    "clusters": [
+      [
+        {
+          "name": "小王",
+          "char_start": 0,
+          "char_end": 2
+        },
+        {
+          "name": "小王",
+          "char_start": 44,
+          "char_end": 46
+        }
+      ],
+      [
+        {
+          "name": "张经理",
+          "char_start": 8,
+          "char_end": 11
+        },
+        {
+          "name": "他",
+          "char_start": 12,
+          "char_end": 13
+        },
+        {
+          "name": "张经理",
+          "char_start": 39,
+          "char_end": 42
+        }
+      ],
+      [
+        {
+          "name": "报告",
+          "char_start": 3,
+          "char_end": 5
+        },
+        {
+          "name": "这份报告",
+          "char_start": 20,
+          "char_end": 24
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_005",
+    "doc": "故宫博物院迎来了建院一百周年。这座古老的宫殿群珍藏着大量文物，它每年吸引数以千万计的游客前来参观。",
+    "clusters": [
+      [
+        {
+          "name": "故宫博物院",
+          "char_start": 0,
+          "char_end": 5
+        },
+        {
+          "name": "这座古老的宫殿群",
+          "char_start": 15,
+          "char_end": 23
+        },
+        {
+          "name": "它",
+          "char_start": 31,
+          "char_end": 32
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_006",
+    "doc": "北京大学与清华大学联合成立了人工智能研究院。两所高校将共享科研资源，该研究院的首个项目聚焦于大模型训练。",
+    "clusters": [
+      [
+        {
+          "name": "北京大学",
+          "char_start": 0,
+          "char_end": 4
+        },
+        {
+          "name": "清华大学",
+          "char_start": 5,
+          "char_end": 9
+        },
+        {
+          "name": "两所高校",
+          "char_start": 22,
+          "char_end": 26
+        }
+      ],
+      [
+        {
+          "name": "人工智能研究院",
+          "char_start": 14,
+          "char_end": 21
+        },
+        {
+          "name": "该研究院",
+          "char_start": 34,
+          "char_end": 38
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_007",
+    "doc": "马斯克收购了这家社交媒体平台后，对其进行了大刀阔斧的改革。他解雇了大量员工，并宣布该平台将更名。",
+    "clusters": [
+      [
+        {
+          "name": "马斯克",
+          "char_start": 0,
+          "char_end": 3
+        },
+        {
+          "name": "他",
+          "char_start": 29,
+          "char_end": 30
+        }
+      ],
+      [
+        {
+          "name": "这家社交媒体平台",
+          "char_start": 6,
+          "char_end": 14
+        },
+        {
+          "name": "其",
+          "char_start": 17,
+          "char_end": 18
+        },
+        {
+          "name": "该平台",
+          "char_start": 41,
+          "char_end": 44
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_008",
+    "doc": "中国空间站已全面建成。这座在轨运行的实验室由多个舱段组成，航天员将在其中开展长期科学实验。它是我国航天事业的重要里程碑。",
+    "clusters": [
+      [
+        {
+          "name": "中国空间站",
+          "char_start": 0,
+          "char_end": 5
+        },
+        {
+          "name": "这座在轨运行的实验室",
+          "char_start": 11,
+          "char_end": 21
+        },
+        {
+          "name": "其",
+          "char_start": 34,
+          "char_end": 35
+        },
+        {
+          "name": "它",
+          "char_start": 45,
+          "char_end": 46
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_009",
+    "doc": "苹果公司推出了新一代智能手表。这款设备增加了健康监测功能，它能够检测佩戴者的血氧和心率。库克表示，这家公司对该产品的前景充满信心。",
+    "clusters": [
+      [
+        {
+          "name": "苹果公司",
+          "char_start": 0,
+          "char_end": 4
+        },
+        {
+          "name": "这家公司",
+          "char_start": 49,
+          "char_end": 53
+        }
+      ],
+      [
+        {
+          "name": "智能手表",
+          "char_start": 10,
+          "char_end": 14
+        },
+        {
+          "name": "这款设备",
+          "char_start": 15,
+          "char_end": 19
+        },
+        {
+          "name": "它",
+          "char_start": 29,
+          "char_end": 30
+        },
+        {
+          "name": "该产品",
+          "char_start": 54,
+          "char_end": 57
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_010",
+    "doc": "王医生正在给患者做检查。她告诉那位老人，病情已经明显好转。老人握着王医生的手，连声道谢。",
+    "clusters": [
+      [
+        {
+          "name": "王医生",
+          "char_start": 0,
+          "char_end": 3
+        },
+        {
+          "name": "她",
+          "char_start": 12,
+          "char_end": 13
+        },
+        {
+          "name": "王医生",
+          "char_start": 33,
+          "char_end": 36
+        }
+      ],
+      [
+        {
+          "name": "患者",
+          "char_start": 6,
+          "char_end": 8
+        },
+        {
+          "name": "那位老人",
+          "char_start": 15,
+          "char_end": 19
+        },
+        {
+          "name": "老人",
+          "char_start": 29,
+          "char_end": 31
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_011",
+    "doc": "长江是中国第一大河。这条大河发源于青藏高原，它自西向东流经多个省份，最终注入东海。沿岸城市依托这条黄金水道发展航运。",
+    "clusters": [
+      [
+        {
+          "name": "长江",
+          "char_start": 0,
+          "char_end": 2
+        },
+        {
+          "name": "这条大河",
+          "char_start": 10,
+          "char_end": 14
+        },
+        {
+          "name": "它",
+          "char_start": 22,
+          "char_end": 23
+        },
+        {
+          "name": "这条黄金水道",
+          "char_start": 47,
+          "char_end": 53
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_012",
+    "doc": "比亚迪与丰田宣布深化合作。前者提供电池技术，后者负责整车制造，双方将共同开发新款电动车。",
+    "clusters": [
+      [
+        {
+          "name": "比亚迪",
+          "char_start": 0,
+          "char_end": 3
+        },
+        {
+          "name": "前者",
+          "char_start": 13,
+          "char_end": 15
+        }
+      ],
+      [
+        {
+          "name": "丰田",
+          "char_start": 4,
+          "char_end": 6
+        },
+        {
+          "name": "后者",
+          "char_start": 22,
+          "char_end": 24
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_013",
+    "doc": "记者采访了这位科学家。他介绍说，自己的团队研发了一种新型疫苗，该疫苗已进入临床试验阶段。这位科学家对成果表示乐观。",
+    "clusters": [
+      [
+        {
+          "name": "这位科学家",
+          "char_start": 5,
+          "char_end": 10
+        },
+        {
+          "name": "他",
+          "char_start": 11,
+          "char_end": 12
+        },
+        {
+          "name": "自己",
+          "char_start": 16,
+          "char_end": 18
+        },
+        {
+          "name": "这位科学家",
+          "char_start": 44,
+          "char_end": 49
+        }
+      ],
+      [
+        {
+          "name": "新型疫苗",
+          "char_start": 26,
+          "char_end": 30
+        },
+        {
+          "name": "该疫苗",
+          "char_start": 31,
+          "char_end": 34
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_014",
+    "doc": "上海博物馆举办了青铜器特展。此次展览汇集了上百件珍品，其中最引人注目的是一尊西周大鼎，这件国宝首次公开亮相。",
+    "clusters": [
+      [
+        {
+          "name": "青铜器特展",
+          "char_start": 8,
+          "char_end": 13
+        },
+        {
+          "name": "此次展览",
+          "char_start": 14,
+          "char_end": 18
+        }
+      ],
+      [
+        {
+          "name": "西周大鼎",
+          "char_start": 38,
+          "char_end": 42
+        },
+        {
+          "name": "这件国宝",
+          "char_start": 43,
+          "char_end": 47
+        }
+      ]
+    ]
+  },
+  {
+    "doc_id": "coref_train_015",
+    "doc": "母亲给女儿织了一件毛衣。她把这件毛衣寄到了大学，女儿收到后非常感动，立刻打电话向母亲道谢。",
+    "clusters": [
+      [
+        {
+          "name": "母亲",
+          "char_start": 0,
+          "char_end": 2
+        },
+        {
+          "name": "她",
+          "char_start": 12,
+          "char_end": 13
+        },
+        {
+          "name": "母亲",
+          "char_start": 40,
+          "char_end": 42
+        }
+      ],
+      [
+        {
+          "name": "女儿",
+          "char_start": 3,
+          "char_end": 5
+        },
+        {
+          "name": "女儿",
+          "char_start": 24,
+          "char_end": 26
+        }
+      ],
+      [
+        {
+          "name": "毛衣",
+          "char_start": 9,
+          "char_end": 11
+        },
+        {
+          "name": "这件毛衣",
+          "char_start": 14,
+          "char_end": 18
+        }
+      ]
+    ]
+  }
+]

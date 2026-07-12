@@ -20,6 +20,8 @@ from typing import List, Dict, Any, Optional, Tuple
 from datetime import datetime
 from dataclasses import dataclass, field
 
+from sympy import false
+
 # 添加项目根目录到Python路径
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -101,7 +103,7 @@ class DisambiguatorDatasetTester:
         print(f"Reranker: {'启用' if self.disambiguator.enable_reranker else '禁用'}")
         if self.disambiguator.enable_reranker:
             print(
-                f"  模型: {self.disambiguator.reranker.model.config._name_or_path if hasattr(self.disambiguator.reranker, 'model') else '已加载'}")
+                f"  模型: {self.disambiguator._reranker.model.config._name_or_path if hasattr(self.disambiguator._reranker, 'model') else '已加载'}")
         print(f"NIL阈值: {self.disambiguator.nil_threshold}")
         print(f"LLM触发阈值: {self.disambiguator.llm_trigger_threshold}")
         print(f"LLM兜底: {'启用' if self.disambiguator.enable_llm else '禁用'}")
@@ -498,15 +500,26 @@ class DisambiguatorDatasetTester:
             for err_type, count in error_types.items():
                 print(f"  {err_type}: {count}")
 
-        # 统计信息
-        stats = self.disambiguator.get_stats()
-        print(f"\n消歧器统计:")
-        print(f"  Reranker调用: {stats['reranker_calls']}")
-        print(f"  Reranker使用: {stats['reranker_used']}")
-        print(f"  LLM调用: {stats['llm_calls']}")
-        print(f"  LLM缓存命中: {stats['llm_cache_hits']}")
-        print(f"  NIL(分数): {stats['nil_by_score']}")
-        print(f"  NIL(LLM): {stats['nil_by_llm']}")
+        # 统计信息 - 安全获取
+        try:
+            stats = self.disambiguator.get_stats()
+            # 确保所有值都是可序列化的基本类型
+            safe_stats = {}
+            for key, value in stats.items():
+                if isinstance(value, (int, float, str, bool)) or value is None:
+                    safe_stats[key] = value
+                else:
+                    safe_stats[key] = str(value)
+
+            print(f"\n消歧器统计:")
+            print(f"  Reranker调用: {safe_stats.get('reranker_calls', 0)}")
+            print(f"  Reranker使用: {safe_stats.get('reranker_used', 0)}")
+            print(f"  LLM调用: {safe_stats.get('llm_calls', 0)}")
+            print(f"  LLM缓存命中: {safe_stats.get('llm_cache_hits', 0)}")
+            print(f"  NIL(分数): {safe_stats.get('nil_by_score', 0)}")
+            print(f"  NIL(LLM): {safe_stats.get('nil_by_llm', 0)}")
+        except Exception as e:
+            print(f"\n⚠️ 无法获取消歧器统计信息: {e}")
 
     def print_failed_cases(self):
         """打印所有失败用例详情 - 🔥 新增 query、doc、candidates_info 输出"""
@@ -574,11 +587,22 @@ class DisambiguatorDatasetTester:
                 "evidence": case.evidence,
                 "error_type": case.error_type,
                 "error_message": case.error_message,
-                # 🔥 新增字段
                 "query": case.query,
                 "doc": case.doc,
                 "candidates_info": case.candidates_info
             })
+
+        # 安全获取统计信息
+        stats_data = {}
+        try:
+            raw_stats = self.disambiguator.get_stats()
+            for key, value in raw_stats.items():
+                if isinstance(value, (int, float, str, bool)) or value is None:
+                    stats_data[key] = value
+                else:
+                    stats_data[key] = str(value)
+        except Exception as e:
+            stats_data = {"error": f"无法获取统计信息: {e}"}
 
         # 保存详细结果
         file_path = output_dir / f"disambiguate_dataset_test_{timestamp}.json"
@@ -588,7 +612,7 @@ class DisambiguatorDatasetTester:
                 "config": {
                     "nil_threshold": self.disambiguator.nil_threshold,
                     "llm_trigger_threshold": self.disambiguator.llm_trigger_threshold,
-                    "llm_enabled": self.disambiguator.enable_llm,
+                    "llm_enabled": self.disambiguator.llm_config.get("enabled","false"),
                     "reranker_enabled": self.disambiguator.enable_reranker
                 },
                 "summary": {
@@ -596,8 +620,9 @@ class DisambiguatorDatasetTester:
                     "passed": self.passed,
                     "failed": self.failed,
                     "pass_rate": f"{self.passed / (self.passed + self.failed) * 100:.1f}%" if (
-                                                                                                      self.passed + self.failed) > 0 else "0%"
+                                                                                                          self.passed + self.failed) > 0 else "0%"
                 },
+                "stats": stats_data,
                 "failed_cases": failed_cases_data
             }, f, ensure_ascii=False, indent=2)
 
