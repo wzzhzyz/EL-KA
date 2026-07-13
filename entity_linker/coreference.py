@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Optional, Sequence
+from .collective_ambiguity import evaluate_collective_ambiguity
+
 
 ORG_ANAPHORS = {
     "该公司",
@@ -46,6 +48,11 @@ COLLECTIVE_ANAPHORS = {
     "上述银行",
     "双方",
     "二者",
+    "两者",
+    "该二者",
+    "三方",
+    "各方",
+    "上述单位",
     "两人",
     "两地",
     "两款应用",
@@ -56,7 +63,28 @@ COLLECTIVE_ANAPHORS = {
 
 # These are textual coordination markers between antecedent mentions.  They
 # intentionally exclude collective anaphors such as “双方” and “两家机构”.
-COORDINATE_CONJUNCTIONS = {"和", "与", "及", "以及", "、"}
+COORDINATE_CONJUNCTIONS = {"和", "与", "及", "以及", "、", "同", "跟", "连同", "会同"}
+
+# Collective surfaces have different cardinality semantics.  These constraints
+# are evaluated only after a same-sentence, explicitly coordinated, linked and
+# homogeneous group has been extracted; they do not expand the search window.
+EXACT_TWO_COLLECTIVE_ANAPHORS = {
+    "双方",
+    "二者",
+    "两者",
+    "该二者",
+    "两家公司",
+    "两家企业",
+    "两家机构",
+    "两家央企",
+    "两家高校",
+    "两所高校",
+    "两所大学",
+    "两人",
+    "两地",
+    "两款应用",
+}
+EXACT_THREE_COLLECTIVE_ANAPHORS = {"三方"}
 
 
 ORDINAL_ANAPHORS = {
@@ -122,6 +150,16 @@ def type_compatible(expected_type: str, antecedent_type: str) -> bool:
     return False
 
 
+def collective_cardinality_satisfied(surface: str, entity_count: int) -> bool:
+    """Apply lexical cardinality without guessing a partial entity set."""
+    normalized = normalize_text(surface)
+    if normalized in EXACT_TWO_COLLECTIVE_ANAPHORS:
+        return entity_count == 2
+    if normalized in EXACT_THREE_COLLECTIVE_ANAPHORS:
+        return entity_count == 3
+    return entity_count >= 2
+
+
 @dataclass
 class CoreferenceMention:
     mention: str
@@ -150,9 +188,7 @@ class CoreferenceMention:
                 )
                 or 0
             ),
-            role=data.get(
-                "role", data.get("mention_role", metadata.get("role", "name"))
-            ),
+            role=data.get("role", data.get("mention_role", metadata.get("role", "name"))),
             entity_id=data.get("entity_id") or data.get("linked_entity_id"),
             entity_name=data.get("standard_entity", data.get("entity_name", "")),
             confidence=float(data.get("confidence", 1.0) or 0.0),
@@ -182,6 +218,7 @@ class CoreferenceResolution:
     antecedent_mentions: List[str] = field(default_factory=list)
     antecedent_indices: List[int] = field(default_factory=list)
     is_collective: bool = False
+    debug_metadata: Dict[str, Any] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         """Populate collection fields for legacy single-entity resolutions."""
@@ -207,7 +244,29 @@ class CoreferenceResolution:
             "rule": self.rule,
             "is_nil": self.is_nil,
             "is_collective": self.is_collective,
+            "debug_metadata": dict(self.debug_metadata),
         }
+
+
+@dataclass(frozen=True)
+class CoordinatedGroupCandidate:
+    """Internal, read-only representation of an explicit coordination group.
+
+    The production resolver continues to select the nearest legal group.  This
+    structure exists so offline experiments can inspect every group that the
+    existing extraction logic considers legal without changing that decision.
+    """
+
+    mention_indices: tuple[int, ...]
+    entity_ids: tuple[str, ...]
+    entity_types: tuple[str, ...]
+    source_sentence_index: int
+    source_span_start: int
+    source_span_end: int
+    group_text: str
+    conjunctions: tuple[str, ...]
+    extraction_rule: str
+    evidence: str
 
 
 class RuleBasedCoreferenceResolver:
@@ -220,10 +279,10 @@ class RuleBasedCoreferenceResolver:
     - 输出带 evidence，方便 trace 和人工复核。
     """
 
-    def __init__(self, nil_threshold: float = 0.3, max_sentence_gap: int = 3):
-        # 降低默认 nil_threshold 以便在演示中更宽松地接受多先行词回指
+    def __init__(self, nil_threshold: float = 0.3, max_sentence_gap: int = 3, enable_collective_ambiguity_rejection: bool = True):
         self.nil_threshold = nil_threshold
         self.max_sentence_gap = max_sentence_gap
+        self.enable_collective_ambiguity_rejection = enable_collective_ambiguity_rejection
 
     def resolve(
         self,
@@ -231,9 +290,7 @@ class RuleBasedCoreferenceResolver:
         text: str = "",
     ) -> List[CoreferenceResolution]:
         normalized_mentions = [
-            item
-            if isinstance(item, CoreferenceMention)
-            else CoreferenceMention.from_dict(item)
+            item if isinstance(item, CoreferenceMention) else CoreferenceMention.from_dict(item)
             for item in mentions
         ]
         active_entities: List[tuple[int, CoreferenceMention]] = []
@@ -303,17 +360,18 @@ class RuleBasedCoreferenceResolver:
         between = text[left.char_end : right.char_start]
         return any(marker in between for marker in COORDINATE_CONJUNCTIONS)
 
-    def find_collective_antecedents(
+    def _collect_coordinated_group_candidates(
         self,
         text: str,
         current_index: int,
         mentions: Sequence[CoreferenceMention],
-    ) -> List[tuple[int, CoreferenceMention]]:
-        """Find the nearest explicit, fully linked coordination group.
+    ) -> List[CoordinatedGroupCandidate]:
+        """Return all legal same-sentence explicit coordination groups in order.
 
-        This helper deliberately does *not* select the nearest two entities.  A
-        group must be in the same sentence, connected by explicit conjunctions,
-        homogeneous (all ORG or all PERSON), and contain no unlinked member.
+        This is intentionally an internal inspection helper.  It extracts the
+        same groups and applies the same legality filters as
+        :meth:`find_collective_antecedents`; it does not score, rank, or resolve
+        a collective anaphor.
         """
         if not text or current_index <= 0 or current_index >= len(mentions):
             return []
@@ -344,21 +402,76 @@ class RuleBasedCoreferenceResolver:
         if len(active_group) >= 2:
             groups.append(active_group)
 
-        for group in reversed(groups):
+        candidates: List[CoordinatedGroupCandidate] = []
+        for group in groups:
             members = [item for _, item in group]
             if not all(member.entity_id for member in members):
                 continue
-            normalized_types = {
-                normalize_type(member.mention_type) for member in members
-            }
+            normalized_types = {normalize_type(member.mention_type) for member in members}
             if len(normalized_types) != 1 or not all(
                 self._is_collective_entity_type(member) for member in members
             ):
                 continue
-            if len({member.entity_id for member in members if member.entity_id}) < 2:
+            entity_ids: List[str] = []
+            seen_ids: set[str] = set()
+            for member in members:
+                if member.entity_id and member.entity_id not in seen_ids:
+                    entity_ids.append(member.entity_id)
+                    seen_ids.add(member.entity_id)
+            if len(entity_ids) < 2:
                 continue
-            return group
-        return []
+            conjunctions: List[str] = []
+            for (_, left), (_, right) in zip(group, group[1:]):
+                between = text[left.char_end : right.char_start]
+                conjunctions.extend(
+                    marker
+                    for marker in sorted(COORDINATE_CONJUNCTIONS, key=lambda value: (-len(value), value))
+                    if marker in between
+                )
+            start = members[0].char_start
+            end = members[-1].char_end
+            candidates.append(
+                CoordinatedGroupCandidate(
+                    mention_indices=tuple(index for index, _ in group),
+                    entity_ids=tuple(entity_ids),
+                    entity_types=tuple(normalize_type(member.mention_type) for member in members),
+                    source_sentence_index=current.sentence_index,
+                    source_span_start=start,
+                    source_span_end=end,
+                    group_text=text[start:end],
+                    conjunctions=tuple(conjunctions),
+                    extraction_rule="explicit_same_sentence_coordination",
+                    evidence=(
+                        "同句、目标前、显式连接、已链接且同质的协调实体组："
+                        + "、".join(member.mention for member in members)
+                    ),
+                )
+            )
+        return candidates
+
+    def find_collective_antecedents(
+        self,
+        text: str,
+        current_index: int,
+        mentions: Sequence[CoreferenceMention],
+    ) -> List[tuple[int, CoreferenceMention]]:
+        """Find the nearest explicit, fully linked coordination group.
+
+        This helper deliberately does *not* select the nearest two entities.  A
+        group must be in the same sentence, connected by explicit conjunctions,
+        homogeneous (all ORG or all PERSON), and contain no unlinked member.
+        """
+        candidates = self._collect_coordinated_group_candidates(
+            text=text,
+            current_index=current_index,
+            mentions=mentions,
+        )
+        if not candidates:
+            return []
+        return [
+            (index, mentions[index])
+            for index in candidates[-1].mention_indices
+        ]
 
     def resolve_link_results(
         self,
@@ -376,17 +489,13 @@ class RuleBasedCoreferenceResolver:
                 updated["confidence"] = resolution.confidence
                 updated["is_nil"] = False
                 updated["is_coreference"] = True
-                # 如果 antecedent 包含多个先行词（以分号分隔），返回为列表，便于上层判断
-                if resolution.antecedent and ";" in resolution.antecedent:
-                    updated["resolved_from"] = [
-                        s for s in resolution.antecedent.split(";") if s
-                    ]
-                else:
-                    updated["resolved_from"] = resolution.antecedent
+                updated["resolved_from"] = resolution.antecedent
                 updated["evidence"] = resolution.evidence
                 updated["method"] = "coreference_rule"
                 updated["entity_ids"] = list(resolution.entity_ids)
-                updated["antecedent_mentions"] = list(resolution.antecedent_mentions)
+                updated["antecedent_mentions"] = list(
+                    resolution.antecedent_mentions
+                )
                 updated["antecedent_indices"] = list(resolution.antecedent_indices)
                 updated["is_collective"] = resolution.is_collective
             updated["coreference"] = resolution.to_dict()
@@ -402,24 +511,37 @@ class RuleBasedCoreferenceResolver:
         text: str,
     ) -> CoreferenceResolution:
         if normalize_text(mention.mention) in COLLECTIVE_ANAPHORS:
-            antecedents = self.find_collective_antecedents(
+            candidates = self._collect_coordinated_group_candidates(
                 text=text,
                 current_index=index,
                 mentions=all_mentions,
             )
+            antecedents = [
+                (item_index, all_mentions[item_index])
+                for item_index in candidates[-1].mention_indices
+            ] if candidates else []
             entity_ids: List[str] = []
             seen_ids: set[str] = set()
             for _, antecedent in antecedents:
                 if antecedent.entity_id and antecedent.entity_id not in seen_ids:
                     entity_ids.append(antecedent.entity_id)
                     seen_ids.add(antecedent.entity_id)
-            if len(entity_ids) >= 2:
-                antecedent_mentions = [
-                    antecedent.mention for _, antecedent in antecedents
-                ]
-                antecedent_indices = [
-                    antecedent_index for antecedent_index, _ in antecedents
-                ]
+            cardinality_ok = collective_cardinality_satisfied(mention.mention, len(entity_ids))
+            trace = evaluate_collective_ambiguity(
+                text, mention, all_mentions, candidates, cardinality_ok
+            )
+            trace["ambiguity_rejection_enabled"] = self.enable_collective_ambiguity_rejection
+            if self.enable_collective_ambiguity_rejection and trace["rejection_decision"]:
+                return CoreferenceResolution(
+                    mention=mention.mention, entity_id=None, entity_name="", antecedent=None,
+                    antecedent_index=None, confidence=0.0,
+                    evidence="集合协调组存在强歧义，实验分支输出 NIL",
+                    rule="collective_ambiguity_rejection_experimental", is_nil=True,
+                    is_collective=True, debug_metadata=trace,
+                )
+            if cardinality_ok:
+                antecedent_mentions = [antecedent.mention for _, antecedent in antecedents]
+                antecedent_indices = [antecedent_index for antecedent_index, _ in antecedents]
                 return CoreferenceResolution(
                     mention=mention.mention,
                     entity_id=None,
@@ -437,42 +559,30 @@ class RuleBasedCoreferenceResolver:
                     antecedent_mentions=antecedent_mentions,
                     antecedent_indices=antecedent_indices,
                     is_collective=True,
+                    debug_metadata=trace if self.enable_collective_ambiguity_rejection else {},
                 )
-            # 找不到显式并列连接的至少两个已链接实体时，继续回退到激活实体栈中寻找兼容先行词
-            antecedents = [ant for _, ant in active_entities if ant.entity_id]
-            compatible = [
-                ant
-                for ant in antecedents
-                if type_compatible(
-                    expected_antecedent_type(mention.mention, mention.mention_type),
-                    ant.mention_type,
-                )
-            ]
-            if not compatible:
-                return CoreferenceResolution(
-                    mention=mention.mention,
-                    entity_id=None,
-                    entity_name="",
-                    antecedent=None,
-                    antecedent_index=None,
-                    confidence=0.0,
-                    evidence="集合指代但激活实体中无兼容先行词",
-                    rule="collective_no_compatible",
-                    is_nil=True,
-                )
-            # 返回多个先行词的拼接表示（上层会把它拆为 list）
-            names = ";".join([ant.mention for ant in compatible])
-            entity_names = ";".join([ant.entity_name or "" for ant in compatible])
+            required = (
+                "恰好2个"
+                if normalize_text(mention.mention) in EXACT_TWO_COLLECTIVE_ANAPHORS
+                else "恰好3个"
+                if normalize_text(mention.mention) in EXACT_THREE_COLLECTIVE_ANAPHORS
+                else "至少2个"
+            )
             return CoreferenceResolution(
                 mention=mention.mention,
                 entity_id=None,
-                entity_name=entity_names,
-                antecedent=names,
+                entity_name="",
+                antecedent=None,
                 antecedent_index=None,
-                confidence=round(0.8, 2),
-                evidence=f"集合指代匹配多个先行词: {names}",
-                rule="collective_multiple",
-                is_nil=False,
+                confidence=0.0,
+                evidence=(
+                    f"未找到满足{required}唯一实体数量、由显式并列结构连接的"
+                    "已链接集合前件"
+                ),
+                rule="collective_unresolved",
+                is_nil=True,
+                is_collective=True,
+                debug_metadata=trace if self.enable_collective_ambiguity_rejection else {},
             )
 
         ordinal_position = ORDINAL_ANAPHORS.get(normalize_text(mention.mention))
@@ -504,9 +614,7 @@ class RuleBasedCoreferenceResolver:
                 antecedent=mention.mention if mention.entity_id else None,
                 antecedent_index=index if mention.entity_id else None,
                 confidence=mention.confidence if mention.entity_id else 0.0,
-                evidence="非共指mention，保留原链接结果"
-                if mention.entity_id
-                else "非共指mention且无链接结果",
+                evidence="非共指mention，保留原链接结果" if mention.entity_id else "非共指mention且无链接结果",
                 rule="pass_through" if mention.entity_id else "unlinked_name_nil",
                 is_nil=not bool(mention.entity_id),
             )

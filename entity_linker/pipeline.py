@@ -1179,7 +1179,8 @@ class EntityLinkingPipeline:
 
         if options.get("enable_coreference", False):
             resolver = RuleBasedCoreferenceResolver(
-                nil_threshold=float(options.get("coreference_nil_threshold", 0.55))
+                nil_threshold=float(options.get("coreference_nil_threshold", 0.55)),
+                enable_collective_ambiguity_rejection=bool(options.get("enable_collective_ambiguity_rejection", True)),
             )
             before_resolved = sum(
                 1 for item in results if item.get("is_coreference", False)
@@ -1199,6 +1200,7 @@ class EntityLinkingPipeline:
                     "nil_threshold": float(
                         options.get("coreference_nil_threshold", 0.55)
                     ),
+                    "collective_ambiguity_rejection_enabled": bool(options.get("enable_collective_ambiguity_rejection", True)),
                 },
                 conn=conn,
             )
