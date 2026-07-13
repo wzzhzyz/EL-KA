@@ -55,6 +55,10 @@ COLLECTIVE_ANAPHORS = {
     "她们",
 }
 
+# These are textual coordination markers between antecedent mentions.  They
+# intentionally exclude collective anaphors such as “双方” and “两家机构”.
+COORDINATE_CONJUNCTIONS = {"和", "与", "及", "以及", "、"}
+
 
 ORDINAL_ANAPHORS = {
     "前者": 0,
@@ -170,18 +174,38 @@ class CoreferenceResolution:
     evidence: str
     rule: str
     is_nil: bool
+    # Backward-compatible multi-antecedent fields.  ``entity_id`` remains the
+    # legacy single-target field; a successful collective resolution instead
+    # uses ``entity_ids`` while keeping ``entity_id=None``.
+    entity_ids: List[str] = field(default_factory=list)
+    antecedent_mentions: List[str] = field(default_factory=list)
+    antecedent_indices: List[int] = field(default_factory=list)
+    is_collective: bool = False
+
+    def __post_init__(self) -> None:
+        """Populate collection fields for legacy single-entity resolutions."""
+        if not self.is_nil and self.entity_id and not self.entity_ids:
+            self.entity_ids = [self.entity_id]
+        if self.antecedent and not self.antecedent_mentions:
+            self.antecedent_mentions = [self.antecedent]
+        if self.antecedent_index is not None and not self.antecedent_indices:
+            self.antecedent_indices = [self.antecedent_index]
 
     def to_dict(self) -> Dict[str, Any]:
         return {
             "mention": self.mention,
             "entity_id": self.entity_id,
+            "entity_ids": list(self.entity_ids),
             "entity_name": self.entity_name,
             "antecedent": self.antecedent,
             "antecedent_index": self.antecedent_index,
+            "antecedent_mentions": list(self.antecedent_mentions),
+            "antecedent_indices": list(self.antecedent_indices),
             "confidence": self.confidence,
             "evidence": self.evidence,
             "rule": self.rule,
             "is_nil": self.is_nil,
+            "is_collective": self.is_collective,
         }
 
 
@@ -200,7 +224,9 @@ class RuleBasedCoreferenceResolver:
         self.max_sentence_gap = max_sentence_gap
 
     def resolve(
-        self, mentions: Sequence[CoreferenceMention | Dict[str, Any]]
+        self,
+        mentions: Sequence[CoreferenceMention | Dict[str, Any]],
+        text: str = "",
     ) -> List[CoreferenceResolution]:
         normalized_mentions = [
             item if isinstance(item, CoreferenceMention) else CoreferenceMention.from_dict(item)
@@ -229,7 +255,13 @@ class RuleBasedCoreferenceResolver:
                 )
                 continue
 
-            resolution = self._resolve_anaphor(index, mention, active_entities)
+            resolution = self._resolve_anaphor(
+                index,
+                mention,
+                active_entities,
+                normalized_mentions,
+                text,
+            )
             resolutions.append(resolution)
             if not resolution.is_nil and resolution.entity_id:
                 active_entities.append(
@@ -251,16 +283,89 @@ class RuleBasedCoreferenceResolver:
 
         return resolutions
 
+    @staticmethod
+    def _is_collective_entity_type(mention: CoreferenceMention) -> bool:
+        """Only homogeneous ORG/PERSON groups are safe collective antecedents."""
+        return normalize_type(mention.mention_type) in {"ORG", "PERSON"}
+
+    @staticmethod
+    def _has_coordinate_conjunction(
+        text: str,
+        left: CoreferenceMention,
+        right: CoreferenceMention,
+    ) -> bool:
+        if not text or right.char_start < left.char_end:
+            return False
+        between = text[left.char_end : right.char_start]
+        return any(marker in between for marker in COORDINATE_CONJUNCTIONS)
+
+    def find_collective_antecedents(
+        self,
+        text: str,
+        current_index: int,
+        mentions: Sequence[CoreferenceMention],
+    ) -> List[tuple[int, CoreferenceMention]]:
+        """Find the nearest explicit, fully linked coordination group.
+
+        This helper deliberately does *not* select the nearest two entities.  A
+        group must be in the same sentence, connected by explicit conjunctions,
+        homogeneous (all ORG or all PERSON), and contain no unlinked member.
+        """
+        if not text or current_index <= 0 or current_index >= len(mentions):
+            return []
+        current = mentions[current_index]
+        named_mentions = [
+            (index, item)
+            for index, item in enumerate(mentions[:current_index])
+            if item.sentence_index == current.sentence_index
+            and item.char_end <= current.char_start
+            and not is_anaphor(item.mention, item.mention_type, item.role)
+        ]
+        if len(named_mentions) < 2:
+            return []
+
+        groups: List[List[tuple[int, CoreferenceMention]]] = []
+        active_group: List[tuple[int, CoreferenceMention]] = []
+        for item in named_mentions:
+            if not active_group:
+                active_group = [item]
+                continue
+            previous = active_group[-1][1]
+            if self._has_coordinate_conjunction(text, previous, item[1]):
+                active_group.append(item)
+            else:
+                if len(active_group) >= 2:
+                    groups.append(active_group)
+                active_group = [item]
+        if len(active_group) >= 2:
+            groups.append(active_group)
+
+        for group in reversed(groups):
+            members = [item for _, item in group]
+            if not all(member.entity_id for member in members):
+                continue
+            normalized_types = {normalize_type(member.mention_type) for member in members}
+            if len(normalized_types) != 1 or not all(
+                self._is_collective_entity_type(member) for member in members
+            ):
+                continue
+            if len({member.entity_id for member in members if member.entity_id}) < 2:
+                continue
+            return group
+        return []
+
     def resolve_link_results(
-        self, results: Sequence[Dict[str, Any]]
+        self,
+        results: Sequence[Dict[str, Any]],
+        text: str = "",
     ) -> List[Dict[str, Any]]:
         mentions = [CoreferenceMention.from_dict(item) for item in results]
-        resolutions = self.resolve(mentions)
+        resolutions = self.resolve(mentions, text=text)
         merged: List[Dict[str, Any]] = []
         for item, resolution in zip(results, resolutions):
             updated = dict(item)
             if item.get("is_nil", False) and not resolution.is_nil:
-                updated["entity_id"] = resolution.entity_id or ""
+                updated["entity_id"] = resolution.entity_id
                 updated["standard_entity"] = resolution.entity_name
                 updated["confidence"] = resolution.confidence
                 updated["is_nil"] = False
@@ -268,6 +373,12 @@ class RuleBasedCoreferenceResolver:
                 updated["resolved_from"] = resolution.antecedent
                 updated["evidence"] = resolution.evidence
                 updated["method"] = "coreference_rule"
+                updated["entity_ids"] = list(resolution.entity_ids)
+                updated["antecedent_mentions"] = list(
+                    resolution.antecedent_mentions
+                )
+                updated["antecedent_indices"] = list(resolution.antecedent_indices)
+                updated["is_collective"] = resolution.is_collective
             updated["coreference"] = resolution.to_dict()
             merged.append(updated)
         return merged
@@ -277,8 +388,42 @@ class RuleBasedCoreferenceResolver:
         index: int,
         mention: CoreferenceMention,
         active_entities: Sequence[tuple[int, CoreferenceMention]],
+        all_mentions: Sequence[CoreferenceMention],
+        text: str,
     ) -> CoreferenceResolution:
         if normalize_text(mention.mention) in COLLECTIVE_ANAPHORS:
+            antecedents = self.find_collective_antecedents(
+                text=text,
+                current_index=index,
+                mentions=all_mentions,
+            )
+            entity_ids: List[str] = []
+            seen_ids: set[str] = set()
+            for _, antecedent in antecedents:
+                if antecedent.entity_id and antecedent.entity_id not in seen_ids:
+                    entity_ids.append(antecedent.entity_id)
+                    seen_ids.add(antecedent.entity_id)
+            if len(entity_ids) >= 2:
+                antecedent_mentions = [antecedent.mention for _, antecedent in antecedents]
+                antecedent_indices = [antecedent_index for antecedent_index, _ in antecedents]
+                return CoreferenceResolution(
+                    mention=mention.mention,
+                    entity_id=None,
+                    entity_name="",
+                    antecedent=None,
+                    antecedent_index=None,
+                    confidence=0.9,
+                    evidence=(
+                        f"{mention.mention}回指由显式并列连接词连接的"
+                        f"{len(entity_ids)}个已链接实体：{'、'.join(antecedent_mentions)}"
+                    ),
+                    rule="collective_coordinated_antecedents",
+                    is_nil=False,
+                    entity_ids=entity_ids,
+                    antecedent_mentions=antecedent_mentions,
+                    antecedent_indices=antecedent_indices,
+                    is_collective=True,
+                )
             return CoreferenceResolution(
                 mention=mention.mention,
                 entity_id=None,
@@ -286,9 +431,10 @@ class RuleBasedCoreferenceResolver:
                 antecedent=None,
                 antecedent_index=None,
                 confidence=0.0,
-                evidence="集合指代可能对应多个实体，当前输出规范只允许单一entity_id",
-                rule="collective_nil",
+                evidence="未找到至少两个由显式并列结构连接的已链接集合前件",
+                rule="collective_unresolved",
                 is_nil=True,
+                is_collective=True,
             )
 
         ordinal_position = ORDINAL_ANAPHORS.get(normalize_text(mention.mention))

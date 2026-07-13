@@ -142,12 +142,21 @@ def evaluate(dataset: Dict[str, Any], kb: Dict[str, Any], nil_threshold: float) 
     total = 0
     correct = 0
     nil_tp = nil_fp = nil_fn = 0
+    single_total = single_correct = 0
+    collective_total = collective_correct = 0
+    collective_exact_total = collective_exact_correct = 0
+    collective_nil_total = collective_nil_correct = 0
 
     for sample in dataset.get("samples", []):
         mentions = sample.get("mentions", [])
-        resolutions = resolver.resolve(mentions)
+        expected_coreferences = sample.get("expected_coreferences", [])
+        # Do not reinterpret legacy NIL gold as a new collective success.
+        text = sample.get("text", "") if any(
+            "entity_ids" in item for item in expected_coreferences
+        ) else ""
+        resolutions = resolver.resolve(mentions, text=text)
 
-        for expected in sample.get("expected_coreferences", []):
+        for expected in expected_coreferences:
             total += 1
             mention_index = int(expected["mention_index"])
             mention = mentions[mention_index]
@@ -155,11 +164,38 @@ def evaluate(dataset: Dict[str, Any], kb: Dict[str, Any], nil_threshold: float) 
 
             expected_id = expected.get("entity_id")
             expected_nil = bool(expected.get("is_nil", expected_id is None))
+            expected_ids = list(expected.get("entity_ids", []))
+            expected_collective = bool(expected.get("is_collective", False))
             predicted_id = predicted.entity_id
             predicted_nil = predicted.is_nil
-            ok = (expected_nil and predicted_nil) or (
-                not expected_nil and predicted_id == expected_id
-            )
+            predicted_ids = list(predicted.entity_ids)
+            if expected_collective:
+                collective_total += 1
+                if expected_nil:
+                    collective_nil_total += 1
+                    ok = (
+                        predicted_nil
+                        and predicted_id is None
+                        and predicted_ids == []
+                        and predicted.is_collective
+                    )
+                    collective_nil_correct += int(ok)
+                else:
+                    collective_exact_total += 1
+                    ok = (
+                        not predicted_nil
+                        and predicted.is_collective
+                        and set(predicted_ids) == set(expected_ids)
+                        and len(predicted_ids) == len(set(predicted_ids))
+                    )
+                    collective_exact_correct += int(ok)
+                collective_correct += int(ok)
+            else:
+                single_total += 1
+                ok = (expected_nil and predicted_nil) or (
+                    not expected_nil and predicted_id == expected_id
+                )
+                single_correct += int(ok)
 
             if ok:
                 correct += 1
@@ -190,9 +226,13 @@ def evaluate(dataset: Dict[str, Any], kb: Dict[str, Any], nil_threshold: float) 
                     "mention": surface,
                     "surface_class": surface_class,
                     "expected_entity_id": expected_id,
+                    "expected_entity_ids": expected_ids,
+                    "expected_collective": expected_collective,
                     "expected_nil": expected_nil,
                     "expected_target_type": expected_target_type,
                     "predicted_entity_id": predicted_id,
+                    "predicted_entity_ids": predicted_ids,
+                    "predicted_collective": predicted.is_collective,
                     "predicted_nil": predicted_nil,
                     "predicted_antecedent": predicted.antecedent,
                     "predicted_antecedent_index": predicted.antecedent_index,
@@ -222,6 +262,16 @@ def evaluate(dataset: Dict[str, Any], kb: Dict[str, Any], nil_threshold: float) 
             "precision": round(nil_precision, 4),
             "recall": round(nil_recall, 4),
             "f1": round(nil_f1, 4),
+        },
+        "collective_metrics": {
+            "single_coreference_accuracy": round(safe_div(single_correct, single_total), 4),
+            "collective_coreference_accuracy": round(safe_div(collective_correct, collective_total), 4),
+            "collective_exact_match": round(safe_div(collective_exact_correct, collective_exact_total), 4),
+            "collective_nil_accuracy": round(safe_div(collective_nil_correct, collective_nil_total), 4),
+            "single_total": single_total,
+            "collective_total": collective_total,
+            "collective_exact_total": collective_exact_total,
+            "collective_nil_total": collective_nil_total,
         },
         "coverage": {
             "anaphor_classes": dict(sorted(anaphor_coverage.items())),
@@ -299,6 +349,7 @@ def main() -> int:
         "  NIL precision/recall/f1: "
         f"{nil['precision']:.4f}/{nil['recall']:.4f}/{nil['f1']:.4f}"
     )
+    print(f"  collective_metrics: {report['collective_metrics']}")
     print(f"  output: {output_path}")
 
     print_table("By surface class", report["breakdown"]["by_surface_class"])

@@ -1170,7 +1170,7 @@ class EntityLinkingPipeline:
             before_resolved = sum(
                 1 for item in results if item.get("is_coreference", False)
             )
-            results = resolver.resolve_link_results(results)
+            results = resolver.resolve_link_results(results, text=text)
             after_resolved = sum(
                 1 for item in results if item.get("is_coreference", False)
             )

@@ -216,6 +216,8 @@ def validate_coreference(audit: Audit) -> None:
 
     total_cases = 0
     nil_cases = 0
+    collective_cases = 0
+    collective_nil_cases = 0
     anaphor_surfaces = Counter()
     for sample in samples:
         sid = sample.get("id", "<missing-id>")
@@ -238,10 +240,33 @@ def validate_coreference(audit: Audit) -> None:
                 anaphor_surfaces[surface] += 1
             entity_id = coref.get("entity_id")
             is_nil = bool(coref.get("is_nil"))
-            if is_nil:
+            is_collective = bool(coref.get("is_collective", False))
+            entity_ids = coref.get("entity_ids", [])
+            if not isinstance(entity_ids, list) or not all(
+                isinstance(item, str) for item in entity_ids
+            ):
+                audit.error(f"{dataset}/{sid}: entity_ids 必须为字符串列表")
+                entity_ids = []
+            if is_collective:
+                collective_cases += 1
+                if is_nil:
+                    collective_nil_cases += 1
+                    if entity_id is not None or entity_ids:
+                        audit.error(f"{dataset}/{sid}: 集合 NIL 必须 entity_id=null 且 entity_ids=[]")
+                else:
+                    if entity_id is not None:
+                        audit.error(f"{dataset}/{sid}: 集合成功结果 entity_id 必须为 null")
+                    if len(entity_ids) < 2 or len(entity_ids) != len(set(entity_ids)):
+                        audit.error(f"{dataset}/{sid}: 集合结果必须包含至少两个不重复 entity_ids")
+                    for expected_id in entity_ids:
+                        if expected_id not in local_ids:
+                            audit.error(f"{dataset}/{sid}: 集合 entity_id 未在本样本 mentions 中声明: {expected_id}")
+            elif is_nil:
                 nil_cases += 1
                 if entity_id is not None:
                     audit.error(f"{dataset}/{sid}: is_nil=true 但 entity_id 非空")
+                if entity_ids:
+                    audit.error(f"{dataset}/{sid}: 单实体 NIL 的 entity_ids 必须为空")
             elif entity_id not in local_ids:
                 audit.error(f"{dataset}/{sid}: 共指 entity_id 未在本样本 mentions 中声明: {entity_id}")
 
@@ -250,6 +275,8 @@ def validate_coreference(audit: Audit) -> None:
         "samples": len(samples),
         "coreference_cases": total_cases,
         "nil_cases": nil_cases,
+        "collective_cases": collective_cases,
+        "collective_nil_cases": collective_nil_cases,
         "anaphor_surface_count": len(anaphor_surfaces),
     }
 

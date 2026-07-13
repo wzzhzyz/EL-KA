@@ -1,0 +1,1106 @@
+{
+  "generated_at": "2026-07-13T02:07:25.486527+00:00",
+  "scope": "data/eval/*.json + data/batch_ground_truth.json；主知识库为 data/kb/energy_entities.json。历史运行输出、索引文件和 trace.db 不作为 gold 测试集。",
+  "knowledge_base": {
+    "path": "data\\kb\\energy_entities.json",
+    "entities": 158,
+    "entity_types": {
+      "GRID_COMPANY": 8,
+      "POWER_GENERATOR": 10,
+      "RESEARCH_INSTITUTION": 6,
+      "POWER_FACILITY": 7,
+      "NEW_ENERGY_ENTERPRISE": 9,
+      "TECHNICAL_TERM": 12,
+      "REGION": 11,
+      "TECH_COMPANY": 15,
+      "FINANCIAL_INSTITUTION": 14,
+      "AUTO_MANUFACTURER": 9,
+      "GOVERNMENT_AGENCY": 7,
+      "EDUCATIONAL_INSTITUTION": 7,
+      "CONSUMER_PRODUCT": 7,
+      "SOFTWARE_PLATFORM": 9,
+      "MEDICAL_INSTITUTION": 9,
+      "TRANSPORTATION_ORG": 9,
+      "MEDIA_ORG": 9
+    },
+    "aliases": 490
+  },
+  "supplementary_knowledge_files": [
+    {
+      "path": "data\\kb\\ambiguity_report.json",
+      "parse_error": null,
+      "entity_records": 0,
+      "sample_records": 0,
+      "root_key": "unsupported"
+    },
+    {
+      "path": "data\\kb\\kb_expansion_20260709_step1.json",
+      "parse_error": null,
+      "entity_records": 0,
+      "sample_records": 0,
+      "root_key": "unsupported"
+    },
+    {
+      "path": "data\\kb\\kb_expansion_sample.json",
+      "parse_error": null,
+      "entity_records": 0,
+      "sample_records": 0,
+      "root_key": "unsupported"
+    }
+  ],
+  "files": [
+    {
+      "path": "data\\eval\\alias_normalization_test.json",
+      "classification": "正式专项评测集",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "samples",
+      "samples": 160,
+      "mentions": 160,
+      "positive_marked": 140,
+      "nil_labeled_units": 20,
+      "unique_referenced_ids": 101,
+      "coreference": {
+        "cases": 0,
+        "single": 0,
+        "collective": 0,
+        "collective_success": 0,
+        "collective_nil": 0,
+        "legacy_cases": 0,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 160,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 160,
+        "correct": 160,
+        "out_of_bounds": 0,
+        "overlaps": 0,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 0,
+      "has_gold": true
+    },
+    {
+      "path": "data\\eval\\candidate_retrieval_test.json",
+      "classification": "正式专项评测集",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "samples",
+      "samples": 212,
+      "mentions": 212,
+      "positive_marked": 0,
+      "nil_labeled_units": 0,
+      "unique_referenced_ids": 116,
+      "coreference": {
+        "cases": 0,
+        "single": 0,
+        "collective": 0,
+        "collective_success": 0,
+        "collective_nil": 0,
+        "legacy_cases": 0,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 0,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 0,
+        "correct": 0,
+        "out_of_bounds": 0,
+        "overlaps": 0,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 0,
+      "has_gold": false
+    },
+    {
+      "path": "data\\eval\\coreference_collective_test.json",
+      "classification": "单元测试夹具 / 专项回归",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "samples",
+      "samples": 8,
+      "mentions": 25,
+      "positive_marked": 0,
+      "nil_labeled_units": 4,
+      "unique_referenced_ids": 10,
+      "coreference": {
+        "cases": 8,
+        "single": 1,
+        "collective": 7,
+        "collective_success": 3,
+        "collective_nil": 4,
+        "legacy_cases": 0,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 0,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 25,
+        "correct": 25,
+        "out_of_bounds": 0,
+        "overlaps": 0,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 7,
+      "has_gold": true
+    },
+    {
+      "path": "data\\eval\\coreference_long_text_test.json",
+      "classification": "正式专项评测集",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "samples",
+      "samples": 154,
+      "mentions": 559,
+      "positive_marked": 0,
+      "nil_labeled_units": 59,
+      "unique_referenced_ids": 110,
+      "coreference": {
+        "cases": 257,
+        "single": 0,
+        "collective": 0,
+        "collective_success": 0,
+        "collective_nil": 0,
+        "legacy_cases": 257,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 0,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 0,
+        "correct": 0,
+        "out_of_bounds": 0,
+        "overlaps": 0,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 0,
+      "has_gold": true
+    },
+    {
+      "path": "data\\eval\\disambiguation_test.json",
+      "classification": "正式专项评测集",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "samples",
+      "samples": 154,
+      "mentions": 154,
+      "positive_marked": 0,
+      "nil_labeled_units": 0,
+      "unique_referenced_ids": 75,
+      "coreference": {
+        "cases": 0,
+        "single": 0,
+        "collective": 0,
+        "collective_success": 0,
+        "collective_nil": 0,
+        "legacy_cases": 0,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 0,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 0,
+        "correct": 0,
+        "out_of_bounds": 0,
+        "overlaps": 0,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 0,
+      "has_gold": false
+    },
+    {
+      "path": "data\\eval\\eval_dataset.json",
+      "classification": "正式专项评测集",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "samples",
+      "samples": 264,
+      "mentions": 264,
+      "positive_marked": 0,
+      "nil_labeled_units": 0,
+      "unique_referenced_ids": 115,
+      "coreference": {
+        "cases": 0,
+        "single": 0,
+        "collective": 0,
+        "collective_success": 0,
+        "collective_nil": 0,
+        "legacy_cases": 0,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 0,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 0,
+        "correct": 0,
+        "out_of_bounds": 0,
+        "overlaps": 0,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 0,
+      "has_gold": false
+    },
+    {
+      "path": "data\\eval\\llm_disambiguation_comparison_template.json",
+      "classification": "开发模板 / 非正式评测",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "unsupported",
+      "samples": 0,
+      "mentions": 0,
+      "positive_marked": 0,
+      "nil_labeled_units": 0,
+      "unique_referenced_ids": 0,
+      "coreference": {
+        "cases": 0,
+        "single": 0,
+        "collective": 0,
+        "collective_success": 0,
+        "collective_nil": 0,
+        "legacy_cases": 0,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 0,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 0,
+        "correct": 0,
+        "out_of_bounds": 0,
+        "overlaps": 0,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 0,
+      "has_gold": false
+    },
+    {
+      "path": "data\\eval\\llm_fallback_ambiguity_test.json",
+      "classification": "正式专项评测集",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "samples",
+      "samples": 151,
+      "mentions": 151,
+      "positive_marked": 0,
+      "nil_labeled_units": 0,
+      "unique_referenced_ids": 77,
+      "coreference": {
+        "cases": 0,
+        "single": 0,
+        "collective": 0,
+        "collective_success": 0,
+        "collective_nil": 0,
+        "legacy_cases": 0,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 0,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 0,
+        "correct": 0,
+        "out_of_bounds": 0,
+        "overlaps": 0,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 0,
+      "has_gold": false
+    },
+    {
+      "path": "data\\eval\\llm_fallback_difficult_cases.json",
+      "classification": "正式专项评测集",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "samples",
+      "samples": 110,
+      "mentions": 110,
+      "positive_marked": 0,
+      "nil_labeled_units": 0,
+      "unique_referenced_ids": 36,
+      "coreference": {
+        "cases": 0,
+        "single": 0,
+        "collective": 0,
+        "collective_success": 0,
+        "collective_nil": 0,
+        "legacy_cases": 0,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 0,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 0,
+        "correct": 0,
+        "out_of_bounds": 0,
+        "overlaps": 0,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 0,
+      "has_gold": false
+    },
+    {
+      "path": "data\\eval\\mention_linking_test.json",
+      "classification": "正式专项评测集",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "samples",
+      "samples": 505,
+      "mentions": 1052,
+      "positive_marked": 0,
+      "nil_labeled_units": 185,
+      "unique_referenced_ids": 158,
+      "coreference": {
+        "cases": 0,
+        "single": 0,
+        "collective": 0,
+        "collective_success": 0,
+        "collective_nil": 0,
+        "legacy_cases": 0,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 1052,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 1052,
+        "correct": 1052,
+        "out_of_bounds": 0,
+        "overlaps": 13,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 0,
+      "has_gold": true
+    },
+    {
+      "path": "data\\eval\\ner_test_dataset.json",
+      "classification": "正式专项评测集",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "samples",
+      "samples": 35,
+      "mentions": 0,
+      "positive_marked": 0,
+      "nil_labeled_units": 0,
+      "unique_referenced_ids": 0,
+      "coreference": {
+        "cases": 0,
+        "single": 0,
+        "collective": 0,
+        "collective_success": 0,
+        "collective_nil": 0,
+        "legacy_cases": 0,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 0,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 0,
+        "correct": 0,
+        "out_of_bounds": 0,
+        "overlaps": 0,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 0,
+      "has_gold": false
+    },
+    {
+      "path": "data\\batch_ground_truth.json",
+      "classification": "批量回归金标",
+      "format": "JSON",
+      "parse_error": null,
+      "root_key": "entries",
+      "samples": 214,
+      "mentions": 452,
+      "positive_marked": 0,
+      "nil_labeled_units": 86,
+      "unique_referenced_ids": 127,
+      "coreference": {
+        "cases": 0,
+        "single": 0,
+        "collective": 0,
+        "collective_success": 0,
+        "collective_nil": 0,
+        "legacy_cases": 0,
+        "errors": []
+      },
+      "field_audit": {
+        "confidence_checked": 0,
+        "error_count": 0,
+        "examples": []
+      },
+      "offsets": {
+        "checked": 0,
+        "correct": 0,
+        "out_of_bounds": 0,
+        "overlaps": 0,
+        "duplicate_mentions": 0
+      },
+      "offset_error_count": 0,
+      "offset_error_examples": [],
+      "placeholder_ids": 0,
+      "has_gold": true
+    }
+  ],
+  "aggregate": {
+    "samples": 1967,
+    "mentions": 3139,
+    "coreference_cases": 265,
+    "single_coreference": 1,
+    "collective_coreference": 7,
+    "collective_success": 3,
+    "collective_nil": 4,
+    "offset_checked": 1237,
+    "offset_correct": 1237,
+    "offset_errors": 0,
+    "field_errors": 0,
+    "overlaps": 13,
+    "duplicate_mentions": 0,
+    "nil_marked": 354,
+    "entity_type_mentions": {
+      "CONSUMER_PRODUCT": 4,
+      "TECHNICAL_TERM": 20,
+      "AUTO_MANUFACTURER": 6,
+      "EDUCATIONAL_INSTITUTION": 6,
+      "FINANCIAL_INSTITUTION": 5,
+      "GOVERNMENT_AGENCY": 6,
+      "GRID_COMPANY": 11,
+      "MEDIA_ORG": 4,
+      "MEDICAL_INSTITUTION": 6,
+      "NEW_ENERGY_ENTERPRISE": 6,
+      "POWER_FACILITY": 11,
+      "POWER_GENERATOR": 18,
+      "REGION": 17,
+      "RESEARCH_INSTITUTION": 7,
+      "SOFTWARE_PLATFORM": 6,
+      "TECH_COMPANY": 5,
+      "TRANSPORTATION_ORG": 3,
+      "UNKNOWN": 60,
+      "ORG": 1159,
+      "PRON": 204,
+      "PERSON": 24,
+      "GPE": 71,
+      "NOUN": 15,
+      "SYSTEM": 25,
+      "LOC": 13,
+      "TERM": 28,
+      "PRODUCT": 56
+    },
+    "formal_eval_files": 9
+  },
+  "entity_id_issues": [
+    {
+      "file": "coreference_collective_test.json",
+      "entity_id": "PER_TEST_LI",
+      "category": "测试夹具 ID"
+    },
+    {
+      "file": "coreference_collective_test.json",
+      "entity_id": "PER_TEST_ZHANG",
+      "category": "测试夹具 ID"
+    },
+    {
+      "file": "coreference_collective_test.json",
+      "entity_id": "TEST_HUAWEI",
+      "category": "测试夹具 ID"
+    },
+    {
+      "file": "coreference_collective_test.json",
+      "entity_id": "TEST_PEOPLE_DAILY",
+      "category": "测试夹具 ID"
+    },
+    {
+      "file": "coreference_collective_test.json",
+      "entity_id": "TEST_SAME_ENTITY",
+      "category": "测试夹具 ID"
+    },
+    {
+      "file": "coreference_collective_test.json",
+      "entity_id": "TEST_SHENZHEN",
+      "category": "测试夹具 ID"
+    },
+    {
+      "file": "coreference_collective_test.json",
+      "entity_id": "TEST_XINHUA",
+      "category": "测试夹具 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "PER_TEST_0001",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "PER_TEST_0002",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "PER_TEST_0101",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "PER_TEST_0102",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "PER_TEST_0103",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "PER_TEST_0104",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "PER_TEST_0105",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "PER_TEST_0106",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "PER_TEST_0107",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "SYS_TEST_0101",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "SYS_TEST_0102",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "SYS_TEST_0103",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "SYS_TEST_0104",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "SYS_TEST_0105",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "SYS_TEST_0106",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "SYS_TEST_0107",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "SYS_TEST_0108",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "SYS_TEST_0109",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "SYS_TEST_0110",
+      "category": "外部知识库 ID"
+    },
+    {
+      "file": "coreference_long_text_test.json",
+      "entity_id": "SYS_TEST_0111",
+      "category": "外部知识库 ID"
+    }
+  ],
+  "duplicates": {
+    "exact_duplicate_groups": 129,
+    "exact_duplicate_instances": 170,
+    "label_conflict_groups": 1,
+    "label_conflict_examples": [
+      {
+        "items": [
+          {
+            "file": "candidate_retrieval_test.json",
+            "sample_index": 84,
+            "entity_id": "ENT_GEN_0080"
+          },
+          {
+            "file": "disambiguation_test.json",
+            "sample_index": 79,
+            "entity_id": "ENT_GEN_0093"
+          }
+        ]
+      }
+    ],
+    "cross_file_same_text_groups": 217,
+    "near_duplicate_pairs_capped": [
+      {
+        "left": "alias_normalization_test.json#12",
+        "right": "alias_normalization_test.json#21",
+        "similarity": 0.909
+      },
+      {
+        "left": "alias_normalization_test.json#15",
+        "right": "alias_normalization_test.json#21",
+        "similarity": 0.909
+      },
+      {
+        "left": "alias_normalization_test.json#15",
+        "right": "alias_normalization_test.json#42",
+        "similarity": 0.941
+      },
+      {
+        "left": "alias_normalization_test.json#18",
+        "right": "alias_normalization_test.json#21",
+        "similarity": 0.909
+      },
+      {
+        "left": "alias_normalization_test.json#21",
+        "right": "alias_normalization_test.json#27",
+        "similarity": 0.909
+      },
+      {
+        "left": "alias_normalization_test.json#21",
+        "right": "alias_normalization_test.json#36",
+        "similarity": 0.909
+      },
+      {
+        "left": "alias_normalization_test.json#21",
+        "right": "alias_normalization_test.json#42",
+        "similarity": 0.909
+      },
+      {
+        "left": "alias_normalization_test.json#25",
+        "right": "alias_normalization_test.json#28",
+        "similarity": 0.909
+      },
+      {
+        "left": "alias_normalization_test.json#26",
+        "right": "alias_normalization_test.json#44",
+        "similarity": 0.929
+      },
+      {
+        "left": "alias_normalization_test.json#46",
+        "right": "alias_normalization_test.json#61",
+        "similarity": 0.929
+      },
+      {
+        "left": "alias_normalization_test.json#47",
+        "right": "alias_normalization_test.json#62",
+        "similarity": 0.923
+      },
+      {
+        "left": "alias_normalization_test.json#49",
+        "right": "alias_normalization_test.json#64",
+        "similarity": 0.938
+      },
+      {
+        "left": "alias_normalization_test.json#73",
+        "right": "alias_normalization_test.json#76",
+        "similarity": 0.944
+      },
+      {
+        "left": "alias_normalization_test.json#82",
+        "right": "alias_normalization_test.json#85",
+        "similarity": 0.938
+      },
+      {
+        "left": "alias_normalization_test.json#141",
+        "right": "mention_linking_test.json#90",
+        "similarity": 0.93
+      },
+      {
+        "left": "alias_normalization_test.json#153",
+        "right": "coreference_long_text_test.json#35",
+        "similarity": 0.941
+      },
+      {
+        "left": "candidate_retrieval_test.json#1",
+        "right": "disambiguation_test.json#46",
+        "similarity": 0.971
+      },
+      {
+        "left": "candidate_retrieval_test.json#3",
+        "right": "disambiguation_test.json#47",
+        "similarity": 0.933
+      },
+      {
+        "left": "candidate_retrieval_test.json#10",
+        "right": "disambiguation_test.json#6",
+        "similarity": 0.958
+      },
+      {
+        "left": "candidate_retrieval_test.json#22",
+        "right": "mention_linking_test.json#102",
+        "similarity": 0.903
+      },
+      {
+        "left": "candidate_retrieval_test.json#24",
+        "right": "eval_dataset.json#72",
+        "similarity": 0.941
+      },
+      {
+        "left": "candidate_retrieval_test.json#28",
+        "right": "eval_dataset.json#75",
+        "similarity": 0.929
+      },
+      {
+        "left": "candidate_retrieval_test.json#31",
+        "right": "eval_dataset.json#78",
+        "similarity": 0.923
+      },
+      {
+        "left": "candidate_retrieval_test.json#32",
+        "right": "eval_dataset.json#79",
+        "similarity": 0.923
+      },
+      {
+        "left": "candidate_retrieval_test.json#33",
+        "right": "eval_dataset.json#80",
+        "similarity": 0.929
+      },
+      {
+        "left": "candidate_retrieval_test.json#38",
+        "right": "disambiguation_test.json#26",
+        "similarity": 0.917
+      },
+      {
+        "left": "candidate_retrieval_test.json#40",
+        "right": "disambiguation_test.json#27",
+        "similarity": 0.917
+      },
+      {
+        "left": "candidate_retrieval_test.json#41",
+        "right": "disambiguation_test.json#28",
+        "similarity": 0.923
+      },
+      {
+        "left": "candidate_retrieval_test.json#44",
+        "right": "mention_linking_test.json#139",
+        "similarity": 0.947
+      },
+      {
+        "left": "candidate_retrieval_test.json#47",
+        "right": "disambiguation_test.json#44",
+        "similarity": 0.929
+      },
+      {
+        "left": "candidate_retrieval_test.json#48",
+        "right": "disambiguation_test.json#32",
+        "similarity": 0.917
+      },
+      {
+        "left": "candidate_retrieval_test.json#48",
+        "right": "eval_dataset.json#93",
+        "similarity": 0.929
+      },
+      {
+        "left": "candidate_retrieval_test.json#49",
+        "right": "eval_dataset.json#95",
+        "similarity": 0.933
+      },
+      {
+        "left": "candidate_retrieval_test.json#89",
+        "right": "disambiguation_test.json#55",
+        "similarity": 0.917
+      },
+      {
+        "left": "candidate_retrieval_test.json#91",
+        "right": "eval_dataset.json#96",
+        "similarity": 0.903
+      },
+      {
+        "left": "candidate_retrieval_test.json#95",
+        "right": "disambiguation_test.json#93",
+        "similarity": 0.923
+      },
+      {
+        "left": "candidate_retrieval_test.json#108",
+        "right": "disambiguation_test.json#103",
+        "similarity": 0.933
+      },
+      {
+        "left": "candidate_retrieval_test.json#117",
+        "right": "disambiguation_test.json#108",
+        "similarity": 0.929
+      },
+      {
+        "left": "candidate_retrieval_test.json#125",
+        "right": "eval_dataset.json#211",
+        "similarity": 0.929
+      },
+      {
+        "left": "candidate_retrieval_test.json#131",
+        "right": "eval_dataset.json#214",
+        "similarity": 0.923
+      },
+      {
+        "left": "candidate_retrieval_test.json#149",
+        "right": "eval_dataset.json#229",
+        "similarity": 0.938
+      },
+      {
+        "left": "candidate_retrieval_test.json#158",
+        "right": "candidate_retrieval_test.json#202",
+        "similarity": 0.933
+      },
+      {
+        "left": "candidate_retrieval_test.json#174",
+        "right": "mention_linking_test.json#409",
+        "similarity": 0.984
+      },
+      {
+        "left": "candidate_retrieval_test.json#175",
+        "right": "mention_linking_test.json#410",
+        "similarity": 0.923
+      },
+      {
+        "left": "candidate_retrieval_test.json#179",
+        "right": "mention_linking_test.json#450",
+        "similarity": 0.913
+      },
+      {
+        "left": "candidate_retrieval_test.json#184",
+        "right": "llm_fallback_difficult_cases.json#85",
+        "similarity": 0.902
+      },
+      {
+        "left": "candidate_retrieval_test.json#189",
+        "right": "mention_linking_test.json#465",
+        "similarity": 0.909
+      },
+      {
+        "left": "candidate_retrieval_test.json#190",
+        "right": "mention_linking_test.json#466",
+        "similarity": 0.923
+      },
+      {
+        "left": "candidate_retrieval_test.json#191",
+        "right": "mention_linking_test.json#422",
+        "similarity": 0.909
+      },
+      {
+        "left": "candidate_retrieval_test.json#192",
+        "right": "llm_fallback_difficult_cases.json#93",
+        "similarity": 0.909
+      },
+      {
+        "left": "candidate_retrieval_test.json#192",
+        "right": "mention_linking_test.json#423",
+        "similarity": 0.955
+      },
+      {
+        "left": "candidate_retrieval_test.json#193",
+        "right": "mention_linking_test.json#424",
+        "similarity": 0.957
+      },
+      {
+        "left": "candidate_retrieval_test.json#198",
+        "right": "llm_fallback_difficult_cases.json#97",
+        "similarity": 0.9
+      },
+      {
+        "left": "candidate_retrieval_test.json#198",
+        "right": "mention_linking_test.json#427",
+        "similarity": 0.929
+      },
+      {
+        "left": "candidate_retrieval_test.json#211",
+        "right": "eval_dataset.json#242",
+        "similarity": 0.923
+      },
+      {
+        "left": "coreference_long_text_test.json#11",
+        "right": "coreference_long_text_test.json#29",
+        "similarity": 0.955
+      },
+      {
+        "left": "coreference_long_text_test.json#17",
+        "right": "coreference_long_text_test.json#36",
+        "similarity": 0.963
+      },
+      {
+        "left": "coreference_long_text_test.json#113",
+        "right": "coreference_long_text_test.json#153",
+        "similarity": 0.933
+      },
+      {
+        "left": "disambiguation_test.json#1",
+        "right": "eval_dataset.json#3",
+        "similarity": 0.971
+      },
+      {
+        "left": "disambiguation_test.json#7",
+        "right": "eval_dataset.json#20",
+        "similarity": 0.986
+      },
+      {
+        "left": "disambiguation_test.json#15",
+        "right": "eval_dataset.json#67",
+        "similarity": 0.947
+      },
+      {
+        "left": "disambiguation_test.json#23",
+        "right": "eval_dataset.json#79",
+        "similarity": 0.923
+      },
+      {
+        "left": "eval_dataset.json#19",
+        "right": "mention_linking_test.json#34",
+        "similarity": 0.986
+      },
+      {
+        "left": "eval_dataset.json#112",
+        "right": "llm_fallback_ambiguity_test.json#130",
+        "similarity": 0.98
+      },
+      {
+        "left": "eval_dataset.json#113",
+        "right": "mention_linking_test.json#175",
+        "similarity": 0.957
+      },
+      {
+        "left": "llm_fallback_ambiguity_test.json#90",
+        "right": "llm_fallback_difficult_cases.json#24",
+        "similarity": 0.926
+      },
+      {
+        "left": "llm_fallback_difficult_cases.json#24",
+        "right": "mention_linking_test.json#235",
+        "similarity": 0.943
+      },
+      {
+        "left": "llm_fallback_difficult_cases.json#89",
+        "right": "mention_linking_test.json#464",
+        "similarity": 0.913
+      },
+      {
+        "left": "llm_fallback_difficult_cases.json#90",
+        "right": "mention_linking_test.json#465",
+        "similarity": 0.957
+      },
+      {
+        "left": "llm_fallback_difficult_cases.json#93",
+        "right": "mention_linking_test.json#423",
+        "similarity": 0.952
+      },
+      {
+        "left": "llm_fallback_difficult_cases.json#94",
+        "right": "mention_linking_test.json#473",
+        "similarity": 0.98
+      },
+      {
+        "left": "mention_linking_test.json#26",
+        "right": "ner_test_dataset.json#4",
+        "similarity": 0.943
+      },
+      {
+        "left": "mention_linking_test.json#118",
+        "right": "mention_linking_test.json#185",
+        "similarity": 0.923
+      },
+      {
+        "left": "mention_linking_test.json#426",
+        "right": "mention_linking_test.json#482",
+        "similarity": 0.952
+      }
+    ],
+    "method": "文本去空白与标点后精确比较；标签冲突仅比较同一规范化文本和同一规范化 mention 的不同 gold entity；近重复使用 SequenceMatcher 比率 >= 0.90，并按长度差过滤，最多记录 100 对。"
+  },
+  "coverage_matrix": {
+    "实体链接：标准名、别名、歧义、候选、NIL": "已覆盖（由 mention_linking、alias、candidate、disambiguation 与 LLM 难例集分担）",
+    "实体链接：轻微噪声 / 中英文数字": "部分覆盖；需要独立统计或增加对抗样本",
+    "实体链接：嵌套或重叠 mention": "尚未形成明确专项 gold",
+    "单实体共指：同句、跨句、类型不兼容、无前件": "已覆盖（coreference_long_text_test.json）",
+    "单实体共指：链式、多同类型候选、远距离": "部分覆盖；建议按场景建立显式分组统计",
+    "集合共指：两个 ORG、三实体 ORG、两个 PERSON": "已覆盖（专项夹具）",
+    "集合共指：和、与、顿号": "已覆盖（专项夹具）",
+    "集合共指：及、以及": "尚未覆盖",
+    "集合共指：她们、它们、双方、二者、两家央企": "仅“两家央企”规则范围已确认；专项夹具未覆盖其余词面",
+    "集合共指：混合类型、未链接、跨句、重复 ID、单数代词": "已覆盖（专项夹具）",
+    "集合共指：非实体插入、非相邻候选、多协调组、复杂省略": "尚未覆盖",
+    "检测依据": "集合专项文本中含：和, 与, 、；集合代词观测：他们, 这些机构。"
+  },
+  "findings": {
+    "P0": [],
+    "P1": [
+      "集合共指专项仅 8 条文本 / 8 个 case，且为单元测试夹具；其 100% 结果不能作为正式总体共指准确率。",
+      "发现 1 组相同规范化文本的标签差异，需人工判定是否为合理上下文差异。"
+    ],
+    "P2": [
+      "集合专项未覆盖“及”“以及”、她们/它们/双方/二者、非实体插入、多协调组、复杂省略与非相邻候选。",
+      "历史长文本共指集未采用 entity_ids 集合 gold，无法单独衡量集合共指能力。",
+      "多份专项集可能包含模板化实体替换；近重复检测结果应作为扩充时的去重基线。",
+      "正式长文本共指集中存在 20 个不在当前运行知识库的历史外部 ID；它们不构成结构错误，但不能直接用于端到端知识库 ID 一致性验收。"
+    ],
+    "P3": [
+      "不同历史数据集的 gold 字段存在 schema 差异；评测时需按数据契约区分历史兼容格式与集合扩展格式。"
+    ]
+  },
+  "quality_conclusion": "良好：结构与偏移检查通过时适合阶段性验收；作为最终测试集仍需要扩充集合共指和独立困难样本，且不得以夹具 100% 代表整体能力。"
+}

@@ -1,0 +1,104 @@
+{
+  "dataset_name": "coreference_collective_test",
+  "version": "1.0",
+  "purpose": "显式并列前件的集合共指专项回归；TEST_/PER_TEST_ ID 仅用于规则模块夹具，不代表运行知识库实体。",
+  "samples": [
+    {
+      "id": "COREF_COLLECTIVE_001",
+      "text": "人民日报社和新华通讯社发布联合声明，他们将继续合作。",
+      "mentions": [
+        {"mention": "人民日报社", "type": "ORG", "char_start": 0, "char_end": 5, "role": "name", "entity_id": "TEST_PEOPLE_DAILY"},
+        {"mention": "新华通讯社", "type": "ORG", "char_start": 6, "char_end": 11, "role": "name", "entity_id": "TEST_XINHUA"},
+        {"mention": "他们", "type": "PRON", "char_start": 18, "char_end": 20, "role": "pronoun"}
+      ],
+      "expected_coreferences": [
+        {"mention_index": 2, "entity_id": null, "entity_ids": ["TEST_PEOPLE_DAILY", "TEST_XINHUA"], "is_collective": true, "is_nil": false}
+      ]
+    },
+    {
+      "id": "COREF_COLLECTIVE_002",
+      "text": "张三和李四参加了会议，他们随后提交了报告。",
+      "mentions": [
+        {"mention": "张三", "type": "PERSON", "char_start": 0, "char_end": 2, "role": "name", "entity_id": "PER_TEST_ZHANG"},
+        {"mention": "李四", "type": "PERSON", "char_start": 3, "char_end": 5, "role": "name", "entity_id": "PER_TEST_LI"},
+        {"mention": "他们", "type": "PRON", "char_start": 11, "char_end": 13, "role": "pronoun"}
+      ],
+      "expected_coreferences": [
+        {"mention_index": 2, "entity_id": null, "entity_ids": ["PER_TEST_ZHANG", "PER_TEST_LI"], "is_collective": true, "is_nil": false}
+      ]
+    },
+    {
+      "id": "COREF_COLLECTIVE_003",
+      "text": "国家电网、南方电网和华能集团共同启动项目，这些机构将共享研究成果。",
+      "mentions": [
+        {"mention": "国家电网", "type": "ORG", "char_start": 0, "char_end": 4, "role": "name", "entity_id": "ENT_ENERGY_0001"},
+        {"mention": "南方电网", "type": "ORG", "char_start": 5, "char_end": 9, "role": "name", "entity_id": "ENT_ENERGY_0002"},
+        {"mention": "华能集团", "type": "ORG", "char_start": 10, "char_end": 14, "role": "name", "entity_id": "ENT_ENERGY_0003"},
+        {"mention": "这些机构", "type": "PRON", "char_start": 21, "char_end": 25, "role": "pronoun"}
+      ],
+      "expected_coreferences": [
+        {"mention_index": 3, "entity_id": null, "entity_ids": ["ENT_ENERGY_0001", "ENT_ENERGY_0002", "ENT_ENERGY_0003"], "is_collective": true, "is_nil": false}
+      ]
+    },
+    {
+      "id": "COREF_COLLECTIVE_004",
+      "text": "华为与深圳签署了协议，他们随后发布公告。",
+      "mentions": [
+        {"mention": "华为", "type": "ORG", "char_start": 0, "char_end": 2, "role": "name", "entity_id": "TEST_HUAWEI"},
+        {"mention": "深圳", "type": "GPE", "char_start": 3, "char_end": 5, "role": "name", "entity_id": "TEST_SHENZHEN"},
+        {"mention": "他们", "type": "PRON", "char_start": 11, "char_end": 13, "role": "pronoun"}
+      ],
+      "expected_coreferences": [
+        {"mention_index": 2, "entity_id": null, "entity_ids": [], "is_collective": true, "is_nil": true}
+      ]
+    },
+    {
+      "id": "COREF_COLLECTIVE_005",
+      "text": "人民日报社发布了消息。新华通讯社随后进行了报道。他们将继续关注此事。",
+      "mentions": [
+        {"mention": "人民日报社", "type": "ORG", "char_start": 0, "char_end": 5, "sentence_index": 0, "role": "name", "entity_id": "TEST_PEOPLE_DAILY"},
+        {"mention": "新华通讯社", "type": "ORG", "char_start": 11, "char_end": 16, "sentence_index": 1, "role": "name", "entity_id": "TEST_XINHUA"},
+        {"mention": "他们", "type": "PRON", "char_start": 24, "char_end": 26, "sentence_index": 2, "role": "pronoun"}
+      ],
+      "expected_coreferences": [
+        {"mention_index": 2, "entity_id": null, "entity_ids": [], "is_collective": true, "is_nil": true}
+      ]
+    },
+    {
+      "id": "COREF_COLLECTIVE_006",
+      "text": "国家电网和南方电网发布联合声明，它将继续跟进。",
+      "mentions": [
+        {"mention": "国家电网", "type": "ORG", "char_start": 0, "char_end": 4, "role": "name", "entity_id": "ENT_ENERGY_0001"},
+        {"mention": "南方电网", "type": "ORG", "char_start": 5, "char_end": 9, "role": "name", "entity_id": "ENT_ENERGY_0002"},
+        {"mention": "它", "type": "PRON", "char_start": 16, "char_end": 17, "role": "pronoun"}
+      ],
+      "expected_coreferences": [
+        {"mention_index": 2, "entity_id": "ENT_ENERGY_0002", "entity_ids": ["ENT_ENERGY_0002"], "is_collective": false, "is_nil": false}
+      ]
+    },
+    {
+      "id": "COREF_COLLECTIVE_007",
+      "text": "甲机构和乙机构联合发布报告，他们表示将继续合作。",
+      "mentions": [
+        {"mention": "甲机构", "type": "ORG", "char_start": 0, "char_end": 3, "role": "name"},
+        {"mention": "乙机构", "type": "ORG", "char_start": 4, "char_end": 7, "role": "name"},
+        {"mention": "他们", "type": "PRON", "char_start": 14, "char_end": 16, "role": "pronoun"}
+      ],
+      "expected_coreferences": [
+        {"mention_index": 2, "entity_id": null, "entity_ids": [], "is_collective": true, "is_nil": true}
+      ]
+    },
+    {
+      "id": "COREF_COLLECTIVE_008",
+      "text": "甲公司和甲公司联合发布报告，他们表示合作。",
+      "mentions": [
+        {"mention": "甲公司", "type": "ORG", "char_start": 0, "char_end": 3, "role": "name", "entity_id": "TEST_SAME_ENTITY"},
+        {"mention": "甲公司", "type": "ORG", "char_start": 4, "char_end": 7, "role": "name", "entity_id": "TEST_SAME_ENTITY"},
+        {"mention": "他们", "type": "PRON", "char_start": 14, "char_end": 16, "role": "pronoun"}
+      ],
+      "expected_coreferences": [
+        {"mention_index": 2, "entity_id": null, "entity_ids": [], "is_collective": true, "is_nil": true}
+      ]
+    }
+  ]
+}
