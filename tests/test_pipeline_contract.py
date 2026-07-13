@@ -1,3 +1,4 @@
+from entity_linker.agents import default_pipeline_factory
 from entity_linker.pipeline import EntityLinkingPipeline
 
 
@@ -45,3 +46,24 @@ def test_run_with_mentions_includes_link_basis_metadata():
         "candidate_generation",
         "disambiguation",
     }
+
+
+def test_build_entity_alignment_config_uses_existing_kb_path_when_configured_path_missing():
+    pipeline = EntityLinkingPipeline(
+        {
+            "entity_alignment": {"enabled": True},
+            "kb_path": "data/missing_kb.json",
+        }
+    )
+
+    config = pipeline._build_entity_alignment_config()
+
+    assert config["knowledge_base"]["path"].endswith("data/kb/energy_entities.json")
+    assert config["llm_fallback"]["enabled"] is False
+
+
+def test_default_pipeline_factory_prefers_bge_backend():
+    pipeline = default_pipeline_factory()
+
+    assert pipeline.config["entity_alignment"]["enabled"] is True
+    assert pipeline.config["prefer_bge"] is True

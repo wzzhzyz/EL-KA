@@ -25,6 +25,8 @@ python -m entity_linker.db.init_db
 
 当前版本已经提供一个可独立部署的 FastAPI 服务，入口在 [entity_linker/service.py](entity_linker/service.py)。
 
+更多部署与 agent 扩展说明请参见 [docs/deployment_and_agent_usage.md](docs/deployment_and_agent_usage.md)。
+
 启动方式：
 
 ```powershell

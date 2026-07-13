@@ -1,0 +1,39 @@
+{
+  "default_kb": "",
+  "items": [
+    {
+      "text": "国家电网发布了公告。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0,
+          "metadata": {}
+        }
+      ],
+      "kb": "",
+      "options": {
+        "enable_coreference": false
+      }
+    },
+    {
+      "text": "上海石化集团已经发布环保报告。",
+      "mentions": [
+        {
+          "mention": "上海石化集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0,
+          "metadata": {}
+        }
+      ],
+      "kb": "",
+      "options": {
+        "enable_coreference": false
+      }
+    }
+  ]
+}

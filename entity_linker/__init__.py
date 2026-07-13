@@ -1,3 +1,4 @@
+from . import agents  # noqa: F401
 from .adapters import normalize_entities, normalize_entity, normalize_mentions
 from .bge_contract import (
     BGERankingInput,

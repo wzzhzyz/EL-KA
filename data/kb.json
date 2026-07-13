@@ -1,0 +1,42 @@
+[
+  {
+    "entity_id": "ENT_ENERGY_0001",
+    "standard_name": "国家电网有限公司",
+    "aliases": ["国家电网", "国网"],
+    "entity_type": "ORG",
+    "description": "中国国家电网公司",
+    "metadata": {}
+  },
+  {
+    "entity_id": "ENT_PERSON_0005",
+    "standard_name": "李强",
+    "aliases": ["李强"],
+    "entity_type": "PERSON",
+    "description": "示例人物",
+    "metadata": {}
+  },
+  {
+    "entity_id": "ENT_ORG_0010",
+    "standard_name": "人民日报社",
+    "aliases": ["人民日报社", "人民日报"],
+    "entity_type": "ORG",
+    "description": "中国共产党机关报",
+    "metadata": {}
+  },
+  {
+    "entity_id": "ENT_ORG_0011",
+    "standard_name": "新华通讯社",
+    "aliases": ["新华通讯社", "新华社"],
+    "entity_type": "ORG",
+    "description": "中国国家通讯社",
+    "metadata": {}
+  },
+  {
+    "entity_id": "ENT_ORG_0012",
+    "standard_name": "上海报业集团澎湃新闻",
+    "aliases": ["上海报业集团澎湃新闻", "澎湃新闻", "澎湃"],
+    "entity_type": "ORG",
+    "description": "新闻媒体机构",
+    "metadata": {}
+  }
+]

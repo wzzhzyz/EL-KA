@@ -56,6 +56,7 @@ class StandardMention:
             "confidence": confidence,
             "is_nil": is_nil,
             "evidence": evidence,
+            "metadata": self.metadata,
         }
         if is_coreference:
             result["is_coreference"] = True

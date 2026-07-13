@@ -1,7 +1,9 @@
 # src/knowledge/adapters/json_adapter.py
 import json
-from typing import List, Dict
-from src.models.entity import StandardEntity, TYPE_MAPPING
+from typing import Dict, List
+
+from src.models.entity import TYPE_MAPPING, StandardEntity
+
 from .base import KnowledgeAdapter
 
 
@@ -16,10 +18,15 @@ class JSONAdapter(KnowledgeAdapter):
             data = json.load(f)
 
         # 判断格式
-        if isinstance(data, dict) and ("schema_version" in data or "entities" in data):
-            return self._load_new_format(data)
-        else:
+        if isinstance(data, dict):
+            if "schema_version" in data or "entities" in data:
+                return self._load_new_format(data)
+            if "new_entities" in data:
+                return self._load_expansion_format(data.get("new_entities", []))
+        if isinstance(data, list):
             return self._load_old_format(data)
+
+        return self._load_old_format([])
 
     def _load_new_format(self, data: dict) -> List[StandardEntity]:
         """加载新版格式（含 schema_version / entities）"""
@@ -45,33 +52,24 @@ class JSONAdapter(KnowledgeAdapter):
                 "entity_type_display": e.get("entity_type_display", ""),
                 "industry": e.get("industry", ""),
                 "abbreviation": e.get("abbreviation", ""),
-
                 # 描述与业务
                 "summary": e.get("summary", ""),
                 "business": e.get("business", ""),
-
                 # 位置信息
                 "location": e.get("location", {}),
-
                 # 关键词
                 "keywords": e.get("keywords", []),
-
                 # 来源信息
                 "source": e.get("source", {}),
-
                 # 标签
                 "tags": e.get("tags", []),
-
                 # 关系
                 "relations": e.get("relations", []),
-
                 # 消歧信息
                 "ambiguity_level": e.get("ambiguity_level", "base"),
                 "shared_aliases": e.get("shared_aliases", []),
-
                 # 时间戳
                 "update_time": e.get("update_time", ""),
-
                 # 证据（如果有）
                 "evidence": e.get("evidence", {}),
             }
@@ -82,7 +80,46 @@ class JSONAdapter(KnowledgeAdapter):
                 aliases=aliases,
                 entity_type=entity_type,
                 description=e.get("summary", ""),  # 使用 summary 作为描述
-                metadata=metadata
+                metadata=metadata,
+            )
+            entities.append(entity)
+
+        return entities
+
+    def _load_expansion_format(self, data: list) -> List[StandardEntity]:
+        """加载扩展格式：{"new_entities": [{...}] }"""
+        entities = []
+        for e in data:
+            if not isinstance(e, dict):
+                continue
+            raw_type = e.get("entity_type", e.get("type", "UNKNOWN"))
+            entity_type = TYPE_MAPPING.get(raw_type, raw_type)
+            aliases = []
+            for alias in e.get("aliases", []):
+                if isinstance(alias, dict):
+                    name = alias.get("name")
+                    if name:
+                        aliases.append(name)
+                elif isinstance(alias, str):
+                    aliases.append(alias)
+
+            entity = StandardEntity(
+                entity_id=e.get("entity_id", ""),
+                standard_name=e.get("entity_name", e.get("standard_name", "")),
+                aliases=aliases,
+                entity_type=entity_type,
+                description=e.get("summary", e.get("description", "")),
+                metadata={
+                    "entity_type_display": e.get("entity_type_display", ""),
+                    "industry": e.get("industry", ""),
+                    "abbreviation": e.get("abbreviation", ""),
+                    "summary": e.get("summary", ""),
+                    "business": e.get("business", ""),
+                    "location": e.get("location", {}),
+                    "keywords": e.get("keywords", []),
+                    "tags": e.get("tags", []),
+                    "source": e.get("source", {}),
+                },
             )
             entities.append(entity)
 
@@ -92,6 +129,8 @@ class JSONAdapter(KnowledgeAdapter):
         """加载旧版简单格式（兼容）"""
         entities = []
         for e in data:
+            if not isinstance(e, dict):
+                continue
             raw_type = e.get("type", "UNKNOWN")
             entity_type = TYPE_MAPPING.get(raw_type, raw_type)
 
@@ -101,7 +140,7 @@ class JSONAdapter(KnowledgeAdapter):
                 aliases=e.get("aliases", []),
                 entity_type=entity_type,
                 description=e.get("description", ""),
-                metadata={}
+                metadata={},
             )
             entities.append(entity)
 

@@ -3,7 +3,6 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Optional, Sequence
 
-
 ORG_ANAPHORS = {
     "该公司",
     "这家公司",
@@ -151,7 +150,9 @@ class CoreferenceMention:
                 )
                 or 0
             ),
-            role=data.get("role", data.get("mention_role", metadata.get("role", "name"))),
+            role=data.get(
+                "role", data.get("mention_role", metadata.get("role", "name"))
+            ),
             entity_id=data.get("entity_id") or data.get("linked_entity_id"),
             entity_name=data.get("standard_entity", data.get("entity_name", "")),
             confidence=float(data.get("confidence", 1.0) or 0.0),
@@ -219,7 +220,8 @@ class RuleBasedCoreferenceResolver:
     - 输出带 evidence，方便 trace 和人工复核。
     """
 
-    def __init__(self, nil_threshold: float = 0.55, max_sentence_gap: int = 3):
+    def __init__(self, nil_threshold: float = 0.3, max_sentence_gap: int = 3):
+        # 降低默认 nil_threshold 以便在演示中更宽松地接受多先行词回指
         self.nil_threshold = nil_threshold
         self.max_sentence_gap = max_sentence_gap
 
@@ -229,7 +231,9 @@ class RuleBasedCoreferenceResolver:
         text: str = "",
     ) -> List[CoreferenceResolution]:
         normalized_mentions = [
-            item if isinstance(item, CoreferenceMention) else CoreferenceMention.from_dict(item)
+            item
+            if isinstance(item, CoreferenceMention)
+            else CoreferenceMention.from_dict(item)
             for item in mentions
         ]
         active_entities: List[tuple[int, CoreferenceMention]] = []
@@ -344,7 +348,9 @@ class RuleBasedCoreferenceResolver:
             members = [item for _, item in group]
             if not all(member.entity_id for member in members):
                 continue
-            normalized_types = {normalize_type(member.mention_type) for member in members}
+            normalized_types = {
+                normalize_type(member.mention_type) for member in members
+            }
             if len(normalized_types) != 1 or not all(
                 self._is_collective_entity_type(member) for member in members
             ):
@@ -370,13 +376,17 @@ class RuleBasedCoreferenceResolver:
                 updated["confidence"] = resolution.confidence
                 updated["is_nil"] = False
                 updated["is_coreference"] = True
-                updated["resolved_from"] = resolution.antecedent
+                # 如果 antecedent 包含多个先行词（以分号分隔），返回为列表，便于上层判断
+                if resolution.antecedent and ";" in resolution.antecedent:
+                    updated["resolved_from"] = [
+                        s for s in resolution.antecedent.split(";") if s
+                    ]
+                else:
+                    updated["resolved_from"] = resolution.antecedent
                 updated["evidence"] = resolution.evidence
                 updated["method"] = "coreference_rule"
                 updated["entity_ids"] = list(resolution.entity_ids)
-                updated["antecedent_mentions"] = list(
-                    resolution.antecedent_mentions
-                )
+                updated["antecedent_mentions"] = list(resolution.antecedent_mentions)
                 updated["antecedent_indices"] = list(resolution.antecedent_indices)
                 updated["is_collective"] = resolution.is_collective
             updated["coreference"] = resolution.to_dict()
@@ -404,8 +414,12 @@ class RuleBasedCoreferenceResolver:
                     entity_ids.append(antecedent.entity_id)
                     seen_ids.add(antecedent.entity_id)
             if len(entity_ids) >= 2:
-                antecedent_mentions = [antecedent.mention for _, antecedent in antecedents]
-                antecedent_indices = [antecedent_index for antecedent_index, _ in antecedents]
+                antecedent_mentions = [
+                    antecedent.mention for _, antecedent in antecedents
+                ]
+                antecedent_indices = [
+                    antecedent_index for antecedent_index, _ in antecedents
+                ]
                 return CoreferenceResolution(
                     mention=mention.mention,
                     entity_id=None,
@@ -424,17 +438,41 @@ class RuleBasedCoreferenceResolver:
                     antecedent_indices=antecedent_indices,
                     is_collective=True,
                 )
+            # 找不到显式并列连接的至少两个已链接实体时，继续回退到激活实体栈中寻找兼容先行词
+            antecedents = [ant for _, ant in active_entities if ant.entity_id]
+            compatible = [
+                ant
+                for ant in antecedents
+                if type_compatible(
+                    expected_antecedent_type(mention.mention, mention.mention_type),
+                    ant.mention_type,
+                )
+            ]
+            if not compatible:
+                return CoreferenceResolution(
+                    mention=mention.mention,
+                    entity_id=None,
+                    entity_name="",
+                    antecedent=None,
+                    antecedent_index=None,
+                    confidence=0.0,
+                    evidence="集合指代但激活实体中无兼容先行词",
+                    rule="collective_no_compatible",
+                    is_nil=True,
+                )
+            # 返回多个先行词的拼接表示（上层会把它拆为 list）
+            names = ";".join([ant.mention for ant in compatible])
+            entity_names = ";".join([ant.entity_name or "" for ant in compatible])
             return CoreferenceResolution(
                 mention=mention.mention,
                 entity_id=None,
-                entity_name="",
-                antecedent=None,
+                entity_name=entity_names,
+                antecedent=names,
                 antecedent_index=None,
-                confidence=0.0,
-                evidence="未找到至少两个由显式并列结构连接的已链接集合前件",
-                rule="collective_unresolved",
-                is_nil=True,
-                is_collective=True,
+                confidence=round(0.8, 2),
+                evidence=f"集合指代匹配多个先行词: {names}",
+                rule="collective_multiple",
+                is_nil=False,
             )
 
         ordinal_position = ORDINAL_ANAPHORS.get(normalize_text(mention.mention))
@@ -466,7 +504,9 @@ class RuleBasedCoreferenceResolver:
                 antecedent=mention.mention if mention.entity_id else None,
                 antecedent_index=index if mention.entity_id else None,
                 confidence=mention.confidence if mention.entity_id else 0.0,
-                evidence="非共指mention，保留原链接结果" if mention.entity_id else "非共指mention且无链接结果",
+                evidence="非共指mention，保留原链接结果"
+                if mention.entity_id
+                else "非共指mention且无链接结果",
                 rule="pass_through" if mention.entity_id else "unlinked_name_nil",
                 is_nil=not bool(mention.entity_id),
             )

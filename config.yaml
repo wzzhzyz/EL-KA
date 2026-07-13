@@ -18,13 +18,13 @@ disambiguator:
 
 reranker_enabled: true
 reranker_mode: "finetuned"
-reranker_model_path: "./finetuned_bge_reranker_large2"
+reranker_model_path: "D:/Doc/shixun/2/EL-KA/EntityAlignmentV0/models_cache/finetuned_bge_reranker_large1"
 reranker_top_k: 10
 reranker_weight: 1
 bge_weight: 0
 
 llm_fallback:
-  enabled: true
+  enabled: false
   provider: "openai"
   api_key: "sk-ws-H.RERDMME.mtnS.MEYCIQC52O9l9Bdvlaq-cxsuVO6isL-njt7bRLHTvo9r0jR5RQIhAMenFxknVyXygcQM3u9V_lkT4JuI6W1aDH_DqfQ3ogsH"  # 您的API Key
   base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"  # 使用标准网关

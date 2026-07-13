@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import json
 import os
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from fastapi import FastAPI
-from pydantic import BaseModel, Field
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field, root_validator
 
 from .pipeline import EntityLinkingPipeline
 from .registry import registry
@@ -37,7 +39,7 @@ class LinkRequest(BaseModel):
 
     class Config:
         title = "实体链接请求"
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "text": "国家电网发布了公告。",
                 "mentions": [
@@ -56,6 +58,84 @@ class LinkRequest(BaseModel):
         }
 
 
+class BatchLinkItem(LinkRequest):
+    class Config:
+        title = "批量实体链接项"
+
+
+class BatchLinkRequest(BaseModel):
+    items: List[BatchLinkItem] = Field(
+        ..., description="批量实体链接任务列表，每个任务单独指定 text、mentions、kb 和 options"
+    )
+    default_kb: Optional[str] = Field(
+        None,
+        description="可选默认知识库路径，当单条任务未指定 kb 时使用。",
+    )
+
+    class Config:
+        title = "批量实体链接请求"
+        json_schema_extra = {
+            "example": {
+                "default_kb": "data/kb.json",
+                "items": [
+                    {
+                        "text": "国家电网发布了公告。",
+                        "mentions": [
+                            {
+                                "mention": "国家电网",
+                                "type": "ORG",
+                                "char_start": 0,
+                                "char_end": 4,
+                                "confidence": 1.0,
+                                "metadata": {},
+                            }
+                        ],
+                        "options": {"enable_coreference": False},
+                    },
+                    {
+                        "text": "上海石化集团已经发布环保报告。",
+                        "mentions": [
+                            {
+                                "mention": "上海石化集团",
+                                "type": "ORG",
+                                "char_start": 0,
+                                "char_end": 6,
+                                "confidence": 1.0,
+                                "metadata": {},
+                            }
+                        ],
+                        "kb": "data/energy_entities.json",
+                        "options": {"enable_coreference": True},
+                    },
+                ],
+            }
+        }
+
+    @root_validator(pre=True)
+    def validate_items(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        if "items" not in values or not isinstance(values["items"], list):
+            raise ValueError("请求体必须包含 items 列表")
+        return values
+
+
+class FileLinkRequest(BaseModel):
+    file_path: str = Field(..., description="本地 JSON 文件路径，文件中包含批量请求参数。")
+    default_kb: Optional[str] = Field(
+        None,
+        description="可选默认知识库路径，当文件中未指定 kb 时使用。",
+    )
+
+    class Config:
+        title = "本地 JSON 文件批量链接请求"
+
+    @root_validator(pre=True)
+    def validate_file_path(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        file_path = values.get("file_path")
+        if not file_path or not isinstance(file_path, str):
+            raise ValueError("file_path 必须是本地 JSON 文件路径字符串")
+        return values
+
+
 class LinkResponse(BaseModel):
     trace_id: str = Field(..., description="请求追踪 ID")
     text: str = Field(..., description="输入文本")
@@ -69,7 +149,7 @@ class LinkResponse(BaseModel):
 
     class Config:
         title = "实体链接响应"
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "trace_id": "123e4567-e89b-12d3-a456-426614174000",
                 "text": "国家电网发布了公告。",
@@ -126,7 +206,16 @@ def create_app(pipeline: Optional[EntityLinkingPipeline] = None) -> FastAPI:
         if factory is not None:
             pipeline = factory()
         else:
-            pipeline = EntityLinkingPipeline({"entity_alignment": {"enabled": False}})
+            # 默认构造 pipeline 时禁用 LLM 兜底，便于演示时只使用 KB
+            pipeline = EntityLinkingPipeline(
+                {
+                    "entity_alignment": {
+                        "enabled": True,
+                        "llm_fallback": {"enabled": False},
+                    },
+                    "prefer_bge": True,
+                }
+            )
     app.state.pipeline = pipeline
 
     @app.get(
@@ -156,6 +245,81 @@ def create_app(pipeline: Optional[EntityLinkingPipeline] = None) -> FastAPI:
             trace_id=None,
         )
         return LinkResponse(**result)
+
+    def _load_request_payload(file_path: str) -> Dict[str, Any]:
+        resolved_path = Path(file_path)
+        if not resolved_path.is_absolute():
+            resolved_path = Path(os.getcwd()) / resolved_path
+        if not resolved_path.exists():
+            raise HTTPException(status_code=400, detail=f"本地 JSON 文件不存在: {file_path}")
+        try:
+            with open(resolved_path, "r", encoding="utf-8") as handle:
+                payload = json.load(handle)
+        except Exception as exc:
+            raise HTTPException(status_code=400, detail=f"读取 JSON 文件失败: {exc}")
+        if not isinstance(payload, dict):
+            raise HTTPException(status_code=400, detail="JSON 文件必须包含一个对象")
+        return payload
+
+    @app.post(
+        "/v1/link_from_file",
+        response_model=List[LinkResponse],
+        summary="从本地 JSON 文件执行批量实体链接",
+        description="读取本地 JSON 文件中的批量请求参数，执行实体链接。",
+    )
+    def link_from_file(req: FileLinkRequest) -> List[LinkResponse]:
+        payload = _load_request_payload(req.file_path)
+        if req.default_kb is not None and "default_kb" not in payload:
+            payload["default_kb"] = req.default_kb
+        try:
+            batch_request = BatchLinkRequest(**payload)
+        except Exception as exc:
+            raise HTTPException(
+                status_code=400,
+                detail=f"JSON 文件内容不符合批量实体链接请求格式: {exc}",
+            )
+        responses: List[LinkResponse] = []
+        for item in batch_request.items:
+            options = dict(item.options)
+            if item.mentions is not None:
+                options["mentions"] = [mention.model_dump() for mention in item.mentions]
+            options["kb_path"] = item.kb or batch_request.default_kb
+            result = app.state.pipeline.run(
+                item.text,
+                options=options,
+                trace_id=None,
+            )
+            responses.append(LinkResponse(**result))
+        return responses
+
+    @app.post(
+        "/v1/link_batch",
+        response_model=List[LinkResponse],
+        summary="批量实体链接",
+        description="接收多个实体链接任务，每个任务可单独指定 text、mentions、kb 和 options。",
+    )
+    def link_batch(req: BatchLinkRequest) -> List[LinkResponse]:
+        responses: List[LinkResponse] = []
+        for item in req.items:
+            options = dict(item.options)
+            if item.mentions is not None:
+                options["mentions"] = [mention.model_dump() for mention in item.mentions]
+            options["kb_path"] = item.kb or req.default_kb
+            result = app.state.pipeline.run(
+                item.text,
+                options=options,
+                trace_id=None,
+            )
+            responses.append(LinkResponse(**result))
+        return responses
+
+    @app.get(
+        "/agents",
+        summary="查询可用 agent",
+        description="返回当前注册的 agent 名称列表，用于运行时选择不同实现。",
+    )
+    def list_agents() -> Dict[str, list]:
+        return {"agents": registry.list()}
 
     return app
 

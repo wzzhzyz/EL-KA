@@ -381,6 +381,10 @@ class EntityLinkingPipeline:
 
         self.backend = "local"
         self._init_components()
+        if self.backend != "entity_alignment" and self.config.get("prefer_bge", True):
+            logger.warning(
+                "当前配置强制优先 BGE，但实际未成功初始化，继续使用本地 fallback"
+            )
 
         logger.info("✅ EntityLinkingPipeline 初始化完成")
         logger.info("   backend=%s", self.backend)
@@ -388,7 +392,8 @@ class EntityLinkingPipeline:
 
     def _init_components(self) -> None:
         enabled = self.config.get("entity_alignment", {}).get("enabled", True)
-        if enabled:
+        prefer_bge = self.config.get("prefer_bge", True)
+        if enabled and prefer_bge:
             try:
                 self._init_entity_alignment_components()
                 return
@@ -404,7 +409,7 @@ class EntityLinkingPipeline:
         self.ner = _FallbackNEREngine(self.kb)
         self.candidate_gen = _FallbackCandidateGenerator(self.kb)
         self.disambiguator = _FallbackRuleDisambiguator(
-            nil_threshold=float(self.config.get("nil_threshold", 0.90)),
+            nil_threshold=float(self.config.get("nil_threshold", 0.30)),
             llm_trigger_threshold=float(
                 self.config.get(
                     "bge_llm_trigger_threshold",
@@ -503,6 +508,16 @@ class EntityLinkingPipeline:
         user_disambiguator = entity_alignment_cfg.get("disambiguator", {}) or {}
         user_llm = entity_alignment_cfg.get("llm_fallback", {}) or {}
 
+        fallback_kb_path = self._resolve_local_kb_path()
+        configured_kb_path = self.config.get("kb_path")
+        resolved_kb_path = self._resolve_existing_path([configured_kb_path])
+        if resolved_kb_path is None and configured_kb_path:
+            logger.warning(
+                "配置的知识库路径不存在，回退到默认知识库: %s",
+                fallback_kb_path,
+            )
+        knowledge_base_path = resolved_kb_path or str(fallback_kb_path)
+
         bge_candidates = [
             entity_alignment_cfg.get("bge_model_path"),
             entity_alignment_cfg.get("model_path"),
@@ -556,13 +571,12 @@ class EntityLinkingPipeline:
             **(project_llm or {}),
             **(user_llm or {}),
         }
+        llm_fallback_cfg["enabled"] = bool(llm_fallback_cfg.get("enabled", False))
 
         config = {
             "knowledge_base": {
                 "type": "json",
-                "path": str(
-                    self.config.get("kb_path") or self._resolve_local_kb_path()
-                ),
+                "path": knowledge_base_path,
             },
             "bge_model_path": bge_path,
             "disambiguator": {

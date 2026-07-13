@@ -18,7 +18,7 @@ disambiguator:
 
 reranker_enabled: true
 reranker_mode: "finetuned"
-reranker_model_path: "./models_cache/finetuned_bge_reranker_large1"
+reranker_model_path: "D:/Doc/shixun/2/EL-KA/EntityAlignmentV0/models_cache/finetuned_bge_reranker_large1"
 reranker_top_k: 10
 reranker_weight: 1
 bge_weight: 0
