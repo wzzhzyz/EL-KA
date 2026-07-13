@@ -1,0 +1,6174 @@
+{
+  "dataset_name": "coreference_collective_eval",
+  "version": "1.0",
+  "evaluation_scope": "acceptance",
+  "requires_runtime_kb": true,
+  "purpose": "正式集合共指验收测试集首批样例；所有正例前件均使用当前运行知识库实体 ID。",
+  "annotation_policy": {
+    "offset_convention": "[start, end)",
+    "collective_match": "entity_id set exact match",
+    "nil_policy": "entity_ids为空且is_nil=true"
+  },
+  "samples": [
+    {
+      "id": "CORE_COL_EVAL_001",
+      "text": "国家电网和南方电网签署合作协议，双方将共建能源平台。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_same_sentence_and"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_002",
+      "text": "国家电网、南方电网及华能集团启动联合项目，这些企业将共享研究成果。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "这些企业",
+          "type": "PRON",
+          "char_start": 21,
+          "char_end": 25,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002",
+            "ENT_ENERGY_0003"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "three_org_same_sentence_and"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_003",
+      "text": "国家电网以及三峡集团联合发布公告，这些机构将推进清洁能源建设。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 17,
+          "char_end": 21,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_same_sentence_yiji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_004",
+      "text": "华能集团及三峡集团共同建设水电基地，二者将共享调度经验。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "二者",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0003",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_same_sentence_ji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_005",
+      "text": "国家电网和南方电网先后发布公告。双方将继续合作。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "sentence_index": 0,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "sentence_index": 1,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "当前规则不支持跨句隐式集合"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_006",
+      "text": "国家电网和南方电网负责输电，华能集团与三峡集团负责发电，双方同步公布计划。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 18,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 19,
+          "char_end": 23,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 28,
+          "char_end": 30,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 4,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0003",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            2,
+            3
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "multiple_coordination_nearest_group"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_007",
+      "text": "华为与广州市共同举办活动，他们随后发布公告。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "广州市",
+          "type": "GPE",
+          "char_start": 3,
+          "char_end": 6,
+          "role": "name",
+          "entity_id": "ENT_GEN_0093"
+        },
+        {
+          "mention": "他们",
+          "type": "PRON",
+          "char_start": 13,
+          "char_end": 15,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "ORG与GPE前件类型不兼容"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_008",
+      "text": "甲机构和乙机构联合发布报告，这些机构表示将继续合作。",
+      "mentions": [
+        {
+          "mention": "甲机构",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name"
+        },
+        {
+          "mention": "乙机构",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 7,
+          "role": "name"
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件未链接到运行知识库"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_009",
+      "text": "国家电网和南方电网发布联合声明，他将继续跟进。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "他",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 17,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": false,
+          "is_nil": true,
+          "nil_reason": "单数人物代词不能回指机构集合"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_010",
+      "text": "华为和腾讯宣布成立联合实验室，两家公司将共同投入研发。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "char_start": 15,
+          "char_end": 19,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0051",
+            "ENT_GEN_0052"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_company_same_sentence"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_011",
+      "text": "国家电网及南方电网共同编制规划，双方将推进跨区输电。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_same_sentence_ji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_012",
+      "text": "国家电网以及南方电网发布联合倡议，两家央企将协同落实。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "两家央企",
+          "type": "PRON",
+          "char_start": 17,
+          "char_end": 21,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_same_sentence_yiji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_013",
+      "text": "华能集团和三峡集团签订技术协议，这些企业将共享水电数据。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "这些企业",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0003",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_generator_same_sentence_and"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_014",
+      "text": "华能集团与三峡集团组织联合调度，上述企业将交流运行经验。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "上述企业",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0003",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_generator_same_sentence_yu"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_015",
+      "text": "华为及腾讯发布开放平台，两家公司将投入研发资源。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "char_start": 12,
+          "char_end": 16,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0051",
+            "ENT_GEN_0052"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_tech_same_sentence_ji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_016",
+      "text": "华为以及腾讯共建实验室，双方计划开放测试环境。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 6,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 12,
+          "char_end": 14,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0051",
+            "ENT_GEN_0052"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_tech_same_sentence_yiji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_017",
+      "text": "百度和腾讯联合开展安全研究，两家企业将发布白皮书。",
+      "mentions": [
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "两家企业",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0070",
+            "ENT_GEN_0052"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_tech_same_sentence_and"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_018",
+      "text": "北京大学及上海交通大学启动论坛，两所高校将共同组织报告会。",
+      "mentions": [
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064"
+        },
+        {
+          "mention": "上海交通大学",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 11,
+          "role": "name",
+          "entity_id": "ENT_GEN_0065"
+        },
+        {
+          "mention": "两所高校",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0064",
+            "ENT_GEN_0065"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_university_same_sentence_ji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_019",
+      "text": "北京大学以及上海交通大学建设课程平台，两家高校将共享教学资源。",
+      "mentions": [
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064"
+        },
+        {
+          "mention": "上海交通大学",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 12,
+          "role": "name",
+          "entity_id": "ENT_GEN_0065"
+        },
+        {
+          "mention": "两家高校",
+          "type": "PRON",
+          "char_start": 19,
+          "char_end": 23,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0064",
+            "ENT_GEN_0065"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_university_same_sentence_yiji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_020",
+      "text": "国家电网、南方电网和华能集团发布年度计划，多家企业将联合实施。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "多家企业",
+          "type": "PRON",
+          "char_start": 21,
+          "char_end": 25,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002",
+            "ENT_ENERGY_0003"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "three_org_same_sentence_dunhao"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_021",
+      "text": "华为、腾讯及百度推进开源社区，这些企业将共同维护项目。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 8,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "这些企业",
+          "type": "PRON",
+          "char_start": 15,
+          "char_end": 19,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0051",
+            "ENT_GEN_0052",
+            "ENT_GEN_0070"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "three_tech_same_sentence_mixed_conjunction"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_022",
+      "text": "国家电网与华能集团开展储能合作，二者将共享调峰能力。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "二者",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0003"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_same_sentence_yu"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_023",
+      "text": "三峡集团和国家电网联合建设基地，双方将统一项目进度。",
+      "mentions": [
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0008",
+            "ENT_ENERGY_0001"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_same_sentence_and"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_024",
+      "text": "腾讯与百度合作研发模型，两家公司将共同投入算力。",
+      "mentions": [
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "char_start": 12,
+          "char_end": 16,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0052",
+            "ENT_GEN_0070"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_tech_same_sentence_yu"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_025",
+      "text": "国家电网及三峡集团协调水电外送，上述机构将发布方案。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "上述机构",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_same_sentence_ji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_026",
+      "text": "华为和百度推出兼容方案，它们将同步更新文档。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "它们",
+          "type": "PRON",
+          "char_start": 12,
+          "char_end": 14,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0051",
+            "ENT_GEN_0070"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_tech_same_sentence_and"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_027",
+      "text": "南方电网及华能集团举行技术交流，这些机构将跟进试点。",
+      "mentions": [
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0002",
+            "ENT_ENERGY_0003"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_same_sentence_ji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_028",
+      "text": "北京大学和上海交通大学共同举办竞赛，二者将联合评审。",
+      "mentions": [
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064"
+        },
+        {
+          "mention": "上海交通大学",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 11,
+          "role": "name",
+          "entity_id": "ENT_GEN_0065"
+        },
+        {
+          "mention": "二者",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0064",
+            "ENT_GEN_0065"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_university_same_sentence_and"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_029",
+      "text": "华能集团以及华为开发能源系统，两家企业将共享接口规范。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 8,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "两家企业",
+          "type": "PRON",
+          "char_start": 15,
+          "char_end": 19,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0003",
+            "ENT_GEN_0051"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "cross_domain_same_sentence_yiji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_030",
+      "text": "三峡集团与华为建设数字孪生平台，双方将组织验收。",
+      "mentions": [
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 7,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0008",
+            "ENT_GEN_0051"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "cross_domain_same_sentence_yu"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_031",
+      "text": "国家电网和南方电网在年度会议上签约，两家机构将建立联络机制。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "两家机构",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 22,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_with_event_insertion"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_032",
+      "text": "华为与腾讯面向开发者发布工具，它们将持续维护社区。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "它们",
+          "type": "PRON",
+          "char_start": 15,
+          "char_end": 17,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0051",
+            "ENT_GEN_0052"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_tech_same_sentence_yu"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_033",
+      "text": "三峡集团以及华能集团联合检修机组，这些机构将共享检修记录。",
+      "mentions": [
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 17,
+          "char_end": 21,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0008",
+            "ENT_ENERGY_0003"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_generator_same_sentence_yiji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_034",
+      "text": "百度及华为共同发布智能终端规范，两家公司将协商版本计划。",
+      "mentions": [
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0070",
+            "ENT_GEN_0051"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_tech_same_sentence_ji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_035",
+      "text": "国家电网、南方电网以及三峡集团共同成立工作组，上述企业将轮流牵头。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 11,
+          "char_end": 15,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "上述企业",
+          "type": "PRON",
+          "char_start": 23,
+          "char_end": 27,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "three_org_same_sentence_dunhao_yiji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_036",
+      "text": "华为和腾讯签署数据安全协议，双方将定期开展评估。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 16,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0051",
+            "ENT_GEN_0052"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_company_policy_style"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_037",
+      "text": "北京大学与上海交通大学建立联合实验班，两所大学将共同制定课程。",
+      "mentions": [
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064"
+        },
+        {
+          "mention": "上海交通大学",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 11,
+          "role": "name",
+          "entity_id": "ENT_GEN_0065"
+        },
+        {
+          "mention": "两所大学",
+          "type": "PRON",
+          "char_start": 19,
+          "char_end": 23,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0064",
+            "ENT_GEN_0065"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_university_same_sentence_yu"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_038",
+      "text": "国家电网及三峡集团推进抽蓄项目，这些企业将联合复盘。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "这些企业",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_same_sentence_ji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_039",
+      "text": "南方电网和华能集团组织应急演练，二者将共享处置预案。",
+      "mentions": [
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "二者",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0002",
+            "ENT_ENERGY_0003"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "two_org_same_sentence_and"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_040",
+      "text": "腾讯、百度以及华为发布行业倡议，多家企业将协同落实。",
+      "mentions": [
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "多家企业",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0052",
+            "ENT_GEN_0070",
+            "ENT_GEN_0051"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "three_tech_same_sentence_dunhao_yiji"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_041",
+      "text": "国家电网和南方电网分别发布公告。双方将继续沟通。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "sentence_index": 0
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "sentence_index": 0
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun",
+          "sentence_index": 1
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "跨句集合不在当前规则支持范围"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_042",
+      "text": "华能集团与三峡集团完成会谈。这些机构将另行公布细节。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003",
+          "sentence_index": 0
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008",
+          "sentence_index": 0
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 18,
+          "role": "pronoun",
+          "sentence_index": 1
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "跨句集合不在当前规则支持范围"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_043",
+      "text": "华为和腾讯发布声明。两家公司将安排后续测试。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051",
+          "sentence_index": 0
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052",
+          "sentence_index": 0
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "pronoun",
+          "sentence_index": 1
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "跨句集合不在当前规则支持范围"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_044",
+      "text": "北京大学及上海交通大学举行会议。两所高校将继续交流。",
+      "mentions": [
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064",
+          "sentence_index": 0
+        },
+        {
+          "mention": "上海交通大学",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 11,
+          "role": "name",
+          "entity_id": "ENT_GEN_0065",
+          "sentence_index": 0
+        },
+        {
+          "mention": "两所高校",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun",
+          "sentence_index": 1
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "跨句集合不在当前规则支持范围"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_045",
+      "text": "国家电网、南方电网和华能集团公布结果。多家企业将参与复盘。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "sentence_index": 0
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "sentence_index": 0
+        },
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003",
+          "sentence_index": 1
+        },
+        {
+          "mention": "多家企业",
+          "type": "PRON",
+          "char_start": 19,
+          "char_end": 23,
+          "role": "pronoun",
+          "sentence_index": 1
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "跨句集合不在当前规则支持范围"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_046",
+      "text": "华为与广州市共同举办展会，他们随后发布公告。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "广州市",
+          "type": "GPE",
+          "char_start": 3,
+          "char_end": 6,
+          "role": "name",
+          "entity_id": "ENT_GEN_0093"
+        },
+        {
+          "mention": "他们",
+          "type": "PRON",
+          "char_start": 13,
+          "char_end": 15,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件类型不兼容"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_047",
+      "text": "国家电网和广州市推进试点，双方将公布安排。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "广州市",
+          "type": "GPE",
+          "char_start": 5,
+          "char_end": 8,
+          "role": "name",
+          "entity_id": "ENT_GEN_0093"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 13,
+          "char_end": 15,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件类型不兼容"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_048",
+      "text": "三峡集团及广州市举办论坛，这些机构发布议程。",
+      "mentions": [
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "广州市",
+          "type": "GPE",
+          "char_start": 5,
+          "char_end": 8,
+          "role": "name",
+          "entity_id": "ENT_GEN_0093"
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 13,
+          "char_end": 17,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件类型不兼容"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_049",
+      "text": "百度与广州市举办招聘活动，两家机构公布流程。",
+      "mentions": [
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "广州市",
+          "type": "GPE",
+          "char_start": 3,
+          "char_end": 6,
+          "role": "name",
+          "entity_id": "ENT_GEN_0093"
+        },
+        {
+          "mention": "两家机构",
+          "type": "PRON",
+          "char_start": 13,
+          "char_end": 17,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件类型不兼容"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_050",
+      "text": "甲机构和乙机构发布联合声明，这些机构将持续合作。",
+      "mentions": [
+        {
+          "mention": "甲机构",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name"
+        },
+        {
+          "mention": "乙机构",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 7,
+          "role": "name"
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件未链接到运行知识库"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_051",
+      "text": "甲机构及乙机构召开会议，双方将签署备忘录。",
+      "mentions": [
+        {
+          "mention": "甲机构",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name"
+        },
+        {
+          "mention": "乙机构",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 7,
+          "role": "name"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 12,
+          "char_end": 14,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件未链接到运行知识库"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_052",
+      "text": "甲机构以及乙机构完成评审，两家机构将公布结论。",
+      "mentions": [
+        {
+          "mention": "甲机构",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name"
+        },
+        {
+          "mention": "乙机构",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 8,
+          "role": "name"
+        },
+        {
+          "mention": "两家机构",
+          "type": "PRON",
+          "char_start": 13,
+          "char_end": 17,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件未链接到运行知识库"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_053",
+      "text": "国家电网和国家电网共同发布通知，双方将更新计划。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "去重后只有一个实体 ID"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_054",
+      "text": "华为与华为联合展示产品，两家公司将继续合作。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "char_start": 12,
+          "char_end": 16,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "去重后只有一个实体 ID"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_055",
+      "text": "国家电网发布公告，南方电网随后回应，双方继续沟通。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 9,
+          "char_end": 13,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件之间不存在显式协调连接"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_056",
+      "text": "华能集团发布计划，三峡集团随后跟进，这些企业共享信息。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 9,
+          "char_end": 13,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "这些企业",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 22,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件之间不存在显式协调连接"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_057",
+      "text": "华为发布新品，腾讯随后评论，两家公司组织交流。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件之间不存在显式协调连接"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_058",
+      "text": "国家电网和南方电网公布联合计划，他将继续跟进。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "他",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 17,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": false,
+          "is_nil": true,
+          "nil_reason": "单数人物代词不能回指机构集合"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_059",
+      "text": "华能集团及三峡集团启动项目，她将负责协调。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "她",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 15,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": false,
+          "is_nil": true,
+          "nil_reason": "单数人物代词不能回指机构集合"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_060",
+      "text": "华为与腾讯发布声明，他将安排测试。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "他",
+          "type": "PRON",
+          "char_start": 10,
+          "char_end": 11,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": false,
+          "is_nil": true,
+          "nil_reason": "单数人物代词不能回指机构集合"
+        }
+      ]
+    },
+    {
+      "id": "CORE_COL_EVAL_061",
+      "text": "国家电网及南方电网联合发布调度方案，双方将同步建设平台。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step2_two_org_ji",
+          "conjunction": "及",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "“双方”回指由“及”连接的两个已链接 ORG 前件。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_062",
+      "text": "华能集团以及三峡集团推进水电协同，二者将共享运行数据。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "二者",
+          "type": "PRON",
+          "char_start": 17,
+          "char_end": 19,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0003",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step2_two_org_yiji",
+          "conjunction": "以及",
+          "anaphor": "二者",
+          "sentence_distance": 0,
+          "evidence": "“二者”回指由“以及”连接的两个已链接 ORG 前件。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_063",
+      "text": "国家电网、南方电网及华能集团共同制定保供计划，多家企业将协同落实。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "多家企业",
+          "type": "PRON",
+          "char_start": 23,
+          "char_end": 27,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002",
+            "ENT_ENERGY_0003"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step2_three_org_mixed",
+          "conjunction": "顿号+及",
+          "anaphor": "多家企业",
+          "sentence_distance": 0,
+          "evidence": "三实体通过顿号和“及”形成明确协调组。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_064",
+      "text": "国家电网、南方电网及华能集团以及三峡集团成立工作组，多家企业将轮流牵头。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "多家企业",
+          "type": "PRON",
+          "char_start": 26,
+          "char_end": 30,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 4,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002",
+            "ENT_ENERGY_0003",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step2_four_org_mixed",
+          "conjunction": "顿号+及+以及",
+          "anaphor": "多家企业",
+          "sentence_distance": 0,
+          "evidence": "四个已链接 ORG 由连续显式连接词构成同一集合。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_065",
+      "text": "国家电网和南方电网在历经三个月协商后于北京签署协议，双方将共同推进工程。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 26,
+          "char_end": 28,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step2_inserted_modifier",
+          "conjunction": "和",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "时间、地点插入不改变“和”连接的两个前件。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_066",
+      "text": "国家电网和南方电网负责输电，华为与百度负责平台建设，双方将完成系统联调。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 16,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 17,
+          "char_end": 19,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 26,
+          "char_end": 28,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0051",
+            "ENT_GEN_0070"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step2_nearest_coordination_group",
+          "conjunction": "与",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "存在两个协调组时，按当前标注规范回指最近的“华为与百度”。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_067",
+      "text": "三峡集团与广州市共同举办论坛，双方公布后续安排。",
+      "mentions": [
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "广州市",
+          "type": "GPE",
+          "char_start": 5,
+          "char_end": 8,
+          "role": "name",
+          "entity_id": "ENT_GEN_0093"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 15,
+          "char_end": 17,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "ORG 与 GPE 不能组成同质集合",
+          "scenario": "step2_type_conflict_nil",
+          "conjunction": "与",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "前件类型冲突，集合共指应拒绝。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_068",
+      "text": "国家电网和南方电网发布联合公告，她将继续跟进。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "她",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 17,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": false,
+          "is_nil": true,
+          "nil_reason": "单数人物代词不能回指机构集合",
+          "scenario": "step2_single_pronoun_nil",
+          "conjunction": "和",
+          "anaphor": "她",
+          "sentence_distance": 0,
+          "evidence": "单数人物代词不能回指机构集合。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "easy"
+    },
+    {
+      "id": "CORE_COL_EVAL_069",
+      "text": "国家电网和国家电网共同发布通知，双方将更新计划。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "去重后仅剩一个实体 ID",
+          "scenario": "step2_duplicate_entity_id_nil",
+          "conjunction": "和",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "两个 mention 指向同一 ID，不能作为集合成功。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_070",
+      "text": "甲机构及乙机构召开会议，双方将签署备忘录。",
+      "mentions": [
+        {
+          "mention": "甲机构",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name"
+        },
+        {
+          "mention": "乙机构",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 7,
+          "role": "name"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 12,
+          "char_end": 14,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件未链接到运行知识库",
+          "scenario": "step2_unlinked_antecedents_nil",
+          "conjunction": "及",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "正式端到端验收要求先行词具备运行知识库实体 ID。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_071",
+      "text": "国家电网与南方电网召开会议。会议讨论了多个议题。双方最终签署备忘录。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "sentence_index": 0
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "sentence_index": 0
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 24,
+          "char_end": 26,
+          "role": "pronoun",
+          "sentence_index": 2
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_cross_two_sentences",
+          "conjunction": "与",
+          "anaphor": "双方",
+          "sentence_distance": 2,
+          "evidence": "语义上“双方”回指首句两个机构；用于检验跨两句集合能力。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_072",
+      "text": "国家电网与南方电网发布联合计划。华为随后提出技术方案。双方将共同建设调度平台。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "sentence_index": 0
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "sentence_index": 0
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051",
+          "sentence_index": 1
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 27,
+          "char_end": 29,
+          "role": "pronoun",
+          "sentence_index": 2
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "主体切换后“双方”缺少可唯一确定的集合前件",
+          "scenario": "blind_subject_switch_nil",
+          "conjunction": "与",
+          "anaphor": "双方",
+          "sentence_distance": 2,
+          "evidence": "中间主体切换造成指代歧义，标注为集合 NIL。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_073",
+      "text": "国家电网同南方电网共同推进项目，双方将建立联络机制。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_same_as_conjunction",
+          "conjunction": "同",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "“同”在自然语义中连接两个机构；用于检验未覆盖连接方式。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_074",
+      "text": "微信和腾讯会议联合升级协作功能，它们将同步开放测试。",
+      "mentions": [
+        {
+          "mention": "微信",
+          "type": "CONSUMER_PRODUCT",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0061"
+        },
+        {
+          "mention": "腾讯会议",
+          "type": "CONSUMER_PRODUCT",
+          "char_start": 3,
+          "char_end": 7,
+          "role": "name",
+          "entity_id": "ENT_GEN_0104"
+        },
+        {
+          "mention": "它们",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0061",
+            "ENT_GEN_0104"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_product_collective",
+          "conjunction": "和",
+          "anaphor": "它们",
+          "sentence_distance": 0,
+          "evidence": "两个运行知识库产品在语义上构成集合；用于检验非 ORG/PERSON 集合。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_075",
+      "text": "国家电网和南方电网发布联合计划，她们随后公布细则。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "她们",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "运行知识库无可用女性 PERSON 前件，机构集合不应由“她们”回指",
+          "scenario": "blind_female_pronoun_type_conflict_nil",
+          "conjunction": "和",
+          "anaphor": "她们",
+          "sentence_distance": 0,
+          "evidence": "不虚构 PERSON 实体 ID；“她们”作为类型不兼容边界。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_076",
+      "text": "国家电网及大唐集团联合开展保供演练，双方将共享调度方案。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "大唐集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0004"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0004"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_energy_ji",
+          "conjunction": "及",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "能源机构由“及”连接，双方回指两个运行 KB 前件。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_077",
+      "text": "国家电网以及国家电投共同发布储能倡议，二者将建立联络机制。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "国家电投",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0006"
+        },
+        {
+          "mention": "二者",
+          "type": "PRON",
+          "char_start": 19,
+          "char_end": 21,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0006"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_energy_yiji",
+          "conjunction": "以及",
+          "anaphor": "二者",
+          "sentence_distance": 0,
+          "evidence": "两个能源机构由“以及”构成协调组。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_078",
+      "text": "中国移动及中国电信推进算网协同，两家公司将开放试验环境。",
+      "mentions": [
+        {
+          "mention": "中国移动",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0102"
+        },
+        {
+          "mention": "中国电信",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0103"
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0102",
+            "ENT_GEN_0103"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_telecom_ji",
+          "conjunction": "及",
+          "anaphor": "两家公司",
+          "sentence_distance": 0,
+          "evidence": "两个通信企业形成明确同句集合。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_079",
+      "text": "新华社以及中央广电总台共同报道论坛，这些机构将共享采编资源。",
+      "mentions": [
+        {
+          "mention": "新华社",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name",
+          "entity_id": "ENT_GEN_0115"
+        },
+        {
+          "mention": "中央广电总台",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 11,
+          "role": "name",
+          "entity_id": "ENT_GEN_0116"
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 22,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0115",
+            "ENT_GEN_0116"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_media_yiji",
+          "conjunction": "以及",
+          "anaphor": "这些机构",
+          "sentence_distance": 0,
+          "evidence": "媒体机构由“以及”连接。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_080",
+      "text": "国铁集团及南方航空优化联运服务，双方将统一换乘指引。",
+      "mentions": [
+        {
+          "mention": "国铁集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0113"
+        },
+        {
+          "mention": "南方航空",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0114"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0113",
+            "ENT_GEN_0114"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_transport_ji",
+          "conjunction": "及",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "交通机构形成双主体集合。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_081",
+      "text": "工商银行及建设银行推出绿色信贷方案，两家机构将交流风控经验。",
+      "mentions": [
+        {
+          "mention": "工商银行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0055"
+        },
+        {
+          "mention": "建设银行",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0081"
+        },
+        {
+          "mention": "两家机构",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 22,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0055",
+            "ENT_GEN_0081"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_finance_ji",
+          "conjunction": "及",
+          "anaphor": "两家机构",
+          "sentence_distance": 0,
+          "evidence": "金融机构由“及”连接。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_082",
+      "text": "中日友好医院及瑞金医院开展远程会诊，这些机构将共享病例规范。",
+      "mentions": [
+        {
+          "mention": "中日友好医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "role": "name",
+          "entity_id": "ENT_GEN_0111"
+        },
+        {
+          "mention": "瑞金医院",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 11,
+          "role": "name",
+          "entity_id": "ENT_GEN_0112"
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 22,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0111",
+            "ENT_GEN_0112"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_medical_ji",
+          "conjunction": "及",
+          "anaphor": "这些机构",
+          "sentence_distance": 0,
+          "evidence": "两个医疗机构是同句已链接前件。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_083",
+      "text": "清华大学及浙江大学联合举办课程，两所高校将共同组织答辩。",
+      "mentions": [
+        {
+          "mention": "清华大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0060"
+        },
+        {
+          "mention": "浙江大学",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0066"
+        },
+        {
+          "mention": "两所高校",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0060",
+            "ENT_GEN_0066"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_university_ji",
+          "conjunction": "及",
+          "anaphor": "两所高校",
+          "sentence_distance": 0,
+          "evidence": "高校前件由“及”连接。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_084",
+      "text": "华为与阿里巴巴联合发布安全规范，双方将组织开发者测试。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "阿里巴巴",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 7,
+          "role": "name",
+          "entity_id": "ENT_GEN_0053"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0051",
+            "ENT_GEN_0053"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_tech_yu",
+          "conjunction": "与",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "科技企业同句显式并列。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_085",
+      "text": "比亚迪和宁德时代签署电池合作协议，两家企业将公布兼容标准。",
+      "mentions": [
+        {
+          "mention": "比亚迪",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0016"
+        },
+        {
+          "mention": "宁德时代",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 8,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0015"
+        },
+        {
+          "mention": "两家企业",
+          "type": "PRON",
+          "char_start": 17,
+          "char_end": 21,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0016",
+            "ENT_ENERGY_0015"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_new_energy_and",
+          "conjunction": "和",
+          "anaphor": "两家企业",
+          "sentence_distance": 0,
+          "evidence": "新能源企业由“和”连接。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_086",
+      "text": "国家能源局与国家发展改革委召开专题会议，双方将分别推进实施细则。",
+      "mentions": [
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0059"
+        },
+        {
+          "mention": "国家发展改革委",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 13,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 20,
+          "char_end": 22,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0059",
+            "ENT_GEN_0089"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_government_yu",
+          "conjunction": "与",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "两个政府机构形成协调组。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_087",
+      "text": "工业和信息化部与生态环境部会商绿色制造，二者将联合发布指南。",
+      "mentions": [
+        {
+          "mention": "工业和信息化部",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 7,
+          "role": "name",
+          "entity_id": "ENT_GEN_0090"
+        },
+        {
+          "mention": "生态环境部",
+          "type": "ORG",
+          "char_start": 8,
+          "char_end": 13,
+          "role": "name",
+          "entity_id": "ENT_GEN_0091"
+        },
+        {
+          "mention": "二者",
+          "type": "PRON",
+          "char_start": 20,
+          "char_end": 22,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0090",
+            "ENT_GEN_0091"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_government_yu_two",
+          "conjunction": "与",
+          "anaphor": "二者",
+          "sentence_distance": 0,
+          "evidence": "“二者”回指同句两个机构。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_088",
+      "text": "人民日报社和中国日报社共同策划专题报道，这些机构将共享采访线索。",
+      "mentions": [
+        {
+          "mention": "人民日报社",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0139"
+        },
+        {
+          "mention": "中国日报社",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 11,
+          "role": "name",
+          "entity_id": "ENT_GEN_0153"
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 20,
+          "char_end": 24,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0139",
+            "ENT_GEN_0153"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_media_and",
+          "conjunction": "和",
+          "anaphor": "这些机构",
+          "sentence_distance": 0,
+          "evidence": "新闻机构的集合回指。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_089",
+      "text": "国网江苏电力与广东电网开展跨省交易试点，两家机构将对接结算规则。",
+      "mentions": [
+        {
+          "mention": "国网江苏电力",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "role": "name",
+          "entity_id": "ENT_GEN_0124"
+        },
+        {
+          "mention": "广东电网",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 11,
+          "role": "name",
+          "entity_id": "ENT_GEN_0125"
+        },
+        {
+          "mention": "两家机构",
+          "type": "PRON",
+          "char_start": 20,
+          "char_end": 24,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0124",
+            "ENT_GEN_0125"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_regional_grid_yu",
+          "conjunction": "与",
+          "anaphor": "两家机构",
+          "sentence_distance": 0,
+          "evidence": "区域电网机构形成同质集合。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_090",
+      "text": "北京天坛医院和邵逸夫医院联合制定转诊流程，双方将共享培训材料。",
+      "mentions": [
+        {
+          "mention": "北京天坛医院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "role": "name",
+          "entity_id": "ENT_GEN_0147"
+        },
+        {
+          "mention": "邵逸夫医院",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 12,
+          "role": "name",
+          "entity_id": "ENT_GEN_0148"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 21,
+          "char_end": 23,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0147",
+            "ENT_GEN_0148"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_medical_and",
+          "conjunction": "和",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "医疗机构同句显式协调。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_091",
+      "text": "国家电网、南方电网、大唐集团及国家电投共同发布保供方案，多家企业将同步落实。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "大唐集团",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0004"
+        },
+        {
+          "mention": "国家电投",
+          "type": "ORG",
+          "char_start": 15,
+          "char_end": 19,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0006"
+        },
+        {
+          "mention": "多家企业",
+          "type": "PRON",
+          "char_start": 28,
+          "char_end": 32,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 4,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002",
+            "ENT_ENERGY_0004",
+            "ENT_ENERGY_0006"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_four_energy",
+          "conjunction": "顿号+及",
+          "anaphor": "多家企业",
+          "sentence_distance": 0,
+          "evidence": "四个能源机构形成连续协调组。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_092",
+      "text": "华为、腾讯及阿里巴巴联合建设开源社区，多家企业将维护基础设施。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "阿里巴巴",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "role": "name",
+          "entity_id": "ENT_GEN_0053"
+        },
+        {
+          "mention": "多家企业",
+          "type": "PRON",
+          "char_start": 19,
+          "char_end": 23,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0051",
+            "ENT_GEN_0052",
+            "ENT_GEN_0053"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_three_tech",
+          "conjunction": "顿号+及",
+          "anaphor": "多家企业",
+          "sentence_distance": 0,
+          "evidence": "三个科技企业形成集合。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_093",
+      "text": "工商银行、建设银行及中国银行共同发布报告，多家机构将完善绿色金融服务。",
+      "mentions": [
+        {
+          "mention": "工商银行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0055"
+        },
+        {
+          "mention": "建设银行",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0081"
+        },
+        {
+          "mention": "中国银行",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_GEN_0083"
+        },
+        {
+          "mention": "多家机构",
+          "type": "PRON",
+          "char_start": 21,
+          "char_end": 25,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0055",
+            "ENT_GEN_0081",
+            "ENT_GEN_0083"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_three_finance",
+          "conjunction": "顿号+及",
+          "anaphor": "多家机构",
+          "sentence_distance": 0,
+          "evidence": "三个金融机构由连续连接词组成集合。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_094",
+      "text": "清华大学、北京大学及浙江大学共建课程平台，这些机构将共享实验资源。",
+      "mentions": [
+        {
+          "mention": "清华大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0060"
+        },
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064"
+        },
+        {
+          "mention": "浙江大学",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_GEN_0066"
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 21,
+          "char_end": 25,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0060",
+            "ENT_GEN_0064",
+            "ENT_GEN_0066"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_three_university",
+          "conjunction": "顿号+及",
+          "anaphor": "这些机构",
+          "sentence_distance": 0,
+          "evidence": "三个高校实体在同句形成协调组。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_095",
+      "text": "国铁集团、南方航空及中国国航共同优化出行服务，多家机构将发布联运规则。",
+      "mentions": [
+        {
+          "mention": "国铁集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0113"
+        },
+        {
+          "mention": "南方航空",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0114"
+        },
+        {
+          "mention": "中国国航",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_GEN_0135"
+        },
+        {
+          "mention": "多家机构",
+          "type": "PRON",
+          "char_start": 23,
+          "char_end": 27,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0113",
+            "ENT_GEN_0114",
+            "ENT_GEN_0135"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_three_transport",
+          "conjunction": "顿号+及",
+          "anaphor": "多家机构",
+          "sentence_distance": 0,
+          "evidence": "三个交通机构形成同句集合。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_096",
+      "text": "国家能源局和国家发展改革委在多轮论证后于北京签署备忘录，双方将建立项目台账。",
+      "mentions": [
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0059"
+        },
+        {
+          "mention": "国家发展改革委",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 13,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 28,
+          "char_end": 30,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0059",
+            "ENT_GEN_0089"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_long_insertion",
+          "conjunction": "和",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "长插入语不影响显式协调关系。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_097",
+      "text": "电力规划设计总院与中国电力科学研究院共同评审方案，上述机构将发布技术意见。",
+      "mentions": [
+        {
+          "mention": "电力规划设计总院",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 8,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0049"
+        },
+        {
+          "mention": "中国电力科学研究院",
+          "type": "ORG",
+          "char_start": 9,
+          "char_end": 18,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0050"
+        },
+        {
+          "mention": "上述机构",
+          "type": "PRON",
+          "char_start": 25,
+          "char_end": 29,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0049",
+            "ENT_ENERGY_0050"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_research_yu",
+          "conjunction": "与",
+          "anaphor": "上述机构",
+          "sentence_distance": 0,
+          "evidence": "研究机构集合由“与”连接。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_098",
+      "text": "国家电网和南方电网负责输电，工商银行与建设银行负责融资，双方将先完成授信评审。",
+      "mentions": [
+        {
+          "mention": "工商银行",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 18,
+          "role": "name",
+          "entity_id": "ENT_GEN_0055"
+        },
+        {
+          "mention": "建设银行",
+          "type": "ORG",
+          "char_start": 19,
+          "char_end": 23,
+          "role": "name",
+          "entity_id": "ENT_GEN_0081"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 28,
+          "char_end": 30,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0055",
+            "ENT_GEN_0081"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_multi_group_finance_nearest",
+          "conjunction": "与",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "两组协调结构中，“双方”回指最近的金融机构组。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_099",
+      "text": "华为与腾讯推进平台建设，新华社和中央广电总台负责传播，双方将联合发布报道。",
+      "mentions": [
+        {
+          "mention": "新华社",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 15,
+          "role": "name",
+          "entity_id": "ENT_GEN_0115"
+        },
+        {
+          "mention": "中央广电总台",
+          "type": "ORG",
+          "char_start": 16,
+          "char_end": 22,
+          "role": "name",
+          "entity_id": "ENT_GEN_0116"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 27,
+          "char_end": 29,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0115",
+            "ENT_GEN_0116"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_multi_group_media_nearest",
+          "conjunction": "和",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "最近协调组为两个媒体机构。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_100",
+      "text": "清华大学及北京大学完成课程设计，浙江大学与复旦大学负责试点，二者将同步反馈结果。",
+      "mentions": [
+        {
+          "mention": "浙江大学",
+          "type": "ORG",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "name",
+          "entity_id": "ENT_GEN_0066"
+        },
+        {
+          "mention": "复旦大学",
+          "type": "ORG",
+          "char_start": 21,
+          "char_end": 25,
+          "role": "name",
+          "entity_id": "ENT_GEN_0067"
+        },
+        {
+          "mention": "二者",
+          "type": "PRON",
+          "char_start": 30,
+          "char_end": 32,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0066",
+            "ENT_GEN_0067"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_multi_group_university_nearest",
+          "conjunction": "与",
+          "anaphor": "二者",
+          "sentence_distance": 0,
+          "evidence": "“二者”回指最近的高校协调组。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_101",
+      "text": "国家电网、南方电网及三峡集团完成联合演练，上述企业将复盘处置流程。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "上述企业",
+          "type": "PRON",
+          "char_start": 21,
+          "char_end": 25,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_three_energy_above",
+          "conjunction": "顿号+及",
+          "anaphor": "上述企业",
+          "sentence_distance": 0,
+          "evidence": "三个能源机构由“上述企业”集合回指。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_102",
+      "text": "中国移动和中国电信发布协同计划，这些企业将共同开放边缘节点。",
+      "mentions": [
+        {
+          "mention": "中国移动",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0102"
+        },
+        {
+          "mention": "中国电信",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0103"
+        },
+        {
+          "mention": "这些企业",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0102",
+            "ENT_GEN_0103"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_telecom_and",
+          "conjunction": "和",
+          "anaphor": "这些企业",
+          "sentence_distance": 0,
+          "evidence": "通信企业集合回指。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_103",
+      "text": "华能集团及大唐集团启动机组检修，两家公司将统一排期。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "大唐集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0004"
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0003",
+            "ENT_ENERGY_0004"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "step3_generator_ji",
+          "conjunction": "及",
+          "anaphor": "两家公司",
+          "sentence_distance": 0,
+          "evidence": "两个能源企业由“及”连接。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_104",
+      "text": "国家电网和微信共同发布工具说明，双方将安排培训。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "微信",
+          "type": "CONSUMER_PRODUCT",
+          "char_start": 5,
+          "char_end": 7,
+          "role": "name",
+          "entity_id": "ENT_GEN_0061"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "ORG 与产品类型不兼容",
+          "scenario": "step3_org_product_conflict_nil",
+          "conjunction": "和",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "混合类型前件不能组成规则允许的集合。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_105",
+      "text": "甲机构和乙机构分别说明进展，双方将继续沟通。",
+      "mentions": [
+        {
+          "mention": "甲机构",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name"
+        },
+        {
+          "mention": "乙机构",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 7,
+          "role": "name"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 16,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "两个前件均未链接到运行知识库",
+          "scenario": "step3_unlinked_both_nil",
+          "conjunction": "和",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "未链接前件不产生正式实体集合。"
+        }
+      ],
+      "subset": "acceptance_main",
+      "difficulty": "medium"
+    },
+    {
+      "id": "CORE_COL_EVAL_106",
+      "text": "国家电网和南方电网签署协议。双方随后公布实施方案。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "sentence_index": 0
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "sentence_index": 0
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 16,
+          "role": "pronoun",
+          "sentence_index": 1
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_cross_adjacent",
+          "conjunction": "和",
+          "anaphor": "双方",
+          "sentence_distance": 1,
+          "evidence": "语义上“双方”跨句回指两个电网机构。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_107",
+      "text": "华能集团与三峡集团召开会议。会议由主持人说明议程。双方最终确定调度机制。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003",
+          "sentence_index": 0
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008",
+          "sentence_index": 0
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 25,
+          "char_end": 27,
+          "role": "pronoun",
+          "sentence_index": 2
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0003",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_cross_with_intervening_entity",
+          "conjunction": "与",
+          "anaphor": "双方",
+          "sentence_distance": 2,
+          "evidence": "中间插入句子不应改变语义上的原协调组。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_108",
+      "text": "中国移动跟中国电信共同开展测试，双方将公布结果。",
+      "mentions": [
+        {
+          "mention": "中国移动",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0102"
+        },
+        {
+          "mention": "中国电信",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0103"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0102",
+            "ENT_GEN_0103"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_gen_conjunction",
+          "conjunction": "跟",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "“跟”自然连接两个机构，但当前规则尚未覆盖。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_109",
+      "text": "国家电网连同南方电网推进改造工程，两家机构将共同验收。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "两家机构",
+          "type": "PRON",
+          "char_start": 17,
+          "char_end": 21,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_liantong_conjunction",
+          "conjunction": "连同",
+          "anaphor": "两家机构",
+          "sentence_distance": 0,
+          "evidence": "“连同”表达联合参与，用于盲测连接词覆盖。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_110",
+      "text": "国家能源局会同国家发展改革委发布通知，双方将督促落实。",
+      "mentions": [
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0059"
+        },
+        {
+          "mention": "国家发展改革委",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 19,
+          "char_end": 21,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0059",
+            "ENT_GEN_0089"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_huitong_conjunction",
+          "conjunction": "会同",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "“会同”表达联合行动，用于盲测连接词覆盖。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_111",
+      "text": "国家电网、南方电网及华能集团共同参会，各方将提交实施清单。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 14,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "各方",
+          "type": "PRON",
+          "char_start": 19,
+          "char_end": 21,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0001",
+            "ENT_ENERGY_0002",
+            "ENT_ENERGY_0003"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_all_parties",
+          "conjunction": "顿号+及",
+          "anaphor": "各方",
+          "sentence_distance": 0,
+          "evidence": "“各方”语义上回指三个明确参与主体。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_112",
+      "text": "华为、腾讯及百度联合成立实验室，三方将共同管理成果。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 3,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "百度",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 8,
+          "role": "name",
+          "entity_id": "ENT_GEN_0070"
+        },
+        {
+          "mention": "三方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0051",
+            "ENT_GEN_0052",
+            "ENT_GEN_0070"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_three_parties",
+          "conjunction": "顿号+及",
+          "anaphor": "三方",
+          "sentence_distance": 0,
+          "evidence": "“三方”语义上回指三个科技企业。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_113",
+      "text": "清华大学与北京大学共同建设课程平台，两者将开放教学资源。",
+      "mentions": [
+        {
+          "mention": "清华大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0060"
+        },
+        {
+          "mention": "北京大学",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0064"
+        },
+        {
+          "mention": "两者",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0060",
+            "ENT_GEN_0064"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_liangzhe",
+          "conjunction": "与",
+          "anaphor": "两者",
+          "sentence_distance": 0,
+          "evidence": "“两者”语义上回指两个高校。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_114",
+      "text": "新华社和中央广电总台联合采访，该二者将共享素材。",
+      "mentions": [
+        {
+          "mention": "新华社",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name",
+          "entity_id": "ENT_GEN_0115"
+        },
+        {
+          "mention": "中央广电总台",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 10,
+          "role": "name",
+          "entity_id": "ENT_GEN_0116"
+        },
+        {
+          "mention": "该二者",
+          "type": "PRON",
+          "char_start": 15,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0115",
+            "ENT_GEN_0116"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_the_two",
+          "conjunction": "和",
+          "anaphor": "该二者",
+          "sentence_distance": 0,
+          "evidence": "“该二者”语义上回指两个媒体机构。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_115",
+      "text": "工商银行及建设银行联合发布报告，上述单位将说明风险控制措施。",
+      "mentions": [
+        {
+          "mention": "工商银行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0055"
+        },
+        {
+          "mention": "建设银行",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0081"
+        },
+        {
+          "mention": "上述单位",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0055",
+            "ENT_GEN_0081"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "blind_above_units",
+          "conjunction": "及",
+          "anaphor": "上述单位",
+          "sentence_distance": 0,
+          "evidence": "“上述单位”语义上回指两个金融机构。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_116",
+      "text": "国家电网与南方电网发布联合计划。华为随后单独提出技术方案。双方将建设平台。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "sentence_index": 0
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "sentence_index": 0
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051",
+          "sentence_index": 1
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 29,
+          "char_end": 31,
+          "role": "pronoun",
+          "sentence_index": 2
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "主体切换后集合前件不唯一",
+          "scenario": "blind_subject_switch_second_nil",
+          "conjunction": "与",
+          "anaphor": "双方",
+          "sentence_distance": 2,
+          "evidence": "主体切换后“双方”无唯一语义指向。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_117",
+      "text": "华为和支付宝联合发布活动说明，双方将开放报名。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "支付宝",
+          "type": "SOFTWARE_PLATFORM",
+          "char_start": 3,
+          "char_end": 6,
+          "role": "name",
+          "entity_id": "ENT_GEN_0097"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 15,
+          "char_end": 17,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "ORG 与软件平台类型不兼容",
+          "scenario": "blind_org_platform_conflict_nil",
+          "conjunction": "和",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "混合类型主体不应被强行组成集合。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_118",
+      "text": "甲机构及乙机构宣布合作，双方将建立协调组。",
+      "mentions": [
+        {
+          "mention": "甲机构",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name"
+        },
+        {
+          "mention": "乙机构",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 7,
+          "role": "name"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 12,
+          "char_end": 14,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件均未链接到运行知识库",
+          "scenario": "blind_unlinked_nil",
+          "conjunction": "及",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "无运行 KB 前件时应返回集合 NIL。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_119",
+      "text": "国家电网和国家电网联合发布通知，双方将共同实施。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "去重后只有一个有效实体 ID",
+          "scenario": "blind_duplicate_id_nil",
+          "conjunction": "和",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "重复实体 ID 不能充当两个集合成员。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_120",
+      "text": "国家电网发布公告，南方电网随后回应，双方将继续沟通。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 9,
+          "char_end": 13,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "前件之间没有显式协调连接",
+          "scenario": "blind_no_coordination_nil",
+          "conjunction": "none",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "两个实体并不构成明确共同前件。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_121",
+      "text": "国家电网和南方电网发布方案，三方将继续磋商。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "三方",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 16,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "集合代词数量与两个前件不匹配",
+          "scenario": "blind_cardinality_mismatch_nil",
+          "conjunction": "和",
+          "anaphor": "三方",
+          "sentence_distance": 0,
+          "evidence": "文本仅有两个有效前件，不能标注为三方集合。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_122",
+      "text": "国家电网和南方电网完成签约。双方随后公布细则。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "sentence_index": 0
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "sentence_index": 0
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 16,
+          "role": "pronoun",
+          "sentence_index": 1
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "跨句隐式集合不在当前规则支持范围",
+          "scenario": "blind_cross_sentence_nil",
+          "conjunction": "和",
+          "anaphor": "双方",
+          "sentence_distance": 1,
+          "evidence": "作为跨句规则边界 NIL 保留。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_123",
+      "text": "国家电网和南方电网负责输电，华为与腾讯负责平台，双方将在年内验收。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 16,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "腾讯",
+          "type": "ORG",
+          "char_start": 17,
+          "char_end": 19,
+          "role": "name",
+          "entity_id": "ENT_GEN_0052"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 24,
+          "char_end": 26,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 4,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "两个协调组均可能被“双方”指代，缺少语义限定",
+          "scenario": "blind_multi_group_ambiguous_nil",
+          "conjunction": "mixed",
+          "anaphor": "双方",
+          "sentence_distance": 0,
+          "evidence": "多协调组无额外限定时标注为集合 NIL。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_124",
+      "text": "国家电网和南方电网发布联合计划，她们随后公布细则。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "她们",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "机构前件与女性 PERSON 集合代词类型不兼容",
+          "scenario": "blind_female_org_conflict_nil",
+          "conjunction": "和",
+          "anaphor": "她们",
+          "sentence_distance": 0,
+          "evidence": "不虚构女性 PERSON 运行知识库 ID。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    },
+    {
+      "id": "CORE_COL_EVAL_125",
+      "text": "国家电网与南方电网召开会议。会议记录已经归档。相关部门完成审查。双方将启动项目。",
+      "mentions": [
+        {
+          "mention": "国家电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0001",
+          "sentence_index": 0
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002",
+          "sentence_index": 0
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 32,
+          "char_end": 34,
+          "role": "pronoun",
+          "sentence_index": 3
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "nil_reason": "跨越多个句子的隐式集合不在当前规则支持范围",
+          "scenario": "blind_long_distance_nil",
+          "conjunction": "与",
+          "anaphor": "双方",
+          "sentence_distance": 3,
+          "evidence": "远距离跨句集合边界。"
+        }
+      ],
+      "subset": "challenge_dev",
+      "difficulty": "hard"
+    }
+  ]
+}

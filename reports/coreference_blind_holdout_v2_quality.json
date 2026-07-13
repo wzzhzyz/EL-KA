@@ -1,0 +1,15 @@
+{
+  "texts": 32,
+  "cases": 32,
+  "positive": 20,
+  "nil": 12,
+  "schema_errors": 0,
+  "offset_errors": 0,
+  "non_kb_positive_ids": 0,
+  "exact_duplicates": 0,
+  "internal_near_duplicates": 0,
+  "external_near_duplicates": 0,
+  "gold_conflicts": 0,
+  "unreviewed_samples": 0,
+  "single_review_limitation": true
+}

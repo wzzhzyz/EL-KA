@@ -1065,13 +1065,13 @@
       "text": "广州公布充电设施补贴政策。",
       "mention": "广州",
       "expected_candidates": [
-        "ENT_GEN_0080",
-        "ENT_GEN_0093"
+        "ENT_GEN_0093",
+        "ENT_GEN_0080"
       ],
-      "gold_entity": "ENT_GEN_0080",
-      "gold_reason": "广州为正确地区，北京为干扰。",
-      "scenario": "地区多候选",
-      "note": "验证地区召回。",
+      "gold_entity": "ENT_GEN_0093",
+      "gold_reason": "文本中的“广州”表示地区实体，应链接到广州市；特斯拉公司为不相关干扰候选。",
+      "scenario": "地区实体候选召回与干扰过滤",
+      "note": "验证地区实体候选召回及无关候选过滤。",
       "id": "CR_085"
     },
     {

@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -90,10 +91,47 @@ def infer_expected_target_type(
 ) -> str:
     if expected.get("is_nil", expected.get("entity_id") is None):
         return "NIL"
+    entity_ids = [str(item) for item in expected.get("entity_ids", []) if item]
     entity_id = expected.get("entity_id")
+    if entity_ids:
+        types = sorted({entity_type_index.get(item, "UNKNOWN") for item in entity_ids})
+        return types[0] if len(types) == 1 else "MIXED:" + "+".join(types)
     if isinstance(entity_id, str) and entity_id.startswith("PER_TEST_"):
         return "PERSON"
     return entity_type_index.get(str(entity_id), "UNKNOWN")
+
+
+def sentence_index(text: str, offset: int) -> int:
+    """Return a lightweight sentence index using Chinese/English terminators."""
+    return len(re.findall(r"[。！？!?]", text[:offset]))
+
+
+def classify_conjunction(text: str, mentions: List[Mapping[str, Any]], indices: List[int]) -> str:
+    """Describe explicit coordination between gold antecedent mentions.
+
+    This is an evaluation-report label only; it does not participate in
+    resolution or modify the rule-based resolver.
+    """
+    if len(indices) < 2:
+        return "none"
+    selected = [mentions[index] for index in indices]
+    start = min(int(item.get("char_start", 0)) for item in selected)
+    end = max(int(item.get("char_end", 0)) for item in selected)
+    span = text[start:end]
+    # Remove the longer token before testing ``及`` so “以及” is not
+    # incorrectly reported as the two conjunctions “以及+及”.
+    labels = []
+    if "以及" in span:
+        labels.append("以及")
+        span = span.replace("以及", "")
+    labels.extend(
+        label
+        for token, label in (("及", "及"), ("与", "与"), ("和", "和"), ("、", "顿号"))
+        if token in span
+    )
+    if not labels:
+        return "none"
+    return "+".join(labels)
 
 
 def add_bucket(
@@ -211,6 +249,22 @@ def evaluate(dataset: Dict[str, Any], kb: Dict[str, Any], nil_threshold: float) 
             surface_class = classify_surface(mention)
             expected_target_type = infer_expected_target_type(expected, entity_type_index)
             rule = predicted.rule
+            scenario = str(expected.get("scenario", "nil_or_single"))
+            antecedent_indices = [int(index) for index in expected.get("antecedent_indices", [])]
+            antecedent_count = len(expected_ids)
+            conjunction = classify_conjunction(text, mentions, antecedent_indices)
+            target_sentence = sentence_index(text, int(mention.get("char_start", 0)))
+            antecedent_sentences = {
+                sentence_index(text, int(mentions[index].get("char_start", 0)))
+                for index in antecedent_indices
+            }
+            sentence_scope = (
+                "none"
+                if not antecedent_sentences
+                else "same_sentence"
+                if antecedent_sentences == {target_sentence}
+                else "cross_sentence"
+            )
 
             anaphor_coverage[surface_class] += 1
             add_bucket(buckets, "by_surface", surface, ok)
@@ -218,6 +272,10 @@ def evaluate(dataset: Dict[str, Any], kb: Dict[str, Any], nil_threshold: float) 
             add_bucket(buckets, "by_expected_target_type", expected_target_type, ok)
             add_bucket(buckets, "by_rule", rule, ok)
             add_bucket(buckets, "by_nil_expected", "NIL" if expected_nil else "NON_NIL", ok)
+            add_bucket(buckets, "by_scenario", scenario, ok)
+            add_bucket(buckets, "by_sentence_scope", sentence_scope, ok)
+            add_bucket(buckets, "by_antecedent_count", str(antecedent_count), ok)
+            add_bucket(buckets, "by_conjunction", conjunction, ok)
 
             cases.append(
                 {
@@ -230,6 +288,10 @@ def evaluate(dataset: Dict[str, Any], kb: Dict[str, Any], nil_threshold: float) 
                     "expected_collective": expected_collective,
                     "expected_nil": expected_nil,
                     "expected_target_type": expected_target_type,
+                    "scenario": scenario,
+                    "sentence_scope": sentence_scope,
+                    "antecedent_count": antecedent_count,
+                    "conjunction": conjunction,
                     "predicted_entity_id": predicted_id,
                     "predicted_entity_ids": predicted_ids,
                     "predicted_collective": predicted.is_collective,
@@ -284,6 +346,10 @@ def evaluate(dataset: Dict[str, Any], kb: Dict[str, Any], nil_threshold: float) 
             "by_expected_target_type": bucket_to_rows(buckets["by_expected_target_type"]),
             "by_rule": bucket_to_rows(buckets["by_rule"]),
             "by_nil_expected": bucket_to_rows(buckets["by_nil_expected"]),
+            "by_scenario": bucket_to_rows(buckets["by_scenario"]),
+            "by_sentence_scope": bucket_to_rows(buckets["by_sentence_scope"]),
+            "by_antecedent_count": bucket_to_rows(buckets["by_antecedent_count"]),
+            "by_conjunction": bucket_to_rows(buckets["by_conjunction"]),
         },
         "cases": cases,
         "wrong_cases": wrong_cases,

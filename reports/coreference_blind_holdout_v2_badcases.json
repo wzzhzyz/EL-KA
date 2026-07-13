@@ -1,0 +1,1040 @@
+[
+  {
+    "sample_id": "CORE_HOLDOUT_V2_007",
+    "domain": "Energy",
+    "scenario": "subject_switch_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_ENERGY_0003",
+        "ENT_ENERGY_0004"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [
+        "ENT_ENERGY_0003",
+        "ENT_ENERGY_0004"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {
+        "candidate_group_count": 1,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_ENERGY_0003",
+              "ENT_ENERGY_0004"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 11,
+            "source_span_end": 20,
+            "group_text": "华能集团与大唐集团",
+            "conjunctions": [
+              "与"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：华能集团、大唐集团"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": false,
+        "rejection_reason": "not_applicable",
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "off",
+    "error_type": "missed_ambiguity"
+  },
+  {
+    "sample_id": "CORE_HOLDOUT_V2_007",
+    "domain": "Energy",
+    "scenario": "subject_switch_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_ENERGY_0003",
+        "ENT_ENERGY_0004"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [
+        "ENT_ENERGY_0003",
+        "ENT_ENERGY_0004"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {
+        "candidate_group_count": 1,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_ENERGY_0003",
+              "ENT_ENERGY_0004"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 11,
+            "source_span_end": 20,
+            "group_text": "华能集团与大唐集团",
+            "conjunctions": [
+              "与"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：华能集团、大唐集团"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": false,
+        "rejection_reason": "not_applicable",
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "on",
+    "error_type": "missed_ambiguity"
+  },
+  {
+    "sample_id": "CORE_HOLDOUT_V2_008",
+    "domain": "Finance",
+    "scenario": "event_switch_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_GEN_0082",
+        "ENT_GEN_0083"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [],
+      "is_nil": true,
+      "rule": "collective_ambiguity_rejection_experimental",
+      "correct": true,
+      "trace": {
+        "candidate_group_count": 2,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_GEN_0055",
+              "ENT_GEN_0081"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 0,
+            "source_span_end": 9,
+            "group_text": "工商银行与建设银行",
+            "conjunctions": [
+              "与"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：工商银行、建设银行"
+          },
+          {
+            "mention_indices": [
+              2,
+              3
+            ],
+            "entity_ids": [
+              "ENT_GEN_0082",
+              "ENT_GEN_0083"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 14,
+            "source_span_end": 23,
+            "group_text": "农业银行和中国银行",
+            "conjunctions": [
+              "和"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：农业银行、中国银行"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": true,
+        "rejection_reason": "strong_ambiguity",
+        "nearest_group": [
+          "ENT_GEN_0082",
+          "ENT_GEN_0083"
+        ],
+        "alternative_groups": [
+          [
+            "ENT_GEN_0055",
+            "ENT_GEN_0081"
+          ]
+        ],
+        "explicit_subject_continuation": false,
+        "explicit_subject_switch": true,
+        "event_chain_continuity": false,
+        "event_reset_signal": "转而",
+        "candidate_score_gap": 0,
+        "evidence_strength": 2,
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "off",
+    "error_type": "missed_ambiguity"
+  },
+  {
+    "sample_id": "CORE_HOLDOUT_V2_009",
+    "domain": "Internet",
+    "scenario": "event_switch_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_GEN_0053",
+        "ENT_GEN_0073"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [],
+      "is_nil": true,
+      "rule": "collective_ambiguity_rejection_experimental",
+      "correct": true,
+      "trace": {
+        "candidate_group_count": 2,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_GEN_0051",
+              "ENT_GEN_0052"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 0,
+            "source_span_end": 5,
+            "group_text": "华为和腾讯",
+            "conjunctions": [
+              "和"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：华为、腾讯"
+          },
+          {
+            "mention_indices": [
+              2,
+              3
+            ],
+            "entity_ids": [
+              "ENT_GEN_0053",
+              "ENT_GEN_0073"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 12,
+            "source_span_end": 19,
+            "group_text": "阿里巴巴与小米",
+            "conjunctions": [
+              "与"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：阿里巴巴、小米"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": true,
+        "rejection_reason": "strong_ambiguity",
+        "nearest_group": [
+          "ENT_GEN_0053",
+          "ENT_GEN_0073"
+        ],
+        "alternative_groups": [
+          [
+            "ENT_GEN_0051",
+            "ENT_GEN_0052"
+          ]
+        ],
+        "explicit_subject_continuation": false,
+        "explicit_subject_switch": true,
+        "event_chain_continuity": false,
+        "event_reset_signal": null,
+        "candidate_score_gap": 0,
+        "evidence_strength": 2,
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "off",
+    "error_type": "missed_ambiguity"
+  },
+  {
+    "sample_id": "CORE_HOLDOUT_V2_010",
+    "domain": "Transportation",
+    "scenario": "event_switch_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_GEN_0152",
+        "ENT_GEN_0151"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [],
+      "is_nil": true,
+      "rule": "collective_ambiguity_rejection_experimental",
+      "correct": true,
+      "trace": {
+        "candidate_group_count": 2,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_GEN_0135",
+              "ENT_GEN_0136"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 0,
+            "source_span_end": 9,
+            "group_text": "中国国航与东方航空",
+            "conjunctions": [
+              "与"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：中国国航、东方航空"
+          },
+          {
+            "mention_indices": [
+              2,
+              3
+            ],
+            "entity_ids": [
+              "ENT_GEN_0152",
+              "ENT_GEN_0151"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 14,
+            "source_span_end": 23,
+            "group_text": "海南航空和深圳地铁",
+            "conjunctions": [
+              "和"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：海南航空、深圳地铁"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": true,
+        "rejection_reason": "strong_ambiguity",
+        "nearest_group": [
+          "ENT_GEN_0152",
+          "ENT_GEN_0151"
+        ],
+        "alternative_groups": [
+          [
+            "ENT_GEN_0135",
+            "ENT_GEN_0136"
+          ]
+        ],
+        "explicit_subject_continuation": false,
+        "explicit_subject_switch": true,
+        "event_chain_continuity": false,
+        "event_reset_signal": "转而",
+        "candidate_score_gap": 0,
+        "evidence_strength": 2,
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "off",
+    "error_type": "missed_ambiguity"
+  },
+  {
+    "sample_id": "CORE_HOLDOUT_V2_011",
+    "domain": "Healthcare",
+    "scenario": "event_switch_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_GEN_0131",
+        "ENT_GEN_0132"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [],
+      "is_nil": true,
+      "rule": "collective_ambiguity_rejection_experimental",
+      "correct": true,
+      "trace": {
+        "candidate_group_count": 2,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_GEN_0111",
+              "ENT_GEN_0147"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 0,
+            "source_span_end": 13,
+            "group_text": "中日友好医院和北京天坛医院",
+            "conjunctions": [
+              "和"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：中日友好医院、北京天坛医院"
+          },
+          {
+            "mention_indices": [
+              2,
+              3
+            ],
+            "entity_ids": [
+              "ENT_GEN_0131",
+              "ENT_GEN_0132"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 18,
+            "source_span_end": 27,
+            "group_text": "华西医院与湘雅医院",
+            "conjunctions": [
+              "与"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：华西医院、湘雅医院"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": true,
+        "rejection_reason": "strong_ambiguity",
+        "nearest_group": [
+          "ENT_GEN_0131",
+          "ENT_GEN_0132"
+        ],
+        "alternative_groups": [
+          [
+            "ENT_GEN_0111",
+            "ENT_GEN_0147"
+          ]
+        ],
+        "explicit_subject_continuation": false,
+        "explicit_subject_switch": true,
+        "event_chain_continuity": false,
+        "event_reset_signal": null,
+        "candidate_score_gap": 0,
+        "evidence_strength": 2,
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "off",
+    "error_type": "missed_ambiguity"
+  },
+  {
+    "sample_id": "CORE_HOLDOUT_V2_012",
+    "domain": "Media",
+    "scenario": "event_switch_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_GEN_0139",
+        "ENT_GEN_0154"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [],
+      "is_nil": true,
+      "rule": "collective_ambiguity_rejection_experimental",
+      "correct": true,
+      "trace": {
+        "candidate_group_count": 2,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_GEN_0115",
+              "ENT_GEN_0153"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 0,
+            "source_span_end": 9,
+            "group_text": "新华社和中国日报社",
+            "conjunctions": [
+              "和"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：新华社、中国日报社"
+          },
+          {
+            "mention_indices": [
+              2,
+              3
+            ],
+            "entity_ids": [
+              "ENT_GEN_0139",
+              "ENT_GEN_0154"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 14,
+            "source_span_end": 25,
+            "group_text": "人民日报社与经济日报社",
+            "conjunctions": [
+              "与"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：人民日报社、经济日报社"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": true,
+        "rejection_reason": "strong_ambiguity",
+        "nearest_group": [
+          "ENT_GEN_0139",
+          "ENT_GEN_0154"
+        ],
+        "alternative_groups": [
+          [
+            "ENT_GEN_0115",
+            "ENT_GEN_0153"
+          ]
+        ],
+        "explicit_subject_continuation": false,
+        "explicit_subject_switch": true,
+        "event_chain_continuity": false,
+        "event_reset_signal": "改由",
+        "candidate_score_gap": 0,
+        "evidence_strength": 2,
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "off",
+    "error_type": "missed_ambiguity"
+  },
+  {
+    "sample_id": "CORE_HOLDOUT_V2_023",
+    "domain": "Healthcare",
+    "scenario": "type_mismatch_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_GEN_0111",
+        "ENT_GEN_0147"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [
+        "ENT_GEN_0111",
+        "ENT_GEN_0147"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {
+        "candidate_group_count": 1,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_GEN_0111",
+              "ENT_GEN_0147"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 0,
+            "source_span_end": 13,
+            "group_text": "中日友好医院和北京天坛医院",
+            "conjunctions": [
+              "和"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：中日友好医院、北京天坛医院"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": false,
+        "rejection_reason": "not_applicable",
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "off",
+    "error_type": "missed_ambiguity"
+  },
+  {
+    "sample_id": "CORE_HOLDOUT_V2_023",
+    "domain": "Healthcare",
+    "scenario": "type_mismatch_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_GEN_0111",
+        "ENT_GEN_0147"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [
+        "ENT_GEN_0111",
+        "ENT_GEN_0147"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {
+        "candidate_group_count": 1,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_GEN_0111",
+              "ENT_GEN_0147"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 0,
+            "source_span_end": 13,
+            "group_text": "中日友好医院和北京天坛医院",
+            "conjunctions": [
+              "和"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：中日友好医院、北京天坛医院"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": false,
+        "rejection_reason": "not_applicable",
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "on",
+    "error_type": "missed_ambiguity"
+  },
+  {
+    "sample_id": "CORE_HOLDOUT_V2_026",
+    "domain": "Media",
+    "scenario": "complex_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0141"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0141"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {
+        "candidate_group_count": 2,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_GEN_0115",
+              "ENT_GEN_0139"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 0,
+            "source_span_end": 9,
+            "group_text": "新华社和人民日报社",
+            "conjunctions": [
+              "和"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：新华社、人民日报社"
+          },
+          {
+            "mention_indices": [
+              2,
+              3
+            ],
+            "entity_ids": [
+              "ENT_GEN_0153",
+              "ENT_GEN_0141"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 15,
+            "source_span_end": 25,
+            "group_text": "中国日报社与央视新闻",
+            "conjunctions": [
+              "与"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：中国日报社、央视新闻"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": false,
+        "rejection_reason": "keep_nearest_group",
+        "nearest_group": [
+          "ENT_GEN_0153",
+          "ENT_GEN_0141"
+        ],
+        "alternative_groups": [
+          [
+            "ENT_GEN_0115",
+            "ENT_GEN_0139"
+          ]
+        ],
+        "explicit_subject_continuation": false,
+        "explicit_subject_switch": false,
+        "event_chain_continuity": false,
+        "event_reset_signal": null,
+        "candidate_score_gap": 0,
+        "evidence_strength": 2,
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "off",
+    "error_type": "missed_ambiguity"
+  },
+  {
+    "sample_id": "CORE_HOLDOUT_V2_026",
+    "domain": "Media",
+    "scenario": "complex_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0141"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [
+        "ENT_GEN_0153",
+        "ENT_GEN_0141"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {
+        "candidate_group_count": 2,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_GEN_0115",
+              "ENT_GEN_0139"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 0,
+            "source_span_end": 9,
+            "group_text": "新华社和人民日报社",
+            "conjunctions": [
+              "和"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：新华社、人民日报社"
+          },
+          {
+            "mention_indices": [
+              2,
+              3
+            ],
+            "entity_ids": [
+              "ENT_GEN_0153",
+              "ENT_GEN_0141"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 15,
+            "source_span_end": 25,
+            "group_text": "中国日报社与央视新闻",
+            "conjunctions": [
+              "与"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：中国日报社、央视新闻"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": false,
+        "rejection_reason": "keep_nearest_group",
+        "nearest_group": [
+          "ENT_GEN_0153",
+          "ENT_GEN_0141"
+        ],
+        "alternative_groups": [
+          [
+            "ENT_GEN_0115",
+            "ENT_GEN_0139"
+          ]
+        ],
+        "explicit_subject_continuation": false,
+        "explicit_subject_switch": false,
+        "event_chain_continuity": false,
+        "event_reset_signal": null,
+        "candidate_score_gap": 0,
+        "evidence_strength": 2,
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "on",
+    "error_type": "missed_ambiguity"
+  },
+  {
+    "sample_id": "CORE_HOLDOUT_V2_031",
+    "domain": "Transportation",
+    "scenario": "event_switch_nil",
+    "gold_entity_ids": [],
+    "gold_is_nil": true,
+    "off": {
+      "entity_ids": [
+        "ENT_GEN_0152",
+        "ENT_GEN_0151"
+      ],
+      "is_nil": false,
+      "rule": "collective_coordinated_antecedents",
+      "correct": false,
+      "trace": {}
+    },
+    "on": {
+      "entity_ids": [],
+      "is_nil": true,
+      "rule": "collective_ambiguity_rejection_experimental",
+      "correct": true,
+      "trace": {
+        "candidate_group_count": 2,
+        "candidate_groups": [
+          {
+            "mention_indices": [
+              0,
+              1
+            ],
+            "entity_ids": [
+              "ENT_GEN_0135",
+              "ENT_GEN_0136"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 0,
+            "source_span_end": 9,
+            "group_text": "中国国航和东方航空",
+            "conjunctions": [
+              "和"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：中国国航、东方航空"
+          },
+          {
+            "mention_indices": [
+              2,
+              3
+            ],
+            "entity_ids": [
+              "ENT_GEN_0152",
+              "ENT_GEN_0151"
+            ],
+            "entity_types": [
+              "ORG",
+              "ORG"
+            ],
+            "source_sentence_index": 0,
+            "source_span_start": 16,
+            "source_span_end": 25,
+            "group_text": "海南航空与深圳地铁",
+            "conjunctions": [
+              "与"
+            ],
+            "extraction_rule": "explicit_same_sentence_coordination",
+            "evidence": "同句、目标前、显式连接、已链接且同质的协调实体组：海南航空、深圳地铁"
+          }
+        ],
+        "threshold": {
+          "max_evidence_strength": 2
+        },
+        "rejection_decision": true,
+        "rejection_reason": "strong_ambiguity",
+        "nearest_group": [
+          "ENT_GEN_0152",
+          "ENT_GEN_0151"
+        ],
+        "alternative_groups": [
+          [
+            "ENT_GEN_0135",
+            "ENT_GEN_0136"
+          ]
+        ],
+        "explicit_subject_continuation": false,
+        "explicit_subject_switch": true,
+        "event_chain_continuity": false,
+        "event_reset_signal": null,
+        "candidate_score_gap": 0,
+        "evidence_strength": 2,
+        "ambiguity_rejection_enabled": true
+      }
+    },
+    "mode": "off",
+    "error_type": "missed_ambiguity"
+  }
+]

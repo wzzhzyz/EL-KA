@@ -38,7 +38,7 @@
       "id": "NER_004",
       "text": "中国工商银行北京分行近日推出新的理财产品。",
       "expected": [
-        {"mention": "中国工商银行北京分行", "type": "ORG", "start": 0, "end": 11}
+        {"mention": "中国工商银行北京分行", "type": "ORG", "start": 0, "end": 10}
       ],
       "scenario": "ORG-嵌套机构名",
       "note": "嵌套机构名（总行+分行），需识别为整体还是拆分？标注策略：完整机构名作为一个实体"
@@ -79,7 +79,7 @@
       "expected": [
         {"mention": "埃隆·马斯克", "type": "PERSON", "start": 0, "end": 6},
         {"mention": "特斯拉", "type": "ORG", "start": 8, "end": 11},
-        {"mention": "上海", "type": "GPE", "start": 14, "end": 16}
+        {"mention": "上海", "type": "GPE", "start": 13, "end": 15}
       ],
       "scenario": "混合类型-含外国人名",
       "note": "外国人名(含间隔号)+ORG+GPE"
@@ -160,7 +160,7 @@
       "text": "中国长江三峡集团有限公司（简称三峡集团）是全球最大水电企业。",
       "expected": [
         {"mention": "中国长江三峡集团有限公司", "type": "ORG", "start": 0, "end": 12},
-        {"mention": "三峡集团", "type": "ORG", "start": 14, "end": 18}
+        {"mention": "三峡集团", "type": "ORG", "start": 15, "end": 19}
       ],
       "scenario": "ORG-全称+括号简称",
       "note": "全称+括号内简称，两者均应识别"
@@ -180,8 +180,8 @@
       "text": "中国平安不仅是一家保险公司，平安好医生和陆金所等平台也展现了其金融科技实力。",
       "expected": [
         {"mention": "中国平安", "type": "ORG", "start": 0, "end": 4},
-        {"mention": "平安好医生", "type": "ORG", "start": 11, "end": 16},
-        {"mention": "陆金所", "type": "ORG", "start": 17, "end": 20}
+        {"mention": "平安好医生", "type": "ORG", "start": 14, "end": 19},
+        {"mention": "陆金所", "type": "ORG", "start": 20, "end": 23}
       ],
       "scenario": "ORG-全称+子公司品牌",
       "note": "母公司全称+子公司品牌名混合"
@@ -202,7 +202,7 @@
       "text": "宁德时代CATL近日宣布将在匈牙利建设首个欧洲电池工厂。",
       "expected": [
         {"mention": "宁德时代", "type": "ORG", "start": 0, "end": 4},
-        {"mention": "匈牙利", "type": "GPE", "start": 15, "end": 18}
+        {"mention": "匈牙利", "type": "GPE", "start": 14, "end": 17}
       ],
       "scenario": "ORG-中英文紧邻（无空格）",
       "note": "挑战：中文名CATL无空格紧邻，易漏掉英文缩写或合并为一个mention。NER应识别出'宁德时代'作为ORG"
@@ -261,7 +261,7 @@
       "id": "NER_026",
       "text": "招商银行深圳分行行长李四表示将加大普惠金融投放力度。",
       "expected": [
-        {"mention": "招商银行深圳分行", "type": "ORG", "start": 0, "end": 9},
+        {"mention": "招商银行深圳分行", "type": "ORG", "start": 0, "end": 8},
         {"mention": "李四", "type": "PERSON", "start": 10, "end": 12}
       ],
       "scenario": "嵌套+人名",
@@ -304,9 +304,9 @@
       "text": "国务院国资委近日公布了最新央企名录，包括国家电网、南方电网、华能集团等98家企业。",
       "expected": [
         {"mention": "国务院国资委", "type": "ORG", "start": 0, "end": 6},
-        {"mention": "国家电网", "type": "ORG", "start": 14, "end": 18},
-        {"mention": "南方电网", "type": "ORG", "start": 19, "end": 23},
-        {"mention": "华能集团", "type": "ORG", "start": 24, "end": 28}
+        {"mention": "国家电网", "type": "ORG", "start": 20, "end": 24},
+        {"mention": "南方电网", "type": "ORG", "start": 25, "end": 29},
+        {"mention": "华能集团", "type": "ORG", "start": 30, "end": 34}
       ],
       "scenario": "ORG-政府机构+多企业列举",
       "note": "政府机构+多个央企名称列举"
@@ -334,8 +334,8 @@
       "text": "微软创始人比尔·盖茨在北京大学发表了关于AI未来的演讲。",
       "expected": [
         {"mention": "微软", "type": "ORG", "start": 0, "end": 2},
-        {"mention": "比尔·盖茨", "type": "PERSON", "start": 4, "end": 9},
-        {"mention": "北京大学", "type": "ORG", "start": 10, "end": 14}
+        {"mention": "比尔·盖茨", "type": "PERSON", "start": 5, "end": 10},
+        {"mention": "北京大学", "type": "ORG", "start": 11, "end": 15}
       ],
       "scenario": "混合-外企+外国人名+中国大学",
       "note": "三种实体类型混合出现"

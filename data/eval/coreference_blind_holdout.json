@@ -1,0 +1,1396 @@
+{
+  "dataset_name": "coreference_blind_holdout",
+  "version": "1.0",
+  "evaluation_scope": "blind_holdout",
+  "requires_runtime_kb": true,
+  "used_for_rule_development": false,
+  "purpose": "P0 规则冻结后的独立泛化测试集；结果产生后不得据此继续调规则。",
+  "annotation_policy": {
+    "offset_convention": "[start, end)",
+    "collective_match": "entity_id set exact match",
+    "nil_policy": "entity_ids为空且is_nil=true"
+  },
+  "samples": [
+    {
+      "id": "CORE_BLIND_HOLDOUT_001",
+      "text": "国家能源局、国家发展改革委及工业和信息化部联合印发行动方案，三方将分别跟进落实。",
+      "mentions": [
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0059"
+        },
+        {
+          "mention": "国家发展改革委",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 13,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089"
+        },
+        {
+          "mention": "工业和信息化部",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 21,
+          "role": "name",
+          "entity_id": "ENT_GEN_0090"
+        },
+        {
+          "mention": "三方",
+          "type": "PRON",
+          "char_start": 30,
+          "char_end": 32,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0059",
+            "ENT_GEN_0089",
+            "ENT_GEN_0090"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_three_government_group",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "三个已链接政府机构由顿号和“及”组成唯一协调组。"
+        }
+      ],
+      "scenario": "holdout_three_government_group",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "三个已链接政府机构由顿号和“及”组成唯一协调组。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_002",
+      "text": "中国移动、华为和阿里巴巴共建云服务中心，这些企业将共享运维经验。",
+      "mentions": [
+        {
+          "mention": "中国移动",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0102"
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 7,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "阿里巴巴",
+          "type": "ORG",
+          "char_start": 8,
+          "char_end": 12,
+          "role": "name",
+          "entity_id": "ENT_GEN_0053"
+        },
+        {
+          "mention": "这些企业",
+          "type": "PRON",
+          "char_start": 20,
+          "char_end": 24,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0102",
+            "ENT_GEN_0051",
+            "ENT_GEN_0053"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_three_tech_group",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "三个已链接企业通过连续显式连接词组成唯一协调组。"
+        }
+      ],
+      "scenario": "holdout_three_tech_group",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "三个已链接企业通过连续显式连接词组成唯一协调组。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_003",
+      "text": "国网江苏电力、广东电网及南方电网成立调度专班，各方将提交值守安排。",
+      "mentions": [
+        {
+          "mention": "国网江苏电力",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 6,
+          "role": "name",
+          "entity_id": "ENT_GEN_0124"
+        },
+        {
+          "mention": "广东电网",
+          "type": "ORG",
+          "char_start": 7,
+          "char_end": 11,
+          "role": "name",
+          "entity_id": "ENT_GEN_0125"
+        },
+        {
+          "mention": "南方电网",
+          "type": "ORG",
+          "char_start": 12,
+          "char_end": 16,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0002"
+        },
+        {
+          "mention": "各方",
+          "type": "PRON",
+          "char_start": 23,
+          "char_end": 25,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0124",
+            "ENT_GEN_0125",
+            "ENT_ENERGY_0002"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_three_grid_group",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "三个电网机构由顿号和“及”构成唯一同句协调组。"
+        }
+      ],
+      "scenario": "holdout_three_grid_group",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "三个电网机构由顿号和“及”构成唯一同句协调组。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_004",
+      "text": "人民日报社、新华社及中国日报社开设专题栏目，上述单位将统一发布稿件。",
+      "mentions": [
+        {
+          "mention": "人民日报社",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0139"
+        },
+        {
+          "mention": "新华社",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0115"
+        },
+        {
+          "mention": "中国日报社",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 15,
+          "role": "name",
+          "entity_id": "ENT_GEN_0153"
+        },
+        {
+          "mention": "上述单位",
+          "type": "PRON",
+          "char_start": 22,
+          "char_end": 26,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0139",
+            "ENT_GEN_0115",
+            "ENT_GEN_0153"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_three_media_group",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "三个媒体机构构成唯一明确协调组。"
+        }
+      ],
+      "scenario": "holdout_three_media_group",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "三个媒体机构构成唯一明确协调组。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_005",
+      "text": "比亚迪、宁德时代及华为举办技术论坛，三方将共同发布倡议。",
+      "mentions": [
+        {
+          "mention": "比亚迪",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0016"
+        },
+        {
+          "mention": "宁德时代",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 8,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0015"
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 9,
+          "char_end": 11,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "三方",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 20,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0016",
+            "ENT_ENERGY_0015",
+            "ENT_GEN_0051"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_three_industry_group",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "三个已链接机构满足“三方”的精确数量约束。"
+        }
+      ],
+      "scenario": "holdout_three_industry_group",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "三个已链接机构满足“三方”的精确数量约束。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_006",
+      "text": "清华大学、浙江大学和上海交通大学共同编制课程标准，这些机构将互认学分。",
+      "mentions": [
+        {
+          "mention": "清华大学",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0060"
+        },
+        {
+          "mention": "浙江大学",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0066"
+        },
+        {
+          "mention": "上海交通大学",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 16,
+          "role": "name",
+          "entity_id": "ENT_GEN_0065"
+        },
+        {
+          "mention": "这些机构",
+          "type": "PRON",
+          "char_start": 25,
+          "char_end": 29,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0060",
+            "ENT_GEN_0066",
+            "ENT_GEN_0065"
+          ],
+          "antecedent_indices": [
+            0,
+            1,
+            2
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_three_university_group",
+          "difficulty": "medium",
+          "subset": "blind_holdout",
+          "annotation_evidence": "三个高校形成唯一同句协调组。"
+        }
+      ],
+      "scenario": "holdout_three_university_group",
+      "difficulty": "medium",
+      "subset": "blind_holdout",
+      "annotation_evidence": "三个高校形成唯一同句协调组。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_007",
+      "text": "国铁集团和南方航空先完成线路衔接。双方随后公布联运细则。",
+      "mentions": [
+        {
+          "mention": "国铁集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0113",
+          "sentence_index": 0
+        },
+        {
+          "mention": "南方航空",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0114",
+          "sentence_index": 0
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 17,
+          "char_end": 19,
+          "role": "pronoun",
+          "sentence_index": 1
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0113",
+            "ENT_GEN_0114"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_cross_one_positive",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "语义上后句“双方”回指前句唯一协调组。"
+        }
+      ],
+      "scenario": "holdout_cross_one_positive",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "语义上后句“双方”回指前句唯一协调组。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_008",
+      "text": "工商银行与建设银行达成服务协议。二者将在下月上线新流程。",
+      "mentions": [
+        {
+          "mention": "工商银行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0055",
+          "sentence_index": 0
+        },
+        {
+          "mention": "建设银行",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0081",
+          "sentence_index": 0
+        },
+        {
+          "mention": "二者",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun",
+          "sentence_index": 1
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0055",
+            "ENT_GEN_0081"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_cross_one_pair_positive",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "语义上后句“二者”回指前句唯一协调组。"
+        }
+      ],
+      "scenario": "holdout_cross_one_pair_positive",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "语义上后句“二者”回指前句唯一协调组。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_009",
+      "text": "华能集团及三峡集团启动联合演练。会议纪要随后归档。双方将复盘演练结果。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003",
+          "sentence_index": 0
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008",
+          "sentence_index": 0
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 25,
+          "char_end": 27,
+          "role": "pronoun",
+          "sentence_index": 2
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0003",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_cross_two_positive",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "中间事件说明不改变首句唯一协调组的语义连续性。"
+        }
+      ],
+      "scenario": "holdout_cross_two_positive",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "中间事件说明不改变首句唯一协调组的语义连续性。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_010",
+      "text": "人民日报社与新华社召开选题会。会议记录由秘书整理。双方将确认发布节奏。",
+      "mentions": [
+        {
+          "mention": "人民日报社",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0139",
+          "sentence_index": 0
+        },
+        {
+          "mention": "新华社",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0115",
+          "sentence_index": 0
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 25,
+          "char_end": 27,
+          "role": "pronoun",
+          "sentence_index": 2
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0139",
+            "ENT_GEN_0115"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_cross_two_media_positive",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "中间无新的已链接主体，语义上保持首句协调组。"
+        }
+      ],
+      "scenario": "holdout_cross_two_media_positive",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "中间无新的已链接主体，语义上保持首句协调组。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_011",
+      "text": "华能集团与三峡集团在多轮技术论证和现场勘察后签署备忘录，双方将建立联合台账。",
+      "mentions": [
+        {
+          "mention": "华能集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0003"
+        },
+        {
+          "mention": "三峡集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0008"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 28,
+          "char_end": 30,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0003",
+            "ENT_ENERGY_0008"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_non_adjacent_modifier",
+          "difficulty": "medium",
+          "subset": "blind_holdout",
+          "annotation_evidence": "长修饰成分不切断两个前件之间的显式“与”连接。"
+        }
+      ],
+      "scenario": "holdout_non_adjacent_modifier",
+      "difficulty": "medium",
+      "subset": "blind_holdout",
+      "annotation_evidence": "长修饰成分不切断两个前件之间的显式“与”连接。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_012",
+      "text": "国家电投会同大唐集团开展安全检查，双方将交换排查结果。",
+      "mentions": [
+        {
+          "mention": "国家电投",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0006"
+        },
+        {
+          "mention": "大唐集团",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0004"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 17,
+          "char_end": 19,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_ENERGY_0006",
+            "ENT_ENERGY_0004"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_huitong_group",
+          "difficulty": "medium",
+          "subset": "blind_holdout",
+          "annotation_evidence": "“会同”位于两个相邻已链接机构之间。"
+        }
+      ],
+      "scenario": "holdout_huitong_group",
+      "difficulty": "medium",
+      "subset": "blind_holdout",
+      "annotation_evidence": "“会同”位于两个相邻已链接机构之间。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_013",
+      "text": "中国移动跟中国电信联合测试新网络，两家公司将同步开放体验。",
+      "mentions": [
+        {
+          "mention": "中国移动",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0102"
+        },
+        {
+          "mention": "中国电信",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0103"
+        },
+        {
+          "mention": "两家公司",
+          "type": "PRON",
+          "char_start": 17,
+          "char_end": 21,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0102",
+            "ENT_GEN_0103"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_gen_group",
+          "difficulty": "medium",
+          "subset": "blind_holdout",
+          "annotation_evidence": "“跟”连接两个同类已链接企业。"
+        }
+      ],
+      "scenario": "holdout_gen_group",
+      "difficulty": "medium",
+      "subset": "blind_holdout",
+      "annotation_evidence": "“跟”连接两个同类已链接企业。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_014",
+      "text": "工商银行连同建设银行推进支付互联，上述单位将公布服务说明。",
+      "mentions": [
+        {
+          "mention": "工商银行",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0055"
+        },
+        {
+          "mention": "建设银行",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 10,
+          "role": "name",
+          "entity_id": "ENT_GEN_0081"
+        },
+        {
+          "mention": "上述单位",
+          "type": "PRON",
+          "char_start": 17,
+          "char_end": 21,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0055",
+            "ENT_GEN_0081"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_liantong_group",
+          "difficulty": "medium",
+          "subset": "blind_holdout",
+          "annotation_evidence": "“连同”连接两个同类已链接机构。"
+        }
+      ],
+      "scenario": "holdout_liantong_group",
+      "difficulty": "medium",
+      "subset": "blind_holdout",
+      "annotation_evidence": "“连同”连接两个同类已链接机构。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_015",
+      "text": "微信和腾讯会议完善协同能力，它们将开放新版功能。",
+      "mentions": [
+        {
+          "mention": "微信",
+          "type": "CONSUMER_PRODUCT",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0061"
+        },
+        {
+          "mention": "腾讯会议",
+          "type": "CONSUMER_PRODUCT",
+          "char_start": 3,
+          "char_end": 7,
+          "role": "name",
+          "entity_id": "ENT_GEN_0104"
+        },
+        {
+          "mention": "它们",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 16,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0061",
+            "ENT_GEN_0104"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_product_collective_positive",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "两个产品在语义上构成集合，用于检验非 ORG/PERSON 范围。"
+        }
+      ],
+      "scenario": "holdout_product_collective_positive",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "两个产品在语义上构成集合，用于检验非 ORG/PERSON 范围。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_016",
+      "text": "国家能源局和国家发展改革委在项目评审中形成共识，双方将共同督办。",
+      "mentions": [
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0059"
+        },
+        {
+          "mention": "国家发展改革委",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 13,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 24,
+          "char_end": 26,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [
+            "ENT_GEN_0059",
+            "ENT_GEN_0089"
+          ],
+          "antecedent_indices": [
+            0,
+            1
+          ],
+          "is_collective": true,
+          "is_nil": false,
+          "scenario": "holdout_government_pair",
+          "difficulty": "medium",
+          "subset": "blind_holdout",
+          "annotation_evidence": "两个政府机构构成唯一同句协调组。"
+        }
+      ],
+      "scenario": "holdout_government_pair",
+      "difficulty": "medium",
+      "subset": "blind_holdout",
+      "annotation_evidence": "两个政府机构构成唯一同句协调组。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_017",
+      "text": "人民日报社和新华社发布联合通报，她们将于下午说明情况。",
+      "mentions": [
+        {
+          "mention": "人民日报社",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0139"
+        },
+        {
+          "mention": "新华社",
+          "type": "ORG",
+          "char_start": 6,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0115"
+        },
+        {
+          "mention": "她们",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "scenario": "holdout_female_org_nil",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "女性 PERSON 集合词不能安全回指 ORG 前件。",
+          "nil_reason": "女性 PERSON 集合词不能安全回指 ORG 前件。"
+        }
+      ],
+      "scenario": "holdout_female_org_nil",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "女性 PERSON 集合词不能安全回指 ORG 前件。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_018",
+      "text": "微信与支付宝共同推出服务，双方将进行培训。",
+      "mentions": [
+        {
+          "mention": "微信",
+          "type": "CONSUMER_PRODUCT",
+          "char_start": 0,
+          "char_end": 2,
+          "role": "name",
+          "entity_id": "ENT_GEN_0061"
+        },
+        {
+          "mention": "支付宝",
+          "type": "SOFTWARE_PLATFORM",
+          "char_start": 3,
+          "char_end": 6,
+          "role": "name",
+          "entity_id": "ENT_GEN_0097"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 13,
+          "char_end": 15,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "scenario": "holdout_product_platform_mismatch_nil",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "产品与软件平台混合，当前规则不应形成同质集合。",
+          "nil_reason": "产品与软件平台混合，当前规则不应形成同质集合。"
+        }
+      ],
+      "scenario": "holdout_product_platform_mismatch_nil",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "产品与软件平台混合，当前规则不应形成同质集合。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_019",
+      "text": "国家电投和大唐集团负责设备，华为与阿里巴巴负责平台，双方将在季度末验收。",
+      "mentions": [
+        {
+          "mention": "国家电投",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0006"
+        },
+        {
+          "mention": "大唐集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0004"
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 14,
+          "char_end": 16,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051"
+        },
+        {
+          "mention": "阿里巴巴",
+          "type": "ORG",
+          "char_start": 17,
+          "char_end": 21,
+          "role": "name",
+          "entity_id": "ENT_GEN_0053"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 26,
+          "char_end": 28,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 4,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "scenario": "holdout_multi_group_ambiguous_nil",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "两个合法协调组均可能被“双方”指代，缺少可靠语义限定。",
+          "nil_reason": "两个合法协调组均可能被“双方”指代，缺少可靠语义限定。"
+        }
+      ],
+      "scenario": "holdout_multi_group_ambiguous_nil",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "两个合法协调组均可能被“双方”指代，缺少可靠语义限定。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_020",
+      "text": "中国移动和中国移动共同发布公告，双方将安排说明会。",
+      "mentions": [
+        {
+          "mention": "中国移动",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0102"
+        },
+        {
+          "mention": "中国移动",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0102"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "scenario": "holdout_duplicate_entity_nil",
+          "difficulty": "medium",
+          "subset": "blind_holdout",
+          "annotation_evidence": "去重后仅有一个唯一实体 ID，不能构成集合。",
+          "nil_reason": "去重后仅有一个唯一实体 ID，不能构成集合。"
+        }
+      ],
+      "scenario": "holdout_duplicate_entity_nil",
+      "difficulty": "medium",
+      "subset": "blind_holdout",
+      "annotation_evidence": "去重后仅有一个唯一实体 ID，不能构成集合。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_021",
+      "text": "甲机构与乙机构联合举办活动，双方将发布安排。",
+      "mentions": [
+        {
+          "mention": "甲机构",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 3,
+          "role": "name"
+        },
+        {
+          "mention": "乙机构",
+          "type": "ORG",
+          "char_start": 4,
+          "char_end": 7,
+          "role": "name"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 14,
+          "char_end": 16,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "scenario": "holdout_unlinked_antecedents_nil",
+          "difficulty": "medium",
+          "subset": "blind_holdout",
+          "annotation_evidence": "两个前件未链接运行知识库，不能输出正式实体集合。",
+          "nil_reason": "两个前件未链接运行知识库，不能输出正式实体集合。"
+        }
+      ],
+      "scenario": "holdout_unlinked_antecedents_nil",
+      "difficulty": "medium",
+      "subset": "blind_holdout",
+      "annotation_evidence": "两个前件未链接运行知识库，不能输出正式实体集合。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_022",
+      "text": "国家能源局发布通知，国家发展改革委随后回应，双方将召开座谈会。",
+      "mentions": [
+        {
+          "mention": "国家能源局",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 5,
+          "role": "name",
+          "entity_id": "ENT_GEN_0059"
+        },
+        {
+          "mention": "国家发展改革委",
+          "type": "ORG",
+          "char_start": 10,
+          "char_end": 17,
+          "role": "name",
+          "entity_id": "ENT_GEN_0089"
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 22,
+          "char_end": 24,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "scenario": "holdout_no_coordination_nil",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "两个实体间没有显式协调连接，不能安全组成集合。",
+          "nil_reason": "两个实体间没有显式协调连接，不能安全组成集合。"
+        }
+      ],
+      "scenario": "holdout_no_coordination_nil",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "两个实体间没有显式协调连接，不能安全组成集合。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_023",
+      "text": "国铁集团和南方航空启动联运项目，三方将持续跟进。",
+      "mentions": [
+        {
+          "mention": "国铁集团",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0113"
+        },
+        {
+          "mention": "南方航空",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_GEN_0114"
+        },
+        {
+          "mention": "三方",
+          "type": "PRON",
+          "char_start": 16,
+          "char_end": 18,
+          "role": "pronoun"
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "scenario": "holdout_cardinality_nil",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "仅有两个唯一实体，不满足“三方”的精确数量约束。",
+          "nil_reason": "仅有两个唯一实体，不满足“三方”的精确数量约束。"
+        }
+      ],
+      "scenario": "holdout_cardinality_nil",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "仅有两个唯一实体，不满足“三方”的精确数量约束。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_024",
+      "text": "国家电投与大唐集团先完成试运。项目随后由华为监督。双方将更新计划。",
+      "mentions": [
+        {
+          "mention": "国家电投",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0006",
+          "sentence_index": 0
+        },
+        {
+          "mention": "大唐集团",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "role": "name",
+          "entity_id": "ENT_ENERGY_0004",
+          "sentence_index": 0
+        },
+        {
+          "mention": "华为",
+          "type": "ORG",
+          "char_start": 20,
+          "char_end": 22,
+          "role": "name",
+          "entity_id": "ENT_GEN_0051",
+          "sentence_index": 1
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 25,
+          "char_end": 27,
+          "role": "pronoun",
+          "sentence_index": 2
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 3,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "scenario": "holdout_subject_switch_nil",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "中间出现新的已链接主体，集合前件不再唯一。",
+          "nil_reason": "中间出现新的已链接主体，集合前件不再唯一。"
+        }
+      ],
+      "scenario": "holdout_subject_switch_nil",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "中间出现新的已链接主体，集合前件不再唯一。"
+    },
+    {
+      "id": "CORE_BLIND_HOLDOUT_025",
+      "text": "广东电网与国网江苏电力完成调度协商。双方将在下一阶段推进实施。",
+      "mentions": [
+        {
+          "mention": "广东电网",
+          "type": "ORG",
+          "char_start": 0,
+          "char_end": 4,
+          "role": "name",
+          "entity_id": "ENT_GEN_0125",
+          "sentence_index": 0
+        },
+        {
+          "mention": "国网江苏电力",
+          "type": "ORG",
+          "char_start": 5,
+          "char_end": 11,
+          "role": "name",
+          "entity_id": "ENT_GEN_0124",
+          "sentence_index": 0
+        },
+        {
+          "mention": "双方",
+          "type": "PRON",
+          "char_start": 18,
+          "char_end": 20,
+          "role": "pronoun",
+          "sentence_index": 1
+        }
+      ],
+      "expected_coreferences": [
+        {
+          "mention_index": 2,
+          "entity_id": null,
+          "entity_ids": [],
+          "antecedent_indices": [],
+          "is_collective": true,
+          "is_nil": true,
+          "scenario": "holdout_cross_sentence_nil",
+          "difficulty": "hard",
+          "subset": "blind_holdout",
+          "annotation_evidence": "跨句集合缺乏可验证的话语连续性信号，按保守策略返回 NIL。",
+          "nil_reason": "跨句集合缺乏可验证的话语连续性信号，按保守策略返回 NIL。"
+        }
+      ],
+      "scenario": "holdout_cross_sentence_nil",
+      "difficulty": "hard",
+      "subset": "blind_holdout",
+      "annotation_evidence": "跨句集合缺乏可验证的话语连续性信号，按保守策略返回 NIL。"
+    }
+  ]
+}

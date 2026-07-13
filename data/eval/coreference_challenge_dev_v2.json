@@ -1,0 +1,382 @@
+{
+  "dataset_name": "coreference_challenge_dev_v2",
+  "version": "0.1-sample",
+  "evaluation_scope": "challenge_dev",
+  "requires_runtime_kb": true,
+  "used_for_rule_development": true,
+  "purpose": "第二阶段篇章状态跟踪与候选协调组离线实验的开发集首批样例；不得作为独立盲测集。",
+  "annotation_policy": {
+    "offset_convention": "[start, end)",
+    "collective_nil_policy": "当跨句主体切换、多协调组竞争或语义范围无法由安全通用规则确定时，集合指代标为 NIL。",
+    "independence": "文本与既有 Acceptance Main、Challenge Dev v1、Blind Holdout v1、failure regression 不重复。"
+  },
+  "samples": [
+    {
+      "id": "CORE_DEV_V2_001",
+      "text": "华为和腾讯共同发布开发者计划。双方随后开放报名通道。",
+      "mentions": [
+        {"mention": "华为", "type": "ORG", "char_start": 0, "char_end": 2, "role": "name", "entity_id": "ENT_GEN_0051"},
+        {"mention": "腾讯", "type": "ORG", "char_start": 3, "char_end": 5, "role": "name", "entity_id": "ENT_GEN_0052"},
+        {"mention": "双方", "type": "PRON", "char_start": 15, "char_end": 17, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 2, "entity_id": null, "entity_ids": ["ENT_GEN_0051", "ENT_GEN_0052"], "antecedent_indices": [0, 1], "is_collective": true, "is_nil": false, "scenario": "cross_sentence_one_positive", "difficulty": "medium", "requires_discourse_reasoning": true, "expected_resolution_basis": "上一句唯一明确协调组，事件从发布延续到报名。", "annotation_evidence": "华为和腾讯由“和”连接，第二句“双方”在无新主体条件下回指该二元协调组。"}],
+      "scenario": "cross_sentence_one_positive",
+      "difficulty": "medium",
+      "requires_discourse_reasoning": true,
+      "expected_resolution_basis": "nearest_unique_group_with_event_continuity",
+      "annotation_evidence": "上一句唯一协调组与下一句事件连续。"
+    },
+    {
+      "id": "CORE_DEV_V2_002",
+      "text": "华为和腾讯共同发布开发者计划。随后由阿里巴巴负责执行。双方将另行说明。",
+      "mentions": [
+        {"mention": "华为", "type": "ORG", "char_start": 0, "char_end": 2, "role": "name", "entity_id": "ENT_GEN_0051"},
+        {"mention": "腾讯", "type": "ORG", "char_start": 3, "char_end": 5, "role": "name", "entity_id": "ENT_GEN_0052"},
+        {"mention": "阿里巴巴", "type": "ORG", "char_start": 18, "char_end": 22, "role": "name", "entity_id": "ENT_GEN_0053"},
+        {"mention": "双方", "type": "PRON", "char_start": 27, "char_end": 29, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 3, "entity_id": null, "entity_ids": [], "antecedent_indices": [], "is_collective": true, "is_nil": true, "scenario": "cross_sentence_subject_switch_nil", "difficulty": "hard", "requires_discourse_reasoning": true, "expected_resolution_basis": "主体切换后缺少可安全恢复的二元协调组。", "annotation_evidence": "“随后由阿里巴巴负责”显式引入新执行主体；末句“双方”无可验证的唯一集合前件。"}],
+      "scenario": "cross_sentence_subject_switch_nil",
+      "difficulty": "hard",
+      "requires_discourse_reasoning": true,
+      "expected_resolution_basis": "subject_switch_requires_conservative_nil",
+      "annotation_evidence": "与 CORE_DEV_V2_001 构成主体切换对照。"
+    },
+    {
+      "id": "CORE_DEV_V2_003",
+      "text": "中国移动和中国电信签订网络互联协议。项目组次日完成技术核验。两家运营商随后公布实施安排。",
+      "mentions": [
+        {"mention": "中国移动", "type": "ORG", "char_start": 0, "char_end": 4, "role": "name", "entity_id": "ENT_GEN_0102"},
+        {"mention": "中国电信", "type": "ORG", "char_start": 5, "char_end": 9, "role": "name", "entity_id": "ENT_GEN_0103"},
+        {"mention": "两家运营商", "type": "PRON", "char_start": 30, "char_end": 35, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 2, "entity_id": null, "entity_ids": ["ENT_GEN_0102", "ENT_GEN_0103"], "antecedent_indices": [0, 1], "is_collective": true, "is_nil": false, "scenario": "cross_sentence_two_positive", "difficulty": "hard", "requires_discourse_reasoning": true, "expected_resolution_basis": "两句内唯一运营商协调组，核验事件连续且无主体覆盖。", "annotation_evidence": "中国移动和中国电信均为通信运营机构；“两家运营商”数量和类型均匹配。"}],
+      "scenario": "cross_sentence_two_positive",
+      "difficulty": "hard",
+      "requires_discourse_reasoning": true,
+      "expected_resolution_basis": "two_sentence_group_cache_with_type_and_cardinality",
+      "annotation_evidence": "跨两句正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_004",
+      "text": "中国移动和中国电信签订网络互联协议。工业和信息化部随后启动专项审查。两家运营商表示将配合。",
+      "mentions": [
+        {"mention": "中国移动", "type": "ORG", "char_start": 0, "char_end": 4, "role": "name", "entity_id": "ENT_GEN_0102"},
+        {"mention": "中国电信", "type": "ORG", "char_start": 5, "char_end": 9, "role": "name", "entity_id": "ENT_GEN_0103"},
+        {"mention": "工业和信息化部", "type": "ORG", "char_start": 18, "char_end": 25, "role": "name", "entity_id": "ENT_GEN_0090"},
+        {"mention": "两家运营商", "type": "PRON", "char_start": 34, "char_end": 39, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 3, "entity_id": null, "entity_ids": [], "antecedent_indices": [], "is_collective": true, "is_nil": true, "scenario": "cross_sentence_event_switch_nil", "difficulty": "hard", "requires_discourse_reasoning": true, "expected_resolution_basis": "监管审查事件切入后，不能仅凭早先协调组跨两句强行链接。", "annotation_evidence": "第二句由监管机构启动不同事件，末句省略的主体范围无法仅由局部规则安全确定。"}],
+      "scenario": "cross_sentence_event_switch_nil",
+      "difficulty": "hard",
+      "requires_discourse_reasoning": true,
+      "expected_resolution_basis": "event_switch_requires_conservative_nil",
+      "annotation_evidence": "与 CORE_DEV_V2_003 构成跨两句事件切换对照。"
+    },
+    {
+      "id": "CORE_DEV_V2_005",
+      "text": "工商银行和建设银行参加座谈。随后农业银行与中国银行签署备忘录。双方将启动联合培训。",
+      "mentions": [
+        {"mention": "工商银行", "type": "ORG", "char_start": 0, "char_end": 4, "role": "name", "entity_id": "ENT_GEN_0055"},
+        {"mention": "建设银行", "type": "ORG", "char_start": 5, "char_end": 9, "role": "name", "entity_id": "ENT_GEN_0081"},
+        {"mention": "农业银行", "type": "ORG", "char_start": 16, "char_end": 20, "role": "name", "entity_id": "ENT_GEN_0082"},
+        {"mention": "中国银行", "type": "ORG", "char_start": 21, "char_end": 25, "role": "name", "entity_id": "ENT_GEN_0083"},
+        {"mention": "双方", "type": "PRON", "char_start": 31, "char_end": 33, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 4, "entity_id": null, "entity_ids": ["ENT_GEN_0082", "ENT_GEN_0083"], "antecedent_indices": [2, 3], "is_collective": true, "is_nil": false, "scenario": "new_group_overrides_old_positive", "difficulty": "hard", "requires_discourse_reasoning": true, "expected_resolution_basis": "最新明确协调组与“签署—启动”事件连续，应覆盖旧座谈组。", "annotation_evidence": "农业银行与中国银行是最近且唯一与培训启动相连的协调组。"}],
+      "scenario": "new_group_overrides_old_positive",
+      "difficulty": "hard",
+      "requires_discourse_reasoning": true,
+      "expected_resolution_basis": "new_coordinated_group_overrides_old_group",
+      "annotation_evidence": "多协调组竞争正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_006",
+      "text": "工商银行和建设银行发布联合倡议。农业银行与中国银行也提出方案。双方将在下周说明细则。",
+      "mentions": [
+        {"mention": "工商银行", "type": "ORG", "char_start": 0, "char_end": 4, "role": "name", "entity_id": "ENT_GEN_0055"},
+        {"mention": "建设银行", "type": "ORG", "char_start": 5, "char_end": 9, "role": "name", "entity_id": "ENT_GEN_0081"},
+        {"mention": "农业银行", "type": "ORG", "char_start": 16, "char_end": 20, "role": "name", "entity_id": "ENT_GEN_0082"},
+        {"mention": "中国银行", "type": "ORG", "char_start": 21, "char_end": 25, "role": "name", "entity_id": "ENT_GEN_0083"},
+        {"mention": "双方", "type": "PRON", "char_start": 31, "char_end": 33, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 4, "entity_id": null, "entity_ids": [], "antecedent_indices": [], "is_collective": true, "is_nil": true, "scenario": "multiple_group_competition_nil", "difficulty": "hard", "requires_discourse_reasoning": true, "expected_resolution_basis": "两个同类型协调组并列出现，末句缺少可解释的唯一事件归属。", "annotation_evidence": "两组银行均可能是“双方”；保守评测 gold 为 NIL，防止最近组过召回。"}],
+      "scenario": "multiple_group_competition_nil",
+      "difficulty": "hard",
+      "requires_discourse_reasoning": true,
+      "expected_resolution_basis": "competing_groups_require_conservative_nil",
+      "annotation_evidence": "与 CORE_DEV_V2_005 构成新组覆盖与多组歧义对照。"
+    },
+    {
+      "id": "CORE_DEV_V2_007",
+      "text": "企业微信和腾讯文档完成账号互通。二者将同步更新权限设置。",
+      "mentions": [
+        {"mention": "企业微信", "type": "PRODUCT", "char_start": 0, "char_end": 4, "role": "name", "entity_id": "ENT_GEN_0126"},
+        {"mention": "腾讯文档", "type": "PRODUCT", "char_start": 5, "char_end": 9, "role": "name", "entity_id": "ENT_GEN_0127"},
+        {"mention": "二者", "type": "PRON", "char_start": 16, "char_end": 18, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 2, "entity_id": null, "entity_ids": ["ENT_GEN_0126", "ENT_GEN_0127"], "antecedent_indices": [0, 1], "is_collective": true, "is_nil": false, "scenario": "product_system_collective_positive", "difficulty": "medium", "requires_discourse_reasoning": false, "expected_resolution_basis": "同句唯一产品协调组，二者数量匹配。", "annotation_evidence": "两个知识库产品由“和”连接，后续“二者”明确回指。"}],
+      "scenario": "product_system_collective_positive",
+      "difficulty": "medium",
+      "requires_discourse_reasoning": false,
+      "expected_resolution_basis": "same_sentence_product_group",
+      "annotation_evidence": "产品/系统集合正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_008",
+      "text": "企业微信和腾讯文档完成账号互通。Windows 11 随后接入测试。二者将同步更新权限设置。",
+      "mentions": [
+        {"mention": "企业微信", "type": "PRODUCT", "char_start": 0, "char_end": 4, "role": "name", "entity_id": "ENT_GEN_0126"},
+        {"mention": "腾讯文档", "type": "PRODUCT", "char_start": 5, "char_end": 9, "role": "name", "entity_id": "ENT_GEN_0127"},
+        {"mention": "Windows 11", "type": "PRODUCT", "char_start": 16, "char_end": 26, "role": "name", "entity_id": "ENT_GEN_0063"},
+        {"mention": "二者", "type": "PRON", "char_start": 34, "char_end": 36, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 3, "entity_id": null, "entity_ids": [], "antecedent_indices": [], "is_collective": true, "is_nil": true, "scenario": "product_subject_switch_nil", "difficulty": "hard", "requires_discourse_reasoning": true, "expected_resolution_basis": "新产品进入测试事件后，二者范围无法由规则安全恢复。", "annotation_evidence": "Windows 11 作为新的句子主体引入，末句未说明“二者”排除或包含它。"}],
+      "scenario": "product_subject_switch_nil",
+      "difficulty": "hard",
+      "requires_discourse_reasoning": true,
+      "expected_resolution_basis": "product_subject_switch_requires_nil",
+      "annotation_evidence": "与 CORE_DEV_V2_007 构成产品集合对照。"
+    },
+    {
+      "id": "CORE_DEV_V2_009",
+      "text": "新华社和人民日报社联合采编专题报道。她们将于周末发布成稿。",
+      "mentions": [
+        {"mention": "新华社", "type": "ORG", "char_start": 0, "char_end": 3, "role": "name", "entity_id": "ENT_GEN_0115"},
+        {"mention": "人民日报社", "type": "ORG", "char_start": 4, "char_end": 9, "role": "name", "entity_id": "ENT_GEN_0139"},
+        {"mention": "她们", "type": "PRON", "char_start": 18, "char_end": 20, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 2, "entity_id": null, "entity_ids": [], "antecedent_indices": [], "is_collective": true, "is_nil": true, "scenario": "female_pronoun_org_type_conflict_nil", "difficulty": "medium", "requires_discourse_reasoning": false, "expected_resolution_basis": "女性人称与组织类型不兼容。", "annotation_evidence": "两个前件均为媒体机构而非 PERSON；“她们”不应链接为组织集合。"}],
+      "scenario": "female_pronoun_org_type_conflict_nil",
+      "difficulty": "medium",
+      "requires_discourse_reasoning": false,
+      "expected_resolution_basis": "pronoun_type_constraint",
+      "annotation_evidence": "人称类型冲突 NIL。"
+    },
+    {
+      "id": "CORE_DEV_V2_010",
+      "text": "中国国航和东方航空同步调整航班计划。两家航司随后公布退改安排。",
+      "mentions": [
+        {"mention": "中国国航", "type": "ORG", "char_start": 0, "char_end": 4, "role": "name", "entity_id": "ENT_GEN_0135"},
+        {"mention": "东方航空", "type": "ORG", "char_start": 5, "char_end": 9, "role": "name", "entity_id": "ENT_GEN_0136"},
+        {"mention": "两家航司", "type": "PRON", "char_start": 18, "char_end": 22, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 2, "entity_id": null, "entity_ids": ["ENT_GEN_0135", "ENT_GEN_0136"], "antecedent_indices": [0, 1], "is_collective": true, "is_nil": false, "scenario": "event_continuity_positive", "difficulty": "medium", "requires_discourse_reasoning": true, "expected_resolution_basis": "航班调整到退改安排属于连续事件，航空公司类型和二元数量匹配。", "annotation_evidence": "唯一航空公司协调组与“两家航司”类型、数量一致。"}],
+      "scenario": "event_continuity_positive",
+      "difficulty": "medium",
+      "requires_discourse_reasoning": true,
+      "expected_resolution_basis": "event_continuity_with_type_match",
+      "annotation_evidence": "事件连续正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_011",
+      "text": "中国国航和东方航空同步调整航班计划。首都机场随后发布运行提示。两家航司将另行答复。",
+      "mentions": [
+        {"mention": "中国国航", "type": "ORG", "char_start": 0, "char_end": 4, "role": "name", "entity_id": "ENT_GEN_0135"},
+        {"mention": "东方航空", "type": "ORG", "char_start": 5, "char_end": 9, "role": "name", "entity_id": "ENT_GEN_0136"},
+        {"mention": "首都机场", "type": "ORG", "char_start": 18, "char_end": 22, "role": "name", "entity_id": "ENT_GEN_0150"},
+        {"mention": "两家航司", "type": "PRON", "char_start": 31, "char_end": 35, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 3, "entity_id": null, "entity_ids": [], "antecedent_indices": [], "is_collective": true, "is_nil": true, "scenario": "event_switch_airline_nil", "difficulty": "hard", "requires_discourse_reasoning": true, "expected_resolution_basis": "机场运行提示引入新主体与新事件，不能用两句前协调组作默认链接。", "annotation_evidence": "虽保留航空公司类型词，但跨句主体切换使其成为保守 NIL 对照。"}],
+      "scenario": "event_switch_airline_nil",
+      "difficulty": "hard",
+      "requires_discourse_reasoning": true,
+      "expected_resolution_basis": "event_switch_requires_conservative_nil",
+      "annotation_evidence": "与 CORE_DEV_V2_010 构成事件切换对照。"
+    },
+    {
+      "id": "CORE_DEV_V2_012",
+      "text": "国家能源局、国家发展改革委和生态环境部共同部署专项行动。三方将分别发布配套要求。",
+      "mentions": [
+        {"mention": "国家能源局", "type": "ORG", "char_start": 0, "char_end": 5, "role": "name", "entity_id": "ENT_GEN_0059"},
+        {"mention": "国家发展改革委", "type": "ORG", "char_start": 6, "char_end": 13, "role": "name", "entity_id": "ENT_GEN_0089"},
+        {"mention": "生态环境部", "type": "ORG", "char_start": 14, "char_end": 19, "role": "name", "entity_id": "ENT_GEN_0091"},
+        {"mention": "三方", "type": "PRON", "char_start": 28, "char_end": 30, "role": "pronoun"}
+      ],
+      "expected_coreferences": [{"mention_index": 3, "entity_id": null, "entity_ids": ["ENT_GEN_0059", "ENT_GEN_0089", "ENT_GEN_0091"], "antecedent_indices": [0, 1, 2], "is_collective": true, "is_nil": false, "scenario": "three_party_event_continuity_positive", "difficulty": "medium", "requires_discourse_reasoning": false, "expected_resolution_basis": "同句三个政府机构形成唯一三元协调组，数量匹配。", "annotation_evidence": "顿号与“和”连接三个已链接机构；“三方”明确匹配三元集合。"}],
+      "scenario": "three_party_event_continuity_positive",
+      "difficulty": "medium",
+      "requires_discourse_reasoning": false,
+      "expected_resolution_basis": "same_sentence_three_group",
+      "annotation_evidence": "三实体集合正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_013", "pilot_subset": "same_sentence_candidate_pilot", "text": "华为和腾讯联合举办开发者大会，双方公布议程。",
+      "mentions": [{"mention":"华为","type":"ORG","char_start":0,"char_end":2,"role":"name","entity_id":"ENT_GEN_0051"},{"mention":"腾讯","type":"ORG","char_start":3,"char_end":5,"role":"name","entity_id":"ENT_GEN_0052"},{"mention":"双方","type":"PRON","char_start":15,"char_end":17,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":2,"entity_id":null,"entity_ids":["ENT_GEN_0051","ENT_GEN_0052"],"antecedent_indices":[0,1],"is_collective":true,"is_nil":false,"scenario":"same_sentence_single_group_positive","difficulty":"easy","requires_discourse_reasoning":false,"expected_resolution_basis":"同句唯一二元协调组。","annotation_evidence":"华为和腾讯由“和”连接，双方数量匹配。"}],
+      "scenario":"same_sentence_single_group_positive","difficulty":"easy","requires_discourse_reasoning":false,"expected_resolution_basis":"same_sentence_unique_group","annotation_evidence":"同句单协调组正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_014", "pilot_subset": "same_sentence_candidate_pilot", "text": "工商银行与建设银行共同发布绿色金融倡议，双方启动试点。",
+      "mentions": [{"mention":"工商银行","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_GEN_0055"},{"mention":"建设银行","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_GEN_0081"},{"mention":"双方","type":"PRON","char_start":20,"char_end":22,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":2,"entity_id":null,"entity_ids":["ENT_GEN_0055","ENT_GEN_0081"],"antecedent_indices":[0,1],"is_collective":true,"is_nil":false,"scenario":"same_sentence_single_group_positive","difficulty":"easy","requires_discourse_reasoning":false,"expected_resolution_basis":"同句唯一二元协调组。","annotation_evidence":"两家银行由“与”连接。"}],
+      "scenario":"same_sentence_single_group_positive","difficulty":"easy","requires_discourse_reasoning":false,"expected_resolution_basis":"same_sentence_unique_group","annotation_evidence":"同句单协调组正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_015", "pilot_subset": "same_sentence_candidate_pilot", "text": "中国国航和东方航空同步调整航班，双方发布退改规则。",
+      "mentions": [{"mention":"中国国航","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_GEN_0135"},{"mention":"东方航空","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_GEN_0136"},{"mention":"双方","type":"PRON","char_start":16,"char_end":18,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":2,"entity_id":null,"entity_ids":["ENT_GEN_0135","ENT_GEN_0136"],"antecedent_indices":[0,1],"is_collective":true,"is_nil":false,"scenario":"same_sentence_single_group_positive","difficulty":"easy","requires_discourse_reasoning":false,"expected_resolution_basis":"同句唯一二元协调组。","annotation_evidence":"两家航空公司由“和”连接。"}],
+      "scenario":"same_sentence_single_group_positive","difficulty":"easy","requires_discourse_reasoning":false,"expected_resolution_basis":"same_sentence_unique_group","annotation_evidence":"同句单协调组正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_016", "pilot_subset": "same_sentence_candidate_pilot", "text": "国家电网与南方电网共同建设示范工程，双方完成验收。",
+      "mentions": [{"mention":"国家电网","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_ENERGY_0001"},{"mention":"南方电网","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_ENERGY_0002"},{"mention":"双方","type":"PRON","char_start":18,"char_end":20,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":2,"entity_id":null,"entity_ids":["ENT_ENERGY_0001","ENT_ENERGY_0002"],"antecedent_indices":[0,1],"is_collective":true,"is_nil":false,"scenario":"same_sentence_single_group_positive","difficulty":"easy","requires_discourse_reasoning":false,"expected_resolution_basis":"同句唯一二元协调组。","annotation_evidence":"两家电网企业由“与”连接。"}],
+      "scenario":"same_sentence_single_group_positive","difficulty":"easy","requires_discourse_reasoning":false,"expected_resolution_basis":"same_sentence_unique_group","annotation_evidence":"同句单协调组正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_017", "pilot_subset": "same_sentence_candidate_pilot", "text": "国家能源局、国家发展改革委以及生态环境部联合发布方案，三方同步落实。",
+      "mentions": [{"mention":"国家能源局","type":"ORG","char_start":0,"char_end":5,"role":"name","entity_id":"ENT_GEN_0059"},{"mention":"国家发展改革委","type":"ORG","char_start":6,"char_end":13,"role":"name","entity_id":"ENT_GEN_0089"},{"mention":"生态环境部","type":"ORG","char_start":15,"char_end":20,"role":"name","entity_id":"ENT_GEN_0091"},{"mention":"三方","type":"PRON","char_start":27,"char_end":29,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":3,"entity_id":null,"entity_ids":["ENT_GEN_0059","ENT_GEN_0089","ENT_GEN_0091"],"antecedent_indices":[0,1,2],"is_collective":true,"is_nil":false,"scenario":"same_sentence_three_group_positive","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"同句唯一三元协调组。","annotation_evidence":"顿号与“以及”连接三家机构，三方数量匹配。"}],
+      "scenario":"same_sentence_three_group_positive","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"same_sentence_three_group","annotation_evidence":"三实体同句正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_018", "pilot_subset": "same_sentence_candidate_pilot", "text": "北京大学、清华大学及浙江大学共同举办论坛，三方发布倡议。",
+      "mentions": [{"mention":"北京大学","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_GEN_0064"},{"mention":"清华大学","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_GEN_0060"},{"mention":"浙江大学","type":"ORG","char_start":10,"char_end":14,"role":"name","entity_id":"ENT_GEN_0066"},{"mention":"三方","type":"PRON","char_start":21,"char_end":23,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":3,"entity_id":null,"entity_ids":["ENT_GEN_0064","ENT_GEN_0060","ENT_GEN_0066"],"antecedent_indices":[0,1,2],"is_collective":true,"is_nil":false,"scenario":"same_sentence_three_group_positive","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"同句唯一三元协调组。","annotation_evidence":"三个高校由顿号和“及”连接。"}],
+      "scenario":"same_sentence_three_group_positive","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"same_sentence_three_group","annotation_evidence":"三实体同句正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_019", "pilot_subset": "same_sentence_candidate_pilot", "text": "中国国航、东方航空和南方航空联合优化航线，三方公布计划。",
+      "mentions": [{"mention":"中国国航","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_GEN_0135"},{"mention":"东方航空","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_GEN_0136"},{"mention":"南方航空","type":"ORG","char_start":10,"char_end":14,"role":"name","entity_id":"ENT_GEN_0114"},{"mention":"三方","type":"PRON","char_start":21,"char_end":23,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":3,"entity_id":null,"entity_ids":["ENT_GEN_0135","ENT_GEN_0136","ENT_GEN_0114"],"antecedent_indices":[0,1,2],"is_collective":true,"is_nil":false,"scenario":"same_sentence_three_group_positive","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"同句唯一三元协调组。","annotation_evidence":"三个航空组织构成唯一三元组。"}],
+      "scenario":"same_sentence_three_group_positive","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"same_sentence_three_group","annotation_evidence":"三实体同句正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_020", "pilot_subset": "same_sentence_candidate_pilot", "text": "中国科学院、工程院以及电力规划设计总院共同研讨，三方形成意见。",
+      "mentions": [{"mention":"中国科学院","type":"ORG","char_start":0,"char_end":5,"role":"name","entity_id":"ENT_GEN_0068"},{"mention":"工程院","type":"ORG","char_start":6,"char_end":9,"role":"name","entity_id":"ENT_GEN_0069"},{"mention":"电力规划设计总院","type":"ORG","char_start":11,"char_end":19,"role":"name","entity_id":"ENT_ENERGY_0049"},{"mention":"三方","type":"PRON","char_start":24,"char_end":26,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":3,"entity_id":null,"entity_ids":["ENT_GEN_0068","ENT_GEN_0069","ENT_ENERGY_0049"],"antecedent_indices":[0,1,2],"is_collective":true,"is_nil":false,"scenario":"same_sentence_three_group_positive","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"同句唯一三元协调组。","annotation_evidence":"三个研究机构由顿号和“以及”连接。"}],
+      "scenario":"same_sentence_three_group_positive","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"same_sentence_three_group","annotation_evidence":"三实体同句正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_021", "pilot_subset": "same_sentence_candidate_pilot", "text": "工商银行和建设银行参加行业座谈，农业银行与中国银行达成跨境结算合作，双方开设联合培训课程。",
+      "mentions": [{"mention":"工商银行","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_GEN_0055"},{"mention":"建设银行","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_GEN_0081"},{"mention":"农业银行","type":"ORG","char_start":16,"char_end":20,"role":"name","entity_id":"ENT_GEN_0082"},{"mention":"中国银行","type":"ORG","char_start":21,"char_end":25,"role":"name","entity_id":"ENT_GEN_0083"},{"mention":"双方","type":"PRON","char_start":34,"char_end":36,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":4,"entity_id":null,"entity_ids":["ENT_GEN_0082","ENT_GEN_0083"],"antecedent_indices":[2,3],"is_collective":true,"is_nil":false,"scenario":"same_sentence_recent_group_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"最近协调组与签署—培训事件连续。","annotation_evidence":"农业银行与中国银行是最后一个显式协调组。"}],
+      "scenario":"same_sentence_recent_group_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"nearest_group","annotation_evidence":"多协调组最近组正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_022", "pilot_subset": "same_sentence_candidate_pilot", "text": "华为和腾讯发布产品，阿里巴巴与小米签署合作协议，双方开放报名。",
+      "mentions": [{"mention":"华为","type":"ORG","char_start":0,"char_end":2,"role":"name","entity_id":"ENT_GEN_0051"},{"mention":"腾讯","type":"ORG","char_start":3,"char_end":5,"role":"name","entity_id":"ENT_GEN_0052"},{"mention":"阿里巴巴","type":"ORG","char_start":10,"char_end":14,"role":"name","entity_id":"ENT_GEN_0053"},{"mention":"小米","type":"ORG","char_start":15,"char_end":17,"role":"name","entity_id":"ENT_GEN_0073"},{"mention":"双方","type":"PRON","char_start":24,"char_end":26,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":4,"entity_id":null,"entity_ids":["ENT_GEN_0053","ENT_GEN_0073"],"antecedent_indices":[2,3],"is_collective":true,"is_nil":false,"scenario":"same_sentence_recent_group_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"最近协调组与签署—报名事件连续。","annotation_evidence":"阿里巴巴与小米是最后一个协调组。"}],
+      "scenario":"same_sentence_recent_group_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"nearest_group","annotation_evidence":"多协调组最近组正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_023", "pilot_subset": "same_sentence_candidate_pilot", "text": "新华社和中国日报社交流报道经验，人民日报社与经济日报社联合策划专题，双方发布选题。",
+      "mentions": [{"mention":"新华社","type":"ORG","char_start":0,"char_end":3,"role":"name","entity_id":"ENT_GEN_0115"},{"mention":"中国日报社","type":"ORG","char_start":4,"char_end":9,"role":"name","entity_id":"ENT_GEN_0153"},{"mention":"人民日报社","type":"ORG","char_start":16,"char_end":21,"role":"name","entity_id":"ENT_GEN_0139"},{"mention":"经济日报社","type":"ORG","char_start":22,"char_end":27,"role":"name","entity_id":"ENT_GEN_0154"},{"mention":"双方","type":"PRON","char_start":34,"char_end":36,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":4,"entity_id":null,"entity_ids":["ENT_GEN_0139","ENT_GEN_0154"],"antecedent_indices":[2,3],"is_collective":true,"is_nil":false,"scenario":"same_sentence_recent_group_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"最近协调组与联合策划—发布选题连续。","annotation_evidence":"后一个媒体协调组是唯一最近组。"}],
+      "scenario":"same_sentence_recent_group_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"nearest_group","annotation_evidence":"多协调组最近组正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_024", "pilot_subset": "same_sentence_candidate_pilot", "text": "国家电网和南方电网交流经验，华能集团与大唐集团签署协议，双方公布安排。",
+      "mentions": [{"mention":"国家电网","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_ENERGY_0001"},{"mention":"南方电网","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_ENERGY_0002"},{"mention":"华能集团","type":"ORG","char_start":14,"char_end":18,"role":"name","entity_id":"ENT_ENERGY_0003"},{"mention":"大唐集团","type":"ORG","char_start":19,"char_end":23,"role":"name","entity_id":"ENT_ENERGY_0004"},{"mention":"双方","type":"PRON","char_start":28,"char_end":30,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":4,"entity_id":null,"entity_ids":["ENT_ENERGY_0003","ENT_ENERGY_0004"],"antecedent_indices":[2,3],"is_collective":true,"is_nil":false,"scenario":"same_sentence_recent_group_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"最后协调组与签署—公布事件连续。","annotation_evidence":"华能集团与大唐集团为最近合法协调组。"}],
+      "scenario":"same_sentence_recent_group_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"nearest_group","annotation_evidence":"多协调组最近组正例。"
+    },
+    {
+      "id": "CORE_DEV_V2_025", "pilot_subset": "same_sentence_candidate_pilot", "text": "工商银行和建设银行就支付服务讨论，农业银行与中国银行各自发布方案，双方拟于下月说明规则。",
+      "mentions": [{"mention":"工商银行","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_GEN_0055"},{"mention":"建设银行","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_GEN_0081"},{"mention":"农业银行","type":"ORG","char_start":17,"char_end":21,"role":"name","entity_id":"ENT_GEN_0082"},{"mention":"中国银行","type":"ORG","char_start":22,"char_end":26,"role":"name","entity_id":"ENT_GEN_0083"},{"mention":"双方","type":"PRON","char_start":33,"char_end":35,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":4,"entity_id":null,"entity_ids":[],"antecedent_indices":[],"is_collective":true,"is_nil":true,"scenario":"same_sentence_multiple_group_ambiguity_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"两个同类型协调组均可能指代，缺少唯一事件线索。","annotation_evidence":"两个银行组均“提出方案”，末句双方无法唯一回指。"}],
+      "scenario":"same_sentence_multiple_group_ambiguity_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"competing_groups_conservative_nil","annotation_evidence":"同句多协调组歧义 NIL。"
+    },
+    {
+      "id": "CORE_DEV_V2_026", "pilot_subset": "same_sentence_candidate_pilot", "text": "新华社和中国日报社筹备专题，人民日报社与经济日报社也筹备专题，双方将公布时间。",
+      "mentions": [{"mention":"新华社","type":"ORG","char_start":0,"char_end":3,"role":"name","entity_id":"ENT_GEN_0115"},{"mention":"中国日报社","type":"ORG","char_start":4,"char_end":9,"role":"name","entity_id":"ENT_GEN_0153"},{"mention":"人民日报社","type":"ORG","char_start":14,"char_end":19,"role":"name","entity_id":"ENT_GEN_0139"},{"mention":"经济日报社","type":"ORG","char_start":20,"char_end":25,"role":"name","entity_id":"ENT_GEN_0154"},{"mention":"双方","type":"PRON","char_start":31,"char_end":33,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":4,"entity_id":null,"entity_ids":[],"antecedent_indices":[],"is_collective":true,"is_nil":true,"scenario":"same_sentence_multiple_group_ambiguity_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"两个媒体协调组事件相同，无法唯一回指。","annotation_evidence":"两个组都在筹备专题，最后一组最近性不足以构成 gold。"}],
+      "scenario":"same_sentence_multiple_group_ambiguity_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"competing_groups_conservative_nil","annotation_evidence":"同句多协调组歧义 NIL。"
+    },
+    {
+      "id": "CORE_DEV_V2_027", "pilot_subset": "same_sentence_candidate_pilot", "text": "国家能源局和生态环境部联合调研，国家发展改革委与工业和信息化部联合调研，双方将提交报告。",
+      "mentions": [{"mention":"国家能源局","type":"ORG","char_start":0,"char_end":5,"role":"name","entity_id":"ENT_GEN_0059"},{"mention":"生态环境部","type":"ORG","char_start":6,"char_end":11,"role":"name","entity_id":"ENT_GEN_0091"},{"mention":"国家发展改革委","type":"ORG","char_start":16,"char_end":23,"role":"name","entity_id":"ENT_GEN_0089"},{"mention":"工业和信息化部","type":"ORG","char_start":24,"char_end":31,"role":"name","entity_id":"ENT_GEN_0090"},{"mention":"双方","type":"PRON","char_start":36,"char_end":38,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":4,"entity_id":null,"entity_ids":[],"antecedent_indices":[],"is_collective":true,"is_nil":true,"scenario":"same_sentence_multiple_group_ambiguity_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"两组均执行联合调研，无法唯一绑定。","annotation_evidence":"相同事件描述造成多组竞争。"}],
+      "scenario":"same_sentence_multiple_group_ambiguity_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"competing_groups_conservative_nil","annotation_evidence":"同句多协调组歧义 NIL。"
+    },
+    {
+      "id": "CORE_DEV_V2_028", "pilot_subset": "same_sentence_candidate_pilot", "text": "国家电网和南方电网开展巡检，华能集团与大唐集团开展巡检，双方将汇总记录。",
+      "mentions": [{"mention":"国家电网","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_ENERGY_0001"},{"mention":"南方电网","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_ENERGY_0002"},{"mention":"华能集团","type":"ORG","char_start":14,"char_end":18,"role":"name","entity_id":"ENT_ENERGY_0003"},{"mention":"大唐集团","type":"ORG","char_start":19,"char_end":23,"role":"name","entity_id":"ENT_ENERGY_0004"},{"mention":"双方","type":"PRON","char_start":28,"char_end":30,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":4,"entity_id":null,"entity_ids":[],"antecedent_indices":[],"is_collective":true,"is_nil":true,"scenario":"same_sentence_multiple_group_ambiguity_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"两个协调组均开展巡检，记录归属不唯一。","annotation_evidence":"不存在可验证的最近组语义优势。"}],
+      "scenario":"same_sentence_multiple_group_ambiguity_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"competing_groups_conservative_nil","annotation_evidence":"同句多协调组歧义 NIL。"
+    },
+    {
+      "id": "CORE_DEV_V2_029", "pilot_subset": "same_sentence_candidate_pilot", "text": "新华社同人民日报社合作制作评论节目，她们将在周末播出。",
+      "mentions": [{"mention":"新华社","type":"ORG","char_start":0,"char_end":3,"role":"name","entity_id":"ENT_GEN_0115"},{"mention":"人民日报社","type":"ORG","char_start":4,"char_end":9,"role":"name","entity_id":"ENT_GEN_0139"},{"mention":"她们","type":"PRON","char_start":18,"char_end":20,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":2,"entity_id":null,"entity_ids":[],"antecedent_indices":[],"is_collective":true,"is_nil":true,"scenario":"same_sentence_person_type_mismatch_nil","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"女性人称与 ORG 集合不兼容。","annotation_evidence":"两个前件均为媒体机构。"}],
+      "scenario":"same_sentence_person_type_mismatch_nil","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"type_constraint","annotation_evidence":"类型不匹配 NIL。"
+    },
+    {
+      "id": "CORE_DEV_V2_030", "pilot_subset": "same_sentence_candidate_pilot", "text": "企业微信与腾讯文档正在整合协作入口，它们同步调整访问权限。",
+      "mentions": [{"mention":"企业微信","type":"PRODUCT","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_GEN_0126"},{"mention":"腾讯文档","type":"PRODUCT","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_GEN_0127"},{"mention":"它们","type":"PRON","char_start":18,"char_end":20,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":2,"entity_id":null,"entity_ids":[],"antecedent_indices":[],"is_collective":true,"is_nil":true,"scenario":"same_sentence_product_type_mismatch_nil","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"本轮正式集合过滤不接受 PRODUCT 前件。","annotation_evidence":"保留产品集合边界，不修改当前 ORG/PERSON 过滤。"}],
+      "scenario":"same_sentence_product_type_mismatch_nil","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"current_type_boundary","annotation_evidence":"产品类型边界 NIL。"
+    },
+    {
+      "id": "CORE_DEV_V2_031", "pilot_subset": "same_sentence_candidate_pilot", "text": "国家能源局、国家发展改革委和生态环境部联合部署任务，双方随后跟进。",
+      "mentions": [{"mention":"国家能源局","type":"ORG","char_start":0,"char_end":5,"role":"name","entity_id":"ENT_GEN_0059"},{"mention":"国家发展改革委","type":"ORG","char_start":6,"char_end":13,"role":"name","entity_id":"ENT_GEN_0089"},{"mention":"生态环境部","type":"ORG","char_start":14,"char_end":19,"role":"name","entity_id":"ENT_GEN_0091"},{"mention":"双方","type":"PRON","char_start":26,"char_end":28,"role":"pronoun"}],
+      "expected_coreferences": [{"mention_index":3,"entity_id":null,"entity_ids":[],"antecedent_indices":[],"is_collective":true,"is_nil":true,"scenario":"same_sentence_cardinality_mismatch_nil","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"双方要求恰好两个实体，前件为三元组。","annotation_evidence":"数量约束不匹配。"}],
+      "scenario":"same_sentence_cardinality_mismatch_nil","difficulty":"medium","requires_discourse_reasoning":false,"expected_resolution_basis":"cardinality_constraint","annotation_evidence":"数量不匹配 NIL。"
+    },
+    {
+      "id":"CORE_DEV_V2_032", "pilot_subset":"ambiguity_rejection_pilot", "ambiguity_signal":"explicit_subject_continuation", "text":"工商银行和建设银行交流业务经验，农业银行与中国银行签署绿色金融备忘录，农业银行与中国银行随后共同发布实施安排，双方启动培训。",
+      "mentions":[{"mention":"工商银行","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_GEN_0055"},{"mention":"建设银行","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_GEN_0081"},{"mention":"农业银行","type":"ORG","char_start":16,"char_end":20,"role":"name","entity_id":"ENT_GEN_0082"},{"mention":"中国银行","type":"ORG","char_start":21,"char_end":25,"role":"name","entity_id":"ENT_GEN_0083"},{"mention":"双方","type":"PRON","char_start":55,"char_end":57,"role":"pronoun"}],
+      "expected_coreferences":[{"mention_index":4,"entity_id":null,"entity_ids":["ENT_GEN_0082","ENT_GEN_0083"],"antecedent_indices":[2,3],"is_collective":true,"is_nil":false,"scenario":"ambiguity_rejection_subject_continuation_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"最近协调组在代词前被显式重复为共同主体，且签署—发布—培训事件连续。","annotation_evidence":"农业银行与中国银行被重复点名并继续发布实施安排。","ambiguity_signal":"explicit_subject_continuation"}],
+      "scenario":"ambiguity_rejection_subject_continuation_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"recent_group_subject_and_event_continuity","annotation_evidence":"最近组具有两个正向连续性证据。"
+    },
+    {
+      "id":"CORE_DEV_V2_033", "pilot_subset":"ambiguity_rejection_pilot", "ambiguity_signal":"explicit_subject_switch", "text":"工商银行和建设银行交流业务经验，农业银行与中国银行签署绿色金融备忘录，中信证券转由风险部门负责并公布年度处置通报，双方启动培训。",
+      "mentions":[{"mention":"工商银行","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_GEN_0055"},{"mention":"建设银行","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_GEN_0081"},{"mention":"农业银行","type":"ORG","char_start":16,"char_end":20,"role":"name","entity_id":"ENT_GEN_0082"},{"mention":"中国银行","type":"ORG","char_start":21,"char_end":25,"role":"name","entity_id":"ENT_GEN_0083"},{"mention":"中信证券","type":"ORG","char_start":35,"char_end":39,"role":"name","entity_id":"ENT_GEN_0085"},{"mention":"双方","type":"PRON","char_start":57,"char_end":59,"role":"pronoun"}],
+      "expected_coreferences":[{"mention_index":5,"entity_id":null,"entity_ids":[],"antecedent_indices":[],"is_collective":true,"is_nil":true,"scenario":"ambiguity_rejection_subject_switch_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"两个协调组并存，且新的显式主体转入不同事件，无法安全唯一回指。","annotation_evidence":"中信证券作为新主体发布市场公告，切断最近组的事件链。","ambiguity_signal":"explicit_subject_switch"}],
+      "scenario":"ambiguity_rejection_subject_switch_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"new_subject_event_reset","annotation_evidence":"与 032 构成主体持续/切换对照。"
+    },
+    {
+      "id":"CORE_DEV_V2_034", "pilot_subset":"ambiguity_rejection_pilot", "ambiguity_signal":"explicit_subject_continuation", "text":"新华社与中国日报社交换采访计划，人民日报社和经济日报社联合策划经济专题，人民日报社和经济日报社随后公布栏目安排，双方组织采编。",
+      "mentions":[{"mention":"新华社","type":"ORG","char_start":0,"char_end":3,"role":"name","entity_id":"ENT_GEN_0115"},{"mention":"中国日报社","type":"ORG","char_start":4,"char_end":9,"role":"name","entity_id":"ENT_GEN_0153"},{"mention":"人民日报社","type":"ORG","char_start":16,"char_end":21,"role":"name","entity_id":"ENT_GEN_0139"},{"mention":"经济日报社","type":"ORG","char_start":22,"char_end":27,"role":"name","entity_id":"ENT_GEN_0154"},{"mention":"双方","type":"PRON","char_start":56,"char_end":58,"role":"pronoun"}],
+      "expected_coreferences":[{"mention_index":4,"entity_id":null,"entity_ids":["ENT_GEN_0139","ENT_GEN_0154"],"antecedent_indices":[2,3],"is_collective":true,"is_nil":false,"scenario":"ambiguity_rejection_subject_continuation_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"最近媒体组被显式重复，策划—公布—采编连续。","annotation_evidence":"人民日报社与经济日报社在指代前继续作为共同主体。","ambiguity_signal":"explicit_subject_continuation"}],
+      "scenario":"ambiguity_rejection_subject_continuation_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"recent_group_subject_and_event_continuity","annotation_evidence":"最近组具有显式主体与事件连续。"
+    },
+    {
+      "id":"CORE_DEV_V2_035", "pilot_subset":"ambiguity_rejection_pilot", "ambiguity_signal":"explicit_subject_switch", "text":"新华社与中国日报社交换采访计划，人民日报社和经济日报社联合策划经济专题，央视新闻随后宣布直播方案，双方组织采编。",
+      "mentions":[{"mention":"新华社","type":"ORG","char_start":0,"char_end":3,"role":"name","entity_id":"ENT_GEN_0115"},{"mention":"中国日报社","type":"ORG","char_start":4,"char_end":9,"role":"name","entity_id":"ENT_GEN_0153"},{"mention":"人民日报社","type":"ORG","char_start":16,"char_end":21,"role":"name","entity_id":"ENT_GEN_0139"},{"mention":"经济日报社","type":"ORG","char_start":22,"char_end":27,"role":"name","entity_id":"ENT_GEN_0154"},{"mention":"央视新闻","type":"ORG","char_start":36,"char_end":40,"role":"name","entity_id":"ENT_GEN_0141"},{"mention":"双方","type":"PRON","char_start":49,"char_end":51,"role":"pronoun"}],
+      "expected_coreferences":[{"mention_index":5,"entity_id":null,"entity_ids":[],"antecedent_indices":[],"is_collective":true,"is_nil":true,"scenario":"ambiguity_rejection_subject_switch_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"新媒体主体进入直播事件，两个协调组均缺少可验证的后续绑定。","annotation_evidence":"央视新闻随后宣布新方案，构成主体与事件重置。","ambiguity_signal":"explicit_subject_switch"}],
+      "scenario":"ambiguity_rejection_subject_switch_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"new_subject_event_reset","annotation_evidence":"与 034 构成主体持续/切换对照。"
+    },
+    {
+      "id":"CORE_DEV_V2_036", "pilot_subset":"ambiguity_rejection_pilot", "ambiguity_signal":"explicit_subject_continuation", "text":"国家电网和南方电网开展技术交流，华能集团与大唐集团签署检修协作协议，华能集团与大唐集团继续安排联合巡检，双方汇总记录。",
+      "mentions":[{"mention":"国家电网","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_ENERGY_0001"},{"mention":"南方电网","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_ENERGY_0002"},{"mention":"华能集团","type":"ORG","char_start":16,"char_end":20,"role":"name","entity_id":"ENT_ENERGY_0003"},{"mention":"大唐集团","type":"ORG","char_start":21,"char_end":25,"role":"name","entity_id":"ENT_ENERGY_0004"},{"mention":"双方","type":"PRON","char_start":52,"char_end":54,"role":"pronoun"}],
+      "expected_coreferences":[{"mention_index":4,"entity_id":null,"entity_ids":["ENT_ENERGY_0003","ENT_ENERGY_0004"],"antecedent_indices":[2,3],"is_collective":true,"is_nil":false,"scenario":"ambiguity_rejection_subject_continuation_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"最近能源组被显式延续，签署—巡检—汇总连续。","annotation_evidence":"华能集团与大唐集团在代词前继续安排巡检。","ambiguity_signal":"explicit_subject_continuation"}],
+      "scenario":"ambiguity_rejection_subject_continuation_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"recent_group_subject_and_event_continuity","annotation_evidence":"最近组具有显式主体与事件连续。"
+    },
+    {
+      "id":"CORE_DEV_V2_037", "pilot_subset":"ambiguity_rejection_pilot", "ambiguity_signal":"explicit_subject_switch", "text":"国家电网和南方电网开展技术交流，华能集团与大唐集团签署检修协作协议，国家能源局随后宣布监管安排，双方汇总记录。",
+      "mentions":[{"mention":"国家电网","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_ENERGY_0001"},{"mention":"南方电网","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_ENERGY_0002"},{"mention":"华能集团","type":"ORG","char_start":16,"char_end":20,"role":"name","entity_id":"ENT_ENERGY_0003"},{"mention":"大唐集团","type":"ORG","char_start":21,"char_end":25,"role":"name","entity_id":"ENT_ENERGY_0004"},{"mention":"国家能源局","type":"ORG","char_start":34,"char_end":39,"role":"name","entity_id":"ENT_GEN_0059"},{"mention":"双方","type":"PRON","char_start":48,"char_end":50,"role":"pronoun"}],
+      "expected_coreferences":[{"mention_index":5,"entity_id":null,"entity_ids":[],"antecedent_indices":[],"is_collective":true,"is_nil":true,"scenario":"ambiguity_rejection_subject_switch_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"监管主体与监管事件重置后，双方回指缺少安全证据。","annotation_evidence":"国家能源局随后宣布监管安排，打断检修协作事件链。","ambiguity_signal":"explicit_subject_switch"}],
+      "scenario":"ambiguity_rejection_subject_switch_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"new_subject_event_reset","annotation_evidence":"与 036 构成主体持续/切换对照。"
+    },
+    {
+      "id":"CORE_DEV_V2_038", "pilot_subset":"ambiguity_rejection_pilot", "ambiguity_signal":"explicit_subject_continuation", "text":"中国国航和东方航空协调航班计划，海南航空与深圳地铁签署联运协议，海南航空与深圳地铁随后发布换乘说明，双方开放服务。",
+      "mentions":[{"mention":"中国国航","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_GEN_0135"},{"mention":"东方航空","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_GEN_0136"},{"mention":"海南航空","type":"ORG","char_start":16,"char_end":20,"role":"name","entity_id":"ENT_GEN_0152"},{"mention":"深圳地铁","type":"ORG","char_start":21,"char_end":25,"role":"name","entity_id":"ENT_GEN_0151"},{"mention":"双方","type":"PRON","char_start":50,"char_end":52,"role":"pronoun"}],
+      "expected_coreferences":[{"mention_index":4,"entity_id":null,"entity_ids":["ENT_GEN_0152","ENT_GEN_0151"],"antecedent_indices":[2,3],"is_collective":true,"is_nil":false,"scenario":"ambiguity_rejection_subject_continuation_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"最近联运组被显式延续，签署—说明—服务连续。","annotation_evidence":"海南航空与深圳地铁重复出现并继续发布换乘说明。","ambiguity_signal":"explicit_subject_continuation"}],
+      "scenario":"ambiguity_rejection_subject_continuation_positive","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"recent_group_subject_and_event_continuity","annotation_evidence":"最近组具有显式主体与事件连续。"
+    },
+    {
+      "id":"CORE_DEV_V2_039", "pilot_subset":"ambiguity_rejection_pilot", "ambiguity_signal":"explicit_subject_switch", "text":"中国国航和东方航空协调航班计划，海南航空与深圳地铁签署联运协议，国家统计局转而公布跨城客流统计，双方开放服务。",
+      "mentions":[{"mention":"中国国航","type":"ORG","char_start":0,"char_end":4,"role":"name","entity_id":"ENT_GEN_0135"},{"mention":"东方航空","type":"ORG","char_start":5,"char_end":9,"role":"name","entity_id":"ENT_GEN_0136"},{"mention":"海南航空","type":"ORG","char_start":16,"char_end":20,"role":"name","entity_id":"ENT_GEN_0152"},{"mention":"深圳地铁","type":"ORG","char_start":21,"char_end":25,"role":"name","entity_id":"ENT_GEN_0151"},{"mention":"国家统计局","type":"ORG","char_start":32,"char_end":37,"role":"name","entity_id":"ENT_GEN_0117"},{"mention":"双方","type":"PRON","char_start":48,"char_end":50,"role":"pronoun"}],
+      "expected_coreferences":[{"mention_index":5,"entity_id":null,"entity_ids":[],"antecedent_indices":[],"is_collective":true,"is_nil":true,"scenario":"ambiguity_rejection_subject_switch_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"统计主体进入客流事件后，双方缺乏唯一集合前件。","annotation_evidence":"国家统计局随后发布客流数据，构成事件重置。","ambiguity_signal":"explicit_subject_switch"}],
+      "scenario":"ambiguity_rejection_subject_switch_nil","difficulty":"hard","requires_discourse_reasoning":true,"expected_resolution_basis":"new_subject_event_reset","annotation_evidence":"与 038 构成主体持续/切换对照。"
+    },
+    {"id":"CORE_DEV_V2_040","pilot_subset":"robustness_domain_pilot","domain":"Energy","ambiguity_signal":"subject_continuation","text":"为检验检修协同能力，国家电网同南方电网分享案例，随后华能集团与大唐集团把巡检排入周计划，双方核验设备清单。","mentions":[{"mention":"国家电网","type":"ORG","char_start":10,"char_end":14,"entity_id":"ENT_ENERGY_0001"},{"mention":"南方电网","type":"ORG","char_start":15,"char_end":19,"entity_id":"ENT_ENERGY_0002"},{"mention":"华能集团","type":"ORG","char_start":26,"char_end":30,"entity_id":"ENT_ENERGY_0003"},{"mention":"大唐集团","type":"ORG","char_start":31,"char_end":35,"entity_id":"ENT_ENERGY_0004"},{"mention":"双方","type":"PRON","char_start":44,"char_end":46}],"expected_coreferences":[{"mention_index":4,"entity_ids":["ENT_ENERGY_0003","ENT_ENERGY_0004"],"is_collective":true,"is_nil":false}],"scenario":"robust_subject_continuation_positive","difficulty":"hard","expected_resolution_basis":"recent_subject_continuation","annotation_evidence":"最近组在目标代词前作为显式主体继续推进巡检。"},
+    {"id":"CORE_DEV_V2_041","pilot_subset":"robustness_domain_pilot","domain":"Energy","ambiguity_signal":"subject_switch","text":"会议先由华能集团与大唐集团提出检修安排，国家电网和南方电网补充经验，国家能源局转而说明监管要求，双方整理材料。","mentions":[{"mention":"国家电网","type":"ORG","char_start":20,"char_end":24,"entity_id":"ENT_ENERGY_0001"},{"mention":"南方电网","type":"ORG","char_start":25,"char_end":29,"entity_id":"ENT_ENERGY_0002"},{"mention":"华能集团","type":"ORG","char_start":4,"char_end":8,"entity_id":"ENT_ENERGY_0003"},{"mention":"大唐集团","type":"ORG","char_start":9,"char_end":13,"entity_id":"ENT_ENERGY_0004"},{"mention":"国家能源局","type":"ORG","char_start":34,"char_end":39,"entity_id":"ENT_GEN_0059"},{"mention":"双方","type":"PRON","char_start":48,"char_end":50}],"expected_coreferences":[{"mention_index":5,"entity_ids":[],"is_collective":true,"is_nil":true}],"scenario":"robust_subject_switch_nil","difficulty":"hard","expected_resolution_basis":"new_subject_event_reset","annotation_evidence":"监管主体转入独立说明后，双方不具备唯一可解释前件。"},
+    {"id":"CORE_DEV_V2_042","pilot_subset":"robustness_domain_pilot","domain":"Finance","ambiguity_signal":"subject_continuation","text":"工商银行和建设银行沟通服务，农业银行与中国银行达成结算合作，农业银行与中国银行随后公布安排，双方启动试点。","mentions":[{"mention":"工商银行","type":"ORG","char_start":0,"char_end":4,"entity_id":"ENT_GEN_0055"},{"mention":"建设银行","type":"ORG","char_start":5,"char_end":9,"entity_id":"ENT_GEN_0081"},{"mention":"农业银行","type":"ORG","char_start":14,"char_end":18,"entity_id":"ENT_GEN_0082"},{"mention":"中国银行","type":"ORG","char_start":19,"char_end":23,"entity_id":"ENT_GEN_0083"},{"mention":"双方","type":"PRON","char_start":46,"char_end":48}],"expected_coreferences":[{"mention_index":4,"entity_ids":["ENT_GEN_0082","ENT_GEN_0083"],"is_collective":true,"is_nil":false}],"scenario":"robust_subject_continuation_positive","difficulty":"hard","expected_resolution_basis":"recent_subject_continuation","annotation_evidence":"最近银行组显式延续。"},
+    {"id":"CORE_DEV_V2_043","pilot_subset":"robustness_domain_pilot","domain":"Finance","ambiguity_signal":"subject_switch","text":"客户服务研讨中，工商银行及建设银行介绍方案，农业银行同中国银行部署结算流程，中信证券转而发布市场提示，双方开展试点。","mentions":[{"mention":"工商银行","type":"ORG","char_start":8,"char_end":12,"entity_id":"ENT_GEN_0055"},{"mention":"建设银行","type":"ORG","char_start":13,"char_end":17,"entity_id":"ENT_GEN_0081"},{"mention":"农业银行","type":"ORG","char_start":22,"char_end":26,"entity_id":"ENT_GEN_0082"},{"mention":"中国银行","type":"ORG","char_start":27,"char_end":31,"entity_id":"ENT_GEN_0083"},{"mention":"中信证券","type":"ORG","char_start":38,"char_end":42,"entity_id":"ENT_GEN_0085"},{"mention":"双方","type":"PRON","char_start":51,"char_end":53}],"expected_coreferences":[{"mention_index":5,"entity_ids":[],"is_collective":true,"is_nil":true}],"scenario":"robust_subject_switch_nil","difficulty":"hard","expected_resolution_basis":"new_subject_event_reset","annotation_evidence":"证券主体转入独立市场提示后，双方不能安全消解。"},
+    {"id":"CORE_DEV_V2_044","pilot_subset":"robustness_domain_pilot","domain":"Internet","ambiguity_signal":"misleading_marker_continuation","text":"华为和腾讯交流产品，阿里巴巴与小米签署协议，与此同时阿里巴巴与小米继续发布进展，双方开放报名。","mentions":[{"mention":"华为","type":"ORG","char_start":0,"char_end":2,"entity_id":"ENT_GEN_0051"},{"mention":"腾讯","type":"ORG","char_start":3,"char_end":5,"entity_id":"ENT_GEN_0052"},{"mention":"阿里巴巴","type":"ORG","char_start":10,"char_end":14,"entity_id":"ENT_GEN_0053"},{"mention":"小米","type":"ORG","char_start":15,"char_end":17,"entity_id":"ENT_GEN_0073"},{"mention":"双方","type":"PRON","char_start":40,"char_end":42}],"expected_coreferences":[{"mention_index":4,"entity_ids":["ENT_GEN_0053","ENT_GEN_0073"],"is_collective":true,"is_nil":false}],"scenario":"robust_marker_misleading_positive","difficulty":"hard","expected_resolution_basis":"recent_subject_continuation","annotation_evidence":"虽含与此同时，最近组仍被显式延续。"},
+    {"id":"CORE_DEV_V2_045","pilot_subset":"robustness_domain_pilot","domain":"Internet","ambiguity_signal":"subject_switch","text":"华为和腾讯交流产品，阿里巴巴与小米签署协议，字节跳动随后宣布新计划，双方开放报名。","mentions":[{"mention":"华为","type":"ORG","char_start":0,"char_end":2,"entity_id":"ENT_GEN_0051"},{"mention":"腾讯","type":"ORG","char_start":3,"char_end":5,"entity_id":"ENT_GEN_0052"},{"mention":"阿里巴巴","type":"ORG","char_start":10,"char_end":14,"entity_id":"ENT_GEN_0053"},{"mention":"小米","type":"ORG","char_start":15,"char_end":17,"entity_id":"ENT_GEN_0073"},{"mention":"字节跳动","type":"ORG","char_start":22,"char_end":26,"entity_id":"ENT_GEN_0075"},{"mention":"双方","type":"PRON","char_start":34,"char_end":36}],"expected_coreferences":[{"mention_index":5,"entity_ids":[],"is_collective":true,"is_nil":true}],"scenario":"robust_subject_switch_nil","difficulty":"hard","expected_resolution_basis":"new_subject_event_reset","annotation_evidence":"新互联网主体进入。"},
+    {"id":"CORE_DEV_V2_046","pilot_subset":"robustness_domain_pilot","domain":"Transportation","ambiguity_signal":"subject_continuation","text":"为完善枢纽衔接，中国国航同东方航空交换时刻建议，海南航空与深圳地铁把联运细则纳入服务方案，双方继续运营。","mentions":[{"mention":"中国国航","type":"ORG","char_start":8,"char_end":12,"entity_id":"ENT_GEN_0135"},{"mention":"东方航空","type":"ORG","char_start":13,"char_end":17,"entity_id":"ENT_GEN_0136"},{"mention":"海南航空","type":"ORG","char_start":24,"char_end":28,"entity_id":"ENT_GEN_0152"},{"mention":"深圳地铁","type":"ORG","char_start":29,"char_end":33,"entity_id":"ENT_GEN_0151"},{"mention":"双方","type":"PRON","char_start":45,"char_end":47}],"expected_coreferences":[{"mention_index":4,"entity_ids":["ENT_GEN_0152","ENT_GEN_0151"],"is_collective":true,"is_nil":false}],"scenario":"robust_subject_continuation_positive","difficulty":"hard","expected_resolution_basis":"recent_subject_continuation","annotation_evidence":"最近联运组作为当前服务方案主体继续出现。"},
+    {"id":"CORE_DEV_V2_047","pilot_subset":"robustness_domain_pilot","domain":"Transportation","ambiguity_signal":"subject_switch","text":"中国国航和东方航空协调航班，海南航空与深圳地铁签署联运协议，国家统计局随后发布客流信息，双方继续运营。","mentions":[{"mention":"中国国航","type":"ORG","char_start":0,"char_end":4,"entity_id":"ENT_GEN_0135"},{"mention":"东方航空","type":"ORG","char_start":5,"char_end":9,"entity_id":"ENT_GEN_0136"},{"mention":"海南航空","type":"ORG","char_start":14,"char_end":18,"entity_id":"ENT_GEN_0152"},{"mention":"深圳地铁","type":"ORG","char_start":19,"char_end":23,"entity_id":"ENT_GEN_0151"},{"mention":"国家统计局","type":"ORG","char_start":30,"char_end":35,"entity_id":"ENT_GEN_0117"},{"mention":"双方","type":"PRON","char_start":44,"char_end":46}],"expected_coreferences":[{"mention_index":5,"entity_ids":[],"is_collective":true,"is_nil":true}],"scenario":"robust_subject_switch_nil","difficulty":"hard","expected_resolution_basis":"new_subject_event_reset","annotation_evidence":"统计主体切换事件。"},
+    {"id":"CORE_DEV_V2_048","pilot_subset":"robustness_domain_pilot","domain":"Healthcare","ambiguity_signal":"subject_continuation","text":"中日友好医院和北京天坛医院交流诊疗经验，华西医院与湘雅医院开展会诊，华西医院与湘雅医院随后发布流程，双方继续服务。","mentions":[{"mention":"中日友好医院","type":"ORG","char_start":0,"char_end":6,"entity_id":"ENT_GEN_0111"},{"mention":"北京天坛医院","type":"ORG","char_start":7,"char_end":13,"entity_id":"ENT_GEN_0147"},{"mention":"华西医院","type":"ORG","char_start":20,"char_end":24,"entity_id":"ENT_GEN_0131"},{"mention":"湘雅医院","type":"ORG","char_start":25,"char_end":29,"entity_id":"ENT_GEN_0132"},{"mention":"双方","type":"PRON","char_start":50,"char_end":52}],"expected_coreferences":[{"mention_index":4,"entity_ids":["ENT_GEN_0131","ENT_GEN_0132"],"is_collective":true,"is_nil":false}],"scenario":"robust_subject_continuation_positive","difficulty":"hard","expected_resolution_basis":"recent_subject_continuation","annotation_evidence":"最近医院组显式持续。"},
+    {"id":"CORE_DEV_V2_049","pilot_subset":"robustness_domain_pilot","domain":"Healthcare","ambiguity_signal":"subject_switch","text":"门诊协作会上，中日友好医院同北京天坛医院交流经验，华西医院和湘雅医院安排会诊，国家统计局转而发布医疗统计，双方继续服务。","mentions":[{"mention":"中日友好医院","type":"ORG","char_start":7,"char_end":13,"entity_id":"ENT_GEN_0111"},{"mention":"北京天坛医院","type":"ORG","char_start":14,"char_end":20,"entity_id":"ENT_GEN_0147"},{"mention":"华西医院","type":"ORG","char_start":25,"char_end":29,"entity_id":"ENT_GEN_0131"},{"mention":"湘雅医院","type":"ORG","char_start":30,"char_end":34,"entity_id":"ENT_GEN_0132"},{"mention":"国家统计局","type":"ORG","char_start":39,"char_end":44,"entity_id":"ENT_GEN_0117"},{"mention":"双方","type":"PRON","char_start":53,"char_end":55}],"expected_coreferences":[{"mention_index":5,"entity_ids":[],"is_collective":true,"is_nil":true}],"scenario":"robust_subject_switch_nil","difficulty":"hard","expected_resolution_basis":"new_subject_event_reset","annotation_evidence":"统计主体切入独立说明后，双方无法唯一确定。"},
+    {"id":"CORE_DEV_V2_050","pilot_subset":"robustness_domain_pilot","domain":"Media","ambiguity_signal":"new_entity_no_switch","text":"新华社和中国日报社交流选题，人民日报社与经济日报社策划专题，北京市举办发布活动，人民日报社与经济日报社随后公布栏目，双方组织采编。","mentions":[{"mention":"新华社","type":"ORG","char_start":0,"char_end":3,"entity_id":"ENT_GEN_0115"},{"mention":"中国日报社","type":"ORG","char_start":4,"char_end":9,"entity_id":"ENT_GEN_0153"},{"mention":"人民日报社","type":"ORG","char_start":14,"char_end":19,"entity_id":"ENT_GEN_0139"},{"mention":"经济日报社","type":"ORG","char_start":20,"char_end":25,"entity_id":"ENT_GEN_0154"},{"mention":"北京市","type":"ORG","char_start":30,"char_end":33,"entity_id":"ENT_ENERGY_0028"},{"mention":"双方","type":"PRON","char_start":58,"char_end":60}],"expected_coreferences":[{"mention_index":5,"entity_ids":["ENT_GEN_0139","ENT_GEN_0154"],"is_collective":true,"is_nil":false}],"scenario":"robust_new_entity_no_switch_positive","difficulty":"hard","expected_resolution_basis":"recent_subject_continuation","annotation_evidence":"地点实体出现但最近媒体组被重复为主体。"},
+    {"id":"CORE_DEV_V2_051","pilot_subset":"robustness_domain_pilot","domain":"Media","ambiguity_signal":"subject_switch","text":"围绕专题传播，新华社和中国日报社拟定采访框架，人民日报社同经济日报社分派栏目，央视新闻改由直播团队发布预告，双方组织采编。","mentions":[{"mention":"新华社","type":"ORG","char_start":7,"char_end":10,"entity_id":"ENT_GEN_0115"},{"mention":"中国日报社","type":"ORG","char_start":11,"char_end":16,"entity_id":"ENT_GEN_0153"},{"mention":"人民日报社","type":"ORG","char_start":23,"char_end":28,"entity_id":"ENT_GEN_0139"},{"mention":"经济日报社","type":"ORG","char_start":29,"char_end":34,"entity_id":"ENT_GEN_0154"},{"mention":"央视新闻","type":"ORG","char_start":39,"char_end":43,"entity_id":"ENT_GEN_0141"},{"mention":"双方","type":"PRON","char_start":54,"char_end":56}],"expected_coreferences":[{"mention_index":5,"entity_ids":[],"is_collective":true,"is_nil":true}],"scenario":"robust_subject_switch_nil","difficulty":"hard","expected_resolution_basis":"new_subject_event_reset","annotation_evidence":"直播主体改由独立团队发布预告，双方没有唯一前件。"},
+    {"id":"CORE_DEV_V2_052","pilot_subset":"robustness_domain_pilot","domain":"Energy","ambiguity_signal":"three_group_continuation","text":"国家能源局、国家发展改革委和生态环境部联合部署任务，三方随后共同发布实施细则，三方继续落实。","mentions":[{"mention":"国家能源局","type":"ORG","char_start":0,"char_end":5,"entity_id":"ENT_GEN_0059"},{"mention":"国家发展改革委","type":"ORG","char_start":6,"char_end":13,"entity_id":"ENT_GEN_0089"},{"mention":"生态环境部","type":"ORG","char_start":14,"char_end":19,"entity_id":"ENT_GEN_0091"},{"mention":"三方","type":"PRON","char_start":39,"char_end":41}],"expected_coreferences":[{"mention_index":3,"entity_ids":["ENT_GEN_0059","ENT_GEN_0089","ENT_GEN_0091"],"is_collective":true,"is_nil":false}],"scenario":"robust_three_group_positive","difficulty":"medium","expected_resolution_basis":"three_group_cardinality","annotation_evidence":"三元组明确持续。"},
+    {"id":"CORE_DEV_V2_053","pilot_subset":"robustness_domain_pilot","domain":"Healthcare","ambiguity_signal":"three_group_cardinality","text":"中日友好医院、北京天坛医院和华西医院共同会诊，双方随后公布方案。","mentions":[{"mention":"中日友好医院","type":"ORG","char_start":0,"char_end":6,"entity_id":"ENT_GEN_0111"},{"mention":"北京天坛医院","type":"ORG","char_start":7,"char_end":13,"entity_id":"ENT_GEN_0147"},{"mention":"华西医院","type":"ORG","char_start":14,"char_end":18,"entity_id":"ENT_GEN_0131"},{"mention":"双方","type":"PRON","char_start":23,"char_end":25}],"expected_coreferences":[{"mention_index":3,"entity_ids":[],"is_collective":true,"is_nil":true}],"scenario":"robust_three_group_nil","difficulty":"medium","expected_resolution_basis":"cardinality_constraint","annotation_evidence":"三元组不满足双方的二元约束。"},
+    {"id":"CORE_DEV_V2_054","pilot_subset":"robustness_domain_pilot","domain":"Finance","ambiguity_signal":"four_group_cardinality","text":"工商银行、建设银行、农业银行和中国银行联合发布规范，他们继续推进试点。","mentions":[{"mention":"工商银行","type":"ORG","char_start":0,"char_end":4,"entity_id":"ENT_GEN_0055"},{"mention":"建设银行","type":"ORG","char_start":5,"char_end":9,"entity_id":"ENT_GEN_0081"},{"mention":"农业银行","type":"ORG","char_start":10,"char_end":14,"entity_id":"ENT_GEN_0082"},{"mention":"中国银行","type":"ORG","char_start":15,"char_end":19,"entity_id":"ENT_GEN_0083"},{"mention":"他们","type":"PRON","char_start":26,"char_end":28}],"expected_coreferences":[{"mention_index":4,"entity_ids":["ENT_GEN_0055","ENT_GEN_0081","ENT_GEN_0082","ENT_GEN_0083"],"is_collective":true,"is_nil":false}],"scenario":"robust_four_group_positive","difficulty":"medium","expected_resolution_basis":"four_group_at_least_two","annotation_evidence":"四元协调组可由集合代词回指。"},
+    {"id":"CORE_DEV_V2_055","pilot_subset":"robustness_domain_pilot","domain":"Internet","ambiguity_signal":"four_group_cardinality","text":"华为、腾讯、阿里巴巴和小米共同发布倡议，三方随后落实安排。","mentions":[{"mention":"华为","type":"ORG","char_start":0,"char_end":2,"entity_id":"ENT_GEN_0051"},{"mention":"腾讯","type":"ORG","char_start":3,"char_end":5,"entity_id":"ENT_GEN_0052"},{"mention":"阿里巴巴","type":"ORG","char_start":6,"char_end":10,"entity_id":"ENT_GEN_0053"},{"mention":"小米","type":"ORG","char_start":11,"char_end":13,"entity_id":"ENT_GEN_0073"},{"mention":"三方","type":"PRON","char_start":20,"char_end":22}],"expected_coreferences":[{"mention_index":4,"entity_ids":[],"is_collective":true,"is_nil":true}],"scenario":"robust_four_group_nil","difficulty":"medium","expected_resolution_basis":"cardinality_constraint","annotation_evidence":"四元组不满足三方的三元约束。"}
+  ]
+}
