@@ -2,13 +2,12 @@
 """
 实体链接服务 - 懒加载入口
 """
-import os
-import sys
-from typing import Dict, Any, Optional
 
-from src.utils.config import load_config, get_config, resolve_path
+from typing import Dict
+
+from src.utils.config import load_config
+from src.utils.lazy_loader import clear_model_cache, get_model_stats
 from src.utils.logger import logger
-from src.utils.lazy_loader import get_model_stats, clear_model_cache
 
 # 全局服务实例
 _service_instance = None
@@ -48,6 +47,7 @@ class EntityLinkerService:
     def _init_kb(self):
         """初始化知识库（轻量级）"""
         from src.knowledge.kb_manager import KnowledgeBase
+
         kb_config = self.config.get("knowledge_base", {})
         self._kb = KnowledgeBase(kb_config)
         logger.info(f"   📚 知识库: {len(self._kb.entities)} 个实体")
@@ -55,7 +55,10 @@ class EntityLinkerService:
     def _init_vector_index(self):
         """初始化向量索引（不加载模型）"""
         from src.knowledge.vector_index import VectorIndex
-        model_path = self.config.get("bge_model_path", "./models_cache/bge-large-zh-v1.5")
+
+        model_path = self.config.get(
+            "bge_model_path", "./models_cache/bge-large-zh-v1.5"
+        )
         self._vector_index = VectorIndex(model_path, kb=self._kb)
         self._vector_index.build(self._kb.entities)
         logger.info("   🔍 向量索引已就绪（模型懒加载）")
@@ -63,12 +66,14 @@ class EntityLinkerService:
     def _init_candidate_generator(self):
         """初始化候选生成器（轻量级）"""
         from src.core.candidate import CandidateGenerator
+
         self._candidate_generator = CandidateGenerator(self._kb, self._vector_index)
         logger.info("   🎯 候选生成器已就绪")
 
     def _init_disambiguator(self):
         """初始化消歧器（不加载模型）"""
         from src.core.disambiguate import Disambiguator
+
         self._disambiguator = Disambiguator(self.config)
         logger.info("   🎯 消歧器已就绪")
 
@@ -89,9 +94,7 @@ class EntityLinkerService:
 
         # 生成候选
         candidates = self._candidate_generator.generate(
-            mention_text,
-            top_k=50,
-            context=context
+            mention_text, top_k=50, context=context
         )
 
         # 消歧精排
@@ -99,7 +102,7 @@ class EntityLinkerService:
             mention=mention_text,
             candidates=candidates,
             context=context,
-            mention_type=mention_type
+            mention_type=mention_type,
         )
 
         return result

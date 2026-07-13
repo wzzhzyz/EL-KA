@@ -346,6 +346,18 @@ curl http://localhost:8000/health
 }
 
 
+{
+  "text": "人民日报社、新华通讯社、上海报业集团澎湃新闻正在飞速发展，这些机构是我们的未来。",
+  "mentions": [
+    {"mention":"人民日报社","type":"ORG","char_start":0,"char_end":5,"confidence":1},
+    {"mention":"新华通讯社","type":"ORG","char_start":6,"char_end":11,"confidence":1},
+    {"mention":"上海报业集团澎湃新闻","type":"ORG","char_start":12,"char_end":23,"confidence":1},
+    {"mention":"这些机构","type":"PRON","char_start":24,"char_end":28,"confidence":1}
+  ],
+  "options": {"enable_coreference": true}
+}
+
+
 
 {
   "default_kb": "",

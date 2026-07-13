@@ -65,7 +65,8 @@ class BatchLinkItem(LinkRequest):
 
 class BatchLinkRequest(BaseModel):
     items: List[BatchLinkItem] = Field(
-        ..., description="批量实体链接任务列表，每个任务单独指定 text、mentions、kb 和 options"
+        ...,
+        description="批量实体链接任务列表，每个任务单独指定 text、mentions、kb 和 options",
     )
     default_kb: Optional[str] = Field(
         None,
@@ -119,7 +120,9 @@ class BatchLinkRequest(BaseModel):
 
 
 class FileLinkRequest(BaseModel):
-    file_path: str = Field(..., description="本地 JSON 文件路径，文件中包含批量请求参数。")
+    file_path: str = Field(
+        ..., description="本地 JSON 文件路径，文件中包含批量请求参数。"
+    )
     default_kb: Optional[str] = Field(
         None,
         description="可选默认知识库路径，当文件中未指定 kb 时使用。",
@@ -251,7 +254,9 @@ def create_app(pipeline: Optional[EntityLinkingPipeline] = None) -> FastAPI:
         if not resolved_path.is_absolute():
             resolved_path = Path(os.getcwd()) / resolved_path
         if not resolved_path.exists():
-            raise HTTPException(status_code=400, detail=f"本地 JSON 文件不存在: {file_path}")
+            raise HTTPException(
+                status_code=400, detail=f"本地 JSON 文件不存在: {file_path}"
+            )
         try:
             with open(resolved_path, "r", encoding="utf-8") as handle:
                 payload = json.load(handle)
@@ -282,7 +287,9 @@ def create_app(pipeline: Optional[EntityLinkingPipeline] = None) -> FastAPI:
         for item in batch_request.items:
             options = dict(item.options)
             if item.mentions is not None:
-                options["mentions"] = [mention.model_dump() for mention in item.mentions]
+                options["mentions"] = [
+                    mention.model_dump() for mention in item.mentions
+                ]
             options["kb_path"] = item.kb or batch_request.default_kb
             result = app.state.pipeline.run(
                 item.text,
@@ -303,7 +310,9 @@ def create_app(pipeline: Optional[EntityLinkingPipeline] = None) -> FastAPI:
         for item in req.items:
             options = dict(item.options)
             if item.mentions is not None:
-                options["mentions"] = [mention.model_dump() for mention in item.mentions]
+                options["mentions"] = [
+                    mention.model_dump() for mention in item.mentions
+                ]
             options["kb_path"] = item.kb or req.default_kb
             result = app.state.pipeline.run(
                 item.text,
