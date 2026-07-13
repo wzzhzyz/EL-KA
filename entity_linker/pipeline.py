@@ -84,6 +84,9 @@ def _collect_entity_records(node: Any) -> Iterable[Dict[str, Any]]:
 
 
 class _LocalKnowledgeBase:
+    _MIN_FUZZY_ALIAS_LENGTH = 3
+    _MIN_FUZZY_LENGTH_RATIO = 0.50
+
     def __init__(self, kb_path: Path):
         self.kb_path = kb_path
         self.entities: List[StandardEntity] = []
@@ -121,18 +124,91 @@ class _LocalKnowledgeBase:
     def get_entities_by_alias_fuzzy(
         self, alias: str, max_results: int = 5
     ) -> List[StandardEntity]:
-        results: List[StandardEntity] = []
-        seen: set[str] = set()
+        """Backward-compatible fuzzy entity lookup without match metadata."""
+        return [
+            entity
+            for entity, _ in self.get_entities_by_alias_fuzzy_with_metadata(
+                alias, max_results=max_results
+            )
+        ]
+
+    @staticmethod
+    def _edit_distance(left: str, right: str) -> int:
+        """Small dependency-free Levenshtein implementation for candidate evidence."""
+        if left == right:
+            return 0
+        if not left:
+            return len(right)
+        if not right:
+            return len(left)
+        previous = list(range(len(right) + 1))
+        for left_index, left_char in enumerate(left, start=1):
+            current = [left_index]
+            for right_index, right_char in enumerate(right, start=1):
+                current.append(
+                    min(
+                        current[-1] + 1,
+                        previous[right_index] + 1,
+                        previous[right_index - 1]
+                        + (0 if left_char == right_char else 1),
+                    )
+                )
+            previous = current
+        return previous[-1]
+
+    def get_entities_by_alias_fuzzy_with_metadata(
+        self, mention: str, max_results: int = 5
+    ) -> List[Tuple[StandardEntity, Dict[str, Any]]]:
+        """Return conservative containment matches with score components for tracing.
+
+        Exact aliases remain the responsibility of ``get_entities_by_alias``.  This
+        fallback deliberately rejects short substring matches such as ``北京`` in
+        ``北京协和医院`` so a place name cannot pollute an organization candidate set.
+        """
+        mention = mention.strip()
+        if not mention:
+            return []
+        best_by_entity: Dict[str, Tuple[StandardEntity, Dict[str, Any]]] = {}
         for candidate_alias, entities in self._alias_index.items():
-            if alias in candidate_alias or candidate_alias in alias:
-                for entity in entities:
-                    if entity.entity_id in seen:
-                        continue
-                    results.append(entity)
-                    seen.add(entity.entity_id)
-                    if len(results) >= max_results:
-                        return results
-        return results
+            if not (mention in candidate_alias or candidate_alias in mention):
+                continue
+            shorter_length = min(len(mention), len(candidate_alias))
+            longer_length = max(len(mention), len(candidate_alias))
+            if shorter_length < self._MIN_FUZZY_ALIAS_LENGTH:
+                continue
+            length_ratio = shorter_length / longer_length
+            if length_ratio < self._MIN_FUZZY_LENGTH_RATIO:
+                continue
+            edit_distance = self._edit_distance(mention, candidate_alias)
+            edit_similarity = 1.0 - edit_distance / longer_length
+            # Containment has a conservative base score; ratio and edit similarity
+            # make the evidence inspectable instead of assigning a fixed 0.85.
+            score = round(0.35 + 0.35 * length_ratio + 0.30 * edit_similarity, 4)
+            metadata = {
+                "match_type": "alias_fuzzy",
+                "reason": "substring_containment",
+                "alias": candidate_alias,
+                "mention_length": len(mention),
+                "alias_length": len(candidate_alias),
+                "length_ratio": round(length_ratio, 4),
+                "edit_distance": edit_distance,
+                "edit_similarity": round(edit_similarity, 4),
+                "score": score,
+            }
+            for entity in entities:
+                previous = best_by_entity.get(entity.entity_id)
+                if previous is None or score > float(previous[1]["score"]):
+                    best_by_entity[entity.entity_id] = (entity, metadata)
+        ranked = sorted(
+            best_by_entity.values(),
+            key=lambda item: (
+                float(item[1]["score"]),
+                len(item[1]["alias"]),
+                item[0].entity_id,
+            ),
+            reverse=True,
+        )
+        return ranked[:max_results]
 
     def get_all_entities(self) -> List[StandardEntity]:
         return list(self.entities)
@@ -275,15 +351,17 @@ class _FallbackCandidateGenerator:
             )
             seen.add(entity.entity_id)
 
-        for entity in self.kb.get_entities_by_alias_fuzzy(mention, max_results=top_k):
+        for entity, fuzzy_metadata in self.kb.get_entities_by_alias_fuzzy_with_metadata(
+            mention, max_results=top_k
+        ):
             if entity.entity_id in seen:
                 continue
             candidates.append(
                 Candidate(
                     entity=entity,
-                    score=0.85,
+                    score=float(fuzzy_metadata["score"]),
                     method="alias_fuzzy",
-                    metadata={"match_type": "alias_fuzzy"},
+                    metadata=fuzzy_metadata,
                 )
             )
             seen.add(entity.entity_id)

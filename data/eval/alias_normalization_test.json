@@ -1,0 +1,6399 @@
+{
+  "dataset_name": "alias_normalization_test",
+  "version": "1.0",
+  "purpose": "别名/简称/历史名称到标准实体的专项验收测试集。",
+  "input_contract": "已识别 mention 输入；samples 同时保留 mention_linking_test 的 mentions/expected_entities 兼容字段。",
+  "annotation_policy": "所有测试 mention 均直接来源于运行知识库 aliases 或 abbreviation；不含 NIL 或人工虚构别名。",
+  "supported_alias_types": [
+    "abbreviation",
+    "short_name",
+    "former_name",
+    "english_name",
+    "nickname",
+    "industry_alias",
+    "regional_alias",
+    "typo_alias"
+  ],
+  "statistics": {
+    "sample_count": 160,
+    "hard_case_extension": 40
+  },
+  "samples": [
+    {
+      "id": "ALIAS_001",
+      "text": "行业材料将金山文档列为相关对象。",
+      "mention": "金山文档",
+      "mention_type": "ALIAS",
+      "alias_type": "industry_alias",
+      "entity_type": "CONSUMER_PRODUCT",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0128",
+        "canonical_name": "WPS Office"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“金山文档”直接收录于知识库实体 ENT_GEN_0128 的别名信息（相关产品）。",
+      "mentions": [
+        {
+          "mention": "金山文档",
+          "type": "CONSUMER_PRODUCT",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "金山文档",
+          "entity_id": "ENT_GEN_0128"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_002",
+      "text": "产品与服务说明中提到了双碳。",
+      "mention": "双碳",
+      "mention_type": "ALIAS",
+      "alias_type": "industry_alias",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0020",
+        "canonical_name": "碳中和"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“双碳”直接收录于知识库实体 ENT_ENERGY_0020 的别名信息（简称）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "双碳",
+          "type": "TECHNICAL_TERM",
+          "char_start": 11,
+          "char_end": 13,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "双碳",
+          "entity_id": "ENT_ENERGY_0020"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_003",
+      "text": "业务讨论围绕抽蓄展开。",
+      "mention": "抽蓄",
+      "mention_type": "ALIAS",
+      "alias_type": "industry_alias",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0022",
+        "canonical_name": "抽水蓄能"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“抽蓄”直接收录于知识库实体 ENT_ENERGY_0022 的别名信息（简称）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "抽蓄",
+          "type": "TECHNICAL_TERM",
+          "char_start": 6,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "抽蓄",
+          "entity_id": "ENT_ENERGY_0022"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_004",
+      "text": "行业材料将绿证列为相关对象。",
+      "mention": "绿证",
+      "mention_type": "ALIAS",
+      "alias_type": "industry_alias",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0043",
+        "canonical_name": "绿色电力证书"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“绿证”直接收录于知识库实体 ENT_ENERGY_0043 的别名信息（简称）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "绿证",
+          "type": "TECHNICAL_TERM",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "绿证",
+          "entity_id": "ENT_ENERGY_0043"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_005",
+      "text": "产品与服务说明中提到了VPP。",
+      "mention": "VPP",
+      "mention_type": "ALIAS",
+      "alias_type": "industry_alias",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0042",
+        "canonical_name": "虚拟电厂"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“VPP”直接收录于知识库实体 ENT_ENERGY_0042 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "VPP",
+          "type": "TECHNICAL_TERM",
+          "char_start": 11,
+          "char_end": 14,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "VPP",
+          "entity_id": "ENT_ENERGY_0042"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_006",
+      "text": "业务讨论围绕净零排放展开。",
+      "mention": "净零排放",
+      "mention_type": "ALIAS",
+      "alias_type": "industry_alias",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0020",
+        "canonical_name": "碳中和"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“净零排放”直接收录于知识库实体 ENT_ENERGY_0020 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "净零排放",
+          "type": "TECHNICAL_TERM",
+          "char_start": 6,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "净零排放",
+          "entity_id": "ENT_ENERGY_0020"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_007",
+      "text": "行业材料将综合能源列为相关对象。",
+      "mention": "综合能源",
+      "mention_type": "ALIAS",
+      "alias_type": "industry_alias",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0023",
+        "canonical_name": "综合能源服务"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“综合能源”直接收录于知识库实体 ENT_ENERGY_0023 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "综合能源",
+          "type": "TECHNICAL_TERM",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "综合能源",
+          "entity_id": "ENT_ENERGY_0023"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_008",
+      "text": "产品与服务说明中提到了源网荷储。",
+      "mention": "源网荷储",
+      "mention_type": "ALIAS",
+      "alias_type": "industry_alias",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0024",
+        "canonical_name": "源网荷储一体化"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“源网荷储”直接收录于知识库实体 ENT_ENERGY_0024 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "源网荷储",
+          "type": "TECHNICAL_TERM",
+          "char_start": 11,
+          "char_end": 15,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "源网荷储",
+          "entity_id": "ENT_ENERGY_0024"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_009",
+      "text": "业务讨论围绕绿电证书展开。",
+      "mention": "绿电证书",
+      "mention_type": "ALIAS",
+      "alias_type": "industry_alias",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0043",
+        "canonical_name": "绿色电力证书"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“绿电证书”直接收录于知识库实体 ENT_ENERGY_0043 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "绿电证书",
+          "type": "TECHNICAL_TERM",
+          "char_start": 6,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "绿电证书",
+          "entity_id": "ENT_ENERGY_0043"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_010",
+      "text": "行业材料将屋顶光伏列为相关对象。",
+      "mention": "屋顶光伏",
+      "mention_type": "ALIAS",
+      "alias_type": "industry_alias",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0044",
+        "canonical_name": "分布式光伏发电"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“屋顶光伏”直接收录于知识库实体 ENT_ENERGY_0044 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "屋顶光伏",
+          "type": "TECHNICAL_TERM",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "屋顶光伏",
+          "entity_id": "ENT_ENERGY_0044"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_011",
+      "text": "本次行业交流由蔚来参与。",
+      "mention": "蔚来",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "AUTO_MANUFACTURER",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0058",
+        "canonical_name": "蔚来汽车有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“蔚来”直接收录于知识库实体 ENT_GEN_0058 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "蔚来",
+          "type": "AUTO_MANUFACTURER",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "蔚来",
+          "entity_id": "ENT_GEN_0058"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_012",
+      "text": "报道提及WPS正在推进既定项目。",
+      "mention": "WPS",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "CONSUMER_PRODUCT",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0128",
+        "canonical_name": "WPS Office"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“WPS”直接收录于知识库实体 ENT_GEN_0128 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "WPS",
+          "type": "CONSUMER_PRODUCT",
+          "char_start": 4,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "WPS",
+          "entity_id": "ENT_GEN_0128"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_013",
+      "text": "在公开业务材料中，清华发布了相关信息。",
+      "mention": "清华",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0060",
+        "canonical_name": "清华大学"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“清华”直接收录于知识库实体 ENT_GEN_0060 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "清华",
+          "type": "EDUCATIONAL_INSTITUTION",
+          "char_start": 9,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "清华",
+          "entity_id": "ENT_GEN_0060"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_014",
+      "text": "本次行业交流由工行参与。",
+      "mention": "工行",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0055",
+        "canonical_name": "中国工商银行股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“工行”直接收录于知识库实体 ENT_GEN_0055 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "工行",
+          "type": "FINANCIAL_INSTITUTION",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "工行",
+          "entity_id": "ENT_GEN_0055"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_015",
+      "text": "报道提及能源局正在推进既定项目。",
+      "mention": "能源局",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0059",
+        "canonical_name": "国家能源局"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“能源局”直接收录于知识库实体 ENT_GEN_0059 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "能源局",
+          "type": "GOVERNMENT_AGENCY",
+          "char_start": 4,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "能源局",
+          "entity_id": "ENT_GEN_0059"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_016",
+      "text": "在公开业务材料中，国网发布了相关信息。",
+      "mention": "国网",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "GRID_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0001",
+        "canonical_name": "国家电网有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“国网”直接收录于知识库实体 ENT_ENERGY_0001 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "国网",
+          "type": "GRID_COMPANY",
+          "char_start": 9,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网",
+          "entity_id": "ENT_ENERGY_0001"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_017",
+      "text": "本次行业交流由新华社参与。",
+      "mention": "新华社",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "MEDIA_ORG",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0115",
+        "canonical_name": "新华通讯社"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“新华社”直接收录于知识库实体 ENT_GEN_0115 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "新华社",
+          "type": "MEDIA_ORG",
+          "char_start": 7,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "新华社",
+          "entity_id": "ENT_GEN_0115"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_018",
+      "text": "报道提及中日医院正在推进既定项目。",
+      "mention": "中日医院",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0111",
+        "canonical_name": "中日友好医院"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“中日医院”直接收录于知识库实体 ENT_GEN_0111 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "中日医院",
+          "type": "MEDICAL_INSTITUTION",
+          "char_start": 4,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中日医院",
+          "entity_id": "ENT_GEN_0111"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_019",
+      "text": "在公开业务材料中，宁德发布了相关信息。",
+      "mention": "宁德",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0015",
+        "canonical_name": "宁德时代新能源科技股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“宁德”直接收录于知识库实体 ENT_ENERGY_0015 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "宁德",
+          "type": "NEW_ENERGY_ENTERPRISE",
+          "char_start": 9,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "宁德",
+          "entity_id": "ENT_ENERGY_0015"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_020",
+      "text": "本次行业交流由溪洛渡参与。",
+      "mention": "溪洛渡",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "POWER_FACILITY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0013",
+        "canonical_name": "溪洛渡水电站"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“溪洛渡”直接收录于知识库实体 ENT_ENERGY_0013 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "溪洛渡",
+          "type": "POWER_FACILITY",
+          "char_start": 7,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "溪洛渡",
+          "entity_id": "ENT_ENERGY_0013"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_021",
+      "text": "报道提及华能正在推进既定项目。",
+      "mention": "华能",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0003",
+        "canonical_name": "中国华能集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“华能”直接收录于知识库实体 ENT_ENERGY_0003 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "华能",
+          "type": "POWER_GENERATOR",
+          "char_start": 4,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华能",
+          "entity_id": "ENT_ENERGY_0003"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_022",
+      "text": "在公开业务材料中，深发布了相关信息。",
+      "mention": "深",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0027",
+        "canonical_name": "深圳市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“深”直接收录于知识库实体 ENT_ENERGY_0027 的别名信息（简称）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "深",
+          "type": "REGION",
+          "char_start": 9,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "深",
+          "entity_id": "ENT_ENERGY_0027"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_023",
+      "text": "本次行业交流由电科院参与。",
+      "mention": "电科院",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0050",
+        "canonical_name": "中国电力科学研究院有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“电科院”直接收录于知识库实体 ENT_ENERGY_0050 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "电科院",
+          "type": "RESEARCH_INSTITUTION",
+          "char_start": 7,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "电科院",
+          "entity_id": "ENT_ENERGY_0050"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_024",
+      "text": "报道提及Win11正在推进既定项目。",
+      "mention": "Win11",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0063",
+        "canonical_name": "Windows 11"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“Win11”直接收录于知识库实体 ENT_GEN_0063 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "Win11",
+          "type": "SOFTWARE_PLATFORM",
+          "char_start": 4,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Win11",
+          "entity_id": "ENT_GEN_0063"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_025",
+      "text": "在公开业务材料中，智能电网发布了相关信息。",
+      "mention": "智能电网",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0045",
+        "canonical_name": "智慧电网"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“智能电网”直接收录于知识库实体 ENT_ENERGY_0045 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "智能电网",
+          "type": "TECHNICAL_TERM",
+          "char_start": 9,
+          "char_end": 13,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "智能电网",
+          "entity_id": "ENT_ENERGY_0045"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_026",
+      "text": "本次行业交流由华为参与。",
+      "mention": "华为",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "TECH_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0051",
+        "canonical_name": "华为技术有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“华为”直接收录于知识库实体 ENT_GEN_0051 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "华为",
+          "type": "TECH_COMPANY",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华为",
+          "entity_id": "ENT_GEN_0051"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_027",
+      "text": "报道提及南航正在推进既定项目。",
+      "mention": "南航",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "TRANSPORTATION_ORG",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0114",
+        "canonical_name": "中国南方航空股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“南航”直接收录于知识库实体 ENT_GEN_0114 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "南航",
+          "type": "TRANSPORTATION_ORG",
+          "char_start": 4,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南航",
+          "entity_id": "ENT_GEN_0114"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_028",
+      "text": "在公开业务材料中，埃安发布了相关信息。",
+      "mention": "埃安",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "AUTO_MANUFACTURER",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0107",
+        "canonical_name": "广汽埃安新能源汽车股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“埃安”直接收录于知识库实体 ENT_GEN_0107 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "埃安",
+          "type": "AUTO_MANUFACTURER",
+          "char_start": 9,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "埃安",
+          "entity_id": "ENT_GEN_0107"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_029",
+      "text": "本次行业交流由华科参与。",
+      "mention": "华科",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0109",
+        "canonical_name": "华中科技大学"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“华科”直接收录于知识库实体 ENT_GEN_0109 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "华科",
+          "type": "EDUCATIONAL_INSTITUTION",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华科",
+          "entity_id": "ENT_GEN_0109"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_030",
+      "text": "报道提及平安正在推进既定项目。",
+      "mention": "平安",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0056",
+        "canonical_name": "中国平安保险集团股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“平安”直接收录于知识库实体 ENT_GEN_0056 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "平安",
+          "type": "FINANCIAL_INSTITUTION",
+          "char_start": 4,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "平安",
+          "entity_id": "ENT_GEN_0056"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_031",
+      "text": "在公开业务材料中，统计局发布了相关信息。",
+      "mention": "统计局",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0117",
+        "canonical_name": "国家统计局"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“统计局”直接收录于知识库实体 ENT_GEN_0117 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "统计局",
+          "type": "GOVERNMENT_AGENCY",
+          "char_start": 9,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "统计局",
+          "entity_id": "ENT_GEN_0117"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_032",
+      "text": "本次行业交流由南网参与。",
+      "mention": "南网",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "GRID_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0002",
+        "canonical_name": "中国南方电网有限责任公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“南网”直接收录于知识库实体 ENT_ENERGY_0002 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "南网",
+          "type": "GRID_COMPANY",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南网",
+          "entity_id": "ENT_ENERGY_0002"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_033",
+      "text": "报道提及人民网正在推进既定项目。",
+      "mention": "人民网",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "MEDIA_ORG",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0140",
+        "canonical_name": "人民网股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“人民网”直接收录于知识库实体 ENT_GEN_0140 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "人民网",
+          "type": "MEDIA_ORG",
+          "char_start": 4,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "人民网",
+          "entity_id": "ENT_GEN_0140"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_034",
+      "text": "在公开业务材料中，瑞金医院发布了相关信息。",
+      "mention": "瑞金医院",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0112",
+        "canonical_name": "上海交通大学医学院附属瑞金医院"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“瑞金医院”直接收录于知识库实体 ENT_GEN_0112 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "瑞金医院",
+          "type": "MEDICAL_INSTITUTION",
+          "char_start": 9,
+          "char_end": 13,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "瑞金医院",
+          "entity_id": "ENT_GEN_0112"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_035",
+      "text": "本次行业交流由隆基参与。",
+      "mention": "隆基",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0026",
+        "canonical_name": "隆基绿能科技股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“隆基”直接收录于知识库实体 ENT_ENERGY_0026 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "隆基",
+          "type": "NEW_ENERGY_ENTERPRISE",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "隆基",
+          "entity_id": "ENT_ENERGY_0026"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_036",
+      "text": "报道提及大亚湾正在推进既定项目。",
+      "mention": "大亚湾",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "POWER_FACILITY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0017",
+        "canonical_name": "大亚湾核电站"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“大亚湾”直接收录于知识库实体 ENT_ENERGY_0017 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "大亚湾",
+          "type": "POWER_FACILITY",
+          "char_start": 4,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "大亚湾",
+          "entity_id": "ENT_ENERGY_0017"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_037",
+      "text": "在公开业务材料中，大唐发布了相关信息。",
+      "mention": "大唐",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0004",
+        "canonical_name": "中国大唐集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“大唐”直接收录于知识库实体 ENT_ENERGY_0004 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "大唐",
+          "type": "POWER_GENERATOR",
+          "char_start": 9,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "大唐",
+          "entity_id": "ENT_ENERGY_0004"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_038",
+      "text": "本次行业交流由京参与。",
+      "mention": "京",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0028",
+        "canonical_name": "北京市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“京”直接收录于知识库实体 ENT_ENERGY_0028 的别名信息（简称）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "京",
+          "type": "REGION",
+          "char_start": 7,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "京",
+          "entity_id": "ENT_ENERGY_0028"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_039",
+      "text": "报道提及计算所正在推进既定项目。",
+      "mention": "计算所",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0122",
+        "canonical_name": "中国科学院计算技术研究所"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“计算所”直接收录于知识库实体 ENT_GEN_0122 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "计算所",
+          "type": "RESEARCH_INSTITUTION",
+          "char_start": 4,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "计算所",
+          "entity_id": "ENT_GEN_0122"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_040",
+      "text": "在公开业务材料中，Win 11发布了相关信息。",
+      "mention": "Win 11",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0063",
+        "canonical_name": "Windows 11"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“Win 11”直接收录于知识库实体 ENT_GEN_0063 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "Win 11",
+          "type": "SOFTWARE_PLATFORM",
+          "char_start": 9,
+          "char_end": 15,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Win 11",
+          "entity_id": "ENT_GEN_0063"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_041",
+      "text": "本次行业交流由特高压直流参与。",
+      "mention": "特高压直流",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0018",
+        "canonical_name": "特高压直流输电"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“特高压直流”直接收录于知识库实体 ENT_ENERGY_0018 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "特高压直流",
+          "type": "TECHNICAL_TERM",
+          "char_start": 7,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "特高压直流",
+          "entity_id": "ENT_ENERGY_0018"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_042",
+      "text": "报道提及腾讯正在推进既定项目。",
+      "mention": "腾讯",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "TECH_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0052",
+        "canonical_name": "腾讯控股有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“腾讯”直接收录于知识库实体 ENT_GEN_0052 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "腾讯",
+          "type": "TECH_COMPANY",
+          "char_start": 4,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "腾讯",
+          "entity_id": "ENT_GEN_0052"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_043",
+      "text": "在公开业务材料中，国航发布了相关信息。",
+      "mention": "国航",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "TRANSPORTATION_ORG",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0135",
+        "canonical_name": "中国国际航空股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“国航”直接收录于知识库实体 ENT_GEN_0135 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "国航",
+          "type": "TRANSPORTATION_ORG",
+          "char_start": 9,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国航",
+          "entity_id": "ENT_GEN_0135"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_044",
+      "text": "本次行业交流由上汽参与。",
+      "mention": "上汽",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "AUTO_MANUFACTURER",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0108",
+        "canonical_name": "上海汽车集团股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“上汽”直接收录于知识库实体 ENT_GEN_0108 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "上汽",
+          "type": "AUTO_MANUFACTURER",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上汽",
+          "entity_id": "ENT_GEN_0108"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_045",
+      "text": "报道提及南大正在推进既定项目。",
+      "mention": "南大",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0110",
+        "canonical_name": "南京大学"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“南大”直接收录于知识库实体 ENT_GEN_0110 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "南大",
+          "type": "EDUCATIONAL_INSTITUTION",
+          "char_start": 4,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南大",
+          "entity_id": "ENT_GEN_0110"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_046",
+      "text": "技术资料中使用小鹏作为机构标识。",
+      "mention": "小鹏",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "AUTO_MANUFACTURER",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0078",
+        "canonical_name": "小鹏汽车有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“小鹏”直接收录于知识库实体 ENT_GEN_0078 的别名信息（abbreviation）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "小鹏",
+          "type": "AUTO_MANUFACTURER",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "小鹏",
+          "entity_id": "ENT_GEN_0078"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_047",
+      "text": "会议纪要记录了北大的相关安排。",
+      "mention": "北大",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0064",
+        "canonical_name": "北京大学"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“北大”直接收录于知识库实体 ENT_GEN_0064 的别名信息（abbreviation）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "北大",
+          "type": "EDUCATIONAL_INSTITUTION",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北大",
+          "entity_id": "ENT_GEN_0064"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_048",
+      "text": "项目文件将招行列为合作对象。",
+      "mention": "招行",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0057",
+        "canonical_name": "招商银行股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“招行”直接收录于知识库实体 ENT_GEN_0057 的别名信息（abbreviation）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "招行",
+          "type": "FINANCIAL_INSTITUTION",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "招行",
+          "entity_id": "ENT_GEN_0057"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_049",
+      "text": "技术资料中使用发改委作为机构标识。",
+      "mention": "发改委",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0089",
+        "canonical_name": "中华人民共和国国家发展和改革委员会"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“发改委”直接收录于知识库实体 ENT_GEN_0089 的别名信息（abbreviation）。",
+      "mentions": [
+        {
+          "mention": "发改委",
+          "type": "GOVERNMENT_AGENCY",
+          "char_start": 7,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "发改委",
+          "entity_id": "ENT_GEN_0089"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_050",
+      "text": "会议纪要记录了广东电网的相关安排。",
+      "mention": "广东电网",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "GRID_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0125",
+        "canonical_name": "广东电网有限责任公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“广东电网”直接收录于知识库实体 ENT_GEN_0125 的别名信息（abbreviation）。",
+      "mentions": [
+        {
+          "mention": "广东电网",
+          "type": "GRID_COMPANY",
+          "char_start": 7,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "广东电网",
+          "entity_id": "ENT_GEN_0125"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_051",
+      "text": "项目文件将央视总台列为合作对象。",
+      "mention": "央视总台",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "MEDIA_ORG",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0116",
+        "canonical_name": "中央广播电视总台"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“央视总台”直接收录于知识库实体 ENT_GEN_0116 的别名信息（abbreviation）。",
+      "mentions": [
+        {
+          "mention": "央视总台",
+          "type": "MEDIA_ORG",
+          "char_start": 5,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "央视总台",
+          "entity_id": "ENT_GEN_0116"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_052",
+      "text": "技术资料中使用华西医院作为机构标识。",
+      "mention": "华西医院",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0131",
+        "canonical_name": "四川大学华西医院"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“华西医院”直接收录于知识库实体 ENT_GEN_0131 的别名信息（abbreviation）。",
+      "mentions": [
+        {
+          "mention": "华西医院",
+          "type": "MEDICAL_INSTITUTION",
+          "char_start": 7,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华西医院",
+          "entity_id": "ENT_GEN_0131"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_053",
+      "text": "会议纪要记录了天合的相关安排。",
+      "mention": "天合",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0029",
+        "canonical_name": "天合光能股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“天合”直接收录于知识库实体 ENT_ENERGY_0029 的别名信息（abbreviation）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "天合",
+          "type": "NEW_ENERGY_ENTERPRISE",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "天合",
+          "entity_id": "ENT_ENERGY_0029"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_054",
+      "text": "项目文件将白鹤滩列为合作对象。",
+      "mention": "白鹤滩",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "POWER_FACILITY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0039",
+        "canonical_name": "白鹤滩水电站"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“白鹤滩”直接收录于知识库实体 ENT_ENERGY_0039 的别名信息（abbreviation）。",
+      "mentions": [
+        {
+          "mention": "白鹤滩",
+          "type": "POWER_FACILITY",
+          "char_start": 5,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "白鹤滩",
+          "entity_id": "ENT_ENERGY_0039"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_055",
+      "text": "技术资料中使用国能作为机构标识。",
+      "mention": "国能",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0005",
+        "canonical_name": "国家能源投资集团有限责任公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“国能”直接收录于知识库实体 ENT_ENERGY_0005 的别名信息（abbreviation）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "国能",
+          "type": "POWER_GENERATOR",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国能",
+          "entity_id": "ENT_ENERGY_0005"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_056",
+      "text": "会议纪要记录了宜的相关安排。",
+      "mention": "宜",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0030",
+        "canonical_name": "宜昌市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“宜”直接收录于知识库实体 ENT_ENERGY_0030 的别名信息（abbreviation）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "宜",
+          "type": "REGION",
+          "char_start": 7,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "宜",
+          "entity_id": "ENT_ENERGY_0030"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_057",
+      "text": "项目文件将中科院列为合作对象。",
+      "mention": "中科院",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0068",
+        "canonical_name": "中国科学院"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“中科院”直接收录于知识库实体 ENT_GEN_0068 的别名信息（abbreviation）。",
+      "mentions": [
+        {
+          "mention": "中科院",
+          "type": "RESEARCH_INSTITUTION",
+          "char_start": 5,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中科院",
+          "entity_id": "ENT_GEN_0068"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_058",
+      "text": "技术资料中使用UHVDC作为机构标识。",
+      "mention": "UHVDC",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0018",
+        "canonical_name": "特高压直流输电"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“UHVDC”直接收录于知识库实体 ENT_ENERGY_0018 的别名信息（abbreviation）。",
+      "mentions": [
+        {
+          "mention": "UHVDC",
+          "type": "TECHNICAL_TERM",
+          "char_start": 7,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "UHVDC",
+          "entity_id": "ENT_ENERGY_0018"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_059",
+      "text": "会议纪要记录了阿里的相关安排。",
+      "mention": "阿里",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "TECH_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0053",
+        "canonical_name": "阿里巴巴集团控股有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“阿里”直接收录于知识库实体 ENT_GEN_0053 的别名信息（abbreviation）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "阿里",
+          "type": "TECH_COMPANY",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "阿里",
+          "entity_id": "ENT_GEN_0053"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_060",
+      "text": "项目文件将东航列为合作对象。",
+      "mention": "东航",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "TRANSPORTATION_ORG",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0136",
+        "canonical_name": "中国东方航空股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“东航”直接收录于知识库实体 ENT_GEN_0136 的别名信息（abbreviation）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "东航",
+          "type": "TRANSPORTATION_ORG",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "东航",
+          "entity_id": "ENT_GEN_0136"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_061",
+      "text": "技术资料中使用理想作为机构标识。",
+      "mention": "理想",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "AUTO_MANUFACTURER",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0079",
+        "canonical_name": "理想汽车"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“理想”直接收录于知识库实体 ENT_GEN_0079 的别名信息（abbreviation）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "理想",
+          "type": "AUTO_MANUFACTURER",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "理想",
+          "entity_id": "ENT_GEN_0079"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_062",
+      "text": "会议纪要记录了浙大的相关安排。",
+      "mention": "浙大",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0066",
+        "canonical_name": "浙江大学"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“浙大”直接收录于知识库实体 ENT_GEN_0066 的别名信息（abbreviation）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "浙大",
+          "type": "EDUCATIONAL_INSTITUTION",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "浙大",
+          "entity_id": "ENT_GEN_0066"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_063",
+      "text": "项目文件将建行列为合作对象。",
+      "mention": "建行",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0081",
+        "canonical_name": "中国建设银行股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“建行”直接收录于知识库实体 ENT_GEN_0081 的别名信息（abbreviation）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "建行",
+          "type": "FINANCIAL_INSTITUTION",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "建行",
+          "entity_id": "ENT_GEN_0081"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_064",
+      "text": "技术资料中使用工信部作为机构标识。",
+      "mention": "工信部",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0090",
+        "canonical_name": "中华人民共和国工业和信息化部"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“工信部”直接收录于知识库实体 ENT_GEN_0090 的别名信息（abbreviation）。",
+      "mentions": [
+        {
+          "mention": "工信部",
+          "type": "GOVERNMENT_AGENCY",
+          "char_start": 7,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "工信部",
+          "entity_id": "ENT_GEN_0090"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_065",
+      "text": "会议纪要记录了广西电网的相关安排。",
+      "mention": "广西电网",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "GRID_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0146",
+        "canonical_name": "广西电网有限责任公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "easy",
+      "is_ambiguous": false,
+      "evidence": "“广西电网”直接收录于知识库实体 ENT_GEN_0146 的别名信息（abbreviation）。",
+      "mentions": [
+        {
+          "mention": "广西电网",
+          "type": "GRID_COMPANY",
+          "char_start": 7,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "广西电网",
+          "entity_id": "ENT_GEN_0146"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_066",
+      "text": "档案记录使用国家电力公司这一历史名称。",
+      "mention": "国家电力公司",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "GRID_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0001",
+        "canonical_name": "国家电网有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“国家电力公司”直接收录于知识库实体 ENT_ENERGY_0001 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "国家电力公司",
+          "type": "GRID_COMPANY",
+          "char_start": 6,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国家电力公司",
+          "entity_id": "ENT_ENERGY_0001"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_067",
+      "text": "历史资料仍以宁德新能源科技有限公司称呼该主体。",
+      "mention": "宁德新能源科技有限公司",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0015",
+        "canonical_name": "宁德时代新能源科技股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“宁德新能源科技有限公司”直接收录于知识库实体 ENT_ENERGY_0015 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "宁德新能源科技有限公司",
+          "type": "NEW_ENERGY_ENTERPRISE",
+          "char_start": 6,
+          "char_end": 17,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "宁德新能源科技有限公司",
+          "entity_id": "ENT_ENERGY_0015"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_068",
+      "text": "旧版公告中出现了名称三峡工程。",
+      "mention": "三峡工程",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "POWER_FACILITY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0012",
+        "canonical_name": "三峡水电站"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“三峡工程”直接收录于知识库实体 ENT_ENERGY_0012 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "三峡工程",
+          "type": "POWER_FACILITY",
+          "char_start": 10,
+          "char_end": 14,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "三峡工程",
+          "entity_id": "ENT_ENERGY_0012"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_069",
+      "text": "档案记录使用中国大唐集团公司这一历史名称。",
+      "mention": "中国大唐集团公司",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0004",
+        "canonical_name": "中国大唐集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“中国大唐集团公司”直接收录于知识库实体 ENT_ENERGY_0004 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "中国大唐集团公司",
+          "type": "POWER_GENERATOR",
+          "char_start": 6,
+          "char_end": 14,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国大唐集团公司",
+          "entity_id": "ENT_ENERGY_0004"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_070",
+      "text": "历史资料仍以北平称呼该主体。",
+      "mention": "北平",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0028",
+        "canonical_name": "北京市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“北平”直接收录于知识库实体 ENT_ENERGY_0028 的别名信息（曾用名）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "北平",
+          "type": "REGION",
+          "char_start": 6,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北平",
+          "entity_id": "ENT_ENERGY_0028"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_071",
+      "text": "旧版公告中出现了名称iPhone OS。",
+      "mention": "iPhone OS",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0101",
+        "canonical_name": "iOS"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“iPhone OS”直接收录于知识库实体 ENT_GEN_0101 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "iPhone OS",
+          "type": "SOFTWARE_PLATFORM",
+          "char_start": 10,
+          "char_end": 19,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "iPhone OS",
+          "entity_id": "ENT_GEN_0101"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_072",
+      "text": "档案记录使用碳达峰碳中和这一历史名称。",
+      "mention": "碳达峰碳中和",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0020",
+        "canonical_name": "碳中和"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“碳达峰碳中和”直接收录于知识库实体 ENT_ENERGY_0020 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "碳达峰碳中和",
+          "type": "TECHNICAL_TERM",
+          "char_start": 6,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "碳达峰碳中和",
+          "entity_id": "ENT_ENERGY_0020"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_073",
+      "text": "历史资料仍以国家电网公司称呼该主体。",
+      "mention": "国家电网公司",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "GRID_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0001",
+        "canonical_name": "国家电网有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“国家电网公司”直接收录于知识库实体 ENT_ENERGY_0001 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "国家电网公司",
+          "type": "GRID_COMPANY",
+          "char_start": 6,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国家电网公司",
+          "entity_id": "ENT_ENERGY_0001"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_074",
+      "text": "旧版公告中出现了名称中国国电集团公司。",
+      "mention": "中国国电集团公司",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0005",
+        "canonical_name": "国家能源投资集团有限责任公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“中国国电集团公司”直接收录于知识库实体 ENT_ENERGY_0005 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "中国国电集团公司",
+          "type": "POWER_GENERATOR",
+          "char_start": 10,
+          "char_end": 18,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国国电集团公司",
+          "entity_id": "ENT_ENERGY_0005"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_075",
+      "text": "档案记录使用宝安县这一历史名称。",
+      "mention": "宝安县",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0027",
+        "canonical_name": "深圳市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“宝安县”直接收录于知识库实体 ENT_ENERGY_0027 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "宝安县",
+          "type": "REGION",
+          "char_start": 6,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "宝安县",
+          "entity_id": "ENT_ENERGY_0027"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_076",
+      "text": "历史资料仍以西电东送工程称呼该主体。",
+      "mention": "西电东送工程",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0025",
+        "canonical_name": "西电东送"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“西电东送工程”直接收录于知识库实体 ENT_ENERGY_0025 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "西电东送工程",
+          "type": "TECHNICAL_TERM",
+          "char_start": 6,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "西电东送工程",
+          "entity_id": "ENT_ENERGY_0025"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_077",
+      "text": "旧版公告中出现了名称中国华电集团公司。",
+      "mention": "中国华电集团公司",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0007",
+        "canonical_name": "中国华电集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“中国华电集团公司”直接收录于知识库实体 ENT_ENERGY_0007 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "中国华电集团公司",
+          "type": "POWER_GENERATOR",
+          "char_start": 10,
+          "char_end": 18,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国华电集团公司",
+          "entity_id": "ENT_ENERGY_0007"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_078",
+      "text": "档案记录使用以新能源为主体的新型电力系统这一历史名称。",
+      "mention": "以新能源为主体的新型电力系统",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0021",
+        "canonical_name": "新型电力系统"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“以新能源为主体的新型电力系统”直接收录于知识库实体 ENT_ENERGY_0021 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "以新能源为主体的新型电力系统",
+          "type": "TECHNICAL_TERM",
+          "char_start": 6,
+          "char_end": 20,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "以新能源为主体的新型电力系统",
+          "entity_id": "ENT_ENERGY_0021"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_079",
+      "text": "历史资料仍以神华集团有限责任公司称呼该主体。",
+      "mention": "神华集团有限责任公司",
+      "mention_type": "ALIAS",
+      "alias_type": "former_name",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0005",
+        "canonical_name": "国家能源投资集团有限责任公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“神华集团有限责任公司”直接收录于知识库实体 ENT_ENERGY_0005 的别名信息（曾用名）。",
+      "mentions": [
+        {
+          "mention": "神华集团有限责任公司",
+          "type": "POWER_GENERATOR",
+          "char_start": 6,
+          "char_end": 16,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "神华集团有限责任公司",
+          "entity_id": "ENT_ENERGY_0005"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_080",
+      "text": "国际合作文件将NIO列为相关主体。",
+      "mention": "NIO",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "AUTO_MANUFACTURER",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0058",
+        "canonical_name": "蔚来汽车有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“NIO”直接收录于知识库实体 ENT_GEN_0058 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "NIO",
+          "type": "AUTO_MANUFACTURER",
+          "char_start": 7,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "NIO",
+          "entity_id": "ENT_GEN_0058"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_081",
+      "text": "公开英文报道出现了Lark。",
+      "mention": "Lark",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "CONSUMER_PRODUCT",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0106",
+        "canonical_name": "飞书"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“Lark”直接收录于知识库实体 ENT_GEN_0106 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "Lark",
+          "type": "CONSUMER_PRODUCT",
+          "char_start": 9,
+          "char_end": 13,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Lark",
+          "entity_id": "ENT_GEN_0106"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_082",
+      "text": "英文资料中提及THU的业务进展。",
+      "mention": "THU",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "EDUCATIONAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0060",
+        "canonical_name": "清华大学"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“THU”直接收录于知识库实体 ENT_GEN_0060 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "THU",
+          "type": "EDUCATIONAL_INSTITUTION",
+          "char_start": 7,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "THU",
+          "entity_id": "ENT_GEN_0060"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_083",
+      "text": "国际合作文件将CMB列为相关主体。",
+      "mention": "CMB",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "FINANCIAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0057",
+        "canonical_name": "招商银行股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“CMB”直接收录于知识库实体 ENT_GEN_0057 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "CMB",
+          "type": "FINANCIAL_INSTITUTION",
+          "char_start": 7,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "CMB",
+          "entity_id": "ENT_GEN_0057"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_084",
+      "text": "公开英文报道出现了NEA。",
+      "mention": "NEA",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0059",
+        "canonical_name": "国家能源局"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“NEA”直接收录于知识库实体 ENT_GEN_0059 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "NEA",
+          "type": "GOVERNMENT_AGENCY",
+          "char_start": 9,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "NEA",
+          "entity_id": "ENT_GEN_0059"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_085",
+      "text": "英文资料中提及SGCC的业务进展。",
+      "mention": "SGCC",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "GRID_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0001",
+        "canonical_name": "国家电网有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“SGCC”直接收录于知识库实体 ENT_ENERGY_0001 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "SGCC",
+          "type": "GRID_COMPANY",
+          "char_start": 7,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "SGCC",
+          "entity_id": "ENT_ENERGY_0001"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_086",
+      "text": "国际合作文件将CMG列为相关主体。",
+      "mention": "CMG",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "MEDIA_ORG",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0116",
+        "canonical_name": "中央广播电视总台"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“CMG”直接收录于知识库实体 ENT_GEN_0116 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "CMG",
+          "type": "MEDIA_ORG",
+          "char_start": 7,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "CMG",
+          "entity_id": "ENT_GEN_0116"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_087",
+      "text": "公开英文报道出现了Beijing Tiantan Hospital。",
+      "mention": "Beijing Tiantan Hospital",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0147",
+        "canonical_name": "北京天坛医院"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“Beijing Tiantan Hospital”直接收录于知识库实体 ENT_GEN_0147 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "Beijing Tiantan Hospital",
+          "type": "MEDICAL_INSTITUTION",
+          "char_start": 9,
+          "char_end": 33,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Beijing Tiantan Hospital",
+          "entity_id": "ENT_GEN_0147"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_088",
+      "text": "英文资料中提及BYD的业务进展。",
+      "mention": "BYD",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0016",
+        "canonical_name": "比亚迪股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“BYD”直接收录于知识库实体 ENT_ENERGY_0016 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "BYD",
+          "type": "NEW_ENERGY_ENTERPRISE",
+          "char_start": 7,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "BYD",
+          "entity_id": "ENT_ENERGY_0016"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_089",
+      "text": "国际合作文件将HPR1000列为相关主体。",
+      "mention": "HPR1000",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "POWER_FACILITY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0040",
+        "canonical_name": "华龙一号核电机组"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“HPR1000”直接收录于知识库实体 ENT_ENERGY_0040 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "HPR1000",
+          "type": "POWER_FACILITY",
+          "char_start": 7,
+          "char_end": 14,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "HPR1000",
+          "entity_id": "ENT_ENERGY_0040"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_090",
+      "text": "公开英文报道出现了CTG。",
+      "mention": "CTG",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0008",
+        "canonical_name": "中国长江三峡集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“CTG”直接收录于知识库实体 ENT_ENERGY_0008 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "CTG",
+          "type": "POWER_GENERATOR",
+          "char_start": 9,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "CTG",
+          "entity_id": "ENT_ENERGY_0008"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_091",
+      "text": "英文资料中提及Ordos的业务进展。",
+      "mention": "Ordos",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0048",
+        "canonical_name": "内蒙古自治区鄂尔多斯市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“Ordos”直接收录于知识库实体 ENT_ENERGY_0048 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "Ordos",
+          "type": "REGION",
+          "char_start": 7,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Ordos",
+          "entity_id": "ENT_ENERGY_0048"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_092",
+      "text": "国际合作文件将EPPEI列为相关主体。",
+      "mention": "EPPEI",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0049",
+        "canonical_name": "电力规划设计总院"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“EPPEI”直接收录于知识库实体 ENT_ENERGY_0049 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "EPPEI",
+          "type": "RESEARCH_INSTITUTION",
+          "char_start": 7,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "EPPEI",
+          "entity_id": "ENT_ENERGY_0049"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_093",
+      "text": "公开英文报道出现了Amap。",
+      "mention": "Amap",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0099",
+        "canonical_name": "高德地图"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“Amap”直接收录于知识库实体 ENT_GEN_0099 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "Amap",
+          "type": "SOFTWARE_PLATFORM",
+          "char_start": 9,
+          "char_end": 13,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Amap",
+          "entity_id": "ENT_GEN_0099"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_094",
+      "text": "英文资料中提及UHVAC的业务进展。",
+      "mention": "UHVAC",
+      "mention_type": "ALIAS",
+      "alias_type": "english_name",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0019",
+        "canonical_name": "特高压交流输电"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“UHVAC”直接收录于知识库实体 ENT_ENERGY_0019 的别名信息（英文）。",
+      "mentions": [
+        {
+          "mention": "UHVAC",
+          "type": "TECHNICAL_TERM",
+          "char_start": 7,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "UHVAC",
+          "entity_id": "ENT_ENERGY_0019"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_095",
+      "text": "统计报告以深圳作为地区称谓。",
+      "mention": "深圳",
+      "mention_type": "ALIAS",
+      "alias_type": "regional_alias",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0027",
+        "canonical_name": "深圳市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“深圳”直接收录于知识库实体 ENT_ENERGY_0027 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "深圳",
+          "type": "REGION",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "深圳",
+          "entity_id": "ENT_ENERGY_0027"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_096",
+      "text": "项目所在地标注为鹏城。",
+      "mention": "鹏城",
+      "mention_type": "ALIAS",
+      "alias_type": "regional_alias",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0027",
+        "canonical_name": "深圳市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“鹏城”直接收录于知识库实体 ENT_ENERGY_0027 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "鹏城",
+          "type": "REGION",
+          "char_start": 8,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "鹏城",
+          "entity_id": "ENT_ENERGY_0027"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_097",
+      "text": "区域发展材料提及京城的相关情况。",
+      "mention": "京城",
+      "mention_type": "ALIAS",
+      "alias_type": "regional_alias",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0028",
+        "canonical_name": "北京市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“京城”直接收录于知识库实体 ENT_ENERGY_0028 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "京城",
+          "type": "REGION",
+          "char_start": 8,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "京城",
+          "entity_id": "ENT_ENERGY_0028"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_098",
+      "text": "统计报告以北京作为地区称谓。",
+      "mention": "北京",
+      "mention_type": "ALIAS",
+      "alias_type": "regional_alias",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0028",
+        "canonical_name": "北京市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“北京”直接收录于知识库实体 ENT_ENERGY_0028 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "北京",
+          "type": "REGION",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北京",
+          "entity_id": "ENT_ENERGY_0028"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_099",
+      "text": "项目所在地标注为帝都。",
+      "mention": "帝都",
+      "mention_type": "ALIAS",
+      "alias_type": "regional_alias",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0028",
+        "canonical_name": "北京市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“帝都”直接收录于知识库实体 ENT_ENERGY_0028 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "帝都",
+          "type": "REGION",
+          "char_start": 8,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "帝都",
+          "entity_id": "ENT_ENERGY_0028"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_100",
+      "text": "区域发展材料提及宜昌的相关情况。",
+      "mention": "宜昌",
+      "mention_type": "ALIAS",
+      "alias_type": "regional_alias",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0030",
+        "canonical_name": "宜昌市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“宜昌”直接收录于知识库实体 ENT_ENERGY_0030 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "宜昌",
+          "type": "REGION",
+          "char_start": 8,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "宜昌",
+          "entity_id": "ENT_ENERGY_0030"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_101",
+      "text": "统计报告以共和作为地区称谓。",
+      "mention": "共和",
+      "mention_type": "ALIAS",
+      "alias_type": "regional_alias",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0031",
+        "canonical_name": "青海省共和县"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“共和”直接收录于知识库实体 ENT_ENERGY_0031 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "共和",
+          "type": "REGION",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "共和",
+          "entity_id": "ENT_ENERGY_0031"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_102",
+      "text": "项目所在地标注为雄安。",
+      "mention": "雄安",
+      "mention_type": "ALIAS",
+      "alias_type": "regional_alias",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0046",
+        "canonical_name": "雄安新区"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“雄安”直接收录于知识库实体 ENT_ENERGY_0046 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "雄安",
+          "type": "REGION",
+          "char_start": 8,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "雄安",
+          "entity_id": "ENT_ENERGY_0046"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_103",
+      "text": "区域发展材料提及酒泉的相关情况。",
+      "mention": "酒泉",
+      "mention_type": "ALIAS",
+      "alias_type": "regional_alias",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0047",
+        "canonical_name": "甘肃省酒泉市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“酒泉”直接收录于知识库实体 ENT_ENERGY_0047 的别名信息（简称）。",
+      "mentions": [
+        {
+          "mention": "酒泉",
+          "type": "REGION",
+          "char_start": 8,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "酒泉",
+          "entity_id": "ENT_ENERGY_0047"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_104",
+      "text": "统计报告以广州作为地区称谓。",
+      "mention": "广州",
+      "mention_type": "ALIAS",
+      "alias_type": "regional_alias",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0093",
+        "canonical_name": "广州市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“广州”直接收录于知识库实体 ENT_GEN_0093 的别名信息（补充别名）。",
+      "mentions": [
+        {
+          "mention": "广州",
+          "type": "REGION",
+          "char_start": 5,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "广州",
+          "entity_id": "ENT_GEN_0093"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_105",
+      "text": "相关材料使用微信APP作为别称。",
+      "mention": "微信APP",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "CONSUMER_PRODUCT",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0061",
+        "canonical_name": "微信"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“微信APP”直接收录于知识库实体 ENT_GEN_0061 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "微信APP",
+          "type": "CONSUMER_PRODUCT",
+          "char_start": 6,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "微信APP",
+          "entity_id": "ENT_GEN_0061"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_106",
+      "text": "公众报道中常以囯网指代该主体。",
+      "mention": "囯网",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "GRID_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0001",
+        "canonical_name": "国家电网有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“囯网”直接收录于知识库实体 ENT_ENERGY_0001 的别名信息（俗称）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "囯网",
+          "type": "GRID_COMPANY",
+          "char_start": 7,
+          "char_end": 9,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "囯网",
+          "entity_id": "ENT_ENERGY_0001"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_107",
+      "text": "行业交流中出现了上海瑞金医院这一常用称呼。",
+      "mention": "上海瑞金医院",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0112",
+        "canonical_name": "上海交通大学医学院附属瑞金医院"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“上海瑞金医院”直接收录于知识库实体 ENT_GEN_0112 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "上海瑞金医院",
+          "type": "MEDICAL_INSTITUTION",
+          "char_start": 8,
+          "char_end": 14,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上海瑞金医院",
+          "entity_id": "ENT_GEN_0112"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_108",
+      "text": "相关材料使用宁徳时代作为别称。",
+      "mention": "宁徳时代",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "NEW_ENERGY_ENTERPRISE",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0015",
+        "canonical_name": "宁德时代新能源科技股份有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“宁徳时代”直接收录于知识库实体 ENT_ENERGY_0015 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "宁徳时代",
+          "type": "NEW_ENERGY_ENTERPRISE",
+          "char_start": 6,
+          "char_end": 10,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "宁徳时代",
+          "entity_id": "ENT_ENERGY_0015"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_109",
+      "text": "公众报道中常以三峡大坝指代该主体。",
+      "mention": "三峡大坝",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "POWER_FACILITY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0012",
+        "canonical_name": "三峡水电站"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“三峡大坝”直接收录于知识库实体 ENT_ENERGY_0012 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "三峡大坝",
+          "type": "POWER_FACILITY",
+          "char_start": 7,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "三峡大坝",
+          "entity_id": "ENT_ENERGY_0012"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_110",
+      "text": "行业交流中出现了三峡门户这一常用称呼。",
+      "mention": "三峡门户",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "REGION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0030",
+        "canonical_name": "宜昌市"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“三峡门户”直接收录于知识库实体 ENT_ENERGY_0030 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "三峡门户",
+          "type": "REGION",
+          "char_start": 8,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "三峡门户",
+          "entity_id": "ENT_ENERGY_0030"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_111",
+      "text": "相关材料使用电力规划院作为别称。",
+      "mention": "电力规划院",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0049",
+        "canonical_name": "电力规划设计总院"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“电力规划院”直接收录于知识库实体 ENT_ENERGY_0049 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "电力规划院",
+          "type": "RESEARCH_INSTITUTION",
+          "char_start": 6,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "电力规划院",
+          "entity_id": "ENT_ENERGY_0049"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_112",
+      "text": "公众报道中常以抖音短视频指代该主体。",
+      "mention": "抖音短视频",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0062",
+        "canonical_name": "抖音"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“抖音短视频”直接收录于知识库实体 ENT_GEN_0062 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "抖音短视频",
+          "type": "SOFTWARE_PLATFORM",
+          "char_start": 7,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "抖音短视频",
+          "entity_id": "ENT_GEN_0062"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_113",
+      "text": "行业交流中出现了数字电网这一常用称呼。",
+      "mention": "数字电网",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0045",
+        "canonical_name": "智慧电网"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“数字电网”直接收录于知识库实体 ENT_ENERGY_0045 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "数字电网",
+          "type": "TECHNICAL_TERM",
+          "char_start": 8,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "数字电网",
+          "entity_id": "ENT_ENERGY_0045"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_114",
+      "text": "相关材料使用华カ作为别称。",
+      "mention": "华カ",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "TECH_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0051",
+        "canonical_name": "华为技术有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“华カ”直接收录于知识库实体 ENT_GEN_0051 的别名信息（俗称）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "华カ",
+          "type": "TECH_COMPANY",
+          "char_start": 6,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华カ",
+          "entity_id": "ENT_GEN_0051"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_115",
+      "text": "公众报道中常以电网公司指代该主体。",
+      "mention": "电网公司",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "GRID_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0001",
+        "canonical_name": "国家电网有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“电网公司”直接收录于知识库实体 ENT_ENERGY_0001 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "电网公司",
+          "type": "GRID_COMPANY",
+          "char_start": 7,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "电网公司",
+          "entity_id": "ENT_ENERGY_0001"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_116",
+      "text": "行业交流中出现了复旦中山医院这一常用称呼。",
+      "mention": "复旦中山医院",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "MEDICAL_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0133",
+        "canonical_name": "复旦大学附属中山医院"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“复旦中山医院”直接收录于知识库实体 ENT_GEN_0133 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "复旦中山医院",
+          "type": "MEDICAL_INSTITUTION",
+          "char_start": 8,
+          "char_end": 14,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "复旦中山医院",
+          "entity_id": "ENT_GEN_0133"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_117",
+      "text": "相关材料使用白鹤滩电站作为别称。",
+      "mention": "白鹤滩电站",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "POWER_FACILITY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0039",
+        "canonical_name": "白鹤滩水电站"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“白鹤滩电站”直接收录于知识库实体 ENT_ENERGY_0039 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "白鹤滩电站",
+          "type": "POWER_FACILITY",
+          "char_start": 6,
+          "char_end": 11,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "白鹤滩电站",
+          "entity_id": "ENT_ENERGY_0039"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_118",
+      "text": "公众报道中常以Windows11指代该主体。",
+      "mention": "Windows11",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "SOFTWARE_PLATFORM",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0063",
+        "canonical_name": "Windows 11"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“Windows11”直接收录于知识库实体 ENT_GEN_0063 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "Windows11",
+          "type": "SOFTWARE_PLATFORM",
+          "char_start": 7,
+          "char_end": 16,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "Windows11",
+          "entity_id": "ENT_GEN_0063"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_119",
+      "text": "行业交流中出现了新型电力体系这一常用称呼。",
+      "mention": "新型电力体系",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0021",
+        "canonical_name": "新型电力系统"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "medium",
+      "is_ambiguous": false,
+      "evidence": "“新型电力体系”直接收录于知识库实体 ENT_ENERGY_0021 的别名信息（俗称）。",
+      "mentions": [
+        {
+          "mention": "新型电力体系",
+          "type": "TECHNICAL_TERM",
+          "char_start": 8,
+          "char_end": 14,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "新型电力体系",
+          "entity_id": "ENT_ENERGY_0021"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_120",
+      "text": "相关材料使用騰訊作为别称。",
+      "mention": "騰訊",
+      "mention_type": "ALIAS",
+      "alias_type": "nickname",
+      "entity_type": "TECH_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0052",
+        "canonical_name": "腾讯控股有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "evidence": "“騰訊”直接收录于知识库实体 ENT_GEN_0052 的别名信息（俗称）。该名称较短或为常用称呼，可能与同业对象混淆；本样本以实体类型和上下文作为验收辅助证据。",
+      "mentions": [
+        {
+          "mention": "騰訊",
+          "type": "TECH_COMPANY",
+          "char_start": 6,
+          "char_end": 8,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "騰訊",
+          "entity_id": "ENT_GEN_0052"
+        }
+      ],
+      "candidate_entities": [],
+      "expected_candidate_rank": null,
+      "ambiguity_type": "none",
+      "is_negative": false
+    },
+    {
+      "id": "ALIAS_HARD_001",
+      "text": "国网发布新型电力系统行动方案，并将在多个省份推进跨区输电工程。",
+      "mention": "国网",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "GRID_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0001",
+        "canonical_name": "国家电网有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "parent_child",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0001",
+          "name": "国家电网有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0009",
+          "name": "国网能源研究院有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0010",
+          "name": "国网新源控股有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_001；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：多个省份；跨区输电；行动方案。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_001"
+      },
+      "mentions": [
+        {
+          "mention": "国网",
+          "type": "GRID_COMPANY",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网",
+          "entity_id": "ENT_ENERGY_0001"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_002",
+      "text": "国网能源院发布电力供需形势研究报告，为能源政策制定提供决策参考。",
+      "mention": "国网能源院",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0009",
+        "canonical_name": "国网能源研究院有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0009",
+          "name": "国网能源研究院有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0001",
+          "name": "国家电网有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0050",
+          "name": "中国电力科学研究院有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_002；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：研究报告；决策参考。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_002"
+      },
+      "mentions": [
+        {
+          "mention": "国网能源院",
+          "type": "RESEARCH_INSTITUTION",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网能源院",
+          "entity_id": "ENT_ENERGY_0009"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_003",
+      "text": "国网新源加快建设抽水蓄能电站，计划年内新增多个投产项目。",
+      "mention": "国网新源",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0010",
+        "canonical_name": "国网新源控股有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "parent_child",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0010",
+          "name": "国网新源控股有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0001",
+          "name": "国家电网有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0009",
+          "name": "国网能源研究院有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_003；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：抽水蓄能电站；投产项目。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_003"
+      },
+      "mentions": [
+        {
+          "mention": "国网新源",
+          "type": "POWER_GENERATOR",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国网新源",
+          "entity_id": "ENT_ENERGY_0010"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_004",
+      "text": "三峡大坝在本轮洪峰期间发挥拦洪削峰作用，保障了下游防洪安全。",
+      "mention": "三峡大坝",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "POWER_FACILITY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0012",
+        "canonical_name": "三峡水电站"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0012",
+          "name": "三峡水电站"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0008",
+          "name": "中国长江三峡集团有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_004；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：洪峰；拦洪削峰；防洪。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_004"
+      },
+      "mentions": [
+        {
+          "mention": "三峡大坝",
+          "type": "POWER_FACILITY",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "三峡大坝",
+          "entity_id": "ENT_ENERGY_0012"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_005",
+      "text": "三峡集团宣布投资建设新的风光水储一体化基地，并负责项目运营。",
+      "mention": "三峡集团",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0008",
+        "canonical_name": "中国长江三峡集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0008",
+          "name": "中国长江三峡集团有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0012",
+          "name": "三峡水电站"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_005；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：投资建设；负责运营。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_005"
+      },
+      "mentions": [
+        {
+          "mention": "三峡集团",
+          "type": "POWER_GENERATOR",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "三峡集团",
+          "entity_id": "ENT_ENERGY_0008"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_006",
+      "text": "华能持续提高新能源装机占比，全年风电和光伏新增装机超过一千万千瓦。",
+      "mention": "华能",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0003",
+        "canonical_name": "中国华能集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0003",
+          "name": "中国华能集团有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0007",
+          "name": "中国华电集团有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_006；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：华能；新能源装机。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_006"
+      },
+      "mentions": [
+        {
+          "mention": "华能",
+          "type": "POWER_GENERATOR",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华能",
+          "entity_id": "ENT_ENERGY_0003"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_007",
+      "text": "华电加快天然气发电和分布式能源项目布局，提升区域综合能源服务能力。",
+      "mention": "华电",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0007",
+        "canonical_name": "中国华电集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0007",
+          "name": "中国华电集团有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0003",
+          "name": "中国华能集团有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_007；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：华电；天然气发电；分布式能源。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_007"
+      },
+      "mentions": [
+        {
+          "mention": "华电",
+          "type": "POWER_GENERATOR",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "华电",
+          "entity_id": "ENT_ENERGY_0007"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_008",
+      "text": "中核集团推进核燃料循环产业建设，覆盖铀矿勘探、核燃料加工与后处理。",
+      "mention": "中核集团",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0034",
+        "canonical_name": "中国核工业集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0034",
+          "name": "中国核工业集团有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0011",
+          "name": "中国广核集团有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_008；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：核燃料循环；铀矿勘探；后处理。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_008"
+      },
+      "mentions": [
+        {
+          "mention": "中核集团",
+          "type": "POWER_GENERATOR",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中核集团",
+          "entity_id": "ENT_ENERGY_0034"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_009",
+      "text": "中广核公布大亚湾核电基地年度运行数据，多台机组保持安全稳定运行。",
+      "mention": "中广核",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0011",
+        "canonical_name": "中国广核集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0011",
+          "name": "中国广核集团有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0034",
+          "name": "中国核工业集团有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_009；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：大亚湾核电基地；机组运行。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_009"
+      },
+      "mentions": [
+        {
+          "mention": "中广核",
+          "type": "POWER_GENERATOR",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中广核",
+          "entity_id": "ENT_ENERGY_0011"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_010",
+      "text": "UHVDC适合超远距离大容量送电，可用于跨区域直流输电工程。",
+      "mention": "UHVDC",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0018",
+        "canonical_name": "特高压直流输电"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0018",
+          "name": "特高压直流输电"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0019",
+          "name": "特高压交流输电"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_010；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：直流输电；超远距离。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_010"
+      },
+      "mentions": [
+        {
+          "mention": "UHVDC",
+          "type": "TECHNICAL_TERM",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "UHVDC",
+          "entity_id": "ENT_ENERGY_0018"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_011",
+      "text": "UHVAC线路承担区域电网互联任务，重点提升交流主网架输送能力。",
+      "mention": "UHVAC",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "TECHNICAL_TERM",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0019",
+        "canonical_name": "特高压交流输电"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0019",
+          "name": "特高压交流输电"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0018",
+          "name": "特高压直流输电"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_011；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：交流主网架；区域互联。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_011"
+      },
+      "mentions": [
+        {
+          "mention": "UHVAC",
+          "type": "TECHNICAL_TERM",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "UHVAC",
+          "entity_id": "ENT_ENERGY_0019"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_012",
+      "text": "国家能源集团加快煤电清洁化改造，并扩大风电与光伏装机规模。",
+      "mention": "国家能源集团",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0005",
+        "canonical_name": "国家能源投资集团有限责任公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0005",
+          "name": "国家能源投资集团有限责任公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0059",
+          "name": "国家能源局"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_012；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：煤电改造；装机规模。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_012"
+      },
+      "mentions": [
+        {
+          "mention": "国家能源集团",
+          "type": "POWER_GENERATOR",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国家能源集团",
+          "entity_id": "ENT_ENERGY_0005"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_013",
+      "text": "国家能源局发布电力市场监管政策，并就政策实施情况开展专项检查。",
+      "mention": "国家能源局",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "GOVERNMENT_AGENCY",
+      "expected_entity": {
+        "entity_id": "ENT_GEN_0059",
+        "canonical_name": "国家能源局"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0059",
+          "name": "国家能源局"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0005",
+          "name": "国家能源投资集团有限责任公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_013；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：发布政策；监管；专项检查。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_013"
+      },
+      "mentions": [
+        {
+          "mention": "国家能源局",
+          "type": "GOVERNMENT_AGENCY",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国家能源局",
+          "entity_id": "ENT_GEN_0059"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_014",
+      "text": "中国电科院完成新能源并网技术标准验证，并建设电力系统仿真实验平台。",
+      "mention": "中国电科院",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "RESEARCH_INSTITUTION",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0050",
+        "canonical_name": "中国电力科学研究院有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0050",
+          "name": "中国电力科学研究院有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0009",
+          "name": "国网能源研究院有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_014；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：技术标准验证；仿真实验平台。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_014"
+      },
+      "mentions": [
+        {
+          "mention": "中国电科院",
+          "type": "RESEARCH_INSTITUTION",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国电科院",
+          "entity_id": "ENT_ENERGY_0050"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_015",
+      "text": "南网完成广东主网架升级，并提升跨省电力调度能力。",
+      "mention": "南网",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "GRID_COMPANY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0002",
+        "canonical_name": "中国南方电网有限责任公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "product_company_confusion",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0002",
+          "name": "中国南方电网有限责任公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0001",
+          "name": "国家电网有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_018；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：广东；跨省调度；南网。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_018"
+      },
+      "mentions": [
+        {
+          "mention": "南网",
+          "type": "GRID_COMPANY",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "南网",
+          "entity_id": "ENT_ENERGY_0002"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_016",
+      "text": "大唐加快火电机组灵活性改造，并同步扩大风电装机。",
+      "mention": "大唐",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0004",
+        "canonical_name": "中国大唐集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0004",
+          "name": "中国大唐集团有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0003",
+          "name": "中国华能集团有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0007",
+          "name": "中国华电集团有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_019；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：大唐；火电机组；风电装机。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_019"
+      },
+      "mentions": [
+        {
+          "mention": "大唐",
+          "type": "POWER_GENERATOR",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "大唐",
+          "entity_id": "ENT_ENERGY_0004"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_017",
+      "text": "国家电投在青海建设光伏基地，清洁能源装机占比超过百分之六十。",
+      "mention": "国家电投",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0006",
+        "canonical_name": "国家电力投资集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0006",
+          "name": "国家电力投资集团有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0001",
+          "name": "国家电网有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0005",
+          "name": "国家能源投资集团有限责任公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_020；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：光伏基地；清洁能源装机；国家电投。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_020"
+      },
+      "mentions": [
+        {
+          "mention": "国家电投",
+          "type": "POWER_GENERATOR",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "国家电投",
+          "entity_id": "ENT_ENERGY_0006"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_018",
+      "text": "三峡宣布扩大海上风电投资，并由集团统筹项目运营。",
+      "mention": "三峡",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "POWER_GENERATOR",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0008",
+        "canonical_name": "中国长江三峡集团有限公司"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0008",
+          "name": "中国长江三峡集团有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0012",
+          "name": "三峡水电站"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_021；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：投资；集团；项目运营。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_021"
+      },
+      "mentions": [
+        {
+          "mention": "三峡",
+          "type": "POWER_GENERATOR",
+          "char_start": 0,
+          "char_end": 2,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "三峡",
+          "entity_id": "ENT_ENERGY_0008"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_019",
+      "text": "溪洛渡提高出力参与电网调峰，同时保障长江上游防洪安全。",
+      "mention": "溪洛渡",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "POWER_FACILITY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0013",
+        "canonical_name": "溪洛渡水电站"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0013",
+          "name": "溪洛渡水电站"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0008",
+          "name": "中国长江三峡集团有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_023；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：出力；调峰；防洪。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_023"
+      },
+      "mentions": [
+        {
+          "mention": "溪洛渡",
+          "type": "POWER_FACILITY",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "溪洛渡",
+          "entity_id": "ENT_ENERGY_0013"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_020",
+      "text": "大亚湾完成年度换料大修，多台核电机组恢复并网运行。",
+      "mention": "大亚湾",
+      "mention_type": "ALIAS",
+      "alias_type": "abbreviation",
+      "entity_type": "POWER_FACILITY",
+      "expected_entity": {
+        "entity_id": "ENT_ENERGY_0017",
+        "canonical_name": "大亚湾核电站"
+      },
+      "is_nil": false,
+      "has_nil": false,
+      "is_negative": false,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0017",
+          "name": "大亚湾核电站"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0011",
+          "name": "中国广核集团有限公司"
+        }
+      ],
+      "expected_candidate_rank": 1,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_024；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 决定性证据：换料大修；核电机组；并网运行。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_024"
+      },
+      "mentions": [
+        {
+          "mention": "大亚湾",
+          "type": "POWER_FACILITY",
+          "char_start": 0,
+          "char_end": 3,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "大亚湾",
+          "entity_id": "ENT_ENERGY_0017"
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_021",
+      "text": "中国能源研究会发布能源转型研究成果，并召开年度学术会议。",
+      "mention": "中国能源研究会",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0009",
+          "name": "国网能源研究院有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0049",
+          "name": "电力规划设计总院"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0050",
+          "name": "中国电力科学研究院有限公司"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_039；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_039"
+      },
+      "mentions": [
+        {
+          "mention": "中国能源研究会",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国能源研究会",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_022",
+      "text": "中国农业银行推出县域光伏项目绿色信贷产品。",
+      "mention": "中国农业银行",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0055",
+          "name": "中国工商银行股份有限公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0057",
+          "name": "招商银行股份有限公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0056",
+          "name": "中国平安保险集团股份有限公司"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_055；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_055"
+      },
+      "mentions": [
+        {
+          "mention": "中国农业银行",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国农业银行",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_023",
+      "text": "北京协和医院上线疑难病远程会诊平台，覆盖多个临床专科。",
+      "mention": "北京协和医院",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0060",
+          "name": "清华大学"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0028",
+          "name": "北京市"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_057；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_057"
+      },
+      "mentions": [
+        {
+          "mention": "北京协和医院",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "北京协和医院",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_024",
+      "text": "中国中车完成高速列车试验，并公布新型牵引系统能耗数据。",
+      "mention": "中国中车",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_ENERGY_0001",
+          "name": "国家电网有限公司"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0002",
+          "name": "中国南方电网有限责任公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0058",
+          "name": "蔚来汽车有限公司"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_058；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_058"
+      },
+      "mentions": [
+        {
+          "mention": "中国中车",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国中车",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_025",
+      "text": "上海交大低碳实验室与上交所联合举办绿色金融论坛。",
+      "mention": "上交",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0065",
+          "name": "上海交通大学"
+        },
+        {
+          "entity_id": "ENT_GEN_0087",
+          "name": "上海证券交易所"
+        },
+        {
+          "entity_id": "ENT_GEN_0088",
+          "name": "深圳证券交易所"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_062；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_062"
+      },
+      "mentions": [
+        {
+          "mention": "上交",
+          "type": "UNKNOWN",
+          "char_start": 10,
+          "char_end": 12,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上交",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_026",
+      "text": "世界银行发布能源转型融资报告，但当前知识库尚未收录该国际机构。",
+      "mention": "世界银行",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0083",
+          "name": "中国银行股份有限公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0081",
+          "name": "中国建设银行股份有限公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0086",
+          "name": "东方财富信息股份有限公司"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_090；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_090"
+      },
+      "mentions": [
+        {
+          "mention": "世界银行",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "世界银行",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_027",
+      "text": "中国商飞公布国产客机交付进展，但知识库尚未包含航空制造企业。",
+      "mention": "中国商飞",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0073",
+          "name": "小米集团"
+        },
+        {
+          "entity_id": "ENT_GEN_0080",
+          "name": "特斯拉公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0090",
+          "name": "中华人民共和国工业和信息化部"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_092；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_092"
+      },
+      "mentions": [
+        {
+          "mention": "中国商飞",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国商飞",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_028",
+      "text": "故宫博物院上线数字文物平台，但文博机构暂未进入知识库。",
+      "mention": "故宫博物院",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0064",
+          "name": "北京大学"
+        },
+        {
+          "entity_id": "ENT_GEN_0068",
+          "name": "中国科学院"
+        },
+        {
+          "entity_id": "ENT_GEN_0095",
+          "name": "南京市"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_093；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_093"
+      },
+      "mentions": [
+        {
+          "mention": "故宫博物院",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 5,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "故宫博物院",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_029",
+      "text": "科大讯飞发布教育大模型，但该企业尚未被当前知识库收录。",
+      "mention": "科大讯飞",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "product_company_confusion",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0070",
+          "name": "百度在线网络技术（北京）有限公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0075",
+          "name": "字节跳动有限公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0064",
+          "name": "北京大学"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_094；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_094"
+      },
+      "mentions": [
+        {
+          "mention": "科大讯飞",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "科大讯飞",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_030",
+      "text": "深圳大学建设海洋能源实验平台，但该高校不在当前知识库。",
+      "mention": "深圳大学",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0064",
+          "name": "北京大学"
+        },
+        {
+          "entity_id": "ENT_GEN_0065",
+          "name": "上海交通大学"
+        },
+        {
+          "entity_id": "ENT_ENERGY_0027",
+          "name": "深圳市"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_096；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_096"
+      },
+      "mentions": [
+        {
+          "mention": "深圳大学",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 4,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "深圳大学",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_031",
+      "text": "国家发展改革委与工业和信息化部联合召开会议，双方将分别推进投资管理和制造业数字化。",
+      "mention": "双方",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0089",
+          "name": "中华人民共和国国家发展和改革委员会"
+        },
+        {
+          "entity_id": "ENT_GEN_0090",
+          "name": "中华人民共和国工业和信息化部"
+        },
+        {
+          "entity_id": "ENT_GEN_0092",
+          "name": "国家市场监督管理总局"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_097；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_097"
+      },
+      "mentions": [
+        {
+          "mention": "双方",
+          "type": "UNKNOWN",
+          "char_start": 22,
+          "char_end": 24,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "双方",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_032",
+      "text": "小鹏和理想分别公布智能驾驶更新，他们都强调城市道路场景。",
+      "mention": "他们",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0078",
+          "name": "小鹏汽车有限公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0079",
+          "name": "理想汽车"
+        },
+        {
+          "entity_id": "ENT_GEN_0058",
+          "name": "蔚来汽车有限公司"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_098；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_098"
+      },
+      "mentions": [
+        {
+          "mention": "他们",
+          "type": "UNKNOWN",
+          "char_start": 16,
+          "char_end": 18,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "他们",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_033",
+      "text": "百度和京东分别公布数据中心节能计划，上述企业均承诺提高绿电使用比例。",
+      "mention": "上述企业",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0070",
+          "name": "百度在线网络技术（北京）有限公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0071",
+          "name": "京东集团股份有限公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0075",
+          "name": "字节跳动有限公司"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_099；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_099"
+      },
+      "mentions": [
+        {
+          "mention": "上述企业",
+          "type": "UNKNOWN",
+          "char_start": 18,
+          "char_end": 22,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "上述企业",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_034",
+      "text": "北京大学和上海交通大学联合建设课程，两家高校均计划开放实验教学资源。",
+      "mention": "两家高校",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0064",
+          "name": "北京大学"
+        },
+        {
+          "entity_id": "ENT_GEN_0065",
+          "name": "上海交通大学"
+        },
+        {
+          "entity_id": "ENT_GEN_0060",
+          "name": "清华大学"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_100；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_100"
+      },
+      "mentions": [
+        {
+          "mention": "两家高校",
+          "type": "UNKNOWN",
+          "char_start": 18,
+          "char_end": 22,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "两家高校",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_035",
+      "text": "百度地图和高德地图分别上线充电站搜索，前者强调新能源车路线规划。",
+      "mention": "前者",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0098",
+          "name": "百度地图"
+        },
+        {
+          "entity_id": "ENT_GEN_0099",
+          "name": "高德地图"
+        },
+        {
+          "entity_id": "ENT_GEN_0070",
+          "name": "百度在线网络技术（北京）有限公司"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_107；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_107"
+      },
+      "mentions": [
+        {
+          "mention": "前者",
+          "type": "UNKNOWN",
+          "char_start": 19,
+          "char_end": 21,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "前者",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_036",
+      "text": "百度地图和高德地图分别上线充电站搜索，后者覆盖更多高速服务区。",
+      "mention": "后者",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0099",
+          "name": "高德地图"
+        },
+        {
+          "entity_id": "ENT_GEN_0098",
+          "name": "百度地图"
+        },
+        {
+          "entity_id": "ENT_GEN_0070",
+          "name": "百度在线网络技术（北京）有限公司"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_108；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_108"
+      },
+      "mentions": [
+        {
+          "mention": "后者",
+          "type": "UNKNOWN",
+          "char_start": 19,
+          "char_end": 21,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "后者",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_037",
+      "text": "广州发布道路测试政策，广汽集团参与部分试点但未进入当前知识库。",
+      "mention": "广汽集团",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "product_company_confusion",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0093",
+          "name": "广州市"
+        },
+        {
+          "entity_id": "ENT_GEN_0080",
+          "name": "特斯拉公司"
+        },
+        {
+          "entity_id": "ENT_GEN_0078",
+          "name": "小鹏汽车有限公司"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_114；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_114"
+      },
+      "mentions": [
+        {
+          "mention": "广汽集团",
+          "type": "UNKNOWN",
+          "char_start": 11,
+          "char_end": 15,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "广汽集团",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_038",
+      "text": "中国国家博物馆推出数字文物平台，当前知识库只有高校和科研机构。",
+      "mention": "中国国家博物馆",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0064",
+          "name": "北京大学"
+        },
+        {
+          "entity_id": "ENT_GEN_0068",
+          "name": "中国科学院"
+        },
+        {
+          "entity_id": "ENT_GEN_0095",
+          "name": "南京市"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_116；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_116"
+      },
+      "mentions": [
+        {
+          "mention": "中国国家博物馆",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 7,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "中国国家博物馆",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_039",
+      "text": "世界卫生组织发布高温健康风险建议，当前知识库没有该国际组织。",
+      "mention": "世界卫生组织",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "same_type_similarity",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0091",
+          "name": "中华人民共和国生态环境部"
+        },
+        {
+          "entity_id": "ENT_GEN_0068",
+          "name": "中国科学院"
+        },
+        {
+          "entity_id": "ENT_GEN_0092",
+          "name": "国家市场监督管理总局"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_117；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_117"
+      },
+      "mentions": [
+        {
+          "mention": "世界卫生组织",
+          "type": "UNKNOWN",
+          "char_start": 0,
+          "char_end": 6,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "世界卫生组织",
+          "entity_id": null
+        }
+      ]
+    },
+    {
+      "id": "ALIAS_HARD_040",
+      "text": "支付宝和微信支付均推出绿色出行积分，两款应用都不是银行机构。",
+      "mention": "两款应用",
+      "mention_type": "ALIAS",
+      "alias_type": "short_name",
+      "entity_type": "UNKNOWN",
+      "expected_entity": {
+        "entity_id": null,
+        "canonical_name": null
+      },
+      "is_nil": true,
+      "has_nil": true,
+      "is_negative": true,
+      "difficulty": "hard",
+      "is_ambiguous": true,
+      "ambiguity_type": "product_company_confusion",
+      "candidate_entities": [
+        {
+          "entity_id": "ENT_GEN_0097",
+          "name": "支付宝"
+        },
+        {
+          "entity_id": "ENT_GEN_0061",
+          "name": "微信"
+        },
+        {
+          "entity_id": "ENT_GEN_0055",
+          "name": "中国工商银行股份有限公司"
+        }
+      ],
+      "expected_candidate_rank": null,
+      "evidence": "来源：llm_fallback_ambiguity_test.json/LLM_AMB_137；候选与上下文沿用既有 LLM 歧义/NIL 金标数据。 原标注 expected_nil=true，且该 mention 不存在于运行知识库 alias 索引。",
+      "source_case": {
+        "dataset": "llm_fallback_ambiguity_test.json",
+        "id": "LLM_AMB_137"
+      },
+      "mentions": [
+        {
+          "mention": "两款应用",
+          "type": "UNKNOWN",
+          "char_start": 18,
+          "char_end": 22,
+          "confidence": 1.0
+        }
+      ],
+      "expected_entities": [
+        {
+          "mention": "两款应用",
+          "entity_id": null
+        }
+      ]
+    }
+  ]
+}
