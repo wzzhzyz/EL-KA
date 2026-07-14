@@ -6,7 +6,7 @@
 
 ## 2. 评测环境
 
-- 代码版本：`a28d44d`
+- 代码版本：`5136d91`
 - 共指模块入口：`entity_linker.coreference.RuleBasedCoreferenceResolver`
 - 调用方式：直接实例化真实解析器，对真实输出与 gold 比较；未使用 mock 或 gold 预测。
 - 历史数据：`data/eval/coreference_long_text_test.json`

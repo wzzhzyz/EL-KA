@@ -1,6 +1,6 @@
 {
   "report_version": "2.0",
-  "generated_at": "2026-07-13T12:36:20.094941+00:00",
+  "generated_at": "2026-07-13T13:08:00.221627+00:00",
   "inputs": {
     "legacy": "data/eval/coreference_long_text_test.json",
     "collective": "data/eval/coreference_collective_eval.json",
@@ -9,9 +9,9 @@
     "excluded_failure_regression": "data/eval/coreference_failure_regression.json"
   },
   "environment": {
-    "git_revision": "a28d44d",
+    "git_revision": "5136d91",
     "resolver": "entity_linker.coreference.RuleBasedCoreferenceResolver",
-    "nil_threshold": 0.55,
+    "nil_threshold": 0.3,
     "max_sentence_gap": 3
   },
   "acceptance": {
